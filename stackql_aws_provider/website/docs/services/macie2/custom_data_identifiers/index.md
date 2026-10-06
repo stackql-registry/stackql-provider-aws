@@ -204,6 +204,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves information about one or more custom data identifiers.</td>
 </tr>
+<tr>
+    <td><a href="#test_custom_data_identifier"><CopyableCode code="test_custom_data_identifier" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-regex"><code>regex</code></a>, <a href="#parameter-sampleText"><code>sampleText</code></a></td>
+    <td></td>
+    <td>Tests criteria for a custom data identifier.</td>
+</tr>
 </tbody>
 </table>
 
@@ -394,7 +401,8 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="batch_get_custom_data_identifiers"
     values={[
-        { label: 'batch_get_custom_data_identifiers', value: 'batch_get_custom_data_identifiers' }
+        { label: 'batch_get_custom_data_identifiers', value: 'batch_get_custom_data_identifiers' },
+        { label: 'test_custom_data_identifier', value: 'test_custom_data_identifier' }
     ]}
 >
 <TabItem value="batch_get_custom_data_identifiers">
@@ -407,6 +415,24 @@ EXEC aws.macie2.custom_data_identifiers.batch_get_custom_data_identifiers
 @@json=
 '{
 "ids": "{{ ids }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="test_custom_data_identifier">
+
+Tests criteria for a custom data identifier.
+
+```sql
+EXEC aws.macie2.custom_data_identifiers.test_custom_data_identifier 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ignoreWords": "{{ ignoreWords }}", 
+"keywords": "{{ keywords }}", 
+"maximumMatchDistance": {{ maximumMatchDistance }}, 
+"regex": "{{ regex }}", 
+"sampleText": "{{ sampleText }}"
 }'
 ;
 ```

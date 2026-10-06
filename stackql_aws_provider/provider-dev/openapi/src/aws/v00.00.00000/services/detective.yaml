@@ -528,10 +528,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a behavior graph.
@@ -551,10 +547,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /invitation/removal:
     post:
       operationId: RejectInvitation
@@ -1465,8 +1457,6 @@ components:
         InvestigationId:
           $ref: "#/components/schemas/InvestigationId"
           description: The investigation ID of the investigation report.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1476,8 +1466,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     DatasourcePackageList:
       type: array
       items:
@@ -1721,6 +1709,43 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
         delete: []
+    organization_admin_accounts:
+      id: aws.detective.organization_admin_accounts
+      name: organization_admin_accounts
+      title: organization_admin_accounts
+      methods:
+        disable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1orgs~1disableAdminAccount/post"
+          response:
+            openAPIDocKey: "200"
+        enable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1orgs~1enableAdminAccount/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_organization_admin_accounts:
+          operation:
+            $ref: "#/paths/~1orgs~1adminAccountslist/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
+        insert: []
+        update: []
+        delete: []
     investigations:
       id: aws.detective.investigations
       name: investigations
@@ -1843,28 +1868,6 @@ components:
         insert: []
         update: []
         delete: []
-    organization_admin_accounts:
-      id: aws.detective.organization_admin_accounts
-      name: organization_admin_accounts
-      title: organization_admin_accounts
-      methods:
-        list_organization_admin_accounts:
-          operation:
-            $ref: "#/paths/~1orgs~1adminAccountslist/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.detective.tags
       name: tags
@@ -1881,7 +1884,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1892,7 +1894,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

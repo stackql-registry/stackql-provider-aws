@@ -63,10 +63,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddCustomAttributesResponse'
       x-stackql-resource: user_pools
       x-stackql-method: add_custom_attributes
       x-stackql-verb: UPDATE
@@ -159,7 +155,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_pools
+      x-stackql-resource: groups
       x-stackql-method: admin_add_user_to_group
       x-stackql-verb: EXEC
   /AdminConfirmSignUp:
@@ -219,10 +215,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminConfirmSignUpResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_confirm_sign_up
       x-stackql-verb: EXEC
@@ -356,8 +348,53 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminCreateUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_create_user
+      x-stackql-verb: EXEC
+  /AdminDeleteSoftwareToken:
+    post:
+      operationId: AdminDeleteSoftwareToken
+      description: Deletes a user's registered time-based one-time password (TOTP) multi-factor authentication (MFA) factor,
+        also known as a software token. After this operation, the user can no longer sign in with TOTP MFA, and can register
+        a new TOTP factor with AssociateSoftwareToken. Use this operation when a user loses access to their TOTP-generating
+        device, for example, a lost or reset phone, and needs to register a new one. Amazon Cognito evaluates Identity and
+        Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials
+        to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing
+        Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSCognitoIdentityProviderService.AdminDeleteSoftwareToken
+          default: AWSCognitoIdentityProviderService.AdminDeleteSoftwareToken
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                UserPoolId:
+                  $ref: '#/components/schemas/UserPoolIdType'
+                  description: The ID of the user pool where you want to delete the user's software token.
+                Username:
+                  $ref: '#/components/schemas/UsernameType'
+                  description: The name of the user that you want to query or modify. The value of this parameter is typically
+                    your user's username, but it can be any of their alias attributes. If username isn't an alias attribute
+                    in your user pool, this value must be the sub of a local user or the username of a user from a third-party
+                    IdP.
+              required:
+              - UserPoolId
+              - Username
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: user_pools
+      x-stackql-method: admin_delete_software_token
       x-stackql-verb: EXEC
   /AdminDeleteUser:
     post:
@@ -398,7 +435,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_delete_user
       x-stackql-verb: EXEC
   /AdminDeleteUserAttributes:
@@ -446,10 +483,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminDeleteUserAttributesResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_delete_user_attributes
       x-stackql-verb: EXEC
@@ -502,11 +535,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminDisableProviderForUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_disable_provider_for_user
       x-stackql-verb: EXEC
   /AdminDisableUser:
@@ -549,11 +578,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminDisableUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_disable_user
       x-stackql-verb: EXEC
   /AdminEnableUser:
@@ -595,11 +620,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminEnableUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_enable_user
       x-stackql-verb: EXEC
   /AdminForgetDevice:
@@ -647,7 +668,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_pools
+      x-stackql-resource: devices
       x-stackql-method: admin_forget_device
       x-stackql-verb: EXEC
   /AdminGetDevice:
@@ -698,7 +719,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminGetDeviceResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: devices
       x-stackql-method: admin_get_device
       x-stackql-verb: EXEC
   /AdminGetUser:
@@ -746,7 +767,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminGetUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_get_user
       x-stackql-verb: EXEC
   /AdminGetUserAuthFactors:
@@ -957,8 +978,6 @@ paths:
                     + password user, the ProviderAttributeValue for the DestinationUser should be the username in the user
                     pool. For a federated user, it should be the provider-specific user_id. The ProviderAttributeName of the
                     DestinationUser is ignored. The ProviderName should be set to Cognito for users in Cognito user pools.
-                    All attributes in the DestinationUser profile must be mutable. If you have assigned the user any immutable
-                    custom attributes, the operation won't succeed.
                 SourceUser:
                   $ref: '#/components/schemas/ProviderUserIdentifierType'
                   description: An external IdP account for a user who doesn't exist yet in the user pool. This user must be
@@ -982,11 +1001,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminLinkProviderForUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_link_provider_for_user
       x-stackql-verb: EXEC
   /AdminListDevices:
@@ -1101,7 +1116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminListGroupsForUserResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_list_groups_for_user
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -1212,7 +1227,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_pools
+      x-stackql-resource: groups
       x-stackql-method: admin_remove_user_from_group
       x-stackql-verb: EXEC
   /AdminResetUserPassword:
@@ -1280,10 +1295,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminResetUserPasswordResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_reset_user_password
       x-stackql-verb: EXEC
@@ -1454,7 +1465,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminRespondToAuthChallengeResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: auth_challenges
       x-stackql-method: admin_respond_to_auth_challenge
       x-stackql-verb: EXEC
   /AdminSetUserMFAPreference:
@@ -1518,10 +1529,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminSetUserMFAPreferenceResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_mfa_preference
       x-stackql-verb: EXEC
@@ -1588,10 +1595,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminSetUserPasswordResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_password
       x-stackql-verb: EXEC
@@ -1639,10 +1642,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminSetUserSettingsResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_settings
       x-stackql-verb: EXEC
@@ -1702,10 +1701,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminUpdateAuthEventFeedbackResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_update_auth_event_feedback
       x-stackql-verb: EXEC
@@ -1760,10 +1755,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminUpdateDeviceStatusResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_update_device_status
       x-stackql-verb: EXEC
@@ -1845,10 +1836,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminUpdateUserAttributesResponse'
       x-stackql-resource: user_pools
       x-stackql-method: admin_update_user_attributes
       x-stackql-verb: EXEC
@@ -1901,11 +1888,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AdminUserGlobalSignOutResponse'
-      x-stackql-resource: user_pools
+      x-stackql-resource: users
       x-stackql-method: admin_user_global_sign_out
       x-stackql-verb: EXEC
   /AssociateSoftwareToken:
@@ -1997,11 +1980,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ChangePasswordResponse'
-      x-stackql-resource: change_password
+      x-stackql-resource: passwords
       x-stackql-method: change_password
       x-stackql-verb: EXEC
   /CompleteWebAuthnRegistration:
@@ -2039,11 +2018,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CompleteWebAuthnRegistrationResponse'
-      x-stackql-resource: complete_web_authn_registration
+      x-stackql-resource: web_authn_registrations
       x-stackql-method: complete_web_authn_registration
       x-stackql-verb: EXEC
   /ConfirmDevice:
@@ -2097,7 +2072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmDeviceResponse'
-      x-stackql-resource: device
+      x-stackql-resource: devices
       x-stackql-method: confirm_device
       x-stackql-verb: EXEC
   /ConfirmForgotPassword:
@@ -2181,11 +2156,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConfirmForgotPasswordResponse'
-      x-stackql-resource: forgot_password
+      x-stackql-resource: forgot_passwords
       x-stackql-method: confirm_forgot_password
       x-stackql-verb: EXEC
   /ConfirmSignUp:
@@ -2284,7 +2255,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmSignUpResponse'
-      x-stackql-resource: sign_up
+      x-stackql-resource: sign_ups
       x-stackql-method: confirm_sign_up
       x-stackql-verb: EXEC
   /CreateGroup:
@@ -3515,10 +3486,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserAttributesResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user_attributes
       x-stackql-verb: DELETE
@@ -3635,10 +3602,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserPoolClientSecretResponse'
       x-stackql-resource: user_pool_client_secrets
       x-stackql-method: delete_user_pool_client_secret
       x-stackql-verb: DELETE
@@ -3677,10 +3640,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserPoolDomainResponse'
       x-stackql-resource: user_pool_domains
       x-stackql-method: delete_user_pool_domain
       x-stackql-verb: DELETE
@@ -3766,10 +3725,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWebAuthnCredentialResponse'
       x-stackql-resource: web_authn_credentials
       x-stackql-method: delete_web_authn_credential
       x-stackql-verb: DELETE
@@ -3903,7 +3858,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeManagedLoginBrandingByClientResponse'
-      x-stackql-resource: managed_login_branding_by_clients
+      x-stackql-resource: managed_login_brandings
       x-stackql-method: describe_managed_login_branding_by_client
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ManagedLoginBranding
@@ -4045,6 +4000,58 @@ paths:
       x-stackql-method: describe_terms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Terms
+  /DescribeTermsByClient:
+    post:
+      operationId: DescribeTermsByClient
+      description: Returns details for the terms documents that are associated with an app client, identified by the app client
+        ID, user pool ID, and terms name. For more information, see Terms documents. To call DescribeTermsByClient, you must
+        have the cognito-idp:DescribeTermsByClient Identity and Access Management (IAM) permission. This operation additionally
+        validates your permission for cognito-idp:DescribeTerms, the action for . As a result, an IAM policy that denies cognito-idp:DescribeTerms
+        also denies requests to DescribeTermsByClient. Amazon Cognito evaluates Identity and Access Management (IAM) policies
+        in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you
+        must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests
+        Using the Amazon Cognito user pools API and user pool endpoints
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSCognitoIdentityProviderService.DescribeTermsByClient
+          default: AWSCognitoIdentityProviderService.DescribeTermsByClient
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClientId:
+                  $ref: '#/components/schemas/ClientIdType'
+                  description: The ID of the app client that the terms documents are associated with.
+                UserPoolId:
+                  $ref: '#/components/schemas/UserPoolIdType'
+                  description: The ID of the user pool that contains the terms documents that you want to describe.
+                TermsName:
+                  $ref: '#/components/schemas/TermsNameType'
+                  description: The name of the terms documents that you want to describe.
+              required:
+              - ClientId
+              - UserPoolId
+              - TermsName
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeTermsByClientResponse'
+      x-stackql-resource: terms
+      x-stackql-method: describe_terms_by_client
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Terms
   /DescribeUserImportJob:
     post:
       operationId: DescribeUserImportJob
@@ -4177,10 +4184,13 @@ paths:
   /DescribeUserPoolDomain:
     post:
       operationId: DescribeUserPoolDomain
-      description: Given a user pool domain name, returns information about the domain configuration. Amazon Cognito evaluates
-        Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use
-        IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn
-        more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+      description: Given a user pool domain name, returns information about the domain configuration. This operation doesn't
+        return results when you query a prefix domain in a secondary Region. Prefix domains are Region-specific and can only
+        be described in the Region where they were created. To describe a prefix domain for a replica user pool, make the
+        request to the primary Region's endpoint. Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+        requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must
+        grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using
+        the Amazon Cognito user pools API and user pool endpoints
       parameters:
       - name: X-Amz-Target
         in: header
@@ -4253,7 +4263,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: forget_device
+      x-stackql-resource: devices
       x-stackql-method: forget_device
       x-stackql-verb: EXEC
   /ForgotPassword:
@@ -4342,7 +4352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ForgotPasswordResponse'
-      x-stackql-resource: forgot_password
+      x-stackql-resource: passwords
       x-stackql-method: forgot_password
       x-stackql-verb: EXEC
   /GetCSVHeader:
@@ -4388,6 +4398,76 @@ paths:
       x-stackql-resource: csv_headers
       x-stackql-method: get_csv_header
       x-stackql-verb: SELECT
+  /GetClientToken:
+    post:
+      operationId: GetClientToken
+      description: Issues an access token for machine-to-machine (M2M) authorization. Your app client provides its client
+        ID and secret, and receives an access token that authorizes requests to your resource servers. GetClientToken provides
+        the same functionality as the OAuth2 client-credentials grant; both authorize an application rather than a user. To
+        use this operation, you must configure the app client with a client secret and enable the ALLOW_CLIENT_TOKEN_AUTH
+        authentication flow. The ALLOW_CLIENT_TOKEN_AUTH flow is mutually exclusive with user authentication flows. It must
+        be the only authentication flow that you configure for the app client. For more information, see Scopes, M2M, and
+        resource servers. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this
+        API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions
+        in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user
+        pools API and user pool endpoints.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSCognitoIdentityProviderService.GetClientToken
+          default: AWSCognitoIdentityProviderService.GetClientToken
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClientId:
+                  $ref: '#/components/schemas/ClientIdType'
+                  description: The ID of the app client that requests the access token. The app client must have a client
+                    secret and the ALLOW_CLIENT_TOKEN_AUTH authentication flow.
+                Secret:
+                  $ref: '#/components/schemas/ClientSecretType'
+                  description: An active secret for the app client.
+                Scopes:
+                  $ref: '#/components/schemas/ScopeListType'
+                  description: The custom scopes to authorize in the access token, in the format resource-server-identifier/scope-name.
+                    Each scope must belong to a resource server in your user pool. If you don't specify any scopes, Amazon
+                    Cognito authorizes the scopes that are configured for the app client.
+                ClientMetadata:
+                  $ref: '#/components/schemas/ClientMetadataType'
+                  description: 'A map of custom key-value pairs that you can provide as input for any custom workflows that
+                    this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers.
+                    When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives
+                    as input. This payload contains a clientMetadata attribute that provides the data that you assigned to
+                    the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata
+                    value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon
+                    Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon
+                    Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won''t do
+                    the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are
+                    assigned to a user pool to support custom workflows. If your user pool configuration doesn''t include
+                    triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the
+                    ClientMetadata value. Don''t send sensitive information in this parameter.'
+              required:
+              - ClientId
+              - Secret
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetClientTokenResponse'
+      x-stackql-resource: client_tokens
+      x-stackql-method: get_client_token
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClientAuthenticationResult
   /GetDevice:
     post:
       operationId: GetDevice
@@ -4519,7 +4599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetIdentityProviderByIdentifierResponse'
-      x-stackql-resource: identity_provider_by_identifiers
+      x-stackql-resource: identity_providers
       x-stackql-method: get_identity_provider_by_identifier
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IdentityProvider
@@ -4999,11 +5079,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GlobalSignOutResponse'
-      x-stackql-resource: global_sign_out
+      x-stackql-resource: sign_outs
       x-stackql-method: global_sign_out
       x-stackql-verb: EXEC
   /InitiateAuth:
@@ -5121,7 +5197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateAuthResponse'
-      x-stackql-resource: initiate_auth
+      x-stackql-resource: auths
       x-stackql-method: initiate_auth
       x-stackql-verb: EXEC
   /ListDevices:
@@ -5942,7 +6018,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResendConfirmationCodeResponse'
-      x-stackql-resource: resend_confirmation_code
+      x-stackql-resource: confirmation_codes
       x-stackql-method: resend_confirmation_code
       x-stackql-verb: EXEC
   /RespondToAuthChallenge:
@@ -6109,7 +6185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RespondToAuthChallengeResponse'
-      x-stackql-resource: respond_to_auth_challenge
+      x-stackql-resource: auth_challenges
       x-stackql-method: respond_to_auth_challenge
       x-stackql-verb: EXEC
   /RevokeToken:
@@ -6153,10 +6229,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokeTokenResponse'
       x-stackql-resource: tokens
       x-stackql-method: revoke_token
       x-stackql-verb: UPDATE
@@ -6382,10 +6454,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetUserMFAPreferenceResponse'
       x-stackql-resource: users
       x-stackql-method: set_user_mfa_preference
       x-stackql-verb: UPDATE
@@ -6499,10 +6567,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetUserSettingsResponse'
       x-stackql-resource: users
       x-stackql-method: set_user_settings
       x-stackql-verb: UPDATE
@@ -6607,7 +6671,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignUpResponse'
-      x-stackql-resource: sign_up
+      x-stackql-resource: ups
       x-stackql-method: sign_up
       x-stackql-verb: EXEC
   /StartUserImportJob:
@@ -6648,7 +6712,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartUserImportJobResponse'
-      x-stackql-resource: users
+      x-stackql-resource: user_import_jobs
       x-stackql-method: start_user_import_job
       x-stackql-verb: EXEC
   /StartWebAuthnRegistration:
@@ -6688,7 +6752,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWebAuthnRegistrationResponse'
-      x-stackql-resource: web_authn_registration
+      x-stackql-resource: web_authn_registrations
       x-stackql-method: start_web_authn_registration
       x-stackql-verb: EXEC
   /StopUserImportJob:
@@ -6730,7 +6794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopUserImportJobResponse'
-      x-stackql-resource: users
+      x-stackql-resource: user_import_jobs
       x-stackql-method: stop_user_import_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -6774,10 +6838,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -6814,10 +6874,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -6883,10 +6939,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAuthEventFeedbackResponse'
       x-stackql-resource: user_pools
       x-stackql-method: update_auth_event_feedback
       x-stackql-verb: UPDATE
@@ -6936,10 +6988,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDeviceStatusResponse'
       x-stackql-resource: devices
       x-stackql-method: update_device_status
       x-stackql-verb: UPDATE
@@ -7563,10 +7611,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserPoolResponse'
       x-stackql-resource: user_pools
       x-stackql-method: update_user_pool
       x-stackql-verb: UPDATE
@@ -7953,7 +7997,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifySoftwareTokenResponse'
-      x-stackql-resource: software_token
+      x-stackql-resource: software_tokens
       x-stackql-method: verify_software_token
       x-stackql-verb: EXEC
   /VerifyUserAttribute:
@@ -8002,10 +8046,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VerifyUserAttributeResponse'
       x-stackql-resource: users
       x-stackql-method: verify_user_attribute
       x-stackql-verb: EXEC
@@ -8147,9 +8187,6 @@ components:
           $ref: '#/components/schemas/StringType'
           description: The maximum length of a string attribute value. Must be a number less than or equal to 2^1023, represented
             as a string with a length of 131072 characters or fewer.
-    AddCustomAttributesResponse:
-      description: Represents the response from the server for the request to add custom attributes.
-      type: object
     ClientIdType:
       type: string
       minLength: 1
@@ -8203,9 +8240,6 @@ components:
     ClientMetadataType:
       type: object
       properties: {}
-    AdminConfirmSignUpResponse:
-      description: Represents the response from the server for the request to confirm registration.
-      type: object
     AttributeListType:
       type: array
       items:
@@ -8325,9 +8359,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/AttributeNameType'
-    AdminDeleteUserAttributesResponse:
-      description: Represents the response received from the server for a request to delete user attributes.
-      type: object
     ProviderUserIdentifierType:
       description: The characteristics of a source or destination user for linking a federated user profile to a local user
         profile.
@@ -8347,14 +8378,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: '[\p{L}\p{M}\p{S}\p{N}\p{P}\p{Z}]+'
-    AdminDisableProviderForUserResponse:
-      type: object
-    AdminDisableUserResponse:
-      description: Represents the response received from the server to disable the user as an administrator.
-      type: object
-    AdminEnableUserResponse:
-      description: Represents the response from the server for the request to enable a user as an administrator.
-      type: object
     DeviceKeyType:
       type: string
       minLength: 1
@@ -8669,8 +8692,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ChallengeNameType'
-    AdminLinkProviderForUserResponse:
-      type: object
     QueryLimitType:
       type: integer
       minimum: 0
@@ -8969,9 +8990,6 @@ components:
       enum:
       - Valid
       - Invalid
-    AdminResetUserPasswordResponse:
-      description: Represents the response from the server to reset a user password as an administrator.
-      type: object
     ChallengeResponsesType:
       type: object
       properties: {}
@@ -9080,34 +9098,16 @@ components:
           description: Specifies whether passkey MFA is activated for a user. When activated, the user's passkey authentication
             requires user verification, and passkey sign-in is available when MFA is required. The user must also have at
             least one other MFA method such as SMS, TOTP, or email activated to prevent account lockout.
-    AdminSetUserMFAPreferenceResponse:
-      type: object
-    AdminSetUserPasswordResponse:
-      type: object
-    AdminSetUserSettingsResponse:
-      description: Represents the response from the server to set user settings as an administrator.
-      type: object
     EventIdType:
       type: string
       minLength: 1
       maxLength: 50
       pattern: '[\w+-]+'
-    AdminUpdateAuthEventFeedbackResponse:
-      type: object
     DeviceRememberedStatusType:
       type: string
       enum:
       - remembered
       - not_remembered
-    AdminUpdateDeviceStatusResponse:
-      description: The status response to the request to update the device, as an administrator.
-      type: object
-    AdminUpdateUserAttributesResponse:
-      description: Represents the response from the server for the request to update user attributes as an administrator.
-      type: object
-    AdminUserGlobalSignOutResponse:
-      description: The global sign-out response, as an administrator.
-      type: object
     AssociateSoftwareTokenResponse:
       type: object
       properties:
@@ -9121,12 +9121,7 @@ components:
       type: string
       minLength: 16
       pattern: '[A-Za-z0-9]+'
-    ChangePasswordResponse:
-      description: The response from the server to the change password request.
-      type: object
     Document:
-      type: object
-    CompleteWebAuthnRegistrationResponse:
       type: object
     DeviceSecretVerifierConfigType:
       description: A Secure Remote Password (SRP) value that your application generates when you register a user's device.
@@ -9176,9 +9171,6 @@ components:
           $ref: '#/components/schemas/StringType'
           description: Encoded device-fingerprint details that your app collected with the Amazon Cognito context data collection
             library. For more information, see Adding user device and session data to API requests.
-    ConfirmForgotPasswordResponse:
-      description: The response from the server that results from a user's request to retrieve a forgotten password.
-      type: object
     ConfirmSignUpResponse:
       description: Represents the response from the server for the registration confirmation.
       type: object
@@ -11018,22 +11010,12 @@ components:
       enum:
       - PRIMARY
       - SECONDARY
-    DeleteUserAttributesResponse:
-      description: Represents the response from the server to delete user attributes.
-      type: object
-    DeleteUserPoolClientSecretResponse:
-      description: The response from deleting a client secret.
-      type: object
-    DeleteUserPoolDomainResponse:
-      type: object
     DeleteUserPoolReplicaResponse:
       type: object
       properties:
         UserPoolReplica:
           $ref: '#/components/schemas/UserPoolReplicaType'
           description: Information about the deleted user pool replica.
-    DeleteWebAuthnCredentialResponse:
-      type: object
     DescribeIdentityProviderResponse:
       type: object
       properties:
@@ -11282,6 +11264,13 @@ components:
           $ref: '#/components/schemas/TermsType'
           description: A summary of the requested terms documents. Includes a unique identifier for later changes to the terms
             documents.
+    DescribeTermsByClientResponse:
+      type: object
+      properties:
+        Terms:
+          $ref: '#/components/schemas/TermsType'
+          description: A summary of the requested terms documents. Includes a unique identifier for later changes to the terms
+            documents.
     DescribeUserImportJobResponse:
       description: Represents the response from the server to the request to describe the user import job.
       type: object
@@ -11406,6 +11395,26 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/StringType'
+    GetClientTokenResponse:
+      type: object
+      properties:
+        ClientAuthenticationResult:
+          $ref: '#/components/schemas/ClientAuthenticationResultType'
+          description: The access token that Amazon Cognito issues for the app client, and its metadata.
+    ClientAuthenticationResultType:
+      description: The access token and its metadata from a machine-to-machine (M2M) client credentials grant.
+      type: object
+      properties:
+        AccessToken:
+          $ref: '#/components/schemas/TokenModelType'
+          description: The access token for the requested app client. Present this token to a resource server to authorize
+            a request, using the scopes granted in the token.
+        ExpiresIn:
+          $ref: '#/components/schemas/IntegerType'
+          description: The number of seconds until the access token expires.
+        TokenType:
+          $ref: '#/components/schemas/StringType'
+          description: The type of the token. For example, Bearer.
     GetDeviceResponse:
       description: Gets the device response.
       type: object
@@ -11803,9 +11812,6 @@ components:
       enum:
       - SINGLE_FACTOR
       - MULTI_FACTOR_WITH_USER_VERIFICATION
-    GlobalSignOutResponse:
-      description: The response to the request to sign out all devices.
-      type: object
     InitiateAuthResponse:
       description: Initiates the authentication response.
       type: object
@@ -12307,8 +12313,6 @@ components:
           $ref: '#/components/schemas/AuthenticationResultType'
           description: The outcome of a successful authentication process. After your application has passed all challenges,
             Amazon Cognito returns an AuthenticationResult with the JSON web tokens (JWTs) that indicate successful sign-in.
-    RevokeTokenResponse:
-      type: object
     SetLogDeliveryConfigurationResponse:
       type: object
       properties:
@@ -12337,8 +12341,6 @@ components:
           description: Information about the hosted UI branding that you applied.
       required:
       - UICustomization
-    SetUserMFAPreferenceResponse:
-      type: object
     SetUserPoolMfaConfigResponse:
       type: object
       properties:
@@ -12367,9 +12369,6 @@ components:
           $ref: '#/components/schemas/WebAuthnConfigurationType'
           description: The configuration of your user pool for passkey, or WebAuthn, sign-in with authenticators such as biometric
             and security-key devices. Includes relying-party configuration and settings for user-verification requirements.
-    SetUserSettingsResponse:
-      description: The response from the server for a set user settings request.
-      type: object
     SignUpResponse:
       description: The response from the server for a registration request.
       type: object
@@ -12417,8 +12416,6 @@ components:
           $ref: '#/components/schemas/UserImportJobType'
           description: The details of the user import job. Includes logging destination, status, and the Amazon S3 pre-signed
             URL for CSV upload.
-    TagResourceResponse:
-      type: object
     UserPoolTagsListType:
       type: array
       items:
@@ -12427,13 +12424,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
-    UpdateAuthEventFeedbackResponse:
-      type: object
-    UpdateDeviceStatusResponse:
-      description: The response to the request to update the device status.
-      type: object
     UpdateGroupResponse:
       type: object
       properties:
@@ -12491,9 +12481,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/CodeDeliveryDetailsType'
-    UpdateUserPoolResponse:
-      description: Represents the response from the server when you make a request to update the user pool.
-      type: object
     UpdateUserPoolClientResponse:
       description: Represents the response from the server to the request to update the user pool client.
       type: object
@@ -12550,6 +12537,3 @@ components:
       enum:
       - SUCCESS
       - ERROR
-    VerifyUserAttributeResponse:
-      description: A container representing the response from the server from the request to verify user attributes.
-      type: object

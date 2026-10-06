@@ -18,16 +18,16 @@ kinesis_video_signaling service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/kinesis_video_signaling/ice_server_configs/">ice_server_configs</a>
+<a href="/services/kinesis_video_signaling/alexa_offer_to_masters/">alexa_offer_to_masters</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/kinesis_video_signaling/ice_server_configs/">ice_server_configs</a>
 </div>
 </div>

@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the power draw of an item.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="rack_scaling_type" /></td>
+    <td><code>string</code></td>
+    <td>The rack scaling type supported by the catalog item. Valid values are SINGLE_RACK and MULTI_RACK. (SINGLE_RACK, MULTI_RACK)</td>
+</tr>
+<tr>
     <td><CopyableCode code="supported_storage" /></td>
     <td><code>array</code></td>
     <td>The supported storage options for the catalog item.</td>
@@ -118,6 +123,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="power_kva" /></td>
     <td><code>number (float)</code></td>
     <td>Information about the power draw of an item.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rack_scaling_type" /></td>
+    <td><code>string</code></td>
+    <td>The rack scaling type supported by the catalog item. Valid values are SINGLE_RACK and MULTI_RACK. (SINGLE_RACK, MULTI_RACK)</td>
 </tr>
 <tr>
     <td><CopyableCode code="supported_storage" /></td>
@@ -241,6 +251,7 @@ catalog_item_id,
 ec2_capacities,
 item_status,
 power_kva,
+rack_scaling_type,
 supported_storage,
 supported_uplink_gbps,
 weight_lbs
@@ -260,6 +271,7 @@ catalog_item_id,
 ec2_capacities,
 item_status,
 power_kva,
+rack_scaling_type,
 supported_storage,
 supported_uplink_gbps,
 weight_lbs

@@ -122,7 +122,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="post_launch_actions" /></td>
     <td><code>object</code></td>
-    <td>Post Launch Actions to executed on the Test or Cutover instance.</td>
+    <td>Post Launch Actions to be executed on the Test or Cutover instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="small_volume_conf" /></td>
@@ -341,7 +341,7 @@ target_instance_type_right_sizing_method
       description: Required parameter for the launch_configuration_templates resource.
     - name: postLaunchActions
       description: |
-        Post Launch Actions to executed on the Test or Cutover instance.
+        Post Launch Actions to be executed on the Test or Cutover instance.
       value:
         deployment: "{{ deployment }}"
         s3LogBucket: "{{ s3LogBucket }}"
@@ -389,6 +389,8 @@ target_instance_type_right_sizing_method
         volumeType: "{{ volumeType }}"
         iops: {{ iops }}
         throughput: {{ throughput }}
+        volumeInitializationRate: {{ volumeInitializationRate }}
+        deleteOnTermination: {{ deleteOnTermination }}
     - name: largeVolumeConf
       description: |
         Launch template disk configuration.
@@ -396,6 +398,8 @@ target_instance_type_right_sizing_method
         volumeType: "{{ volumeType }}"
         iops: {{ iops }}
         throughput: {{ throughput }}
+        volumeInitializationRate: {{ volumeInitializationRate }}
+        deleteOnTermination: {{ deleteOnTermination }}
     - name: enableParametersEncryption
       value: {{ enableParametersEncryption }}
     - name: parametersEncryptionKey

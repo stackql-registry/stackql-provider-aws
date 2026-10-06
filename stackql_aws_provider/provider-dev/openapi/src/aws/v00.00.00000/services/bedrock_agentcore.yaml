@@ -127,10 +127,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CompleteResourceTokenAuthResponse"
   /ab-tests:
     post:
       operationId: CreateABTest
@@ -1113,6 +1109,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetWorkloadAccessTokenForUserIdResponse"
+  /memories/{memory_id}/ingest:
+    post:
+      operationId: IngestData
+      description: Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource. To use this operation, you must have the bedrock-agentcore:IngestData permission.
+      parameters:
+        - name: memory_id
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/MemoryId"
+          description: The identifier of the AgentCore Memory resource to ingest content into.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: "#/components/schemas/ContentSource"
+                contentTimestamp:
+                  $ref: "#/components/schemas/Timestamp"
+                actorId:
+                  $ref: "#/components/schemas/ActorId"
+                sessionId:
+                  $ref: "#/components/schemas/SessionId"
+                extractionConfig:
+                  $ref: "#/components/schemas/ExtractionConfig"
+                metadata:
+                  $ref: "#/components/schemas/MetadataMap"
+                clientToken:
+                  $ref: "#/components/schemas/String"
+              required:
+                - source
+                - contentTimestamp
+                - actorId
+      responses:
+        "202":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IngestDataOutput"
   /runtimes/{agent_runtime_arn}/invocations:
     post:
       operationId: InvokeAgentRuntime
@@ -1564,6 +1603,8 @@ paths:
                   $ref: "#/components/schemas/KmsKeyArn"
                 description:
                   $ref: "#/components/schemas/BatchEvaluationDescription"
+                outputConfig:
+                  $ref: "#/components/schemas/OutputConfig"
               required:
                 - batchEvaluationName
                 - dataSourceConfig
@@ -2676,8 +2717,6 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: urn:ietf:params:oauth:request_uri:[a-zA-Z0-9-._~]+
-    CompleteResourceTokenAuthResponse:
-      type: object
     ABTestName:
       type: string
       pattern: "[a-zA-Z][a-zA-Z0-9_]{0,47}"
@@ -3513,7 +3552,9 @@ components:
         - DELETING
     EvaluatorId:
       type: string
-      pattern: (Builtin.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10})
+      minLength: 1
+      maxLength: 111
+      pattern: (Builtin\.[a-zA-Z0-9._-]+|ThirdParty\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10})
     EvaluationInput:
       description: The input data structure containing agent session spans in OpenTelemetry format. Supports traces from frameworks like Strands (AgentCore Runtime) and LangGraph with OpenInference instrumentation for comprehensive evaluation.
       type: object
@@ -3685,10 +3726,12 @@ components:
         - context
     EvaluatorArn:
       type: string
-      pattern: arn:aws[a-zA-Z-]*:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:evaluator\/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$|^arn:aws[a-zA-Z-]*:bedrock-agentcore:::evaluator/Builtin.[a-zA-Z0-9_-]+
+      pattern: arn:aws[a-zA-Z-]*:bedrock-agentcore:[a-z0-9-]+:[0-9]{12}:evaluator\/[a-zA-Z][a-zA-Z0-9-_]{0,99}-[a-zA-Z0-9]{10}$|^arn:aws[a-zA-Z-]*:bedrock-agentcore:::evaluator/(Builtin|ThirdParty)\.[a-zA-Z0-9._-]+
     EvaluatorName:
       type: string
-      pattern: (Builtin.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9_]{0,47})
+      minLength: 1
+      maxLength: 48
+      pattern: (Builtin\.[a-zA-Z0-9._-]+|ThirdParty\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+|[a-zA-Z][a-zA-Z0-9_]{0,47})
     EvaluationExplanation:
       type: string
       minLength: 0
@@ -4039,21 +4082,38 @@ components:
           description: The list of agent service names to filter traces within the specified log groups.
         logGroupNames:
           $ref: "#/components/schemas/CloudWatchLogsSourceLogGroupNamesList"
-          description: The list of CloudWatch log group names to read agent traces from. Maximum of 5 log groups.
+          description: The list of CloudWatch log group names to read agent traces from. Maximum of 10 log groups.
+        logGroupNamePrefixes:
+          $ref: "#/components/schemas/CloudWatchLogsSourceLogGroupNamePrefixesList"
+          description: The list of CloudWatch log group name prefixes to read agent traces from. Specify this instead of logGroupNames to match log groups by prefix. Maximum of 5 prefixes. Specify either logGroupNames or logGroupNamePrefixes, not both. One of the two is required.
         filterConfig:
           $ref: "#/components/schemas/CloudWatchFilterConfig"
           description: Optional filter configuration to narrow down which sessions to evaluate.
       required:
         - serviceNames
-        - logGroupNames
     CloudWatchLogsSourceServiceNamesList:
       type: array
       items:
         $ref: "#/components/schemas/String"
     CloudWatchLogsSourceLogGroupNamesList:
+      description: Length is constrained per member, because members relaxed from @required carry @default([]).
       type: array
       items:
-        $ref: "#/components/schemas/String"
+        $ref: "#/components/schemas/LogGroupName"
+    LogGroupName:
+      type: string
+      pattern: "[.\\-_/#A-Za-z0-9]+"
+    CloudWatchLogsSourceLogGroupNamePrefixesList:
+      description: List of CloudWatch Logs log group name prefixes to source trace data from.
+      type: array
+      items:
+        $ref: "#/components/schemas/LogGroupNamePrefix"
+    LogGroupNamePrefix:
+      description: Prefix of a CloudWatch Logs log group name.
+      type: string
+      minLength: 1
+      maxLength: 512
+      pattern: "[.\\-_/#A-Za-z0-9]+"
     CloudWatchFilterConfig:
       description: Filter configuration for narrowing down CloudWatch Logs sessions for evaluation.
       type: object
@@ -4064,6 +4124,9 @@ components:
         timeRange:
           $ref: "#/components/schemas/SessionFilterConfig"
           description: The time range filter for selecting sessions to evaluate.
+        sessionTraceIds:
+          $ref: "#/components/schemas/SessionTraceIdsList"
+          description: A list of session and trace ID pairs that restrict evaluation to specific traces within a session. If specified, only the listed traces are evaluated instead of the entire session.
     CloudWatchFilterConfigSessionIdsList:
       type: array
       items:
@@ -4078,6 +4141,27 @@ components:
         endTime:
           $ref: "#/components/schemas/SyntheticTimestamp_date_time"
           description: The end time of the time range. Only sessions with activity before this timestamp are included.
+    SessionTraceIdsList:
+      type: array
+      items:
+        $ref: "#/components/schemas/SessionTraceIds"
+    SessionTraceIds:
+      description: A pairing of a session with the specific trace IDs to evaluate within that session. Use this to evaluate individual traces rather than an entire session.
+      type: object
+      properties:
+        sessionId:
+          $ref: "#/components/schemas/String"
+          description: The unique identifier of the session that contains the traces to evaluate.
+        traceIds:
+          $ref: "#/components/schemas/TraceIdList"
+          description: The list of trace IDs within the session to evaluate.
+      required:
+        - sessionId
+        - traceIds
+    TraceIdList:
+      type: array
+      items:
+        $ref: "#/components/schemas/TraceId"
     OnlineEvaluationConfigSource:
       description: A reference to an existing online evaluation configuration to use as the data source for batch evaluation.
       type: object
@@ -4102,14 +4186,37 @@ components:
       type: object
       properties:
         logGroupName:
-          $ref: "#/components/schemas/String"
-          description: The name of the CloudWatch log group where evaluation results will be written.
+          $ref: "#/components/schemas/OptionalLogGroupName"
+          description: The name of the CloudWatch log group where evaluation results will be written. This value doesn't apply when resultDestination is SOURCE_LOG_GROUP, because results are written back to the trace source log group. The name can't be under the service-reserved /aws/bedrock-agentcore/evaluations/ namespace, apart from the service-managed default group.
         logStreamName:
-          $ref: "#/components/schemas/String"
+          $ref: "#/components/schemas/LogStreamName"
           description: The name of the CloudWatch log stream where evaluation results will be written.
-      required:
-        - logGroupName
-        - logStreamName
+        metricsNamespace:
+          $ref: "#/components/schemas/MetricsNamespace"
+          description: The CloudWatch metrics namespace where evaluation result metrics are published. If you omit this value, the service publishes metrics to Bedrock-AgentCore/Evaluations. This value can't begin with AWS/.
+        resultDestination:
+          $ref: "#/components/schemas/ResultDestination"
+          description: "The destination where evaluation results are written. Valid values: DEDICATED_LOG_GROUP (default) – Writes results to a dedicated result log group. SOURCE_LOG_GROUP – Writes results back to the log group that the agent traces were read from. If you use this value, don't specify logGroupName."
+    OptionalLogGroupName:
+      description: A log group name that may also be empty. The empty string is the @default of members that were relaxed from @required, and carries the meaning "no log group" for that member.
+      type: string
+      pattern: $|^[.\-_/#A-Za-z0-9]+
+    LogStreamName:
+      description: A log stream name. The pattern is CloudWatch Logs' own log stream name pattern, which already admits the empty string; empty is the @default of members relaxed from @required and means "no log stream". No @length is applied, because CloudWatch's min of 1 would reject that default.
+      type: string
+      pattern: "[^:*]*"
+    MetricsNamespace:
+      description: CloudWatch metrics namespace for evaluation result metrics.
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: "[a-zA-Z0-9._#/:-]+"
+    ResultDestination:
+      description: "Where evaluation results are written: dedicated results log group (default) or the source log group."
+      type: string
+      enum:
+        - DEDICATED_LOG_GROUP
+        - SOURCE_LOG_GROUP
     EvaluationJobResults:
       description: Aggregated results from a batch evaluation, including session completion counts and evaluator score summaries.
       type: object
@@ -5809,6 +5916,44 @@ components:
           description: The access token for the specified workload.
       required:
         - workloadAccessToken
+    ContentSource:
+      description: The source of the content to ingest. Only inline content is supported.
+      type: object
+      properties:
+        inline:
+          $ref: "#/components/schemas/InlineMemoryContent"
+          description: The content included directly in the request.
+    InlineMemoryContent:
+      description: The content included directly in the request as one or more payload items.
+      type: object
+      properties:
+        payload:
+          $ref: "#/components/schemas/IngestPayloadList"
+          description: The list of content payload items to ingest.
+      required:
+        - payload
+    IngestPayloadList:
+      type: array
+      items:
+        $ref: "#/components/schemas/IngestPayloadType"
+    IngestPayloadType:
+      description: A single content payload item to ingest. A payload item contains either conversational or JSON content.
+      type: object
+      properties:
+        conversational:
+          $ref: "#/components/schemas/Conversational"
+          description: The conversational content for this payload item.
+        json:
+          $ref: "#/components/schemas/MemoryJsonData"
+          description: The JSON content for this payload item.
+    IngestDataOutput:
+      type: object
+      properties:
+        sessionId:
+          $ref: "#/components/schemas/SessionId"
+          description: The identifier of the session that the service ingested the content into. This value echoes the session identifier from the request, or the identifier that the service generated when you did not provide one.
+      required:
+        - sessionId
     MimeType:
       type: string
       minLength: 1
@@ -9235,6 +9380,26 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/memory_records/methods/delete_memory_record"
+    resource_token_auths:
+      id: aws.bedrock_agentcore.resource_token_auths
+      name: resource_token_auths
+      title: resource_token_auths
+      methods:
+        complete_resource_token_auth:
+          operation:
+            $ref: "#/paths/~1identities~1CompleteResourceTokenAuth/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     ab_tests:
       id: aws.bedrock_agentcore.ab_tests
       name: ab_tests
@@ -9656,6 +9821,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_recommendation:
+          operation:
+            $ref: "#/paths/~1recommendations/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
@@ -9664,6 +9840,27 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/delete_recommendation"
+    evaluates:
+      id: aws.bedrock_agentcore.evaluates
+      name: evaluates
+      title: evaluates
+      methods:
+        evaluate:
+          operation:
+            $ref: "#/paths/~1evaluations~1evaluate~1{evaluator_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     agent_cards:
       id: aws.bedrock_agentcore.agent_cards
       name: agent_cards
@@ -9707,6 +9904,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_browser_session:
+          operation:
+            $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1start/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_browser_session:
+          operation:
+            $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1stop/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/browser_sessions/methods/get_browser_session"
@@ -9730,6 +9949,28 @@ components:
         list_code_interpreter_sessions:
           operation:
             $ref: "#/paths/~1code-interpreters~1{code_interpreter_identifier}~1sessions~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_code_interpreter_session:
+          operation:
+            $ref: "#/paths/~1code-interpreters~1{code_interpreter_identifier}~1sessions~1start/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_code_interpreter_session:
+          operation:
+            $ref: "#/paths/~1code-interpreters~1{code_interpreter_identifier}~1sessions~1stop/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9850,17 +10091,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workload_access_tokens/methods/get_workload_access_token"
-        insert: []
-        update: []
-        delete: []
-    workload_access_token_for_jwts:
-      id: aws.bedrock_agentcore.workload_access_token_for_jwts
-      name: workload_access_token_for_jwts
-      title: workload_access_token_for_jwts
-      methods:
         get_workload_access_token_for_jwt:
           operation:
             $ref: "#/paths/~1identities~1GetWorkloadAccessTokenForJWT/post"
@@ -9872,17 +10102,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workload_access_token_for_jwts/methods/get_workload_access_token_for_jwt"
-        insert: []
-        update: []
-        delete: []
-    workload_access_token_for_user_ids:
-      id: aws.bedrock_agentcore.workload_access_token_for_user_ids
-      name: workload_access_token_for_user_ids
-      title: workload_access_token_for_user_ids
-      methods:
         get_workload_access_token_for_user_id:
           operation:
             $ref: "#/paths/~1identities~1GetWorkloadAccessTokenForUserId/post"
@@ -9896,7 +10115,9 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/workload_access_token_for_user_ids/methods/get_workload_access_token_for_user_id"
+          - $ref: "#/components/x-stackQL-resources/workload_access_tokens/methods/get_workload_access_token_for_jwt"
+          - $ref: "#/components/x-stackQL-resources/workload_access_tokens/methods/get_workload_access_token_for_user_id"
+          - $ref: "#/components/x-stackQL-resources/workload_access_tokens/methods/get_workload_access_token"
         insert: []
         update: []
         delete: []
@@ -9905,6 +10126,17 @@ components:
       name: actors
       title: actors
       methods:
+        ingest_data:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1ingest/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_actors:
           operation:
             $ref: "#/paths/~1memories~1{memory_id}~1actors/post"
@@ -9927,6 +10159,111 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/actors/methods/list_actors"
+        insert: []
+        update: []
+        delete: []
+    agent_runtimes:
+      id: aws.bedrock_agentcore.agent_runtimes
+      name: agent_runtimes
+      title: agent_runtimes
+      methods:
+        invoke_agent_runtime:
+          operation:
+            $ref: "#/paths/~1runtimes~1{agent_runtime_arn}~1invocations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    agent_runtime_commands:
+      id: aws.bedrock_agentcore.agent_runtime_commands
+      name: agent_runtime_commands
+      title: agent_runtime_commands
+      methods:
+        invoke_agent_runtime_command:
+          operation:
+            $ref: "#/paths/~1runtimes~1{agent_runtime_arn}~1commands/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    browsers:
+      id: aws.bedrock_agentcore.browsers
+      name: browsers
+      title: browsers
+      methods:
+        invoke_browser:
+          operation:
+            $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    code_interpreters:
+      id: aws.bedrock_agentcore.code_interpreters
+      name: code_interpreters
+      title: code_interpreters
+      methods:
+        invoke_code_interpreter:
+          operation:
+            $ref: "#/paths/~1code-interpreters~1{code_interpreter_identifier}~1tools~1invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    harnesses:
+      id: aws.bedrock_agentcore.harnesses
+      name: harnesses
+      title: harnesses
+      methods:
+        invoke_harness:
+          operation:
+            $ref: "#/paths/~1harnesses~1invoke/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -9954,6 +10291,17 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_memory_extraction_job:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1extractionJobs~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/memory_extraction_jobs/methods/list_memory_extraction_jobs"
@@ -9979,6 +10327,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/search_registry_records"
+        insert: []
+        update: []
+        delete: []
+    runtime_sessions:
+      id: aws.bedrock_agentcore.runtime_sessions
+      name: runtime_sessions
+      title: runtime_sessions
+      methods:
+        stop_runtime_session:
+          operation:
+            $ref: "#/paths/~1runtimes~1{agent_runtime_arn}~1stopruntimesession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

@@ -386,6 +386,7 @@ preset
                 CodecProfile: "{{ CodecProfile }}"
                 CodingMode: "{{ CodingMode }}"
                 LoudnessMeasurementMode: "{{ LoudnessMeasurementMode }}"
+                PassthroughControl: "{{ PassthroughControl }}"
                 RapInterval: {{ RapInterval }}
                 RateControlMode: "{{ RateControlMode }}"
                 RawFormat: "{{ RawFormat }}"
@@ -582,7 +583,15 @@ preset
                 PageTypes:
                   - "{{ PageTypes }}"
               TtmlDestinationSettings:
+                BackgroundColor: "{{ BackgroundColor }}"
+                BackgroundOpacity: {{ BackgroundOpacity }}
+                FontColor: "{{ FontColor }}"
+                FontOpacity: {{ FontOpacity }}
+                FontSize: {{ FontSize }}
+                FontStyle: "{{ FontStyle }}"
+                FontWeight: "{{ FontWeight }}"
                 StylePassthrough: "{{ StylePassthrough }}"
+                TextDecoration: "{{ TextDecoration }}"
               WebvttDestinationSettings:
                 Accessibility: "{{ Accessibility }}"
                 StylePassthrough: "{{ StylePassthrough }}"
@@ -1020,6 +1029,7 @@ preset
                 QualityTuningLevel: "{{ QualityTuningLevel }}"
                 Slices: {{ Slices }}
               XavcHdIntraCbgProfileSettings:
+                InterlaceMode: "{{ InterlaceMode }}"
                 XavcClass: "{{ XavcClass }}"
               XavcHdProfileSettings:
                 BitrateClass: "{{ BitrateClass }}"

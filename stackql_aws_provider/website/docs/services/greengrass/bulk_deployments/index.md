@@ -91,6 +91,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Returns a list of bulk deployments.</td>
 </tr>
+<tr>
+    <td><a href="#start_bulk_deployment"><CopyableCode code="start_bulk_deployment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-InputFileUri"><code>InputFileUri</code></a></td>
+    <td><a href="#parameter-X-Amzn-Client-Token"><code>X-Amzn-Client-Token</code></a></td>
+    <td>Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.</td>
+</tr>
+<tr>
+    <td><a href="#stop_bulk_deployment"><CopyableCode code="stop_bulk_deployment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-bulk_deployment_id"><code>bulk_deployment_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.</td>
+</tr>
 </tbody>
 </table>
 
@@ -107,6 +121,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-bulk_deployment_id">
+    <td><CopyableCode code="bulk_deployment_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the bulk deployment.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -121,6 +140,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>The token for the next set of results, or ''null'' if there are no additional results.</td>
+</tr>
+<tr id="parameter-X-Amzn-Client-Token">
+    <td><CopyableCode code="X-Amzn-Client-Token" /></td>
+    <td><code>string</code></td>
+    <td>A client token used to correlate requests and responses.</td>
 </tr>
 </tbody>
 </table>
@@ -146,6 +170,46 @@ FROM aws.greengrass.bulk_deployments
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
 AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_bulk_deployment"
+    values={[
+        { label: 'start_bulk_deployment', value: 'start_bulk_deployment' },
+        { label: 'stop_bulk_deployment', value: 'stop_bulk_deployment' }
+    ]}
+>
+<TabItem value="start_bulk_deployment">
+
+Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
+
+```sql
+EXEC aws.greengrass.bulk_deployments.start_bulk_deployment 
+@region='{{ region }}' --required, 
+@X-Amzn-Client-Token='{{ X-Amzn-Client-Token }}' 
+@@json=
+'{
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"InputFileUri": "{{ InputFileUri }}", 
+"tags": "{{ tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_bulk_deployment">
+
+Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.
+
+```sql
+EXEC aws.greengrass.bulk_deployments.stop_bulk_deployment 
+@bulk_deployment_id='{{ bulk_deployment_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

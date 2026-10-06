@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_constraint"
     values={[
-        { label: 'describe_constraint', value: 'describe_constraint' }
+        { label: 'describe_constraint', value: 'describe_constraint' },
+        { label: 'list_constraints_for_portfolio', value: 'list_constraints_for_portfolio' }
     ]}
 >
 <TabItem value="describe_constraint">
@@ -67,6 +68,50 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_constraints_for_portfolio">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="constraint_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the constraint. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the constraint.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="owner" /></td>
+    <td><code>string</code></td>
+    <td>The owner of the constraint. (pattern: &lt;code&gt;^&#91;0-9&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="portfolio_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the portfolio the product resides in. The constraint applies only to the instance of the product that lives within this portfolio. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="product_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the product the constraint applies to. Note that a constraint applies to a specific instance of a product within a certain portfolio. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td>The type of constraint. LAUNCH NOTIFICATION STACKSET TEMPLATE</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -92,9 +137,16 @@ The following methods are available for this resource:
     <td>Gets information about the specified constraint.</td>
 </tr>
 <tr>
+    <td><a href="#list_constraints_for_portfolio"><CopyableCode code="list_constraints_for_portfolio" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the constraints for the specified portfolio and product.</td>
+</tr>
+<tr>
     <td><a href="#create_constraint"><CopyableCode code="create_constraint" /></a></td>
     <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PortfolioId"><code>PortfolioId</code></a>, <a href="#parameter-ProductId"><code>ProductId</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PortfolioId"><code>PortfolioId</code></a>, <a href="#parameter-ProductId"><code>ProductId</code></a>, <a href="#parameter-Parameters"><code>Parameters</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
     <td></td>
     <td>Creates a constraint. A delegated admin is authorized to invoke this command.</td>
 </tr>
@@ -141,7 +193,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_constraint"
     values={[
-        { label: 'describe_constraint', value: 'describe_constraint' }
+        { label: 'describe_constraint', value: 'describe_constraint' },
+        { label: 'list_constraints_for_portfolio', value: 'list_constraints_for_portfolio' }
     ]}
 >
 <TabItem value="describe_constraint">
@@ -153,6 +206,23 @@ SELECT
 constraint_detail,
 constraint_parameters,
 status
+FROM aws.servicecatalog.constraints
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_constraints_for_portfolio">
+
+Lists the constraints for the specified portfolio and product.
+
+```sql
+SELECT
+constraint_id,
+description,
+owner,
+portfolio_id,
+product_id,
+type
 FROM aws.servicecatalog.constraints
 WHERE region = '{{ region }}' -- required
 ;
@@ -190,7 +260,7 @@ SELECT
 '{{ PortfolioId }}' /* required */,
 '{{ ProductId }}' /* required */,
 '{{ Parameters }}' /* required */,
-'{{ Type }}' /* required */,
+'{{ Type }}',
 '{{ Description }}',
 '{{ IdempotencyToken }}' /* required */,
 '{{ region }}'

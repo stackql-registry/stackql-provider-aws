@@ -695,10 +695,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEnvironmentResponse"
     get:
       operationId: GetEnvironment
       description: Returns the FinSpace environment object.
@@ -774,10 +770,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxClusterResponse"
     get:
       operationId: GetKxCluster
       description: Retrieves information about a kdb cluster.
@@ -827,10 +819,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxClusterNodeResponse"
   /kx/environments/{environment_id}/databases/{database_name}:
     delete:
       operationId: DeleteKxDatabase
@@ -857,10 +845,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxDatabaseResponse"
     get:
       operationId: GetKxDatabase
       description: Returns database information for the specified environment ID.
@@ -952,10 +936,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxDataviewResponse"
     get:
       operationId: GetKxDataview
       description: Retrieves details of the dataview.
@@ -1051,10 +1031,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxEnvironmentResponse"
     get:
       operationId: GetKxEnvironment
       description: Retrieves all the information for the specified kdb environment.
@@ -1128,10 +1104,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxScalingGroupResponse"
     get:
       operationId: GetKxScalingGroup
       description: Retrieves details of a scaling group.
@@ -1181,10 +1153,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxUserResponse"
     get:
       operationId: GetKxUser
       description: Retrieves information about the specified kdb user.
@@ -1270,10 +1238,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteKxVolumeResponse"
     get:
       operationId: GetKxVolume
       description: Retrieves the information about the volume.
@@ -1471,10 +1435,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes metadata tags from a FinSpace resource.
@@ -1494,10 +1454,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /kx/environments/{environment_id}/clusters/{cluster_name}/configuration/code:
     put:
       operationId: UpdateKxClusterCodeConfiguration
@@ -1537,10 +1493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateKxClusterCodeConfigurationResponse"
   /kx/environments/{environment_id}/clusters/{cluster_name}/configuration/databases:
     put:
       operationId: UpdateKxClusterDatabases
@@ -1576,10 +1528,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateKxClusterDatabasesResponse"
   /kx/environments/{environment_id}/network:
     put:
       operationId: UpdateKxEnvironmentNetwork
@@ -2685,28 +2633,10 @@ components:
       minLength: 1
       maxLength: 250
       pattern: ^[a-zA-Z0-9\_\-\.\s]+$
-    DeleteEnvironmentResponse:
-      type: object
-    DeleteKxClusterResponse:
-      type: object
     KxClusterNodeIdString:
       type: string
       minLength: 1
       maxLength: 40
-    DeleteKxClusterNodeResponse:
-      type: object
-    DeleteKxDatabaseResponse:
-      type: object
-    DeleteKxDataviewResponse:
-      type: object
-    DeleteKxEnvironmentResponse:
-      type: object
-    DeleteKxScalingGroupResponse:
-      type: object
-    DeleteKxUserResponse:
-      type: object
-    DeleteKxVolumeResponse:
-      type: object
     GetEnvironmentResponse:
       type: object
       properties:
@@ -3744,8 +3674,6 @@ components:
           type: object
           properties: {}
           description: A list of all tags for a resource.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3755,8 +3683,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateEnvironmentResponse:
       type: object
       properties:
@@ -3778,8 +3704,6 @@ components:
         - NO_RESTART
         - ROLLING
         - FORCE
-    UpdateKxClusterCodeConfigurationResponse:
-      type: object
     KxDeploymentConfiguration:
       description: The configuration that allows you to choose how you want to update the databases on a cluster. Depending on the option you choose, you can reduce the time it takes to update the cluster.
       type: object
@@ -3794,8 +3718,6 @@ components:
       enum:
         - NO_RESTART
         - ROLLING
-    UpdateKxClusterDatabasesResponse:
-      type: object
     UpdateKxDatabaseResponse:
       type: object
       properties:
@@ -4043,7 +3965,6 @@ components:
             $ref: "#/paths/~1environment~1{environment_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_environment:
           operation:
             $ref: "#/paths/~1environment~1{environment_id}/get"
@@ -4139,7 +4060,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_cluster:
@@ -4153,7 +4073,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1code/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4164,7 +4083,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1databases/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4210,7 +4128,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_database:
@@ -4269,7 +4186,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1databases~1{database_name}~1dataviews~1{dataview_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_dataview:
@@ -4337,7 +4253,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_environment:
@@ -4407,7 +4322,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1scalingGroups~1{scaling_group_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_scaling_group:
@@ -4454,7 +4368,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1users~1{user_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_user:
@@ -4513,7 +4426,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1kxvolumes~1{volume_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_kx_volume:
@@ -4553,7 +4465,6 @@ components:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1nodes~1{node_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_kx_cluster_nodes:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1nodes/get"
@@ -4604,7 +4515,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4615,7 +4525,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -251,11 +251,25 @@ The following methods are available for this resource:
     <td>Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names. This operation takes the optional Tags field, which you can use as a filter on the response so that tagged resources can be retrieved as a group. If you choose to use tags filtering, only resources with the tag are retrieved.</td>
 </tr>
 <tr>
+    <td><a href="#start_crawler"><CopyableCode code="start_crawler" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a CrawlerRunningException.</td>
+</tr>
+<tr>
     <td><a href="#start_crawler_schedule"><CopyableCode code="start_crawler_schedule" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CrawlerName"><code>CrawlerName</code></a></td>
     <td></td>
     <td>Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED.</td>
+</tr>
+<tr>
+    <td><a href="#stop_crawler"><CopyableCode code="stop_crawler" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>If the specified crawler is running, stops the crawl.</td>
 </tr>
 <tr>
     <td><a href="#stop_crawler_schedule"><CopyableCode code="stop_crawler_schedule" /></a></td>
@@ -597,7 +611,9 @@ WHERE region = '{{ region }}' --required
     values={[
         { label: 'get_crawlers', value: 'get_crawlers' },
         { label: 'list_crawlers', value: 'list_crawlers' },
+        { label: 'start_crawler', value: 'start_crawler' },
         { label: 'start_crawler_schedule', value: 'start_crawler_schedule' },
+        { label: 'stop_crawler', value: 'stop_crawler' },
         { label: 'stop_crawler_schedule', value: 'stop_crawler_schedule' }
     ]}
 >
@@ -632,6 +648,20 @@ EXEC aws.glue.crawlers.list_crawlers
 ;
 ```
 </TabItem>
+<TabItem value="start_crawler">
+
+Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a CrawlerRunningException.
+
+```sql
+EXEC aws.glue.crawlers.start_crawler 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_crawler_schedule">
 
 Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED.
@@ -642,6 +672,20 @@ EXEC aws.glue.crawlers.start_crawler_schedule
 @@json=
 '{
 "CrawlerName": "{{ CrawlerName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_crawler">
+
+If the specified crawler is running, stops the crawl.
+
+```sql
+EXEC aws.glue.crawlers.stop_crawler 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
 }'
 ;
 ```

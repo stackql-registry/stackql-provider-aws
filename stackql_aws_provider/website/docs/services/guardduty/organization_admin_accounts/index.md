@@ -86,6 +86,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.</td>
 </tr>
+<tr>
+    <td><a href="#disable_organization_admin_account"><CopyableCode code="disable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AdminAccountId"><code>AdminAccountId</code></a></td>
+    <td></td>
+    <td>Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.</td>
+</tr>
+<tr>
+    <td><a href="#enable_organization_admin_account"><CopyableCode code="enable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AdminAccountId"><code>AdminAccountId</code></a></td>
+    <td></td>
+    <td>Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.</td>
+</tr>
 </tbody>
 </table>
 
@@ -140,6 +154,46 @@ FROM aws.guardduty.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_organization_admin_account"
+    values={[
+        { label: 'disable_organization_admin_account', value: 'disable_organization_admin_account' },
+        { label: 'enable_organization_admin_account', value: 'enable_organization_admin_account' }
+    ]}
+>
+<TabItem value="disable_organization_admin_account">
+
+Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
+
+```sql
+EXEC aws.guardduty.organization_admin_accounts.disable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AdminAccountId": "{{ AdminAccountId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="enable_organization_admin_account">
+
+Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
+
+```sql
+EXEC aws.guardduty.organization_admin_accounts.enable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AdminAccountId": "{{ AdminAccountId }}"
+}'
 ;
 ```
 </TabItem>

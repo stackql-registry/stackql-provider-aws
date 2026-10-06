@@ -18,7 +18,7 @@ shield service documentation.
 
 :::info[Service Summary]
 
-total resources: __14__  
+total resources: __15__  
 
 :::
 
@@ -28,13 +28,14 @@ total resources: __14__
 <a href="/services/shield/application_layer_automatic_responses/">application_layer_automatic_responses</a><br />
 <a href="/services/shield/attack_statistics/">attack_statistics</a><br />
 <a href="/services/shield/attacks/">attacks</a><br />
-<a href="/services/shield/drt_access/">drt_access</a><br />
+<a href="/services/shield/drt_accesses/">drt_accesses</a><br />
 <a href="/services/shield/drt_log_buckets/">drt_log_buckets</a><br />
 <a href="/services/shield/drt_roles/">drt_roles</a><br />
-<a href="/services/shield/emergency_contact_settings/">emergency_contact_settings</a>
+<a href="/services/shield/emergency_contact_settings/">emergency_contact_settings</a><br />
+<a href="/services/shield/proactive_engagement_details/">proactive_engagement_details</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/shield/proactive_engagement_details/">proactive_engagement_details</a><br />
+<a href="/services/shield/proactive_engagements/">proactive_engagements</a><br />
 <a href="/services/shield/protection_groups/">protection_groups</a><br />
 <a href="/services/shield/protections/">protections</a><br />
 <a href="/services/shield/resources_in_protection_groups/">resources_in_protection_groups</a><br />

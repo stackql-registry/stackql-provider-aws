@@ -100,6 +100,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an Amazon Web Services account's verified or pending phone number from the SMS sandbox. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.</td>
 </tr>
+<tr>
+    <td><a href="#verify_sms_sandbox_phone_number"><CopyableCode code="verify_sms_sandbox_phone_number" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-PhoneNumber"><code>PhoneNumber</code></a>, <a href="#parameter-OneTimePassword"><code>OneTimePassword</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services account. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -116,10 +123,15 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-OneTimePassword">
+    <td><CopyableCode code="OneTimePassword" /></td>
+    <td><code>string</code></td>
+    <td>The OTP sent to the destination number from the CreateSMSSandBoxPhoneNumber call.</td>
+</tr>
 <tr id="parameter-PhoneNumber">
     <td><CopyableCode code="PhoneNumber" /></td>
     <td><code>string</code></td>
-    <td>The destination phone number to delete.</td>
+    <td>The destination phone number to verify.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -233,6 +245,29 @@ Deletes an Amazon Web Services account's verified or pending phone number from t
 DELETE FROM aws.sns.sms_sandbox_phone_numbers
 WHERE PhoneNumber = '{{ PhoneNumber }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="verify_sms_sandbox_phone_number"
+    values={[
+        { label: 'verify_sms_sandbox_phone_number', value: 'verify_sms_sandbox_phone_number' }
+    ]}
+>
+<TabItem value="verify_sms_sandbox_phone_number">
+
+Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services account. When you start using Amazon SNS to send SMS messages, your Amazon Web Services account is in the SMS sandbox. The SMS sandbox provides a safe environment for you to try Amazon SNS features without risking your reputation as an SMS sender. While your Amazon Web Services account is in the SMS sandbox, you can use all of the features of Amazon SNS. However, you can send SMS messages only to verified destination phone numbers. For more information, including how to move out of the sandbox to send messages without restrictions, see SMS sandbox in the Amazon SNS Developer Guide.
+
+```sql
+EXEC aws.sns.sms_sandbox_phone_numbers.verify_sms_sandbox_phone_number 
+@PhoneNumber='{{ PhoneNumber }}' --required, 
+@OneTimePassword='{{ OneTimePassword }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

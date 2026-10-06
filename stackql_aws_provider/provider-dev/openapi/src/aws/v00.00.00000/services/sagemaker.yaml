@@ -131,6 +131,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AssociateTrialComponentResponse"
+  /AttachClusterNodeNetworkInterface:
+    post:
+      operationId: AttachClusterNodeNetworkInterface
+      description: Attaches an elastic network interface (ENI) to a node in a HyperPod cluster. To use this operation, you must have the sagemaker:AttachClusterNodeNetworkInterface permission.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - SageMaker.AttachClusterNodeNetworkInterface
+            default: SageMaker.AttachClusterNodeNetworkInterface
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClusterName:
+                  $ref: "#/components/schemas/ClusterNameOrArn"
+                  description: The name or Amazon Resource Name (ARN) of the SageMaker HyperPod cluster that contains the target node.
+                NodeId:
+                  $ref: "#/components/schemas/ClusterNodeId"
+                  description: The unique identifier of the cluster node to which you want to attach the network interface. The node must belong to your specified HyperPod cluster and cannot be part of a Restricted Instance Group (RIG).
+                NetworkInterfaceId:
+                  $ref: "#/components/schemas/ClusterNetworkInterfaceId"
+                  description: The unique identifier of the elastic network interface (ENI) to attach.
+              required:
+                - ClusterName
+                - NodeId
+                - NetworkInterfaceId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AttachClusterNodeNetworkInterfaceResponse"
   /AttachClusterNodeVolume:
     post:
       operationId: AttachClusterNodeVolume
@@ -2473,6 +2514,9 @@ paths:
                 RoleArn:
                   $ref: "#/components/schemas/RoleArn"
                   description: The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3. The role should have the AmazonS3FullAccess permission.
+                KmsKeyId:
+                  $ref: "#/components/schemas/KmsKeyId"
+                  description: The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. If you don't specify a value, the MLflow App is not encrypted with a customer-managed key.
                 ModelRegistrationMode:
                   $ref: "#/components/schemas/ModelRegistrationMode"
                   description: Whether to enable or disable automatic registration of new MLflow models to the SageMaker Model Registry. To enable automatic model registration, set this value to AutoModelRegistrationEnabled. To disable automatic model registration, set this value to AutoModelRegistrationDisabled. If not specified, AutomaticModelRegistration defaults to AutoModelRegistrationDisabled.
@@ -3312,9 +3356,12 @@ paths:
                 ApplicationConfig:
                   $ref: "#/components/schemas/PartnerAppConfig"
                   description: Configuration settings for the SageMaker Partner AI App.
+                IdcConfig:
+                  $ref: "#/components/schemas/IdcConfigInput"
+                  description: Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when AuthType is IDC. Apps that use IAM authorization don't use this parameter.
                 AuthType:
                   $ref: "#/components/schemas/PartnerAppAuthType"
-                  description: The authorization type that users use to access the SageMaker Partner AI App.
+                  description: "The authorization type that users use to access the SageMaker Partner AI App. Valid values: IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in IdcConfig."
                 EnableIamSessionBasedIdentity:
                   $ref: "#/components/schemas/Boolean"
                   description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.
@@ -5074,10 +5121,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFlowDefinitionResponse"
   /DeleteHub:
     post:
       operationId: DeleteHub
@@ -5214,10 +5257,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteHumanTaskUiResponse"
   /DeleteHyperParameterTuningJob:
     post:
       operationId: DeleteHyperParameterTuningJob
@@ -5276,10 +5315,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImageResponse"
   /DeleteImageVersion:
     post:
       operationId: DeleteImageVersion
@@ -5315,10 +5350,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteImageVersionResponse"
   /DeleteInferenceComponent:
     post:
       operationId: DeleteInferenceComponent
@@ -5412,10 +5443,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteJobResponse"
   /DeleteMlflowApp:
     post:
       operationId: DeleteMlflowApp
@@ -6052,10 +6079,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTagsOutput"
   /DeleteTrainingJob:
     post:
       operationId: DeleteTrainingJob
@@ -6213,10 +6236,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkforceResponse"
   /DeleteWorkteam:
     post:
       operationId: DeleteWorkteam
@@ -8952,10 +8971,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableSagemakerServicecatalogPortfolioOutput"
   /DisassociateTrialComponent:
     post:
       operationId: DisassociateTrialComponent
@@ -9016,10 +9031,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableSagemakerServicecatalogPortfolioOutput"
   /ExtendTrainingPlan:
     post:
       operationId: ExtendTrainingPlan
@@ -14512,8 +14523,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/InferenceExperimentName"
                   description: The name of the inference experiment to start.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -14955,7 +14964,6 @@ paths:
                   $ref: "#/components/schemas/InferenceExperimentStatusReason"
                   description: The reason for stopping the experiment.
               required:
-                - Name
                 - ModelVariantActions
       responses:
         "200":
@@ -15026,10 +15034,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopJobResponse"
   /StopLabelingJob:
     post:
       operationId: StopLabelingJob
@@ -16795,10 +16799,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotebookInstanceOutput"
   /UpdateNotebookInstanceLifecycleConfig:
     post:
       operationId: UpdateNotebookInstanceLifecycleConfig
@@ -16834,10 +16834,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotebookInstanceLifecycleConfigOutput"
   /UpdatePartnerApp:
     post:
       operationId: UpdatePartnerApp
@@ -16871,6 +16867,12 @@ paths:
                 ApplicationConfig:
                   $ref: "#/components/schemas/PartnerAppConfig"
                   description: Configuration settings for the SageMaker Partner AI App.
+                IdcConfig:
+                  $ref: "#/components/schemas/IdcConfigInput"
+                  description: Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when AuthType is IDC. Apps that use IAM authorization don't use this parameter.
+                AuthType:
+                  $ref: "#/components/schemas/PartnerAppAuthType"
+                  description: "The authorization type that users use to access the SageMaker Partner AI App. Use this parameter to migrate an existing SageMaker Partner AI App from IAM authorization to IDC authorization. Valid values: IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in IdcConfig."
                 EnableIamSessionBasedIdentity:
                   $ref: "#/components/schemas/Boolean"
                   description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.
@@ -17520,16 +17522,51 @@ components:
       minLength: 0
       maxLength: 256
       pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:experiment-trial/.*
-    ClusterArn:
+    ClusterNameOrArn:
       type: string
       minLength: 0
       maxLength: 256
-      pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12}
+      pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12})|([a-zA-Z0-9](-*[a-zA-Z0-9]){0,62})
     ClusterNodeId:
       type: string
       minLength: 1
       maxLength: 256
       pattern: i-[a-f0-9]{8}(?:[a-f0-9]{9})?
+    ClusterNetworkInterfaceId:
+      type: string
+      minLength: 1
+      maxLength: 21
+      pattern: eni-[0-9a-f]{8}(?:[0-9a-f]{9})?
+    AttachClusterNodeNetworkInterfaceResponse:
+      type: object
+      properties:
+        ClusterArn:
+          $ref: "#/components/schemas/ClusterArn"
+          description: The Amazon Resource Name (ARN) of your SageMaker HyperPod cluster where the network interface attachment operation was performed.
+        NodeId:
+          $ref: "#/components/schemas/ClusterNodeId"
+          description: The unique identifier of the cluster node where your network interface was attached.
+        NetworkInterfaceId:
+          $ref: "#/components/schemas/ClusterNetworkInterfaceId"
+          description: The unique identifier of the elastic network interface (ENI) that was attached.
+        AttachmentId:
+          $ref: "#/components/schemas/ClusterNetworkInterfaceAttachmentId"
+          description: The unique identifier of the network interface attachment. Use this value to reference or detach the network interface later.
+      required:
+        - ClusterArn
+        - NodeId
+        - NetworkInterfaceId
+        - AttachmentId
+    ClusterArn:
+      type: string
+      minLength: 0
+      maxLength: 256
+      pattern: arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12}
+    ClusterNetworkInterfaceAttachmentId:
+      type: string
+      minLength: 1
+      maxLength: 28
+      pattern: eni-attach-[0-9a-f]{8}(?:[0-9a-f]{9})?
     VolumeId:
       type: string
       minLength: 1
@@ -17579,11 +17616,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: /dev/(xvd[a-z]|sd[b-z]|sd[f-p][1-6])
-    ClusterNameOrArn:
-      type: string
-      minLength: 0
-      maxLength: 256
-      pattern: (arn:aws[a-z\-]*:sagemaker:[a-z0-9\-]*:[0-9]{12}:cluster/[a-z0-9]{12})|([a-zA-Z0-9](-*[a-zA-Z0-9]){0,62})
     BatchAddClusterNodesRequestClientTokenString:
       type: string
       minLength: 0
@@ -19503,6 +19535,14 @@ components:
         - ml.g6.16xlarge
         - ml.g6.24xlarge
         - ml.g6.48xlarge
+        - ml.g6e.xlarge
+        - ml.g6e.2xlarge
+        - ml.g6e.4xlarge
+        - ml.g6e.8xlarge
+        - ml.g6e.12xlarge
+        - ml.g6e.16xlarge
+        - ml.g6e.24xlarge
+        - ml.g6e.48xlarge
     RealtimeInferenceInstanceTypes:
       type: array
       items:
@@ -20088,6 +20128,15 @@ components:
         InstancePlacementConfig:
           $ref: "#/components/schemas/InstancePlacementConfig"
           description: Configuration for how training job instances are placed and allocated within UltraServers. Only applicable for UltraServer capacity.
+        InstancePreferences:
+          $ref: "#/components/schemas/InstancePreferenceList"
+          description: An ordered list of ML compute instance types for the training job, in priority order. SageMaker launches the training job on the first instance type in the list that has available capacity. If capacity is insufficient, SageMaker evaluates the next instance type in the preferred list. Exactly one instance type is selected for the job. InstancePreferences is mutually exclusive with InstanceType, InstanceGroups, InstancePlacementConfig, and EnableManagedSpotTraining, and supports only Flexible Training Plans (FTP) and On-Demand capacity.
+        SelectedInstanceType:
+          $ref: "#/components/schemas/TrainingInstanceType"
+          description: The instance type that SageMaker selected for the job from the provided InstancePreferences. The job is billed for this instance type and count. Returned by DescribeTrainingJob after an instance type is selected. This field is read-only and isn't accepted in CreateTrainingJob requests.
+        SelectedInstanceCount:
+          $ref: "#/components/schemas/TrainingInstanceCount"
+          description: The number of instances of SelectedInstanceType that the training job launched with. The job is billed for this instance type and count. Returned by DescribeTrainingJob after an instance type is selected. This field is read-only and isn't accepted in CreateTrainingJob requests.
     TrainingInstanceCount:
       type: integer
       minimum: 0
@@ -20151,6 +20200,31 @@ components:
           description: The number of ML compute instances required to be placed together on the same UltraServer. Minimum value of 1.
       required:
         - InstanceCount
+    InstancePreferenceList:
+      description: Ordered list of candidate instance types, in priority order.
+      type: array
+      items:
+        $ref: "#/components/schemas/InstancePreference"
+    InstancePreference:
+      description: A candidate instance type preference in an InstancePreferences list.
+      type: object
+      properties:
+        InstanceType:
+          $ref: "#/components/schemas/TrainingInstanceType"
+          description: The ML compute instance type. An instance type can appear only once in an InstancePreferences list.
+        InstanceCount:
+          $ref: "#/components/schemas/TrainingInstanceCount"
+          description: "The number of instances to launch if this instance type is selected. Specify the instance count for the training job in one of the following two ways: Per preference – Set InstanceCount on every preference in the InstancePreferences list and don't set ResourceConfig$InstanceCount. Use this when each instance type needs a different number of instances to deliver equivalent compute. One count for the job – Set ResourceConfig$InstanceCount and omit it from every preference. SageMaker applies this to all instance types in the list. For example, in a list of five preferences, either all five specify InstanceCount or none of them do. SageMaker rejects requests that set InstanceCount on only some preferences, that set it both per preference and in ResourceConfig, or that omit it in both places."
+        TrainingPlanArns:
+          $ref: "#/components/schemas/TrainingPlanArnList"
+          description: The Amazon Resource Name (ARN) of a training plan to use if this instance type is selected. The plan's instance type must match InstanceType. A preference with a training plan uses that plan's reserved capacity; a preference without one uses on-demand capacity. Per-preference TrainingPlanArns is mutually exclusive with the job-level TrainingPlanArn in ResourceConfig.
+      required:
+        - InstanceType
+    TrainingPlanArnList:
+      description: Training plan ARNs for a single instance preference.
+      type: array
+      items:
+        $ref: "#/components/schemas/TrainingPlanArn"
     StoppingCondition:
       description: Specifies a limit to how long a job can run. When the job reaches the time limit, SageMaker ends the job. Use this API to cap costs. To stop a training job, SageMaker sends the algorithm the SIGTERM signal, which delays job termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of training are not lost. The training algorithms provided by SageMaker automatically save the intermediate results of a model training job when possible. This attempt to save artifacts is only a best effort case as model might not be in a state from which it can be saved. For example, if training has just started, the model might not be ready to save. When saved, this intermediate data is a valid model artifact. You can use it to create a model with CreateModel. The Neural Topic Model (NTM) currently does not support saving intermediate model artifacts. When training NTMs, make sure that the maximum runtime is sufficient for the training job to complete.
       type: object
@@ -20163,7 +20237,7 @@ components:
           description: The maximum length of time, in seconds, that a managed Spot training job has to complete. It is the amount of time spent waiting for Spot capacity plus the amount of time the job can run. It must be equal to or greater than MaxRuntimeInSeconds. If the job does not complete during this time, SageMaker ends the job. When RetryStrategy is specified in the job request, MaxWaitTimeInSeconds specifies the maximum time for all of the attempts in total, not each individual attempt.
         MaxPendingTimeInSeconds:
           $ref: "#/components/schemas/MaxPendingTimeInSeconds"
-          description: "The maximum length of time, in seconds, that a training or compilation job can be pending before it is stopped. When working with training jobs that use capacity from training plans, not all Pending job states count against the MaxPendingTimeInSeconds limit. The following scenarios do not increment the MaxPendingTimeInSeconds counter: The plan is in a Scheduled state: Jobs queued (in Pending status) before a plan's start date (waiting for scheduled start time) Between capacity reservations: Jobs temporarily back to Pending status between two capacity reservation periods MaxPendingTimeInSeconds only increments when jobs are actively waiting for capacity in an Active plan."
+          description: "The maximum length of time, in seconds, that a training or compilation job can be pending before it is stopped. When working with training jobs that use capacity from training plans, not all Pending job states count against the MaxPendingTimeInSeconds limit. The following scenarios do not increment the MaxPendingTimeInSeconds counter: The plan is in a Scheduled state: Jobs queued (in Pending status) before a plan's start date (waiting for scheduled start time) Between capacity reservations: Jobs temporarily back to Pending status between two capacity reservation periods MaxPendingTimeInSeconds only increments when jobs are actively waiting for capacity in an Active plan. MaxPendingTimeInSeconds takes effect only for jobs that request accelerated computing instance types, such as instances in the ml.p, ml.g, and ml.trn families. It has no effect on jobs that request CPU-only instance types. If the job specifies InstancePreferences, MaxPendingTimeInSeconds bounds the total time SageMaker spends working through your list of instance types. It is not applied per instance type preference, and takes effect only when the list includes at least one accelerated computing instance type."
     MaxRuntimeInSeconds:
       type: integer
       minimum: 1
@@ -20173,7 +20247,7 @@ components:
     MaxPendingTimeInSeconds:
       description: Maximum job scheduler pending time in seconds.
       type: integer
-      minimum: 7200
+      minimum: 1800
       maximum: 2419200
     TransformJobDefinition:
       description: Defines the input needed to run a transform job using the inference specification specified in the algorithm.
@@ -24870,7 +24944,7 @@ components:
           description: Time to live duration, where the record is hard deleted after the expiration time is reached; ExpiresAt = EventTime + TtlDuration. For information on HardDelete, see the DeleteRecord API in the Amazon SageMaker API Reference guide.
         StorageType:
           $ref: "#/components/schemas/StorageType"
-          description: "Option for different tiers of low latency storage for real-time data retrieval. Standard: A managed low latency data store for feature groups. InMemory: A managed data store for feature groups that supports very low latency retrieval."
+          description: "Option for different tiers of low latency storage for real-time data retrieval. Standard: A managed low latency data store for feature groups. Standard_V2: A managed low latency data store for feature groups that supports partial updates to individual features using the UpdateRecord operation. Choose this storage type at feature group creation time if your use case requires updating specific feature values without rewriting the entire record. InMemory: A managed data store for feature groups that supports very low latency retrieval."
     OnlineStoreSecurityConfig:
       description: The security configuration for OnlineStore.
       type: object
@@ -24903,6 +24977,7 @@ components:
       type: string
       enum:
         - Standard
+        - Standard_V2
         - InMemory
     OfflineStoreConfig:
       description: The configuration of an OfflineStore. Provide an OfflineStoreConfig in a request to CreateFeatureGroup to create an OfflineStore. To encrypt an OfflineStore using at rest data encryption, specify Amazon Web Services Key Management Service (KMS) key ID, or KMSKeyId, in S3StorageConfig.
@@ -28178,6 +28253,12 @@ components:
         - ml.g7e.12xlarge
         - ml.g7e.24xlarge
         - ml.g7e.48xlarge
+        - ml.g7.2xlarge
+        - ml.g7.4xlarge
+        - ml.g7.8xlarge
+        - ml.g7.12xlarge
+        - ml.g7.24xlarge
+        - ml.g7.48xlarge
     OptimizationJobMaxInstanceCount:
       type: integer
       minimum: 1
@@ -28415,10 +28496,25 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/GroupNamePattern"
+    IdcConfigInput:
+      description: Specifies the Amazon Web Services IAM Identity Center configuration to use for a SageMaker Partner AI App that uses IDC authorization.
+      type: object
+      properties:
+        InstanceArn:
+          $ref: "#/components/schemas/InstanceArn"
+          description: The ARN of the Amazon Web Services IAM Identity Center instance that the SageMaker Partner AI App uses to authenticate users.
+      required:
+        - InstanceArn
+    InstanceArn:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: arn:aws[a-z\-]*:sso:::instance/(sso)?ins-[a-zA-Z0-9.-]{16}
     PartnerAppAuthType:
       type: string
       enum:
         - IAM
+        - IDC
     CreatePartnerAppResponse:
       type: object
       properties:
@@ -28867,8 +28963,34 @@ components:
         VolumeKmsKeyId:
           $ref: "#/components/schemas/KmsKeyId"
           description: The Amazon Web Services Key Management Service (Amazon Web Services KMS) key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the processing job. Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are encrypted using a hardware module on the instance. You can't request a VolumeKmsKeyId when using an instance type with local storage. For a list of instance types that support local instance storage, see Instance Store Volumes. For more information about local instance storage encryption, see SSD Instance Store Volumes.
+        InstancePreferences:
+          $ref: "#/components/schemas/ProcessingInstancePreferenceList"
+          description: An ordered list of ML compute instance types for the processing job, in priority order. Amazon SageMaker launches the job on the first instance type in the list that has available capacity. If capacity is insufficient, Amazon SageMaker evaluates the next instance type in the list. Exactly one instance type is selected for the job. InstancePreferences is mutually exclusive with InstanceType.
+        SelectedInstanceType:
+          $ref: "#/components/schemas/ProcessingInstanceType"
+          description: The instance type that Amazon SageMaker selected for the job from InstancePreferences. Returned by DescribeProcessingJob after an instance type is selected. This field is read-only and isn't accepted in CreateProcessingJob requests.
+        SelectedInstanceCount:
+          $ref: "#/components/schemas/ProcessingInstanceCount"
+          description: The number of instances of SelectedInstanceType that the job launched with. The job is billed for this instance type and count. Returned by DescribeProcessingJob after an instance type is selected. This field is read-only and isn't accepted in CreateProcessingJob requests.
       required:
         - VolumeSizeInGB
+    ProcessingInstancePreferenceList:
+      description: Ordered list of candidate instance types, in priority order.
+      type: array
+      items:
+        $ref: "#/components/schemas/ProcessingInstancePreference"
+    ProcessingInstancePreference:
+      description: A candidate instance type preference in a processing InstancePreferences list.
+      type: object
+      properties:
+        InstanceType:
+          $ref: "#/components/schemas/ProcessingInstanceType"
+          description: The ML compute instance type. An instance type can appear only once in an InstancePreferences list.
+        InstanceCount:
+          $ref: "#/components/schemas/ProcessingInstanceCount"
+          description: "The number of instances to launch if this instance type is selected. Specify the instance count for the processing job in one of the following two ways: Per preference – Set InstanceCount on every preference in the InstancePreferences list and don't set ProcessingClusterConfig$InstanceCount. Use this when each instance type needs a different number of instances to deliver equivalent compute. One count for the job – Set ProcessingClusterConfig$InstanceCount and omit it from every preference. Amazon SageMaker applies this to all instance types in the list. For example, in a list of five preferences, either all five specify InstanceCount or none of them do. Amazon SageMaker rejects requests that set InstanceCount on only some preferences, that set it both per preference and in ProcessingClusterConfig, or that omit it in both places."
+      required:
+        - InstanceType
     ProcessingStoppingCondition:
       description: Configures conditions under which the processing job should be stopped, such as how long the processing job has been running. After the condition is met, the processing job is stopped.
       type: object
@@ -30127,14 +30249,6 @@ components:
         ExperimentArn:
           $ref: "#/components/schemas/ExperimentArn"
           description: The Amazon Resource Name (ARN) of the experiment that is being deleted.
-    DeleteFlowDefinitionResponse:
-      type: object
-    DeleteHumanTaskUiResponse:
-      type: object
-    DeleteImageResponse:
-      type: object
-    DeleteImageVersionResponse:
-      type: object
     DeleteInferenceExperimentResponse:
       type: object
       properties:
@@ -30143,8 +30257,6 @@ components:
           description: The ARN of the deleted inference experiment.
       required:
         - InferenceExperimentArn
-    DeleteJobResponse:
-      type: object
     DeleteMlflowAppResponse:
       type: object
       properties:
@@ -30173,8 +30285,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    DeleteTagsOutput:
-      type: object
     DeleteTrialResponse:
       type: object
       properties:
@@ -30187,8 +30297,6 @@ components:
         TrialComponentArn:
           $ref: "#/components/schemas/TrialComponentArn"
           description: The Amazon Resource Name (ARN) of the component is being deleted.
-    DeleteWorkforceResponse:
-      type: object
     DeleteWorkteamResponse:
       type: object
       properties:
@@ -34908,6 +35016,9 @@ components:
         RoleArn:
           $ref: "#/components/schemas/RoleArn"
           description: The Amazon Resource Name (ARN) for an IAM role in your account that the MLflow App uses to access the artifact store in Amazon S3.
+        KmsKeyId:
+          $ref: "#/components/schemas/KmsKeyId"
+          description: The ID of the Amazon Web Services KMS key used to encrypt the data at rest associated with the MLflow App. This field is absent if the MLflow App is not encrypted with a customer-managed key.
         Status:
           $ref: "#/components/schemas/MlflowAppStatus"
           description: The current creation status of the described MLflow App.
@@ -35888,7 +35999,7 @@ components:
           description: Configuration settings for the SageMaker Partner AI App.
         AuthType:
           $ref: "#/components/schemas/PartnerAppAuthType"
-          description: The authorization type that users use to access the SageMaker Partner AI App.
+          description: "The authorization type that users use to access the SageMaker Partner AI App. Valid values: IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity."
         EnableIamSessionBasedIdentity:
           $ref: "#/components/schemas/Boolean"
           description: When set to TRUE, the SageMaker Partner AI App sets the Amazon Web Services IAM session name or the authenticated IAM user as the identity of the SageMaker Partner AI App user.
@@ -35904,6 +36015,9 @@ components:
         AvailableUpgrade:
           $ref: "#/components/schemas/AvailableUpgrade"
           description: A map of available minor version upgrades for the SageMaker Partner AI App. The key is the semantic version number, and the value is a list of release notes for that version. A null value indicates no upgrades are available.
+        IdcConfig:
+          $ref: "#/components/schemas/IdcConfigOutput"
+          description: Contains the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App, including the Identity Center instance and the Identity Center application that SageMaker creates for the app. The service returns this field for apps that use IDC authorization.
     PartnerAppStatus:
       type: string
       enum:
@@ -35943,6 +36057,23 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/String1024"
+    IdcConfigOutput:
+      description: Contains the Amazon Web Services IAM Identity Center configuration of a SageMaker Partner AI App that uses IDC authorization.
+      type: object
+      properties:
+        InstanceArn:
+          $ref: "#/components/schemas/InstanceArn"
+          description: The ARN of the Amazon Web Services IAM Identity Center instance that the SageMaker Partner AI App uses to authenticate users.
+        ApplicationArn:
+          $ref: "#/components/schemas/ApplicationArn"
+          description: The ARN of the Amazon Web Services IAM Identity Center application that SageMaker creates for the SageMaker Partner AI App.
+      required:
+        - InstanceArn
+    ApplicationArn:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: arn:aws[a-z\-]*:sso::[0-9]{12}:application/(sso)?ins-[a-zA-Z0-9.-]{16}/apl-[a-zA-Z0-9.-]{16}
     PipelineNameOrArn:
       type: string
       minLength: 1
@@ -37714,8 +37845,6 @@ components:
         - AttachTime
         - Status
         - DeviceName
-    DisableSagemakerServicecatalogPortfolioOutput:
-      type: object
     DisassociateTrialComponentResponse:
       type: object
       properties:
@@ -37725,8 +37854,6 @@ components:
         TrialArn:
           $ref: "#/components/schemas/TrialArn"
           description: The Amazon Resource Name (ARN) of the trial.
-    EnableSagemakerServicecatalogPortfolioOutput:
-      type: object
     ExtendTrainingPlanResponse:
       type: object
       properties:
@@ -44595,8 +44722,6 @@ components:
           description: The ARN of the stopped inference experiment.
       required:
         - InferenceExperimentArn
-    StopJobResponse:
-      type: object
     StopMlflowTrackingServerResponse:
       type: object
       properties:
@@ -44852,6 +44977,9 @@ components:
         TtlDuration:
           $ref: "#/components/schemas/TtlDuration"
           description: Time to live duration, where the record is hard deleted after the expiration time is reached; ExpiresAt = EventTime + TtlDuration. For information on HardDelete, see the DeleteRecord API in the Amazon SageMaker API Reference guide.
+        StorageType:
+          $ref: "#/components/schemas/StorageType"
+          description: The online store storage type to migrate the feature group to. Use this parameter to migrate an existing feature group from Standard to Standard_V2 storage format, enabling support for the UpdateRecord operation. Migration is a one-way operation and cannot be reversed.
     ThroughputConfigUpdate:
       description: The new throughput configuration for the feature group. You can switch between on-demand and provisioned modes or update the read / write capacity of provisioned feature groups. You can switch a feature group to on-demand only once in a 24 hour period.
       type: object
@@ -45022,10 +45150,6 @@ components:
       type: boolean
     DisassociateAdditionalCodeRepositories:
       type: boolean
-    UpdateNotebookInstanceOutput:
-      type: object
-    UpdateNotebookInstanceLifecycleConfigOutput:
-      type: object
     UpdatePartnerAppResponse:
       type: object
       properties:
@@ -45291,7 +45415,6 @@ components:
             $ref: "#/paths/~1DeleteTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -45448,6 +45571,19 @@ components:
       name: cluster_nodes
       title: cluster_nodes
       methods:
+        attach_cluster_node_network_interface:
+          operation:
+            $ref: "#/paths/~1AttachClusterNodeNetworkInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         attach_cluster_node_volume:
           operation:
             $ref: "#/paths/~1AttachClusterNodeVolume/post"
@@ -45566,8 +45702,109 @@ components:
           - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/describe_cluster_node"
         insert: []
         update:
+          - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/attach_cluster_node_network_interface"
           - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/attach_cluster_node_volume"
         delete: []
+    model_packages:
+      id: aws.sagemaker.model_packages
+      name: model_packages
+      title: model_packages
+      methods:
+        batch_describe_model_package:
+          operation:
+            $ref: "#/paths/~1BatchDescribeModelPackage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_model_package:
+          operation:
+            $ref: "#/paths/~1CreateModelPackage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_model_package:
+          operation:
+            $ref: "#/paths/~1DeleteModelPackage/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_model_package:
+          operation:
+            $ref: "#/paths/~1DescribeModelPackage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_model_packages:
+          operation:
+            $ref: "#/paths/~1ListModelPackages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ModelPackageSummaryList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_model_package:
+          operation:
+            $ref: "#/paths/~1UpdateModelPackage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/model_packages/methods/describe_model_package"
+          - $ref: "#/components/x-stackQL-resources/model_packages/methods/list_model_packages"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/model_packages/methods/create_model_package"
+        update:
+          - $ref: "#/components/x-stackQL-resources/model_packages/methods/update_model_package"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/model_packages/methods/delete_model_package"
     ai_benchmark_jobs:
       id: aws.sagemaker.ai_benchmark_jobs
       name: ai_benchmark_jobs
@@ -46297,10 +46534,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/auto_ml_jobs/methods/create_auto_ml_job"
         update: []
         delete: []
-    auto_ml_job_v2s:
-      id: aws.sagemaker.auto_ml_job_v2s
-      name: auto_ml_job_v2s
-      title: auto_ml_job_v2s
+    auto_ml_jobs_v2:
+      id: aws.sagemaker.auto_ml_jobs_v2
+      name: auto_ml_jobs_v2
+      title: auto_ml_jobs_v2
       methods:
         create_auto_ml_job_v2:
           operation:
@@ -46330,9 +46567,9 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/auto_ml_job_v2s/methods/describe_auto_ml_job_v2"
+          - $ref: "#/components/x-stackQL-resources/auto_ml_jobs_v2/methods/describe_auto_ml_job_v2"
         insert:
-          - $ref: "#/components/x-stackQL-resources/auto_ml_job_v2s/methods/create_auto_ml_job_v2"
+          - $ref: "#/components/x-stackQL-resources/auto_ml_jobs_v2/methods/create_auto_ml_job_v2"
         update: []
         delete: []
     clusters:
@@ -47694,7 +47931,6 @@ components:
             $ref: "#/paths/~1DeleteFlowDefinition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -47837,10 +48073,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/hubs/methods/update_hub"
         delete:
           - $ref: "#/components/x-stackQL-resources/hubs/methods/delete_hub"
-    hub_contents:
-      id: aws.sagemaker.hub_contents
-      name: hub_contents
-      title: hub_contents
+    hub_content:
+      id: aws.sagemaker.hub_content
+      name: hub_content
+      title: hub_content
       methods:
         create_hub_content_presigned_urls:
           operation:
@@ -47953,17 +48189,17 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/describe_hub_content"
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/list_hub_contents"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/describe_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/list_hub_contents"
         insert:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/create_hub_content_presigned_urls"
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/create_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/create_hub_content_presigned_urls"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/create_hub_content_reference"
         update:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/update_hub_content"
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/update_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/update_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/update_hub_content_reference"
         delete:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/delete_hub_content"
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/delete_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/delete_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_content/methods/delete_hub_content_reference"
     human_task_uis:
       id: aws.sagemaker.human_task_uis
       name: human_task_uis
@@ -47987,7 +48223,6 @@ components:
             $ref: "#/paths/~1DeleteHumanTaskUi/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48146,7 +48381,6 @@ components:
             $ref: "#/paths/~1DeleteImage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48234,7 +48468,6 @@ components:
             $ref: "#/paths/~1DeleteImageVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48464,6 +48697,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_inference_experiment:
+          operation:
+            $ref: "#/paths/~1StartInferenceExperiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_inference_experiment:
+          operation:
+            $ref: "#/paths/~1StopInferenceExperiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_inference_experiment:
           operation:
             $ref: "#/paths/~1UpdateInferenceExperiment/post"
@@ -48538,6 +48797,18 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        stop_inference_recommendations_job:
+          operation:
+            $ref: "#/paths/~1StopInferenceRecommendationsJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/inference_recommendations_jobs/methods/describe_inference_recommendations_job"
@@ -48569,7 +48840,6 @@ components:
             $ref: "#/paths/~1DeleteJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48616,7 +48886,6 @@ components:
             $ref: "#/paths/~1StopJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48685,6 +48954,27 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_labeling_jobs_for_workteam:
+          operation:
+            $ref: "#/paths/~1ListLabelingJobsForWorkteam/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.LabelingJobSummaryList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         stop_labeling_job:
           operation:
             $ref: "#/paths/~1StopLabelingJob/post"
@@ -48700,6 +48990,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/labeling_jobs/methods/describe_labeling_job"
+          - $ref: "#/components/x-stackQL-resources/labeling_jobs/methods/list_labeling_jobs_for_workteam"
           - $ref: "#/components/x-stackQL-resources/labeling_jobs/methods/list_labeling_jobs"
         insert:
           - $ref: "#/components/x-stackQL-resources/labeling_jobs/methods/create_labeling_job"
@@ -48855,6 +49146,32 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_mlflow_tracking_server:
+          operation:
+            $ref: "#/paths/~1StartMlflowTrackingServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_mlflow_tracking_server:
+          operation:
+            $ref: "#/paths/~1StopMlflowTrackingServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_mlflow_tracking_server:
@@ -49246,93 +49563,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/model_explainability_job_definitions/methods/delete_model_explainability_job_definition"
-    model_packages:
-      id: aws.sagemaker.model_packages
-      name: model_packages
-      title: model_packages
-      methods:
-        create_model_package:
-          operation:
-            $ref: "#/paths/~1CreateModelPackage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_model_package:
-          operation:
-            $ref: "#/paths/~1DeleteModelPackage/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_model_package:
-          operation:
-            $ref: "#/paths/~1DescribeModelPackage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_model_packages:
-          operation:
-            $ref: "#/paths/~1ListModelPackages/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ModelPackageSummaryList
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_model_package:
-          operation:
-            $ref: "#/paths/~1UpdateModelPackage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/model_packages/methods/describe_model_package"
-          - $ref: "#/components/x-stackQL-resources/model_packages/methods/list_model_packages"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/model_packages/methods/create_model_package"
-        update:
-          - $ref: "#/components/x-stackQL-resources/model_packages/methods/update_model_package"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/model_packages/methods/delete_model_package"
     model_package_groups:
       id: aws.sagemaker.model_package_groups
       name: model_package_groups
@@ -49696,7 +49926,6 @@ components:
             $ref: "#/paths/~1UpdateNotebookInstance/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -49784,7 +50013,6 @@ components:
             $ref: "#/paths/~1UpdateNotebookInstanceLifecycleConfig/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -50638,6 +50866,27 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_training_jobs_for_hyper_parameter_tuning_job:
+          operation:
+            $ref: "#/paths/~1ListTrainingJobsForHyperParameterTuningJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TrainingJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         stop_training_job:
           operation:
             $ref: "#/paths/~1StopTrainingJob/post"
@@ -50666,6 +50915,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/training_jobs/methods/describe_training_job"
+          - $ref: "#/components/x-stackQL-resources/training_jobs/methods/list_training_jobs_for_hyper_parameter_tuning_job"
           - $ref: "#/components/x-stackQL-resources/training_jobs/methods/list_training_jobs"
         insert:
           - $ref: "#/components/x-stackQL-resources/training_jobs/methods/create_training_job"
@@ -50694,6 +50944,19 @@ components:
         describe_training_plan:
           operation:
             $ref: "#/paths/~1DescribeTrainingPlan/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        extend_training_plan:
+          operation:
+            $ref: "#/paths/~1ExtendTrainingPlan/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -50916,7 +51179,6 @@ components:
             $ref: "#/paths/~1DeleteWorkforce/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -51255,10 +51517,10 @@ components:
         insert: []
         update: []
         delete: []
-    feature_metadatas:
-      id: aws.sagemaker.feature_metadatas
-      name: feature_metadatas
-      title: feature_metadatas
+    feature_metadata:
+      id: aws.sagemaker.feature_metadata
+      name: feature_metadata
+      title: feature_metadata
       methods:
         describe_feature_metadata:
           operation:
@@ -51287,10 +51549,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/feature_metadatas/methods/describe_feature_metadata"
+          - $ref: "#/components/x-stackQL-resources/feature_metadata/methods/describe_feature_metadata"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/feature_metadatas/methods/update_feature_metadata"
+          - $ref: "#/components/x-stackQL-resources/feature_metadata/methods/update_feature_metadata"
         delete: []
     job_schema_versions:
       id: aws.sagemaker.job_schema_versions
@@ -51383,10 +51645,10 @@ components:
         insert: []
         update: []
         delete: []
-    pipeline_definition_for_executions:
-      id: aws.sagemaker.pipeline_definition_for_executions
-      name: pipeline_definition_for_executions
-      title: pipeline_definition_for_executions
+    pipeline_definitions:
+      id: aws.sagemaker.pipeline_definitions
+      name: pipeline_definitions
+      title: pipeline_definitions
       methods:
         describe_pipeline_definition_for_execution:
           operation:
@@ -51403,7 +51665,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/pipeline_definition_for_executions/methods/describe_pipeline_definition_for_execution"
+          - $ref: "#/components/x-stackQL-resources/pipeline_definitions/methods/describe_pipeline_definition_for_execution"
         insert: []
         update: []
         delete: []
@@ -51583,6 +51845,40 @@ components:
         insert: []
         update: []
         delete: []
+    sagemaker_servicecatalog_portfolios:
+      id: aws.sagemaker.sagemaker_servicecatalog_portfolios
+      name: sagemaker_servicecatalog_portfolios
+      title: sagemaker_servicecatalog_portfolios
+      methods:
+        disable_sagemaker_servicecatalog_portfolio:
+          operation:
+            $ref: "#/paths/~1DisableSagemakerServicecatalogPortfolio/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_sagemaker_servicecatalog_portfolio:
+          operation:
+            $ref: "#/paths/~1EnableSagemakerServicecatalogPortfolio/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     device_fleet_reports:
       id: aws.sagemaker.device_fleet_reports
       name: device_fleet_reports
@@ -51631,10 +51927,10 @@ components:
         insert: []
         update: []
         delete: []
-    sagemaker_servicecatalog_portfolio_status:
-      id: aws.sagemaker.sagemaker_servicecatalog_portfolio_status
-      name: sagemaker_servicecatalog_portfolio_status
-      title: sagemaker_servicecatalog_portfolio_status
+    sagemaker_servicecatalog_portfolio_statuses:
+      id: aws.sagemaker.sagemaker_servicecatalog_portfolio_statuses
+      name: sagemaker_servicecatalog_portfolio_statuses
+      title: sagemaker_servicecatalog_portfolio_statuses
       methods:
         get_sagemaker_servicecatalog_portfolio_status:
           operation:
@@ -51651,7 +51947,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/sagemaker_servicecatalog_portfolio_status/methods/get_sagemaker_servicecatalog_portfolio_status"
+          - $ref: "#/components/x-stackQL-resources/sagemaker_servicecatalog_portfolio_statuses/methods/get_sagemaker_servicecatalog_portfolio_status"
         insert: []
         update: []
         delete: []
@@ -51741,10 +52037,10 @@ components:
         insert: []
         update: []
         delete: []
-    candidates_for_auto_ml_jobs:
-      id: aws.sagemaker.candidates_for_auto_ml_jobs
-      name: candidates_for_auto_ml_jobs
-      title: candidates_for_auto_ml_jobs
+    candidates:
+      id: aws.sagemaker.candidates
+      name: candidates
+      title: candidates
       methods:
         list_candidates_for_auto_ml_job:
           operation:
@@ -51769,7 +52065,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/candidates_for_auto_ml_jobs/methods/list_candidates_for_auto_ml_job"
+          - $ref: "#/components/x-stackQL-resources/candidates/methods/list_candidates_for_auto_ml_job"
         insert: []
         update: []
         delete: []
@@ -51829,38 +52125,6 @@ components:
         insert: []
         update: []
         delete: []
-    labeling_jobs_for_workteams:
-      id: aws.sagemaker.labeling_jobs_for_workteams
-      name: labeling_jobs_for_workteams
-      title: labeling_jobs_for_workteams
-      methods:
-        list_labeling_jobs_for_workteam:
-          operation:
-            $ref: "#/paths/~1ListLabelingJobsForWorkteam/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.LabelingJobSummaryList
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/labeling_jobs_for_workteams/methods/list_labeling_jobs_for_workteam"
-        insert: []
-        update: []
-        delete: []
     model_card_versions:
       id: aws.sagemaker.model_card_versions
       name: model_card_versions
@@ -51893,10 +52157,10 @@ components:
         insert: []
         update: []
         delete: []
-    model_metadatas:
-      id: aws.sagemaker.model_metadatas
-      name: model_metadatas
-      title: model_metadatas
+    model_metadata:
+      id: aws.sagemaker.model_metadata
+      name: model_metadata
+      title: model_metadata
       methods:
         list_model_metadata:
           operation:
@@ -51921,7 +52185,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/model_metadatas/methods/list_model_metadata"
+          - $ref: "#/components/x-stackQL-resources/model_metadata/methods/list_model_metadata"
         insert: []
         update: []
         delete: []
@@ -52093,10 +52357,10 @@ components:
         insert: []
         update: []
         delete: []
-    pipeline_parameters_for_executions:
-      id: aws.sagemaker.pipeline_parameters_for_executions
-      name: pipeline_parameters_for_executions
-      title: pipeline_parameters_for_executions
+    pipeline_parameters:
+      id: aws.sagemaker.pipeline_parameters
+      name: pipeline_parameters
+      title: pipeline_parameters
       methods:
         list_pipeline_parameters_for_execution:
           operation:
@@ -52121,7 +52385,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/pipeline_parameters_for_executions/methods/list_pipeline_parameters_for_execution"
+          - $ref: "#/components/x-stackQL-resources/pipeline_parameters/methods/list_pipeline_parameters_for_execution"
         insert: []
         update: []
         delete: []
@@ -52235,42 +52499,10 @@ components:
         insert: []
         update: []
         delete: []
-    training_jobs_for_hyper_parameter_tuning_jobs:
-      id: aws.sagemaker.training_jobs_for_hyper_parameter_tuning_jobs
-      name: training_jobs_for_hyper_parameter_tuning_jobs
-      title: training_jobs_for_hyper_parameter_tuning_jobs
-      methods:
-        list_training_jobs_for_hyper_parameter_tuning_job:
-          operation:
-            $ref: "#/paths/~1ListTrainingJobsForHyperParameterTuningJob/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TrainingJobSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/training_jobs_for_hyper_parameter_tuning_jobs/methods/list_training_jobs_for_hyper_parameter_tuning_job"
-        insert: []
-        update: []
-        delete: []
-    ultra_servers_by_reserved_capacities:
-      id: aws.sagemaker.ultra_servers_by_reserved_capacities
-      name: ultra_servers_by_reserved_capacities
-      title: ultra_servers_by_reserved_capacities
+    ultra_servers:
+      id: aws.sagemaker.ultra_servers
+      name: ultra_servers
+      title: ultra_servers
       methods:
         list_ultra_servers_by_reserved_capacity:
           operation:
@@ -52295,14 +52527,60 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/ultra_servers_by_reserved_capacities/methods/list_ultra_servers_by_reserved_capacity"
+          - $ref: "#/components/x-stackQL-resources/ultra_servers/methods/list_ultra_servers_by_reserved_capacity"
         insert: []
         update: []
         delete: []
-    search:
-      id: aws.sagemaker.search
-      name: search
-      title: search
+    lineages:
+      id: aws.sagemaker.lineages
+      name: lineages
+      title: lineages
+      methods:
+        query_lineage:
+          operation:
+            $ref: "#/paths/~1QueryLineage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ui_templates:
+      id: aws.sagemaker.ui_templates
+      name: ui_templates
+      title: ui_templates
+      methods:
+        render_ui_template:
+          operation:
+            $ref: "#/paths/~1RenderUiTemplate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    searches:
+      id: aws.sagemaker.searches
+      name: searches
+      title: searches
       methods:
         search:
           operation:
@@ -52326,7 +52604,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/search/methods/search"
+          - $ref: "#/components/x-stackQL-resources/searches/methods/search"
         insert: []
         update: []
         delete: []
@@ -52351,6 +52629,29 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/training_plan_offerings/methods/search_training_plan_offerings"
+        insert: []
+        update: []
+        delete: []
+    sessions:
+      id: aws.sagemaker.sessions
+      name: sessions
+      title: sessions
+      methods:
+        start_session:
+          operation:
+            $ref: "#/paths/~1StartSession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

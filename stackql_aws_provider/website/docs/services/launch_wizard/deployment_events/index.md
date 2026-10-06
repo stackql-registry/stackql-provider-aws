@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the deployment event.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="metadata" /></td>
+    <td><code>object</code></td>
+    <td></td>
+</tr>
+<tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
     <td>The status of the deployment event. (CANCELED, CANCELING, COMPLETED, CREATED, FAILED, IN_PROGRESS, PENDING, TIMED_OUT)</td>
@@ -141,6 +146,7 @@ Lists the events of a deployment.
 SELECT
 name,
 description,
+metadata,
 status,
 status_reason,
 timestamp

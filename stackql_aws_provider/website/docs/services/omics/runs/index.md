@@ -186,6 +186,11 @@ The following fields are returned by `SELECT` queries:
     <td>Optional configuration for enabling scratch ephemeral storage mounted at /tmp. If absent, this will default to SHARED. This configuration is applicable only for CPU tasks. For tasks using GPUs, scratch storage is always LOCAL. (LOCAL, SHARED)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="session_policy" /></td>
+    <td><code>string</code></td>
+    <td>Inline policy json for scoping down permissions via a session policy on the IAM role. (pattern: &lt;code&gt;&#91;\p&#123;L&#125;\p&#123;M&#125;\p&#123;Z&#125;\p&#123;S&#125;\p&#123;N&#125;\p&#123;P&#125;\t\n\r&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>When the run started.</td>
@@ -386,6 +391,13 @@ The following methods are available for this resource:
     <td>Deletes a run and returns a response with no body if the operation is successful. You can only delete a run that has reached a COMPLETED, FAILED, or CANCELLED stage. A completed run has delivered an output, or was cancelled and resulted in no output. When you delete a run, only the metadata associated with the run is deleted. The run outputs remain in Amazon S3 and logs remain in CloudWatch. To verify that the workflow is deleted: Use ListRuns to confirm the workflow no longer appears in the list. Use GetRun to verify the workflow cannot be found.</td>
 </tr>
 <tr>
+    <td><a href="#cancel_run"><CopyableCode code="cancel_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels a run using its ID and returns a response with no body if the operation is successful. To confirm that the run has been cancelled, use the ListRuns API operation to check that it is no longer listed.</td>
+</tr>
+<tr>
     <td><a href="#cancel_run_batch"><CopyableCode code="cancel_run_batch" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-batchId"><code>batchId</code></a></td>
@@ -398,6 +410,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-requestId"><code>requestId</code></a>, <a href="#parameter-defaultRunSetting"><code>defaultRunSetting</code></a>, <a href="#parameter-batchRunSettings"><code>batchRunSettings</code></a></td>
     <td></td>
     <td>Starts a batch of workflow runs. You can group up to 100,000 runs into a single batch that share a common configuration defined in defaultRunSetting. Per-run overrides can be provided either inline via inlineSettings (up to 100 runs) or via a JSON file stored in Amazon S3 via s3UriSettings (up to 100,000 runs). StartRunBatch validates common fields synchronously and returns immediately with a batch ID and status CREATING. The batch transitions to PENDING once initial setup completes. Runs are then submitted gradually and asynchronously at a rate governed by your StartRun throughput quota.</td>
+</tr>
+<tr>
+    <td><a href="#start_run"><CopyableCode code="start_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-outputUri"><code>outputUri</code></a>, <a href="#parameter-requestId"><code>requestId</code></a></td>
+    <td></td>
+    <td>Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the GetRun API operation. To start a new run, the following inputs are required: A service role ARN (roleArn). The run's workflow ID (workflowId, not the uuid or runId). An Amazon S3 location (outputUri) where the run outputs will be saved. All required workflow parameters (parameter), which can include optional parameters from the parameter template. The run cannot include any parameters that are not defined in the parameter template. To see all possible parameters, use the GetRun API operation. For runs with a STATIC (default) storage type, specify the required storage capacity (in gibibytes). A storage capacity value is not required for runs that use DYNAMIC storage. StartRun can also duplicate an existing run using the run's default values. You can modify these default values and/or add other optional inputs. To duplicate a run, the following inputs are required: A service role ARN (roleArn). The ID of the run to duplicate (runId). An Amazon S3 location where the run outputs will be saved (outputUri). To learn more about the optional parameters for StartRun, see Starting a run in the Amazon Web Services HealthOmics User Guide. Use the retentionMode input to control how long the metadata for each run is stored in CloudWatch. There are two retention modes: Specify REMOVE to automatically remove the oldest runs when you reach the maximum service retention limit for runs. It is recommended that you use the REMOVE mode to initiate major run requests so that your runs do not fail when you reach the limit. The retentionMode is set to the RETAIN mode by default, which allows you to manually remove runs after reaching the maximum service retention limit. Under this setting, you cannot create additional runs until you remove the excess runs. To learn more about the retention modes, see Run retention mode in the Amazon Web Services HealthOmics User Guide. You can use Amazon Q CLI to analyze run logs and make performance optimization recommendations. To get started, see the Amazon Web Services HealthOmics MCP server on GitHub.</td>
 </tr>
 </tbody>
 </table>
@@ -505,6 +524,7 @@ run_group_id,
 run_id,
 run_output_uri,
 scratch_storage_mode,
+session_policy,
 start_time,
 started_by,
 status,
@@ -586,12 +606,25 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="cancel_run_batch"
+    defaultValue="cancel_run"
     values={[
+        { label: 'cancel_run', value: 'cancel_run' },
         { label: 'cancel_run_batch', value: 'cancel_run_batch' },
-        { label: 'start_run_batch', value: 'start_run_batch' }
+        { label: 'start_run_batch', value: 'start_run_batch' },
+        { label: 'start_run', value: 'start_run' }
     ]}
 >
+<TabItem value="cancel_run">
+
+Cancels a run using its ID and returns a response with no body if the operation is successful. To confirm that the run has been cancelled, use the ListRuns API operation to check that it is no longer listed.
+
+```sql
+EXEC aws.omics.runs.cancel_run 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="cancel_run_batch">
 
 Cancels all runs within a specified batch. This operation prevents not-yet-submitted runs from starting and submits CancelRun requests for runs that have already started. Cancel is only allowed on batches in PENDING, SUBMITTING, or INPROGRESS state. Cancel operations are non-atomic and may be partially successful. Use GetBatch to review successfulCancelSubmissionCount and failedCancelSubmissionCount in the submissionSummary. Only one cancel or delete operation per batch is allowed at a time.
@@ -620,6 +653,43 @@ EXEC aws.omics.runs.start_run_batch
 "tags": "{{ tags }}", 
 "defaultRunSetting": "{{ defaultRunSetting }}", 
 "batchRunSettings": "{{ batchRunSettings }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_run">
+
+Starts a new run and returns details about the run, or duplicates an existing run. A run is a single invocation of a workflow. If you provide request IDs, Amazon Web Services HealthOmics identifies duplicate requests and starts the run only once. Monitor the progress of the run by calling the GetRun API operation. To start a new run, the following inputs are required: A service role ARN (roleArn). The run's workflow ID (workflowId, not the uuid or runId). An Amazon S3 location (outputUri) where the run outputs will be saved. All required workflow parameters (parameter), which can include optional parameters from the parameter template. The run cannot include any parameters that are not defined in the parameter template. To see all possible parameters, use the GetRun API operation. For runs with a STATIC (default) storage type, specify the required storage capacity (in gibibytes). A storage capacity value is not required for runs that use DYNAMIC storage. StartRun can also duplicate an existing run using the run's default values. You can modify these default values and/or add other optional inputs. To duplicate a run, the following inputs are required: A service role ARN (roleArn). The ID of the run to duplicate (runId). An Amazon S3 location where the run outputs will be saved (outputUri). To learn more about the optional parameters for StartRun, see Starting a run in the Amazon Web Services HealthOmics User Guide. Use the retentionMode input to control how long the metadata for each run is stored in CloudWatch. There are two retention modes: Specify REMOVE to automatically remove the oldest runs when you reach the maximum service retention limit for runs. It is recommended that you use the REMOVE mode to initiate major run requests so that your runs do not fail when you reach the limit. The retentionMode is set to the RETAIN mode by default, which allows you to manually remove runs after reaching the maximum service retention limit. Under this setting, you cannot create additional runs until you remove the excess runs. To learn more about the retention modes, see Run retention mode in the Amazon Web Services HealthOmics User Guide. You can use Amazon Q CLI to analyze run logs and make performance optimization recommendations. To get started, see the Amazon Web Services HealthOmics MCP server on GitHub.
+
+```sql
+EXEC aws.omics.runs.start_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"workflowId": "{{ workflowId }}", 
+"workflowType": "{{ workflowType }}", 
+"runId": "{{ runId }}", 
+"roleArn": "{{ roleArn }}", 
+"name": "{{ name }}", 
+"cacheId": "{{ cacheId }}", 
+"cacheBehavior": "{{ cacheBehavior }}", 
+"runGroupId": "{{ runGroupId }}", 
+"priority": {{ priority }}, 
+"parameters": "{{ parameters }}", 
+"storageCapacity": {{ storageCapacity }}, 
+"outputUri": "{{ outputUri }}", 
+"logLevel": "{{ logLevel }}", 
+"tags": "{{ tags }}", 
+"requestId": "{{ requestId }}", 
+"retentionMode": "{{ retentionMode }}", 
+"storageType": "{{ storageType }}", 
+"workflowOwnerId": "{{ workflowOwnerId }}", 
+"workflowVersionName": "{{ workflowVersionName }}", 
+"networkingMode": "{{ networkingMode }}", 
+"scratchStorageMode": "{{ scratchStorageMode }}", 
+"configurationName": "{{ configurationName }}", 
+"sessionPolicy": "{{ sessionPolicy }}", 
+"engineSettings": "{{ engineSettings }}"
 }'
 ;
 ```

@@ -578,10 +578,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource. This operation returns an empty response if the call was successful.
@@ -601,10 +597,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /sync/{resource_type}/{resource}:
     post:
       operationId: SyncResource
@@ -1285,8 +1277,6 @@ components:
       enum:
         - START_SYNC
         - NO_ACTION
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1296,8 +1286,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^([\p{L}\p{Z}\p{N}_.:\/=+\-@]*)$
-    UntagResourceResponse:
-      type: object
     UpdateApplicationResponse:
       type: object
       properties:
@@ -1379,9 +1367,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_attribute_groups_for_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application}~1attribute-group-details/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.attributeGroupsDetails
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attribute_groups/methods/get_attribute_group"
+          - $ref: "#/components/x-stackQL-resources/attribute_groups/methods/list_attribute_groups_for_application"
           - $ref: "#/components/x-stackQL-resources/attribute_groups/methods/list_attribute_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/attribute_groups/methods/create_attribute_group"
@@ -1409,6 +1415,12 @@ components:
         disassociate_resource:
           operation:
             $ref: "#/paths/~1applications~1{application}~1resources~1{resource_type}~1{resource}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        sync_resource:
+          operation:
+            $ref: "#/paths/~1sync~1{resource_type}~1{resource}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1585,34 +1597,6 @@ components:
         insert: []
         update: []
         delete: []
-    attribute_groups_for_applications:
-      id: aws.servicecatalog_appregistry.attribute_groups_for_applications
-      name: attribute_groups_for_applications
-      title: attribute_groups_for_applications
-      methods:
-        list_attribute_groups_for_application:
-          operation:
-            $ref: "#/paths/~1applications~1{application}~1attribute-group-details/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.attributeGroupsDetails
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attribute_groups_for_applications/methods/list_attribute_groups_for_application"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.servicecatalog_appregistry.tags
       name: tags
@@ -1629,7 +1613,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1640,7 +1623,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

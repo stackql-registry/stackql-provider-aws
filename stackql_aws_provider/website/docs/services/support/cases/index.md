@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="case_id" /></td>
     <td><code>string</code></td>
-    <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-2013-c4c1d2bf33c5cf47</td>
+    <td>The support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-12345678910-exen-2025-c4c1d2bf33c5cf47</td>
 </tr>
 <tr>
     <td><CopyableCode code="category_code" /></td>
@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="language" /></td>
     <td><code>string</code></td>
-    <td>The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the language parameter if you want support in that language.</td>
+    <td>The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the language parameter if you want support in that language.</td>
 </tr>
 <tr>
     <td><CopyableCode code="recent_communications" /></td>
@@ -134,21 +134,28 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a list of cases that you specify by passing one or more case IDs. You can use the afterTime and beforeTime parameters to filter the cases by date. You can set values for the includeResolvedCases and includeCommunications parameters to specify how much information to return. The response returns the following in JSON format: One or more CaseDetails data types. One or more nextToken values, which specify where to paginate the returned records represented by the CaseDetails objects. Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request might return an error. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
+    <td>Returns a list of cases that you specify by passing one or more case IDs. You can use the afterTime and beforeTime parameters to filter the cases by date. You can set values for the includeResolvedCases and includeCommunications parameters to specify how much information to return. The response returns the following in JSON format: One or more CaseDetails data types. One or more nextToken values, which specify where to paginate the returned records represented by the CaseDetails objects. Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request might return an error. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support. Each Communication returned by this operation includes attachment information in two fields: attachmentSet: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field. attachments: returns all attachments regardless of size. Amazon Web Services recommends that you use the attachments field and download each attachment with GetAttachmentDownloadLink, which supports attachments of any size. The attachmentSet field and DescribeAttachment return only attachments that are 5 MB or smaller.</td>
 </tr>
 <tr>
     <td><a href="#create_case"><CopyableCode code="create_case" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-subject"><code>subject</code></a>, <a href="#parameter-communicationBody"><code>communicationBody</code></a></td>
     <td></td>
-    <td>Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page. The Amazon Web Services Support API doesn't support requesting service limit increases. You can submit a service limit increase in the following ways: Submit a request from the Amazon Web Services Support Center Create Case page. Use the Service Quotas RequestServiceQuotaIncrease operation. A successful CreateCase request returns an Amazon Web Services Support case number. You can use the DescribeCases operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the AddCommunicationToCase operation to add additional communication or attachments to an existing case. The caseId is separate from the displayId that appears in the Amazon Web Services Support Center. Use the DescribeCases operation to get the displayId. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
+    <td>Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page. The Amazon Web Services Support API doesn't support requesting service limit increases. You can submit a service limit increase in the following ways: Submit a request from the Amazon Web Services Support Center Create Case page. Use the Service Quotas RequestServiceQuotaIncrease operation. Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with &#91;REDACTED_BY_Amazon Web Services&#93; and is not stored: Amazon Web Services secret keys - The complete key is replaced. Example: &#91;REDACTED_BY_Amazon Web Services&#93; Private keys - The complete key is replaced. Example: &#91;REDACTED_BY_Amazon Web Services&#93; Credit card numbers - The number is redacted, but the last 4 digits remain. Example: &#91;REDACTED_BY_Amazon Web Services&#93;-7016 This sensitive information is never required by Amazon Web Services Support. A successful CreateCase request returns a Amazon Web Services Support case number. You can use the DescribeCases operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the AddCommunicationToCase operation to add additional communication or attachments to an existing case. The caseId is separate from the displayId that appears in the Amazon Web Services Support Center. Use the DescribeCases operation to get the displayId. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
 </tr>
 <tr>
     <td><a href="#add_communication_to_case"><CopyableCode code="add_communication_to_case" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-communicationBody"><code>communicationBody</code></a></td>
     <td></td>
-    <td>Adds additional customer communication to an Amazon Web Services Support case. Use the caseId parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the ccEmailAddresses parameter. The communicationBody value contains the text of the communication. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
+    <td>Adds additional customer communication to a Amazon Web Services Support case. Use the caseId parameter to identify the case to which to add communication. To list a set of email addresses to copy on the communication, use the ccEmailAddresses parameter. The communicationBody value contains the text of the communication. To attach files larger than 5 MB to the communication, use the uploadIds parameter. Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with &#91;REDACTED_BY_Amazon Web Services&#93; and is not stored: Amazon Web Services secret keys - The complete key is replaced. Example: &#91;REDACTED_BY_Amazon Web Services&#93; Private keys - The complete key is replaced. Example: &#91;REDACTED_BY_Amazon Web Services&#93; Credit card numbers - The number is redacted, but the last 4 digits remain. Example: &#91;REDACTED_BY_Amazon Web Services&#93;-7016 This sensitive information is never required by Amazon Web Services Support. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
+</tr>
+<tr>
+    <td><a href="#resolve_case"><CopyableCode code="resolve_case" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Resolves a support case. This operation takes a caseId and returns the initial and final state of the case. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.</td>
 </tr>
 </tbody>
 </table>
@@ -184,7 +191,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_cases">
 
-Returns a list of cases that you specify by passing one or more case IDs. You can use the afterTime and beforeTime parameters to filter the cases by date. You can set values for the includeResolvedCases and includeCommunications parameters to specify how much information to return. The response returns the following in JSON format: One or more CaseDetails data types. One or more nextToken values, which specify where to paginate the returned records represented by the CaseDetails objects. Case data is available for 12 months after creation. If a case was created more than 12 months ago, a request might return an error. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
+Returns a list of cases that you specify by passing one or more case IDs. You can use the afterTime and beforeTime parameters to filter the cases by date. You can set values for the includeResolvedCases and includeCommunications parameters to specify how much information to return. The response returns the following in JSON format: One or more CaseDetails data types. One or more nextToken values, which specify where to paginate the returned records represented by the CaseDetails objects. Case data is available for 24 months after creation. If a case was created more than 24 months ago, a request might return an error. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support. Each Communication returned by this operation includes attachment information in two fields: attachmentSet: returns only attachments that are 5 MB or smaller. Attachments larger than 5 MB are not included in this field. attachments: returns all attachments regardless of size. Amazon Web Services recommends that you use the attachments field and download each attachment with GetAttachmentDownloadLink, which supports attachments of any size. The attachmentSet field and DescribeAttachment return only attachments that are 5 MB or smaller.
 
 ```sql
 SELECT
@@ -219,7 +226,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_case">
 
-Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page. The Amazon Web Services Support API doesn't support requesting service limit increases. You can submit a service limit increase in the following ways: Submit a request from the Amazon Web Services Support Center Create Case page. Use the Service Quotas RequestServiceQuotaIncrease operation. A successful CreateCase request returns an Amazon Web Services Support case number. You can use the DescribeCases operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the AddCommunicationToCase operation to add additional communication or attachments to an existing case. The caseId is separate from the displayId that appears in the Amazon Web Services Support Center. Use the DescribeCases operation to get the displayId. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
+Creates a case in the Amazon Web Services Support Center. This operation is similar to how you create a case in the Amazon Web Services Support Center Create Case page. The Amazon Web Services Support API doesn't support requesting service limit increases. You can submit a service limit increase in the following ways: Submit a request from the Amazon Web Services Support Center Create Case page. Use the Service Quotas RequestServiceQuotaIncrease operation. Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with [REDACTED_BY_Amazon Web Services] and is not stored: Amazon Web Services secret keys - The complete key is replaced. Example: [REDACTED_BY_Amazon Web Services] Private keys - The complete key is replaced. Example: [REDACTED_BY_Amazon Web Services] Credit card numbers - The number is redacted, but the last 4 digits remain. Example: [REDACTED_BY_Amazon Web Services]-7016 This sensitive information is never required by Amazon Web Services Support. A successful CreateCase request returns a Amazon Web Services Support case number. You can use the DescribeCases operation and specify the case number to get existing Amazon Web Services Support cases. After you create a case, use the AddCommunicationToCase operation to add additional communication or attachments to an existing case. The caseId is separate from the displayId that appears in the Amazon Web Services Support Center. Use the DescribeCases operation to get the displayId. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
 
 ```sql
 INSERT INTO aws.support.cases (
@@ -232,6 +239,8 @@ ccEmailAddresses,
 language,
 issueType,
 attachmentSetId,
+uploadIds,
+dryRun,
 region
 )
 SELECT 
@@ -244,6 +253,8 @@ SELECT
 '{{ language }}',
 '{{ issueType }}',
 '{{ attachmentSetId }}',
+'{{ uploadIds }}',
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 case_id
@@ -286,7 +297,7 @@ case_id
     - name: language
       value: "{{ language }}"
       description: |
-        The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") and Korean (“ko”). You must specify the ISO 639-1 code for the language parameter if you want support in that language.
+        The language in which Amazon Web Services Support handles the case. Amazon Web Services Support currently supports Chinese (“zh”), English ("en"), Japanese ("ja") , Chinese ("zh"), Spanish ("es"), Portuguese ("pt"), French ("fr"), Korean (“ko”), and Turkish ("tr"). You must specify the ISO 639-1 code for the language parameter if you want support in that language.
     - name: issueType
       value: "{{ issueType }}"
       description: |
@@ -294,7 +305,16 @@ case_id
     - name: attachmentSetId
       value: "{{ attachmentSetId }}"
       description: |
-        The ID of a set of one or more attachments for the case. Create the set by using the AddAttachmentsToSet operation.
+        The ID of a set of one or more attachments for the case. Create the set by using the AddAttachmentsToSet operation. Each attachment in the set must be 5 MB or smaller. To attach files larger than 5 MB, use uploadIds.
+    - name: uploadIds
+      value:
+        - "{{ uploadIds }}"
+      description: |
+        A list of upload IDs that identify attachments to add to the case. Each uploadId is returned by the GetAttachmentUploadLinks operation. The upload must reach the attachment-ready state by calling CompleteAttachmentUpload before it can be passed here. Use uploadIds to attach files of any supported size, including files larger than 5 MB.
+    - name: dryRun
+      value: {{ dryRun }}
+      description: |
+        Specifies whether to validate the request without actually creating the case. When set to true, the request is validated but no case is created, and the operation returns a DryRunOperationException. When omitted or set to false, the request runs normally.
 `}</CodeBlock>
 
 </TabItem>
@@ -311,7 +331,7 @@ case_id
 >
 <TabItem value="add_communication_to_case">
 
-Adds additional customer communication to an Amazon Web Services Support case. Use the caseId parameter to identify the case to which to add communication. You can list a set of email addresses to copy on the communication by using the ccEmailAddresses parameter. The communicationBody value contains the text of the communication. You must have a Business, Enterprise On-Ramp, or Enterprise Support plan to use the Amazon Web Services Support API. If you call the Amazon Web Services Support API from an account that doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
+Adds additional customer communication to a Amazon Web Services Support case. Use the caseId parameter to identify the case to which to add communication. To list a set of email addresses to copy on the communication, use the ccEmailAddresses parameter. The communicationBody value contains the text of the communication. To attach files larger than 5 MB to the communication, use the uploadIds parameter. Amazon Web Services Support automatically redacts sensitive information from support cases to protect your data. The following information is replaced with [REDACTED_BY_Amazon Web Services] and is not stored: Amazon Web Services secret keys - The complete key is replaced. Example: [REDACTED_BY_Amazon Web Services] Private keys - The complete key is replaced. Example: [REDACTED_BY_Amazon Web Services] Credit card numbers - The number is redacted, but the last 4 digits remain. Example: [REDACTED_BY_Amazon Web Services]-7016 This sensitive information is never required by Amazon Web Services Support. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
 
 ```sql
 UPDATE aws.support.cases
@@ -319,12 +339,40 @@ SET
 caseId = '{{ caseId }}',
 communicationBody = '{{ communicationBody }}',
 ccEmailAddresses = '{{ ccEmailAddresses }}',
-attachmentSetId = '{{ attachmentSetId }}'
+attachmentSetId = '{{ attachmentSetId }}',
+uploadIds = '{{ uploadIds }}',
+dryRun = {{ dryRun }}
 WHERE 
 region = '{{ region }}' --required
 AND communicationBody = '{{ communicationBody }}' --required
 RETURNING
 result;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="resolve_case"
+    values={[
+        { label: 'resolve_case', value: 'resolve_case' }
+    ]}
+>
+<TabItem value="resolve_case">
+
+Resolves a support case. This operation takes a caseId and returns the initial and final state of the case. You must have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan to use the Amazon Web Services Support API. If you're in an Amazon Web Services Region that doesn't offer one of these Amazon Web Services Support plans, or if you haven't transitioned to one of these plans, you can use the Amazon Web Services Support API with a Business, Enterprise On-Ramp, or Enterprise Support plan. If you call the Amazon Web Services Support API from an account that doesn't have an Amazon Web Services Business Support+, Amazon Web Services Enterprise Support, or Amazon Web Services Unified Operations plan, the SubscriptionRequiredException error message appears. For information about changing your support plan, see Amazon Web Services Support.
+
+```sql
+EXEC aws.support.cases.resolve_case 
+@region='{{ region }}' --required 
+@@json=
+'{
+"caseId": "{{ caseId }}", 
+"dryRun": {{ dryRun }}
+}'
+;
 ```
 </TabItem>
 </Tabs>

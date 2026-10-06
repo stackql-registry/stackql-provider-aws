@@ -101,6 +101,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Returns an estimate of the monthly cost for DevOps Guru to analyze your Amazon Web Services resources. For more information, see Estimate your Amazon DevOps Guru costs and Amazon DevOps Guru pricing.</td>
 </tr>
+<tr>
+    <td><a href="#start_cost_estimation"><CopyableCode code="start_cost_estimation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceCollection"><code>ResourceCollection</code></a></td>
+    <td></td>
+    <td>Starts the creation of an estimate of the monthly cost to analyze your Amazon Web Services resources.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,6 +159,32 @@ unit_cost
 FROM aws.devops_guru.cost_estimations
 WHERE region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_cost_estimation"
+    values={[
+        { label: 'start_cost_estimation', value: 'start_cost_estimation' }
+    ]}
+>
+<TabItem value="start_cost_estimation">
+
+Starts the creation of an estimate of the monthly cost to analyze your Amazon Web Services resources.
+
+```sql
+EXEC aws.devops_guru.cost_estimations.start_cost_estimation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ResourceCollection": "{{ ResourceCollection }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

@@ -57,10 +57,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag or list of tags from a resource.
@@ -80,10 +76,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /catalogs/{catalog}/products/{product_id}/deployment-parameters:
     post:
       operationId: PutDeploymentParameter
@@ -258,14 +250,10 @@ components:
     Tags:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     StringList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     tags:
       id: aws.marketplace_deployment.tags
@@ -283,7 +271,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -294,7 +281,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

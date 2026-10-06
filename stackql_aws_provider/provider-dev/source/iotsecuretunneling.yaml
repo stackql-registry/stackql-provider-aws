@@ -52,10 +52,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CloseTunnelResponse'
       x-stackql-resource: tunnels
       x-stackql-method: close_tunnel
       x-stackql-verb: EXEC
@@ -216,7 +212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OpenTunnelResponse'
-      x-stackql-resource: open_tunnel
+      x-stackql-resource: tunnels
       x-stackql-method: open_tunnel
       x-stackql-verb: EXEC
   /RotateTunnelAccessToken:
@@ -299,10 +295,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -339,10 +331,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -396,8 +384,6 @@ components:
       pattern: '[a-zA-Z0-9_\-+=:]{1,128}'
     DeleteFlag:
       type: boolean
-    CloseTunnelResponse:
-      type: object
     DescribeTunnelResponse:
       type: object
       properties:
@@ -626,11 +612,7 @@ components:
         destinationAccessToken:
           $ref: '#/components/schemas/ClientAccessToken'
           description: The client access token that the destination local proxy uses to connect to IoT Secure Tunneling.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

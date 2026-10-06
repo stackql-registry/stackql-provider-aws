@@ -425,7 +425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLensVersionOutput'
-      x-stackql-resource: lens
+      x-stackql-resource: lenses
       x-stackql-method: create_lens_version
       x-stackql-verb: INSERT
   /workloads/{workload_id}/milestones:
@@ -903,10 +903,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentContextResponse'
       x-stackql-resource: agent_contexts
       x-stackql-method: delete_agent_context
       x-stackql-verb: DELETE
@@ -996,10 +992,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentGoalResponse'
       x-stackql-resource: agent_goals
       x-stackql-method: delete_agent_goal
       x-stackql-verb: DELETE
@@ -1085,10 +1077,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentProfileResponse'
       x-stackql-resource: agent_profiles
       x-stackql-method: delete_agent_profile
       x-stackql-verb: DELETE
@@ -1185,7 +1173,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: lens
+      x-stackql-resource: lenses
       x-stackql-method: delete_lens
       x-stackql-verb: DELETE
     get:
@@ -1210,7 +1198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLensOutput'
-      x-stackql-resource: lens
+      x-stackql-resource: lenses
       x-stackql-method: get_lens
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Lens
@@ -1712,7 +1700,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportLensOutput'
-      x-stackql-resource: lens
+      x-stackql-resource: lenses
       x-stackql-method: export_lens
       x-stackql-verb: EXEC
   /api/v1/agent-recommendations/{recommendation_arn}:
@@ -2279,7 +2267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportLensOutput'
-      x-stackql-resource: lens
+      x-stackql-resource: lenses
       x-stackql-method: import_lens
       x-stackql-verb: EXEC
   /api/v1/agent-profiles/{profile_arn}/generations:
@@ -2362,7 +2350,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAgentRecommendationGenerationResponse'
-      x-stackql-resource: agent_recommendations
+      x-stackql-resource: agent_recommendation_generations
       x-stackql-method: start_agent_recommendation_generation
       x-stackql-verb: EXEC
   /api/v1/agent-recommendations/{recommendation_arn}/items:
@@ -2998,10 +2986,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3026,10 +3010,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3091,10 +3071,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAgentRecommendationFeedbackResponse'
       x-stackql-resource: agent_recommendations
       x-stackql-method: put_agent_recommendation_feedback
       x-stackql-verb: REPLACE
@@ -3125,10 +3101,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAgentRecommendationStatusResponse'
       x-stackql-resource: agent_recommendations
       x-stackql-method: update_agent_recommendation_status
       x-stackql-verb: UPDATE
@@ -3226,7 +3198,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: milestones
+      x-stackql-resource: lens_reviews
       x-stackql-method: upgrade_lens_review
       x-stackql-verb: EXEC
   /workloads/{workload_id}/profiles/{profile_arn}/upgrade:
@@ -3259,7 +3231,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: workloads
+      x-stackql-resource: profiles
       x-stackql-method: upgrade_profile_version
       x-stackql-verb: EXEC
   /reviewTemplates/{template_arn}/lensReviews/{lens_alias}/upgrade:
@@ -3290,7 +3262,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: upgrade_review_template_lens_review
+      x-stackql-resource: review_template_lens_reviews
       x-stackql-method: upgrade_review_template_lens_review
       x-stackql-verb: EXEC
 components:
@@ -4217,12 +4189,6 @@ components:
           $ref: '#/components/schemas/WorkloadId'
         ShareId:
           $ref: '#/components/schemas/ShareId'
-    DeleteAgentContextResponse:
-      type: object
-    DeleteAgentGoalResponse:
-      type: object
-    DeleteAgentProfileResponse:
-      type: object
     LensStatusType:
       type: string
       enum:
@@ -7541,8 +7507,6 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: '[\P{C}]+'
-    PutAgentRecommendationFeedbackResponse:
-      type: object
     RecommendationTypes:
       type: array
       items:
@@ -7596,8 +7560,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -7607,8 +7569,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[\p{L}\p{N}\p{Z}_.:/=+@-]+
-    UntagResourceOutput:
-      type: object
     UpdateAgentContextRequestClientTokenString:
       type: string
       minLength: 1
@@ -7765,8 +7725,6 @@ components:
       type: string
       minLength: 1
       maxLength: 4096
-    UpdateAgentRecommendationStatusResponse:
-      type: object
     ChoiceUpdates:
       type: object
       properties: {}

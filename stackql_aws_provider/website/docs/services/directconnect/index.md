@@ -18,7 +18,7 @@ directconnect service documentation.
 
 :::info[Service Summary]
 
-total resources: __21__  
+total resources: __24__  
 
 :::
 
@@ -29,7 +29,8 @@ total resources: __21__
 <a href="/services/directconnect/connection_loas/">connection_loas</a><br />
 <a href="/services/directconnect/connections/">connections</a><br />
 <a href="/services/directconnect/connections_on_interconnects/">connections_on_interconnects</a><br />
-<a href="/services/directconnect/customer_metadatas/">customer_metadatas</a><br />
+<a href="/services/directconnect/customer_agreements/">customer_agreements</a><br />
+<a href="/services/directconnect/customer_metadata/">customer_metadata</a><br />
 <a href="/services/directconnect/direct_connect_gateway_association_proposals/">direct_connect_gateway_association_proposals</a><br />
 <a href="/services/directconnect/direct_connect_gateway_associations/">direct_connect_gateway_associations</a><br />
 <a href="/services/directconnect/direct_connect_gateway_attachments/">direct_connect_gateway_attachments</a><br />
@@ -42,6 +43,8 @@ total resources: __21__
 <a href="/services/directconnect/lags/">lags</a><br />
 <a href="/services/directconnect/loas/">loas</a><br />
 <a href="/services/directconnect/locations/">locations</a><br />
+<a href="/services/directconnect/resiliency_group_associations/">resiliency_group_associations</a><br />
+<a href="/services/directconnect/resiliency_groups/">resiliency_groups</a><br />
 <a href="/services/directconnect/router_configurations/">router_configurations</a><br />
 <a href="/services/directconnect/tags/">tags</a><br />
 <a href="/services/directconnect/virtual_gateways/">virtual_gateways</a><br />

@@ -47,7 +47,7 @@ paths:
                   description: The source for the initial profile content. Specify a built-in starter profile, an existing profile version to clone, raw profile content for CI/CD workflows, or a sample data file in Amazon S3.
                 KmsKeyId:
                   $ref: "#/components/schemas/KmsKeyId"
-                  description: The AWS Key Management Service (AWS KMS) key identifier used to encrypt the profile content at rest.
+                  description: The Amazon Web Services Key Management Service (Amazon Web Services KMS) key identifier used to encrypt the profile content at rest.
                 ProfileDescription:
                   $ref: "#/components/schemas/ProfileDescription"
                   description: A human-readable description of the profile's purpose.
@@ -122,6 +122,9 @@ paths:
                 ProfileConfiguration:
                   $ref: "#/components/schemas/ProfileConfiguration"
                   description: The profile configuration for the data store.
+                BackupConfiguration:
+                  $ref: "#/components/schemas/BackupConfiguration"
+                  description: The backup configuration for the data store.
               required:
                 - DatastoreTypeVersion
       responses:
@@ -187,7 +190,7 @@ paths:
               properties:
                 DatastoreId:
                   $ref: "#/components/schemas/DatastoreId"
-                  description: The AWS-generated identifier for the data store to be deleted.
+                  description: The Amazon Web Services-generated identifier for the data store to be deleted.
               required:
                 - DatastoreId
       responses:
@@ -376,7 +379,7 @@ paths:
   /ListDataTransformationJobs:
     post:
       operationId: ListDataTransformationJobs
-      description: Lists data transformation jobs for your AWS account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.
+      description: Lists data transformation jobs for your Amazon Web Services account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -712,10 +715,71 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/PublishDataTransformationProfileResponse"
+  /RestoreFHIRDatastore:
+    post:
+      operationId: RestoreFHIRDatastore
+      description: Restore a backup-enabled data store to a point in time. Creates a new data store from the backup.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - HealthLake.RestoreFHIRDatastore
+            default: HealthLake.RestoreFHIRDatastore
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                SourceDatastoreId:
+                  $ref: "#/components/schemas/DatastoreId"
+                  description: The identifier of the source data store to restore from.
+                RestoreConfiguration:
+                  $ref: "#/components/schemas/RestoreConfiguration"
+                  description: The restore configuration specifying the type and parameters for the restore.
+                DatastoreName:
+                  $ref: "#/components/schemas/DatastoreName"
+                  description: The name for the restored data store.
+                SseConfiguration:
+                  $ref: "#/components/schemas/SseConfiguration"
+                  description: The server-side encryption key configuration for the restored data store.
+                ClientToken:
+                  $ref: "#/components/schemas/ClientTokenString"
+                  description: An optional user-provided token to ensure API idempotency of the restore.
+                Tags:
+                  $ref: "#/components/schemas/TagList"
+                  description: The resource tags applied to the restored data store.
+                IdentityProviderConfiguration:
+                  $ref: "#/components/schemas/IdentityProviderConfiguration"
+                  description: The identity provider configuration for the restored data store.
+                AnalyticsConfiguration:
+                  $ref: "#/components/schemas/AnalyticsConfiguration"
+                  description: The analytics configuration for the restored data store.
+                NlpConfiguration:
+                  $ref: "#/components/schemas/NlpConfiguration"
+                  description: The NLP configuration for the restored data store.
+                ProfileConfiguration:
+                  $ref: "#/components/schemas/ProfileConfiguration"
+                  description: The profile configuration for the restored data store.
+              required:
+                - SourceDatastoreId
+                - RestoreConfiguration
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestoreFHIRDatastoreResponse"
   /StartDataTransformationJob:
     post:
       operationId: StartDataTransformationJob
-      description: Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or AWS HealthLake.
+      description: Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake.
       parameters:
         - name: X-Amz-Target
           in: header
@@ -738,10 +802,10 @@ paths:
                   description: The Amazon S3 location and format of the source files to transform.
                 OutputDataConfig:
                   $ref: "#/components/schemas/TransformationOutputDataConfig"
-                  description: The Amazon S3 output location and AWS Key Management Service (AWS KMS) encryption configuration.
+                  description: The Amazon S3 output location and Amazon Web Services Key Management Service (Amazon Web Services KMS) encryption configuration.
                 DataAccessRoleArn:
                   $ref: "#/components/schemas/DataTransformationIamRoleArn"
-                  description: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that AWS HealthLake assumes to read from and write to the specified Amazon S3 locations.
+                  description: The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role that HealthLake assumes to read from and write to the specified Amazon S3 locations.
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
                   description: A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
@@ -753,7 +817,7 @@ paths:
                   description: The unique identifier of the data transformation profile to use for conversion.
                 DriftDetectionEnabled:
                   $ref: "#/components/schemas/Boolean"
-                  description: Specifies whether drift detection is enabled for this job. When enabled, AWS HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
+                  description: Specifies whether drift detection is enabled for this job. When enabled, HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
                 ProvenanceEnabled:
                   $ref: "#/components/schemas/Boolean"
                   description: Specifies whether FHIR R4 Provenance resource generation is enabled for this transformation job. When provenance is enabled, the service also generates related DocumentReference and Device resources. If you don't specify a value, the default is true. To disable provenance output, set this parameter to false.
@@ -851,7 +915,7 @@ paths:
                   description: The data store identifier.
                 DataAccessRoleArn:
                   $ref: "#/components/schemas/IamRoleArn"
-                  description: The Amazon Resource Name (ARN) that grants access permission to AWS HealthLake.
+                  description: The Amazon Resource Name (ARN) that grants access permission to HealthLake.
                 ClientToken:
                   $ref: "#/components/schemas/ClientTokenString"
                   description: The optional user-provided token used for ensuring API idempotency.
@@ -860,10 +924,13 @@ paths:
                   description: The validation level of the import job.
                 ProfileId:
                   $ref: "#/components/schemas/BoundedLengthString"
+                  description: The data transformation profile identifier to use for the import job.
                 InputFormat:
                   $ref: "#/components/schemas/BoundedLengthString"
+                  description: The input format of the data to be imported.
                 DriftDetectionEnabled:
                   $ref: "#/components/schemas/HealthLakeBoolean"
+                  description: Specifies whether to enable drift detection for the import job.
                 ProvenanceEnabled:
                   $ref: "#/components/schemas/DefaultEnabledBoolean"
                   description: Specifies whether to enable provenance for the import job.
@@ -911,10 +978,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -948,10 +1011,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateDataTransformationProfile:
     post:
       operationId: UpdateDataTransformationProfile
@@ -1031,6 +1090,9 @@ paths:
                 IdentityProviderConfiguration:
                   $ref: "#/components/schemas/IdentityProviderConfiguration"
                   description: The identity provider configuration for the data store.
+                BackupConfiguration:
+                  $ref: "#/components/schemas/BackupConfiguration"
+                  description: The backup configuration for the data store.
               required:
                 - DatastoreId
       responses:
@@ -1287,7 +1349,7 @@ components:
       required:
         - KmsEncryptionConfig
     KmsEncryptionConfig:
-      description: The customer-managed-key (CMK) used when creating a data store. If a customer-owned key is not specified, an AWS-owned key is used for encryption.
+      description: The customer-managed-key (CMK) used when creating a data store. If a customer-owned key is not specified, an Amazon Web Services-owned key is used for encryption.
       type: object
       properties:
         CmkType:
@@ -1362,7 +1424,7 @@ components:
       properties:
         AuthorizationStrategy:
           $ref: "#/components/schemas/AuthorizationStrategy"
-          description: The authorization strategy selected when the HealthLake data store is created. HealthLake provides support for both SMART on FHIR V1 and V2 as described below. SMART_ON_FHIR_V1 – Support for only SMART on FHIR V1, which includes read (read/search) and write (create/update/delete) permissions. SMART_ON_FHIR – Support for both SMART on FHIR V1 and V2, which includes create, read, update, delete, and search permissions. AWS_AUTH – The default HealthLake authorization strategy; not affiliated with SMART on FHIR.
+          description: The authorization strategy selected when the HealthLake data store is created. HealthLake provides support for both SMART on FHIR V1 and V2 as described below. SMART_ON_FHIR_V1 – Support for only SMART on FHIR V1, which includes read (read/search) and write (create/update/delete) permissions. SMART_ON_FHIR – Support for both SMART on FHIR V1 and V2, which includes create, read, update, delete, and search permissions. Amazon Web Services_AUTH – The default HealthLake authorization strategy; not affiliated with SMART on FHIR.
         FineGrainedAuthorizationEnabled:
           $ref: "#/components/schemas/HealthLakeBoolean"
           description: The parameter to enable SMART on FHIR fine-grained authorization for the data store.
@@ -1437,6 +1499,35 @@ components:
       minLength: 0
       maxLength: 10000
       pattern: "[\\P{M}\\p{M}]{0,10000}"
+    BackupConfiguration:
+      description: The backup configuration for the data store.
+      type: object
+      properties:
+        Status:
+          $ref: "#/components/schemas/BackupStatus"
+          description: The backup status of the data store.
+        BackupType:
+          $ref: "#/components/schemas/BackupType"
+          description: The type of backup.
+        RetentionPeriodInDays:
+          $ref: "#/components/schemas/BackupRetentionPeriodInDays"
+          description: The number of days backup data is retained.
+        BackupTagsEnabled:
+          $ref: "#/components/schemas/HealthLakeBoolean"
+          description: Specifies whether tags are included in backups.
+    BackupStatus:
+      type: string
+      enum:
+        - ENABLED
+        - DISABLED
+    BackupType:
+      type: string
+      enum:
+        - CONTINUOUS
+    BackupRetentionPeriodInDays:
+      type: integer
+      minimum: 1
+      maximum: 30
     CreateFHIRDatastoreResponse:
       type: object
       properties:
@@ -1451,7 +1542,7 @@ components:
           description: The data store status.
         DatastoreEndpoint:
           $ref: "#/components/schemas/BoundedLengthString"
-          description: The AWS endpoint created for the data store.
+          description: The Amazon Web Services endpoint created for the data store.
       required:
         - DatastoreId
         - DatastoreArn
@@ -1505,16 +1596,16 @@ components:
       properties:
         DatastoreId:
           $ref: "#/components/schemas/DatastoreId"
-          description: The AWS-generated ID for the deleted data store.
+          description: The Amazon Web Services-generated ID for the deleted data store.
         DatastoreArn:
           $ref: "#/components/schemas/DatastoreArn"
-          description: The Amazon Resource Name (ARN) that grants access permission to AWS HealthLake.
+          description: The Amazon Resource Name (ARN) that grants access permission to HealthLake.
         DatastoreStatus:
           $ref: "#/components/schemas/DatastoreStatus"
           description: The data store status.
         DatastoreEndpoint:
           $ref: "#/components/schemas/BoundedLengthString"
-          description: The AWS endpoint of the data store to be deleted.
+          description: The Amazon Web Services endpoint of the data store to be deleted.
       required:
         - DatastoreId
         - DatastoreArn
@@ -1552,7 +1643,7 @@ components:
           description: The Amazon S3 location and encryption configuration for the converted output.
         DataAccessRoleArn:
           $ref: "#/components/schemas/DataTransformationIamRoleArn"
-          description: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants AWS HealthLake access to the specified Amazon S3 locations. AWS HealthLake assumes this role to read input files and write output files.
+          description: The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role that grants HealthLake access to the specified Amazon S3 locations. HealthLake assumes this role to read input files and write output files.
         SubmitTime:
           $ref: "#/components/schemas/DateTime"
           description: The timestamp when the job was submitted.
@@ -1573,7 +1664,7 @@ components:
           description: The timestamp when the job completed or failed.
         DriftDetectionEnabled:
           $ref: "#/components/schemas/Boolean"
-          description: Specifies whether drift detection is enabled for this job. When enabled, AWS HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
+          description: Specifies whether drift detection is enabled for this job. When enabled, HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.
         ProvenanceEnabled:
           $ref: "#/components/schemas/Boolean"
           description: Specifies whether FHIR R4 Provenance resource generation is enabled for this transformation job. When provenance is enabled, the service also generates related DocumentReference and Device resources.
@@ -1622,7 +1713,7 @@ components:
       properties:
         S3Configuration:
           $ref: "#/components/schemas/DataTransformationS3Configuration"
-          description: The Amazon S3 output location and AWS Key Management Service (AWS KMS) encryption configuration.
+          description: The Amazon S3 output location and Amazon Web Services Key Management Service (Amazon Web Services KMS) encryption configuration.
       required:
         - S3Configuration
     DataTransformationS3Configuration:
@@ -1631,10 +1722,10 @@ components:
       properties:
         S3Uri:
           $ref: "#/components/schemas/DataTransformationS3Uri"
-          description: The Amazon S3 URI where AWS HealthLake writes the converted output files.
+          description: The Amazon S3 URI where HealthLake writes the converted output files.
         KmsKeyId:
           $ref: "#/components/schemas/KmsKeyId"
-          description: The AWS Key Management Service (AWS KMS) key identifier used to encrypt the transformation job output written to Amazon S3.
+          description: The Amazon Web Services Key Management Service (Amazon Web Services KMS) key identifier used to encrypt the transformation job output written to Amazon S3.
       required:
         - S3Uri
         - KmsKeyId
@@ -1710,7 +1801,7 @@ components:
           description: The FHIR release version supported by the data store. Current support is for version R4.
         DatastoreEndpoint:
           $ref: "#/components/schemas/HealthLakeString"
-          description: The AWS endpoint for the data store.
+          description: The Amazon Web Services endpoint for the data store.
         SseConfiguration:
           $ref: "#/components/schemas/SseConfiguration"
           description: The server-side encryption key configuration for a customer provided encryption key.
@@ -1732,6 +1823,9 @@ components:
         ProfileConfiguration:
           $ref: "#/components/schemas/ProfileConfiguration"
           description: The profile configuration for the data store.
+        BackupStatusInfo:
+          $ref: "#/components/schemas/DatastoreBackupStatus"
+          description: The backup status information for the data store.
       required:
         - DatastoreId
         - DatastoreArn
@@ -1761,6 +1855,25 @@ components:
       enum:
         - RETRYABLE_ERROR
         - NON_RETRYABLE_ERROR
+    DatastoreBackupStatus:
+      description: The backup status information for the data store.
+      type: object
+      properties:
+        Configuration:
+          $ref: "#/components/schemas/BackupConfiguration"
+          description: The backup configuration for the data store.
+        BackupEnabledAt:
+          $ref: "#/components/schemas/HealthLakeTimestamp"
+          description: The time backup was enabled on the data store.
+        EarliestRestorePoint:
+          $ref: "#/components/schemas/HealthLakeTimestamp"
+          description: The earliest point in time the data store can be restored to.
+        LatestRestorePoint:
+          $ref: "#/components/schemas/HealthLakeTimestamp"
+          description: The latest point in time the data store can be restored to.
+        ScheduledPermanentDeletionTime:
+          $ref: "#/components/schemas/HealthLakeTimestamp"
+          description: The time the retained backup data is scheduled for permanent deletion.
     JobId:
       description: The unique identifier of a job.
       type: string
@@ -1840,15 +1953,15 @@ components:
           $ref: "#/components/schemas/S3Configuration"
           description: The output data configuration supplied when the export job was created.
     S3Configuration:
-      description: The configuration of the S3 bucket for either an import or export job. This includes assigning access permissions.
+      description: The configuration of the Amazon S3 bucket for either an import or export job. This includes assigning access permissions.
       type: object
       properties:
         S3Uri:
           $ref: "#/components/schemas/S3Uri"
-          description: The S3Uri is the user-specified S3 location of the FHIR data to be imported into AWS HealthLake.
+          description: The S3Uri is the user-specified Amazon S3 location of the FHIR data to be imported into HealthLake.
         KmsKeyId:
           $ref: "#/components/schemas/EncryptionKeyID"
-          description: The Key Management Service (KMS) key ID used to access the S3 bucket.
+          description: The Key Management Service (KMS) key ID used to access the Amazon S3 bucket.
       required:
         - S3Uri
         - KmsKeyId
@@ -1910,7 +2023,7 @@ components:
           description: Displays the progress of the import job, including total resources scanned, total resources imported, and total size of data imported.
         DataAccessRoleArn:
           $ref: "#/components/schemas/IamRoleArn"
-          description: The Amazon Resource Name (ARN) that grants AWS HealthLake access to the input data.
+          description: The Amazon Resource Name (ARN) that grants HealthLake access to the input data.
         Message:
           $ref: "#/components/schemas/Message"
           description: An explanation of any errors that might have occurred during the FHIR import job.
@@ -1929,23 +2042,23 @@ components:
       properties:
         S3Uri:
           $ref: "#/components/schemas/S3Uri"
-          description: The S3Uri is the user-specified S3 location of the FHIR data to be imported into AWS HealthLake.
+          description: The S3Uri is the user-specified Amazon S3 location of the FHIR data to be imported into HealthLake.
     JobProgressReport:
       description: The progress report for the import job.
       type: object
       properties:
         TotalNumberOfScannedFiles:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of files scanned from the S3 input bucket.
+          description: The number of files scanned from the Amazon S3 input bucket.
         TotalSizeOfScannedFilesInMB:
           $ref: "#/components/schemas/GenericDouble"
-          description: The size (in MB) of files scanned from the S3 input bucket.
+          description: The size (in MB) of files scanned from the Amazon S3 input bucket.
         TotalNumberOfImportedFiles:
           $ref: "#/components/schemas/GenericLong"
           description: The number of files imported.
         TotalNumberOfResourcesScanned:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of resources scanned from the S3 input bucket.
+          description: The number of resources scanned from the Amazon S3 input bucket.
         TotalNumberOfResourcesImported:
           $ref: "#/components/schemas/GenericLong"
           description: The number of resources imported.
@@ -1954,19 +2067,19 @@ components:
           description: The number of resources that failed due to customer error.
         TotalNumberOfFilesReadWithCustomerError:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of files that failed to be read from the S3 input bucket due to customer error.
+          description: The number of files that failed to be read from the Amazon S3 input bucket due to customer error.
         TotalNumberOfScannedNonFhirFiles:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of non-FHIR files scanned from the S3 input bucket.
+          description: The number of non-FHIR files scanned from the Amazon S3 input bucket.
         TotalSizeOfScannedNonFhirFilesInMB:
           $ref: "#/components/schemas/GenericDouble"
-          description: The size (in MB) of non-FHIR files scanned from the S3 input bucket.
+          description: The size (in MB) of non-FHIR files scanned from the Amazon S3 input bucket.
         TotalNumberOfImportedNonFhirFiles:
           $ref: "#/components/schemas/GenericLong"
           description: The number of non-FHIR files imported.
         TotalNumberOfNonFhirResourcesScanned:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of non-FHIR resources scanned from the S3 input bucket.
+          description: The number of non-FHIR resources scanned from the Amazon S3 input bucket.
         TotalNumberOfNonFhirResourcesImported:
           $ref: "#/components/schemas/GenericLong"
           description: The number of non-FHIR resources imported.
@@ -1975,7 +2088,7 @@ components:
           description: The number of non-FHIR resources that failed due to customer error.
         TotalNumberOfNonFhirFilesReadWithCustomerError:
           $ref: "#/components/schemas/GenericLong"
-          description: The number of non-FHIR files that failed to be read from the S3 input bucket due to customer error.
+          description: The number of non-FHIR files that failed to be read from the Amazon S3 input bucket due to customer error.
         Throughput:
           $ref: "#/components/schemas/GenericDouble"
           description: The transaction rate the import job is processed at.
@@ -2296,6 +2409,40 @@ components:
         - SourceFormat
         - TargetFormat
         - LastUpdatedAt
+    RestoreConfiguration:
+      description: Specifies the type and parameters for the restore operation.
+      type: object
+      properties:
+        ContinuousBackupRestoreConfiguration:
+          $ref: "#/components/schemas/ContinuousBackupRestoreConfiguration"
+          description: Configuration for restoring from continuous backup to a specific point in time.
+    ContinuousBackupRestoreConfiguration:
+      description: Configuration for continuous backup (point-in-time) restore.
+      type: object
+      properties:
+        RestorePointTime:
+          $ref: "#/components/schemas/HealthLakeTimestamp"
+          description: The point in time to restore the data store to, specified as a UTC timestamp.
+    RestoreFHIRDatastoreResponse:
+      type: object
+      properties:
+        DatastoreId:
+          $ref: "#/components/schemas/DatastoreId"
+          description: The restored data store identifier.
+        DatastoreArn:
+          $ref: "#/components/schemas/DatastoreArn"
+          description: The Amazon Resource Name (ARN) for the restored data store.
+        DatastoreStatus:
+          $ref: "#/components/schemas/DatastoreStatus"
+          description: The restored data store status.
+        DatastoreEndpoint:
+          $ref: "#/components/schemas/BoundedLengthString"
+          description: The AWS endpoint for the restored data store.
+      required:
+        - DatastoreId
+        - DatastoreArn
+        - DatastoreStatus
+        - DatastoreEndpoint
     StartDataTransformationJobResponse:
       description: The response from the StartDataTransformationJob operation.
       type: object
@@ -2342,14 +2489,10 @@ components:
       required:
         - JobId
         - JobStatus
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     ProfileMapping:
       type: object
       properties: {}
@@ -2524,6 +2667,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        publish_data_transformation_profile:
+          operation:
+            $ref: "#/paths/~1PublishDataTransformationProfile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_data_transformation_profile:
           operation:
             $ref: "#/paths/~1UpdateDataTransformationProfile/post"
@@ -2605,6 +2761,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restore_fhir_datastore:
+          operation:
+            $ref: "#/paths/~1RestoreFHIRDatastore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_fhir_datastore:
           operation:
             $ref: "#/paths/~1UpdateFHIRDatastore/post"
@@ -2668,6 +2837,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_data_transformation_job:
+          operation:
+            $ref: "#/paths/~1StartDataTransformationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_transformation_jobs/methods/describe_data_transformation_job"
@@ -2707,6 +2889,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_fhir_export_job:
+          operation:
+            $ref: "#/paths/~1StartFHIRExportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fhir_export_jobs/methods/describe_fhir_export_job"
@@ -2736,6 +2931,19 @@ components:
         list_fhir_import_jobs:
           operation:
             $ref: "#/paths/~1ListFHIRImportJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_fhir_import_job:
+          operation:
+            $ref: "#/paths/~1StartFHIRImportJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2808,7 +3016,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2821,7 +3028,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

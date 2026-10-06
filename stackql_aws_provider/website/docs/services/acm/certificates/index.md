@@ -380,11 +380,39 @@ The following methods are available for this resource:
     <td>Deletes a certificate and its associated private key. If this action succeeds, the certificate is not available for use by Amazon Web Services services integrated with ACM. Deleting a certificate is eventually consistent. The may be a short delay before the certificate no longer appears in the list that can be displayed by calling the ListCertificates action or be retrieved by calling the GetCertificate action. You cannot delete an ACM certificate that is being used by another Amazon Web Services service. To delete a certificate that is in use, you must first remove the certificate association using the console or the CLI for the associated service. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting Your Private CA in the Private Certificate Authority User Guide. You cannot delete a certificate with a CertificateKeyPairOrigin of ACME. ACM automatically deletes these certificates 1 year after they expire. Deleting a certificate issued by a private certificate authority (CA) has no effect on the CA. You will continue to be charged for the CA until it is deleted. For more information, see Deleting your private CA in the Amazon Web Services Private Certificate Authority User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#export_certificate"><CopyableCode code="export_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CertificateArn"><code>CertificateArn</code></a>, <a href="#parameter-Passphrase"><code>Passphrase</code></a></td>
+    <td></td>
+    <td>Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it. For information about exporting and formatting a certificate using the ACM console or CLI, see Export a private certificate and Export a public certificate. ACM public certificates created prior to June 17, 2025 cannot be exported.</td>
+</tr>
+<tr>
     <td><a href="#get_certificate"><CopyableCode code="get_certificate" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CertificateArn"><code>CertificateArn</code></a></td>
     <td></td>
     <td>Retrieves a certificate and its certificate chain. The certificate may be either a public or private certificate issued using the ACM RequestCertificate action, or a certificate imported into ACM using the ImportCertificate action. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use OpenSSL to decode the certificates and inspect individual fields.</td>
+</tr>
+<tr>
+    <td><a href="#import_certificate"><CopyableCode code="import_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PrivateKey"><code>PrivateKey</code></a></td>
+    <td></td>
+    <td>Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM. Note that integrated services allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see Importing Certificates in the Certificate Manager User Guide. ACM does not provide managed renewal for certificates that you import. Note the following guidelines when importing third party certificates: You must enter the private key that matches the certificate you are importing. The private key must be unencrypted. You cannot import a private key that is protected by a password or a passphrase. The private key must be no larger than 5 KB (5,120 bytes). The certificate, private key, and certificate chain must be PEM-encoded. The current time must be between the Not Before and Not After certificate fields. The Issuer field must not be empty. The OCSP authority URL, if present, must not exceed 1000 characters. To import a new certificate, omit the CertificateArn argument. Include this argument only when you want to replace a previously imported certificate. When you import a certificate by using the CLI, you must specify the certificate, the certificate chain, and the private key by their file names preceded by fileb:​//. For example, you can specify a certificate saved in the C:\temp folder as fileb:​//C:\temp\certificate_to_import.pem. If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs. When you import a certificate by using an SDK, you must specify the certificate, the certificate chain, and the private key files in the manner required by the programming language you're using. The cryptographic algorithm of an imported certificate must match the algorithm of the signing CA. For example, if the signing CA key type is RSA, then the certificate key type must also be RSA. This operation returns the Amazon Resource Name (ARN) of the imported certificate.</td>
+</tr>
+<tr>
+    <td><a href="#renew_certificate"><CopyableCode code="renew_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CertificateArn"><code>CertificateArn</code></a></td>
+    <td></td>
+    <td>Renews an eligible ACM certificate. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first grant the ACM service principal permission to do so. For more information, see Testing Managed Renewal in the ACM User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#request_certificate"><CopyableCode code="request_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DomainName"><code>DomainName</code></a></td>
+    <td></td>
+    <td>Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the DomainName parameter. You can also specify additional FQDNs in the SubjectAlternativeNames parameter. If you are requesting a private certificate, domain validation is not required. If you are requesting a public certificate, each domain name that you specify must be validated to verify that you own or control the domain. You can use DNS validation or email validation. We recommend that you use DNS validation. ACM behavior differs from the RFC 6125 specification of the certificate validation process. ACM first checks for a Subject Alternative Name, and, if it finds one, ignores the common name (CN). After successful completion of the RequestCertificate action, there is a delay of several seconds before you can retrieve information about the new certificate.</td>
 </tr>
 <tr>
     <td><a href="#resend_validation_email"><CopyableCode code="resend_validation_email" /></a></td>
@@ -578,13 +606,32 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="get_certificate"
+    defaultValue="export_certificate"
     values={[
+        { label: 'export_certificate', value: 'export_certificate' },
         { label: 'get_certificate', value: 'get_certificate' },
+        { label: 'import_certificate', value: 'import_certificate' },
+        { label: 'renew_certificate', value: 'renew_certificate' },
+        { label: 'request_certificate', value: 'request_certificate' },
         { label: 'resend_validation_email', value: 'resend_validation_email' },
         { label: 'search_certificates', value: 'search_certificates' }
     ]}
 >
+<TabItem value="export_certificate">
+
+Exports a private certificate issued by a private certificate authority (CA) or a public certificate for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it. For information about exporting and formatting a certificate using the ACM console or CLI, see Export a private certificate and Export a public certificate. ACM public certificates created prior to June 17, 2025 cannot be exported.
+
+```sql
+EXEC aws.acm.certificates.export_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CertificateArn": "{{ CertificateArn }}", 
+"Passphrase": "{{ Passphrase }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="get_certificate">
 
 Retrieves a certificate and its certificate chain. The certificate may be either a public or private certificate issued using the ACM RequestCertificate action, or a certificate imported into ACM using the ImportCertificate action. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use OpenSSL to decode the certificates and inspect individual fields.
@@ -595,6 +642,61 @@ EXEC aws.acm.certificates.get_certificate
 @@json=
 '{
 "CertificateArn": "{{ CertificateArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="import_certificate">
+
+Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM. Note that integrated services allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see Importing Certificates in the Certificate Manager User Guide. ACM does not provide managed renewal for certificates that you import. Note the following guidelines when importing third party certificates: You must enter the private key that matches the certificate you are importing. The private key must be unencrypted. You cannot import a private key that is protected by a password or a passphrase. The private key must be no larger than 5 KB (5,120 bytes). The certificate, private key, and certificate chain must be PEM-encoded. The current time must be between the Not Before and Not After certificate fields. The Issuer field must not be empty. The OCSP authority URL, if present, must not exceed 1000 characters. To import a new certificate, omit the CertificateArn argument. Include this argument only when you want to replace a previously imported certificate. When you import a certificate by using the CLI, you must specify the certificate, the certificate chain, and the private key by their file names preceded by fileb://. For example, you can specify a certificate saved in the C:\temp folder as fileb://C:\temp\certificate_to_import.pem. If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs. When you import a certificate by using an SDK, you must specify the certificate, the certificate chain, and the private key files in the manner required by the programming language you're using. The cryptographic algorithm of an imported certificate must match the algorithm of the signing CA. For example, if the signing CA key type is RSA, then the certificate key type must also be RSA. This operation returns the Amazon Resource Name (ARN) of the imported certificate.
+
+```sql
+EXEC aws.acm.certificates.import_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CertificateArn": "{{ CertificateArn }}", 
+"Certificate": "{{ Certificate }}", 
+"PrivateKey": "{{ PrivateKey }}", 
+"CertificateChain": "{{ CertificateChain }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="renew_certificate">
+
+Renews an eligible ACM certificate. In order to renew your Amazon Web Services Private CA certificates with ACM, you must first grant the ACM service principal permission to do so. For more information, see Testing Managed Renewal in the ACM User Guide.
+
+```sql
+EXEC aws.acm.certificates.renew_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CertificateArn": "{{ CertificateArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="request_certificate">
+
+Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the DomainName parameter. You can also specify additional FQDNs in the SubjectAlternativeNames parameter. If you are requesting a private certificate, domain validation is not required. If you are requesting a public certificate, each domain name that you specify must be validated to verify that you own or control the domain. You can use DNS validation or email validation. We recommend that you use DNS validation. ACM behavior differs from the RFC 6125 specification of the certificate validation process. ACM first checks for a Subject Alternative Name, and, if it finds one, ignores the common name (CN). After successful completion of the RequestCertificate action, there is a delay of several seconds before you can retrieve information about the new certificate.
+
+```sql
+EXEC aws.acm.certificates.request_certificate 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DomainName": "{{ DomainName }}", 
+"ValidationMethod": "{{ ValidationMethod }}", 
+"SubjectAlternativeNames": "{{ SubjectAlternativeNames }}", 
+"IdempotencyToken": "{{ IdempotencyToken }}", 
+"DomainValidationOptions": "{{ DomainValidationOptions }}", 
+"Options": "{{ Options }}", 
+"CertificateAuthorityArn": "{{ CertificateAuthorityArn }}", 
+"Tags": "{{ Tags }}", 
+"KeyAlgorithm": "{{ KeyAlgorithm }}", 
+"ManagedBy": "{{ ManagedBy }}"
 }'
 ;
 ```

@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_connection_group"
     values={[
         { label: 'get_connection_group', value: 'get_connection_group' },
+        { label: 'get_connection_group_by_routing_endpoint', value: 'get_connection_group_by_routing_endpoint' },
         { label: 'list_connection_groups', value: 'list_connection_groups' }
     ]}
 >
@@ -109,6 +110,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>string</code></td>
     <td>A complex type that contains zero or more Tag elements.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_connection_group_by_routing_endpoint">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="connection_group" /></td>
+    <td><code>string</code></td>
+    <td>The connection group for your distribution tenants. When you first create a distribution tenant and you don't specify a connection group, CloudFront will automatically create a default connection group for you. When you create a new distribution tenant and don't specify a connection group, the default one will be associated with your distribution tenant.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="e_tag" /></td>
+    <td><code>string</code></td>
+    <td>The current version of the connection group.</td>
 </tr>
 </tbody>
 </table>
@@ -207,6 +232,13 @@ The following methods are available for this resource:
     <td>Gets information about a connection group.</td>
 </tr>
 <tr>
+    <td><a href="#get_connection_group_by_routing_endpoint"><CopyableCode code="get_connection_group_by_routing_endpoint" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-RoutingEndpoint"><code>RoutingEndpoint</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about a connection group by using the endpoint that you specify.</td>
+</tr>
+<tr>
     <td><a href="#list_connection_groups"><CopyableCode code="list_connection_groups" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -255,6 +287,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The value of the ETag header that you received when retrieving the connection group to delete.</td>
 </tr>
+<tr id="parameter-RoutingEndpoint">
+    <td><CopyableCode code="RoutingEndpoint" /></td>
+    <td><code>string</code></td>
+    <td>The routing endpoint for the target connection group, such as d111111abcdef8.cloudfront.net.</td>
+</tr>
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
@@ -279,6 +316,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_connection_group"
     values={[
         { label: 'get_connection_group', value: 'get_connection_group' },
+        { label: 'get_connection_group_by_routing_endpoint', value: 'get_connection_group_by_routing_endpoint' },
         { label: 'list_connection_groups', value: 'list_connection_groups' }
     ]}
 >
@@ -302,6 +340,20 @@ status,
 tags
 FROM aws.cloudfront.connection_groups
 WHERE identifier = '{{ identifier }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_connection_group_by_routing_endpoint">
+
+Gets information about a connection group by using the endpoint that you specify.
+
+```sql
+SELECT
+connection_group,
+e_tag
+FROM aws.cloudfront.connection_groups
+WHERE RoutingEndpoint = '{{ RoutingEndpoint }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

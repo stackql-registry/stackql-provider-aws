@@ -476,6 +476,7 @@ shared_secret
         slurmCustomSettings:
           - parameterName: "{{ parameterName }}"
             parameterValue: "{{ parameterValue }}"
+        gresCustomSettings: "{{ gresCustomSettings }}"
     - name: nodeLifecycleActions
       description: |
         The lifecycle actions to run on compute nodes in the compute node group. Use lifecycle actions to run custom scripts at defined stages of a compute node's lifecycle, such as when a compute node finishes bootstrapping or becomes ready to accept jobs.

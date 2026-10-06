@@ -93,10 +93,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerOutput'
       x-stackql-resource: containers
       x-stackql-method: delete_container
       x-stackql-verb: DELETE
@@ -129,10 +125,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerPolicyOutput'
       x-stackql-resource: container_policies
       x-stackql-method: delete_container_policy
       x-stackql-verb: DELETE
@@ -167,10 +159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCorsPolicyOutput'
       x-stackql-resource: cors_policies
       x-stackql-method: delete_cors_policy
       x-stackql-verb: DELETE
@@ -203,10 +191,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLifecyclePolicyOutput'
       x-stackql-resource: lifecycle_policies
       x-stackql-method: delete_lifecycle_policy
       x-stackql-verb: DELETE
@@ -240,10 +224,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMetricPolicyOutput'
       x-stackql-resource: metric_policies
       x-stackql-method: delete_metric_policy
       x-stackql-verb: DELETE
@@ -553,10 +533,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutContainerPolicyOutput'
       x-stackql-resource: container_policies
       x-stackql-method: put_container_policy
       x-stackql-verb: REPLACE
@@ -599,10 +575,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutCorsPolicyOutput'
       x-stackql-resource: cors_policies
       x-stackql-method: put_cors_policy
       x-stackql-verb: REPLACE
@@ -641,10 +613,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutLifecyclePolicyOutput'
       x-stackql-resource: lifecycle_policies
       x-stackql-method: put_lifecycle_policy
       x-stackql-verb: REPLACE
@@ -690,10 +658,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutMetricPolicyOutput'
       x-stackql-resource: metric_policies
       x-stackql-method: put_metric_policy
       x-stackql-verb: REPLACE
@@ -727,10 +691,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartAccessLoggingOutput'
       x-stackql-resource: containers
       x-stackql-method: start_access_logging
       x-stackql-verb: EXEC
@@ -764,10 +724,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopAccessLoggingOutput'
       x-stackql-resource: containers
       x-stackql-method: stop_access_logging
       x-stackql-verb: EXEC
@@ -811,10 +767,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -853,10 +805,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1008,16 +956,6 @@ components:
       maxLength: 16
     ContainerAccessLoggingEnabled:
       type: boolean
-    DeleteContainerOutput:
-      type: object
-    DeleteContainerPolicyOutput:
-      type: object
-    DeleteCorsPolicyOutput:
-      type: object
-    DeleteLifecyclePolicyOutput:
-      type: object
-    DeleteMetricPolicyOutput:
-      type: object
     DescribeContainerOutput:
       type: object
       properties:
@@ -1222,23 +1160,7 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: An array of key:value pairs that are assigned to the container.
-    PutContainerPolicyOutput:
-      type: object
-    PutCorsPolicyOutput:
-      type: object
-    PutLifecyclePolicyOutput:
-      type: object
-    PutMetricPolicyOutput:
-      type: object
-    StartAccessLoggingOutput:
-      type: object
-    StopAccessLoggingOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object

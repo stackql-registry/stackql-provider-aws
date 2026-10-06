@@ -646,10 +646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Untags an AWS TNB resource. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value. You can use tags to search and filter your resources or track your Amazon Web Services costs.
@@ -669,10 +665,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /sol/nslcm/v1/ns_instances/{ns_instance_id}/terminate:
     post:
       operationId: TerminateSolNetworkInstance
@@ -2038,8 +2030,6 @@ components:
       properties:
         nsd:
           $ref: "#/components/schemas/NetworkArtifactMeta"
-    TagResourceOutput:
-      type: object
     TerminateSolNetworkInstanceOutput:
       type: object
       properties:
@@ -2057,8 +2047,6 @@ components:
     TagKey:
       type: string
       pattern: ^(?!aws:).{1,128}$
-    UntagResourceOutput:
-      type: object
     UpdateSolFunctionPackageOutput:
       type: object
       properties:
@@ -2183,6 +2171,46 @@ components:
         nsd:
           $ref: "#/components/schemas/NetworkArtifactMeta"
   x-stackQL-resources:
+    sol_network_operations:
+      id: aws.tnb.sol_network_operations
+      name: sol_network_operations
+      title: sol_network_operations
+      methods:
+        cancel_sol_network_operation:
+          operation:
+            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_lcm_op_occs~1{ns_lcm_op_occ_id}~1cancel/post"
+          response:
+            openAPIDocKey: "202"
+        get_sol_network_operation:
+          operation:
+            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_lcm_op_occs~1{ns_lcm_op_occ_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_sol_network_operations:
+          operation:
+            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_lcm_op_occs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.networkOperations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/get_sol_network_operation"
+          - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/list_sol_network_operations"
+        insert: []
+        update: []
+        delete: []
     sol_function_packages:
       id: aws.tnb.sol_function_packages
       name: sol_function_packages
@@ -2303,6 +2331,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        instantiate_sol_network_instance:
+          operation:
+            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_instances~1{ns_instance_id}~1instantiate/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         terminate_sol_network_instance:
           operation:
             $ref: "#/paths/~1sol~1nslcm~1v1~1ns_instances~1{ns_instance_id}~1terminate/post"
@@ -2446,10 +2485,10 @@ components:
         insert: []
         update: []
         delete: []
-    sol_function_package_contents:
-      id: aws.tnb.sol_function_package_contents
-      name: sol_function_package_contents
-      title: sol_function_package_contents
+    sol_function_package_content:
+      id: aws.tnb.sol_function_package_content
+      name: sol_function_package_content
+      title: sol_function_package_content
       methods:
         get_sol_function_package_content:
           operation:
@@ -2470,11 +2509,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/sol_function_package_contents/methods/get_sol_function_package_content"
+          - $ref: "#/components/x-stackQL-resources/sol_function_package_content/methods/get_sol_function_package_content"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/sol_function_package_contents/methods/put_sol_function_package_content"
+          - $ref: "#/components/x-stackQL-resources/sol_function_package_content/methods/put_sol_function_package_content"
         delete: []
     sol_function_package_descriptors:
       id: aws.tnb.sol_function_package_descriptors
@@ -2493,45 +2532,10 @@ components:
         insert: []
         update: []
         delete: []
-    sol_network_operations:
-      id: aws.tnb.sol_network_operations
-      name: sol_network_operations
-      title: sol_network_operations
-      methods:
-        get_sol_network_operation:
-          operation:
-            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_lcm_op_occs~1{ns_lcm_op_occ_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_sol_network_operations:
-          operation:
-            $ref: "#/paths/~1sol~1nslcm~1v1~1ns_lcm_op_occs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.networkOperations
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextpage_opaque_marker
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/get_sol_network_operation"
-          - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/list_sol_network_operations"
-        insert: []
-        update: []
-        delete: []
-    sol_network_package_contents:
-      id: aws.tnb.sol_network_package_contents
-      name: sol_network_package_contents
-      title: sol_network_package_contents
+    sol_network_package_content:
+      id: aws.tnb.sol_network_package_content
+      name: sol_network_package_content
+      title: sol_network_package_content
       methods:
         get_sol_network_package_content:
           operation:
@@ -2552,11 +2556,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/sol_network_package_contents/methods/get_sol_network_package_content"
+          - $ref: "#/components/x-stackQL-resources/sol_network_package_content/methods/get_sol_network_package_content"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/sol_network_package_contents/methods/put_sol_network_package_content"
+          - $ref: "#/components/x-stackQL-resources/sol_network_package_content/methods/put_sol_network_package_content"
         delete: []
     sol_network_package_descriptors:
       id: aws.tnb.sol_network_package_descriptors
@@ -2591,7 +2595,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2602,7 +2605,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

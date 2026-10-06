@@ -722,10 +722,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExportStreamSessionFilesOutput'
       x-stackql-resource: stream_sessions
       x-stackql-method: export_stream_session_files
       x-stackql-verb: EXEC
@@ -990,7 +986,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartStreamSessionOutput'
-      x-stackql-resource: applications
+      x-stackql-resource: stream_sessions
       x-stackql-method: start_stream_session
       x-stackql-verb: EXEC
   /streamsessions:
@@ -1037,7 +1033,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListStreamSessionsByAccountOutput'
-      x-stackql-resource: stream_sessions_by_accounts
+      x-stackql-resource: stream_sessions
       x-stackql-method: list_stream_sessions_by_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
@@ -1148,10 +1144,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1175,10 +1167,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2051,8 +2039,6 @@ components:
       minLength: 0
       maxLength: 1024
       pattern: s3://.*(/|\.zip|\.ZIP)
-    ExportStreamSessionFilesOutput:
-      type: object
     GetApplicationOutput:
       type: object
       properties:
@@ -3071,8 +3057,6 @@ components:
         DisplayConfiguration:
           $ref: '#/components/schemas/DisplayConfiguration'
           description: The configuration for the stream session's virtual monitor.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3081,8 +3065,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateApplicationOutput:
       type: object
       properties:

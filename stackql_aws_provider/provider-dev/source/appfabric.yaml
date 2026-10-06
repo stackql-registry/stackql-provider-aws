@@ -441,10 +441,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppAuthorizationResponse'
       x-stackql-resource: app_authorizations
       x-stackql-method: delete_app_authorization
       x-stackql-verb: DELETE
@@ -532,10 +528,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAppBundleResponse'
       x-stackql-resource: app_bundles
       x-stackql-method: delete_app_bundle
       x-stackql-verb: DELETE
@@ -584,10 +576,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIngestionResponse'
       x-stackql-resource: ingestions
       x-stackql-method: delete_ingestion
       x-stackql-verb: DELETE
@@ -652,10 +640,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIngestionDestinationResponse'
       x-stackql-resource: ingestion_destinations
       x-stackql-method: delete_ingestion_destination
       x-stackql-verb: DELETE
@@ -787,10 +771,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -813,10 +793,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -842,11 +818,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartIngestionResponse'
-      x-stackql-resource: app_bundles
+      x-stackql-resource: ingestions
       x-stackql-method: start_ingestion
       x-stackql-verb: EXEC
   /useraccess/start:
@@ -901,11 +873,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopIngestionResponse'
-      x-stackql-resource: app_bundles
+      x-stackql-resource: ingestions
       x-stackql-method: stop_ingestion
       x-stackql-verb: EXEC
 components:
@@ -1485,14 +1453,6 @@ components:
       enum:
       - Active
       - Failed
-    DeleteAppAuthorizationResponse:
-      type: object
-    DeleteAppBundleResponse:
-      type: object
-    DeleteIngestionResponse:
-      type: object
-    DeleteIngestionDestinationResponse:
-      type: object
     GetAppAuthorizationResponse:
       type: object
       properties:
@@ -1646,8 +1606,6 @@ components:
         tags:
           $ref: '#/components/schemas/TagList'
           description: A map of the key-value pairs for the tag or tags assigned to the specified resource.
-    StartIngestionResponse:
-      type: object
     StartUserAccessTasksResponse:
       type: object
       properties:
@@ -1677,16 +1635,10 @@ components:
       required:
       - app
       - tenantId
-    StopIngestionResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAppAuthorizationResponse:
       type: object
       properties:

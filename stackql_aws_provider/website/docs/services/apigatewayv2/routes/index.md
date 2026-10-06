@@ -250,18 +250,18 @@ The following methods are available for this resource:
     <td>Deletes a route request parameter. Supported only for WebSocket APIs.</td>
 </tr>
 <tr>
-    <td><a href="#delete_route_settings"><CopyableCode code="delete_route_settings" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-route_key"><code>route_key</code></a>, <a href="#parameter-stage_name"><code>stage_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes the RouteSettings for a stage.</td>
-</tr>
-<tr>
     <td><a href="#delete_route"><CopyableCode code="delete_route" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-route_id"><code>route_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a Route.</td>
+</tr>
+<tr>
+    <td><a href="#delete_route_settings"><CopyableCode code="delete_route_settings" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-route_key"><code>route_key</code></a>, <a href="#parameter-stage_name"><code>stage_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the RouteSettings for a stage.</td>
 </tr>
 </tbody>
 </table>
@@ -563,8 +563,8 @@ target;
     defaultValue="delete_route_request_parameter"
     values={[
         { label: 'delete_route_request_parameter', value: 'delete_route_request_parameter' },
-        { label: 'delete_route_settings', value: 'delete_route_settings' },
-        { label: 'delete_route', value: 'delete_route' }
+        { label: 'delete_route', value: 'delete_route' },
+        { label: 'delete_route_settings', value: 'delete_route_settings' }
     ]}
 >
 <TabItem value="delete_route_request_parameter">
@@ -580,6 +580,18 @@ AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>
+<TabItem value="delete_route">
+
+Deletes a Route.
+
+```sql
+DELETE FROM aws.apigatewayv2.routes
+WHERE api_id = '{{ api_id }}' --required
+AND route_id = '{{ route_id }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_route_settings">
 
 Deletes the RouteSettings for a stage.
@@ -589,18 +601,6 @@ DELETE FROM aws.apigatewayv2.routes
 WHERE api_id = '{{ api_id }}' --required
 AND route_key = '{{ route_key }}' --required
 AND stage_name = '{{ stage_name }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_route">
-
-Deletes a Route.
-
-```sql
-DELETE FROM aws.apigatewayv2.routes
-WHERE api_id = '{{ api_id }}' --required
-AND route_id = '{{ route_id }}' --required
 AND region = '{{ region }}' --required
 ;
 ```

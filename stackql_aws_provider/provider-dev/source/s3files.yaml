@@ -393,10 +393,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutFileSystemPolicyResponse'
       x-stackql-resource: file_system_policies
       x-stackql-method: put_file_system_policy
       x-stackql-verb: REPLACE
@@ -521,10 +517,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutSynchronizationConfigurationResponse'
       x-stackql-resource: synchronization_configurations
       x-stackql-method: put_synchronization_configuration
       x-stackql-verb: REPLACE
@@ -1408,8 +1400,6 @@ components:
         nextToken:
           $ref: '#/components/schemas/String'
           description: A pagination token to use in a subsequent request if more results are available.
-    PutFileSystemPolicyResponse:
-      type: object
     PutSynchronizationConfigurationRequestImportDataRulesList:
       type: array
       items:
@@ -1418,8 +1408,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ExpirationDataRule'
-    PutSynchronizationConfigurationResponse:
-      type: object
     TagKeys:
       type: array
       items:

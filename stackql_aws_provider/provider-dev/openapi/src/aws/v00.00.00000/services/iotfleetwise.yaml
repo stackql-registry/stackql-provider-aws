@@ -51,10 +51,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateVehicleFleetResponse"
   /BatchCreateVehicle:
     post:
       operationId: BatchCreateVehicle
@@ -762,10 +758,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateVehicleFleetResponse"
   /GetCampaign:
     post:
       operationId: GetCampaign
@@ -1805,10 +1797,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutLoggingOptionsResponse"
   /RegisterAccount:
     post:
       operationId: RegisterAccount
@@ -1874,10 +1862,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1911,10 +1895,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateCampaign:
     post:
       operationId: UpdateCampaign
@@ -2301,8 +2281,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: "[a-zA-Z0-9:_-]+"
-    AssociateVehicleFleetResponse:
-      type: object
     createVehicleRequestItems:
       type: array
       items:
@@ -3888,8 +3866,6 @@ components:
       required:
         - vehicleName
         - arn
-    DisassociateVehicleFleetResponse:
-      type: object
     GetCampaignResponse:
       type: object
       properties:
@@ -4848,8 +4824,6 @@ components:
       required:
         - encryptionStatus
         - encryptionType
-    PutLoggingOptionsResponse:
-      type: object
     TimestreamResources:
       description: The registered Amazon Timestream resources that Amazon Web Services IoT FleetWise edge agent software can transfer your vehicle data to.
       type: object
@@ -4894,14 +4868,10 @@ components:
         - iamResources
         - creationTime
         - lastModificationTime
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateCampaignAction:
       type: string
       enum:
@@ -5010,7 +4980,6 @@ components:
             $ref: "#/paths/~1AssociateVehicleFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5049,7 +5018,6 @@ components:
             $ref: "#/paths/~1DisassociateVehicleFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5091,6 +5059,33 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_fleets_for_vehicle:
+          operation:
+            $ref: "#/paths/~1ListFleetsForVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFleetsForVehicleOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "fleets" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_fleet:
           operation:
             $ref: "#/paths/~1UpdateFleet/post"
@@ -5107,6 +5102,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/get_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/list_fleets_for_vehicle"
           - $ref: "#/components/x-stackQL-resources/fleets/methods/list_fleets"
         insert:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/create_fleet"
@@ -5115,6 +5111,120 @@ components:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/update_fleet"
         delete:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/delete_fleet"
+    vehicles:
+      id: aws.iotfleetwise.vehicles
+      name: vehicles
+      title: vehicles
+      methods:
+        batch_create_vehicle:
+          operation:
+            $ref: "#/paths/~1BatchCreateVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_vehicle:
+          operation:
+            $ref: "#/paths/~1BatchUpdateVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_vehicle:
+          operation:
+            $ref: "#/paths/~1CreateVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_vehicle:
+          operation:
+            $ref: "#/paths/~1DeleteVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_vehicle:
+          operation:
+            $ref: "#/paths/~1GetVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_vehicles:
+          operation:
+            $ref: "#/paths/~1ListVehicles/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.vehicleSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_vehicle:
+          operation:
+            $ref: "#/paths/~1UpdateVehicle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/vehicles/methods/get_vehicle"
+          - $ref: "#/components/x-stackQL-resources/vehicles/methods/list_vehicles"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/vehicles/methods/create_vehicle"
+        update:
+          - $ref: "#/components/x-stackQL-resources/vehicles/methods/update_vehicle"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/vehicles/methods/delete_vehicle"
     campaigns:
       id: aws.iotfleetwise.campaigns
       name: campaigns
@@ -5237,6 +5347,19 @@ components:
         get_decoder_manifest:
           operation:
             $ref: "#/paths/~1GetDecoderManifest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_decoder_manifest:
+          operation:
+            $ref: "#/paths/~1ImportDecoderManifest/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5423,6 +5546,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        import_signal_catalog:
+          operation:
+            $ref: "#/paths/~1ImportSignalCatalog/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_signal_catalogs:
           operation:
             $ref: "#/paths/~1ListSignalCatalogs/post"
@@ -5555,94 +5691,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/state_templates/methods/update_state_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/state_templates/methods/delete_state_template"
-    vehicles:
-      id: aws.iotfleetwise.vehicles
-      name: vehicles
-      title: vehicles
-      methods:
-        create_vehicle:
-          operation:
-            $ref: "#/paths/~1CreateVehicle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_vehicle:
-          operation:
-            $ref: "#/paths/~1DeleteVehicle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_vehicle:
-          operation:
-            $ref: "#/paths/~1GetVehicle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_vehicles:
-          operation:
-            $ref: "#/paths/~1ListVehicles/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.vehicleSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_vehicle:
-          operation:
-            $ref: "#/paths/~1UpdateVehicle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/vehicles/methods/get_vehicle"
-          - $ref: "#/components/x-stackQL-resources/vehicles/methods/list_vehicles"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/vehicles/methods/create_vehicle"
-        update:
-          - $ref: "#/components/x-stackQL-resources/vehicles/methods/update_vehicle"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/vehicles/methods/delete_vehicle"
     encryption_configurations:
       id: aws.iotfleetwise.encryption_configurations
       name: encryption_configurations
@@ -5706,7 +5754,6 @@ components:
             $ref: "#/paths/~1PutLoggingOptions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5722,10 +5769,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/logging_options/methods/put_logging_options"
         delete: []
-    register_account_status:
-      id: aws.iotfleetwise.register_account_status
-      name: register_account_status
-      title: register_account_status
+    register_account_statuses:
+      id: aws.iotfleetwise.register_account_statuses
+      name: register_account_statuses
+      title: register_account_statuses
       methods:
         get_register_account_status:
           operation:
@@ -5742,14 +5789,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/register_account_status/methods/get_register_account_status"
+          - $ref: "#/components/x-stackQL-resources/register_account_statuses/methods/get_register_account_status"
         insert: []
         update: []
         delete: []
-    vehicle_status:
-      id: aws.iotfleetwise.vehicle_status
-      name: vehicle_status
-      title: vehicle_status
+    vehicle_statuses:
+      id: aws.iotfleetwise.vehicle_statuses
+      name: vehicle_statuses
+      title: vehicle_statuses
       methods:
         get_vehicle_status:
           operation:
@@ -5774,7 +5821,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/vehicle_status/methods/get_vehicle_status"
+          - $ref: "#/components/x-stackQL-resources/vehicle_statuses/methods/get_vehicle_status"
         insert: []
         update: []
         delete: []
@@ -5839,44 +5886,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/decoder_manifest_signals/methods/list_decoder_manifest_signals"
-        insert: []
-        update: []
-        delete: []
-    fleets_for_vehicles:
-      id: aws.iotfleetwise.fleets_for_vehicles
-      name: fleets_for_vehicles
-      title: fleets_for_vehicles
-      methods:
-        list_fleets_for_vehicle:
-          operation:
-            $ref: "#/paths/~1ListFleetsForVehicle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListFleetsForVehicleOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "fleets" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/fleets_for_vehicles/methods/list_fleets_for_vehicle"
         insert: []
         update: []
         delete: []
@@ -5967,7 +5976,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5980,7 +5988,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

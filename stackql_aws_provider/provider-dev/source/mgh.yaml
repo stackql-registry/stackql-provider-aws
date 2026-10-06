@@ -64,10 +64,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateCreatedArtifactResult'
       x-stackql-resource: created_artifacts
       x-stackql-method: associate_created_artifact
       x-stackql-verb: UPDATE
@@ -112,10 +108,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateDiscoveredResourceResult'
       x-stackql-resource: discovered_resources
       x-stackql-method: associate_discovered_resource
       x-stackql-verb: UPDATE
@@ -166,10 +158,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateSourceResourceResult'
       x-stackql-resource: source_resources
       x-stackql-method: associate_source_resource
       x-stackql-verb: UPDATE
@@ -209,10 +197,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateProgressUpdateStreamResult'
       x-stackql-resource: progress_update_streams
       x-stackql-method: create_progress_update_stream
       x-stackql-verb: INSERT
@@ -257,10 +241,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProgressUpdateStreamResult'
       x-stackql-resource: progress_update_streams
       x-stackql-method: delete_progress_update_stream
       x-stackql-verb: DELETE
@@ -388,10 +368,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateCreatedArtifactResult'
       x-stackql-resource: created_artifacts
       x-stackql-method: disassociate_created_artifact
       x-stackql-verb: UPDATE
@@ -436,10 +412,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateDiscoveredResourceResult'
       x-stackql-resource: discovered_resources
       x-stackql-method: disassociate_discovered_resource
       x-stackql-verb: UPDATE
@@ -489,10 +461,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSourceResourceResult'
       x-stackql-resource: source_resources
       x-stackql-method: disassociate_source_resource
       x-stackql-verb: UPDATE
@@ -535,10 +503,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImportMigrationTaskResult'
       x-stackql-resource: migration_tasks
       x-stackql-method: import_migration_task
       x-stackql-verb: EXEC
@@ -942,11 +906,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyApplicationStateResult'
-      x-stackql-resource: application_state
+      x-stackql-resource: application_states
       x-stackql-method: notify_application_state
       x-stackql-verb: EXEC
   /NotifyMigrationTaskState:
@@ -1003,10 +963,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NotifyMigrationTaskStateResult'
       x-stackql-resource: migration_tasks
       x-stackql-method: notify_migration_task_state
       x-stackql-verb: EXEC
@@ -1068,10 +1024,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourceAttributesResult'
       x-stackql-resource: migration_tasks
       x-stackql-method: put_resource_attributes
       x-stackql-verb: REPLACE
@@ -1156,8 +1108,6 @@ components:
       pattern: ^.{0,500}$
     DryRun:
       type: boolean
-    AssociateCreatedArtifactResult:
-      type: object
     DiscoveredResource:
       description: Object representing the on-premises resource being migrated.
       type: object
@@ -1181,8 +1131,6 @@ components:
       minLength: 0
       maxLength: 500
       pattern: ^.{0,500}$
-    AssociateDiscoveredResourceResult:
-      type: object
     SourceResource:
       description: A source resource can be a source server, a migration wave, an application, or any other resource that
         you track.
@@ -1215,12 +1163,6 @@ components:
       minLength: 0
       maxLength: 2500
       pattern: ^.{0,2500}$
-    AssociateSourceResourceResult:
-      type: object
-    CreateProgressUpdateStreamResult:
-      type: object
-    DeleteProgressUpdateStreamResult:
-      type: object
     ApplicationId:
       type: string
       minLength: 1
@@ -1334,14 +1276,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^.{1,256}$
-    DisassociateCreatedArtifactResult:
-      type: object
-    DisassociateDiscoveredResourceResult:
-      type: object
-    DisassociateSourceResourceResult:
-      type: object
-    ImportMigrationTaskResult:
-      type: object
     ApplicationIds:
       type: array
       items:
@@ -1536,16 +1470,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SourceResource'
-    NotifyApplicationStateResult:
-      type: object
     NextUpdateSeconds:
       type: integer
       minimum: 0
-    NotifyMigrationTaskStateResult:
-      type: object
     ResourceAttributeList:
       type: array
       items:
         $ref: '#/components/schemas/ResourceAttribute'
-    PutResourceAttributesResult:
-      type: object

@@ -72,7 +72,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="signing_protocol" /></td>
     <td><code>string</code></td>
-    <td>The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid value is sigv4.</td>
+    <td>The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid values are sigv4 and sigv4a.</td>
 </tr>
 </tbody>
 </table>

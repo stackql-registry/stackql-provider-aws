@@ -106,7 +106,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: heartbeat
+      x-stackql-resource: heartbeats
       x-stackql-method: send_heartbeat
       x-stackql-verb: EXEC
 components:

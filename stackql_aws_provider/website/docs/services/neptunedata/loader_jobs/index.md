@@ -86,6 +86,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-limit"><code>limit</code></a>, <a href="#parameter-includeQueuedLoads"><code>includeQueuedLoads</code></a></td>
     <td>Retrieves a list of the loadIds for all active loader jobs. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:ListLoaderJobs IAM action in that cluster..</td>
 </tr>
+<tr>
+    <td><a href="#cancel_loader_job"><CopyableCode code="cancel_loader_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-load_id"><code>load_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels a specified load job. This is an HTTP DELETE request. See Neptune Loader Get-Status API for more information. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelLoaderJob IAM action in that cluster..</td>
+</tr>
+<tr>
+    <td><a href="#start_loader_job"><CopyableCode code="start_loader_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-source"><code>source</code></a>, <a href="#parameter-format"><code>format</code></a>, <a href="#parameter-s3BucketRegion"><code>s3BucketRegion</code></a>, <a href="#parameter-iamRoleArn"><code>iamRoleArn</code></a></td>
+    <td></td>
+    <td>Starts a Neptune bulk loader job to load data from an Amazon S3 bucket into a Neptune DB instance. See Using the Amazon Neptune Bulk Loader to Ingest Data. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartLoaderJob IAM action in that cluster.</td>
+</tr>
 </tbody>
 </table>
 
@@ -102,6 +116,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-load_id">
+    <td><CopyableCode code="load_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the load job to be deleted.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -140,6 +159,55 @@ FROM aws.neptunedata.loader_jobs
 WHERE region = '{{ region }}' -- required
 AND limit = '{{ limit }}'
 AND includeQueuedLoads = '{{ includeQueuedLoads }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_loader_job"
+    values={[
+        { label: 'cancel_loader_job', value: 'cancel_loader_job' },
+        { label: 'start_loader_job', value: 'start_loader_job' }
+    ]}
+>
+<TabItem value="cancel_loader_job">
+
+Cancels a specified load job. This is an HTTP DELETE request. See Neptune Loader Get-Status API for more information. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelLoaderJob IAM action in that cluster..
+
+```sql
+EXEC aws.neptunedata.loader_jobs.cancel_loader_job 
+@load_id='{{ load_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_loader_job">
+
+Starts a Neptune bulk loader job to load data from an Amazon S3 bucket into a Neptune DB instance. See Using the Amazon Neptune Bulk Loader to Ingest Data. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartLoaderJob IAM action in that cluster.
+
+```sql
+EXEC aws.neptunedata.loader_jobs.start_loader_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"source": "{{ source }}", 
+"format": "{{ format }}", 
+"s3BucketRegion": "{{ s3BucketRegion }}", 
+"iamRoleArn": "{{ iamRoleArn }}", 
+"mode": "{{ mode }}", 
+"failOnError": {{ failOnError }}, 
+"parallelism": "{{ parallelism }}", 
+"parserConfiguration": "{{ parserConfiguration }}", 
+"updateSingleCardinalityProperties": {{ updateSingleCardinalityProperties }}, 
+"queueRequest": {{ queueRequest }}, 
+"dependencies": "{{ dependencies }}", 
+"userProvidedEdgeIds": {{ userProvidedEdgeIds }}, 
+"edgeOnlyLoad": {{ edgeOnlyLoad }}
+}'
 ;
 ```
 </TabItem>

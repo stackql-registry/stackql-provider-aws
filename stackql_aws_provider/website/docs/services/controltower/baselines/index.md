@@ -128,6 +128,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns a summary list of all available baselines. For usage examples, see the Amazon Web Services Control Tower User Guide .</td>
 </tr>
+<tr>
+    <td><a href="#disable_baseline"><CopyableCode code="disable_baseline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-enabledBaselineIdentifier"><code>enabledBaselineIdentifier</code></a></td>
+    <td></td>
+    <td>Disable an EnabledBaseline resource on the specified Target. This API starts an asynchronous operation to remove all resources deployed as part of the baseline enablement. The resource will vary depending on the enabled baseline. For usage examples, see the Amazon Web Services Control Tower User Guide .</td>
+</tr>
+<tr>
+    <td><a href="#enable_baseline"><CopyableCode code="enable_baseline" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-baselineVersion"><code>baselineVersion</code></a>, <a href="#parameter-baselineIdentifier"><code>baselineIdentifier</code></a>, <a href="#parameter-targetIdentifier"><code>targetIdentifier</code></a></td>
+    <td></td>
+    <td>Enable (apply) a Baseline to a Target. This API starts an asynchronous operation to deploy resources specified by the Baseline to the specified Target. For usage examples, see the Amazon Web Services Control Tower User Guide .</td>
+</tr>
 </tbody>
 </table>
 
@@ -186,6 +200,50 @@ arn,
 description
 FROM aws.controltower.baselines
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_baseline"
+    values={[
+        { label: 'disable_baseline', value: 'disable_baseline' },
+        { label: 'enable_baseline', value: 'enable_baseline' }
+    ]}
+>
+<TabItem value="disable_baseline">
+
+Disable an EnabledBaseline resource on the specified Target. This API starts an asynchronous operation to remove all resources deployed as part of the baseline enablement. The resource will vary depending on the enabled baseline. For usage examples, see the Amazon Web Services Control Tower User Guide .
+
+```sql
+EXEC aws.controltower.baselines.disable_baseline 
+@region='{{ region }}' --required 
+@@json=
+'{
+"enabledBaselineIdentifier": "{{ enabledBaselineIdentifier }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="enable_baseline">
+
+Enable (apply) a Baseline to a Target. This API starts an asynchronous operation to deploy resources specified by the Baseline to the specified Target. For usage examples, see the Amazon Web Services Control Tower User Guide .
+
+```sql
+EXEC aws.controltower.baselines.enable_baseline 
+@region='{{ region }}' --required 
+@@json=
+'{
+"baselineVersion": "{{ baselineVersion }}", 
+"parameters": "{{ parameters }}", 
+"baselineIdentifier": "{{ baselineIdentifier }}", 
+"targetIdentifier": "{{ targetIdentifier }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

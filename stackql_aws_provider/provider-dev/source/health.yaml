@@ -65,7 +65,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAffectedAccountsForOrganizationOutputDisplay'
-      x-stackql-resource: affected_accounts_for_organizations
+      x-stackql-resource: affected_accounts
       x-stackql-method: describe_affected_accounts_for_organization
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeAffectedAccountsForOrganizationOutputDisplay
@@ -191,7 +191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAffectedEntitiesForOrganizationResponse'
-      x-stackql-resource: affected_entities_for_organizations
+      x-stackql-resource: affected_entities
       x-stackql-method: describe_affected_entities_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
@@ -270,7 +270,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEntityAggregatesForOrganizationResponse'
-      x-stackql-resource: entity_aggregates_for_organizations
+      x-stackql-resource: entity_aggregates
       x-stackql-method: describe_entity_aggregates_for_organization
       x-stackql-verb: SELECT
   /DescribeEventAggregates:
@@ -425,7 +425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEventDetailsForOrganizationResponse'
-      x-stackql-resource: event_details_for_organizations
+      x-stackql-resource: event_details
       x-stackql-method: describe_event_details_for_organization
       x-stackql-verb: SELECT
   /DescribeEventTypes:
@@ -597,7 +597,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEventsForOrganizationResponse'
-      x-stackql-resource: events_for_organizations
+      x-stackql-resource: events
       x-stackql-method: describe_events_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
@@ -626,7 +626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeHealthServiceStatusForOrganizationResponse'
-      x-stackql-resource: health_service_status_for_organizations
+      x-stackql-resource: health_service_statuses
       x-stackql-method: describe_health_service_status_for_organization
       x-stackql-verb: SELECT
   /DisableHealthServiceAccessForOrganization:
@@ -653,7 +653,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: health_service_access_for_organization
+      x-stackql-resource: health_service_accesses
       x-stackql-method: disable_health_service_access_for_organization
       x-stackql-verb: EXEC
   /EnableHealthServiceAccessForOrganization:
@@ -681,7 +681,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: health_service_access_for_organization
+      x-stackql-resource: health_service_accesses
       x-stackql-method: enable_health_service_access_for_organization
       x-stackql-verb: EXEC
 components:

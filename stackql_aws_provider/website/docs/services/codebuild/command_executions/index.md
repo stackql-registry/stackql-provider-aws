@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="batch_get_command_executions"
     values={[
-        { label: 'batch_get_command_executions', value: 'batch_get_command_executions' }
+        { label: 'batch_get_command_executions', value: 'batch_get_command_executions' },
+        { label: 'list_command_executions_for_sandbox', value: 'list_command_executions_for_sandbox' }
     ]}
 >
 <TabItem value="batch_get_command_executions">
@@ -58,6 +59,85 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="command_executions_not_found" /></td>
     <td><code>array</code></td>
     <td>The IDs of command executions for which information could not be found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_command_executions_for_sandbox">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the command execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="command" /></td>
+    <td><code>string</code></td>
+    <td>The command that needs to be executed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="end_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>When the command execution process ended, expressed in Unix time format.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="exit_code" /></td>
+    <td><code>string</code></td>
+    <td>The exit code to return upon completion.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="logs" /></td>
+    <td><code>object</code></td>
+    <td>Information about build logs in CloudWatch Logs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sandbox_arn" /></td>
+    <td><code>string</code></td>
+    <td>A sandboxArn.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sandbox_id" /></td>
+    <td><code>string</code></td>
+    <td>A sandboxId.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="standard_err_content" /></td>
+    <td><code>string</code></td>
+    <td>The text written by the command to stderr.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="standard_output_content" /></td>
+    <td><code>string</code></td>
+    <td>The text written by the command to stdout.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="start_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>When the command execution process started, expressed in Unix time format.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the command execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="submit_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>When the command execution process was initially submitted, expressed in Unix time format.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type_" /></td>
+    <td><code>string</code></td>
+    <td>The command type. (SHELL)</td>
 </tr>
 </tbody>
 </table>
@@ -85,6 +165,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about the command executions.</td>
+</tr>
+<tr>
+    <td><a href="#list_command_executions_for_sandbox"><CopyableCode code="list_command_executions_for_sandbox" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of command executions for a sandbox.</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +202,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="batch_get_command_executions"
     values={[
-        { label: 'batch_get_command_executions', value: 'batch_get_command_executions' }
+        { label: 'batch_get_command_executions', value: 'batch_get_command_executions' },
+        { label: 'list_command_executions_for_sandbox', value: 'list_command_executions_for_sandbox' }
     ]}
 >
 <TabItem value="batch_get_command_executions">
@@ -126,6 +214,30 @@ Gets information about the command executions.
 SELECT
 command_executions,
 command_executions_not_found
+FROM aws.codebuild.command_executions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_command_executions_for_sandbox">
+
+Gets a list of command executions for a sandbox.
+
+```sql
+SELECT
+id,
+command,
+end_time,
+exit_code,
+logs,
+sandbox_arn,
+sandbox_id,
+standard_err_content,
+standard_output_content,
+start_time,
+status,
+submit_time,
+type_
 FROM aws.codebuild.command_executions
 WHERE region = '{{ region }}' -- required
 ;

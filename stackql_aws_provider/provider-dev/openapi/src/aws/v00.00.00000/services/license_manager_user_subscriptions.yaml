@@ -303,10 +303,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource.
@@ -326,10 +322,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /user/ListUserAssociations:
     post:
       operationId: ListUserAssociations
@@ -414,9 +406,7 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Username
                 - IdentityProvider
-                - Product
       responses:
         "200":
           description: Success
@@ -1013,6 +1003,9 @@ components:
         SubscriptionEndDate:
           $ref: "#/components/schemas/String"
           description: The end date of a subscription.
+        LicenseExpirationDate:
+          $ref: "#/components/schemas/String"
+          description: The expiration date of the license associated with this subscription, in ISO 8601 UTC format (for example, 2025-03-15T00:00:00Z). This field applies only to subscriptions that use license server endpoints, such as Remote Desktop Services (RDS) Subscriber Access License (SAL). It returns null for products that don't use license-based subscriptions.
       required:
         - Username
         - Product
@@ -1065,14 +1058,10 @@ components:
           description: Metadata that describes the start product subscription operation.
       required:
         - ProductUserSummary
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateSettings:
       description: Updates the registered identity provider’s product related configuration settings such as the subnets to provision VPC endpoints.
       type: object
@@ -1309,6 +1298,28 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_product_subscription:
+          operation:
+            $ref: "#/paths/~1user~1StartProductSubscription/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_product_subscription:
+          operation:
+            $ref: "#/paths/~1user~1StopProductSubscription/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/product_subscriptions/methods/list_product_subscriptions"
@@ -1331,7 +1342,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1342,7 +1352,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -44,20 +44,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CloneReceiptRuleSetOutputDisplay"
     post:
       operationId: POST_CloneReceiptRuleSet
       description: Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set. For information about setting up rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CloneReceiptRuleSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -86,20 +78,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetOutputDisplay"
     post:
       operationId: POST_CreateConfigurationSet
       description: Creates a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -134,20 +118,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay"
     post:
       operationId: POST_CreateConfigurationSetEventDestination
       description: Creates a configuration set event destination. When you create or update an event destination, you must provide one, and only one, destination. The destination can be CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). An event destination is the Amazon Web Services service to which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -181,20 +157,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay"
     post:
       operationId: POST_CreateConfigurationSetTrackingOptions
       description: Creates an association between a configuration set and a custom domain for open and click event tracking. By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -287,20 +255,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptFilterOutputDisplay"
     post:
       operationId: POST_CreateReceiptFilter
       description: Creates a new IP address filter. For information about setting up IP address filters, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptFilterOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -341,20 +301,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptRuleOutputDisplay"
     post:
       operationId: POST_CreateReceiptRule
       description: Creates a receipt rule. For information about setting up receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptRuleOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -383,20 +335,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptRuleSetOutputDisplay"
     post:
       operationId: POST_CreateReceiptRuleSet
       description: Creates an empty receipt rule set. For information about setting up receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateReceiptRuleSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -425,20 +369,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateTemplateOutputDisplay"
     post:
       operationId: POST_CreateTemplate
       description: Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single operation. For more information, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CreateTemplateOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -467,20 +403,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetOutputDisplay"
     post:
       operationId: POST_DeleteConfigurationSet
       description: Deletes a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -515,20 +443,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay"
     post:
       operationId: POST_DeleteConfigurationSetEventDestination
       description: Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -557,20 +477,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay"
     post:
       operationId: POST_DeleteConfigurationSetTrackingOptions
       description: Deletes an association between a configuration set and a custom domain for open and click event tracking. By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the Amazon SES Developer Guide. Deleting this kind of association results in emails sent using the specified configuration set to capture open and click events using the standard, Amazon SES-operated domains.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -633,20 +545,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityOutputDisplay"
     post:
       operationId: POST_DeleteIdentity
       description: Deletes the specified identity (an email address or a domain) from the list of verified identities. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -681,20 +585,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityPolicyOutputDisplay"
     post:
       operationId: POST_DeleteIdentityPolicy
       description: Deletes the specified sending authorization policy for the given identity (an email address or a domain). This operation returns successfully even if a policy with the specified name does not exist. This operation is for the identity owner only. If you have not verified the identity, it returns an error. Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteIdentityPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -723,20 +619,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptFilterOutputDisplay"
     post:
       operationId: POST_DeleteReceiptFilter
       description: Deletes the specified IP address filter. For information about managing IP address filters, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptFilterOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -771,20 +659,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptRuleOutputDisplay"
     post:
       operationId: POST_DeleteReceiptRule
       description: Deletes the specified receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptRuleOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -813,20 +693,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptRuleSetOutputDisplay"
     post:
       operationId: POST_DeleteReceiptRuleSet
       description: Deletes the specified receipt rule set and all of the receipt rules it contains. The currently active rule set cannot be deleted. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteReceiptRuleSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -855,20 +727,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTemplateOutputDisplay"
     post:
       operationId: POST_DeleteTemplate
       description: Deletes an email template. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteTemplateOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1853,20 +1717,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay"
     post:
       operationId: POST_PutConfigurationSetDeliveryOptions
       description: Adds or updates the delivery options for a configuration set.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1907,20 +1763,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutIdentityPolicyOutputDisplay"
     post:
       operationId: POST_PutIdentityPolicy
       description: Adds or updates a sending authorization policy for the specified identity (an email address or a domain). This operation is for the identity owner only. If you have not verified the identity, it returns an error. Sending authorization is a feature that enables an identity owner to authorize other senders to use its identities. For information about using sending authorization, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutIdentityPolicyOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1955,20 +1803,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ReorderReceiptRuleSetOutputDisplay"
     post:
       operationId: POST_ReorderReceiptRuleSet
       description: Reorders the receipt rules within a receipt rule set. All of the rules in the rule set must be represented in this request. That is, it is error if the reorder request doesn't explicitly position all of the rules. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ReorderReceiptRuleSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2501,20 +2341,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetActiveReceiptRuleSetOutputDisplay"
     post:
       operationId: POST_SetActiveReceiptRuleSet
       description: Sets the specified receipt rule set as the active receipt rule set. To disable your email-receiving through Amazon SES completely, you can call this operation with RuleSetName set to null. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetActiveReceiptRuleSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2549,20 +2381,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityDkimEnabledOutputDisplay"
     post:
       operationId: POST_SetIdentityDkimEnabled
       description: Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to sign all email that it sends from addresses on that domain. If Easy DKIM signing is enabled for an email address, then Amazon SES uses DKIM to sign all email it sends from that address. For email addresses (for example, user@example.com), you can only enable DKIM signing if the corresponding domain (in this case, example.com) has been set up to use Easy DKIM. You can enable DKIM signing for an identity at any time after you start the verification process for the identity, even if the verification process isn't complete. You can execute this operation no more than once per second. For more information about Easy DKIM signing, go to the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityDkimEnabledOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2597,20 +2421,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay"
     post:
       operationId: POST_SetIdentityFeedbackForwardingEnabled
       description: Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints. Feedback forwarding does not apply to delivery notifications. Delivery notifications are only available through Amazon SNS. You can execute this operation no more than once per second. For more information about using notifications with Amazon SES, see the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2651,20 +2467,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay"
     post:
       operationId: POST_SetIdentityHeadersInNotificationsEnabled
       description: Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type. You can execute this operation no more than once per second. For more information about using notifications with Amazon SES, see the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2705,20 +2513,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityMailFromDomainOutputDisplay"
     post:
       operationId: POST_SetIdentityMailFromDomain
       description: Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain). To send emails using the specified MAIL FROM domain, you must add an MX record to your MAIL FROM domain's DNS settings. To ensure that your emails pass Sender Policy Framework (SPF) checks, you must also add or update an SPF record. For more information, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityMailFromDomainOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2759,20 +2559,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityNotificationTopicOutputDisplay"
     post:
       operationId: POST_SetIdentityNotificationTopic
       description: Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use this operation, you specify a verified identity, such as an email address or domain. When you send an email that uses the chosen identity in the Source field, Amazon SES sends notifications to the topic you specified. You can send bounce, complaint, or delivery notifications (or any combination of the three) to the Amazon SNS topic that you specify. You can execute this operation no more than once per second. For more information about feedback notification, see the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetIdentityNotificationTopicOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2813,20 +2605,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetReceiptRulePositionOutputDisplay"
     post:
       operationId: POST_SetReceiptRulePosition
       description: Sets the position of the specified receipt rule in the receipt rule set. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetReceiptRulePositionOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2943,20 +2727,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay"
     post:
       operationId: POST_UpdateConfigurationSetEventDestination
       description: Updates the event destination of a configuration set. Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see Monitoring Your Amazon SES Sending Activity in the Amazon SES Developer Guide. When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3070,20 +2846,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay"
     post:
       operationId: POST_UpdateConfigurationSetTrackingOptions
       description: Modifies an association between a configuration set and a custom domain for open and click event tracking. By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using custom domains, see the Amazon SES Developer Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3182,20 +2950,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateReceiptRuleOutputDisplay"
     post:
       operationId: POST_UpdateReceiptRule
       description: Updates a receipt rule. For information about managing receipt rules, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateReceiptRuleOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3223,20 +2983,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateTemplateOutputDisplay"
     post:
       operationId: POST_UpdateTemplate
       description: Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single operation. For more information, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/UpdateTemplateOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3383,20 +3135,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/VerifyEmailIdentityOutputDisplay"
     post:
       operationId: POST_VerifyEmailIdentity
       description: Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address. You can execute this operation no more than once per second.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/VerifyEmailIdentityOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3450,16 +3194,6 @@ components:
   schemas:
     ReceiptRuleSetName:
       type: string
-    CloneReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    CloneReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CloneReceiptRuleSetResponseDisplay"
     CloneReceiptRuleSetRequest:
       description: Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -3484,16 +3218,6 @@ components:
         - Name
     ConfigurationSetName:
       type: string
-    CreateConfigurationSetResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateConfigurationSetResponseDisplay"
     CreateConfigurationSetRequest:
       description: Represents a request to create a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide.
       type: object
@@ -3611,16 +3335,6 @@ components:
           description: The ARN of the Amazon SNS topic for email sending events. You can find the ARN of a topic by using the ListTopics Amazon SNS operation. For more information about Amazon SNS topics, see the Amazon SNS Developer Guide.
       required:
         - TopicARN
-    CreateConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateConfigurationSetEventDestinationResponseDisplay"
     CreateConfigurationSetEventDestinationRequest:
       description: Represents a request to create a configuration set event destination. A configuration set event destination, which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an Amazon Web Services service in which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the Amazon SES Developer Guide.
       type: object
@@ -3643,16 +3357,6 @@ components:
           description: The custom subdomain that is used to redirect email recipients to the Amazon SES event tracking domain.
     CustomRedirectDomain:
       type: string
-    CreateConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    CreateConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsResponseDisplay"
     CreateConfigurationSetTrackingOptionsRequest:
       description: Represents a request to create an open and click tracking option object in a configuration set.
       type: object
@@ -3741,16 +3445,6 @@ components:
         - Allow
     Cidr:
       type: string
-    CreateReceiptFilterResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptFilterOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateReceiptFilterResponseDisplay"
     CreateReceiptFilterRequest:
       description: Represents a request to create a new IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -3988,16 +3682,6 @@ components:
     ConnectInstanceArn:
       type: string
       pattern: arn:(aws|aws-us-gov):connect:[a-z]{2}-[a-z]+-[0-9-]{1}:[0-9]{1,20}:instance/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}
-    CreateReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateReceiptRuleResponseDisplay"
     CreateReceiptRuleRequest:
       description: Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4014,16 +3698,6 @@ components:
       required:
         - RuleSetName
         - Rule
-    CreateReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    CreateReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateReceiptRuleSetResponseDisplay"
     CreateReceiptRuleSetRequest:
       description: Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4057,16 +3731,6 @@ components:
       type: string
     HtmlPart:
       type: string
-    CreateTemplateResponseDisplay:
-      type: object
-      properties: {}
-    CreateTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CreateTemplateResponseDisplay"
     CreateTemplateRequest:
       description: Represents a request to create an email template. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4076,16 +3740,6 @@ components:
           description: The content of the email, composed of a subject line and either an HTML part or a text-only part.
       required:
         - Template
-    DeleteConfigurationSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteConfigurationSetResponseDisplay"
     DeleteConfigurationSetRequest:
       description: Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide.
       type: object
@@ -4095,16 +3749,6 @@ components:
           description: The name of the configuration set to delete.
       required:
         - ConfigurationSetName
-    DeleteConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationResponseDisplay"
     DeleteConfigurationSetEventDestinationRequest:
       description: Represents a request to delete a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide.
       type: object
@@ -4118,16 +3762,6 @@ components:
       required:
         - ConfigurationSetName
         - EventDestinationName
-    DeleteConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    DeleteConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsResponseDisplay"
     DeleteConfigurationSetTrackingOptionsRequest:
       description: Represents a request to delete open and click tracking options in a configuration set.
       type: object
@@ -4148,16 +3782,6 @@ components:
         - TemplateName
     Identity:
       type: string
-    DeleteIdentityResponseDisplay:
-      type: object
-      properties: {}
-    DeleteIdentityOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteIdentityResponseDisplay"
     DeleteIdentityRequest:
       description: Represents a request to delete one of your Amazon SES identities (an email address or domain).
       type: object
@@ -4171,16 +3795,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteIdentityPolicyResponseDisplay:
-      type: object
-      properties: {}
-    DeleteIdentityPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteIdentityPolicyResponseDisplay"
     DeleteIdentityPolicyRequest:
       description: Represents a request to delete a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the Amazon SES Developer Guide.
       type: object
@@ -4194,16 +3808,6 @@ components:
       required:
         - Identity
         - PolicyName
-    DeleteReceiptFilterResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptFilterOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteReceiptFilterResponseDisplay"
     DeleteReceiptFilterRequest:
       description: Represents a request to delete an IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4213,16 +3817,6 @@ components:
           description: The name of the IP address filter to delete.
       required:
         - FilterName
-    DeleteReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteReceiptRuleResponseDisplay"
     DeleteReceiptRuleRequest:
       description: Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4236,16 +3830,6 @@ components:
       required:
         - RuleSetName
         - RuleName
-    DeleteReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteReceiptRuleSetResponseDisplay"
     DeleteReceiptRuleSetRequest:
       description: Represents a request to delete a receipt rule set and all of the receipt rules it contains. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4255,16 +3839,6 @@ components:
           description: The name of the receipt rule set to delete.
       required:
         - RuleSetName
-    DeleteTemplateResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteTemplateResponseDisplay"
     DeleteTemplateRequest:
       description: Represents a request to delete an email template. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -4850,16 +4424,6 @@ components:
         TlsPolicy:
           $ref: "#/components/schemas/TlsPolicy"
           description: Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If the value is Require, messages are only delivered if a TLS connection can be established. If the value is Optional, messages can be delivered in plain text if a TLS connection can't be established.
-    PutConfigurationSetDeliveryOptionsResponseDisplay:
-      type: object
-      properties: {}
-    PutConfigurationSetDeliveryOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsResponseDisplay"
     PutConfigurationSetDeliveryOptionsRequest:
       description: A request to modify the delivery options for a configuration set.
       type: object
@@ -4875,16 +4439,6 @@ components:
     Policy:
       type: string
       minLength: 1
-    PutIdentityPolicyResponseDisplay:
-      type: object
-      properties: {}
-    PutIdentityPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutIdentityPolicyResponseDisplay"
     PutIdentityPolicyRequest:
       description: Represents a request to add or update a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the Amazon SES Developer Guide.
       type: object
@@ -4906,16 +4460,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ReceiptRuleName"
-    ReorderReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    ReorderReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/ReorderReceiptRuleSetResponseDisplay"
     ReorderReceiptRuleSetRequest:
       description: Represents a request to reorder the receipt rules within a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -5429,16 +4973,6 @@ components:
         - Destination
         - Template
         - TemplateData
-    SetActiveReceiptRuleSetResponseDisplay:
-      type: object
-      properties: {}
-    SetActiveReceiptRuleSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetActiveReceiptRuleSetResponseDisplay"
     SetActiveReceiptRuleSetRequest:
       description: Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -5446,16 +4980,6 @@ components:
         RuleSetName:
           $ref: "#/components/schemas/ReceiptRuleSetName"
           description: The name of the receipt rule set to make active. Setting this value to null disables all email receiving.
-    SetIdentityDkimEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityDkimEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetIdentityDkimEnabledResponseDisplay"
     SetIdentityDkimEnabledRequest:
       description: Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the Amazon SES Developer Guide.
       type: object
@@ -5469,16 +4993,6 @@ components:
       required:
         - Identity
         - DkimEnabled
-    SetIdentityFeedbackForwardingEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityFeedbackForwardingEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledResponseDisplay"
     SetIdentityFeedbackForwardingEnabledRequest:
       description: Represents a request to enable or disable whether Amazon SES forwards you bounce and complaint notifications through email. For information about email feedback forwarding, see the Amazon SES Developer Guide.
       type: object
@@ -5498,16 +5012,6 @@ components:
         - Bounce
         - Complaint
         - Delivery
-    SetIdentityHeadersInNotificationsEnabledResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityHeadersInNotificationsEnabledOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledResponseDisplay"
     SetIdentityHeadersInNotificationsEnabledRequest:
       description: Represents a request to set whether Amazon SES includes the original email headers in the Amazon SNS notifications of a specified type. For information about notifications, see the Amazon SES Developer Guide.
       type: object
@@ -5532,16 +5036,6 @@ components:
       enum:
         - UseDefaultValue
         - RejectMessage
-    SetIdentityMailFromDomainResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityMailFromDomainOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetIdentityMailFromDomainResponseDisplay"
     SetIdentityMailFromDomainRequest:
       description: Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the Amazon SES Developer Guide.
       type: object
@@ -5559,16 +5053,6 @@ components:
         - Identity
     NotificationTopic:
       type: string
-    SetIdentityNotificationTopicResponseDisplay:
-      type: object
-      properties: {}
-    SetIdentityNotificationTopicOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetIdentityNotificationTopicResponseDisplay"
     SetIdentityNotificationTopicRequest:
       description: Represents a request to specify the Amazon SNS topic to which Amazon SES publishes bounce, complaint, or delivery notifications for emails sent with that identity as the source. For information about Amazon SES notifications, see the Amazon SES Developer Guide.
       type: object
@@ -5585,16 +5069,6 @@ components:
       required:
         - Identity
         - NotificationType
-    SetReceiptRulePositionResponseDisplay:
-      type: object
-      properties: {}
-    SetReceiptRulePositionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetReceiptRulePositionResponseDisplay"
     SetReceiptRulePositionRequest:
       description: Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -5643,16 +5117,6 @@ components:
         Enabled:
           $ref: "#/components/schemas/Enabled"
           description: Describes whether email sending is enabled or disabled for your Amazon SES account in the current Amazon Web Services Region.
-    UpdateConfigurationSetEventDestinationResponseDisplay:
-      type: object
-      properties: {}
-    UpdateConfigurationSetEventDestinationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationResponseDisplay"
     UpdateConfigurationSetEventDestinationRequest:
       description: Represents a request to update the event destination of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the Amazon SES Developer Guide.
       type: object
@@ -5692,16 +5156,6 @@ components:
       required:
         - ConfigurationSetName
         - Enabled
-    UpdateConfigurationSetTrackingOptionsResponseDisplay:
-      type: object
-      properties: {}
-    UpdateConfigurationSetTrackingOptionsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UpdateConfigurationSetTrackingOptionsResponseDisplay"
     UpdateConfigurationSetTrackingOptionsRequest:
       description: Represents a request to update the tracking options for a configuration set.
       type: object
@@ -5738,16 +5192,6 @@ components:
           description: The URL that the recipient of the verification email is sent to if his or her address is not successfully verified.
       required:
         - TemplateName
-    UpdateReceiptRuleResponseDisplay:
-      type: object
-      properties: {}
-    UpdateReceiptRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UpdateReceiptRuleResponseDisplay"
     UpdateReceiptRuleRequest:
       description: Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the Amazon SES Developer Guide.
       type: object
@@ -5761,16 +5205,6 @@ components:
       required:
         - RuleSetName
         - Rule
-    UpdateTemplateResponseDisplay:
-      type: object
-      properties: {}
-    UpdateTemplateOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UpdateTemplateResponseDisplay"
     UpdateTemplateRequest:
       type: object
       properties:
@@ -5833,16 +5267,6 @@ components:
           description: The email address to be verified.
       required:
         - EmailAddress
-    VerifyEmailIdentityResponseDisplay:
-      type: object
-      properties: {}
-    VerifyEmailIdentityOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/VerifyEmailIdentityResponseDisplay"
     VerifyEmailIdentityRequest:
       description: Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the Amazon SES Developer Guide.
       type: object
@@ -5853,6 +5277,102 @@ components:
       required:
         - EmailAddress
   x-stackQL-resources:
+    receipt_rule_sets:
+      id: aws.ses.receipt_rule_sets
+      name: receipt_rule_sets
+      title: receipt_rule_sets
+      methods:
+        clone_receipt_rule_set:
+          operation:
+            $ref: "#/paths/~1?Action=CloneReceiptRuleSet&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_receipt_rule_set:
+          operation:
+            $ref: "#/paths/~1?Action=CreateReceiptRuleSet&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_receipt_rule_set:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteReceiptRuleSet&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_receipt_rule_set:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeReceiptRuleSet&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeReceiptRuleSetOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        list_receipt_rule_sets:
+          operation:
+            $ref: "#/paths/~1?Action=ListReceiptRuleSets&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReceiptRuleSetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reorder_receipt_rule_set:
+          operation:
+            $ref: "#/paths/~1?Action=ReorderReceiptRuleSet&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/describe_receipt_rule_set"
+          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/list_receipt_rule_sets"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/create_receipt_rule_set"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/delete_receipt_rule_set"
     configuration_sets:
       id: aws.ses.configuration_sets
       name: configuration_sets
@@ -5863,13 +5383,6 @@ components:
             $ref: "#/paths/~1?Action=CreateConfigurationSet&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateConfigurationSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5882,13 +5395,6 @@ components:
             $ref: "#/paths/~1?Action=CreateConfigurationSetEventDestination&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5901,13 +5407,6 @@ components:
             $ref: "#/paths/~1?Action=CreateConfigurationSetTrackingOptions&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5920,13 +5419,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteConfigurationSet&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteConfigurationSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5939,13 +5431,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteConfigurationSetEventDestination&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -5958,13 +5443,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteConfigurationSetTrackingOptions&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -6013,13 +5491,6 @@ components:
             $ref: "#/paths/~1?Action=PutConfigurationSetDeliveryOptions&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6032,13 +5503,6 @@ components:
             $ref: "#/paths/~1?Action=UpdateConfigurationSetEventDestination&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6073,13 +5537,6 @@ components:
             $ref: "#/paths/~1?Action=UpdateConfigurationSetTrackingOptions&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6092,9 +5549,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/describe_configuration_set"
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/list_configuration_sets"
         insert:
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set_event_destination"
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set_tracking_options"
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
         update:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_configuration_set_event_destination"
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_configuration_set_tracking_options"
@@ -6203,13 +5660,6 @@ components:
             $ref: "#/paths/~1?Action=CreateReceiptFilter&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateReceiptFilterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6222,13 +5672,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteReceiptFilter&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteReceiptFilterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6271,13 +5714,6 @@ components:
             $ref: "#/paths/~1?Action=CreateReceiptRule&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateReceiptRuleOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6290,13 +5726,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteReceiptRule&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteReceiptRuleOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6328,13 +5757,6 @@ components:
             $ref: "#/paths/~1?Action=SetReceiptRulePosition&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetReceiptRulePositionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6347,13 +5769,6 @@ components:
             $ref: "#/paths/~1?Action=UpdateReceiptRule&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateReceiptRuleOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6367,100 +5782,10 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/create_receipt_rule"
         update:
-          - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/set_receipt_rule_position"
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/update_receipt_rule"
+          - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/set_receipt_rule_position"
         delete:
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/delete_receipt_rule"
-    receipt_rule_sets:
-      id: aws.ses.receipt_rule_sets
-      name: receipt_rule_sets
-      title: receipt_rule_sets
-      methods:
-        create_receipt_rule_set:
-          operation:
-            $ref: "#/paths/~1?Action=CreateReceiptRuleSet&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateReceiptRuleSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_receipt_rule_set:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteReceiptRuleSet&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteReceiptRuleSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_receipt_rule_set:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeReceiptRuleSet&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeReceiptRuleSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        list_receipt_rule_sets:
-          operation:
-            $ref: "#/paths/~1?Action=ListReceiptRuleSets&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListReceiptRuleSetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/describe_receipt_rule_set"
-          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/list_receipt_rule_sets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/create_receipt_rule_set"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/receipt_rule_sets/methods/delete_receipt_rule_set"
     templates:
       id: aws.ses.templates
       name: templates
@@ -6471,13 +5796,6 @@ components:
             $ref: "#/paths/~1?Action=CreateTemplate&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateTemplateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6490,13 +5808,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteTemplate&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteTemplateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6581,13 +5892,6 @@ components:
             $ref: "#/paths/~1?Action=UpdateTemplate&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateTemplateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6615,13 +5919,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteIdentity&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteIdentityOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6654,13 +5951,6 @@ components:
             $ref: "#/paths/~1?Action=SetIdentityDkimEnabled&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityDkimEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6673,13 +5963,6 @@ components:
             $ref: "#/paths/~1?Action=SetIdentityFeedbackForwardingEnabled&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6692,13 +5975,6 @@ components:
             $ref: "#/paths/~1?Action=SetIdentityHeadersInNotificationsEnabled&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6711,13 +5987,6 @@ components:
             $ref: "#/paths/~1?Action=SetIdentityMailFromDomain&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityMailFromDomainOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6730,13 +5999,6 @@ components:
             $ref: "#/paths/~1?Action=SetIdentityNotificationTopic&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityNotificationTopicOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -6763,13 +6025,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteIdentityPolicy&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteIdentityPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6821,13 +6076,6 @@ components:
             $ref: "#/paths/~1?Action=PutIdentityPolicy&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutIdentityPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6845,10 +6093,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/identity_policies/methods/put_identity_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/identity_policies/methods/delete_identity_policy"
-    verified_email_address:
-      id: aws.ses.verified_email_address
-      name: verified_email_address
-      title: verified_email_address
+    verified_email_addresses:
+      id: aws.ses.verified_email_addresses
+      name: verified_email_addresses
+      title: verified_email_addresses
       methods:
         delete_verified_email_address:
           operation:
@@ -6862,12 +6110,31 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        list_verified_email_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=ListVerifiedEmailAddresses&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListVerifiedEmailAddressesOutputDisplay"
+            transform:
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListVerifiedEmailAddressesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListVerifiedEmailAddressesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "VerifiedEmailAddresses" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"verified_email_address": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"verified_email_address": {{ toJson $n }}}{{- end -}}]}'
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/verified_email_addresses/methods/list_verified_email_addresses"
         insert: []
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/verified_email_address/methods/delete_verified_email_address"
+          - $ref: "#/components/x-stackQL-resources/verified_email_addresses/methods/delete_verified_email_address"
     active_receipt_rule_sets:
       id: aws.ses.active_receipt_rule_sets
       name: active_receipt_rule_sets
@@ -6895,13 +6162,6 @@ components:
             $ref: "#/paths/~1?Action=SetActiveReceiptRuleSet&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetActiveReceiptRuleSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -7133,23 +6393,22 @@ components:
         insert: []
         update: []
         delete: []
-    verified_email_addresses:
-      id: aws.ses.verified_email_addresses
-      name: verified_email_addresses
-      title: verified_email_addresses
+    bounces:
+      id: aws.ses.bounces
+      name: bounces
+      title: bounces
       methods:
-        list_verified_email_addresses:
+        send_bounce:
           operation:
-            $ref: "#/paths/~1?Action=ListVerifiedEmailAddresses&Version=2010-12-01/get"
+            $ref: "#/paths/~1?Action=SendBounce&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/ListVerifiedEmailAddressesOutputDisplay"
+              $ref: "#/components/schemas/SendBounceOutputDisplay"
             transform:
-              type: golang_template_mxj_v0.3.0
-              body: '{{- $n := index . "ListVerifiedEmailAddressesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListVerifiedEmailAddressesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "VerifiedEmailAddresses" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"verified_email_address": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"verified_email_address": {{ toJson $n }}}{{- end -}}]}'
+              type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
           config:
             queryParamTranspose:
@@ -7157,8 +6416,209 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/verified_email_addresses/methods/list_verified_email_addresses"
+        select: []
+        insert: []
+        update: []
+        delete: []
+    bulk_templated_emails:
+      id: aws.ses.bulk_templated_emails
+      name: bulk_templated_emails
+      title: bulk_templated_emails
+      methods:
+        send_bulk_templated_email:
+          operation:
+            $ref: "#/paths/~1?Action=SendBulkTemplatedEmail&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SendBulkTemplatedEmailOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    emails:
+      id: aws.ses.emails
+      name: emails
+      title: emails
+      methods:
+        send_email:
+          operation:
+            $ref: "#/paths/~1?Action=SendEmail&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SendEmailOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    raw_emails:
+      id: aws.ses.raw_emails
+      name: raw_emails
+      title: raw_emails
+      methods:
+        send_raw_email:
+          operation:
+            $ref: "#/paths/~1?Action=SendRawEmail&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SendRawEmailOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    templated_emails:
+      id: aws.ses.templated_emails
+      name: templated_emails
+      title: templated_emails
+      methods:
+        send_templated_email:
+          operation:
+            $ref: "#/paths/~1?Action=SendTemplatedEmail&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SendTemplatedEmailOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    domain_dkims:
+      id: aws.ses.domain_dkims
+      name: domain_dkims
+      title: domain_dkims
+      methods:
+        verify_domain_dkim:
+          operation:
+            $ref: "#/paths/~1?Action=VerifyDomainDkim&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/VerifyDomainDkimOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    domain_identities:
+      id: aws.ses.domain_identities
+      name: domain_identities
+      title: domain_identities
+      methods:
+        verify_domain_identity:
+          operation:
+            $ref: "#/paths/~1?Action=VerifyDomainIdentity&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/VerifyDomainIdentityOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    email_addresses:
+      id: aws.ses.email_addresses
+      name: email_addresses
+      title: email_addresses
+      methods:
+        verify_email_address:
+          operation:
+            $ref: "#/paths/~1?Action=VerifyEmailAddress&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    email_identities:
+      id: aws.ses.email_identities
+      name: email_identities
+      title: email_identities
+      methods:
+        verify_email_identity:
+          operation:
+            $ref: "#/paths/~1?Action=VerifyEmailIdentity&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

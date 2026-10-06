@@ -51,10 +51,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateWebACLResponse"
   /CheckCapacity:
     post:
       operationId: CheckCapacity
@@ -401,10 +397,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAPIKeyResponse"
   /DeleteFirewallManagerRuleGroups:
     post:
       operationId: DeleteFirewallManagerRuleGroups
@@ -483,10 +475,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIPSetResponse"
   /DeleteLoggingConfiguration:
     post:
       operationId: DeleteLoggingConfiguration
@@ -522,10 +510,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLoggingConfigurationResponse"
   /DeletePermissionPolicy:
     post:
       operationId: DeletePermissionPolicy
@@ -555,10 +539,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePermissionPolicyResponse"
   /DeleteRegexPatternSet:
     post:
       operationId: DeleteRegexPatternSet
@@ -600,10 +580,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRegexPatternSetResponse"
   /DeleteRuleGroup:
     post:
       operationId: DeleteRuleGroup
@@ -645,10 +621,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleGroupResponse"
   /DeleteWebACL:
     post:
       operationId: DeleteWebACL
@@ -690,10 +662,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWebACLResponse"
   /DescribeAllManagedProducts:
     post:
       operationId: DescribeAllManagedProducts
@@ -837,10 +805,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWebACLResponse"
   /GenerateMobileSdkReleaseUrl:
     post:
       operationId: GenerateMobileSdkReleaseUrl
@@ -2236,10 +2200,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPermissionPolicyResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -2273,10 +2233,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2310,10 +2266,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateIPSet:
     post:
       operationId: UpdateIPSet
@@ -2667,8 +2619,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: .*\S.*
-    AssociateWebACLResponse:
-      type: object
     Scope:
       type: string
       enum:
@@ -4853,7 +4803,7 @@ components:
           description: Specifies the web request component type to protect.
         FieldKeys:
           $ref: "#/components/schemas/FieldToProtectKeys"
-          description: Specifies the keys to protect for the specified field type. If you don't specify any key, then all keys for the field type are protected.
+          description: "Specifies the keys to protect for the specified field type. Required for SINGLE_HEADER, SINGLE_COOKIE, and SINGLE_QUERY_ARGUMENT: provide a non-empty array naming the specific headers, cookies, or query arguments to protect. There is no option to protect all keys of these field types, so enumerate each key you intend to protect. Must be omitted for QUERY_STRING and BODY: the entire component is protected and these field types take no keys. Supplying FieldKeys for them is rejected."
       required:
         - FieldType
     FieldToProtectType:
@@ -4963,16 +4913,12 @@ components:
         ARN:
           $ref: "#/components/schemas/ResourceArn"
           description: The Amazon Resource Name (ARN) of the entity.
-    DeleteAPIKeyResponse:
-      type: object
     DeleteFirewallManagerRuleGroupsResponse:
       type: object
       properties:
         NextWebACLLockToken:
           $ref: "#/components/schemas/LockToken"
           description: A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation.
-    DeleteIPSetResponse:
-      type: object
     LogType:
       type: string
       enum:
@@ -4983,16 +4929,6 @@ components:
         - CUSTOMER
         - SECURITY_LAKE
         - CLOUDWATCH_TELEMETRY_RULE_MANAGED
-    DeleteLoggingConfigurationResponse:
-      type: object
-    DeletePermissionPolicyResponse:
-      type: object
-    DeleteRegexPatternSetResponse:
-      type: object
-    DeleteRuleGroupResponse:
-      type: object
-    DeleteWebACLResponse:
-      type: object
     DescribeAllManagedProductsResponse:
       type: object
       properties:
@@ -5106,8 +5042,6 @@ components:
         Name:
           $ref: "#/components/schemas/LabelName"
           description: An individual label specification.
-    DisassociateWebACLResponse:
-      type: object
     Platform:
       type: string
       enum:
@@ -6489,16 +6423,10 @@ components:
         NextLockToken:
           $ref: "#/components/schemas/LockToken"
           description: A token used for optimistic locking. WAF returns a token to your get and list requests, to mark the state of the entity at the time of the request. To make changes to the entity associated with the token, you provide the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException. If this happens, perform another get, and use the new token returned by that operation.
-    PutPermissionPolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateIPSetResponse:
       type: object
       properties:
@@ -6546,7 +6474,6 @@ components:
             $ref: "#/paths/~1AssociateWebACL/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6572,7 +6499,6 @@ components:
             $ref: "#/paths/~1DeleteWebACL/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6585,7 +6511,6 @@ components:
             $ref: "#/paths/~1DisassociateWebACL/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6599,6 +6524,20 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_web_acl_for_resource:
+          operation:
+            $ref: "#/paths/~1GetWebACLForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.WebACL
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6621,6 +6560,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/web_acls/methods/get_web_acl_for_resource"
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/get_web_acl"
         insert:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/create_web_acl"
@@ -6630,6 +6570,29 @@ components:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/disassociate_web_acl"
         delete:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/delete_web_acl"
+    capacities:
+      id: aws.wafv2.capacities
+      name: capacities
+      title: capacities
+      methods:
+        check_capacity:
+          operation:
+            $ref: "#/paths/~1CheckCapacity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     api_keys:
       id: aws.wafv2.api_keys
       name: api_keys
@@ -6653,7 +6616,6 @@ components:
             $ref: "#/paths/~1DeleteAPIKey/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6705,7 +6667,6 @@ components:
             $ref: "#/paths/~1DeleteIPSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6785,7 +6746,6 @@ components:
             $ref: "#/paths/~1DeleteRegexPatternSet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6878,7 +6838,6 @@ components:
             $ref: "#/paths/~1DeleteRuleGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6946,7 +6905,6 @@ components:
             $ref: "#/paths/~1DeleteLoggingConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7014,7 +6972,6 @@ components:
             $ref: "#/paths/~1DeletePermissionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7040,7 +6997,6 @@ components:
             $ref: "#/paths/~1PutPermissionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7081,10 +7037,10 @@ components:
         insert: []
         update: []
         delete: []
-    managed_products_by_vendors:
-      id: aws.wafv2.managed_products_by_vendors
-      name: managed_products_by_vendors
-      title: managed_products_by_vendors
+    managed_products:
+      id: aws.wafv2.managed_products
+      name: managed_products
+      title: managed_products
       methods:
         describe_managed_products_by_vendor:
           operation:
@@ -7101,7 +7057,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/managed_products_by_vendors/methods/describe_managed_products_by_vendor"
+          - $ref: "#/components/x-stackQL-resources/managed_products/methods/describe_managed_products_by_vendor"
         insert: []
         update: []
         delete: []
@@ -7393,10 +7349,10 @@ components:
         insert: []
         update: []
         delete: []
-    top_path_statistics_by_traffics:
-      id: aws.wafv2.top_path_statistics_by_traffics
-      name: top_path_statistics_by_traffics
-      title: top_path_statistics_by_traffics
+    top_path_statistics:
+      id: aws.wafv2.top_path_statistics
+      name: top_path_statistics
+      title: top_path_statistics
       methods:
         get_top_path_statistics_by_traffic:
           operation:
@@ -7413,32 +7369,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/top_path_statistics_by_traffics/methods/get_top_path_statistics_by_traffic"
-        insert: []
-        update: []
-        delete: []
-    web_acl_for_resources:
-      id: aws.wafv2.web_acl_for_resources
-      name: web_acl_for_resources
-      title: web_acl_for_resources
-      methods:
-        get_web_acl_for_resource:
-          operation:
-            $ref: "#/paths/~1GetWebACLForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.WebACL
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/web_acl_for_resources/methods/get_web_acl_for_resource"
+          - $ref: "#/components/x-stackQL-resources/top_path_statistics/methods/get_top_path_statistics_by_traffic"
         insert: []
         update: []
         delete: []
@@ -7490,10 +7421,10 @@ components:
         insert: []
         update: []
         delete: []
-    resources_for_web_acls:
-      id: aws.wafv2.resources_for_web_acls
-      name: resources_for_web_acls
-      title: resources_for_web_acls
+    resources:
+      id: aws.wafv2.resources
+      name: resources
+      title: resources
       methods:
         list_resources_for_web_acl:
           operation:
@@ -7517,7 +7448,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resources_for_web_acls/methods/list_resources_for_web_acl"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources_for_web_acl"
         insert: []
         update: []
         delete: []
@@ -7569,7 +7500,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7582,7 +7512,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

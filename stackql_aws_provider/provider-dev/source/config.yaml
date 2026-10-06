@@ -429,10 +429,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEvaluationResultsResponse'
       x-stackql-resource: config_rules
       x-stackql-method: delete_evaluation_results
       x-stackql-verb: DELETE
@@ -590,10 +586,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRemediationConfigurationResponse'
       x-stackql-resource: remediation_configurations
       x-stackql-method: delete_remediation_configuration
       x-stackql-verb: DELETE
@@ -785,10 +777,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStoredQueryResponse'
       x-stackql-resource: stored_queries
       x-stackql-method: delete_stored_query
       x-stackql-verb: DELETE
@@ -877,7 +865,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAggregateComplianceByConfigRulesResponse'
-      x-stackql-resource: aggregate_compliance_by_config_rules
+      x-stackql-resource: aggregate_compliances
       x-stackql-method: describe_aggregate_compliance_by_config_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateComplianceByConfigRules
@@ -931,7 +919,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAggregateComplianceByConformancePacksResponse'
-      x-stackql-resource: aggregate_compliance_by_conformance_packs
+      x-stackql-resource: aggregate_compliances
       x-stackql-method: describe_aggregate_compliance_by_conformance_packs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateComplianceByConformancePacks
@@ -1028,7 +1016,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeComplianceByConfigRuleResponse'
-      x-stackql-resource: compliance_by_config_rules
+      x-stackql-resource: compliances
       x-stackql-method: describe_compliance_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceByConfigRules
@@ -1093,7 +1081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeComplianceByResourceResponse'
-      x-stackql-resource: compliance_by_resources
+      x-stackql-resource: compliances
       x-stackql-method: describe_compliance_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceByResources
@@ -1143,7 +1131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeConfigRuleEvaluationStatusResponse'
-      x-stackql-resource: config_rule_evaluation_status
+      x-stackql-resource: config_rule_evaluation_statuses
       x-stackql-method: describe_config_rule_evaluation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigRulesEvaluationStatus
@@ -1246,7 +1234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeConfigurationAggregatorSourcesStatusResponse'
-      x-stackql-resource: configuration_aggregator_sources_status
+      x-stackql-resource: configuration_aggregator_sources_statuses
       x-stackql-method: describe_configuration_aggregator_sources_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregatedSourceStatusList
@@ -1345,7 +1333,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeConfigurationRecorderStatusResponse'
-      x-stackql-resource: configuration_recorder_status
+      x-stackql-resource: configuration_recorder_statuses
       x-stackql-method: describe_configuration_recorder_status
       x-stackql-verb: SELECT
   /DescribeConfigurationRecorders:
@@ -1482,7 +1470,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeConformancePackStatusResponse'
-      x-stackql-resource: conformance_pack_status
+      x-stackql-resource: conformance_pack_statuses
       x-stackql-method: describe_conformance_pack_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConformancePackStatusDetails
@@ -1568,7 +1556,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeDeliveryChannelStatusResponse'
-      x-stackql-resource: delivery_channel_status
+      x-stackql-resource: delivery_channel_statuses
       x-stackql-method: describe_delivery_channel_status
       x-stackql-verb: SELECT
   /DescribeDeliveryChannels:
@@ -1999,7 +1987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRemediationExecutionStatusResponse'
-      x-stackql-resource: remediation_execution_status
+      x-stackql-resource: remediation_execution_statuses
       x-stackql-method: describe_remediation_execution_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RemediationExecutionStatuses
@@ -2156,7 +2144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAggregateComplianceDetailsByConfigRuleResponse'
-      x-stackql-resource: aggregate_compliance_details_by_config_rules
+      x-stackql-resource: aggregate_compliance_details
       x-stackql-method: get_aggregate_compliance_details_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateEvaluationResults
@@ -2411,7 +2399,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComplianceDetailsByConfigRuleResponse'
-      x-stackql-resource: compliance_details_by_config_rules
+      x-stackql-resource: compliance_details
       x-stackql-method: get_compliance_details_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationResults
@@ -2467,7 +2455,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComplianceDetailsByResourceResponse'
-      x-stackql-resource: compliance_details_by_resources
+      x-stackql-resource: compliance_details
       x-stackql-method: get_compliance_details_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationResults
@@ -2495,7 +2483,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComplianceSummaryByConfigRuleResponse'
-      x-stackql-resource: compliance_summary_by_config_rules
+      x-stackql-resource: compliance_summaries
       x-stackql-method: get_compliance_summary_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceSummary
@@ -2534,7 +2522,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetComplianceSummaryByResourceTypeResponse'
-      x-stackql-resource: compliance_summary_by_resource_types
+      x-stackql-resource: compliance_summaries
       x-stackql-method: get_compliance_summary_by_resource_type
       x-stackql-verb: SELECT
   /GetConformancePackComplianceDetails:
@@ -2806,7 +2794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOrganizationConfigRuleDetailedStatusResponse'
-      x-stackql-resource: organization_config_rule_detailed_status
+      x-stackql-resource: organization_config_rule_detailed_statuses
       x-stackql-method: get_organization_config_rule_detailed_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConfigRuleDetailedStatus
@@ -2858,7 +2846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOrganizationConformancePackDetailedStatusResponse'
-      x-stackql-resource: organization_conformance_pack_detailed_status
+      x-stackql-resource: organization_conformance_pack_detailed_statuses
       x-stackql-method: get_organization_conformance_pack_detailed_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConformancePackDetailedStatuses
@@ -3927,10 +3915,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutExternalEvaluationResponse'
       x-stackql-resource: config_rules
       x-stackql-method: put_external_evaluation
       x-stackql-verb: REPLACE
@@ -4529,7 +4513,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SelectAggregateResourceConfigResponse'
-      x-stackql-resource: configuration_aggregators
+      x-stackql-resource: aggregate_resource_configs
       x-stackql-method: select_aggregate_resource_config
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -4577,7 +4561,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SelectResourceConfigResponse'
-      x-stackql-resource: select_resource_config
+      x-stackql-resource: resource_configs
       x-stackql-method: select_resource_config
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -4621,10 +4605,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartConfigRulesEvaluationResponse'
       x-stackql-resource: config_rules
       x-stackql-method: start_config_rules_evaluation
       x-stackql-verb: EXEC
@@ -4766,7 +4746,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartResourceEvaluationResponse'
-      x-stackql-resource: resource_evaluation
+      x-stackql-resource: resource_evaluations
       x-stackql-method: start_resource_evaluation
       x-stackql-verb: EXEC
   /StopConfigurationRecorder:
@@ -6028,9 +6008,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteEvaluationResultsResponse:
-      description: The output when you delete the evaluation results for the specified Config rule.
-      type: object
     OrganizationConfigRuleName:
       type: string
       minLength: 1
@@ -6041,8 +6018,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z][-a-zA-Z0-9]*'
-    DeleteRemediationConfigurationResponse:
-      type: object
     RemediationExceptionResourceKeys:
       type: array
       items:
@@ -6113,8 +6088,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[a-zA-Z0-9-_]+$
-    DeleteStoredQueryResponse:
-      type: object
     DeliverConfigSnapshotResponse:
       description: The output for the DeliverConfigSnapshot action, in JSON format.
       type: object
@@ -9609,8 +9582,6 @@ components:
       - ComplianceResourceId
       - ComplianceType
       - OrderingTimestamp
-    PutExternalEvaluationResponse:
-      type: object
     OrganizationCustomPolicyRuleMetadata:
       description: An object that specifies metadata for your organization's Config Custom Policy rule. The metadata includes
         the runtime system in use, which accounts have debug logging enabled, and other custom rule metadata, such as resource
@@ -9817,9 +9788,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ConfigRuleName'
-    StartConfigRulesEvaluationResponse:
-      description: The output when you start the evaluation for the specified Config rule.
-      type: object
     StartRemediationExecutionResponse:
       type: object
       properties:

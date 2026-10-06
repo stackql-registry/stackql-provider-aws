@@ -1422,10 +1422,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1459,10 +1455,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -4021,14 +4013,10 @@ components:
       required:
         - ResourceSet
         - ResourceSetArn
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     admin_accounts:
       id: aws.fms.admin_accounts
@@ -4545,10 +4533,10 @@ components:
         insert: []
         update: []
         delete: []
-    protection_status:
-      id: aws.fms.protection_status
-      name: protection_status
-      title: protection_status
+    protection_statuses:
+      id: aws.fms.protection_statuses
+      name: protection_statuses
+      title: protection_statuses
       methods:
         get_protection_status:
           operation:
@@ -4565,14 +4553,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/protection_status/methods/get_protection_status"
+          - $ref: "#/components/x-stackQL-resources/protection_statuses/methods/get_protection_status"
         insert: []
         update: []
         delete: []
-    third_party_firewall_association_status:
-      id: aws.fms.third_party_firewall_association_status
-      name: third_party_firewall_association_status
-      title: third_party_firewall_association_status
+    third_party_firewall_association_statuses:
+      id: aws.fms.third_party_firewall_association_statuses
+      name: third_party_firewall_association_statuses
+      title: third_party_firewall_association_statuses
       methods:
         get_third_party_firewall_association_status:
           operation:
@@ -4589,7 +4577,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/third_party_firewall_association_status/methods/get_third_party_firewall_association_status"
+          - $ref: "#/components/x-stackQL-resources/third_party_firewall_association_statuses/methods/get_third_party_firewall_association_status"
         insert: []
         update: []
         delete: []
@@ -4688,10 +4676,10 @@ components:
         insert: []
         update: []
         delete: []
-    compliance_status:
-      id: aws.fms.compliance_status
-      name: compliance_status
-      title: compliance_status
+    compliance_statuses:
+      id: aws.fms.compliance_statuses
+      name: compliance_statuses
+      title: compliance_statuses
       methods:
         list_compliance_status:
           operation:
@@ -4716,7 +4704,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/compliance_status/methods/list_compliance_status"
+          - $ref: "#/components/x-stackQL-resources/compliance_statuses/methods/list_compliance_status"
         insert: []
         update: []
         delete: []
@@ -4829,7 +4817,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4842,7 +4829,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

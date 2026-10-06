@@ -278,10 +278,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -304,10 +300,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -329,7 +321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectSupportPermitRequestOutput'
-      x-stackql-resource: support_permits
+      x-stackql-resource: support_permit_requests
       x-stackql-method: reject_support_permit_request
       x-stackql-verb: EXEC
 components:
@@ -804,8 +796,6 @@ components:
           description: The ARN of the rejected permit request.
       required:
       - requestArn
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -814,5 +804,3 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object

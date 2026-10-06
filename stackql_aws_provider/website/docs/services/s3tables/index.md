@@ -31,20 +31,20 @@ total resources: __20__
 <a href="/services/s3tables/table_bucket_metrics_configurations/">table_bucket_metrics_configurations</a><br />
 <a href="/services/s3tables/table_bucket_policies/">table_bucket_policies</a><br />
 <a href="/services/s3tables/table_bucket_replications/">table_bucket_replications</a><br />
-<a href="/services/s3tables/table_bucket_storage_class/">table_bucket_storage_class</a><br />
+<a href="/services/s3tables/table_bucket_storage_classes/">table_bucket_storage_classes</a><br />
 <a href="/services/s3tables/table_buckets/">table_buckets</a><br />
 <a href="/services/s3tables/table_encryptions/">table_encryptions</a><br />
 <a href="/services/s3tables/table_maintenance_configurations/">table_maintenance_configurations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/s3tables/table_maintenance_job_status/">table_maintenance_job_status</a><br />
+<a href="/services/s3tables/table_maintenance_job_statuses/">table_maintenance_job_statuses</a><br />
 <a href="/services/s3tables/table_metadata_locations/">table_metadata_locations</a><br />
 <a href="/services/s3tables/table_policies/">table_policies</a><br />
 <a href="/services/s3tables/table_record_expiration_configurations/">table_record_expiration_configurations</a><br />
-<a href="/services/s3tables/table_record_expiration_job_status/">table_record_expiration_job_status</a><br />
-<a href="/services/s3tables/table_replication_status/">table_replication_status</a><br />
+<a href="/services/s3tables/table_record_expiration_job_statuses/">table_record_expiration_job_statuses</a><br />
+<a href="/services/s3tables/table_replication_statuses/">table_replication_statuses</a><br />
 <a href="/services/s3tables/table_replications/">table_replications</a><br />
-<a href="/services/s3tables/table_storage_class/">table_storage_class</a><br />
+<a href="/services/s3tables/table_storage_classes/">table_storage_classes</a><br />
 <a href="/services/s3tables/tables/">tables</a><br />
 <a href="/services/s3tables/tags/">tags</a>
 </div>

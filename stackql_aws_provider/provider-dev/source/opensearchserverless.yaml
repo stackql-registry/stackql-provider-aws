@@ -424,10 +424,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateIndexResponse'
       x-stackql-resource: indexes
       x-stackql-method: create_index
       x-stackql-verb: INSERT
@@ -685,10 +681,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccessPolicyResponse'
       x-stackql-resource: access_policies
       x-stackql-method: delete_access_policy
       x-stackql-verb: DELETE
@@ -766,10 +758,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCollectionGroupResponse'
       x-stackql-resource: collection_groups
       x-stackql-method: delete_collection_group
       x-stackql-verb: DELETE
@@ -808,10 +796,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIndexResponse'
       x-stackql-resource: indexes
       x-stackql-method: delete_index
       x-stackql-verb: DELETE
@@ -851,10 +835,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLifecyclePolicyResponse'
       x-stackql-resource: lifecycle_policies
       x-stackql-method: delete_lifecycle_policy
       x-stackql-verb: DELETE
@@ -892,10 +872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityConfigResponse'
       x-stackql-resource: security_configs
       x-stackql-method: delete_security_config
       x-stackql-verb: DELETE
@@ -935,10 +911,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityPolicyResponse'
       x-stackql-resource: security_policies
       x-stackql-method: delete_security_policy
       x-stackql-verb: DELETE
@@ -1598,10 +1570,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1640,10 +1608,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1868,10 +1832,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIndexResponse'
       x-stackql-resource: indexes
       x-stackql-method: update_index
       x-stackql-verb: UPDATE
@@ -2943,8 +2903,6 @@ components:
       type: string
     IndexSchema:
       type: object
-    CreateIndexResponse:
-      type: object
     CreateLifecyclePolicyResponse:
       type: object
       properties:
@@ -3192,8 +3150,6 @@ components:
         status:
           $ref: '#/components/schemas/VpcEndpointStatus'
           description: The current status in the endpoint creation process.
-    DeleteAccessPolicyResponse:
-      type: object
     DeleteCollectionResponse:
       type: object
       properties:
@@ -3216,16 +3172,6 @@ components:
         deletionProtection:
           $ref: '#/components/schemas/DeletionProtection'
           description: Indicates whether deletion protection is ENABLED or DISABLED for the collection.
-    DeleteCollectionGroupResponse:
-      type: object
-    DeleteIndexResponse:
-      type: object
-    DeleteLifecyclePolicyResponse:
-      type: object
-    DeleteSecurityConfigResponse:
-      type: object
-    DeleteSecurityPolicyResponse:
-      type: object
     DeleteVpcEndpointResponse:
       type: object
       properties:
@@ -3665,14 +3611,10 @@ components:
         status:
           $ref: '#/components/schemas/VpcEndpointStatus'
           description: The current status of the endpoint.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAccessPolicyResponse:
       type: object
       properties:
@@ -3767,8 +3709,6 @@ components:
         generation:
           $ref: '#/components/schemas/ServerlessGeneration'
           description: The generation of Amazon OpenSearch Serverless for the collection group.
-    UpdateIndexResponse:
-      type: object
     UpdateLifecyclePolicyResponse:
       type: object
       properties:

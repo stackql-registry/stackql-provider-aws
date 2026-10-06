@@ -1480,7 +1480,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deployment'
-      x-stackql-resource: applications
+      x-stackql-resource: deployments
       x-stackql-method: stop_deployment
       x-stackql-verb: EXEC
   /deploymentstrategies/{deployment_strategy_id}:
@@ -1677,7 +1677,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deployment'
-      x-stackql-resource: applications
+      x-stackql-resource: deployments
       x-stackql-method: start_deployment
       x-stackql-verb: EXEC
   /experimentdefinitions:
@@ -1878,7 +1878,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExperimentRun'
-      x-stackql-resource: experiment_definitions
+      x-stackql-resource: experiment_runs
       x-stackql-method: start_experiment_run
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1995,7 +1995,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExperimentRun'
-      x-stackql-resource: experiment_definitions
+      x-stackql-resource: experiment_runs
       x-stackql-method: stop_experiment_run
       x-stackql-verb: EXEC
   ? /applications/{application_identifier}/experimentdefinitions/{experiment_definition_identifier}/experimentruns/{run}/update
@@ -2073,7 +2073,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: configuration_profiles
+      x-stackql-resource: configurations
       x-stackql-method: validate_configuration
       x-stackql-verb: EXEC
 components:

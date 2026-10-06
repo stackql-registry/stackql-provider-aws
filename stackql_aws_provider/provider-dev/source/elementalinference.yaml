@@ -288,6 +288,72 @@ paths:
       x-stackql-resource: feeds
       x-stackql-method: update_feed
       x-stackql-verb: UPDATE
+  /v1/feed/{id}/policy:
+    delete:
+      operationId: DeleteFeedPolicy
+      description: Deletes the resource-based policy attached to the specified feed. After you delete the policy, the operation
+        revokes the cross-account access that the policy granted.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/FeedId'
+        description: The ID of the feed whose policy you want to delete.
+      responses:
+        '204':
+          description: Success
+      x-stackql-resource: feed_policies
+      x-stackql-method: delete_feed_policy
+      x-stackql-verb: DELETE
+    get:
+      operationId: GetFeedPolicy
+      description: Retrieves the resource-based policy attached to the specified feed.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/FeedId'
+        description: The ID of the feed whose policy you want to retrieve.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFeedPolicyResponse'
+      x-stackql-resource: feed_policies
+      x-stackql-method: get_feed_policy
+      x-stackql-verb: SELECT
+    put:
+      operationId: PutFeedPolicy
+      description: Attaches or replaces a resource-based policy on the specified feed. A resource-based policy grants cross-account
+        access to the feed.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/FeedId'
+        description: The ID of the feed to attach the policy to.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                policy:
+                  $ref: '#/components/schemas/PolicyDocument'
+              required:
+              - policy
+      responses:
+        '200':
+          description: Success
+      x-stackql-resource: feed_policies
+      x-stackql-method: put_feed_policy
+      x-stackql-verb: REPLACE
   /v1/feed/{id}/disassociate:
     post:
       operationId: DisassociateFeed
@@ -344,6 +410,28 @@ paths:
       x-stackql-resource: dictionaries
       x-stackql-method: export_dictionary_entries
       x-stackql-verb: EXEC
+  /v1/fixtures/{fixture_id}:
+    get:
+      operationId: GetFixture
+      description: Retrieves information about the specified fixture (a sports event, such as a specific basketball game).
+        You obtain a fixtureId from SearchFixtures, or from the clipping output of a feed.
+      parameters:
+      - name: fixture_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/FixtureId'
+        description: The ID of the fixture to retrieve, as returned by SearchFixtures.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFixtureResponse'
+      x-stackql-resource: fixtures
+      x-stackql-method: get_fixture
+      x-stackql-verb: SELECT
   /v1/dictionaries:
     get:
       operationId: ListDictionaries
@@ -625,6 +713,9 @@ components:
         subtitling:
           $ref: '#/components/schemas/SubtitlingConfig'
           description: The output config type that applies to the smart subtitling feature.
+        contextualMetadata:
+          $ref: '#/components/schemas/ContextualMetadataConfig'
+          description: The output config type that applies to the contextual metadata feature.
     CroppingConfig:
       description: A type of OutputConfig, used when the output in a feed is for the crop feature.
       type: object
@@ -759,6 +850,21 @@ components:
       - DISABLED
       - CENSOR
       - DROP
+    ContextualMetadataConfig:
+      description: The output configuration settings for the contextual metadata feature. Use this structure when the feed
+        output generates metadata that describes the media content.
+      type: object
+      properties:
+        summaryGeneration:
+          $ref: '#/components/schemas/SummaryGenerationMode'
+          description: 'Specifies whether Elemental Inference generates a descriptive summary of the media content for this
+            output. Valid values: ENABLED (default) – Elemental Inference generates a descriptive summary along with IAB taxonomy
+            and GARM suitability classifications. DISABLED – No descriptive summary is generated.'
+    SummaryGenerationMode:
+      type: string
+      enum:
+      - ENABLED
+      - DISABLED
     OutputStatus:
       type: string
       enum:
@@ -866,6 +972,10 @@ components:
         outputs:
           $ref: '#/components/schemas/GetOutputList'
           description: Repeats the outputs that you specified in the request.
+        accessRoleArn:
+          $ref: '#/components/schemas/IamRoleArn'
+          description: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that you specified
+            in the request. This property is absent if you didn't specify an IAM role.
         status:
           $ref: '#/components/schemas/FeedStatus'
           description: The current status of the feed. After creation of the feed has succeeded, the status will be AVAILABLE.
@@ -1040,6 +1150,11 @@ components:
         outputs:
           $ref: '#/components/schemas/GetOutputList'
           description: An array of the outputs in the feed.
+        accessRoleArn:
+          $ref: '#/components/schemas/IamRoleArn'
+          description: The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that Elemental Inference
+            assumes. Elemental Inference uses this role to access resources in your account on your behalf. This property
+            is absent if the feed doesn't have an IAM role.
         status:
           $ref: '#/components/schemas/FeedStatus'
           description: The status of the feed.
@@ -1058,6 +1173,67 @@ components:
       - dataEndpoints
       - outputs
       - status
+    GetFeedPolicyResponse:
+      type: object
+      properties:
+        policy:
+          $ref: '#/components/schemas/PolicyDocument'
+          description: The resource-based policy document attached to the feed.
+      required:
+      - policy
+    PolicyDocument:
+      type: string
+      minLength: 1
+      maxLength: 2048
+    GetFixtureResponse:
+      type: object
+      properties:
+        fixtureId:
+          $ref: '#/components/schemas/FixtureId'
+          description: The ID that you specified in the request.
+        name:
+          $ref: '#/components/schemas/String'
+          description: The name of the fixture, as provided by the data source. For example, the names of the two competing
+            teams.
+        fixtureGroup:
+          $ref: '#/components/schemas/String'
+          description: The group that the fixture belongs to, such as the competition, league, or tournament. The data source
+            doesn't provide this information for every fixture.
+        scheduledStart:
+          $ref: '#/components/schemas/SyntheticTimestamp_date_time'
+          description: The scheduled start time of the fixture, as provided by the data source. The actual start time might
+            differ.
+        status:
+          $ref: '#/components/schemas/String'
+          description: The status of the fixture in its lifecycle, as provided by the data source. For example, Scheduled
+            or Completed.
+        competitors:
+          $ref: '#/components/schemas/CompetitorList'
+          description: An array of the competitors (the teams or individuals) in the fixture.
+      required:
+      - fixtureId
+      - name
+      - status
+      - competitors
+    SyntheticTimestamp_date_time:
+      type: string
+      format: date-time
+    CompetitorList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Competitor'
+    Competitor:
+      description: Contains information about one competitor in a fixture. It is used in the FixtureSummary that is in the
+        SearchFixtures response.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/String'
+          description: The name of the competitor, as provided by the data source.
+        isHome:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether this competitor is the home side in the fixture. If true, this competitor is the
+            home side. If false, this competitor is the away side.
     ListDictionariesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1251,25 +1427,6 @@ components:
       - name
       - status
       - competitors
-    SyntheticTimestamp_date_time:
-      type: string
-      format: date-time
-    CompetitorList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Competitor'
-    Competitor:
-      description: Contains information about one competitor in a fixture. It is used in the FixtureSummary that is in the
-        SearchFixtures response.
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/String'
-          description: The name of the competitor, as provided by the data source.
-        isHome:
-          $ref: '#/components/schemas/Boolean'
-          description: Specifies whether this competitor is the home side in the fixture. If true, this competitor is the
-            home side. If false, this competitor is the away side.
     TagKeyList:
       type: array
       items:
@@ -1360,6 +1517,10 @@ components:
           $ref: '#/components/schemas/GetOutputList'
           description: The array of outputs in the feed. You might have left this array unchanged, or you might have changed
             it.
+        accessRoleArn:
+          $ref: '#/components/schemas/IamRoleArn'
+          description: The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role for the feed, after
+            the update. This property is absent if the feed doesn't have an IAM role.
         status:
           $ref: '#/components/schemas/FeedStatus'
           description: The status of the feed.

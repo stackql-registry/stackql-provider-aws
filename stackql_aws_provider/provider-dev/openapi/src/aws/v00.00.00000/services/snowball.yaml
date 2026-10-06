@@ -47,10 +47,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelClusterResult"
   /CancelJob:
     post:
       operationId: CancelJob
@@ -80,10 +76,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelJobResult"
   /CreateAddress:
     post:
       operationId: CreateAddress
@@ -956,10 +948,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateClusterResult"
   /UpdateJob:
     post:
       operationId: UpdateJob
@@ -1018,10 +1006,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateJobResult"
   /UpdateJobShipmentState:
     post:
       operationId: UpdateJobShipmentState
@@ -1055,10 +1039,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateJobShipmentStateResult"
   /UpdateLongTermPricing:
     post:
       operationId: UpdateLongTermPricing
@@ -1094,10 +1074,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLongTermPricingResult"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1148,15 +1124,11 @@ components:
       minLength: 39
       maxLength: 39
       pattern: CID[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    CancelClusterResult:
-      type: object
     JobId:
       type: string
       minLength: 39
       maxLength: 39
       pattern: (M|J)ID[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
-    CancelJobResult:
-      type: object
     Address:
       description: The address that you want the Snow device(s) associated with a specific job to be shipped to. Addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. Although no individual elements of the Address are required, if the address is invalid or unsupported, then an exception is thrown.
       type: object
@@ -2144,19 +2116,11 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ServiceVersion"
-    UpdateClusterResult:
-      type: object
-    UpdateJobResult:
-      type: object
     ShipmentState:
       type: string
       enum:
         - RECEIVED
         - RETURNED
-    UpdateJobShipmentStateResult:
-      type: object
-    UpdateLongTermPricingResult:
-      type: object
   x-stackQL-resources:
     clusters:
       id: aws.snowball.clusters
@@ -2168,7 +2132,6 @@ components:
             $ref: "#/paths/~1CancelCluster/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2229,7 +2192,6 @@ components:
             $ref: "#/paths/~1UpdateCluster/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2256,7 +2218,6 @@ components:
             $ref: "#/paths/~1CancelJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2316,7 +2277,6 @@ components:
             $ref: "#/paths/~1UpdateJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2329,7 +2289,6 @@ components:
             $ref: "#/paths/~1UpdateJobShipmentState/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2347,10 +2306,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job_shipment_state"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job"
         delete: []
-    address:
-      id: aws.snowball.address
-      name: address
-      title: address
+    addresses:
+      id: aws.snowball.addresses
+      name: addresses
+      title: addresses
       methods:
         create_address:
           operation:
@@ -2379,11 +2338,33 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_addresses:
+          operation:
+            $ref: "#/paths/~1DescribeAddresses/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Addresses
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/address/methods/describe_address"
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/describe_address"
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/describe_addresses"
         insert:
-          - $ref: "#/components/x-stackQL-resources/address/methods/create_address"
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/create_address"
         update: []
         delete: []
     long_term_pricings:
@@ -2430,7 +2411,6 @@ components:
             $ref: "#/paths/~1UpdateLongTermPricing/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2482,38 +2462,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/return_shipping_labels/methods/describe_return_shipping_label"
         insert:
           - $ref: "#/components/x-stackQL-resources/return_shipping_labels/methods/create_return_shipping_label"
-        update: []
-        delete: []
-    addresses:
-      id: aws.snowball.addresses
-      name: addresses
-      title: addresses
-      methods:
-        describe_addresses:
-          operation:
-            $ref: "#/paths/~1DescribeAddresses/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Addresses
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/addresses/methods/describe_addresses"
-        insert: []
         update: []
         delete: []
     job_manifests:

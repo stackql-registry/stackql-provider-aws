@@ -394,7 +394,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopySnapshotResult'
-      x-stackql-resource: snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: copy_snapshot
       x-stackql-verb: EXEC
   /CreateBucket:
@@ -1083,6 +1083,24 @@ paths:
                 viewerMinimumTlsProtocolVersion:
                   $ref: '#/components/schemas/ViewerMinimumTlsProtocolVersionEnum'
                   description: The minimum TLS protocol version for the SSL/TLS certificate.
+                enablePrivateOriginAccess:
+                  $ref: '#/components/schemas/boolean'
+                  description: Specifies whether to enable private origin access for the distribution. With private origin
+                    access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. Lightsail
+                    grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't
+                    change the bucket's access settings, and you can still retrieve publicly accessible objects directly from
+                    the bucket's endpoint. You can enable private origin access only when the distribution's origin is a Lightsail
+                    bucket. If the origin is another resource type, the request fails.
+                defaultRootObject:
+                  $ref: '#/components/schemas/string'
+                  description: The object (for example, index.html) that the distribution returns when a viewer requests the
+                    root URL of the distribution (/) instead of a specific object. The object that you specify must be available
+                    from the origin.
+                customErrorResponses:
+                  $ref: '#/components/schemas/DistributionCustomErrorResponseList'
+                  description: An array of objects that describe the custom error responses for the distribution. With a custom
+                    error response, you can specify the page to return when the origin responds with a given HTTP error code.
+                    You can also specify the HTTP status code to send to the viewer.
               required:
               - distributionName
               - origin
@@ -2143,10 +2161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerImageResult'
       x-stackql-resource: container_images
       x-stackql-method: delete_container_image
       x-stackql-verb: DELETE
@@ -2179,10 +2193,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteContainerServiceResult'
       x-stackql-resource: container_services
       x-stackql-method: delete_container_service
       x-stackql-verb: DELETE
@@ -2918,7 +2928,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableAddOnResult'
-      x-stackql-resource: add_on
+      x-stackql-resource: add_ons
       x-stackql-method: disable_add_on
       x-stackql-verb: EXEC
   /DownloadDefaultKeyPair:
@@ -2949,7 +2959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DownloadDefaultKeyPairResult'
-      x-stackql-resource: download_default_key_pair
+      x-stackql-resource: key_pairs
       x-stackql-method: download_default_key_pair
       x-stackql-verb: EXEC
   /EnableAddOn:
@@ -2990,7 +3000,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableAddOnResult'
-      x-stackql-resource: add_on
+      x-stackql-resource: add_ons
       x-stackql-method: enable_add_on
       x-stackql-verb: EXEC
   /ExportSnapshot:
@@ -3034,7 +3044,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportSnapshotResult'
-      x-stackql-resource: snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: export_snapshot
       x-stackql-verb: EXEC
   /GetActiveNames:
@@ -3372,7 +3382,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBucketMetricDataResult'
-      x-stackql-resource: bucket_metric_datas
+      x-stackql-resource: bucket_metric_data
       x-stackql-method: get_bucket_metric_data
       x-stackql-verb: SELECT
   /GetBuckets:
@@ -3637,7 +3647,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContainerAPIMetadataOutputDisplay'
-      x-stackql-resource: container_api_metadatas
+      x-stackql-resource: container_api_metadata
       x-stackql-method: get_container_api_metadata
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContainerAPIMetadataOutputDisplay
@@ -3866,7 +3876,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContainerServiceMetricDataResult'
-      x-stackql-resource: container_service_metric_datas
+      x-stackql-resource: container_service_metric_data
       x-stackql-method: get_container_service_metric_data
       x-stackql-verb: SELECT
   /GetContainerServicePowers:
@@ -4299,7 +4309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDistributionMetricDataResult'
-      x-stackql-resource: distribution_metric_datas
+      x-stackql-resource: distribution_metric_data
       x-stackql-method: get_distribution_metric_data
       x-stackql-verb: SELECT
   /GetDistributions:
@@ -4649,7 +4659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInstanceMetricDataResult'
-      x-stackql-resource: instance_metric_datas
+      x-stackql-resource: instance_metric_data
       x-stackql-method: get_instance_metric_data
       x-stackql-verb: SELECT
   /GetInstancePortStates:
@@ -5065,7 +5075,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLoadBalancerMetricDataResult'
-      x-stackql-resource: load_balancer_metric_datas
+      x-stackql-resource: load_balancer_metric_data
       x-stackql-method: get_load_balancer_metric_data
       x-stackql-verb: SELECT
   /GetLoadBalancerTlsCertificates:
@@ -5302,8 +5312,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOperationsForResourceResult'
-      x-stackql-resource: operations_for_resources
+      x-stackql-resource: operations
       x-stackql-method: get_operations_for_resource
+      x-stackql-verb: SELECT
+  /GetProfile:
+    post:
+      operationId: GetProfile
+      description: Returns information about the profile of the Amazon Lightsail account that makes the request. The response
+        includes the profile type and, for accounts enrolled in the Lightsail partner program, the partner membership details.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - Lightsail_20161128.GetProfile
+          default: Lightsail_20161128.GetProfile
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProfileResult'
+      x-stackql-resource: profiles
+      x-stackql-method: get_profile
       x-stackql-verb: SELECT
   /GetRegions:
     post:
@@ -5751,7 +5792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRelationalDatabaseMetricDataResult'
-      x-stackql-resource: relational_database_metric_datas
+      x-stackql-resource: relational_database_metric_data
       x-stackql-method: get_relational_database_metric_data
       x-stackql-verb: SELECT
   /GetRelationalDatabaseParameters:
@@ -6105,7 +6146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IsVpcPeeredResult'
-      x-stackql-resource: is_vpc_peered
+      x-stackql-resource: vpc_peereds
       x-stackql-method: is_vpc_peered
       x-stackql-verb: EXEC
   /OpenInstancePublicPorts:
@@ -6178,7 +6219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PeerVpcResult'
-      x-stackql-resource: peer_vpc
+      x-stackql-resource: vpcs
       x-stackql-method: peer_vpc
       x-stackql-verb: EXEC
   /PutAlarm:
@@ -6747,7 +6788,7 @@ paths:
                 $ref: '#/components/schemas/SetupInstanceHttpsResult'
       x-stackql-resource: instances
       x-stackql-method: setup_instance_https
-      x-stackql-verb: UPDATE
+      x-stackql-verb: EXEC
   /StartGUISession:
     post:
       operationId: StartGUISession
@@ -6782,7 +6823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartGUISessionResult'
-      x-stackql-resource: gui_session
+      x-stackql-resource: gui_sessions
       x-stackql-method: start_gui_session
       x-stackql-verb: EXEC
   /StartInstance:
@@ -6899,7 +6940,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopGUISessionResult'
-      x-stackql-resource: gui_session
+      x-stackql-resource: gui_sessions
       x-stackql-method: stop_gui_session
       x-stackql-verb: EXEC
   /StopInstance:
@@ -7111,7 +7152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnpeerVpcResult'
-      x-stackql-resource: unpeer_vpc
+      x-stackql-resource: vpcs
       x-stackql-method: unpeer_vpc
       x-stackql-verb: EXEC
   /UntagResource:
@@ -7392,6 +7433,25 @@ paths:
                   description: Indicates whether the default SSL/TLS certificate is attached to the distribution. The default
                     value is true. When true, the distribution uses the default domain name such as d111111abcdef8.cloudfront.net.
                     Set this value to false to attach a new certificate to the distribution.
+                enablePrivateOriginAccess:
+                  $ref: '#/components/schemas/boolean'
+                  description: Specifies whether to enable private origin access for the distribution. With private origin
+                    access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. Lightsail
+                    grants the distribution permission to read the bucket's objects. Enabling private origin access doesn't
+                    change the bucket's access settings, and you can still retrieve publicly accessible objects directly from
+                    the bucket's endpoint. When you include this parameter, you must also include the origin parameter with
+                    the resource name, even if the origin is not changing. You can enable private origin access only when
+                    the distribution's origin is a Lightsail bucket. If the origin is another resource type, the request fails.
+                defaultRootObject:
+                  $ref: '#/components/schemas/string'
+                  description: The object (for example, index.html) that the distribution returns when a viewer requests the
+                    root URL of the distribution (/) instead of a specific object. The object that you specify must be available
+                    from the origin.
+                customErrorResponses:
+                  $ref: '#/components/schemas/DistributionCustomErrorResponseList'
+                  description: An array of objects that describe the custom error responses for the distribution. With a custom
+                    error response, you can specify the page to return when the origin responds with a given HTTP error code.
+                    You can also specify the HTTP status code to send to the viewer.
               required:
               - distributionName
       responses:
@@ -7997,6 +8057,7 @@ components:
       - StartGUISession
       - StopGUISession
       - SetupInstanceHttps
+      - GetProfile
     OperationStatus:
       type: string
       enum:
@@ -9434,6 +9495,30 @@ components:
       - TLSv1.2_2018
       - TLSv1.2_2019
       - TLSv1.2_2021
+    DistributionCustomErrorResponseList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DistributionCustomErrorResponse'
+    DistributionCustomErrorResponse:
+      description: Describes a custom error response for a Lightsail distribution. A custom error response specifies the page
+        that the distribution returns to the viewer. It also specifies the HTTP status code that the distribution sends when
+        the origin responds with a given HTTP error code.
+      type: object
+      properties:
+        errorCode:
+          $ref: '#/components/schemas/integer'
+          description: The HTTP error code from the origin that triggers the custom error response (for example, 403 or 404).
+        responseCode:
+          $ref: '#/components/schemas/string'
+          description: The HTTP status code that the distribution returns to the viewer for the custom error response.
+        responsePagePath:
+          $ref: '#/components/schemas/string'
+          description: The path to the custom error page that the distribution returns to the viewer (for example, /404.html).
+            The path must begin with a forward slash (/) and reference an object that is available from the origin.
+        errorCachingMinTTL:
+          $ref: '#/components/schemas/long'
+          description: The minimum time, in seconds, that the distribution caches the custom error response before requesting
+            the object again from the origin. If you don't specify a value, the default is 10 seconds.
     CreateDistributionResult:
       type: object
       properties:
@@ -9520,6 +9605,13 @@ components:
         viewerMinimumTlsProtocolVersion:
           $ref: '#/components/schemas/string'
           description: The minimum TLS protocol version that the distribution can use to communicate with viewers.
+        defaultRootObject:
+          $ref: '#/components/schemas/string'
+          description: The object (for example, index.html) that the distribution returns when a viewer requests the root
+            URL of the distribution (/) instead of a specific object.
+        customErrorResponses:
+          $ref: '#/components/schemas/DistributionCustomErrorResponseList'
+          description: An array of objects that describe the custom error responses configured for the distribution.
     Origin:
       description: Describes the origin resource of an Amazon Lightsail content delivery network (CDN) distribution. An origin
         can be a Lightsail instance, bucket, or load balancer. A distribution pulls content from an origin, caches it, and
@@ -9548,6 +9640,12 @@ components:
           $ref: '#/components/schemas/OriginIpAddressTypeEnum'
           description: The IP address type that the distribution uses when connecting to the origin. The possible values are
             ipv4 for IPv4 only, ipv6 for IPv6 only, and dualstack for IPv4 and IPv6.
+        isPrivateOriginAccessEnabled:
+          $ref: '#/components/schemas/boolean'
+          description: Specifies whether private origin access is enabled for the distribution's origin. With private origin
+            access, the distribution can serve objects that aren't publicly accessible from a Lightsail bucket. This applies
+            when you set the bucket's getObject access rule to private. It also applies when you set getObject to public but
+            set individual objects to private.
     CreateDomainResult:
       type: object
       properties:
@@ -9808,10 +9906,6 @@ components:
           $ref: '#/components/schemas/OperationList'
           description: An array of objects that describe the result of the action, such as the status of the request, the
             timestamp of the request, and the resources affected by the request.
-    DeleteContainerImageResult:
-      type: object
-    DeleteContainerServiceResult:
-      type: object
     DeleteDiskResult:
       type: object
       properties:
@@ -10150,6 +10244,8 @@ components:
       - FreeStorageSpace
       - NetworkReceiveThroughput
       - NetworkTransmitThroughput
+      - FreeableMemory
+      - SwapUsage
       - BurstCapacityTime
       - BurstCapacityPercentage
     AlarmState:
@@ -12595,6 +12691,57 @@ components:
           description: The token to advance to the next page of results from your request. A next page token is not returned
             if there are no more results to display. To get the next page of results, perform another GetOperationsForResource
             request and specify the next page token using the pageToken parameter.
+    GetProfileResult:
+      type: object
+      properties:
+        profileType:
+          $ref: '#/components/schemas/ProfileType'
+          description: 'The type of the profile. The following profile types are possible: Lightsailor – The account is not
+            enrolled in the Lightsail partner program. LightsailPartner – The account is enrolled in the Lightsail partner
+            program.'
+        partner:
+          $ref: '#/components/schemas/PartnerInfo'
+          description: An object that describes the partner membership of the account, such as the tier of the membership,
+            its status, and when the account was enrolled. This parameter is returned only for accounts that have a profileType
+            of LightsailPartner.
+      required:
+      - profileType
+    ProfileType:
+      type: string
+      enum:
+      - Lightsailor
+      - LightsailPartner
+    PartnerInfo:
+      description: An object that contains information about the Lightsail partner program membership of an Amazon Lightsail
+        account.
+      type: object
+      properties:
+        enrolledAt:
+          $ref: '#/components/schemas/IsoDate'
+          description: The timestamp when the account was enrolled in the Lightsail partner program.
+        tierName:
+          $ref: '#/components/schemas/TierName'
+          description: The tier of the partner membership.
+        status:
+          $ref: '#/components/schemas/PartnerStatus'
+          description: 'The status of the partner membership. The following statuses are possible: Active – The membership
+            is active, and the benefits of the current tier are available to the account. Suspended – The membership is suspended,
+            and the benefits of the tier are not available to the account.'
+      required:
+      - enrolledAt
+      - status
+    TierName:
+      type: string
+      enum:
+      - Essential
+      - Growth
+      - Accelerate
+      - Premier
+    PartnerStatus:
+      type: string
+      enum:
+      - Active
+      - Suspended
     GetRegionsResult:
       type: object
       properties:
@@ -12970,6 +13117,8 @@ components:
       - FreeStorageSpace
       - NetworkReceiveThroughput
       - NetworkTransmitThroughput
+      - FreeableMemory
+      - SwapUsage
     GetRelationalDatabaseMetricDataResult:
       type: object
       properties:

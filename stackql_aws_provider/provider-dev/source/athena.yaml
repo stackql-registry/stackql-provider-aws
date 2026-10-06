@@ -171,11 +171,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelCapacityReservationOutput'
-      x-stackql-resource: capacity_reservation
+      x-stackql-resource: capacity_reservations
       x-stackql-method: cancel_capacity_reservation
       x-stackql-verb: EXEC
   /CreateCapacityReservation:
@@ -214,10 +210,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCapacityReservationOutput'
       x-stackql-resource: capacity_reservations
       x-stackql-method: create_capacity_reservation
       x-stackql-verb: INSERT
@@ -449,10 +441,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePreparedStatementOutput'
       x-stackql-resource: prepared_statements
       x-stackql-method: create_prepared_statement
       x-stackql-verb: INSERT
@@ -538,10 +526,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateWorkGroupOutput'
       x-stackql-resource: work_groups
       x-stackql-method: create_work_group
       x-stackql-verb: INSERT
@@ -576,10 +560,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCapacityReservationOutput'
       x-stackql-resource: capacity_reservations
       x-stackql-method: delete_capacity_reservation
       x-stackql-verb: DELETE
@@ -653,10 +633,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNamedQueryOutput'
       x-stackql-resource: named_queries
       x-stackql-method: delete_named_query
       x-stackql-verb: DELETE
@@ -689,10 +665,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNotebookOutput'
       x-stackql-resource: notebooks
       x-stackql-method: delete_notebook
       x-stackql-verb: DELETE
@@ -729,10 +701,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePreparedStatementOutput'
       x-stackql-resource: prepared_statements
       x-stackql-method: delete_prepared_statement
       x-stackql-verb: DELETE
@@ -769,10 +737,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkGroupOutput'
       x-stackql-resource: work_groups
       x-stackql-method: delete_work_group
       x-stackql-verb: DELETE
@@ -809,7 +773,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportNotebookOutput'
-      x-stackql-resource: notebook
+      x-stackql-resource: notebooks
       x-stackql-method: export_notebook
       x-stackql-verb: EXEC
   /GetCalculationExecution:
@@ -917,7 +881,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCalculationExecutionStatusResponse'
-      x-stackql-resource: calculation_execution_status
+      x-stackql-resource: calculation_execution_statuses
       x-stackql-method: get_calculation_execution_status
       x-stackql-verb: SELECT
   /GetCapacityAssignmentConfiguration:
@@ -1150,7 +1114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetNotebookMetadataOutput'
-      x-stackql-resource: notebook_metadatas
+      x-stackql-resource: notebook_metadata
       x-stackql-method: get_notebook_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotebookMetadata
@@ -1476,7 +1440,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSessionStatusResponse'
-      x-stackql-resource: session_status
+      x-stackql-resource: session_statuses
       x-stackql-method: get_session_status
       x-stackql-verb: SELECT
   /GetTableMetadata:
@@ -1524,7 +1488,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableMetadataOutput'
-      x-stackql-resource: table_metadatas
+      x-stackql-resource: table_metadata
       x-stackql-method: get_table_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableMetadata
@@ -1621,7 +1585,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportNotebookOutput'
-      x-stackql-resource: notebook
+      x-stackql-resource: notebooks
       x-stackql-method: import_notebook
       x-stackql-verb: EXEC
   /ListApplicationDPUSizes:
@@ -2040,7 +2004,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListNotebookMetadataOutput'
-      x-stackql-resource: notebook_metadatas
+      x-stackql-resource: notebook_metadata
       x-stackql-method: list_notebook_metadata
       x-stackql-verb: SELECT
   /ListNotebookSessions:
@@ -2292,7 +2256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTableMetadataOutput'
-      x-stackql-resource: table_metadatas
+      x-stackql-resource: table_metadata
       x-stackql-method: list_table_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableMetadataList
@@ -2419,10 +2383,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutCapacityAssignmentConfigurationOutput'
       x-stackql-resource: capacity_assignment_configurations
       x-stackql-method: put_capacity_assignment_configuration
       x-stackql-verb: REPLACE
@@ -2480,7 +2440,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCalculationExecutionResponse'
-      x-stackql-resource: calculation_execution
+      x-stackql-resource: calculation_executions
       x-stackql-method: start_calculation_execution
       x-stackql-verb: EXEC
   /StartQueryExecution:
@@ -2555,7 +2515,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryExecutionOutput'
-      x-stackql-resource: query_execution
+      x-stackql-resource: query_executions
       x-stackql-method: start_query_execution
       x-stackql-verb: EXEC
   /StartSession:
@@ -2631,7 +2591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /StopCalculationExecution:
@@ -2671,7 +2631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopCalculationExecutionResponse'
-      x-stackql-resource: calculation_execution
+      x-stackql-resource: calculation_executions
       x-stackql-method: stop_calculation_execution
       x-stackql-verb: EXEC
   /StopQueryExecution:
@@ -2703,11 +2663,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopQueryExecutionOutput'
-      x-stackql-resource: query_execution
+      x-stackql-resource: query_executions
       x-stackql-method: stop_query_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -2750,10 +2706,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2829,10 +2781,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2869,10 +2817,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCapacityReservationOutput'
       x-stackql-resource: capacity_reservations
       x-stackql-method: update_capacity_reservation
       x-stackql-verb: UPDATE
@@ -2926,10 +2870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataCatalogOutput'
       x-stackql-resource: data_catalogs
       x-stackql-method: update_data_catalog
       x-stackql-verb: UPDATE
@@ -2973,10 +2913,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNamedQueryOutput'
       x-stackql-resource: named_queries
       x-stackql-method: update_named_query
       x-stackql-verb: UPDATE
@@ -3026,10 +2962,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotebookOutput'
       x-stackql-resource: notebooks
       x-stackql-method: update_notebook
       x-stackql-verb: UPDATE
@@ -3072,11 +3004,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotebookMetadataOutput'
-      x-stackql-resource: notebook_metadatas
+      x-stackql-resource: notebook_metadata
       x-stackql-method: update_notebook_metadata
       x-stackql-verb: UPDATE
   /UpdatePreparedStatement:
@@ -3119,10 +3047,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePreparedStatementOutput'
       x-stackql-resource: prepared_statements
       x-stackql-method: update_prepared_statement
       x-stackql-verb: UPDATE
@@ -3165,10 +3089,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkGroupOutput'
       x-stackql-resource: work_groups
       x-stackql-method: update_work_group
       x-stackql-verb: UPDATE
@@ -3805,8 +3725,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9._-]+'
-    CancelCapacityReservationOutput:
-      type: object
     TargetDpusInteger:
       type: integer
       minimum: 4
@@ -3841,8 +3759,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    CreateCapacityReservationOutput:
-      type: object
     DataCatalogType:
       type: string
       enum:
@@ -3981,8 +3897,6 @@ components:
       minLength: 1
       maxLength: 36
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    CreatePreparedStatementOutput:
-      type: object
     SessionId:
       type: string
       minLength: 1
@@ -4252,23 +4166,11 @@ components:
       type: string
       minLength: 0
       maxLength: 1024
-    CreateWorkGroupOutput:
-      type: object
-    DeleteCapacityReservationOutput:
-      type: object
     DeleteDataCatalogOutput:
       type: object
       properties:
         DataCatalog:
           $ref: '#/components/schemas/DataCatalog'
-    DeleteNamedQueryOutput:
-      type: object
-    DeleteNotebookOutput:
-      type: object
-    DeletePreparedStatementOutput:
-      type: object
-    DeleteWorkGroupOutput:
-      type: object
     ExportNotebookOutput:
       type: object
       properties:
@@ -5577,8 +5479,6 @@ components:
         IdentityCenterApplicationArn:
           $ref: '#/components/schemas/IdentityCenterApplicationArn'
           description: The ARN of the IAM Identity Center enabled application associated with the workgroup.
-    PutCapacityAssignmentConfigurationOutput:
-      type: object
     CalculationConfiguration:
       description: Contains configuration information for the calculation.
       type: object
@@ -5629,10 +5529,6 @@ components:
             CANCELING - A request to cancel the calculation has been received and the system is working to stop it. CANCELED
             - The calculation is no longer running as the result of a cancel request. COMPLETED - The calculation has completed
             without error. FAILED - The calculation failed and is no longer running.
-    StopQueryExecutionOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TerminateSessionResponse:
       type: object
       properties:
@@ -5648,24 +5544,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
-    UpdateCapacityReservationOutput:
-      type: object
-    UpdateDataCatalogOutput:
-      type: object
     NamedQueryDescriptionString:
       type: string
       minLength: 0
       maxLength: 1024
-    UpdateNamedQueryOutput:
-      type: object
-    UpdateNotebookOutput:
-      type: object
-    UpdateNotebookMetadataOutput:
-      type: object
-    UpdatePreparedStatementOutput:
-      type: object
     WorkGroupConfigurationUpdates:
       description: The configuration information that will be updated for this workgroup, which includes the location in Amazon
         S3 where query and calculation results are stored, the encryption option, if any, used for query results, whether
@@ -5800,5 +5682,3 @@ components:
           $ref: '#/components/schemas/BoxedBoolean'
           description: If set to true, it removes workgroup from Athena owned storage. The existing query results are cleaned
             up after 24hrs. You must provide query results in location specified under ResultConfiguration$OutputLocation.
-    UpdateWorkGroupOutput:
-      type: object

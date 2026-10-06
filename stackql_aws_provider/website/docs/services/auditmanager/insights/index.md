@@ -33,11 +33,56 @@ Creates, updates, deletes, gets or lists an <code>insights</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_insights"
+    defaultValue="get_insights_by_assessment"
     values={[
+        { label: 'get_insights_by_assessment', value: 'get_insights_by_assessment' },
         { label: 'get_insights', value: 'get_insights' }
     ]}
 >
+<TabItem value="get_insights_by_assessment">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="assessment_controls_count_by_noncompliant_evidence" /></td>
+    <td><code>integer</code></td>
+    <td>The number of assessment controls that collected non-compliant evidence on the lastUpdated date.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="compliant_evidence_count" /></td>
+    <td><code>integer</code></td>
+    <td>The number of compliance check evidence that Audit Manager classified as compliant. This includes evidence that was collected from Security Hub CSPM with a Pass ruling, or collected from Config with a Compliant ruling.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="inconclusive_evidence_count" /></td>
+    <td><code>integer</code></td>
+    <td>The amount of evidence without a compliance check ruling. Evidence is inconclusive if the associated control uses Security Hub CSPM or Config as a data source and you didn't enable those services. This is also the case if a control uses a data source that doesn’t support compliance checks (for example, manual evidence, API calls, or CloudTrail). If evidence has a compliance check status of not applicable, it's classified as inconclusive in InsightsByAssessment data.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_updated" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time when the assessment insights were last updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="noncompliant_evidence_count" /></td>
+    <td><code>integer</code></td>
+    <td>The number of compliance check evidence that Audit Manager classified as non-compliant. This includes evidence that was collected from Security Hub CSPM with a Fail ruling, or collected from Config with a Non-compliant ruling.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="total_assessment_controls_count" /></td>
+    <td><code>integer</code></td>
+    <td>The total number of controls in the assessment.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="get_insights">
 
 <table>
@@ -105,6 +150,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_insights_by_assessment"><CopyableCode code="get_insights_by_assessment" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-assessment_id"><code>assessment_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets the latest analytics data for a specific active assessment.</td>
+</tr>
+<tr>
     <td><a href="#get_insights"><CopyableCode code="get_insights" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -127,6 +179,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-assessment_id">
+    <td><CopyableCode code="assessment_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier for the assessment.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -138,11 +195,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_insights"
+    defaultValue="get_insights_by_assessment"
     values={[
+        { label: 'get_insights_by_assessment', value: 'get_insights_by_assessment' },
         { label: 'get_insights', value: 'get_insights' }
     ]}
 >
+<TabItem value="get_insights_by_assessment">
+
+Gets the latest analytics data for a specific active assessment.
+
+```sql
+SELECT
+assessment_controls_count_by_noncompliant_evidence,
+compliant_evidence_count,
+inconclusive_evidence_count,
+last_updated,
+noncompliant_evidence_count,
+total_assessment_controls_count
+FROM aws.auditmanager.insights
+WHERE assessment_id = '{{ assessment_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="get_insights">
 
 Gets the latest analytics data for all your current active assessments.

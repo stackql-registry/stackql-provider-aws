@@ -92,18 +92,18 @@ The following methods are available for this resource:
     <td>Gets the resource policy and policy revision for a bot or bot alias.</td>
 </tr>
 <tr>
-    <td><a href="#create_resource_policy_statement"><CopyableCode code="create_resource_policy_statement" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-statementId"><code>statementId</code></a>, <a href="#parameter-effect"><code>effect</code></a>, <a href="#parameter-principal"><code>principal</code></a>, <a href="#parameter-action"><code>action</code></a></td>
-    <td><a href="#parameter-expectedRevisionId"><code>expectedRevisionId</code></a></td>
-    <td>Adds a new resource policy statement to a bot or bot alias. If a resource policy exists, the statement is added to the current resource policy. If a policy doesn't exist, a new policy is created. You can't create a resource policy statement that allows cross-account access. You need to add the CreateResourcePolicy or UpdateResourcePolicy action to the bot role in order to call the API.</td>
-</tr>
-<tr>
     <td><a href="#create_resource_policy"><CopyableCode code="create_resource_policy" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-policy"><code>policy</code></a></td>
     <td></td>
     <td>Creates a new resource policy with the specified policy statements.</td>
+</tr>
+<tr>
+    <td><a href="#create_resource_policy_statement"><CopyableCode code="create_resource_policy_statement" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-statementId"><code>statementId</code></a>, <a href="#parameter-effect"><code>effect</code></a>, <a href="#parameter-principal"><code>principal</code></a>, <a href="#parameter-action"><code>action</code></a></td>
+    <td><a href="#parameter-expectedRevisionId"><code>expectedRevisionId</code></a></td>
+    <td>Adds a new resource policy statement to a bot or bot alias. If a resource policy exists, the statement is added to the current resource policy. If a policy doesn't exist, a new policy is created. You can't create a resource policy statement that allows cross-account access. You need to add the CreateResourcePolicy or UpdateResourcePolicy action to the bot role in order to call the API.</td>
 </tr>
 <tr>
     <td><a href="#update_resource_policy"><CopyableCode code="update_resource_policy" /></a></td>
@@ -194,13 +194,33 @@ AND region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_resource_policy_statement"
+    defaultValue="create_resource_policy"
     values={[
-        { label: 'create_resource_policy_statement', value: 'create_resource_policy_statement' },
         { label: 'create_resource_policy', value: 'create_resource_policy' },
+        { label: 'create_resource_policy_statement', value: 'create_resource_policy_statement' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_resource_policy">
+
+Creates a new resource policy with the specified policy statements.
+
+```sql
+INSERT INTO aws.lexv2_models.resource_policies (
+policy,
+resource_arn,
+region
+)
+SELECT 
+'{{ policy }}' /* required */,
+'{{ resource_arn }}',
+'{{ region }}'
+RETURNING
+resource_arn,
+revision_id
+;
+```
+</TabItem>
 <TabItem value="create_resource_policy_statement">
 
 Adds a new resource policy statement to a bot or bot alias. If a resource policy exists, the statement is added to the current resource policy. If a policy doesn't exist, a new policy is created. You can't create a resource policy statement that allows cross-account access. You need to add the CreateResourcePolicy or UpdateResourcePolicy action to the bot role in order to call the API.
@@ -231,26 +251,6 @@ revision_id
 ;
 ```
 </TabItem>
-<TabItem value="create_resource_policy">
-
-Creates a new resource policy with the specified policy statements.
-
-```sql
-INSERT INTO aws.lexv2_models.resource_policies (
-policy,
-resource_arn,
-region
-)
-SELECT 
-'{{ policy }}' /* required */,
-'{{ resource_arn }}',
-'{{ region }}'
-RETURNING
-resource_arn,
-revision_id
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -262,6 +262,8 @@ revision_id
     - name: region
       value: "{{ region }}"
       description: Required parameter for the resource_policies resource.
+    - name: policy
+      value: "{{ policy }}"
     - name: statementId
       value: "{{ statementId }}"
     - name: effect
@@ -276,8 +278,6 @@ revision_id
         - "{{ action }}"
     - name: condition
       value: "{{ condition }}"
-    - name: policy
-      value: "{{ policy }}"
     - name: expectedRevisionId
       value: "{{ expectedRevisionId }}"
       description: The identifier of the revision of the policy to edit. If this revision ID doesn't match the current revision ID, Amazon Lex throws an exception. If you don't specify a revision, Amazon Lex overwrites the contents of the policy with the new values.

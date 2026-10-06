@@ -154,10 +154,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateComponentResponse"
   /CreateLogPattern:
     post:
       operationId: CreateLogPattern
@@ -236,10 +232,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
   /DeleteComponent:
     post:
       operationId: DeleteComponent
@@ -273,10 +265,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteComponentResponse"
   /DeleteLogPattern:
     post:
       operationId: DeleteLogPattern
@@ -314,10 +302,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLogPatternResponse"
   /DescribeApplication:
     post:
       operationId: DescribeApplication
@@ -1060,10 +1044,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveWorkloadResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -1096,10 +1076,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1133,10 +1109,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateApplication:
     post:
       operationId: UpdateApplication
@@ -1230,10 +1202,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateComponentResponse"
   /UpdateComponentConfiguration:
     post:
       operationId: UpdateComponentConfiguration
@@ -1279,10 +1247,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateComponentConfigurationResponse"
   /UpdateLogPattern:
     post:
       operationId: UpdateLogPattern
@@ -1365,10 +1329,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateProblemResponse"
   /UpdateWorkload:
     post:
       operationId: UpdateWorkload
@@ -1655,8 +1615,6 @@ components:
       minLength: 1
       maxLength: 1011
       pattern: ^arn:aws(-\w+)*:[\w\d-]+:([\w\d-]*)?:[\w\d_-]*([:/].+)*$
-    CreateComponentResponse:
-      type: object
     LogPatternSetName:
       type: string
       minLength: 1
@@ -1699,12 +1657,6 @@ components:
         Rank:
           $ref: "#/components/schemas/LogPatternRank"
           description: Rank of the log pattern. Must be a value between 1 and 1,000,000. The patterns are sorted by rank, so we recommend that you set your highest priority patterns with the lowest rank. A pattern of rank 1 will be the first to get matched to a log line. A pattern of rank 1,000,000 will be last to get matched. When you configure custom log patterns from the console, a Low severity pattern translates to a 750,000 rank. A Medium severity pattern translates to a 500,000 rank. And a High severity pattern translates to a 250,000 rank. Rank values less than 1 or greater than 1,000,000 are reserved for Amazon Web Services provided patterns.
-    DeleteApplicationResponse:
-      type: object
-    DeleteComponentResponse:
-      type: object
-    DeleteLogPatternResponse:
-      type: object
     DescribeApplicationResponse:
       type: object
       properties:
@@ -2384,16 +2336,10 @@ components:
           description: Indicates whether all of the component configurations required to monitor a workload were provided.
     MissingWorkloadConfig:
       type: boolean
-    RemoveWorkloadResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     RemoveSNSTopic:
       type: boolean
     UpdateApplicationResponse:
@@ -2402,10 +2348,6 @@ components:
         ApplicationInfo:
           $ref: "#/components/schemas/ApplicationInfo"
           description: Information about the application.
-    UpdateComponentResponse:
-      type: object
-    UpdateComponentConfigurationResponse:
-      type: object
     UpdateLogPatternResponse:
       type: object
       properties:
@@ -2419,8 +2361,6 @@ components:
       type: string
       enum:
         - RESOLVED
-    UpdateProblemResponse:
-      type: object
     UpdateWorkloadResponse:
       type: object
       properties:
@@ -2480,7 +2420,6 @@ components:
             $ref: "#/paths/~1RemoveWorkload/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2533,7 +2472,6 @@ components:
             $ref: "#/paths/~1DeleteApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2601,7 +2539,6 @@ components:
             $ref: "#/paths/~1CreateComponent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2614,7 +2551,6 @@ components:
             $ref: "#/paths/~1DeleteComponent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2653,7 +2589,6 @@ components:
             $ref: "#/paths/~1UpdateComponent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2694,7 +2629,6 @@ components:
             $ref: "#/paths/~1DeleteLogPattern/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2774,7 +2708,6 @@ components:
             $ref: "#/paths/~1UpdateComponentConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2874,7 +2807,6 @@ components:
             $ref: "#/paths/~1UpdateProblem/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2986,7 +2918,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2999,7 +2930,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

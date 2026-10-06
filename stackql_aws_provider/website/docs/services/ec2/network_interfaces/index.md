@@ -251,18 +251,18 @@ The following methods are available for this resource:
     <td>Attaches a network interface to an instance.</td>
 </tr>
 <tr>
-    <td><a href="#modify_public_ip_dns_name_options"><CopyableCode code="modify_public_ip_dns_name_options" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-HostnameType"><code>HostnameType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Modify public hostname options for a network interface. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.</td>
-</tr>
-<tr>
     <td><a href="#detach_network_interface"><CopyableCode code="detach_network_interface" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-AttachmentId"><code>AttachmentId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Force"><code>Force</code></a></td>
     <td>Detaches a network interface from an instance.</td>
+</tr>
+<tr>
+    <td><a href="#modify_public_ip_dns_name_options"><CopyableCode code="modify_public_ip_dns_name_options" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-HostnameType"><code>HostnameType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Modify public hostname options for a network interface. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_network_interface"><CopyableCode code="delete_network_interface" /></a></td>
@@ -720,8 +720,8 @@ vpc_id
     defaultValue="attach_network_interface"
     values={[
         { label: 'attach_network_interface', value: 'attach_network_interface' },
-        { label: 'modify_public_ip_dns_name_options', value: 'modify_public_ip_dns_name_options' },
-        { label: 'detach_network_interface', value: 'detach_network_interface' }
+        { label: 'detach_network_interface', value: 'detach_network_interface' },
+        { label: 'modify_public_ip_dns_name_options', value: 'modify_public_ip_dns_name_options' }
     ]}
 >
 <TabItem value="attach_network_interface">
@@ -746,6 +746,21 @@ attachment_id,
 network_card_index;
 ```
 </TabItem>
+<TabItem value="detach_network_interface">
+
+Detaches a network interface from an instance.
+
+```sql
+UPDATE aws.ec2.network_interfaces
+SET 
+-- No updatable properties
+WHERE 
+AttachmentId = '{{ AttachmentId }}' --required
+AND region = '{{ region }}' --required
+AND DryRun = {{ DryRun}}
+AND Force = {{ Force}};
+```
+</TabItem>
 <TabItem value="modify_public_ip_dns_name_options">
 
 Modify public hostname options for a network interface. For more information, see EC2 instance hostnames, DNS names, and domains in the Amazon EC2 User Guide.
@@ -761,21 +776,6 @@ AND region = '{{ region }}' --required
 AND DryRun = {{ DryRun}}
 RETURNING
 successful;
-```
-</TabItem>
-<TabItem value="detach_network_interface">
-
-Detaches a network interface from an instance.
-
-```sql
-UPDATE aws.ec2.network_interfaces
-SET 
--- No updatable properties
-WHERE 
-AttachmentId = '{{ AttachmentId }}' --required
-AND region = '{{ region }}' --required
-AND DryRun = {{ DryRun}}
-AND Force = {{ Force}};
 ```
 </TabItem>
 </Tabs>

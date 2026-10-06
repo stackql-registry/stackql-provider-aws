@@ -18,7 +18,7 @@ b2bi service documentation.
 
 :::info[Service Summary]
 
-total resources: __7__  
+total resources: __10__  
 
 :::
 
@@ -26,11 +26,14 @@ total resources: __7__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/b2bi/capabilities/">capabilities</a><br />
-<a href="/services/b2bi/partnerships/">partnerships</a><br />
-<a href="/services/b2bi/profiles/">profiles</a><br />
-<a href="/services/b2bi/starter_mapping_templates/">starter_mapping_templates</a>
+<a href="/services/b2bi/conversions/">conversions</a><br />
+<a href="/services/b2bi/mappings/">mappings</a><br />
+<a href="/services/b2bi/parsings/">parsings</a><br />
+<a href="/services/b2bi/partnerships/">partnerships</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/b2bi/profiles/">profiles</a><br />
+<a href="/services/b2bi/starter_mapping_templates/">starter_mapping_templates</a><br />
 <a href="/services/b2bi/tags/">tags</a><br />
 <a href="/services/b2bi/transformer_jobs/">transformer_jobs</a><br />
 <a href="/services/b2bi/transformers/">transformers</a>

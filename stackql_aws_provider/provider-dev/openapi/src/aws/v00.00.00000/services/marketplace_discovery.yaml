@@ -907,6 +907,7 @@ components:
         - PRIVATE_PRICING
         - FUTURE_DATED
         - REPLACEMENT_OFFER
+        - AUTO_RENEW
     GetOfferSetOutput:
       type: object
       properties:
@@ -1395,9 +1396,107 @@ components:
         type_:
           $ref: "#/components/schemas/TermType"
           description: The category of the term.
+        maxRenewals:
+          $ref: "#/components/schemas/RenewalTermMaxRenewalsInteger"
+          description: The maximum number of renewals allowed on this offer. Absent means unlimited renewals.
+        lockoutPeriod:
+          $ref: "#/components/schemas/BoundedString"
+          description: The duration before the agreement end date when the lockout window begins, in ISO 8601 format (for example, P30D). Absent means no lockout.
+        adjustmentDeadline:
+          $ref: "#/components/schemas/BoundedString"
+          description: The duration before the agreement end date by which the renewal price is finalized, represented in ISO 8601 format (for example, P30D). Only applicable with PercentageRange.
+        priceIncrease:
+          $ref: "#/components/schemas/PriceIncrease"
+          description: The price increase applied at each renewal cycle. Absent means identical pricing on renewal.
+        termTemplates:
+          $ref: "#/components/schemas/TermTemplateList"
+          description: Structural templates defining how specific terms are reshaped on each renewal cycle. Absent for upfront-only offers.
       required:
         - id
         - type_
+    RenewalTermMaxRenewalsInteger:
+      type: integer
+      minimum: 1
+    PriceIncrease:
+      description: The pricing adjustment that applies at each renewal cycle, expressed as either a fixed percentage or a percentage range. Exactly one variant is present.
+      type: object
+      properties:
+        fixedPercentage:
+          $ref: "#/components/schemas/FixedPercentage"
+          description: A single fixed percentage applied uniformly at every renewal cycle.
+        percentageRange:
+          $ref: "#/components/schemas/PercentageRange"
+          description: A percentage band with minimum, maximum, and default values that bound the price increase at each renewal cycle.
+    FixedPercentage:
+      description: A single fixed price increase percentage applied at each renewal cycle.
+      type: object
+      properties:
+        percentageValue:
+          $ref: "#/components/schemas/BoundedString"
+          description: The percentage value applied at each renewal cycle.
+      required:
+        - percentageValue
+    PercentageRange:
+      description: A price increase percentage range with minimum, maximum, and default values.
+      type: object
+      properties:
+        minimumValue:
+          $ref: "#/components/schemas/BoundedString"
+          description: The minimum percentage by which the price can increase at each renewal cycle.
+        maximumValue:
+          $ref: "#/components/schemas/BoundedString"
+          description: The maximum percentage by which the price can increase at each renewal cycle.
+        defaultValue:
+          $ref: "#/components/schemas/BoundedString"
+          description: The percentage increase applied by default when no other value is finalized before the adjustment deadline. Falls between minimumValue and maximumValue.
+      required:
+        - minimumValue
+        - maximumValue
+        - defaultValue
+    TermTemplateList:
+      type: array
+      items:
+        $ref: "#/components/schemas/TermTemplate"
+    TermTemplate:
+      description: A structural template defining how a specific term type is reshaped on each renewal cycle. Exactly one variant is present.
+      type: object
+      properties:
+        paymentScheduleTermTemplate:
+          $ref: "#/components/schemas/PaymentScheduleTermTemplate"
+          description: The installment schedule used to structure payments on the renewal offer.
+    PaymentScheduleTermTemplate:
+      description: A template for the payment schedule term on the renewal offer.
+      type: object
+      properties:
+        schedule:
+          $ref: "#/components/schemas/PaymentScheduleEntryList"
+          description: An ordered list of installment entries for the renewal payment schedule.
+      required:
+        - schedule
+    PaymentScheduleEntryList:
+      type: array
+      items:
+        $ref: "#/components/schemas/PaymentScheduleEntry"
+    PaymentScheduleEntry:
+      description: A single installment entry in the renewal payment schedule.
+      type: object
+      properties:
+        chargeDateOffset:
+          $ref: "#/components/schemas/BoundedString"
+          description: The relative offset from the renewal agreement start date when this installment is due, in ISO 8601 duration format. The offset uses months only or days only (for example, P1M or P30D); mixed units are not supported, and every offset in a schedule uses the same unit.
+        chargePercentage:
+          $ref: "#/components/schemas/BoundedString"
+          description: The percentage of the increased TCV to charge in this installment. All entries in a schedule sum to 100.00.
+        dayOfMonth:
+          $ref: "#/components/schemas/PaymentScheduleEntryDayOfMonthInteger"
+          description: The optional calendar day of month on which the charge occurs. When absent, the charge day is derived from chargeDateOffset, and this field does not apply when chargeDateOffset is expressed in days. For months with fewer days than the specified day, the charge occurs on the last day of the month. For example, if dayOfMonth is 31, the charge in April occurs on April 30.
+      required:
+        - chargeDateOffset
+        - chargePercentage
+    PaymentScheduleEntryDayOfMonthInteger:
+      type: integer
+      minimum: 1
+      maximum: 31
     SupportTerm:
       description: Defines a support term that includes the refund policy for the offer.
       type: object

@@ -190,25 +190,25 @@ The following methods are available for this resource:
     <td>Associates a DNS reource configuration to a Route 53 Profile.</td>
 </tr>
 <tr>
+    <td><a href="#delete_profile"><CopyableCode code="delete_profile" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes the specified Route 53 Profile. Before you can delete a profile, you must first disassociate it from all VPCs.</td>
+</tr>
+<tr>
     <td><a href="#disassociate_profile"><CopyableCode code="disassociate_profile" /></a></td>
-    <td><CopyableCode code="update" /></td>
+    <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-resource_id"><code>resource_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Dissociates a specified Route 53 Profile from the specified VPC.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_resource_from_profile"><CopyableCode code="disassociate_resource_from_profile" /></a></td>
-    <td><CopyableCode code="update" /></td>
+    <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Dissoaciated a specified resource, from the Route 53 Profile.</td>
-</tr>
-<tr>
-    <td><a href="#delete_profile"><CopyableCode code="delete_profile" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-profile_id"><code>profile_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes the specified Route 53 Profile. Before you can delete a profile, you must first disassociate it from all VPCs.</td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-profile_id">
     <td><CopyableCode code="profile_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Profile that you want to delete.</td>
+    <td>The ID of the Profile.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -368,9 +368,7 @@ profile
     defaultValue="associate_profile"
     values={[
         { label: 'associate_profile', value: 'associate_profile' },
-        { label: 'associate_resource_to_profile', value: 'associate_resource_to_profile' },
-        { label: 'disassociate_profile', value: 'disassociate_profile' },
-        { label: 'disassociate_resource_from_profile', value: 'disassociate_resource_from_profile' }
+        { label: 'associate_resource_to_profile', value: 'associate_resource_to_profile' }
     ]}
 >
 <TabItem value="associate_profile">
@@ -411,38 +409,6 @@ RETURNING
 profile_resource_association;
 ```
 </TabItem>
-<TabItem value="disassociate_profile">
-
-Dissociates a specified Route 53 Profile from the specified VPC.
-
-```sql
-UPDATE aws.route53profiles.profiles
-SET 
--- No updatable properties
-WHERE 
-profile_id = '{{ profile_id }}' --required
-AND resource_id = '{{ resource_id }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-profile_association;
-```
-</TabItem>
-<TabItem value="disassociate_resource_from_profile">
-
-Dissoaciated a specified resource, from the Route 53 Profile.
-
-```sql
-UPDATE aws.route53profiles.profiles
-SET 
--- No updatable properties
-WHERE 
-profile_id = '{{ profile_id }}' --required
-AND resource_arn = '{{ resource_arn }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-profile_resource_association;
-```
-</TabItem>
 </Tabs>
 
 
@@ -462,6 +428,42 @@ Deletes the specified Route 53 Profile. Before you can delete a profile, you mus
 DELETE FROM aws.route53profiles.profiles
 WHERE profile_id = '{{ profile_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disassociate_profile"
+    values={[
+        { label: 'disassociate_profile', value: 'disassociate_profile' },
+        { label: 'disassociate_resource_from_profile', value: 'disassociate_resource_from_profile' }
+    ]}
+>
+<TabItem value="disassociate_profile">
+
+Dissociates a specified Route 53 Profile from the specified VPC.
+
+```sql
+EXEC aws.route53profiles.profiles.disassociate_profile 
+@profile_id='{{ profile_id }}' --required, 
+@resource_id='{{ resource_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="disassociate_resource_from_profile">
+
+Dissoaciated a specified resource, from the Route 53 Profile.
+
+```sql
+EXEC aws.route53profiles.profiles.disassociate_resource_from_profile 
+@profile_id='{{ profile_id }}' --required, 
+@resource_arn='{{ resource_arn }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

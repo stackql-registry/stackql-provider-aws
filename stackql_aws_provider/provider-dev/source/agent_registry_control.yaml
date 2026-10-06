@@ -34,6 +34,8 @@ paths:
                   $ref: '#/components/schemas/RegistryName'
                 description:
                   $ref: '#/components/schemas/Description'
+                encryptionConfiguration:
+                  $ref: '#/components/schemas/EncryptionConfiguration'
                 discoveryConfiguration:
                   $ref: '#/components/schemas/DiscoveryConfiguration'
                 clientToken:
@@ -42,6 +44,8 @@ paths:
                   $ref: '#/components/schemas/TagsMap'
                 approvalConfiguration:
                   $ref: '#/components/schemas/ApprovalConfiguration'
+                autoDetectionConfiguration:
+                  $ref: '#/components/schemas/AutoDetectionConfiguration'
               required:
               - name
       responses:
@@ -88,6 +92,8 @@ paths:
                   $ref: '#/components/schemas/RegistryRecordVersion'
                 clientToken:
                   $ref: '#/components/schemas/ClientToken'
+                provenance:
+                  $ref: '#/components/schemas/ProvenanceList'
                 tags:
                   $ref: '#/components/schemas/TagsMap'
               required:
@@ -173,6 +179,8 @@ paths:
                   $ref: '#/components/schemas/UpdatedDiscoveryConfiguration'
                 approvalConfiguration:
                   $ref: '#/components/schemas/UpdatedApprovalConfiguration'
+                autoDetectionConfiguration:
+                  $ref: '#/components/schemas/UpdatedAutoDetectionConfiguration'
       responses:
         '202':
           description: Success
@@ -203,10 +211,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRegistryRecordResponse'
       x-stackql-resource: registry_records
       x-stackql-method: delete_registry_record
       x-stackql-verb: DELETE
@@ -274,6 +278,8 @@ paths:
                   $ref: '#/components/schemas/RegistryRecordVersion'
                 triggerSynchronization:
                   $ref: '#/components/schemas/Boolean'
+                provenance:
+                  $ref: '#/components/schemas/ProvenanceList'
       responses:
         '202':
           description: Success
@@ -358,13 +364,16 @@ paths:
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
-      description: List the tags on a resource
+      description: Lists the tags associated with the specified Amazon Web Services Agent Registry resource. Returns the current
+        tag key-value pairs on the resource.
       parameters:
       - name: resource_arn
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/ResourceArn'
+        description: The Amazon Resource Name (ARN) of the resource to list tags for. Supported resources include registries
+          and registry records.
       responses:
         '200':
           description: Success
@@ -377,13 +386,17 @@ paths:
       x-stackql-verb: SELECT
     post:
       operationId: TagResource
-      description: Tag a resource with key-value pairs
+      description: Adds or overwrites one or more tags for the specified Amazon Web Services Agent Registry resource. Tags
+        are key-value pairs that you can use to categorize and manage Amazon Web Services resources. If a tag with the same
+        key already exists on the resource, the service replaces its value with the value you specify.
       parameters:
       - name: resource_arn
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/ResourceArn'
+        description: The Amazon Resource Name (ARN) of the resource to tag. Supported resources include registries and registry
+          records.
       requestBody:
         required: true
         content:
@@ -398,34 +411,31 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
       operationId: UntagResource
-      description: Remove tags from a resource by key
+      description: Removes one or more tags from the specified Amazon Web Services Agent Registry resource. The operation
+        removes only the tags whose keys you supply; other tags on the resource remain unchanged.
       parameters:
       - name: resource_arn
         in: path
         required: true
         schema:
           $ref: '#/components/schemas/ResourceArn'
+        description: The Amazon Resource Name (ARN) of the resource to remove tags from. Supported resources include registries
+          and registry records.
       - name: tagKeys
         in: query
         required: true
         schema:
           $ref: '#/components/schemas/TagKeyList'
+        description: The keys of the tags to remove from the resource. Tags with keys not included in this list remain on
+          the resource.
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -556,6 +566,24 @@ components:
       type: string
       minLength: 1
       maxLength: 4096
+    EncryptionConfiguration:
+      description: The server-side encryption configuration for a registry. Specifies a customer-managed Amazon Web Services
+        KMS key used to encrypt the registry's content.
+      type: object
+      properties:
+        kmsKeyArn:
+          $ref: '#/components/schemas/KmsKeyArn'
+          description: The Amazon Resource Name (ARN) of the customer-managed Amazon Web Services KMS key used to encrypt
+            the registry's content. The key must be a symmetric encryption key in the same Amazon Web Services account and
+            Region as the registry.
+      required:
+      - kmsKeyArn
+    KmsKeyArn:
+      description: A KMS key ARN
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: arn:aws(|-cn|-us-gov):kms:[a-zA-Z0-9-]*:[0-9]{12}:key/[a-zA-Z0-9-]{36}
     DiscoveryConfiguration:
       description: Discovery configuration for the registry. Controls how consumers are authorized to search the registry
         and invoke its MCP endpoint.
@@ -761,6 +789,7 @@ components:
         tags:
           type: object
           properties: {}
+          description: The tags applied to the service-managed VPC resource.
         routingDomain:
           $ref: '#/components/schemas/RoutingDomain'
           description: The routing domain used to resolve traffic through the private endpoint.
@@ -863,6 +892,27 @@ components:
       type: string
       enum:
       - APPROVE_ALL
+    AutoDetectionConfiguration:
+      description: The customer-defined auto-detection settings for a registry.
+      type: object
+      properties:
+        scope:
+          $ref: '#/components/schemas/AutoDetectionScope'
+          description: The source from which resources are detected. For example, ORGANIZATION sources resources from all
+            member accounts of an Amazon Web Services organization.
+        enabled:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether auto-detection is requested for the registry. Setting this to true is necessary but
+            not sufficient for auto-detection to become active; the preconditions of the configured scope must also be met.
+      required:
+      - scope
+      - enabled
+    AutoDetectionScope:
+      type: string
+      enum:
+      - ORGANIZATION
+    Boolean:
+      type: boolean
     CreateRegistryResponse:
       description: Response structure for creating a registry
       type: object
@@ -903,6 +953,7 @@ components:
       - AGENT
       - CUSTOM
       - SKILL
+      - GATEWAY
     Descriptors:
       description: The typed set of descriptors for a registry record. Exactly one descriptor field is populated based on
         the record type.
@@ -920,6 +971,12 @@ components:
         custom:
           $ref: '#/components/schemas/CustomDescriptor'
           description: The custom descriptor, populated when the record type is CUSTOM.
+        http:
+          $ref: '#/components/schemas/HttpDescriptor'
+          description: The HTTP descriptor, populated for records detected from an HTTP protocol source.
+        agui:
+          $ref: '#/components/schemas/AgUiDescriptor'
+          description: The AG-UI descriptor, populated for records detected from an AG-UI protocol source.
     McpServerDescriptor:
       description: Descriptor that defines the content of an MCP (Model Context Protocol) server registry record, including
         the server definition and its tool definitions. The content is validated against the MCP protocol schema.
@@ -953,14 +1010,17 @@ components:
       properties:
         tools:
           $ref: '#/components/schemas/McpToolsDescriptor'
+          description: The MCP tools descriptor that defines the tools exposed by the MCP server.
     McpToolsDescriptor:
       description: MCP tools descriptor containing tool definitions
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The MCP tools descriptor content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
     DescriptorSource:
       description: The source configuration that defines where descriptor content is retrieved from.
       type: object
@@ -1028,7 +1088,8 @@ components:
       properties:
         providerArn:
           $ref: '#/components/schemas/CredentialProviderArn'
-          description: The &ARN; of the OAuth 2.0 credential provider resource in Amazon Bedrock AgentCore Identity.
+          description: The Amazon Resource Name (ARN) of the OAuth 2.0 credential provider resource in Amazon Bedrock AgentCore
+            Identity.
         grantType:
           $ref: '#/components/schemas/RegistryRecordOAuthGrantType'
           description: The OAuth 2.0 grant type used to obtain access tokens.
@@ -1058,19 +1119,19 @@ components:
       type: string
     RegistryRecordIamCredentialProvider:
       description: The configuration for an IAM role credential provider that signs requests to a registry record's source
-        with AWS Signature Version 4 (SigV4).
+        with Amazon Web Services Signature Version 4 (SigV4).
       type: object
       properties:
         roleArn:
           $ref: '#/components/schemas/IamRoleArn'
-          description: The &ARN; of the IAM role to assume for request signing.
+          description: The Amazon Resource Name (ARN) of the IAM role to assume for request signing.
         service:
           $ref: '#/components/schemas/IamSigningServiceName'
           description: The service name to use for request signing, such as execute-api.
         region:
           $ref: '#/components/schemas/IamSigningRegion'
-          description: The AWS Region to use for request signing. If not specified, the Region is derived from the source
-            URL hostname, falling back to the Region of the registry.
+          description: The Amazon Web Services Region to use for request signing. If not specified, the Region is derived
+            from the source URL hostname, falling back to the Region of the registry.
     IamRoleArn:
       type: string
       minLength: 20
@@ -1139,12 +1200,132 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The custom descriptor content, serialized as descriptor payload data.
+    HttpDescriptor:
+      description: 'A registry record descriptor for the HTTP protocol. This descriptor is source-only: its content is synchronized
+        from the configured source URL rather than supplied inline.'
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/DescriptorSource'
+    AgUiDescriptor:
+      description: A registry record descriptor for the AG-UI (Agent-User Interaction) protocol.
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/DescriptorSource'
     RegistryRecordVersion:
       description: Version of the registry record
       type: string
       minLength: 1
       maxLength: 255
       pattern: '[a-zA-Z0-9.-]+'
+    ProvenanceList:
+      description: 'List of provenance entries on a registry record. Capped at one entry today: a record carries a single
+        DETECTED_FROM lineage. Modeled as a list so additional relations can be unlocked post-GA by raising this bound without
+        a breaking shape change.'
+      type: array
+      items:
+        $ref: '#/components/schemas/Provenance'
+    Provenance:
+      description: One provenance entry describing the lineage of a registry record.
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/ProvenanceRelation'
+        sourceId:
+          $ref: '#/components/schemas/SourceId'
+          description: The identifier of the upstream source that the registry record was detected from.
+        sourceType:
+          $ref: '#/components/schemas/SourceType'
+          description: The type of the upstream source that the registry record was detected from.
+        sourceDetails:
+          $ref: '#/components/schemas/SourceDetails'
+          description: Additional details about the upstream source that the registry record was detected from, such as the
+            AgentCore Gateway or Runtime configuration. The populated member corresponds to the source type.
+      required:
+      - relation
+      - sourceId
+    ProvenanceRelation:
+      description: The relationship between the registry record and its provenance source.
+      type: string
+      enum:
+      - DETECTED_FROM
+    SourceId:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: arn:aws(-[^:]+)?:[a-zA-Z0-9-]+:[a-z0-9-]*:[0-9]{12}:.+
+    SourceType:
+      type: string
+      enum:
+      - AWS::BedrockAgentCore::Runtime
+      - AWS::BedrockAgentCore::Gateway
+    SourceDetails:
+      description: The details about the upstream source from which a registry record was detected. Exactly one member is
+        populated, corresponding to the source type.
+      type: object
+      properties:
+        agentcoreRuntime:
+          $ref: '#/components/schemas/AgentCoreRuntimeSourceDetails'
+        agentcoreGateway:
+          $ref: '#/components/schemas/AgentCoreGatewaySourceDetails'
+    AgentCoreRuntimeSourceDetails:
+      description: Source details for a record auto-detected from an AgentCore Runtime resource.
+      type: object
+      properties:
+        protocolConfiguration:
+          $ref: '#/components/schemas/AgentCoreRuntimeProtocolConfiguration'
+        authorizerConfiguration:
+          $ref: '#/components/schemas/AuthorizerConfiguration'
+        workloadIdentityDetails:
+          $ref: '#/components/schemas/WorkloadIdentityDetails'
+    AgentCoreRuntimeProtocolConfiguration:
+      description: Protocol configuration for an AgentCore Runtime.
+      type: object
+      properties:
+        serverProtocol:
+          $ref: '#/components/schemas/AgentCoreRuntimeServerProtocol'
+    AgentCoreRuntimeServerProtocol:
+      description: The server protocol used by an AgentCore Runtime.
+      type: string
+      enum:
+      - HTTP
+      - A2A
+      - MCP
+      - AGUI
+    WorkloadIdentityDetails:
+      description: Workload identity details associated with a source resource.
+      type: object
+      properties:
+        workloadIdentityArn:
+          $ref: '#/components/schemas/WorkloadIdentityDetailsWorkloadIdentityArnString'
+          description: The Amazon Resource Name (ARN) of the workload identity associated with the source resource.
+      required:
+      - workloadIdentityArn
+    WorkloadIdentityDetailsWorkloadIdentityArnString:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    AgentCoreGatewaySourceDetails:
+      description: Source details for a record auto-detected from an AgentCore Gateway resource.
+      type: object
+      properties:
+        protocolType:
+          $ref: '#/components/schemas/AgentCoreGatewayProtocolType'
+        authorizerType:
+          $ref: '#/components/schemas/String'
+          description: The type of authorizer configured on the AgentCore Gateway resource that the registry record was detected
+            from.
+        authorizerConfiguration:
+          $ref: '#/components/schemas/AuthorizerConfiguration'
+        workloadIdentityDetails:
+          $ref: '#/components/schemas/WorkloadIdentityDetails'
+    AgentCoreGatewayProtocolType:
+      description: The protocol type of an AgentCore Gateway.
+      type: string
+      enum:
+      - MCP
     CreateRegistryRecordResponse:
       description: Response structure for creating a registry record
       type: object
@@ -1202,9 +1383,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: (arn:aws(-[^:]+)?:agent-registry:[a-z0-9-]+:[0-9]{12}:registry/[a-zA-Z0-9]{12,16}/record/)?[a-zA-Z0-9]{12}
-    DeleteRegistryRecordResponse:
-      description: Response structure for deleting a registry record
-      type: object
     GetRegistryResponse:
       description: Response structure for getting a registry
       type: object
@@ -1224,6 +1402,10 @@ components:
         discoveryConfiguration:
           $ref: '#/components/schemas/DiscoveryConfiguration'
           description: Discovery configuration for the registry
+        encryptionConfiguration:
+          $ref: '#/components/schemas/EncryptionConfiguration'
+          description: The server-side encryption configuration for the registry. Appears only when a customer-managed Amazon
+            Web Services KMS key encrypts the registry.
         approvalConfiguration:
           $ref: '#/components/schemas/ApprovalConfiguration'
           description: Approval configuration for registry records
@@ -1233,6 +1415,10 @@ components:
         statusReason:
           $ref: '#/components/schemas/String'
           description: The reason for the current status. Typically populated when the status indicates a failure state.
+        autoDetection:
+          $ref: '#/components/schemas/AutoDetection'
+          description: The registry's auto-detection properties, including the requested configuration and the current detection
+            status. Present only when auto-detection was configured for the registry.
         createdAt:
           $ref: '#/components/schemas/DateTimestamp'
           description: The timestamp when the registry was created
@@ -1252,6 +1438,32 @@ components:
       minLength: 12
       maxLength: 16
       pattern: '[a-zA-Z0-9]{12,16}'
+    AutoDetection:
+      description: The auto-detection properties for a registry, including the requested configuration and the current detection
+        status. When auto-detection is enabled and the scope preconditions are met, the registry is automatically populated
+        with discovered resources.
+      type: object
+      properties:
+        configuration:
+          $ref: '#/components/schemas/AutoDetectionConfiguration'
+          description: The auto-detection settings that control how resources are discovered for the registry.
+        status:
+          $ref: '#/components/schemas/AutoDetectionStatus'
+          description: The current auto-detection status. ACTIVE indicates that the registry is actively being populated with
+            detected resources. INACTIVE indicates that the preconditions required at the configured scope are not currently
+            met.
+        statusReason:
+          $ref: '#/components/schemas/String'
+          description: A human-readable explanation of the current auto-detection status. Typically populated when the status
+            requires additional context.
+      required:
+      - configuration
+      - status
+    AutoDetectionStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
     DateTimestamp:
       description: Timestamp in ISO 8601 date-time format
       type: string
@@ -1262,10 +1474,10 @@ components:
       properties:
         registryArn:
           $ref: '#/components/schemas/RegistryArn'
-          description: The &ARN; of the parent registry that owns the record.
+          description: The Amazon Resource Name (ARN) of the parent registry that owns the record.
         recordArn:
           $ref: '#/components/schemas/RegistryRecordArn'
-          description: The &ARN; of the registry record.
+          description: The Amazon Resource Name (ARN) of the registry record.
         recordId:
           $ref: '#/components/schemas/RegistryRecordId'
           description: The unique identifier of the registry record.
@@ -1299,6 +1511,16 @@ components:
         statusReason:
           $ref: '#/components/schemas/String'
           description: The reason for the current status. Typically populated when the status indicates a failure state.
+        provenance:
+          $ref: '#/components/schemas/ProvenanceList'
+        createdByAutoDetection:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether the registry record was created by auto-detection. true indicates the record was
+            automatically created by the service based on the registry's auto-detection configuration; false indicates the
+            record was created through a control-plane API call.
+        createdBy:
+          $ref: '#/components/schemas/CreatorAccountId'
+          description: The ID of the Amazon Web Services account that created the registry record.
       required:
       - registryArn
       - recordArn
@@ -1314,6 +1536,11 @@ components:
       minLength: 12
       maxLength: 12
       pattern: '[a-zA-Z0-9]{12}'
+    CreatorAccountId:
+      type: string
+      minLength: 12
+      maxLength: 12
+      pattern: '[0-9]{12}'
     MaxResults:
       description: Maximum number of items to be listed
       type: integer
@@ -1399,6 +1626,10 @@ components:
         statusReason:
           $ref: '#/components/schemas/String'
           description: The reason for the current status. Typically populated when the status indicates a failure state.
+        autoDetection:
+          $ref: '#/components/schemas/AutoDetection'
+          description: The registry's auto-detection properties, including the requested configuration and the current detection
+            status. Present only when auto-detection was configured for the registry.
         createdAt:
           $ref: '#/components/schemas/DateTimestamp'
           description: The timestamp when the registry was created
@@ -1458,10 +1689,10 @@ components:
       properties:
         registryArn:
           $ref: '#/components/schemas/RegistryArn'
-          description: The &ARN; of the parent registry that owns the record.
+          description: The Amazon Resource Name (ARN) of the parent registry that owns the record.
         recordArn:
           $ref: '#/components/schemas/RegistryRecordArn'
-          description: The &ARN; of the registry record.
+          description: The Amazon Resource Name (ARN) of the registry record.
         recordId:
           $ref: '#/components/schemas/RegistryRecordId'
           description: The unique identifier of the registry record.
@@ -1489,6 +1720,16 @@ components:
         updatedAt:
           $ref: '#/components/schemas/DateTimestamp'
           description: The timestamp when the registry record was last updated.
+        createdByAutoDetection:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether the registry record was created by auto-detection. true indicates the record was
+            automatically created by the service based on the registry's auto-detection configuration; false indicates the
+            record was created through a control-plane API call.
+        createdBy:
+          $ref: '#/components/schemas/CreatorAccountId'
+          description: The ID of the Amazon Web Services account that created the registry record.
+        provenanceSummaryList:
+          $ref: '#/components/schemas/ProvenanceSummaryList'
       required:
       - registryArn
       - recordArn
@@ -1499,6 +1740,28 @@ components:
       - status
       - createdAt
       - updatedAt
+    ProvenanceSummaryList:
+      description: List of condensed provenance entries surfaced on RegistryRecordSummary. Mirrors ProvenanceList's cardinality
+        (one entry today); modeled as a list for forward-compatibility.
+      type: array
+      items:
+        $ref: '#/components/schemas/ProvenanceSummary'
+    ProvenanceSummary:
+      description: Condensed provenance entry for list results — the key triple only (no sourceDetails union). Enough to display
+        and client-side-filter lineage without the full-read config payload.
+      type: object
+      properties:
+        relation:
+          $ref: '#/components/schemas/ProvenanceRelation'
+        sourceId:
+          $ref: '#/components/schemas/SourceId'
+          description: The identifier of the upstream source that the registry record was detected from.
+        sourceType:
+          $ref: '#/components/schemas/SourceType'
+          description: The type of the upstream source that the registry record was detected from.
+      required:
+      - relation
+      - sourceId
     ResourceArn:
       description: ARN of a taggable Agent Registry resource.
       type: string
@@ -1510,6 +1773,7 @@ components:
         tags:
           type: object
           properties: {}
+          description: The tags currently associated with the resource, as a map of tag keys to tag values.
     SubmitRegistryRecordForApprovalResponse:
       description: Response structure for submitting a registry record for approval
       type: object
@@ -1535,8 +1799,6 @@ components:
       - recordId
       - status
       - updatedAt
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: A list of tag keys.
       type: array
@@ -1548,14 +1810,13 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9\s._:/=+@-]*'
-    UntagResourceResponse:
-      type: object
     UpdatedDescription:
       description: Wrapper for updating an optional Description field with PATCH semantics
       type: object
       properties:
         optionalValue:
           $ref: '#/components/schemas/Description'
+          description: The value to set for this field. Omit the wrapper to leave the field unchanged.
     UpdatedDiscoveryConfiguration:
       description: The discovery configuration fields to update on a registry. Omit this structure to leave the discovery
         configuration unchanged.
@@ -1579,6 +1840,15 @@ components:
         optionalValue:
           $ref: '#/components/schemas/ApprovalConfiguration'
           description: The value to set for this field. Omit the wrapper to leave the field unchanged.
+    UpdatedAutoDetectionConfiguration:
+      description: A wrapper for updating the auto-detection configuration of a registry with PATCH semantics. Include this
+        wrapper to replace the auto-detection configuration with the specified value. Omit it to leave the auto-detection
+        configuration unchanged. To clear the configuration, include the wrapper with a null optionalValue.
+      type: object
+      properties:
+        optionalValue:
+          $ref: '#/components/schemas/AutoDetectionConfiguration'
+          description: The value to set for this field. Omit the wrapper to leave the field unchanged.
     UpdateRegistryResponse:
       description: Response structure for updating a registry
       type: object
@@ -1598,6 +1868,10 @@ components:
         discoveryConfiguration:
           $ref: '#/components/schemas/DiscoveryConfiguration'
           description: Discovery configuration for the registry
+        encryptionConfiguration:
+          $ref: '#/components/schemas/EncryptionConfiguration'
+          description: The server-side encryption configuration for the registry. Appears only when a customer-managed Amazon
+            Web Services KMS key encrypts the registry.
         approvalConfiguration:
           $ref: '#/components/schemas/ApprovalConfiguration'
           description: Approval configuration for registry records
@@ -1607,6 +1881,10 @@ components:
         statusReason:
           $ref: '#/components/schemas/String'
           description: The reason for the current status. Typically populated when the status indicates a failure state.
+        autoDetection:
+          $ref: '#/components/schemas/AutoDetection'
+          description: The registry's auto-detection properties, including the requested configuration and the current detection
+            status. Present only when auto-detection was configured for the registry.
         createdAt:
           $ref: '#/components/schemas/DateTimestamp'
           description: The timestamp when the registry was created
@@ -1653,6 +1931,12 @@ components:
         custom:
           $ref: '#/components/schemas/UpdatedCustomDescriptor'
           description: The patch for the custom descriptor.
+        http:
+          $ref: '#/components/schemas/UpdatedHttpDescriptor'
+          description: The patch for the HTTP descriptor.
+        agui:
+          $ref: '#/components/schemas/UpdatedAgUiDescriptor'
+          description: The patch for the AG-UI descriptor.
     UpdatedMcpServerDescriptor:
       description: The MCP server descriptor patch wrapper. Omit to leave the descriptor unchanged; supply an empty object
         to remove it; supply optionalValue to patch its fields.
@@ -1827,18 +2111,46 @@ components:
         data:
           $ref: '#/components/schemas/UpdatedDescriptorData'
           description: The patch for the descriptor's data field.
-    Boolean:
-      type: boolean
+    UpdatedHttpDescriptor:
+      description: The HTTP descriptor patch wrapper. Omit to leave the descriptor unchanged; supply an empty object to remove
+        it; supply optionalValue to patch its fields.
+      type: object
+      properties:
+        optionalValue:
+          $ref: '#/components/schemas/UpdatedHttpDescriptorFields'
+          description: The value to set for this field. Omit the wrapper to leave the field unchanged.
+    UpdatedHttpDescriptorFields:
+      description: The set of HTTP descriptor fields that can be individually updated.
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/UpdatedDescriptorSource'
+          description: The patch for the descriptor's source field.
+    UpdatedAgUiDescriptor:
+      description: The AG-UI descriptor patch wrapper. Omit to leave the descriptor unchanged; supply an empty object to remove
+        it; supply optionalValue to patch its fields.
+      type: object
+      properties:
+        optionalValue:
+          $ref: '#/components/schemas/UpdatedAgUiDescriptorFields'
+          description: The value to set for this field. Omit the wrapper to leave the field unchanged.
+    UpdatedAgUiDescriptorFields:
+      description: The set of AG-UI descriptor fields that can be individually updated.
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/UpdatedDescriptorSource'
+          description: The patch for the descriptor's source field.
     UpdateRegistryRecordResponse:
       description: Response structure for updating a registry record
       type: object
       properties:
         registryArn:
           $ref: '#/components/schemas/RegistryArn'
-          description: The &ARN; of the parent registry that owns the record.
+          description: The Amazon Resource Name (ARN) of the parent registry that owns the record.
         recordArn:
           $ref: '#/components/schemas/RegistryRecordArn'
-          description: The &ARN; of the registry record.
+          description: The Amazon Resource Name (ARN) of the registry record.
         recordId:
           $ref: '#/components/schemas/RegistryRecordId'
           description: The unique identifier of the registry record.
@@ -1872,6 +2184,16 @@ components:
         statusReason:
           $ref: '#/components/schemas/String'
           description: The reason for the current status. Typically populated when the status indicates a failure state.
+        provenance:
+          $ref: '#/components/schemas/ProvenanceList'
+        createdByAutoDetection:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether the registry record was created by auto-detection. true indicates the record was
+            automatically created by the service based on the registry's auto-detection configuration; false indicates the
+            record was created through a control-plane API call.
+        createdBy:
+          $ref: '#/components/schemas/CreatorAccountId'
+          description: The ID of the Amazon Web Services account that created the registry record.
       required:
       - registryArn
       - recordArn

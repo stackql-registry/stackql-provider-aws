@@ -94,10 +94,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteScheduleOutput"
     get:
       operationId: GetSchedule
       description: Retrieves the specified schedule.
@@ -220,10 +216,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteScheduleGroupOutput"
     get:
       operationId: GetScheduleGroup
       description: Retrieves the specified schedule group.
@@ -353,10 +345,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from the specified EventBridge Scheduler schedule group.
@@ -376,10 +364,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -913,10 +897,6 @@ components:
       minLength: 1
       maxLength: 1224
       pattern: ^arn:aws(-[a-z]+)?:scheduler:[a-z0-9\-]+:\d{12}:schedule-group\/[0-9a-zA-Z-_.]+$
-    DeleteScheduleOutput:
-      type: object
-    DeleteScheduleGroupOutput:
-      type: object
     GetScheduleOutput:
       type: object
       properties:
@@ -1106,14 +1086,10 @@ components:
         Tags:
           $ref: "#/components/schemas/TagList"
           description: The list of tags associated with the specified resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceOutput:
-      type: object
     UpdateScheduleOutput:
       type: object
       properties:
@@ -1144,7 +1120,6 @@ components:
             $ref: "#/paths/~1schedules~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_schedule:
@@ -1214,7 +1189,6 @@ components:
             $ref: "#/paths/~1schedule-groups~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_schedule_group:
@@ -1265,7 +1239,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1276,7 +1249,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

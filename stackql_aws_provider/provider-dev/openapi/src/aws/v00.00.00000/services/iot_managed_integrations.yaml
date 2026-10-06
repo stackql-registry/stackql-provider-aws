@@ -1922,10 +1922,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a specified resource.
@@ -1945,10 +1941,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /managed-thing-associations/register:
     put:
       operationId: RegisterAccountAssociation
@@ -5066,8 +5058,6 @@ components:
         StartedAt:
           $ref: "#/components/schemas/DiscoveryStartedAt"
           description: The timestamp value for the start time of the device discovery.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -5076,8 +5066,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     AuthConfigUpdate:
       description: The updated authentication configuration details for a connector destination.
       type: object
@@ -5909,6 +5897,17 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        start_device_discovery:
+          operation:
+            $ref: "#/paths/~1device-discoveries/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_discoveries/methods/get_device_discovery"
@@ -5980,10 +5979,10 @@ components:
         insert: []
         update: []
         delete: []
-    managed_thing_connectivity_datas:
-      id: aws.iot_managed_integrations.managed_thing_connectivity_datas
-      name: managed_thing_connectivity_datas
-      title: managed_thing_connectivity_datas
+    managed_thing_connectivity_data:
+      id: aws.iot_managed_integrations.managed_thing_connectivity_data
+      name: managed_thing_connectivity_data
+      title: managed_thing_connectivity_data
       methods:
         get_managed_thing_connectivity_data:
           operation:
@@ -5993,14 +5992,14 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/managed_thing_connectivity_datas/methods/get_managed_thing_connectivity_data"
+          - $ref: "#/components/x-stackQL-resources/managed_thing_connectivity_data/methods/get_managed_thing_connectivity_data"
         insert: []
         update: []
         delete: []
-    managed_thing_meta_datas:
-      id: aws.iot_managed_integrations.managed_thing_meta_datas
-      name: managed_thing_meta_datas
-      title: managed_thing_meta_datas
+    managed_thing_meta_data:
+      id: aws.iot_managed_integrations.managed_thing_meta_data
+      name: managed_thing_meta_data
+      title: managed_thing_meta_data
       methods:
         get_managed_thing_meta_data:
           operation:
@@ -6010,7 +6009,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/managed_thing_meta_datas/methods/get_managed_thing_meta_data"
+          - $ref: "#/components/x-stackQL-resources/managed_thing_meta_data/methods/get_managed_thing_meta_data"
         insert: []
         update: []
         delete: []
@@ -6225,7 +6224,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6236,7 +6234,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -6246,4 +6243,25 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    connector_events:
+      id: aws.iot_managed_integrations.connector_events
+      name: connector_events
+      title: connector_events
+      methods:
+        send_connector_event:
+          operation:
+            $ref: "#/paths/~1connector-event~1{connector_id}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

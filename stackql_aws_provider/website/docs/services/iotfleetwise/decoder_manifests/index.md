@@ -199,6 +199,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a decoder manifest. You can't delete a decoder manifest if it has vehicles associated with it.</td>
 </tr>
+<tr>
+    <td><a href="#import_decoder_manifest"><CopyableCode code="import_decoder_manifest" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-networkFileDefinitions"><code>networkFileDefinitions</code></a></td>
+    <td></td>
+    <td>Creates a decoder manifest using your existing CAN DBC file from your local device. The CAN signal name must be unique and not repeated across CAN message definitions in a .dbc file.</td>
+</tr>
 </tbody>
 </table>
 
@@ -477,6 +484,32 @@ Deletes a decoder manifest. You can't delete a decoder manifest if it has vehicl
 ```sql
 DELETE FROM aws.iotfleetwise.decoder_manifests
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_decoder_manifest"
+    values={[
+        { label: 'import_decoder_manifest', value: 'import_decoder_manifest' }
+    ]}
+>
+<TabItem value="import_decoder_manifest">
+
+Creates a decoder manifest using your existing CAN DBC file from your local device. The CAN signal name must be unique and not repeated across CAN message definitions in a .dbc file.
+
+```sql
+EXEC aws.iotfleetwise.decoder_manifests.import_decoder_manifest 
+@region='{{ region }}' --required 
+@@json=
+'{
+"name": "{{ name }}", 
+"networkFileDefinitions": "{{ networkFileDefinitions }}"
+}'
 ;
 ```
 </TabItem>

@@ -512,7 +512,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateMappingResponse'
-      x-stackql-resource: mapping
+      x-stackql-resource: mappings
       x-stackql-method: generate_mapping
       x-stackql-verb: EXEC
   /GetCapability:
@@ -977,7 +977,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTransformerJobResponse'
-      x-stackql-resource: transformers
+      x-stackql-resource: transformer_jobs
       x-stackql-method: start_transformer_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -1058,7 +1058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestConversionResponse'
-      x-stackql-resource: conversion
+      x-stackql-resource: conversions
       x-stackql-method: test_conversion
       x-stackql-verb: EXEC
   /TestMapping:
@@ -1106,7 +1106,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestMappingResponse'
-      x-stackql-resource: mapping
+      x-stackql-resource: mappings
       x-stackql-method: test_mapping
       x-stackql-verb: EXEC
   /TestParsing:
@@ -1157,7 +1157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestParsingResponse'
-      x-stackql-resource: parsing
+      x-stackql-resource: parsings
       x-stackql-method: test_parsing
       x-stackql-verb: EXEC
   /UntagResource:

@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="account_targeting" /></td>
     <td><code>string</code></td>
-    <td>Indicates whether this test run targets a single account or multiple accounts. (SINGLE_ACCOUNT, MULTI_ACCOUNT)</td>
+    <td>Indicates whether the test run targets resources in a single AWS account or across multiple accounts. (SINGLE_ACCOUNT, MULTI_ACCOUNT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ended_at" /></td>
@@ -123,7 +123,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="role_name" /></td>
     <td><code>string</code></td>
-    <td>Resource name (used in ARN — no spaces allowed). (pattern: &lt;code&gt;&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_\-&#93;&#123;1,59&#125;&lt;/code&gt;)</td>
+    <td>IAM role name (supports up to 64 characters per IAM limits). (pattern: &lt;code&gt;(&#91;A-Za-z0-9_+=,.@\-&#93;+/)*&#91;A-Za-z0-9_+=,.@\-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="service_arn" /></td>
@@ -177,7 +177,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="account_targeting" /></td>
     <td><code>string</code></td>
-    <td>Indicates whether this test run targets a single account or multiple accounts. (SINGLE_ACCOUNT, MULTI_ACCOUNT)</td>
+    <td>Indicates whether the test run targets resources in a single AWS account or across multiple accounts. (SINGLE_ACCOUNT, MULTI_ACCOUNT)</td>
 </tr>
 <tr>
     <td><CopyableCode code="ended_at" /></td>

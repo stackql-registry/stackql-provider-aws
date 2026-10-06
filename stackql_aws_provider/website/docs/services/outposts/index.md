@@ -27,13 +27,13 @@ total resources: __18__
 <div class="providerDocColumn">
 <a href="/services/outposts/asset_instances/">asset_instances</a><br />
 <a href="/services/outposts/assets/">assets</a><br />
-<a href="/services/outposts/blocking_instances_for_capacity_tasks/">blocking_instances_for_capacity_tasks</a><br />
+<a href="/services/outposts/blocking_instances/">blocking_instances</a><br />
 <a href="/services/outposts/capacity_tasks/">capacity_tasks</a><br />
 <a href="/services/outposts/catalog_items/">catalog_items</a><br />
 <a href="/services/outposts/connections/">connections</a><br />
 <a href="/services/outposts/orderable_instance_types/">orderable_instance_types</a><br />
 <a href="/services/outposts/orders/">orders</a><br />
-<a href="/services/outposts/outpost_billing_informations/">outpost_billing_informations</a>
+<a href="/services/outposts/outpost_billing_information/">outpost_billing_information</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/outposts/outpost_instance_types/">outpost_instance_types</a><br />
@@ -42,7 +42,7 @@ total resources: __18__
 <a href="/services/outposts/private_connectivity_configs/">private_connectivity_configs</a><br />
 <a href="/services/outposts/quotes/">quotes</a><br />
 <a href="/services/outposts/renewal_pricings/">renewal_pricings</a><br />
-<a href="/services/outposts/site_address/">site_address</a><br />
+<a href="/services/outposts/site_addresses/">site_addresses</a><br />
 <a href="/services/outposts/sites/">sites</a><br />
 <a href="/services/outposts/tags/">tags</a>
 </div>

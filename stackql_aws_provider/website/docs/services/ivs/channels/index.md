@@ -33,72 +33,13 @@ Creates, updates, deletes, gets or lists a <code>channels</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_channel"
+    defaultValue="get_channel"
     values={[
-        { label: 'batch_get_channel', value: 'batch_get_channel' },
         { label: 'get_channel', value: 'get_channel' },
+        { label: 'batch_get_channel', value: 'batch_get_channel' },
         { label: 'list_channels', value: 'list_channels' }
     ]}
 >
-<TabItem value="batch_get_channel">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="access_control_allow_origin" /></td>
-    <td><code>string</code></td>
-    <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="access_control_expose_headers" /></td>
-    <td><code>string</code></td>
-    <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="cache_control" /></td>
-    <td><code>string</code></td>
-    <td>See Cache-Control in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="channels" /></td>
-    <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="content_security_policy" /></td>
-    <td><code>string</code></td>
-    <td>See Content-Security-Policy in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Each error object is related to a specific ARN in the request.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="strict_transport_security" /></td>
-    <td><code>string</code></td>
-    <td>See Strict-Transport-Security in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="x_content_type_options" /></td>
-    <td><code>string</code></td>
-    <td>See X-Content-Type-Options in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="x_frame_options" /></td>
-    <td><code>string</code></td>
-    <td>See X-Frame-Options in the MDN Web Docs.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_channel">
 
 <table>
@@ -193,6 +134,65 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_channel">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="access_control_allow_origin" /></td>
+    <td><code>string</code></td>
+    <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="access_control_expose_headers" /></td>
+    <td><code>string</code></td>
+    <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="cache_control" /></td>
+    <td><code>string</code></td>
+    <td>See Cache-Control in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="channels" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="content_security_policy" /></td>
+    <td><code>string</code></td>
+    <td>See Content-Security-Policy in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Each error object is related to a specific ARN in the request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="strict_transport_security" /></td>
+    <td><code>string</code></td>
+    <td>See Strict-Transport-Security in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="x_content_type_options" /></td>
+    <td><code>string</code></td>
+    <td>See X-Content-Type-Options in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="x_frame_options" /></td>
+    <td><code>string</code></td>
+    <td>See X-Frame-Options in the MDN Web Docs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_channels">
 
 <table>
@@ -280,18 +280,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_channel"><CopyableCode code="batch_get_channel" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Performs GetChannel on multiple ARNs simultaneously.</td>
-</tr>
-<tr>
     <td><a href="#get_channel"><CopyableCode code="get_channel" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets the channel configuration for the specified channel ARN. See also BatchGetChannel.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_channel"><CopyableCode code="batch_get_channel" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Performs GetChannel on multiple ARNs simultaneously.</td>
 </tr>
 <tr>
     <td><a href="#list_channels"><CopyableCode code="list_channels" /></a></td>
@@ -376,33 +376,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_channel"
+    defaultValue="get_channel"
     values={[
-        { label: 'batch_get_channel', value: 'batch_get_channel' },
         { label: 'get_channel', value: 'get_channel' },
+        { label: 'batch_get_channel', value: 'batch_get_channel' },
         { label: 'list_channels', value: 'list_channels' }
     ]}
 >
-<TabItem value="batch_get_channel">
-
-Performs GetChannel on multiple ARNs simultaneously.
-
-```sql
-SELECT
-access_control_allow_origin,
-access_control_expose_headers,
-cache_control,
-channels,
-content_security_policy,
-errors,
-strict_transport_security,
-x_content_type_options,
-x_frame_options
-FROM aws.ivs.channels
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_channel">
 
 Gets the channel configuration for the specified channel ARN. See also BatchGetChannel.
@@ -425,6 +405,26 @@ recording_configuration_arn,
 srt,
 tags,
 type_
+FROM aws.ivs.channels
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_channel">
+
+Performs GetChannel on multiple ARNs simultaneously.
+
+```sql
+SELECT
+access_control_allow_origin,
+access_control_expose_headers,
+cache_control,
+channels,
+content_security_policy,
+errors,
+strict_transport_security,
+x_content_type_options,
+x_frame_options
 FROM aws.ivs.channels
 WHERE region = '{{ region }}' -- required
 ;

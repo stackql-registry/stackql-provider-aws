@@ -65,6 +65,11 @@ The following fields are returned by `SELECT` queries:
     <td>The type of message. Valid values are TRANSACTIONAL for messages that are critical or time-sensitive and PROMOTIONAL for messages that aren't critical or time-sensitive.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="messaging_limits" /></td>
+    <td><code>object</code></td>
+    <td>The messaging limits that apply to the sender ID, including the per-capability send rates.</td>
+</tr>
+<tr>
     <td><CopyableCode code="monthly_leasing_price" /></td>
     <td><code>string</code></td>
     <td>The monthly leasing price, in US dollars.</td>
@@ -138,6 +143,13 @@ The following methods are available for this resource:
     <td>Deletes an existing default sender ID on a configuration set. A default sender ID is the identity that appears on recipients' devices when they receive SMS messages. Support for sender ID capabilities varies by country or region.</td>
 </tr>
 <tr>
+    <td><a href="#request_sender_id"><CopyableCode code="request_sender_id" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SenderId"><code>SenderId</code></a>, <a href="#parameter-IsoCountryCode"><code>IsoCountryCode</code></a></td>
+    <td></td>
+    <td>Request a new sender ID that doesn't require registration.</td>
+</tr>
+<tr>
     <td><a href="#update_sender_id"><CopyableCode code="update_sender_id" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SenderId"><code>SenderId</code></a>, <a href="#parameter-IsoCountryCode"><code>IsoCountryCode</code></a></td>
@@ -185,6 +197,7 @@ SELECT
 deletion_protection_enabled,
 iso_country_code,
 message_types,
+messaging_limits,
 monthly_leasing_price,
 registered,
 registration_id,
@@ -276,11 +289,31 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_sender_id"
+    defaultValue="request_sender_id"
     values={[
+        { label: 'request_sender_id', value: 'request_sender_id' },
         { label: 'update_sender_id', value: 'update_sender_id' }
     ]}
 >
+<TabItem value="request_sender_id">
+
+Request a new sender ID that doesn't require registration.
+
+```sql
+EXEC aws.pinpoint_sms_voice_v2.sender_ids.request_sender_id 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SenderId": "{{ SenderId }}", 
+"IsoCountryCode": "{{ IsoCountryCode }}", 
+"MessageTypes": "{{ MessageTypes }}", 
+"DeletionProtectionEnabled": {{ DeletionProtectionEnabled }}, 
+"Tags": "{{ Tags }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_sender_id">
 
 Updates the configuration of an existing sender ID.

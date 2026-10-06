@@ -87,10 +87,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: start_job
       x-stackql-verb: EXEC
@@ -1080,7 +1076,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendApiAssetResponse'
-      x-stackql-resource: api_asset
+      x-stackql-resource: assets
       x-stackql-method: send_api_asset
       x-stackql-verb: EXEC
   /v1/data-sets/{data_set_id}/notification:
@@ -1116,10 +1112,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendDataSetNotificationResponse'
       x-stackql-resource: data_sets
       x-stackql-method: send_data_set_notification
       x-stackql-verb: EXEC
@@ -3481,10 +3473,6 @@ components:
       - DATA_UPDATE
       - DEPRECATION
       - SCHEMA_CHANGE
-    SendDataSetNotificationResponse:
-      type: object
-    StartJobResponse:
-      type: object
     UpdateAssetResponse:
       type: object
       properties:

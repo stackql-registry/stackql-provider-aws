@@ -26,7 +26,7 @@ total resources: __7__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/servicediscovery/instances/">instances</a><br />
-<a href="/services/servicediscovery/instances_health_status/">instances_health_status</a><br />
+<a href="/services/servicediscovery/instances_health_statuses/">instances_health_statuses</a><br />
 <a href="/services/servicediscovery/namespaces/">namespaces</a><br />
 <a href="/services/servicediscovery/operations/">operations</a>
 </div>

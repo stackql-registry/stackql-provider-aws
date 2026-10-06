@@ -96,9 +96,19 @@ The following fields are returned by `SELECT` queries:
     <td>Defines the multi-Region disaster recovery targets for a resilience policy.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="organization_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the organization this policy is shared with. (pattern: &lt;code&gt;o-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>ARN identifier. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sharing_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether cross-account sharing is enabled.</td>
 </tr>
 <tr>
     <td><CopyableCode code="tags" /></td>
@@ -160,9 +170,19 @@ The following fields are returned by `SELECT` queries:
     <td>Defines the multi-Region disaster recovery targets for a resilience policy.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="organization_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the organization this policy is shared with. (pattern: &lt;code&gt;o-&#91;a-z0-9&#93;&#123;10,32&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="policy_arn" /></td>
     <td><code>string</code></td>
     <td>ARN identifier. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-iso|aws-iso-&#91;a-z&#93;&#123;1&#125;|aws-us-gov):&#91;A-Za-z0-9&#93;&#91;A-Za-z0-9_/.-&#93;&#123;0,62&#125;:(&#91;a-z&#93;&#123;2&#125;-((iso&#91;a-z&#93;&#123;0,1&#125;-)|(gov-))&#123;0,1&#125;&#91;a-z&#93;+-&#91;0-9&#93;):&#91;0-9&#93;&#123;12&#125;:&#91;A-Za-z0-9/&#93;&#91;A-Za-z0-9:_/+.-&#93;&#123;0,1023&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sharing_enabled" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether cross-account sharing is enabled.</td>
 </tr>
 <tr>
     <td><CopyableCode code="updated_at" /></td>
@@ -200,7 +220,7 @@ The following methods are available for this resource:
     <td><a href="#list_policies"><CopyableCode code="list_policies" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td><a href="#parameter-accountId"><code>accountId</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists resilience policies.</td>
 </tr>
 <tr>
@@ -223,6 +243,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a resilience policy.</td>
+</tr>
+<tr>
+    <td><a href="#import_policy"><CopyableCode code="import_policy" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-v1PolicyArn"><code>v1PolicyArn</code></a></td>
+    <td></td>
+    <td>Imports a V1 policy into V2, mapping RTO/RPO values from V1 scenarios.</td>
 </tr>
 </tbody>
 </table>
@@ -249,6 +276,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-accountId">
+    <td><CopyableCode code="accountId" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the account that owns the policies to include in the results.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -287,7 +319,9 @@ description,
 kms_key_id,
 multi_az,
 multi_region,
+organization_id,
 policy_arn,
+sharing_enabled,
 tags,
 updated_at
 FROM aws.resiliencehubv2.policies
@@ -309,10 +343,13 @@ created_at,
 data_recovery,
 multi_az,
 multi_region,
+organization_id,
 policy_arn,
+sharing_enabled,
 updated_at
 FROM aws.resiliencehubv2.policies
 WHERE region = '{{ region }}' -- required
+AND accountId = '{{ accountId }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
 ;
@@ -342,6 +379,7 @@ availabilitySlo,
 multiAz,
 multiRegion,
 dataRecovery,
+sharingEnabled,
 kmsKeyId,
 tags,
 clientToken,
@@ -354,6 +392,7 @@ SELECT
 '{{ multiAz }}',
 '{{ multiRegion }}',
 '{{ dataRecovery }}',
+{{ sharingEnabled }},
 '{{ kmsKeyId }}',
 '{{ tags }}',
 '{{ clientToken }}',
@@ -403,6 +442,8 @@ policy
         Defines data recovery targets for a resilience policy.
       value:
         timeBetweenBackupsInMinutes: {{ timeBetweenBackupsInMinutes }}
+    - name: sharingEnabled
+      value: {{ sharingEnabled }}
     - name: kmsKeyId
       value: "{{ kmsKeyId }}"
       description: |
@@ -441,7 +482,8 @@ description = '{{ description }}',
 availabilitySlo = '{{ availabilitySlo }}',
 multiAz = '{{ multiAz }}',
 multiRegion = '{{ multiRegion }}',
-dataRecovery = '{{ dataRecovery }}'
+dataRecovery = '{{ dataRecovery }}',
+sharingEnabled = {{ sharingEnabled }}
 WHERE 
 region = '{{ region }}' --required
 AND policyArn = '{{ policyArn }}' --required
@@ -467,6 +509,37 @@ Deletes a resilience policy.
 ```sql
 DELETE FROM aws.resiliencehubv2.policies
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_policy"
+    values={[
+        { label: 'import_policy', value: 'import_policy' }
+    ]}
+>
+<TabItem value="import_policy">
+
+Imports a V1 policy into V2, mapping RTO/RPO values from V1 scenarios.
+
+```sql
+EXEC aws.resiliencehubv2.policies.import_policy 
+@region='{{ region }}' --required 
+@@json=
+'{
+"v1PolicyArn": "{{ v1PolicyArn }}", 
+"kmsKeyId": "{{ kmsKeyId }}", 
+"availabilitySlo": "{{ availabilitySlo }}", 
+"multiAzDisasterRecoveryApproach": "{{ multiAzDisasterRecoveryApproach }}", 
+"multiRegionDisasterRecoveryApproach": "{{ multiRegionDisasterRecoveryApproach }}", 
+"tags": "{{ tags }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

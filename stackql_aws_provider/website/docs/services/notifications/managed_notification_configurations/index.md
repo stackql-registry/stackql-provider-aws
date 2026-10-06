@@ -58,7 +58,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the ManagedNotificationConfiguration resource. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The ARN of the ManagedNotificationConfiguration resource. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="category" /></td>
@@ -97,7 +97,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="description" /></td>
@@ -262,7 +262,8 @@ Associates an Account Contact with a particular ManagedNotificationConfiguration
 ```sql
 UPDATE aws.notifications.managed_notification_configurations
 SET 
-managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}'
+managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}',
+isSensitiveEventsSubscribed = {{ isSensitiveEventsSubscribed }}
 WHERE 
 contact_identifier = '{{ contact_identifier }}' --required
 AND region = '{{ region }}' --required

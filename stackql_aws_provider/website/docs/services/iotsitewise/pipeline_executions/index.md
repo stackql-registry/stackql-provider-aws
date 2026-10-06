@@ -71,6 +71,11 @@ The following fields are returned by `SELECT` queries:
     <td>The fully resolved environment variables used for this compute node execution.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="execution_mounts" /></td>
+    <td><code>array</code></td>
+    <td>The fully resolved mounts used for this compute node execution, after merging task-defined mounts with any execution-level mount overrides. Each mount attaches an external data source to the container filesystem at a relative path under the service-owned mount root.</td>
+</tr>
+<tr>
     <td><CopyableCode code="start_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the compute node execution started, in Unix epoch time.</td>
@@ -266,6 +271,7 @@ compute_node_name,
 depends_on,
 end_time,
 execution_environment_variables,
+execution_mounts,
 start_time,
 status,
 task_arn,

@@ -219,7 +219,7 @@ paths:
   /2021-01-01/opensearch/application/{id}/attachDataSource:
     post:
       operationId: AttachDataSource
-      description: Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state, the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation stores the request and returns a status of PENDING. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+      description: "Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service domain. If both the application and the data source are active, the attachment completes immediately with a status of ATTACHED. Otherwise, the operation returns PENDING and completes the attachment automatically once both become active. If the attachment cannot be completed, its status becomes FAILED. This operation is idempotent: If the data source is already attached or pending, the operation returns the existing attachment."
       parameters:
         - name: id
           in: path
@@ -599,10 +599,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: GetApplication
       description: Retrieves the configuration and status of an existing OpenSearch application.
@@ -2391,10 +2387,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokeVpcEndpointAccessResponse"
   /2021-01-01/opensearch/serviceSoftwareUpdate/rollback:
     post:
       operationId: RollbackServiceSoftwareUpdate
@@ -4831,8 +4823,6 @@ components:
         - UPDATE_FAILED
         - DELETING
         - DELETE_FAILED
-    DeleteApplicationResponse:
-      type: object
     DeleteDataSourceResponse:
       description: The result of a GetDataSource operation.
       type: object
@@ -7253,8 +7243,6 @@ components:
         Connection:
           $ref: "#/components/schemas/InboundConnection"
           description: Contains details about the rejected inbound connection.
-    RevokeVpcEndpointAccessResponse:
-      type: object
     RollbackServiceSoftwareUpdateResponse:
       description: Contains details about the rolled-back service software update.
       type: object
@@ -7502,6 +7490,47 @@ components:
           $ref: "#/components/schemas/ChangeProgressDetails"
           description: Container for information about a configuration change happening on a domain.
   x-stackQL-resources:
+    inbound_connections:
+      id: aws.opensearch.inbound_connections
+      name: inbound_connections
+      title: inbound_connections
+      methods:
+        accept_inbound_connection:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1{connection_id}~1accept/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_inbound_connection:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1{connection_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_inbound_connections:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1search/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_inbound_connection:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1{connection_id}~1reject/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/inbound_connections/methods/describe_inbound_connections"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/inbound_connections/methods/delete_inbound_connection"
     data_sources:
       id: aws.opensearch.data_sources
       name: data_sources
@@ -7630,9 +7659,9 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/direct_query_data_sources/methods/get_direct_query_data_source"
           - $ref: "#/components/x-stackQL-resources/direct_query_data_sources/methods/list_direct_query_data_sources"
-        insert: []
-        update:
+        insert:
           - $ref: "#/components/x-stackQL-resources/direct_query_data_sources/methods/add_direct_query_data_source"
+        update:
           - $ref: "#/components/x-stackQL-resources/direct_query_data_sources/methods/update_direct_query_data_source"
         delete:
           - $ref: "#/components/x-stackQL-resources/direct_query_data_sources/methods/delete_direct_query_data_source"
@@ -7749,6 +7778,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_packages_for_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1domain~1{domain_name}~1packages/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_package:
           operation:
             $ref: "#/paths/~12021-01-01~1packages~1update/post"
@@ -7773,6 +7810,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/packages/methods/list_packages_for_domain"
           - $ref: "#/components/x-stackQL-resources/packages/methods/describe_packages"
         insert:
           - $ref: "#/components/x-stackQL-resources/packages/methods/create_package"
@@ -7783,10 +7821,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/packages/methods/update_package_scope"
         delete:
           - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
-    vpc_endpoint_access:
-      id: aws.opensearch.vpc_endpoint_access
-      name: vpc_endpoint_access
-      title: vpc_endpoint_access
+    vpc_endpoint_accesses:
+      id: aws.opensearch.vpc_endpoint_accesses
+      name: vpc_endpoint_accesses
+      title: vpc_endpoint_accesses
       methods:
         authorize_vpc_endpoint_access:
           operation:
@@ -7812,7 +7850,6 @@ components:
             $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1revokeVpcEndpointAccess/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7820,10 +7857,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_access/methods/list_vpc_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_accesses/methods/list_vpc_endpoint_access"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_access/methods/authorize_vpc_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoint_accesses/methods/authorize_vpc_endpoint_access"
         delete: []
     domain_configs:
       id: aws.opensearch.domain_configs
@@ -7928,6 +7965,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_domains_for_package:
+          operation:
+            $ref: "#/paths/~12021-01-01~1packages~1{package_id}~1domains/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         rollback_service_software_update:
           operation:
             $ref: "#/paths/~12021-01-01~1opensearch~1serviceSoftwareUpdate~1rollback/post"
@@ -7965,6 +8010,7 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domain"
           - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domains"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains_for_package"
         insert:
           - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
         update: []
@@ -7991,7 +8037,6 @@ components:
             $ref: "#/paths/~12021-01-01~1opensearch~1application~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_application:
           operation:
             $ref: "#/paths/~12021-01-01~1opensearch~1application~1{id}/get"
@@ -8177,6 +8222,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_vpc_endpoints_for_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1vpcEndpoints/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         update_vpc_endpoint:
           operation:
             $ref: "#/paths/~12021-01-01~1opensearch~1vpcEndpoints~1update/post"
@@ -8191,6 +8244,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/describe_vpc_endpoints"
+          - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/list_vpc_endpoints_for_domain"
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/list_vpc_endpoints"
         insert:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/create_vpc_endpoint"
@@ -8198,35 +8252,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/update_vpc_endpoint"
         delete:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints/methods/delete_vpc_endpoint"
-    inbound_connections:
-      id: aws.opensearch.inbound_connections
-      name: inbound_connections
-      title: inbound_connections
-      methods:
-        delete_inbound_connection:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1{connection_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_inbound_connections:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1cc~1inboundConnection~1search/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/inbound_connections/methods/describe_inbound_connections"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/inbound_connections/methods/delete_inbound_connection"
     capabilities:
       id: aws.opensearch.capabilities
       name: capabilities
@@ -8316,10 +8341,10 @@ components:
         insert: []
         update: []
         delete: []
-    domain_change_progress:
-      id: aws.opensearch.domain_change_progress
-      name: domain_change_progress
-      title: domain_change_progress
+    domain_change_progresses:
+      id: aws.opensearch.domain_change_progresses
+      name: domain_change_progresses
+      title: domain_change_progresses
       methods:
         describe_domain_change_progress:
           operation:
@@ -8332,7 +8357,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/domain_change_progress/methods/describe_domain_change_progress"
+          - $ref: "#/components/x-stackQL-resources/domain_change_progresses/methods/describe_domain_change_progress"
         insert: []
         update: []
         delete: []
@@ -8370,10 +8395,10 @@ components:
         insert: []
         update: []
         delete: []
-    dry_run_progress:
-      id: aws.opensearch.dry_run_progress
-      name: dry_run_progress
-      title: dry_run_progress
+    dry_run_progresses:
+      id: aws.opensearch.dry_run_progresses
+      name: dry_run_progresses
+      title: dry_run_progresses
       methods:
         describe_dry_run_progress:
           operation:
@@ -8385,7 +8410,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/dry_run_progress/methods/describe_dry_run_progress"
+          - $ref: "#/components/x-stackQL-resources/dry_run_progresses/methods/describe_dry_run_progress"
         insert: []
         update: []
         delete: []
@@ -8528,10 +8553,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/default_application_settings/methods/put_default_application_setting"
         delete: []
-    domain_maintenance_status:
-      id: aws.opensearch.domain_maintenance_status
-      name: domain_maintenance_status
-      title: domain_maintenance_status
+    domain_maintenance_statuses:
+      id: aws.opensearch.domain_maintenance_statuses
+      name: domain_maintenance_statuses
+      title: domain_maintenance_statuses
       methods:
         get_domain_maintenance_status:
           operation:
@@ -8543,7 +8568,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/domain_maintenance_status/methods/get_domain_maintenance_status"
+          - $ref: "#/components/x-stackQL-resources/domain_maintenance_statuses/methods/get_domain_maintenance_status"
         insert: []
         update: []
         delete: []
@@ -8611,10 +8636,10 @@ components:
         insert: []
         update: []
         delete: []
-    upgrade_status:
-      id: aws.opensearch.upgrade_status
-      name: upgrade_status
-      title: upgrade_status
+    upgrade_statuses:
+      id: aws.opensearch.upgrade_statuses
+      name: upgrade_statuses
+      title: upgrade_statuses
       methods:
         get_upgrade_status:
           operation:
@@ -8624,7 +8649,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/upgrade_status/methods/get_upgrade_status"
+          - $ref: "#/components/x-stackQL-resources/upgrade_statuses/methods/get_upgrade_status"
         insert: []
         update: []
         delete: []
@@ -8699,25 +8724,6 @@ components:
         insert: []
         update: []
         delete: []
-    domains_for_packages:
-      id: aws.opensearch.domains_for_packages
-      name: domains_for_packages
-      title: domains_for_packages
-      methods:
-        list_domains_for_package:
-          operation:
-            $ref: "#/paths/~12021-01-01~1packages~1{package_id}~1domains/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains_for_packages/methods/list_domains_for_package"
-        insert: []
-        update: []
-        delete: []
     instance_type_details:
       id: aws.opensearch.instance_type_details
       name: instance_type_details
@@ -8734,25 +8740,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_type_details/methods/list_instance_type_details"
-        insert: []
-        update: []
-        delete: []
-    packages_for_domains:
-      id: aws.opensearch.packages_for_domains
-      name: packages_for_domains
-      title: packages_for_domains
-      methods:
-        list_packages_for_domain:
-          operation:
-            $ref: "#/paths/~12021-01-01~1domain~1{domain_name}~1packages/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/packages_for_domains/methods/list_packages_for_domain"
         insert: []
         update: []
         delete: []
@@ -8810,25 +8797,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"
-        insert: []
-        update: []
-        delete: []
-    vpc_endpoints_for_domains:
-      id: aws.opensearch.vpc_endpoints_for_domains
-      name: vpc_endpoints_for_domains
-      title: vpc_endpoints_for_domains
-      methods:
-        list_vpc_endpoints_for_domain:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1vpcEndpoints/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/vpc_endpoints_for_domains/methods/list_vpc_endpoints_for_domain"
         insert: []
         update: []
         delete: []

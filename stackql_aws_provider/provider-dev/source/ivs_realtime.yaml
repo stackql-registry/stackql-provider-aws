@@ -202,10 +202,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEncoderConfigurationResponse'
       x-stackql-resource: encoder_configurations
       x-stackql-method: delete_encoder_configuration
       x-stackql-verb: DELETE
@@ -231,10 +227,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIngestConfigurationResponse'
       x-stackql-resource: ingest_configurations
       x-stackql-method: delete_ingest_configuration
       x-stackql-verb: DELETE
@@ -258,10 +250,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePublicKeyResponse'
       x-stackql-resource: public_keys
       x-stackql-method: delete_public_key
       x-stackql-verb: DELETE
@@ -286,10 +274,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStageResponse'
       x-stackql-resource: stages
       x-stackql-method: delete_stage
       x-stackql-verb: DELETE
@@ -314,10 +298,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStorageConfigurationResponse'
       x-stackql-resource: storage_configurations
       x-stackql-method: delete_storage_configuration
       x-stackql-verb: DELETE
@@ -346,10 +326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisconnectParticipantResponse'
       x-stackql-resource: participants
       x-stackql-method: disconnect_participant
       x-stackql-verb: EXEC
@@ -605,7 +581,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportPublicKeyResponse'
-      x-stackql-resource: public_key
+      x-stackql-resource: public_keys
       x-stackql-method: import_public_key
       x-stackql-verb: EXEC
   /ListCompositions:
@@ -973,10 +949,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1001,10 +973,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1045,7 +1013,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCompositionResponse'
-      x-stackql-resource: composition
+      x-stackql-resource: compositions
       x-stackql-method: start_composition
       x-stackql-verb: EXEC
   /StartParticipantReplication:
@@ -1103,11 +1071,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCompositionResponse'
-      x-stackql-resource: composition
+      x-stackql-resource: compositions
       x-stackql-method: stop_composition
       x-stackql-verb: EXEC
   /StopParticipantReplication:
@@ -1769,29 +1733,17 @@ components:
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:storage-configuration/[a-zA-Z0-9-]+
-    DeleteEncoderConfigurationResponse:
-      type: object
     Boolean:
       type: boolean
-    DeleteIngestConfigurationResponse:
-      type: object
     PublicKeyArn:
       type: string
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:public-key/[a-zA-Z0-9-]+
-    DeletePublicKeyResponse:
-      type: object
-    DeleteStageResponse:
-      type: object
-    DeleteStorageConfigurationResponse:
-      type: object
     DisconnectParticipantReason:
       type: string
       minLength: 0
       maxLength: 128
-    DisconnectParticipantResponse:
-      type: object
     CompositionArn:
       type: string
       minLength: 1
@@ -3010,8 +2962,6 @@ components:
         xFrameOptions:
           $ref: '#/components/schemas/String'
           description: See X-Frame-Options in the MDN Web Docs.
-    StopCompositionResponse:
-      type: object
     StopParticipantReplicationResponse:
       type: object
       properties:
@@ -3036,8 +2986,6 @@ components:
         xFrameOptions:
           $ref: '#/components/schemas/String'
           description: See X-Frame-Options in the MDN Web Docs.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3046,8 +2994,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateIngestConfigurationResponse:
       type: object
       properties:

@@ -159,6 +159,13 @@ The following methods are available for this resource:
     <td>This API is in preview release for Connect Customer and is subject to change. Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance API was invoked.</td>
 </tr>
 <tr>
+    <td><a href="#create_instance"><CopyableCode code="create_instance" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IdentityManagementType"><code>IdentityManagementType</code></a>, <a href="#parameter-InboundCallsEnabled"><code>InboundCallsEnabled</code></a>, <a href="#parameter-OutboundCallsEnabled"><code>OutboundCallsEnabled</code></a></td>
+    <td></td>
+    <td>This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
+</tr>
+<tr>
     <td><a href="#create_push_notification_registration"><CopyableCode code="create_push_notification_registration" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PinpointAppArn"><code>PinpointAppArn</code></a>, <a href="#parameter-DeviceToken"><code>DeviceToken</code></a>, <a href="#parameter-DeviceType"><code>DeviceType</code></a>, <a href="#parameter-ContactConfiguration"><code>ContactConfiguration</code></a></td>
@@ -178,13 +185,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Scope"><code>Scope</code></a>, <a href="#parameter-SessionInactivityDurationMinutes"><code>SessionInactivityDurationMinutes</code></a></td>
     <td></td>
     <td>Creates an authorization code for the specified Connect Customer instance. The authorization code can be used to establish a session with scoped permissions defined by the specified scope parameters.</td>
-</tr>
-<tr>
-    <td><a href="#create_instance"><CopyableCode code="create_instance" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IdentityManagementType"><code>IdentityManagementType</code></a>, <a href="#parameter-InboundCallsEnabled"><code>InboundCallsEnabled</code></a>, <a href="#parameter-OutboundCallsEnabled"><code>OutboundCallsEnabled</code></a></td>
-    <td></td>
-    <td>This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.</td>
 </tr>
 <tr>
     <td><a href="#create_participant"><CopyableCode code="create_participant" /></a></td>
@@ -315,7 +315,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#replicate_instance"><CopyableCode code="replicate_instance" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ReplicaRegion"><code>ReplicaRegion</code></a>, <a href="#parameter-ReplicaAlias"><code>ReplicaAlias</code></a></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ReplicaRegion"><code>ReplicaRegion</code></a></td>
     <td></td>
     <td>Replicates an Connect Customer instance in the specified Amazon Web Services Region and copies configuration information for Connect Customer resources across Amazon Web Services Regions. For more information about replicating an Connect Customer instance, see Create a replica of your existing Connect Customer instance in the Connect Customer Administrator Guide.</td>
 </tr>
@@ -535,16 +535,46 @@ AND maxResults = '{{ maxResults }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_push_notification_registration"
+    defaultValue="create_instance"
     values={[
+        { label: 'create_instance', value: 'create_instance' },
         { label: 'create_push_notification_registration', value: 'create_push_notification_registration' },
         { label: 'create_persistent_contact_association', value: 'create_persistent_contact_association' },
         { label: 'create_auth_code', value: 'create_auth_code' },
-        { label: 'create_instance', value: 'create_instance' },
         { label: 'create_participant', value: 'create_participant' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_instance">
+
+This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
+
+```sql
+INSERT INTO aws.connect.instances (
+ClientToken,
+IdentityManagementType,
+InstanceAlias,
+DirectoryId,
+InboundCallsEnabled,
+OutboundCallsEnabled,
+Tags,
+region
+)
+SELECT 
+'{{ ClientToken }}',
+'{{ IdentityManagementType }}' /* required */,
+'{{ InstanceAlias }}',
+'{{ DirectoryId }}',
+{{ InboundCallsEnabled }} /* required */,
+{{ OutboundCallsEnabled }} /* required */,
+'{{ Tags }}',
+'{{ region }}'
+RETURNING
+arn,
+id
+;
+```
+</TabItem>
 <TabItem value="create_push_notification_registration">
 
 Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see Set up push notifications in Connect Customer for mobile chat in the Connect Customer Administrator Guide.
@@ -623,36 +653,6 @@ session_id
 ;
 ```
 </TabItem>
-<TabItem value="create_instance">
-
-This API is in preview release for Connect Customer and is subject to change. Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any configurations on features, such as Contact Lens for Connect Customer. For more information, see Create an Connect Customer instance in the Connect Customer Administrator Guide. Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days. If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances. You must wait 30 days before you can restart creating and deleting instances in your account.
-
-```sql
-INSERT INTO aws.connect.instances (
-ClientToken,
-IdentityManagementType,
-InstanceAlias,
-DirectoryId,
-InboundCallsEnabled,
-OutboundCallsEnabled,
-Tags,
-region
-)
-SELECT 
-'{{ ClientToken }}',
-'{{ IdentityManagementType }}' /* required */,
-'{{ InstanceAlias }}',
-'{{ DirectoryId }}',
-{{ InboundCallsEnabled }} /* required */,
-{{ OutboundCallsEnabled }} /* required */,
-'{{ Tags }}',
-'{{ region }}'
-RETURNING
-arn,
-id
-;
-```
-</TabItem>
 <TabItem value="create_participant">
 
 Adds a new participant into an on-going chat contact or webRTC call. For more information, see Customize chat flow experiences by integrating custom participants or Enable multi-user web, in-app, and video calling.
@@ -682,17 +682,30 @@ participant_id
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: instances
   props:
-    - name: instance_id
-      value: "{{ instance_id }}"
-      description: Required parameter for the instances resource.
     - name: region
       value: "{{ region }}"
+      description: Required parameter for the instances resource.
+    - name: instance_id
+      value: "{{ instance_id }}"
       description: Required parameter for the instances resource.
     - name: initial_contact_id
       value: "{{ initial_contact_id }}"
       description: Required parameter for the instances resource.
     - name: ClientToken
       value: "{{ ClientToken }}"
+    - name: IdentityManagementType
+      value: "{{ IdentityManagementType }}"
+      valid_values: ['SAML', 'CONNECT_MANAGED', 'EXISTING_DIRECTORY']
+    - name: InstanceAlias
+      value: "{{ InstanceAlias }}"
+    - name: DirectoryId
+      value: "{{ DirectoryId }}"
+    - name: InboundCallsEnabled
+      value: {{ InboundCallsEnabled }}
+    - name: OutboundCallsEnabled
+      value: {{ OutboundCallsEnabled }}
+    - name: Tags
+      value: "{{ Tags }}"
     - name: PinpointAppArn
       value: "{{ PinpointAppArn }}"
     - name: DeviceToken
@@ -725,19 +738,6 @@ participant_id
       value: {{ MaxSessionDurationMinutes }}
     - name: SessionInactivityDurationMinutes
       value: {{ SessionInactivityDurationMinutes }}
-    - name: IdentityManagementType
-      value: "{{ IdentityManagementType }}"
-      valid_values: ['SAML', 'CONNECT_MANAGED', 'EXISTING_DIRECTORY']
-    - name: InstanceAlias
-      value: "{{ InstanceAlias }}"
-    - name: DirectoryId
-      value: "{{ DirectoryId }}"
-    - name: InboundCallsEnabled
-      value: {{ InboundCallsEnabled }}
-    - name: OutboundCallsEnabled
-      value: {{ OutboundCallsEnabled }}
-    - name: Tags
-      value: "{{ Tags }}"
     - name: InstanceId
       value: "{{ InstanceId }}"
     - name: ContactId

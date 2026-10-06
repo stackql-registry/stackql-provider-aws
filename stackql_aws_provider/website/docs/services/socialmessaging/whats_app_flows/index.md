@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="endpoint_uri" /></td>
     <td><code>string</code></td>
-    <td>The endpoint URI for data exchange Flows, if configured.</td>
+    <td>The HTTPS endpoint that Meta calls for a data exchange Flow.</td>
 </tr>
 <tr>
     <td><CopyableCode code="flow_id" /></td>
@@ -204,6 +204,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a WhatsApp Flow permanently. Only Flows in DRAFT status can be deleted. Published or deprecated Flows cannot be deleted.</td>
 </tr>
+<tr>
+    <td><a href="#deprecate_whats_app_flow"><CopyableCode code="deprecate_whats_app_flow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a>, <a href="#parameter-flowId"><code>flowId</code></a></td>
+    <td></td>
+    <td>Deprecates a published WhatsApp Flow, marking it as no longer recommended for use. The Flow must be in PUBLISHED status. This is an irreversible operation.</td>
+</tr>
+<tr>
+    <td><a href="#publish_whats_app_flow"><CopyableCode code="publish_whats_app_flow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-id"><code>id</code></a>, <a href="#parameter-flowId"><code>flowId</code></a></td>
+    <td></td>
+    <td>Publishes a WhatsApp Flow, making it available for use in template messages. The Flow must be in DRAFT status with valid Flow JSON that passes Meta's validation. This is an irreversible operation.</td>
+</tr>
 </tbody>
 </table>
 
@@ -325,6 +339,7 @@ categories,
 flowJson,
 publish,
 cloneFlowId,
+endpointUri,
 region
 )
 SELECT 
@@ -334,6 +349,7 @@ SELECT
 '{{ flowJson }}',
 {{ publish }},
 '{{ cloneFlowId }}',
+'{{ endpointUri }}',
 '{{ region }}'
 RETURNING
 flow_id,
@@ -362,6 +378,8 @@ validation_errors
       value: {{ publish }}
     - name: cloneFlowId
       value: "{{ cloneFlowId }}"
+    - name: endpointUri
+      value: "{{ endpointUri }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -386,7 +404,9 @@ SET
 id = '{{ id }}',
 flowId = '{{ flowId }}',
 flowName = '{{ flowName }}',
-categories = '{{ categories }}'
+categories = '{{ categories }}',
+endpointUri = '{{ endpointUri }}',
+metaAppId = '{{ metaAppId }}'
 WHERE 
 region = '{{ region }}' --required
 AND id = '{{ id }}' --required
@@ -413,6 +433,48 @@ DELETE FROM aws.socialmessaging.whats_app_flows
 WHERE id = '{{ id }}' --required
 AND flowId = '{{ flowId }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="deprecate_whats_app_flow"
+    values={[
+        { label: 'deprecate_whats_app_flow', value: 'deprecate_whats_app_flow' },
+        { label: 'publish_whats_app_flow', value: 'publish_whats_app_flow' }
+    ]}
+>
+<TabItem value="deprecate_whats_app_flow">
+
+Deprecates a published WhatsApp Flow, marking it as no longer recommended for use. The Flow must be in PUBLISHED status. This is an irreversible operation.
+
+```sql
+EXEC aws.socialmessaging.whats_app_flows.deprecate_whats_app_flow 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"flowId": "{{ flowId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="publish_whats_app_flow">
+
+Publishes a WhatsApp Flow, making it available for use in template messages. The Flow must be in DRAFT status with valid Flow JSON that passes Meta's validation. This is an irreversible operation.
+
+```sql
+EXEC aws.socialmessaging.whats_app_flows.publish_whats_app_flow 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"flowId": "{{ flowId }}"
+}'
 ;
 ```
 </TabItem>

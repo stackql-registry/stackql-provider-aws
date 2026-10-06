@@ -86,6 +86,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieve annotations for a data quality statistic.</td>
 </tr>
+<tr>
+    <td><a href="#batch_put_data_quality_statistic_annotation"><CopyableCode code="batch_put_data_quality_statistic_annotation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InclusionAnnotations"><code>InclusionAnnotations</code></a></td>
+    <td></td>
+    <td>Annotate datapoints over time for a specific data quality statistic. The API requires both profileID and statisticID as part of the InclusionAnnotation input. The API only works for a single statisticId across multiple profiles.</td>
+</tr>
 </tbody>
 </table>
 
@@ -128,6 +135,32 @@ annotations,
 next_token
 FROM aws.glue.data_quality_statistic_annotations
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_put_data_quality_statistic_annotation"
+    values={[
+        { label: 'batch_put_data_quality_statistic_annotation', value: 'batch_put_data_quality_statistic_annotation' }
+    ]}
+>
+<TabItem value="batch_put_data_quality_statistic_annotation">
+
+Annotate datapoints over time for a specific data quality statistic. The API requires both profileID and statisticID as part of the InclusionAnnotation input. The API only works for a single statisticId across multiple profiles.
+
+```sql
+EXEC aws.glue.data_quality_statistic_annotations.batch_put_data_quality_statistic_annotation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InclusionAnnotations": "{{ InclusionAnnotations }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

@@ -4386,6 +4386,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_update_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers?operation=batch-update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_phone_number:
           operation:
             $ref: "#/paths/~1phone-numbers~1{phone_number_id}/delete"
@@ -4611,8 +4622,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/get_sip_media_application"
           - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/list_sip_media_applications"
         insert:
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application_call"
           - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application"
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application_call"
         update:
           - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/update_sip_media_application_call"
           - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/update_sip_media_application"
@@ -5380,6 +5391,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"
+        insert: []
+        update: []
+        delete: []
+    e911_addresses:
+      id: aws.chime_sdk_voice.e911_addresses
+      name: e911_addresses
+      title: e911_addresses
+      methods:
+        validate_e911_address:
+          operation:
+            $ref: "#/paths/~1emergency-calling~1address/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

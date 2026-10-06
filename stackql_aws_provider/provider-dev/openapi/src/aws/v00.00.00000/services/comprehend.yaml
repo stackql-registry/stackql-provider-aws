@@ -646,10 +646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDocumentClassifierResponse"
   /DeleteEndpoint:
     post:
       operationId: DeleteEndpoint
@@ -679,10 +675,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEndpointResponse"
   /DeleteEntityRecognizer:
     post:
       operationId: DeleteEntityRecognizer
@@ -712,10 +704,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEntityRecognizerResponse"
   /DeleteFlywheel:
     post:
       operationId: DeleteFlywheel
@@ -745,10 +733,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFlywheelResponse"
   /DeleteResourcePolicy:
     post:
       operationId: DeleteResourcePolicy
@@ -781,10 +765,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
   /DescribeDataset:
     post:
       operationId: DescribeDataset
@@ -2754,7 +2734,6 @@ paths:
               required:
                 - InputDataConfig
                 - OutputDataConfig
-                - Mode
                 - DataAccessRoleArn
                 - LanguageCode
       responses:
@@ -3201,10 +3180,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopTrainingDocumentClassifierResponse"
   /StopTrainingEntityRecognizer:
     post:
       operationId: StopTrainingEntityRecognizer
@@ -3234,10 +3209,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopTrainingEntityRecognizerResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -3270,10 +3241,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -3307,10 +3274,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateEndpoint:
     post:
       operationId: UpdateEndpoint
@@ -4718,20 +4681,10 @@ components:
         ActiveModelArn:
           $ref: "#/components/schemas/ComprehendModelArn"
           description: The Amazon Resource Number (ARN) of the active model version.
-    DeleteDocumentClassifierResponse:
-      type: object
-    DeleteEndpointResponse:
-      type: object
-    DeleteEntityRecognizerResponse:
-      type: object
-    DeleteFlywheelResponse:
-      type: object
     PolicyRevisionId:
       type: string
       maxLength: 64
       pattern: "[0-9A-Fa-f]+"
-    DeleteResourcePolicyResponse:
-      type: object
     DescribeDatasetResponse:
       type: object
       properties:
@@ -6739,18 +6692,10 @@ components:
         JobStatus:
           $ref: "#/components/schemas/JobStatus"
           description: Either STOP_REQUESTED if the job is currently running, or STOPPED if the job was previously stopped with the StopSentimentDetectionJob operation.
-    StopTrainingDocumentClassifierResponse:
-      type: object
-    StopTrainingEntityRecognizerResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateEndpointResponse:
       type: object
       properties:
@@ -6776,6 +6721,222 @@ components:
           $ref: "#/components/schemas/FlywheelProperties"
           description: The flywheel properties.
   x-stackQL-resources:
+    dominant_languages:
+      id: aws.comprehend.dominant_languages
+      name: dominant_languages
+      title: dominant_languages
+      methods:
+        batch_detect_dominant_language:
+          operation:
+            $ref: "#/paths/~1BatchDetectDominantLanguage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_dominant_language:
+          operation:
+            $ref: "#/paths/~1DetectDominantLanguage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    entities:
+      id: aws.comprehend.entities
+      name: entities
+      title: entities
+      methods:
+        batch_detect_entities:
+          operation:
+            $ref: "#/paths/~1BatchDetectEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_entities:
+          operation:
+            $ref: "#/paths/~1DetectEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    key_phrases:
+      id: aws.comprehend.key_phrases
+      name: key_phrases
+      title: key_phrases
+      methods:
+        batch_detect_key_phrases:
+          operation:
+            $ref: "#/paths/~1BatchDetectKeyPhrases/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_key_phrases:
+          operation:
+            $ref: "#/paths/~1DetectKeyPhrases/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    sentiments:
+      id: aws.comprehend.sentiments
+      name: sentiments
+      title: sentiments
+      methods:
+        batch_detect_sentiment:
+          operation:
+            $ref: "#/paths/~1BatchDetectSentiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_sentiment:
+          operation:
+            $ref: "#/paths/~1DetectSentiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    syntaxes:
+      id: aws.comprehend.syntaxes
+      name: syntaxes
+      title: syntaxes
+      methods:
+        batch_detect_syntax:
+          operation:
+            $ref: "#/paths/~1BatchDetectSyntax/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_syntax:
+          operation:
+            $ref: "#/paths/~1DetectSyntax/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    targeted_sentiments:
+      id: aws.comprehend.targeted_sentiments
+      name: targeted_sentiments
+      title: targeted_sentiments
+      methods:
+        batch_detect_targeted_sentiment:
+          operation:
+            $ref: "#/paths/~1BatchDetectTargetedSentiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_targeted_sentiment:
+          operation:
+            $ref: "#/paths/~1DetectTargetedSentiment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     endpoints:
       id: aws.comprehend.endpoints
       name: endpoints
@@ -6812,7 +6973,6 @@ components:
             $ref: "#/paths/~1DeleteEndpoint/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6878,6 +7038,42 @@ components:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint"
         delete:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/delete_endpoint"
+    pii_entities:
+      id: aws.comprehend.pii_entities
+      name: pii_entities
+      title: pii_entities
+      methods:
+        contains_pii_entities:
+          operation:
+            $ref: "#/paths/~1ContainsPiiEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detect_pii_entities:
+          operation:
+            $ref: "#/paths/~1DetectPiiEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     datasets:
       id: aws.comprehend.datasets
       name: datasets
@@ -6954,7 +7150,6 @@ components:
             $ref: "#/paths/~1DeleteDocumentClassifier/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7002,7 +7197,6 @@ components:
             $ref: "#/paths/~1StopTrainingDocumentClassifier/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7042,7 +7236,6 @@ components:
             $ref: "#/paths/~1DeleteEntityRecognizer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7090,7 +7283,6 @@ components:
             $ref: "#/paths/~1StopTrainingEntityRecognizer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7130,7 +7322,6 @@ components:
             $ref: "#/paths/~1DeleteFlywheel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7211,7 +7402,6 @@ components:
             $ref: "#/paths/~1DeleteResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7294,6 +7484,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_document_classification_job:
+          operation:
+            $ref: "#/paths/~1StartDocumentClassificationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/document_classification_jobs/methods/describe_document_classification_job"
@@ -7339,6 +7542,32 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_dominant_language_detection_job:
+          operation:
+            $ref: "#/paths/~1StartDominantLanguageDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_dominant_language_detection_job:
+          operation:
+            $ref: "#/paths/~1StopDominantLanguageDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7388,6 +7617,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_entities_detection_job:
+          operation:
+            $ref: "#/paths/~1StartEntitiesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_entities_detection_job:
+          operation:
+            $ref: "#/paths/~1StopEntitiesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/entities_detection_jobs/methods/describe_entities_detection_job"
@@ -7417,6 +7672,32 @@ components:
         list_events_detection_jobs:
           operation:
             $ref: "#/paths/~1ListEventsDetectionJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_events_detection_job:
+          operation:
+            $ref: "#/paths/~1StartEventsDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_events_detection_job:
+          operation:
+            $ref: "#/paths/~1StopEventsDetectionJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7499,6 +7780,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_key_phrases_detection_job:
+          operation:
+            $ref: "#/paths/~1StartKeyPhrasesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_key_phrases_detection_job:
+          operation:
+            $ref: "#/paths/~1StopKeyPhrasesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/key_phrases_detection_jobs/methods/describe_key_phrases_detection_job"
@@ -7544,6 +7851,32 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_pii_entities_detection_job:
+          operation:
+            $ref: "#/paths/~1StartPiiEntitiesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_pii_entities_detection_job:
+          operation:
+            $ref: "#/paths/~1StopPiiEntitiesDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7593,6 +7926,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_sentiment_detection_job:
+          operation:
+            $ref: "#/paths/~1StartSentimentDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_sentiment_detection_job:
+          operation:
+            $ref: "#/paths/~1StopSentimentDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sentiment_detection_jobs/methods/describe_sentiment_detection_job"
@@ -7622,6 +7981,32 @@ components:
         list_targeted_sentiment_detection_jobs:
           operation:
             $ref: "#/paths/~1ListTargetedSentimentDetectionJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_targeted_sentiment_detection_job:
+          operation:
+            $ref: "#/paths/~1StartTargetedSentimentDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_targeted_sentiment_detection_job:
+          operation:
+            $ref: "#/paths/~1StopTargetedSentimentDetectionJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7679,10 +8064,69 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_topics_detection_job:
+          operation:
+            $ref: "#/paths/~1StartTopicsDetectionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/topics_detection_jobs/methods/describe_topics_detection_job"
           - $ref: "#/components/x-stackQL-resources/topics_detection_jobs/methods/list_topics_detection_jobs"
+        insert: []
+        update: []
+        delete: []
+    toxic_content:
+      id: aws.comprehend.toxic_content
+      name: toxic_content
+      title: toxic_content
+      methods:
+        detect_toxic_content:
+          operation:
+            $ref: "#/paths/~1DetectToxicContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    models:
+      id: aws.comprehend.models
+      name: models
+      title: models
+      methods:
+        import_model:
+          operation:
+            $ref: "#/paths/~1ImportModel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -7781,7 +8225,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7794,7 +8237,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

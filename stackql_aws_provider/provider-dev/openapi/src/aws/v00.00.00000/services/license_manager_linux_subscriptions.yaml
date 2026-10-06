@@ -36,10 +36,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterSubscriptionProviderResponse"
   /subscription/GetRegisteredSubscriptionProvider:
     post:
       operationId: GetRegisteredSubscriptionProvider
@@ -192,10 +188,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove one or more metadata tag from the specified Amazon Web Services resource.
@@ -215,10 +207,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /subscription/RegisterSubscriptionProvider:
     post:
       operationId: RegisterSubscriptionProvider
@@ -323,8 +311,6 @@ components:
     SubscriptionProviderArn:
       type: string
       pattern: ^arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,510}/[a-z0-9-\.]{1,510}$
-    DeregisterSubscriptionProviderResponse:
-      type: object
     GetRegisteredSubscriptionProviderResponse:
       type: object
       properties:
@@ -613,14 +599,10 @@ components:
         SubscriptionProviderStatus:
           $ref: "#/components/schemas/SubscriptionProviderStatus"
           description: Indicates the status of the registration action for the Linux subscription provider that you requested.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     Boolean:
       type: boolean
     UpdateServiceSettingsResponse:
@@ -653,7 +635,6 @@ components:
             $ref: "#/paths/~1subscription~1DeregisterSubscriptionProvider/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -824,7 +805,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -835,7 +815,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

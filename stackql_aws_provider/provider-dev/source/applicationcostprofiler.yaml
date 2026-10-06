@@ -124,7 +124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportApplicationUsageResult'
-      x-stackql-resource: application_usage
+      x-stackql-resource: application_usages
       x-stackql-method: import_application_usage
       x-stackql-verb: EXEC
   /reportDefinition:

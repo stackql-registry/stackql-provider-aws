@@ -235,6 +235,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes an existing snapshot. When you receive a successful response from this operation, ElastiCache immediately begins deleting the snapshot; you cannot cancel or revert this operation. This operation is valid for Valkey or Redis OSS only.</td>
 </tr>
+<tr>
+    <td><a href="#copy_snapshot"><CopyableCode code="copy_snapshot" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SourceSnapshotName"><code>SourceSnapshotName</code></a>, <a href="#parameter-TargetSnapshotName"><code>TargetSnapshotName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TargetBucket"><code>TargetBucket</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-Tags"><code>Tags</code></a></td>
+    <td>Makes a copy of an existing snapshot. This operation is valid for Valkey or Redis OSS only. Users or groups that have permissions to use the CopySnapshot operation can create their own Amazon S3 buckets and copy snapshots to it. To control access to your snapshots, use an IAM policy to control who has the ability to use the CopySnapshot operation. For more information about using IAM to control the use of ElastiCache operations, see Exporting Snapshots and Authentication & Access Control. You could receive the following error messages. Error Messages Error Message: The S3 bucket %s is outside of the region. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The S3 bucket %s does not exist. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The S3 bucket %s is not owned by the authenticated user. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The authenticated user does not have sufficient permissions to perform the desired activity. Solution: Contact your system administrator to get the needed permissions. Error Message: The S3 bucket %s already contains an object with key %s. Solution: Give the TargetSnapshotName a new and unique value. If exporting a snapshot, you could alternatively create a new Amazon S3 bucket and use this same value for TargetSnapshotName. Error Message: ElastiCache has not been granted READ permissions %s on the S3 Bucket. Solution: Add List and Read permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide. Error Message: ElastiCache has not been granted WRITE permissions %s on the S3 Bucket. Solution: Add Upload/Delete permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide. Error Message: ElastiCache has not been granted READ_ACP permissions %s on the S3 Bucket. Solution: Add View Permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -256,6 +263,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The name of the snapshot to be deleted.</td>
 </tr>
+<tr id="parameter-SourceSnapshotName">
+    <td><CopyableCode code="SourceSnapshotName" /></td>
+    <td><code>string</code></td>
+    <td>The name of an existing snapshot from which to make a copy.</td>
+</tr>
+<tr id="parameter-TargetSnapshotName">
+    <td><CopyableCode code="TargetSnapshotName" /></td>
+    <td><code>string</code></td>
+    <td>A name for the snapshot copy. ElastiCache does not permit overwriting a snapshot, therefore this name must be unique within its context - ElastiCache or an Amazon S3 bucket if exporting. This value is stored as a lowercase string.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -269,7 +286,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-KmsKeyId">
     <td><CopyableCode code="KmsKeyId" /></td>
     <td><code>string</code></td>
-    <td>The ID of the KMS key used to encrypt the snapshot.</td>
+    <td>The ID of the KMS key used to encrypt the target snapshot.</td>
 </tr>
 <tr id="parameter-Marker">
     <td><CopyableCode code="Marker" /></td>
@@ -305,6 +322,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</td>
+</tr>
+<tr id="parameter-TargetBucket">
+    <td><CopyableCode code="TargetBucket" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon S3 bucket to which the snapshot is exported. This parameter is used only when exporting a snapshot for external access. When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed permissions to this S3 bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the Amazon ElastiCache User Guide. For more information, see Exporting a Snapshot in the Amazon ElastiCache User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -478,6 +500,32 @@ Deletes an existing snapshot. When you receive a successful response from this o
 DELETE FROM aws.elasticache.snapshots
 WHERE SnapshotName = '{{ SnapshotName }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="copy_snapshot"
+    values={[
+        { label: 'copy_snapshot', value: 'copy_snapshot' }
+    ]}
+>
+<TabItem value="copy_snapshot">
+
+Makes a copy of an existing snapshot. This operation is valid for Valkey or Redis OSS only. Users or groups that have permissions to use the CopySnapshot operation can create their own Amazon S3 buckets and copy snapshots to it. To control access to your snapshots, use an IAM policy to control who has the ability to use the CopySnapshot operation. For more information about using IAM to control the use of ElastiCache operations, see Exporting Snapshots and Authentication & Access Control. You could receive the following error messages. Error Messages Error Message: The S3 bucket %s is outside of the region. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The S3 bucket %s does not exist. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The S3 bucket %s is not owned by the authenticated user. Solution: Create an Amazon S3 bucket in the same region as your snapshot. For more information, see Step 1: Create an Amazon S3 Bucket in the ElastiCache User Guide. Error Message: The authenticated user does not have sufficient permissions to perform the desired activity. Solution: Contact your system administrator to get the needed permissions. Error Message: The S3 bucket %s already contains an object with key %s. Solution: Give the TargetSnapshotName a new and unique value. If exporting a snapshot, you could alternatively create a new Amazon S3 bucket and use this same value for TargetSnapshotName. Error Message: ElastiCache has not been granted READ permissions %s on the S3 Bucket. Solution: Add List and Read permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide. Error Message: ElastiCache has not been granted WRITE permissions %s on the S3 Bucket. Solution: Add Upload/Delete permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide. Error Message: ElastiCache has not been granted READ_ACP permissions %s on the S3 Bucket. Solution: Add View Permissions on the bucket. For more information, see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket in the ElastiCache User Guide.
+
+```sql
+EXEC aws.elasticache.snapshots.copy_snapshot 
+@SourceSnapshotName='{{ SourceSnapshotName }}' --required, 
+@TargetSnapshotName='{{ TargetSnapshotName }}' --required, 
+@region='{{ region }}' --required, 
+@TargetBucket='{{ TargetBucket }}', 
+@KmsKeyId='{{ KmsKeyId }}', 
+@Tags='{{ Tags }}'
 ;
 ```
 </TabItem>

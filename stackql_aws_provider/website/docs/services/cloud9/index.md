@@ -26,7 +26,7 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/cloud9/environment_memberships/">environment_memberships</a><br />
-<a href="/services/cloud9/environment_status/">environment_status</a>
+<a href="/services/cloud9/environment_statuses/">environment_statuses</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/cloud9/environments/">environments</a><br />

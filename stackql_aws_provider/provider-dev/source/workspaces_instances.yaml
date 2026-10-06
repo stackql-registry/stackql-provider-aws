@@ -55,10 +55,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateVolumeResponse'
       x-stackql-resource: volumes
       x-stackql-method: associate_volume
       x-stackql-verb: UPDATE
@@ -202,10 +198,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVolumeResponse'
       x-stackql-resource: volumes
       x-stackql-method: delete_volume
       x-stackql-verb: DELETE
@@ -238,10 +230,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkspaceInstanceResponse'
       x-stackql-resource: workspace_instances
       x-stackql-method: delete_workspace_instance
       x-stackql-verb: DELETE
@@ -284,10 +272,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateVolumeResponse'
       x-stackql-resource: volumes
       x-stackql-method: disassociate_volume
       x-stackql-verb: UPDATE
@@ -529,10 +513,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -569,10 +549,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -633,9 +609,6 @@ components:
       type: string
       minLength: 0
       maxLength: 32
-    AssociateVolumeResponse:
-      description: Confirms volume attachment.
-      type: object
     String64:
       type: string
       minLength: 0
@@ -912,7 +885,15 @@ components:
         ThreadsPerCore:
           $ref: '#/components/schemas/NonNegativeInteger'
           description: Number of threads per CPU core.
+        NestedVirtualization:
+          $ref: '#/components/schemas/NestedVirtualizationEnum'
+          description: Specifies whether to enable or disable nested virtualization.
     AmdSevSnpEnum:
+      type: string
+      enum:
+      - enabled
+      - disabled
+    NestedVirtualizationEnum:
       type: string
       enum:
       - enabled
@@ -1376,20 +1357,11 @@ components:
         WorkspaceInstanceId:
           $ref: '#/components/schemas/WorkspaceInstanceId'
           description: Unique identifier assigned to the newly created WorkSpaces Instance.
-    DeleteVolumeResponse:
-      description: Confirms volume deletion.
-      type: object
-    DeleteWorkspaceInstanceResponse:
-      description: Confirms the successful deletion of the specified WorkSpace Instance.
-      type: object
     DisassociateModeEnum:
       type: string
       enum:
       - FORCE
       - NO_FORCE
-    DisassociateVolumeResponse:
-      description: Confirms volume detachment.
-      type: object
     GetWorkspaceInstanceResponse:
       description: Provides comprehensive details about the requested WorkSpaces Instance.
       type: object
@@ -1621,13 +1593,7 @@ components:
         EC2ManagedInstance:
           $ref: '#/components/schemas/EC2ManagedInstance'
           description: Details of the associated EC2 managed instance.
-    TagResourceResponse:
-      description: Confirms successful tag addition.
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      description: Confirms successful tag removal.
-      type: object

@@ -31,10 +31,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptInputDeviceTransferResponse"
   /prod/batch/delete:
     post:
       operationId: BatchDelete
@@ -150,10 +146,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteScheduleResponse"
     get:
       operationId: DescribeSchedule
       description: Get a channel schedule
@@ -195,10 +187,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelInputDeviceTransferResponse"
   /prod/claimDevice:
     post:
       operationId: ClaimDevice
@@ -216,10 +204,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ClaimDeviceResponse"
   /prod/channels:
     post:
       operationId: CreateChannel
@@ -1798,10 +1782,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInputResponse"
     get:
       operationId: DescribeInput
       description: Produces details about an input
@@ -1881,10 +1861,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteInputSecurityGroupResponse"
     get:
       operationId: DescribeInputSecurityGroup
       description: Produces a summary of an Input Security Group
@@ -2954,10 +2930,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RebootInputDeviceResponse"
   /prod/inputDevices/{input_device_id}/reject:
     post:
       operationId: RejectInputDeviceTransfer
@@ -2972,10 +2944,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RejectInputDeviceTransferResponse"
   /prod/channels/{channel_id}/restartChannelPipelines:
     post:
       operationId: RestartChannelPipelines
@@ -3079,10 +3047,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartInputDeviceResponse"
   /prod/inputDevices/{input_device_id}/startInputDeviceMaintenanceWindow:
     post:
       operationId: StartInputDeviceMaintenanceWindow
@@ -3097,10 +3061,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartInputDeviceMaintenanceWindowResponse"
   /prod/multiplexes/{multiplex_id}/start:
     post:
       operationId: StartMultiplex
@@ -3151,10 +3111,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopInputDeviceResponse"
   /prod/multiplexes/{multiplex_id}/stop:
     post:
       operationId: StopMultiplex
@@ -3200,10 +3156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransferInputDeviceResponse"
   /prod/channels/{channel_id}/channelClass:
     put:
       operationId: UpdateChannelClass
@@ -3316,9 +3268,6 @@ components:
     __string:
       description: Placeholder documentation for __string
       type: string
-    AcceptInputDeviceTransferResponse:
-      description: Placeholder documentation for AcceptInputDeviceTransferResponse
-      type: object
     __listOf__string:
       description: Placeholder documentation for __listOf__string
       type: array
@@ -4029,12 +3978,6 @@ components:
           description: List of actions that have been deleted from the schedule.
       required:
         - ScheduleActions
-    CancelInputDeviceTransferResponse:
-      description: Placeholder documentation for CancelInputDeviceTransferResponse
-      type: object
-    ClaimDeviceResponse:
-      description: Placeholder documentation for ClaimDeviceResponse
-      type: object
     CdiInputSpecification:
       description: Placeholder documentation for CdiInputSpecification
       type: object
@@ -5518,6 +5461,29 @@ components:
     EmbeddedDestinationSettings:
       description: Embedded Destination Settings
       type: object
+      properties:
+        Position:
+          $ref: "#/components/schemas/EmbeddedCaptionPositionSettings"
+          description: Specifies the position of the output captions. Applies only when styleControl is set to manual.
+        StyleControl:
+          $ref: "#/components/schemas/EmbeddedDestinationStyleControl"
+          description: 'Controls the source of position and style information for the output captions. - "passthrough": Carry the caption position and style from the source captions. When the source captions are embedded, SCTE-20, or ancillary, the position and style are preserved exactly. When the source captions are another format, the position and any supported style are carried over. - "manual": Applies the specified styling and positioning. All other styling and positioning is given default values.'
+    EmbeddedCaptionPositionSettings:
+      description: Embedded Caption Position Settings
+      type: object
+      properties:
+        YPositionLine:
+          $ref: "#/components/schemas/__integerMin1Max15"
+          description: Specifies the vertical position of the caption as a row counted from the top of the output. Row 1 is the topmost row. Acceptable values are 1 through 15.
+    __integerMin1Max15:
+      description: Placeholder documentation for __integerMin1Max15
+      type: integer
+    EmbeddedDestinationStyleControl:
+      description: "Controls the source of position and style information for embedded outputs. - \"passthrough\": Carry the caption position and style from the source captions. When the source captions are embedded, SCTE-20, or ancillary, the position and style are preserved exactly. When the source captions are another format, the position and any supported style are carried over. - \"manual\": Use the position specified in the destination's position field."
+      type: string
+      enum:
+        - MANUAL
+        - PASSTHROUGH
     EmbeddedPlusScte20DestinationSettings:
       description: Embedded Plus Scte20 Destination Settings
       type: object
@@ -5542,26 +5508,41 @@ components:
       properties:
         StyleControl:
           $ref: "#/components/schemas/TtmlDestinationStyleControl"
-          description: This field is not currently supported and will not affect the output styling. Leave the default value.
+          description: Controls the source of style and position information for the output captions. PASSTHROUGH - Preserve the style and position from the source captions. USE_CONFIGURED - Don't pass through the style. The output captions will use the default styling. MANUAL - Applies the specified styling and positioning. All other styling and positioning is given default values.
+        Position:
+          $ref: "#/components/schemas/TextCaptionPositionSettings"
+          description: Specifies the position of the output captions. Applies only when styleControl is set to manual.
     TtmlDestinationStyleControl:
       description: Ttml Destination Style Control
       type: string
       enum:
         - PASSTHROUGH
         - USE_CONFIGURED
+        - MANUAL
+    TextCaptionPositionSettings:
+      description: Text Caption Position Settings
+      type: object
+      properties:
+        YPositionPercentage:
+          $ref: "#/components/schemas/__integerMin0Max100"
+          description: Specifies the vertical position of the top edge of the caption relative to the top of the output as a percentage. A value of 0 places the caption at the top of the output and 100 at the bottom.
     WebvttDestinationSettings:
       description: Webvtt Destination Settings
       type: object
       properties:
         StyleControl:
           $ref: "#/components/schemas/WebvttDestinationStyleControl"
-          description: Controls whether the color and position of the source captions is passed through to the WebVTT output captions. PASSTHROUGH - Valid only if the source captions are EMBEDDED or TELETEXT. NO_STYLE_DATA - Don't pass through the style. The output captions will not contain any font styling information.
+          description: Controls whether the color and position of the source captions is passed through to the WebVTT output captions. PASSTHROUGH - Valid only if the source captions are EMBEDDED, TELETEXT, or SMART SUBTITLES. NO_STYLE_DATA - Don't pass through the style. The output captions will not contain any font styling information. MANUAL - Applies the specified styling and positioning. All other styling and positioning is given default values.
+        Position:
+          $ref: "#/components/schemas/TextCaptionPositionSettings"
+          description: Specifies the position of the output captions. Applies only when styleControl is set to manual.
     WebvttDestinationStyleControl:
       description: Webvtt Destination Style Control
       type: string
       enum:
         - NO_STYLE_DATA
         - PASSTHROUGH
+        - MANUAL
     __listOfDashRoleCaption:
       description: Placeholder documentation for __listOfDashRoleCaption
       type: array
@@ -6403,6 +6384,9 @@ components:
         AdditionalDestinations:
           $ref: "#/components/schemas/__listOfMediaPackageAdditionalDestinations"
           description: Optional an array of additional destinational HTTP destinations for the OutputGroup outputs
+        WatermarkingSettings:
+          $ref: "#/components/schemas/MediaPackageV2WatermarkingSettings"
+          description: Specifies the type of watermarking technology to use.
     CmafId3Behavior:
       description: Cmaf Id3 Behavior
       type: string
@@ -6464,6 +6448,100 @@ components:
           description: The destination location
       required:
         - Destination
+    MediaPackageV2WatermarkingSettings:
+      description: A/B Watermarker settings for MediaPackage V2 output groups.
+      type: object
+      properties:
+        MediaPackageV2AbWatermarkerIrdetoSettings:
+          $ref: "#/components/schemas/MediaPackageV2AbWatermarkerIrdetoSettings"
+    MediaPackageV2AbWatermarkerIrdetoSettings:
+      description: A/B Watermarker settings for MediaPackage V2 output groups.
+      type: object
+      properties:
+        AdditionalDestinationsAlternateDestinations:
+          $ref: "#/components/schemas/__listOfOutputLocationRef"
+          description: The "B" pipeline renditions for the additional destinations.
+        AlternateDestination:
+          $ref: "#/components/schemas/OutputLocationRef"
+          description: The "B" pipeline renditions for the main destination.
+        CustomProfile:
+          $ref: "#/components/schemas/AbWatermarkingCustomProfile"
+          description: The vendor-provided custom profile values.
+        License:
+          $ref: "#/components/schemas/__string"
+          description: The name of the Secrets Manager secret containing the license file.
+        OperatorId:
+          $ref: "#/components/schemas/__integerMin1Max511"
+          description: The vendor-provided Operator ID.
+        PolyPeriod:
+          $ref: "#/components/schemas/__integerMin1Max1000"
+          description: The number of segments per watermarking bit. The total duration of the watermarking bit should be the LCM (least common multiple) of all segments sizes emitted by the downstream packager.
+        Profile:
+          $ref: "#/components/schemas/AbWatermarkingProfile"
+          description: The vendor-provided profile choice.
+        WatermarkIdLength:
+          $ref: "#/components/schemas/AbWatermarkerIdLength"
+          description: The number of bits that compose the watermarking identifier to be embedded.
+      required:
+        - AlternateDestination
+        - OperatorId
+        - Profile
+    __listOfOutputLocationRef:
+      description: Placeholder documentation for __listOfOutputLocationRef
+      type: array
+      items:
+        $ref: "#/components/schemas/OutputLocationRef"
+    AbWatermarkingCustomProfile:
+      description: The vendor-specified custom profile options
+      type: object
+      properties:
+        EmbeddingFrequency:
+          $ref: "#/components/schemas/__doubleMin250Max5000"
+          description: The frequency with which watermarks will be embedded, in milliseconds.
+        SceneCut:
+          $ref: "#/components/schemas/__doubleMinNegative1Max5"
+          description: The number of frames after scene-cut to embed the watermark.
+        TargetPsnr:
+          $ref: "#/components/schemas/__doubleMin32Max46"
+          description: The target PSNR of the watermarked frame
+      required:
+        - SceneCut
+        - EmbeddingFrequency
+        - TargetPsnr
+    __doubleMin250Max5000:
+      description: Placeholder documentation for __doubleMin250Max5000
+      type: number
+      format: double
+    __doubleMinNegative1Max5:
+      description: Placeholder documentation for __doubleMinNegative1Max5
+      type: number
+      format: double
+    __doubleMin32Max46:
+      description: Placeholder documentation for __doubleMin32Max46
+      type: number
+      format: double
+    __integerMin1Max511:
+      description: Placeholder documentation for __integerMin1Max511
+      type: integer
+    __integerMin1Max1000:
+      description: Placeholder documentation for __integerMin1Max1000
+      type: integer
+    AbWatermarkingProfile:
+      description: Ab Watermarking Profile
+      type: string
+      enum:
+        - CAMCORDING
+        - CUSTOM
+        - DEFAULT
+        - HQ
+        - MEZZANINE
+        - ROBUST
+    AbWatermarkerIdLength:
+      description: Ab Watermarker Id Length
+      type: string
+      enum:
+        - ID_2048
+        - ID_512
     MsSmoothGroupSettings:
       description: Ms Smooth Group Settings
       type: object
@@ -6741,6 +6819,9 @@ components:
         AdditionalDestinations:
           $ref: "#/components/schemas/__listOfAdditionalDestinations"
           description: Optional an array of additional destinational HTTP destinations for the OutputGroup outputs
+        WatermarkingSettings:
+          $ref: "#/components/schemas/CmafIngestWatermarkingSettings"
+          description: Specifies the type of watermarking technology to use.
       required:
         - Destination
     __integerMin0Max2000:
@@ -6781,6 +6862,44 @@ components:
           description: The destination location
       required:
         - Destination
+    CmafIngestWatermarkingSettings:
+      description: A/B Watermarker settings for CMAF Ingest output groups.
+      type: object
+      properties:
+        CmafIngestAbWatermarkerIrdetoSettings:
+          $ref: "#/components/schemas/CmafIngestAbWatermarkerIrdetoSettings"
+    CmafIngestAbWatermarkerIrdetoSettings:
+      description: A/B Watermarker settings for CMAF Ingest output groups.
+      type: object
+      properties:
+        AdditionalDestinationsAlternateDestinations:
+          $ref: "#/components/schemas/__listOfOutputLocationRef"
+          description: The "B" pipeline renditions for the additional destinations.
+        AlternateDestination:
+          $ref: "#/components/schemas/OutputLocationRef"
+          description: The "B" pipeline renditions for the main destination.
+        CustomProfile:
+          $ref: "#/components/schemas/AbWatermarkingCustomProfile"
+          description: The vendor-provided custom profile values.
+        License:
+          $ref: "#/components/schemas/__string"
+          description: The name of the Secrets Manager secret containing the license file.
+        OperatorId:
+          $ref: "#/components/schemas/__integerMin1Max511"
+          description: The vendor-provided Operator ID.
+        PolyPeriod:
+          $ref: "#/components/schemas/__integerMin1Max1000"
+          description: The number of segments per watermarking bit. The total duration of the watermarking bit should be the LCM (least common multiple) of all segments sizes emitted by the downstream packager.
+        Profile:
+          $ref: "#/components/schemas/AbWatermarkingProfile"
+          description: The vendor-provided profile choice.
+        WatermarkIdLength:
+          $ref: "#/components/schemas/AbWatermarkerIdLength"
+          description: The number of bits that compose the watermarking identifier to be embedded.
+      required:
+        - AlternateDestination
+        - OperatorId
+        - Profile
     SrtGroupSettings:
       description: Srt Group Settings
       type: object
@@ -7452,6 +7571,9 @@ components:
         HlsDefault:
           $ref: "#/components/schemas/HlsDefault"
           description: Specifies whether MediaPackage should set this output as the default rendition in the HLS manifest. YES means this must be the default. NO means this should never be the default. OMIT means MediaPackage decides what to set on this rendition. When you consider all the renditions, follow these guidelines. You can set zero or one renditions to YES. You can set zero or more renditions to NO, but you can't set all renditions to NO. You can set zero, some, or all to OMIT.
+        OutputUsage:
+          $ref: "#/components/schemas/__listOfOutputUsage"
+          description: List of usage tags declaring how this MediaPackage V2 output is used. Currently these are all multiview-related (multiviewPrimaryView, multiviewSecondaryView, multiviewEqualSizeView) and enable multiview validations and augmentations to help ensure proper multiview configuration and compatibility with MediaPackage. Leave empty (the default) if this output has no multiview role. If any video-carrying MediaPackage V2 output in an output group specifies a multiview value, every video-carrying MediaPackage V2 output in the group must also specify a multiview value; place standalone video outputs in a separate output group.
     HlsAutoSelect:
       description: Hls Auto Select
       type: string
@@ -7466,6 +7588,18 @@ components:
         - "NO"
         - OMIT
         - "YES"
+    __listOfOutputUsage:
+      description: Placeholder documentation for __listOfOutputUsage
+      type: array
+      items:
+        $ref: "#/components/schemas/OutputUsage"
+    OutputUsage:
+      description: Output Usage
+      type: string
+      enum:
+        - MULTIVIEW_EQUAL_SIZE_VIEW
+        - MULTIVIEW_PRIMARY_VIEW
+        - MULTIVIEW_SECONDARY_VIEW
     MsSmoothOutputSettings:
       description: Ms Smooth Output Settings
       type: object
@@ -7744,6 +7878,9 @@ components:
         OutputPositionRectangle:
           $ref: "#/components/schemas/VideoPositionRectangle"
           description: Position of the encoded video within the output frame. The area outside the rectangle is filled with black. If not specified, the video fills the entire output frame. When used, both {@link width} and {@link height} of the VideoDescription must be explicitly specified so that the rectangle can be validated against the output frame.
+        Border:
+          $ref: "#/components/schemas/__integerMin0Max100"
+          description: Specifies the number of pixels of black border that will be inserted around the edge of the encoded picture. Must be an even integer from 0 (no border, the default) up to 100. The width and height of the VideoDescription must each be greater than twice this value. Cannot be used together with {@link outputPositionRectangle} -- both govern the position of the encoded content within the output frame.
       required:
         - Name
     VideoCodecSettings:
@@ -9750,6 +9887,9 @@ components:
         AudioFeedInputs:
           $ref: "#/components/schemas/__listOfAudioFeedInput"
           description: A list of audio feed inputs that map audio selectors in the channel to feed inputs on the associated Elemental Inference feed.
+        EnrichmentMethods:
+          $ref: "#/components/schemas/__listOfEnrichmentMethod"
+          description: The set of Contextual Metadata Enrichment methods enabled for this channel. Each method represents a specific way the channel will use the inference feed to augment its output with contextual metadata. An empty array (or omitting the field) disables enrichment. Order is not significant; duplicate values are not permitted.
     __listOfAudioFeedInput:
       description: Placeholder documentation for __listOfAudioFeedInput
       type: array
@@ -9765,6 +9905,16 @@ components:
         FeedInput:
           $ref: "#/components/schemas/__string"
           description: The name of the feed input on the Elemental Inference feed that will receive the audio from the specified audio selector.
+    __listOfEnrichmentMethod:
+      description: Placeholder documentation for __listOfEnrichmentMethod
+      type: array
+      items:
+        $ref: "#/components/schemas/EnrichmentMethod"
+    EnrichmentMethod:
+      description: A Contextual Metadata Enrichment method. Each value selects a strategy for enriching the channel's output with contextual metadata derived from the Elemental Inference feed. SCTE35_ELEMENTAL_INFERENCE_QUERY_PARAMS enriches outbound SCTE-35 messages with query parameters that downstream systems can use to call the Elemental Inference GetMetadata API.
+      type: string
+      enum:
+        - SCTE35_ELEMENTAL_INFERENCE_QUERY_PARAMS
     CreateChannelResponse:
       description: Placeholder documentation for CreateChannelResponse
       type: object
@@ -9995,6 +10145,9 @@ components:
         AudioFeedInputs:
           $ref: "#/components/schemas/__listOfAudioFeedInput"
           description: A list of audio feed inputs that map audio selectors in the channel to feed inputs on the associated Elemental Inference feed.
+        EnrichmentMethods:
+          $ref: "#/components/schemas/__listOfEnrichmentMethod"
+          description: The set of Contextual Metadata Enrichment methods enabled for this channel. Each method represents a specific way the channel uses the inference feed to augment its output with contextual metadata.
     CreateChannelPlacementGroupResponse:
       description: Placeholder documentation for CreateChannelPlacementGroupResponse
       type: object
@@ -11788,12 +11941,6 @@ components:
         State:
           $ref: "#/components/schemas/ClusterState"
           description: The current state of the Cluster.
-    DeleteInputResponse:
-      description: Placeholder documentation for DeleteInputResponse
-      type: object
-    DeleteInputSecurityGroupResponse:
-      description: Placeholder documentation for DeleteInputSecurityGroupResponse
-      type: object
     DeleteMultiplexResponse:
       description: Placeholder documentation for DeleteMultiplexResponse
       type: object
@@ -12088,9 +12235,6 @@ components:
         - EXPIRED
         - CANCELED
         - DELETED
-    DeleteScheduleResponse:
-      description: Placeholder documentation for DeleteScheduleResponse
-      type: object
     DeleteSdiSourceResponse:
       description: Placeholder documentation for DeleteSdiSourceResponse
       type: object
@@ -14167,12 +14311,6 @@ components:
       enum:
         - "NO"
         - "YES"
-    RebootInputDeviceResponse:
-      description: Placeholder documentation for RebootInputDeviceResponse
-      type: object
-    RejectInputDeviceTransferResponse:
-      description: Placeholder documentation for RejectInputDeviceTransferResponse
-      type: object
     __listOfChannelPipelineIdToRestart:
       description: Placeholder documentation for __listOfChannelPipelineIdToRestart
       type: array
@@ -14381,12 +14519,6 @@ components:
         Tags:
           type: object
           properties: {}
-    StartInputDeviceResponse:
-      description: Placeholder documentation for StartInputDeviceResponse
-      type: object
-    StartInputDeviceMaintenanceWindowResponse:
-      description: Placeholder documentation for StartInputDeviceMaintenanceWindowResponse
-      type: object
     StartMonitorDeploymentResponse:
       description: Placeholder documentation for StartMonitorDeploymentResponse
       type: object
@@ -14594,9 +14726,6 @@ components:
         InferenceSettings:
           $ref: "#/components/schemas/DescribeInferenceSettings"
           description: Include this setting to include Elemental Inference features in this channel.
-    StopInputDeviceResponse:
-      description: Placeholder documentation for StopInputDeviceResponse
-      type: object
     StopMultiplexResponse:
       description: Placeholder documentation for StopMultiplexResponse
       type: object
@@ -14632,9 +14761,6 @@ components:
           type: object
           properties: {}
           description: A collection of key-value pairs.
-    TransferInputDeviceResponse:
-      description: Placeholder documentation for TransferInputDeviceResponse
-      type: object
     UpdateAccountConfigurationResponse:
       description: Placeholder documentation for UpdateAccountConfigurationResponse
       type: object
@@ -15232,13 +15358,11 @@ components:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1accept/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         cancel_input_device_transfer:
           operation:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1cancel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_input_device:
           operation:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}/get"
@@ -15278,19 +15402,16 @@ components:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1reject/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         start_input_device_maintenance_window:
           operation:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1startInputDeviceMaintenanceWindow/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         transfer_input_device:
           operation:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1transfer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -15303,6 +15424,69 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/input_devices/methods/update_input_device"
+        delete: []
+    deletes:
+      id: aws.medialive.deletes
+      name: deletes
+      title: deletes
+      methods:
+        batch_delete:
+          operation:
+            $ref: "#/paths/~1prod~1batch~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    starts:
+      id: aws.medialive.starts
+      name: starts
+      title: starts
+      methods:
+        batch_start:
+          operation:
+            $ref: "#/paths/~1prod~1batch~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    stops:
+      id: aws.medialive.stops
+      name: stops
+      title: stops
+      methods:
+        batch_stop:
+          operation:
+            $ref: "#/paths/~1prod~1batch~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     channels:
       id: aws.medialive.channels
@@ -15426,7 +15610,6 @@ components:
             $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_schedule:
           operation:
             $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/get"
@@ -15451,6 +15634,26 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/schedules/methods/delete_schedule"
+    devices:
+      id: aws.medialive.devices
+      name: devices
+      title: devices
+      methods:
+        claim_device:
+          operation:
+            $ref: "#/paths/~1prod~1claimDevice/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     channel_placement_groups:
       id: aws.medialive.channel_placement_groups
       name: channel_placement_groups
@@ -15892,7 +16095,6 @@ components:
             $ref: "#/paths/~1prod~1inputs~1{input_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_input:
           operation:
             $ref: "#/paths/~1prod~1inputs~1{input_id}/get"
@@ -15915,7 +16117,6 @@ components:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1reboot/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -15926,13 +16127,11 @@ components:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1start/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         stop_input_device:
           operation:
             $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1stop/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/inputs/methods/describe_input"
@@ -15982,7 +16181,6 @@ components:
             $ref: "#/paths/~1prod~1inputSecurityGroups~1{input_security_group_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_input_security_group:
           operation:
             $ref: "#/paths/~1prod~1inputSecurityGroups~1{input_security_group_id}/get"
@@ -16518,6 +16716,27 @@ components:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/update_reservation"
         delete:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/delete_reservation"
+    update_signal_maps:
+      id: aws.medialive.update_signal_maps
+      name: update_signal_maps
+      title: update_signal_maps
+      methods:
+        start_update_signal_map:
+          operation:
+            $ref: "#/paths/~1prod~1signal-maps~1{identifier}/patch"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     account_configurations:
       id: aws.medialive.account_configurations
       name: account_configurations
@@ -16756,6 +16975,43 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"
+        insert: []
+        update: []
+        delete: []
+    delete_monitor_deployments:
+      id: aws.medialive.delete_monitor_deployments
+      name: delete_monitor_deployments
+      title: delete_monitor_deployments
+      methods:
+        start_delete_monitor_deployment:
+          operation:
+            $ref: "#/paths/~1prod~1signal-maps~1{identifier}~1monitor-deployment/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    monitor_deployments:
+      id: aws.medialive.monitor_deployments
+      name: monitor_deployments
+      title: monitor_deployments
+      methods:
+        start_monitor_deployment:
+          operation:
+            $ref: "#/paths/~1prod~1signal-maps~1{identifier}~1monitor-deployment/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

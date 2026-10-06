@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfigureLogsResponse'
-      x-stackql-resource: configure_logs
+      x-stackql-resource: logs
       x-stackql-method: configure_logs
       x-stackql-verb: EXEC
   /channels:
@@ -292,10 +292,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelResponse'
       x-stackql-resource: channels
       x-stackql-method: delete_channel
       x-stackql-verb: DELETE
@@ -362,10 +358,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOriginEndpointResponse'
       x-stackql-resource: origin_endpoints
       x-stackql-method: delete_origin_endpoint
       x-stackql-verb: DELETE
@@ -542,7 +534,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RotateChannelCredentialsResponse'
-      x-stackql-resource: rotate_channel_credentials
+      x-stackql-resource: channels
       x-stackql-method: rotate_channel_credentials
       x-stackql-verb: EXEC
   /channels/{id}/ingest_endpoints/{ingest_endpoint_id}/credentials:
@@ -569,7 +561,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RotateIngestEndpointCredentialsResponse'
-      x-stackql-resource: rotate_ingest_endpoint_credentials
+      x-stackql-resource: ingest_endpoint_credentials
       x-stackql-method: rotate_ingest_endpoint_credentials
       x-stackql-verb: EXEC
 components:
@@ -1341,10 +1333,6 @@ components:
           $ref: '#/components/schemas/AdsOnDeliveryRestrictions'
       required:
       - Id
-    DeleteChannelResponse:
-      type: object
-    DeleteOriginEndpointResponse:
-      type: object
     DescribeChannelResponse:
       type: object
       properties:

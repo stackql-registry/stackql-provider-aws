@@ -30,7 +30,7 @@ total resources: __17__
 <a href="/services/mailmanager/address_list_import_jobs/">address_list_import_jobs</a><br />
 <a href="/services/mailmanager/address_lists/">address_lists</a><br />
 <a href="/services/mailmanager/archive_exports/">archive_exports</a><br />
-<a href="/services/mailmanager/archive_message_contents/">archive_message_contents</a><br />
+<a href="/services/mailmanager/archive_message_content/">archive_message_content</a><br />
 <a href="/services/mailmanager/archive_messages/">archive_messages</a><br />
 <a href="/services/mailmanager/archive_search_results/">archive_search_results</a><br />
 <a href="/services/mailmanager/archive_searches/">archive_searches</a>

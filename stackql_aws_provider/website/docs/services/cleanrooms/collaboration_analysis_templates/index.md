@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>collaboration_analysis_template
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_collaboration_analysis_template"
+    defaultValue="get_collaboration_analysis_template"
     values={[
-        { label: 'batch_get_collaboration_analysis_template', value: 'batch_get_collaboration_analysis_template' },
         { label: 'get_collaboration_analysis_template', value: 'get_collaboration_analysis_template' },
+        { label: 'batch_get_collaboration_analysis_template', value: 'batch_get_collaboration_analysis_template' },
         { label: 'list_collaboration_analysis_templates', value: 'list_collaboration_analysis_templates' }
     ]}
 >
-<TabItem value="batch_get_collaboration_analysis_template">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="collaboration_analysis_templates" /></td>
-    <td><code>array</code></td>
-    <td>The retrieved list of analysis templates within a collaboration.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Error reasons for collaboration analysis templates that could not be retrieved. One error is returned for every collaboration analysis template that could not be retrieved.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_collaboration_analysis_template">
 
 <table>
@@ -163,6 +139,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_collaboration_analysis_template">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="collaboration_analysis_templates" /></td>
+    <td><code>array</code></td>
+    <td>The retrieved list of analysis templates within a collaboration.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Error reasons for collaboration analysis templates that could not be retrieved. One error is returned for every collaboration analysis template that could not be retrieved.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_collaboration_analysis_templates">
 
 <table>
@@ -245,18 +245,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_collaboration_analysis_template"><CopyableCode code="batch_get_collaboration_analysis_template" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).</td>
-</tr>
-<tr>
     <td><a href="#get_collaboration_analysis_template"><CopyableCode code="get_collaboration_analysis_template" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-analysis_template_arn"><code>analysis_template_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves an analysis template within a collaboration.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_collaboration_analysis_template"><CopyableCode code="batch_get_collaboration_analysis_template" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-collaboration_identifier"><code>collaboration_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).</td>
 </tr>
 <tr>
     <td><a href="#list_collaboration_analysis_templates"><CopyableCode code="list_collaboration_analysis_templates" /></a></td>
@@ -312,27 +312,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_collaboration_analysis_template"
+    defaultValue="get_collaboration_analysis_template"
     values={[
-        { label: 'batch_get_collaboration_analysis_template', value: 'batch_get_collaboration_analysis_template' },
         { label: 'get_collaboration_analysis_template', value: 'get_collaboration_analysis_template' },
+        { label: 'batch_get_collaboration_analysis_template', value: 'batch_get_collaboration_analysis_template' },
         { label: 'list_collaboration_analysis_templates', value: 'list_collaboration_analysis_templates' }
     ]}
 >
-<TabItem value="batch_get_collaboration_analysis_template">
-
-Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).
-
-```sql
-SELECT
-collaboration_analysis_templates,
-errors
-FROM aws.cleanrooms.collaboration_analysis_templates
-WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_collaboration_analysis_template">
 
 Retrieves an analysis template within a collaboration.
@@ -359,6 +345,20 @@ validations
 FROM aws.cleanrooms.collaboration_analysis_templates
 WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND analysis_template_arn = '{{ analysis_template_arn }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_collaboration_analysis_template">
+
+Retrieves multiple analysis templates within a collaboration by their Amazon Resource Names (ARNs).
+
+```sql
+SELECT
+collaboration_analysis_templates,
+errors
+FROM aws.cleanrooms.collaboration_analysis_templates
+WHERE collaboration_identifier = '{{ collaboration_identifier }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

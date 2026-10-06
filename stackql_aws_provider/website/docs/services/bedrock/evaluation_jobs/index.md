@@ -235,6 +235,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates an evaluation job.</td>
 </tr>
+<tr>
+    <td><a href="#batch_delete_evaluation_job"><CopyableCode code="batch_delete_evaluation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobIdentifiers"><code>jobIdentifiers</code></a></td>
+    <td></td>
+    <td>Deletes a batch of evaluation jobs. An evaluation job can only be deleted if it has following status FAILED, COMPLETED, and STOPPED. You can request up to 25 model evaluation jobs be deleted in a single request.</td>
+</tr>
+<tr>
+    <td><a href="#stop_evaluation_job"><CopyableCode code="stop_evaluation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_identifier"><code>job_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops an evaluation job that is current being created or running.</td>
+</tr>
 </tbody>
 </table>
 
@@ -254,7 +268,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-job_identifier">
     <td><CopyableCode code="job_identifier" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the evaluation job you want get information on.</td>
+    <td>The Amazon Resource Name (ARN) of the evaluation job you want to stop.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -529,5 +543,42 @@ job_arn
         s3Uri: "{{ s3Uri }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_delete_evaluation_job"
+    values={[
+        { label: 'batch_delete_evaluation_job', value: 'batch_delete_evaluation_job' },
+        { label: 'stop_evaluation_job', value: 'stop_evaluation_job' }
+    ]}
+>
+<TabItem value="batch_delete_evaluation_job">
+
+Deletes a batch of evaluation jobs. An evaluation job can only be deleted if it has following status FAILED, COMPLETED, and STOPPED. You can request up to 25 model evaluation jobs be deleted in a single request.
+
+```sql
+EXEC aws.bedrock.evaluation_jobs.batch_delete_evaluation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"jobIdentifiers": "{{ jobIdentifiers }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_evaluation_job">
+
+Stops an evaluation job that is current being created or running.
+
+```sql
+EXEC aws.bedrock.evaluation_jobs.stop_evaluation_job 
+@job_identifier='{{ job_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

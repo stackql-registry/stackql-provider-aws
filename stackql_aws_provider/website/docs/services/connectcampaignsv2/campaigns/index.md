@@ -306,6 +306,34 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the entry limits config for a campaign. This API is idempotent.</td>
 </tr>
+<tr>
+    <td><a href="#pause_campaign"><CopyableCode code="pause_campaign" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Pauses a campaign for the specified Amazon Connect account.</td>
+</tr>
+<tr>
+    <td><a href="#resume_campaign"><CopyableCode code="resume_campaign" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a campaign for the specified Amazon Connect account.</td>
+</tr>
+<tr>
+    <td><a href="#start_campaign"><CopyableCode code="start_campaign" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a campaign for the specified Amazon Connect account.</td>
+</tr>
+<tr>
+    <td><a href="#stop_campaign"><CopyableCode code="stop_campaign" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a campaign for the specified Amazon Connect account.</td>
+</tr>
 </tbody>
 </table>
 
@@ -794,7 +822,11 @@ AND region = '{{ region }}' --required
     defaultValue="delete_campaign_communication_time"
     values={[
         { label: 'delete_campaign_communication_time', value: 'delete_campaign_communication_time' },
-        { label: 'delete_campaign_entry_limits', value: 'delete_campaign_entry_limits' }
+        { label: 'delete_campaign_entry_limits', value: 'delete_campaign_entry_limits' },
+        { label: 'pause_campaign', value: 'pause_campaign' },
+        { label: 'resume_campaign', value: 'resume_campaign' },
+        { label: 'start_campaign', value: 'start_campaign' },
+        { label: 'stop_campaign', value: 'stop_campaign' }
     ]}
 >
 <TabItem value="delete_campaign_communication_time">
@@ -815,6 +847,50 @@ Deletes the entry limits config for a campaign. This API is idempotent.
 
 ```sql
 EXEC aws.connectcampaignsv2.campaigns.delete_campaign_entry_limits 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="pause_campaign">
+
+Pauses a campaign for the specified Amazon Connect account.
+
+```sql
+EXEC aws.connectcampaignsv2.campaigns.pause_campaign 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="resume_campaign">
+
+Stops a campaign for the specified Amazon Connect account.
+
+```sql
+EXEC aws.connectcampaignsv2.campaigns.resume_campaign 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_campaign">
+
+Starts a campaign for the specified Amazon Connect account.
+
+```sql
+EXEC aws.connectcampaignsv2.campaigns.start_campaign 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_campaign">
+
+Stops a campaign for the specified Amazon Connect account.
+
+```sql
+EXEC aws.connectcampaignsv2.campaigns.stop_campaign 
 @id='{{ id }}' --required, 
 @region='{{ region }}' --required
 ;

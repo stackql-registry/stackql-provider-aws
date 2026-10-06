@@ -781,10 +781,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
         delete:
           - $ref: "#/components/x-stackQL-resources/resources/methods/delete_resource"
-    resource_request_status:
-      id: aws.cloudcontrol.resource_request_status
-      name: resource_request_status
-      title: resource_request_status
+    resource_request_statuses:
+      id: aws.cloudcontrol.resource_request_statuses
+      name: resource_request_statuses
+      title: resource_request_statuses
       methods:
         get_resource_request_status:
           operation:
@@ -801,7 +801,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resource_request_status/methods/get_resource_request_status"
+          - $ref: "#/components/x-stackQL-resources/resource_request_statuses/methods/get_resource_request_status"
         insert: []
         update: []
         delete: []

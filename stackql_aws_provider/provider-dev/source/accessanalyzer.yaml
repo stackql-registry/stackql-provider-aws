@@ -40,7 +40,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: analyzers
+      x-stackql-resource: archive_rules
       x-stackql-method: apply_archive_rule
       x-stackql-verb: EXEC
   /policy/generation/{job_id}:
@@ -58,11 +58,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelPolicyGenerationResponse'
-      x-stackql-resource: policy_generation
+      x-stackql-resource: policy_generations
       x-stackql-method: cancel_policy_generation
       x-stackql-verb: EXEC
     get:
@@ -131,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckAccessNotGrantedResponse'
-      x-stackql-resource: check_access_not_granted
+      x-stackql-resource: access_not_granteds
       x-stackql-method: check_access_not_granted
       x-stackql-verb: EXEC
   /policy/check-no-new-access:
@@ -166,7 +162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckNoNewAccessResponse'
-      x-stackql-resource: check_no_new_access
+      x-stackql-resource: no_new_accesses
       x-stackql-method: check_no_new_access
       x-stackql-verb: EXEC
   /policy/check-no-public-access:
@@ -195,7 +191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckNoPublicAccessResponse'
-      x-stackql-resource: check_no_public_access
+      x-stackql-resource: no_public_accesses
       x-stackql-method: check_no_public_access
       x-stackql-verb: EXEC
   /access-preview:
@@ -658,7 +654,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: findings
+      x-stackql-resource: finding_recommendations
       x-stackql-method: generate_finding_recommendation
       x-stackql-verb: EXEC
     get:
@@ -905,7 +901,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFindingV2Response'
-      x-stackql-resource: finding_v2s
+      x-stackql-resource: findings_v2
       x-stackql-method: get_finding_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findingDetails
@@ -1044,7 +1040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFindingsV2Response'
-      x-stackql-resource: findings_v2s
+      x-stackql-resource: findings_v2
       x-stackql-method: list_findings_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
@@ -1115,7 +1111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPolicyGenerationResponse'
-      x-stackql-resource: policy_generation
+      x-stackql-resource: policy_generations
       x-stackql-method: start_policy_generation
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1163,10 +1159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1189,10 +1181,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1268,7 +1256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePolicyResponse'
-      x-stackql-resource: policy
+      x-stackql-resource: policies
       x-stackql-method: validate_policy
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: nextToken
@@ -1331,8 +1319,6 @@ components:
       type: string
     JobId:
       type: string
-    CancelPolicyGenerationResponse:
-      type: object
     AccessCheckPolicyDocument:
       type: string
     CheckAccessNotGrantedRequestAccessList:
@@ -3152,16 +3138,10 @@ components:
             to retrieve the generated policies or used with CancelPolicyGeneration to cancel the policy generation request.
       required:
       - jobId
-    TagResourceResponse:
-      description: The response to the request.
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      description: The response to the request.
-      type: object
     UpdateAnalyzerResponse:
       type: object
       properties:

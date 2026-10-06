@@ -224,7 +224,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-workflowExecutionId"><code>workflowExecutionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get the runtime information that was logged for a specific runtime instance of the workflow.</td>
+    <td>Retrieves runtime information for a specific runtime instance of the workflow.</td>
 </tr>
 <tr>
     <td><a href="#list_workflow_executions"><CopyableCode code="list_workflow_executions" /></a></td>
@@ -273,7 +273,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_workflow_execution">
 
-Get the runtime information that was logged for a specific runtime instance of the workflow.
+Retrieves runtime information for a specific runtime instance of the workflow.
 
 ```sql
 SELECT

@@ -18,16 +18,17 @@ cloudsearchdomain service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/cloudsearchdomain/search/">search</a>
+<a href="/services/cloudsearchdomain/documents/">documents</a><br />
+<a href="/services/cloudsearchdomain/searches/">searches</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/cloudsearchdomain/suggests/">suggests</a>
 </div>
 </div>

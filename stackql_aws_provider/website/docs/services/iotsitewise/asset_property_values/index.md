@@ -133,6 +133,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-assetId"><code>assetId</code></a>, <a href="#parameter-propertyId"><code>propertyId</code></a>, <a href="#parameter-propertyAlias"><code>propertyAlias</code></a></td>
     <td>Gets an asset property's current value. For more information, see Querying current values in the IoT SiteWise User Guide. To identify an asset property, you must specify one of the following: The assetId and propertyId of an asset property. A propertyAlias, which is a data stream alias (for example, /company/windfarm/3/turbine/7/temperature). To define an asset property's alias, see UpdateAssetProperty.</td>
 </tr>
+<tr>
+    <td><a href="#batch_put_asset_property_value"><CopyableCode code="batch_put_asset_property_value" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-entries"><code>entries</code></a></td>
+    <td></td>
+    <td>Sends a list of asset property values to IoT SiteWise. Each value is a timestamp-quality-value (TQV) data point. For more information, see Ingesting data using the API in the IoT SiteWise User Guide. To identify an asset property, you must specify one of the following: The assetId and propertyId of an asset property. A propertyAlias, which is a data stream alias (for example, /company/windfarm/3/turbine/7/temperature). To define an asset property's alias, see UpdateAssetProperty. With respect to Unix epoch time, IoT SiteWise accepts only TQVs that have a timestamp of no more than 7 days in the past and no more than 10 minutes in the future. IoT SiteWise rejects timestamps outside of the inclusive range of &#91;-7 days, +10 minutes&#93; and returns a TimestampOutOfRangeException error. For each asset property, IoT SiteWise overwrites TQVs with duplicate timestamps unless the newer TQV has a different quality. For example, if you store a TQV &#123;T1, GOOD, V1&#125;, then storing &#123;T1, GOOD, V2&#125; replaces the existing TQV. IoT SiteWise authorizes access to each BatchPutAssetPropertyValue entry individually. For more information, see BatchPutAssetPropertyValue authorization in the IoT SiteWise User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -210,6 +217,32 @@ WHERE region = '{{ region }}' -- required
 AND assetId = '{{ assetId }}'
 AND propertyId = '{{ propertyId }}'
 AND propertyAlias = '{{ propertyAlias }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_put_asset_property_value"
+    values={[
+        { label: 'batch_put_asset_property_value', value: 'batch_put_asset_property_value' }
+    ]}
+>
+<TabItem value="batch_put_asset_property_value">
+
+Sends a list of asset property values to IoT SiteWise. Each value is a timestamp-quality-value (TQV) data point. For more information, see Ingesting data using the API in the IoT SiteWise User Guide. To identify an asset property, you must specify one of the following: The assetId and propertyId of an asset property. A propertyAlias, which is a data stream alias (for example, /company/windfarm/3/turbine/7/temperature). To define an asset property's alias, see UpdateAssetProperty. With respect to Unix epoch time, IoT SiteWise accepts only TQVs that have a timestamp of no more than 7 days in the past and no more than 10 minutes in the future. IoT SiteWise rejects timestamps outside of the inclusive range of [-7 days, +10 minutes] and returns a TimestampOutOfRangeException error. For each asset property, IoT SiteWise overwrites TQVs with duplicate timestamps unless the newer TQV has a different quality. For example, if you store a TQV &#123;T1, GOOD, V1&#125;, then storing &#123;T1, GOOD, V2&#125; replaces the existing TQV. IoT SiteWise authorizes access to each BatchPutAssetPropertyValue entry individually. For more information, see BatchPutAssetPropertyValue authorization in the IoT SiteWise User Guide.
+
+```sql
+EXEC aws.iotsitewise.asset_property_values.batch_put_asset_property_value 
+@region='{{ region }}' --required 
+@@json=
+'{
+"enablePartialEntryProcessing": {{ enablePartialEntryProcessing }}, 
+"entries": "{{ entries }}"
+}'
 ;
 ```
 </TabItem>

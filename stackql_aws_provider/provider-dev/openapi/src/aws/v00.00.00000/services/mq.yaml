@@ -259,10 +259,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateUserResponse"
     delete:
       operationId: DeleteUser
       description: Deletes an ActiveMQ user.
@@ -282,10 +278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResponse"
     get:
       operationId: DescribeUser
       description: Returns information about an ActiveMQ user.
@@ -343,10 +335,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserResponse"
   /v1/brokers/{broker-id}:
     delete:
       operationId: DeleteBroker
@@ -724,10 +712,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RebootBrokerResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -998,8 +982,6 @@ components:
       required:
         - Revision
         - Created
-    CreateUserResponse:
-      type: object
     DeleteBrokerResponse:
       type: object
       properties:
@@ -1012,8 +994,6 @@ components:
         ConfigurationId:
           $ref: "#/components/schemas/__string"
           description: The unique ID that Amazon MQ generates for the configuration.
-    DeleteUserResponse:
-      type: object
     DescribeBrokerResponse:
       type: object
       properties:
@@ -1723,8 +1703,6 @@ components:
         BrokerId:
           $ref: "#/components/schemas/__string"
           description: The unique ID that Amazon MQ generates for the broker.
-    RebootBrokerResponse:
-      type: object
     UpdateBrokerResponse:
       type: object
       properties:
@@ -1823,8 +1801,6 @@ components:
         - DISALLOWED_ELEMENT_REMOVED
         - DISALLOWED_ATTRIBUTE_REMOVED
         - INVALID_ATTRIBUTE_VALUE_REMOVED
-    UpdateUserResponse:
-      type: object
   x-stackQL-resources:
     brokers:
       id: aws.mq.brokers
@@ -1882,6 +1858,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reboot_broker:
+          operation:
+            $ref: "#/paths/~1v1~1brokers~1{broker-id}~1reboot/post"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/brokers/methods/describe_broker"
@@ -1995,7 +1976,6 @@ components:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}~1users~1{username}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2006,7 +1986,6 @@ components:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}~1users~1{username}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_user:
           operation:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}~1users~1{username}/get"
@@ -2018,7 +1997,6 @@ components:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}~1users~1{username}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2131,6 +2109,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/shared_resources/methods/describe_shared_resources"
+        insert: []
+        update: []
+        delete: []
+    promotes:
+      id: aws.mq.promotes
+      name: promotes
+      title: promotes
+      methods:
+        promote:
+          operation:
+            $ref: "#/paths/~1v1~1brokers~1{broker-id}~1promote/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

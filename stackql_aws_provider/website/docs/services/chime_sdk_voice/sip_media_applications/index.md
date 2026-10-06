@@ -169,18 +169,18 @@ The following methods are available for this resource:
     <td>Lists the SIP media applications under the administrator's AWS account.</td>
 </tr>
 <tr>
-    <td><a href="#create_sip_media_application_call"><CopyableCode code="create_sip_media_application_call" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-sip_media_application_id"><code>sip_media_application_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FromPhoneNumber"><code>FromPhoneNumber</code></a>, <a href="#parameter-ToPhoneNumber"><code>ToPhoneNumber</code></a></td>
-    <td></td>
-    <td>Creates an outbound call to a phone number from the phone number specified in the request, and it invokes the endpoint of the specified sipMediaApplicationId.</td>
-</tr>
-<tr>
     <td><a href="#create_sip_media_application"><CopyableCode code="create_sip_media_application" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AwsRegion"><code>AwsRegion</code></a></td>
     <td></td>
     <td>Creates a SIP media application. For more information about SIP media applications, see Managing SIP media applications and rules in the Amazon Chime SDK Administrator Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_sip_media_application_call"><CopyableCode code="create_sip_media_application_call" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-sip_media_application_id"><code>sip_media_application_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-FromPhoneNumber"><code>FromPhoneNumber</code></a>, <a href="#parameter-ToPhoneNumber"><code>ToPhoneNumber</code></a></td>
+    <td></td>
+    <td>Creates an outbound call to a phone number from the phone number specified in the request, and it invokes the endpoint of the specified sipMediaApplicationId.</td>
 </tr>
 <tr>
     <td><a href="#update_sip_media_application_call"><CopyableCode code="update_sip_media_application_call" /></a></td>
@@ -301,13 +301,36 @@ AND `next-token` = '{{ next-token }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_sip_media_application_call"
+    defaultValue="create_sip_media_application"
     values={[
-        { label: 'create_sip_media_application_call', value: 'create_sip_media_application_call' },
         { label: 'create_sip_media_application', value: 'create_sip_media_application' },
+        { label: 'create_sip_media_application_call', value: 'create_sip_media_application_call' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_sip_media_application">
+
+Creates a SIP media application. For more information about SIP media applications, see Managing SIP media applications and rules in the Amazon Chime SDK Administrator Guide.
+
+```sql
+INSERT INTO aws.chime_sdk_voice.sip_media_applications (
+AwsRegion,
+Name,
+Endpoints,
+Tags,
+region
+)
+SELECT 
+'{{ AwsRegion }}' /* required */,
+'{{ Name }}',
+'{{ Endpoints }}',
+'{{ Tags }}',
+'{{ region }}'
+RETURNING
+sip_media_application
+;
+```
+</TabItem>
 <TabItem value="create_sip_media_application_call">
 
 Creates an outbound call to a phone number from the phone number specified in the request, and it invokes the endpoint of the specified sipMediaApplicationId.
@@ -333,48 +356,17 @@ sip_media_application_call
 ;
 ```
 </TabItem>
-<TabItem value="create_sip_media_application">
-
-Creates a SIP media application. For more information about SIP media applications, see Managing SIP media applications and rules in the Amazon Chime SDK Administrator Guide.
-
-```sql
-INSERT INTO aws.chime_sdk_voice.sip_media_applications (
-AwsRegion,
-Name,
-Endpoints,
-Tags,
-region
-)
-SELECT 
-'{{ AwsRegion }}' /* required */,
-'{{ Name }}',
-'{{ Endpoints }}',
-'{{ Tags }}',
-'{{ region }}'
-RETURNING
-sip_media_application
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: sip_media_applications
   props:
-    - name: sip_media_application_id
-      value: "{{ sip_media_application_id }}"
-      description: Required parameter for the sip_media_applications resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the sip_media_applications resource.
-    - name: FromPhoneNumber
-      value: "{{ FromPhoneNumber }}"
-    - name: ToPhoneNumber
-      value: "{{ ToPhoneNumber }}"
-    - name: SipHeaders
-      value: "{{ SipHeaders }}"
-    - name: ArgumentsMap
-      value: "{{ ArgumentsMap }}"
+    - name: sip_media_application_id
+      value: "{{ sip_media_application_id }}"
+      description: Required parameter for the sip_media_applications resource.
     - name: AwsRegion
       value: "{{ AwsRegion }}"
     - name: Name
@@ -386,6 +378,14 @@ sip_media_application
       value:
         - Key: "{{ Key }}"
           Value: "{{ Value }}"
+    - name: FromPhoneNumber
+      value: "{{ FromPhoneNumber }}"
+    - name: ToPhoneNumber
+      value: "{{ ToPhoneNumber }}"
+    - name: SipHeaders
+      value: "{{ SipHeaders }}"
+    - name: ArgumentsMap
+      value: "{{ ArgumentsMap }}"
 `}</CodeBlock>
 
 </TabItem>

@@ -842,7 +842,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDataIntegrationEventResponse'
-      x-stackql-resource: instances
+      x-stackql-resource: data_integration_events
       x-stackql-method: send_data_integration_event
       x-stackql-verb: EXEC
   /api-data/data-integration/instance/{instance_id}/data-integration-flows/{flow_name}/executions:
@@ -1062,10 +1062,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1090,10 +1086,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2342,9 +2334,6 @@ components:
           description: The unique event identifier.
       required:
       - eventId
-    TagResourceResponse:
-      description: The response parameters for TagResource.
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2353,9 +2342,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      description: The response parameters of UntagResource.
-      type: object
     UpdateDataIntegrationFlowResponse:
       description: The response parameters for UpdateDataIntegrationFlow.
       type: object

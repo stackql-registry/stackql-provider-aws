@@ -64,10 +64,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddThingToBillingGroupResponse'
       x-stackql-resource: billing_groups
       x-stackql-method: add_thing_to_billing_group
       x-stackql-verb: UPDATE
@@ -96,10 +92,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddThingToThingGroupResponse'
       x-stackql-resource: thing_groups
       x-stackql-method: add_thing_to_thing_group
       x-stackql-verb: UPDATE
@@ -176,10 +168,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSbomFromPackageVersionResponse'
       x-stackql-resource: package_versions
       x-stackql-method: disassociate_sbom_from_package_version
       x-stackql-verb: UPDATE
@@ -340,9 +328,12 @@ paths:
   /security-profiles/{security_profile_name}/targets:
     put:
       operationId: AttachSecurityProfile
-      description: Associates a Device Defender security profile with a thing group or this account. Each thing group or account
-        can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Associates a Device Defender security
+        profile with a thing group or this account. Each thing group or account can have up to five security profiles associated
+        with it. Requires permission to access the AttachSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -359,17 +350,16 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AttachSecurityProfileResponse'
       x-stackql-resource: security_profiles
       x-stackql-method: attach_security_profile
       x-stackql-verb: UPDATE
     delete:
       operationId: DetachSecurityProfile
-      description: Disassociates a Device Defender security profile from a thing group or from this account. Requires permission
-        to access the DetachSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Disassociates a Device Defender security
+        profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -386,17 +376,16 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetachSecurityProfileResponse'
       x-stackql-resource: security_profiles
       x-stackql-method: detach_security_profile
       x-stackql-verb: UPDATE
     get:
       operationId: ListTargetsForSecurityProfile
-      description: Lists the targets (thing groups) associated with a given Device Defender security profile. Requires permission
-        to access the ListTargetsForSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists the targets (thing groups) associated
+        with a given Device Defender security profile. Requires permission to access the ListTargetsForSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -423,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTargetsForSecurityProfileResponse'
-      x-stackql-resource: targets_for_security_profiles
+      x-stackql-resource: targets
       x-stackql-method: list_targets_for_security_profile
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityProfileTargets
@@ -461,10 +450,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AttachThingPrincipalResponse'
       x-stackql-resource: thing_principals
       x-stackql-method: attach_thing_principal
       x-stackql-verb: UPDATE
@@ -490,10 +475,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetachThingPrincipalResponse'
       x-stackql-resource: thing_principals
       x-stackql-method: detach_thing_principal
       x-stackql-verb: UPDATE
@@ -556,11 +537,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelAuditMitigationActionsTaskResponse'
-      x-stackql-resource: audit_mitigation_actions_task
+      x-stackql-resource: audit_mitigation_actions_tasks
       x-stackql-method: cancel_audit_mitigation_actions_task
       x-stackql-verb: EXEC
   /audit/tasks/{task_id}/cancel:
@@ -578,11 +555,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelAuditTaskResponse'
-      x-stackql-resource: audit_task
+      x-stackql-resource: audit_tasks
       x-stackql-method: cancel_audit_task
       x-stackql-verb: EXEC
   /cancel-certificate-transfer/{certificate_id}:
@@ -609,8 +582,11 @@ paths:
   /detect/mitigationactions/tasks/{task_id}/cancel:
     put:
       operationId: CancelDetectMitigationActionsTask
-      description: Cancels a Device Defender ML Detect mitigation action. Requires permission to access the CancelDetectMitigationActionsTask
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Cancels a Device Defender ML Detect
+        mitigation action. Requires permission to access the CancelDetectMitigationActionsTask action.
       parameters:
       - name: task_id
         in: path
@@ -621,11 +597,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelDetectMitigationActionsTaskResponse'
-      x-stackql-resource: detect_mitigation_actions_task
+      x-stackql-resource: detect_mitigation_actions_tasks
       x-stackql-method: cancel_detect_mitigation_actions_task
       x-stackql-verb: EXEC
   /jobs/{job_id}/cancel:
@@ -711,7 +683,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: jobs
+      x-stackql-resource: job_executions
       x-stackql-method: cancel_job_execution
       x-stackql-verb: EXEC
   /default-authorizer:
@@ -722,11 +694,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClearDefaultAuthorizerResponse'
-      x-stackql-resource: clear_default_authorizer
+      x-stackql-resource: default_authorizers
       x-stackql-method: clear_default_authorizer
       x-stackql-verb: EXEC
     get:
@@ -787,11 +755,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConfirmTopicRuleDestinationResponse'
-      x-stackql-resource: topic_rules
+      x-stackql-resource: topic_rule_destinations
       x-stackql-method: confirm_topic_rule_destination
       x-stackql-verb: EXEC
   /audit/suppressions/create:
@@ -825,10 +789,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateAuditSuppressionResponse'
       x-stackql-resource: audit_suppressions
       x-stackql-method: create_audit_suppression
       x-stackql-verb: INSERT
@@ -889,10 +849,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAuthorizerResponse'
       x-stackql-resource: authorizers
       x-stackql-method: delete_authorizer
       x-stackql-verb: DELETE
@@ -1008,10 +964,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBillingGroupResponse'
       x-stackql-resource: billing_groups
       x-stackql-method: delete_billing_group
       x-stackql-verb: DELETE
@@ -1215,10 +1167,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCertificateProviderResponse'
       x-stackql-resource: certificate_providers
       x-stackql-method: delete_certificate_provider
       x-stackql-verb: DELETE
@@ -1397,8 +1345,11 @@ paths:
   /custom-metric/{metric_name}:
     post:
       operationId: CreateCustomMetric
-      description: Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission
-        to access the CreateCustomMetric action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Use this API to define a Custom Metric
+        published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.
       parameters:
       - name: metric_name
         in: path
@@ -1437,10 +1388,13 @@ paths:
       x-stackql-verb: INSERT
     delete:
       operationId: DeleteCustomMetric
-      description: Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action.
-        Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part
-        of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName
-        set to your custom metric name.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender detect custom
+        metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must
+        first remove the custom metric from all security profiles it's a part of. The security profile associated with the
+        custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.
       parameters:
       - name: metric_name
         in: path
@@ -1451,17 +1405,16 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomMetricResponse'
       x-stackql-resource: custom_metrics
       x-stackql-method: delete_custom_metric
       x-stackql-verb: DELETE
     get:
       operationId: DescribeCustomMetric
-      description: Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender
+        detect custom metric. Requires permission to access the DescribeCustomMetric action.
       parameters:
       - name: metric_name
         in: path
@@ -1481,7 +1434,11 @@ paths:
       x-stackql-verb: SELECT
     patch:
       operationId: UpdateCustomMetric
-      description: Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender detect custom
+        metric. Requires permission to access the UpdateCustomMetric action.
       parameters:
       - name: metric_name
         in: path
@@ -1513,9 +1470,13 @@ paths:
   /dimensions/{name}:
     post:
       operationId: CreateDimension
-      description: Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device
-        Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics
-        whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Create a dimension that you can use
+        to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER
+        dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified
+        in the dimension. Requires permission to access the CreateDimension action.
       parameters:
       - name: name
         in: path
@@ -1555,8 +1516,11 @@ paths:
       x-stackql-verb: INSERT
     delete:
       operationId: DeleteDimension
-      description: Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the
-        DeleteDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Removes the specified dimension from
+        your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.
       parameters:
       - name: name
         in: path
@@ -1567,17 +1531,16 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDimensionResponse'
       x-stackql-resource: dimensions
       x-stackql-method: delete_dimension
       x-stackql-verb: DELETE
     get:
       operationId: DescribeDimension
-      description: Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission
-        to access the DescribeDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Provides details about a dimension
+        that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.
       parameters:
       - name: name
         in: path
@@ -1597,8 +1560,12 @@ paths:
       x-stackql-verb: SELECT
     patch:
       operationId: UpdateDimension
-      description: Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you
-        can delete it and recreate it). Requires permission to access the UpdateDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Updates the definition for a dimension.
+        You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission
+        to access the UpdateDimension action.
       parameters:
       - name: name
         in: path
@@ -1692,10 +1659,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainConfigurationResponse'
       x-stackql-resource: domain_configurations
       x-stackql-method: delete_domain_configuration
       x-stackql-verb: DELETE
@@ -1823,10 +1786,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDynamicThingGroupResponse'
       x-stackql-resource: thing_groups
       x-stackql-method: delete_dynamic_thing_group
       x-stackql-verb: DELETE
@@ -2352,10 +2311,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMitigationActionResponse'
       x-stackql-resource: mitigation_actions
       x-stackql-method: delete_mitigation_action
       x-stackql-verb: DELETE
@@ -2497,10 +2452,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteOTAUpdateResponse'
       x-stackql-resource: ota_updates
       x-stackql-method: delete_ota_update
       x-stackql-verb: DELETE
@@ -2586,10 +2537,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePackageResponse'
       x-stackql-resource: packages
       x-stackql-method: delete_package
       x-stackql-verb: DELETE
@@ -2647,10 +2594,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePackageResponse'
       x-stackql-resource: packages
       x-stackql-method: update_package
       x-stackql-verb: UPDATE
@@ -2733,10 +2676,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePackageVersionResponse'
       x-stackql-resource: package_versions
       x-stackql-method: delete_package_version
       x-stackql-verb: DELETE
@@ -2811,10 +2750,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePackageVersionResponse'
       x-stackql-resource: package_versions
       x-stackql-method: update_package_version
       x-stackql-verb: UPDATE
@@ -3168,7 +3103,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRoleAliasResponse'
-      x-stackql-resource: role_alias
+      x-stackql-resource: role_aliases
       x-stackql-method: create_role_alias
       x-stackql-verb: INSERT
     delete:
@@ -3184,11 +3119,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRoleAliasResponse'
-      x-stackql-resource: role_alias
+      x-stackql-resource: role_aliases
       x-stackql-method: delete_role_alias
       x-stackql-verb: DELETE
     get:
@@ -3208,7 +3139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRoleAliasResponse'
-      x-stackql-resource: role_alias
+      x-stackql-resource: role_aliases
       x-stackql-method: describe_role_alias
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.roleAliasDescription
@@ -3243,7 +3174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRoleAliasResponse'
-      x-stackql-resource: role_alias
+      x-stackql-resource: role_aliases
       x-stackql-method: update_role_alias
       x-stackql-verb: UPDATE
   /audit/scheduledaudits/{scheduled_audit_name}:
@@ -3301,10 +3232,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteScheduledAuditResponse'
       x-stackql-resource: scheduled_audits
       x-stackql-method: delete_scheduled_audit
       x-stackql-verb: DELETE
@@ -3367,7 +3294,11 @@ paths:
   /security-profiles/{security_profile_name}:
     post:
       operationId: CreateSecurityProfile
-      description: Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Creates a Device Defender security
+        profile. Requires permission to access the CreateSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -3408,7 +3339,11 @@ paths:
       x-stackql-verb: INSERT
     delete:
       operationId: DeleteSecurityProfile
-      description: Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender security
+        profile. Requires permission to access the DeleteSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -3426,17 +3361,16 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityProfileResponse'
       x-stackql-resource: security_profiles
       x-stackql-method: delete_security_profile
       x-stackql-verb: DELETE
     get:
       operationId: DescribeSecurityProfile
-      description: Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender
+        security profile. Requires permission to access the DescribeSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -3456,7 +3390,11 @@ paths:
       x-stackql-verb: SELECT
     patch:
       operationId: UpdateSecurityProfile
-      description: Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender security
+        profile. Requires permission to access the UpdateSecurityProfile action.
       parameters:
       - name: security_profile_name
         in: path
@@ -3562,10 +3500,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStreamResponse'
       x-stackql-resource: streams
       x-stackql-method: delete_stream
       x-stackql-verb: DELETE
@@ -3683,10 +3617,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThingResponse'
       x-stackql-resource: things
       x-stackql-method: delete_thing
       x-stackql-verb: DELETE
@@ -3739,10 +3669,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThingResponse'
       x-stackql-resource: things
       x-stackql-method: update_thing
       x-stackql-verb: UPDATE
@@ -3801,10 +3727,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThingGroupResponse'
       x-stackql-resource: thing_groups
       x-stackql-method: delete_thing_group
       x-stackql-verb: DELETE
@@ -3911,10 +3833,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteThingTypeResponse'
       x-stackql-resource: thing_types
       x-stackql-method: delete_thing_type
       x-stackql-verb: DELETE
@@ -3960,10 +3878,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThingTypeResponse'
       x-stackql-resource: thing_types
       x-stackql-method: update_thing_type
       x-stackql-verb: UPDATE
@@ -4150,10 +4064,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTopicRuleDestinationResponse'
       x-stackql-resource: topic_rule_destinations
       x-stackql-method: update_topic_rule_destination
       x-stackql-verb: UPDATE
@@ -4173,10 +4083,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccountAuditConfigurationResponse'
       x-stackql-resource: account_audit_configurations
       x-stackql-method: delete_account_audit_configuration
       x-stackql-verb: DELETE
@@ -4218,10 +4124,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAccountAuditConfigurationResponse'
       x-stackql-resource: account_audit_configurations
       x-stackql-method: update_account_audit_configuration
       x-stackql-verb: UPDATE
@@ -4247,10 +4149,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAuditSuppressionResponse'
       x-stackql-resource: audit_suppressions
       x-stackql-method: delete_audit_suppression
       x-stackql-verb: DELETE
@@ -4268,10 +4166,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCACertificateResponse'
       x-stackql-resource: ca_certificates
       x-stackql-method: delete_ca_certificate
       x-stackql-verb: DELETE
@@ -4432,10 +4326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCommandExecutionResponse'
       x-stackql-resource: command_executions
       x-stackql-method: delete_command_execution
       x-stackql-verb: DELETE
@@ -4614,10 +4504,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProvisioningTemplateResponse'
       x-stackql-resource: provisioning_templates
       x-stackql-method: delete_provisioning_template
       x-stackql-verb: DELETE
@@ -4674,10 +4560,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateProvisioningTemplateResponse'
       x-stackql-resource: provisioning_templates
       x-stackql-method: update_provisioning_template
       x-stackql-verb: UPDATE
@@ -4702,10 +4584,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProvisioningTemplateVersionResponse'
       x-stackql-resource: provisioning_template_versions
       x-stackql-method: delete_provisioning_template_version
       x-stackql-verb: DELETE
@@ -4744,10 +4622,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRegistrationCodeResponse'
       x-stackql-resource: registration_codes
       x-stackql-method: delete_registration_code
       x-stackql-verb: DELETE
@@ -4782,10 +4656,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTopicRuleDestinationResponse'
       x-stackql-resource: topic_rule_destinations
       x-stackql-method: delete_topic_rule_destination
       x-stackql-verb: DELETE
@@ -4919,10 +4789,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeprecateThingTypeResponse'
       x-stackql-resource: thing_types
       x-stackql-method: deprecate_thing_type
       x-stackql-verb: EXEC
@@ -5010,7 +4876,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAuditMitigationActionsTaskResponse'
-      x-stackql-resource: audit_mitigation_actions_task
+      x-stackql-resource: audit_mitigation_actions_tasks
       x-stackql-method: start_audit_mitigation_actions_task
       x-stackql-verb: EXEC
   /audit/suppressions/describe:
@@ -5066,8 +4932,11 @@ paths:
   /detect/mitigationactions/tasks/{task_id}:
     get:
       operationId: DescribeDetectMitigationActionsTask
-      description: Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the
-        DescribeDetectMitigationActionsTask action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender
+        ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.
       parameters:
       - name: task_id
         in: path
@@ -5088,8 +4957,11 @@ paths:
       x-stackql-objectKey: $.taskSummary
     put:
       operationId: StartDetectMitigationActionsTask
-      description: Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Starts a Device Defender ML Detect
+        mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask action.
       parameters:
       - name: task_id
         in: path
@@ -5127,7 +4999,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDetectMitigationActionsTaskResponse'
-      x-stackql-resource: detect_mitigation_actions_task
+      x-stackql-resource: detect_mitigation_actions_tasks
       x-stackql-method: start_detect_mitigation_actions_task
       x-stackql-verb: EXEC
   /encryption-configuration:
@@ -5173,10 +5045,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEncryptionConfigurationResponse'
       x-stackql-resource: encryption_configurations
       x-stackql-method: update_encryption_configuration
       x-stackql-verb: UPDATE
@@ -5238,10 +5106,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEventConfigurationsResponse'
       x-stackql-resource: event_configurations
       x-stackql-method: update_event_configurations
       x-stackql-verb: UPDATE
@@ -5365,7 +5229,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: topic_rule
+      x-stackql-resource: topic_rules
       x-stackql-method: disable_topic_rule
       x-stackql-verb: EXEC
   /rules/{rule_name}/enable:
@@ -5382,14 +5246,17 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: topic_rule
+      x-stackql-resource: topic_rules
       x-stackql-method: enable_topic_rule
       x-stackql-verb: EXEC
   /behavior-model-training/summaries:
     get:
       operationId: GetBehaviorModelTrainingSummaries
-      description: Returns a Device Defender's ML Detect Security Profile training model's status. Requires permission to
-        access the GetBehaviorModelTrainingSummaries action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Returns a Device Defender's ML Detect
+        Security Profile training model's status. Requires permission to access the GetBehaviorModelTrainingSummaries action.
       parameters:
       - name: securityProfileName
         in: query
@@ -5559,10 +5426,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIndexingConfigurationResponse'
       x-stackql-resource: indexing_configurations
       x-stackql-method: update_indexing_configuration
       x-stackql-verb: UPDATE
@@ -5673,10 +5536,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePackageConfigurationResponse'
       x-stackql-resource: package_configurations
       x-stackql-method: update_package_configuration
       x-stackql-verb: UPDATE
@@ -5784,7 +5643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetThingConnectivityDataResponse'
-      x-stackql-resource: thing_connectivity_datas
+      x-stackql-resource: thing_connectivity_data
       x-stackql-method: get_thing_connectivity_data
       x-stackql-verb: SELECT
   /v2LoggingOptions:
@@ -5838,8 +5697,11 @@ paths:
   /active-violations:
     get:
       operationId: ListActiveViolations
-      description: Lists the active violations for a given Device Defender security profile. Requires permission to access
-        the ListActiveViolations action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists the active violations for a given
+        Device Defender security profile. Requires permission to access the ListActiveViolations action.
       parameters:
       - name: thingName
         in: query
@@ -6215,7 +6077,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOnDemandAuditTaskResponse'
-      x-stackql-resource: on_demand_audit_task
+      x-stackql-resource: audit_tasks
       x-stackql-method: start_on_demand_audit_task
       x-stackql-verb: EXEC
   /authorizers/:
@@ -6411,7 +6273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCertificatesByCAResponse'
-      x-stackql-resource: certificates_by_cas
+      x-stackql-resource: certificates
       x-stackql-method: list_certificates_by_ca
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.certificates
@@ -6533,7 +6395,11 @@ paths:
   /custom-metrics:
     get:
       operationId: ListCustomMetrics
-      description: Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists your Device Defender detect custom
+        metrics. Requires permission to access the ListCustomMetrics action.
       parameters:
       - name: nextToken
         in: query
@@ -6569,8 +6435,12 @@ paths:
   /detect/mitigationactions/executions:
     get:
       operationId: ListDetectMitigationActionsExecutions
-      description: Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission
-        to access the ListDetectMitigationActionsExecutions action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists mitigation actions executions
+        for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions
+        action.
       parameters:
       - name: taskId
         in: query
@@ -6632,8 +6502,11 @@ paths:
   /detect/mitigationactions/tasks:
     get:
       operationId: ListDetectMitigationActionsTasks
-      description: List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks
-        action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. List of Device Defender ML Detect mitigation
+        actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.
       parameters:
       - name: maxResults
         in: query
@@ -6677,8 +6550,11 @@ paths:
   /dimensions:
     get:
       operationId: ListDimensions
-      description: List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission
-        to access the ListDimensions action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. List the set of dimensions that are
+        defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.
       parameters:
       - name: nextToken
         in: query
@@ -6853,7 +6729,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListJobExecutionsForJobResponse'
-      x-stackql-resource: job_executions_for_jobs
+      x-stackql-resource: job_executions
       x-stackql-method: list_job_executions_for_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionSummaries
@@ -6912,7 +6788,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListJobExecutionsForThingResponse'
-      x-stackql-resource: job_executions_for_things
+      x-stackql-resource: job_executions
       x-stackql-method: list_job_executions_for_thing
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionSummaries
@@ -7535,7 +7411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPrincipalThingsV2Response'
-      x-stackql-resource: principal_things_v2s
+      x-stackql-resource: principal_things_v2
       x-stackql-method: list_principal_things_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.principalThingObjects
@@ -7577,7 +7453,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRelatedResourcesForAuditFindingResponse'
-      x-stackql-resource: related_resources_for_audit_findings
+      x-stackql-resource: related_resources
       x-stackql-method: list_related_resources_for_audit_finding
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relatedResources
@@ -7710,9 +7586,12 @@ paths:
   /security-profiles:
     get:
       operationId: ListSecurityProfiles
-      description: Lists the Device Defender security profiles you've created. You can filter security profiles by dimension
-        or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot
-        be used in the same request.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security
+        profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access
+        the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.
       parameters:
       - name: nextToken
         in: query
@@ -7756,8 +7635,11 @@ paths:
   /security-profiles-for-target:
     get:
       operationId: ListSecurityProfilesForTarget
-      description: Lists the Device Defender security profiles attached to a target (thing group). Requires permission to
-        access the ListSecurityProfilesForTarget action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security
+        profiles attached to a target (thing group). Requires permission to access the ListSecurityProfilesForTarget action.
       parameters:
       - name: nextToken
         in: query
@@ -7790,7 +7672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSecurityProfilesForTargetResponse'
-      x-stackql-resource: security_profiles_for_targets
+      x-stackql-resource: security_profiles
       x-stackql-method: list_security_profiles_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityProfileTargetMappings
@@ -7890,10 +7772,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -7927,7 +7805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTargetsForPolicyOutputDisplay'
-      x-stackql-resource: targets_for_policies
+      x-stackql-resource: targets
       x-stackql-method: list_targets_for_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTargetsForPolicyOutputDisplay
@@ -8021,7 +7899,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListThingGroupsForThingResponse'
-      x-stackql-resource: thing_groups_for_things
+      x-stackql-resource: thing_groups
       x-stackql-method: list_thing_groups_for_thing
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingGroups
@@ -8070,7 +7948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListThingPrincipalsV2Response'
-      x-stackql-resource: thing_principals_v2s
+      x-stackql-resource: thing_principals_v2
       x-stackql-method: list_thing_principals_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingPrincipalObjects
@@ -8200,7 +8078,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartThingRegistrationTaskResponse'
-      x-stackql-resource: things
+      x-stackql-resource: thing_registration_tasks
       x-stackql-method: start_thing_registration_task
       x-stackql-verb: EXEC
   /thing-types:
@@ -8473,9 +8351,13 @@ paths:
   /violation-events:
     get:
       operationId: ListViolationEvents
-      description: Lists the Device Defender security profile violations discovered during the given time period. You can
-        use filters to limit the results to those alerts issued for a particular security profile, behavior, or thing (device).
-        Requires permission to access the ListViolationEvents action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security
+        profile violations discovered during the given time period. You can use filters to limit the results to those alerts
+        issued for a particular security profile, behavior, or thing (device). Requires permission to access the ListViolationEvents
+        action.
       parameters:
       - name: startTime
         in: query
@@ -8548,7 +8430,11 @@ paths:
   /violations/verification-state/{violation_id}:
     post:
       operationId: PutVerificationStateOnViolation
-      description: Set a verification state and provide a description of that verification state on a violation (detect alarm).
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Set a verification state and provide
+        a description of that verification state on a violation (detect alarm).
       parameters:
       - name: violation_id
         in: path
@@ -8572,10 +8458,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutVerificationStateOnViolationResponse'
       x-stackql-resource: verification_state_on_violations
       x-stackql-method: put_verification_state_on_violation
       x-stackql-verb: REPLACE
@@ -8748,10 +8630,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveThingFromBillingGroupResponse'
       x-stackql-resource: billing_groups
       x-stackql-method: remove_thing_from_billing_group
       x-stackql-verb: UPDATE
@@ -8780,10 +8658,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveThingFromThingGroupResponse'
       x-stackql-resource: thing_groups
       x-stackql-method: remove_thing_from_thing_group
       x-stackql-verb: UPDATE
@@ -8838,11 +8712,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopThingRegistrationTaskResponse'
-      x-stackql-resource: things
+      x-stackql-resource: thing_registration_tasks
       x-stackql-method: stop_thing_registration_task
       x-stackql-verb: EXEC
   /test-authorization:
@@ -8884,7 +8754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestAuthorizationResponse'
-      x-stackql-resource: authorization
+      x-stackql-resource: authorizations
       x-stackql-method: test_authorization
       x-stackql-verb: EXEC
   /authorizer/{authorizer_name}/test:
@@ -8999,10 +8869,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -9034,10 +8900,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAuditSuppressionResponse'
       x-stackql-resource: audit_suppressions
       x-stackql-method: update_audit_suppression
       x-stackql-verb: UPDATE
@@ -9065,18 +8927,17 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateThingGroupsForThingResponse'
-      x-stackql-resource: thing_groups_for_things
+      x-stackql-resource: thing_groups
       x-stackql-method: update_thing_groups_for_thing
       x-stackql-verb: UPDATE
   /security-profile-behaviors/validate:
     post:
       operationId: ValidateSecurityProfileBehaviors
-      description: Validates a Device Defender security profile behaviors specification. Requires permission to access the
-        ValidateSecurityProfileBehaviors action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31,
+        2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to
+        IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender
+        Developer Guide. There is no change to IoT Device Defender audit availability. Validates a Device Defender security
+        profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.
       parameters: []
       requestBody:
         required: true
@@ -9165,8 +9026,6 @@ components:
       pattern: '[a-zA-Z0-9:_-]+'
     ThingArn:
       type: string
-    AddThingToBillingGroupResponse:
-      type: object
     ThingGroupName:
       type: string
       minLength: 1
@@ -9176,8 +9035,6 @@ components:
       type: string
     OverrideDynamicGroups:
       type: boolean
-    AddThingToThingGroupResponse:
-      type: object
     PackageName:
       type: string
       minLength: 1
@@ -9294,32 +9151,21 @@ components:
       pattern: '[a-zA-Z0-9:_-]+'
     SecurityProfileTargetArn:
       type: string
-    AttachSecurityProfileResponse:
-      type: object
     ThingPrincipalType:
       type: string
       enum:
       - EXCLUSIVE_THING
       - NON_EXCLUSIVE_THING
-    AttachThingPrincipalResponse:
-      description: The output from the AttachThingPrincipal operation.
-      type: object
     MitigationActionsTaskId:
       type: string
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9_-]+'
-    CancelAuditMitigationActionsTaskResponse:
-      type: object
     AuditTaskId:
       type: string
       minLength: 1
       maxLength: 40
       pattern: '[a-zA-Z0-9\-]+'
-    CancelAuditTaskResponse:
-      type: object
-    CancelDetectMitigationActionsTaskResponse:
-      type: object
     ForceFlag:
       type: boolean
     ReasonCode:
@@ -9344,14 +9190,10 @@ components:
     DetailsMap:
       type: object
       properties: {}
-    ClearDefaultAuthorizerResponse:
-      type: object
     ConfirmationToken:
       type: string
       minLength: 1
       maxLength: 2048
-    ConfirmTopicRuleDestinationResponse:
-      type: object
     AuditCheckName:
       description: An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to
         see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which
@@ -9462,8 +9304,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[a-zA-Z0-9-_]+$
-    CreateAuditSuppressionResponse:
-      type: object
     AuthorizerName:
       type: string
       minLength: 1
@@ -11798,6 +11638,9 @@ components:
           $ref: '#/components/schemas/LocationAction'
           description: The Amazon Location Service rule action sends device location updates from an MQTT message to an Amazon
             Location tracker resource.
+        influxDB:
+          $ref: '#/components/schemas/InfluxDBAction'
+          description: Write data to an InfluxDB database.
     DynamoDBAction:
       description: 'Describes an action to write to a DynamoDB table. The tableName, hashKeyField, and rangeKeyField values
         must match the values used when you created the table. The hashKeyValue and rangeKeyvalue fields use a substitution
@@ -12779,6 +12622,107 @@ components:
             SECONDS | MILLISECONDS | MICROSECONDS | NANOSECONDS. The default is MILLISECONDS.'
       required:
       - value
+    InfluxDBAction:
+      description: The InfluxDB rule action converts the message payload into InfluxDB line protocol. It writes the result
+        to a table in an InfluxDB database. The database can be an Amazon Timestream for InfluxDB instance or a self-managed
+        InfluxDB cluster. The action connects to InfluxDB through an InfluxDB topic rule destination, which must be in the
+        ENABLED state before the action can write data.
+      type: object
+      properties:
+        destinationArn:
+          $ref: '#/components/schemas/AwsArn'
+          description: The ARN of the InfluxDB topic rule destination that identifies the InfluxDB instance to write to.
+        roleArn:
+          $ref: '#/components/schemas/AwsArn'
+          description: The ARN of the role that grants permission to retrieve the InfluxDB API token from Amazon Web Services
+            Secrets Manager.
+        databaseName:
+          $ref: '#/components/schemas/InfluxDBDatabaseName'
+          description: The name of the InfluxDB database to write to. In InfluxDB 2, this is the name of the bucket.
+        tableName:
+          $ref: '#/components/schemas/InfluxDBTableName'
+          description: The name of the table to write the data point to. This is the measurement name of the InfluxDB line
+            protocol record. Accepts substitution templates.
+        organization:
+          $ref: '#/components/schemas/InfluxDBOrganization'
+          description: The name of the InfluxDB organization that owns the database. A write to an InfluxDB 2 instance fails
+            if this value isn't set. This value isn't used when the destination is an InfluxDB 3 instance.
+        tags:
+          type: object
+          properties: {}
+          description: The set of tags to write with each data point. Tags are the indexed metadata of an InfluxDB data point.
+            Tag names and tag values accept substitution templates. A tag name can't use the @{...} per-element form. A tag
+            name must resolve to the same value for every element of an array payload.
+        timestampUnit:
+          $ref: '#/components/schemas/InfluxDBTimestampUnit'
+          description: The precision of the timestamp written with each data point. Valid values are s (seconds), ms (milliseconds),
+            us (microseconds), and ns (nanoseconds). If omitted, the topic rule action uses ms.
+        batchConfig:
+          $ref: '#/components/schemas/InfluxDBBatchConfig'
+          description: The batching configuration for the action. When present, IoT collects data points from multiple messages
+            and writes them to InfluxDB in a single request. If omitted, each message is written to InfluxDB in its own request.
+      required:
+      - destinationArn
+      - roleArn
+      - databaseName
+      - tableName
+    InfluxDBDatabaseName:
+      type: string
+      minLength: 2
+      maxLength: 64
+      pattern: ^[^_\"][^\"]+$
+    InfluxDBTableName:
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: ^[^_].*$
+    InfluxDBOrganization:
+      type: string
+      minLength: 1
+      maxLength: 64
+    InfluxDBTimestampUnit:
+      type: string
+      enum:
+      - s
+      - ms
+      - us
+      - ns
+    InfluxDBBatchConfig:
+      description: The batching configuration of an InfluxDB rule action. IoT closes a batch and writes it to InfluxDB when
+        the first of the configured limits is reached.
+      type: object
+      properties:
+        maxBatchSize:
+          $ref: '#/components/schemas/InfluxDBMaxBatchSize'
+          description: The maximum number of data points to collect in a batch. If you don't specify a value, this limit doesn't
+            apply. IoT then closes each batch when another configured limit is reached.
+        maxBatchOpenMs:
+          $ref: '#/components/schemas/InfluxDBMaxBatchOpenMs'
+          description: The maximum length of time, in milliseconds, to keep a batch open before writing it to InfluxDB. If
+            you don't specify a value, this limit doesn't apply. IoT then closes each batch when another configured limit
+            is reached.
+        maxBatchSizeBytes:
+          $ref: '#/components/schemas/InfluxDBMaxBatchSizeBytes'
+          description: The maximum size of a batch, in bytes, before IoT writes it to InfluxDB. If you don't specify a value,
+            this limit doesn't apply. IoT then closes each batch when another configured limit is reached.
+        batchAcrossTopics:
+          $ref: '#/components/schemas/InfluxDBBatchAcrossTopics'
+          description: Specifies whether to collect data points from different topics into the same batch. If omitted or false,
+            IoT batches data points for each topic separately.
+    InfluxDBMaxBatchSize:
+      type: integer
+      minimum: 1
+      maximum: 500
+    InfluxDBMaxBatchOpenMs:
+      type: integer
+      minimum: 5
+      maximum: 1000
+    InfluxDBMaxBatchSizeBytes:
+      type: integer
+      minimum: 100
+      maximum: 131072
+    InfluxDBBatchAcrossTopics:
+      type: boolean
     IsDisabled:
       type: boolean
     AwsIotSqlVersion:
@@ -12793,6 +12737,9 @@ components:
         vpcConfiguration:
           $ref: '#/components/schemas/VpcDestinationConfiguration'
           description: Configuration of the virtual private cloud (VPC) connection.
+        influxDBConfiguration:
+          $ref: '#/components/schemas/InfluxDBDestinationConfiguration'
+          description: The configuration of an InfluxDB topic rule destination, which you specify when you call CreateTopicRuleDestination.
     HttpUrlDestinationConfiguration:
       description: HTTP URL destination configuration used by the topic rule's HTTP action.
       type: object
@@ -12836,6 +12783,49 @@ components:
       type: string
     VpcId:
       type: string
+    InfluxDBDestinationConfiguration:
+      description: The configuration of an InfluxDB topic rule destination.
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Url'
+          description: The URL of the InfluxDB instance to write to.
+        influxDBVersion:
+          $ref: '#/components/schemas/InfluxDBVersion'
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: '#/components/schemas/InfluxDBSecretId'
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: '#/components/schemas/InfluxDBSecretType'
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary.
+            If omitted, IoT reads the secret as a string.
+        secretKey:
+          $ref: '#/components/schemas/InfluxDBSecretKey'
+          description: The key to read from the secret value when the secret contains a JSON object. If omitted, IoT uses
+            the entire secret value as the InfluxDB API token.
+      required:
+      - endpoint
+      - influxDBVersion
+      - secretId
+    InfluxDBVersion:
+      type: string
+      enum:
+      - V2
+      - V3
+    InfluxDBSecretId:
+      type: string
+      minLength: 1
+      maxLength: 512
+    InfluxDBSecretType:
+      type: string
+      enum:
+      - SecretString
+      - SecretBinary
+    InfluxDBSecretKey:
+      type: string
+      minLength: 1
+      maxLength: 128
     CreateTopicRuleDestinationResponse:
       type: object
       properties:
@@ -12875,6 +12865,10 @@ components:
         vpcProperties:
           $ref: '#/components/schemas/VpcDestinationProperties'
           description: Properties of the virtual private cloud (VPC) connection.
+        influxDBProperties:
+          $ref: '#/components/schemas/InfluxDBDestinationProperties'
+          description: The properties of an InfluxDB topic rule destination, as returned by CreateTopicRuleDestination and
+            GetTopicRuleDestination.
     TopicRuleDestinationStatus:
       type: string
       enum:
@@ -12912,26 +12906,33 @@ components:
         roleArn:
           $ref: '#/components/schemas/AwsArn'
           description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+    InfluxDBDestinationProperties:
+      description: The properties of an existing InfluxDB topic rule destination, as returned by CreateTopicRuleDestination
+        and GetTopicRuleDestination.
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Url'
+          description: The URL of the InfluxDB instance that the destination writes to.
+        influxDBVersion:
+          $ref: '#/components/schemas/InfluxDBVersion'
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: '#/components/schemas/InfluxDBSecretId'
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: '#/components/schemas/InfluxDBSecretType'
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary.
+        secretKey:
+          $ref: '#/components/schemas/InfluxDBSecretKey'
+          description: The key that is read from the secret value when the secret contains a JSON object.
     DeleteScheduledAudits:
       type: boolean
-    DeleteAccountAuditConfigurationResponse:
-      type: object
-    DeleteAuditSuppressionResponse:
-      type: object
-    DeleteAuthorizerResponse:
-      type: object
     OptionalVersion:
       type: integer
       format: int64
-    DeleteBillingGroupResponse:
-      type: object
-    DeleteCACertificateResponse:
-      description: The output for the DeleteCACertificate operation.
-      type: object
     ForceDelete:
       type: boolean
-    DeleteCertificateProviderResponse:
-      type: object
     DeleteCommandResponse:
       type: object
       properties:
@@ -12951,56 +12952,13 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9_-]+'
-    DeleteCommandExecutionResponse:
-      type: object
-    DeleteCustomMetricResponse:
-      type: object
-    DeleteDimensionResponse:
-      type: object
-    DeleteDomainConfigurationResponse:
-      type: object
-    DeleteDynamicThingGroupResponse:
-      type: object
     ExecutionNumber:
       type: integer
       format: int64
-    DeleteMitigationActionResponse:
-      type: object
     DeleteStream:
       type: boolean
     ForceDeleteAWSJob:
       type: boolean
-    DeleteOTAUpdateResponse:
-      type: object
-    DeletePackageResponse:
-      type: object
-    DeletePackageVersionResponse:
-      type: object
-    DeleteProvisioningTemplateResponse:
-      type: object
-    DeleteProvisioningTemplateVersionResponse:
-      type: object
-    DeleteRegistrationCodeResponse:
-      description: The output for the DeleteRegistrationCode operation.
-      type: object
-    DeleteRoleAliasResponse:
-      type: object
-    DeleteScheduledAuditResponse:
-      type: object
-    DeleteSecurityProfileResponse:
-      type: object
-    DeleteStreamResponse:
-      type: object
-    DeleteThingResponse:
-      description: The output of the DeleteThing operation.
-      type: object
-    DeleteThingGroupResponse:
-      type: object
-    DeleteThingTypeResponse:
-      description: The output for the DeleteThingType operation.
-      type: object
-    DeleteTopicRuleDestinationResponse:
-      type: object
     LogTargetType:
       type: string
       enum:
@@ -13013,9 +12971,6 @@ components:
       type: string
     UndoDeprecate:
       type: boolean
-    DeprecateThingTypeResponse:
-      description: The output for the DeprecateThingType operation.
-      type: object
     DescribeAccountAuditConfigurationResponse:
       type: object
       properties:
@@ -14804,13 +14759,6 @@ components:
     DeprecationDate:
       type: string
       format: date-time
-    DetachSecurityProfileResponse:
-      type: object
-    DetachThingPrincipalResponse:
-      description: The output from the DetachThingPrincipal operation.
-      type: object
-    DisassociateSbomFromPackageVersionResponse:
-      type: object
     TinyMaxResults:
       type: integer
       minimum: 1
@@ -17431,6 +17379,9 @@ components:
         vpcDestinationSummary:
           $ref: '#/components/schemas/VpcDestinationSummary'
           description: Information about the virtual private cloud (VPC) connection.
+        influxDBSummary:
+          $ref: '#/components/schemas/InfluxDBDestinationSummary'
+          description: A summary of an InfluxDB topic rule destination, as returned by ListTopicRuleDestinations.
     HttpUrlDestinationSummary:
       description: Information about an HTTP URL destination.
       type: object
@@ -17454,6 +17405,26 @@ components:
         roleArn:
           $ref: '#/components/schemas/AwsArn'
           description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+    InfluxDBDestinationSummary:
+      description: A summary of an InfluxDB topic rule destination, as returned by ListTopicRuleDestinations. For the full
+        set of destination properties, see InfluxDBDestinationProperties.
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Url'
+          description: The URL of the InfluxDB instance that the destination writes to.
+        influxDBVersion:
+          $ref: '#/components/schemas/InfluxDBVersion'
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: '#/components/schemas/InfluxDBSecretId'
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: '#/components/schemas/InfluxDBSecretType'
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary.
+        secretKey:
+          $ref: '#/components/schemas/InfluxDBSecretKey'
+          description: The key that is read from the secret value when the secret contains a JSON object.
     Topic:
       type: string
     TopicRuleMaxResults:
@@ -17586,8 +17557,6 @@ components:
       - in-alarm
       - alarm-cleared
       - alarm-invalidated
-    PutVerificationStateOnViolationResponse:
-      type: object
     AllowAutoRegistration:
       type: boolean
     RegisterCACertificateResponse:
@@ -17635,10 +17604,6 @@ components:
           type: object
           properties: {}
           description: ARNs for the generated resources.
-    RemoveThingFromBillingGroupResponse:
-      type: object
-    RemoveThingFromThingGroupResponse:
-      type: object
     SearchQueryMaxResults:
       type: integer
       minimum: 1
@@ -17801,10 +17766,6 @@ components:
         taskId:
           $ref: '#/components/schemas/TaskId'
           description: The bulk thing provisioning task ID.
-    StopThingRegistrationTaskResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     AuthInfos:
       type: array
       items:
@@ -18024,18 +17985,12 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     AuditNotificationTargetConfigurations:
       type: object
       properties: {}
     AuditCheckConfigurations:
       type: object
       properties: {}
-    UpdateAccountAuditConfigurationResponse:
-      type: object
-    UpdateAuditSuppressionResponse:
-      type: object
     UpdateAuthorizerResponse:
       type: object
       properties:
@@ -18141,15 +18096,9 @@ components:
         version:
           $ref: '#/components/schemas/Version'
           description: The dynamic thing group version.
-    UpdateEncryptionConfigurationResponse:
-      type: object
     EventConfigurations:
       type: object
       properties: {}
-    UpdateEventConfigurationsResponse:
-      type: object
-    UpdateIndexingConfigurationResponse:
-      type: object
     UpdateMitigationActionResponse:
       type: object
       properties:
@@ -18161,21 +18110,13 @@ components:
           description: A unique identifier for the mitigation action.
     UnsetDefaultVersion:
       type: boolean
-    UpdatePackageResponse:
-      type: object
-    UpdatePackageConfigurationResponse:
-      type: object
     PackageVersionAction:
       type: string
       enum:
       - PUBLISH
       - DEPRECATE
-    UpdatePackageVersionResponse:
-      type: object
     RemoveHook:
       type: boolean
-    UpdateProvisioningTemplateResponse:
-      type: object
     UpdateRoleAliasResponse:
       type: object
       properties:
@@ -18257,9 +18198,6 @@ components:
           description: The stream version.
     RemoveThingType:
       type: boolean
-    UpdateThingResponse:
-      description: The output from the UpdateThing operation.
-      type: object
     UpdateThingGroupResponse:
       type: object
       properties:
@@ -18270,12 +18208,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ThingGroupName'
-    UpdateThingGroupsForThingResponse:
-      type: object
-    UpdateThingTypeResponse:
-      type: object
-    UpdateTopicRuleDestinationResponse:
-      type: object
     ValidateSecurityProfileBehaviorsResponse:
       type: object
       properties:

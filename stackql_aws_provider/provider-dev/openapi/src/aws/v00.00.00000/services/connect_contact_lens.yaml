@@ -20,7 +20,7 @@ paths:
   /realtime-contact-analysis/analysis-segments:
     post:
       operationId: ListRealtimeContactAnalysisSegments
-      description: Provides a list of analysis segments for a real-time analysis session.
+      description: Provides a list of analysis segments for a real-time analysis session for voice. Voice data is retained for 24 hours. You must invoke this API during that time.
       parameters: []
       requestBody:
         required: true
@@ -139,6 +139,9 @@ components:
         PostContactSummary:
           $ref: "#/components/schemas/PostContactSummary"
           description: Information about the post-contact summary.
+        ExtractedInformation:
+          $ref: "#/components/schemas/ExtractedInformation"
+          description: The extracted information from the conversation.
     Transcript:
       description: A list of messages in the session.
       type: object
@@ -286,6 +289,88 @@ components:
         - FAILED_SAFETY_GUIDELINES
         - INVALID_ANALYSIS_CONFIGURATION
         - INTERNAL_ERROR
+    ExtractedInformation:
+      description: Segment containing information extracted from the conversation. Each segment represents the results for a single extraction definition.
+      type: object
+      properties:
+        ExtractionDefinitionId:
+          $ref: "#/components/schemas/ExtractionDefinitionId"
+          description: The identifier of the extraction definition that produced this result.
+        ExtractionDefinitionName:
+          $ref: "#/components/schemas/ExtractionDefinitionName"
+          description: The name of the extraction definition that produced this result.
+        ExtractionDefinitionDisplayLabel:
+          $ref: "#/components/schemas/ExtractionDefinitionDisplayLabel"
+          description: The display label of the extraction definition that produced this result.
+        ExtractedValues:
+          $ref: "#/components/schemas/ExtractedInformationValues"
+          description: The list of values extracted from the conversation for this extraction definition. This field is empty when a FailureCode is present.
+        FailureCode:
+          $ref: "#/components/schemas/ExtractedInformationFailureCode"
+          description: "If the information failed to be extracted, one of the following failure codes occurs: QUOTA_EXCEEDED: The number of concurrent analytics jobs reached your service quota. INSUFFICIENT_CONVERSATION_CONTENT: Information extraction requires a conversation with at least one turn from each participant. FAILED_SAFETY_GUIDELINES: The extracted information cannot be provided because it failed to meet system safety guidelines. INTERNAL_ERROR: Internal system error. MAX_PACKAGE_FEATURE_ONLY: Information extraction is only available in Amazon Connect Customer instances."
+      required:
+        - ExtractionDefinitionId
+        - ExtractionDefinitionName
+    ExtractionDefinitionId:
+      type: string
+      minLength: 1
+      maxLength: 256
+      pattern: .*\S.*
+    ExtractionDefinitionName:
+      type: string
+      minLength: 1
+      maxLength: 200
+      pattern: .*\S.*
+    ExtractionDefinitionDisplayLabel:
+      type: string
+      minLength: 0
+      maxLength: 25
+    ExtractedInformationValues:
+      type: array
+      items:
+        $ref: "#/components/schemas/ExtractedInformationValue"
+    ExtractedInformationValue:
+      description: An individual value extracted from the conversation, including its content and the locations where it was found.
+      type: object
+      properties:
+        Content:
+          $ref: "#/components/schemas/ExtractedInformationContent"
+          description: The text content of the extracted value.
+        PointsOfInterest:
+          $ref: "#/components/schemas/PointsOfInterest"
+          description: The sections in the conversation that indicate where the extracted value was found.
+      required:
+        - Content
+        - PointsOfInterest
+    ExtractedInformationContent:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    PointsOfInterest:
+      type: array
+      items:
+        $ref: "#/components/schemas/PointOfInterest"
+    PointOfInterest:
+      description: The section of the contact audio where a match was detected.
+      type: object
+      properties:
+        BeginOffsetMillis:
+          $ref: "#/components/schemas/OffsetMillis"
+          description: The beginning offset (in milliseconds) where the match was detected.
+        EndOffsetMillis:
+          $ref: "#/components/schemas/OffsetMillis"
+          description: The ending offset (in milliseconds) where the match was detected.
+      required:
+        - BeginOffsetMillis
+        - EndOffsetMillis
+    ExtractedInformationFailureCode:
+      type: string
+      enum:
+        - QUOTA_EXCEEDED
+        - INSUFFICIENT_CONVERSATION_CONTENT
+        - FAILED_SAFETY_GUIDELINES
+        - INTERNAL_ERROR
+        - MAX_PACKAGE_FEATURE_ONLY
   x-stackQL-resources:
     realtime_contact_analysis_segments:
       id: aws.connect_contact_lens.realtime_contact_analysis_segments

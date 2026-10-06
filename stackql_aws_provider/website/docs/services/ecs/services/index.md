@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_services"
     values={[
         { label: 'describe_services', value: 'describe_services' },
+        { label: 'list_services_by_namespace', value: 'list_services_by_namespace' },
         { label: 'list_services', value: 'list_services' }
     ]}
 >
@@ -59,6 +60,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="services" /></td>
     <td><code>array</code></td>
     <td>The list of services described.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_services_by_namespace">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="service_arn" /></td>
+    <td><code>string</code></td>
+    <td>The list of full ARN entries for each service that's associated with the specified namespace.</td>
 </tr>
 </tbody>
 </table>
@@ -105,6 +125,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Describes the specified services running in your cluster.</td>
+</tr>
+<tr>
+    <td><a href="#list_services_by_namespace"><CopyableCode code="list_services_by_namespace" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, ListServices can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use ListServices. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.</td>
 </tr>
 <tr>
     <td><a href="#list_services"><CopyableCode code="list_services" /></a></td>
@@ -171,6 +198,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_services"
     values={[
         { label: 'describe_services', value: 'describe_services' },
+        { label: 'list_services_by_namespace', value: 'list_services_by_namespace' },
         { label: 'list_services', value: 'list_services' }
     ]}
 >
@@ -182,6 +210,18 @@ Describes the specified services running in your cluster.
 SELECT
 failures,
 services
+FROM aws.ecs.services
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_services_by_namespace">
+
+This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, ListServices can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use ListServices. For more information, see Service Connect in the Amazon Elastic Container Service Developer Guide.
+
+```sql
+SELECT
+service_arn
 FROM aws.ecs.services
 WHERE region = '{{ region }}' -- required
 ;
@@ -389,6 +429,10 @@ service
         canaryConfiguration:
           canaryPercent: {{ canaryPercent }}
           canaryBakeTimeInMinutes: {{ canaryBakeTimeInMinutes }}
+        earlySuccessCriteria:
+          enable: {{ enable }}
+          healthyPercent: {{ healthyPercent }}
+          sourceServiceRevisionCleanup: "{{ sourceServiceRevisionCleanup }}"
     - name: placementConstraints
       description: |
         An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints for each task. This limit includes constraints in the task definition and those specified at runtime.

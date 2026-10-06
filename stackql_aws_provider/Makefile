@@ -5,6 +5,7 @@ SHELL := bash
 
 UPSTREAM_URL    ?= https://github.com/boto/botocore.git
 UPSTREAM_BRANCH ?= develop
+SOURCE_PROJECT ?= https://github.com/stackql-registry/stackql-provider-aws
 
 .PHONY: help upstream-sync openapi provider build test-describe test docs
 
@@ -39,5 +40,5 @@ test:
 	bash bin/integration-tests.sh
 
 docs:
-	npm run generate-docs
+	npm run generate-docs -- --source-project $(SOURCE_PROJECT)
 	cd website && yarn snake-case-docs && yarn sanitize-docs && yarn scrub-docs

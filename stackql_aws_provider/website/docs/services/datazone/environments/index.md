@@ -296,18 +296,18 @@ The following methods are available for this resource:
     <td>Create an Amazon DataZone environment.</td>
 </tr>
 <tr>
-    <td><a href="#associate_environment_role"><CopyableCode code="associate_environment_role" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-environment_identifier"><code>environment_identifier</code></a>, <a href="#parameter-environment_role_arn"><code>environment_role_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Associates the environment role in Amazon DataZone.</td>
-</tr>
-<tr>
     <td><a href="#update_environment"><CopyableCode code="update_environment" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Updates the specified environment in Amazon DataZone.</td>
+</tr>
+<tr>
+    <td><a href="#associate_environment_role"><CopyableCode code="associate_environment_role" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-environment_identifier"><code>environment_identifier</code></a>, <a href="#parameter-environment_role_arn"><code>environment_role_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Associates the environment role in Amazon DataZone.</td>
 </tr>
 <tr>
     <td><a href="#delete_environment"><CopyableCode code="delete_environment" /></a></td>
@@ -621,27 +621,12 @@ user_parameters
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="associate_environment_role"
+    defaultValue="update_environment"
     values={[
-        { label: 'associate_environment_role', value: 'associate_environment_role' },
-        { label: 'update_environment', value: 'update_environment' }
+        { label: 'update_environment', value: 'update_environment' },
+        { label: 'associate_environment_role', value: 'associate_environment_role' }
     ]}
 >
-<TabItem value="associate_environment_role">
-
-Associates the environment role in Amazon DataZone.
-
-```sql
-UPDATE aws.datazone.environments
-SET 
--- No updatable properties
-WHERE 
-domain_identifier = '{{ domain_identifier }}' --required
-AND environment_identifier = '{{ environment_identifier }}' --required
-AND environment_role_arn = '{{ environment_role_arn }}' --required
-AND region = '{{ region }}' --required;
-```
-</TabItem>
 <TabItem value="update_environment">
 
 Updates the specified environment in Amazon DataZone.
@@ -683,6 +668,21 @@ provisioning_properties,
 status,
 updated_at,
 user_parameters;
+```
+</TabItem>
+<TabItem value="associate_environment_role">
+
+Associates the environment role in Amazon DataZone.
+
+```sql
+UPDATE aws.datazone.environments
+SET 
+-- No updatable properties
+WHERE 
+domain_identifier = '{{ domain_identifier }}' --required
+AND environment_identifier = '{{ environment_identifier }}' --required
+AND environment_role_arn = '{{ environment_role_arn }}' --required
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 </Tabs>

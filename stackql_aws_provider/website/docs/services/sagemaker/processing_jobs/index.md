@@ -468,6 +468,11 @@ processing_job_arn
           InstanceType: "{{ InstanceType }}"
           VolumeSizeInGB: {{ VolumeSizeInGB }}
           VolumeKmsKeyId: "{{ VolumeKmsKeyId }}"
+          InstancePreferences:
+            - InstanceType: "{{ InstanceType }}"
+              InstanceCount: {{ InstanceCount }}
+          SelectedInstanceType: "{{ SelectedInstanceType }}"
+          SelectedInstanceCount: {{ SelectedInstanceCount }}
     - name: StoppingCondition
       description: |
         The time limit for how long the processing job is allowed to run.

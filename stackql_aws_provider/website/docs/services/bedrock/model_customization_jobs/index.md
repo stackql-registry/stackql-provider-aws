@@ -275,6 +275,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a fine-tuning job to customize a base model. You specify the base foundation model and the location of the training data. After the model-customization job completes successfully, your custom model resource will be ready to use. Amazon Bedrock returns validation loss metrics and output generations after the job completes. For information on the format of training and validation data, see Prepare the datasets. Model-customization jobs are asynchronous and the completion time depends on the base model and the training/validation data size. To monitor a job, use the GetModelCustomizationJob operation to retrieve the job status. For more information, see Custom models in the Amazon Bedrock User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#stop_model_customization_job"><CopyableCode code="stop_model_customization_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_identifier"><code>job_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops an active model customization job. For more information, see Custom models in the Amazon Bedrock User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -294,7 +301,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-job_identifier">
     <td><CopyableCode code="job_identifier" /></td>
     <td><code>string</code></td>
-    <td>Identifier for the customization job.</td>
+    <td>Job identifier of the job to stop.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -568,5 +575,27 @@ job_arn
             evalInterval: {{ evalInterval }}
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="stop_model_customization_job"
+    values={[
+        { label: 'stop_model_customization_job', value: 'stop_model_customization_job' }
+    ]}
+>
+<TabItem value="stop_model_customization_job">
+
+Stops an active model customization job. For more information, see Custom models in the Amazon Bedrock User Guide.
+
+```sql
+EXEC aws.bedrock.model_customization_jobs.stop_model_customization_job 
+@job_identifier='{{ job_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

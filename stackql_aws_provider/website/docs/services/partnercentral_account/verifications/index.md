@@ -106,6 +106,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the current status and details of a verification process for a partner account. This operation allows partners to check the progress and results of business or registrant verification processes.</td>
 </tr>
+<tr>
+    <td><a href="#start_verification"><CopyableCode code="start_verification" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Initiates a new verification process for a partner account. This operation begins the verification workflow for either business registration or individual registrant identity verification as required by AWS Partner Central.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,6 +159,32 @@ verification_status_reason,
 verification_type
 FROM aws.partnercentral_account.verifications
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_verification"
+    values={[
+        { label: 'start_verification', value: 'start_verification' }
+    ]}
+>
+<TabItem value="start_verification">
+
+Initiates a new verification process for a partner account. This operation begins the verification workflow for either business registration or individual registrant identity verification as required by AWS Partner Central.
+
+```sql
+EXEC aws.partnercentral_account.verifications.start_verification 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"VerificationDetails": "{{ VerificationDetails }}"
+}'
 ;
 ```
 </TabItem>

@@ -366,10 +366,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from an associated repository.
@@ -389,10 +385,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /feedback:
     put:
       operationId: PutRecommendationFeedback
@@ -418,10 +410,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutRecommendationFeedbackResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1323,10 +1311,6 @@ components:
           type: object
           properties: {}
           description: "An array of key-value pairs used to tag an associated repository. A tag is a custom attribute label with two parts: A tag key (for example, CostCenter, Environment, Project, or Secret). Tag keys are case sensitive. An optional field known as a tag value (for example, 111122223333, Production, or a team name). Omitting the tag value is the same as using an empty string. Like tag keys, tag values are case sensitive."
-    PutRecommendationFeedbackResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1335,8 +1319,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     repositories:
       id: aws.codeguru_reviewer.repositories
@@ -1441,10 +1423,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/code_reviews/methods/create_code_review"
         update: []
         delete: []
-    recommendation_feedbacks:
-      id: aws.codeguru_reviewer.recommendation_feedbacks
-      name: recommendation_feedbacks
-      title: recommendation_feedbacks
+    recommendation_feedback:
+      id: aws.codeguru_reviewer.recommendation_feedback
+      name: recommendation_feedback
+      title: recommendation_feedback
       methods:
         describe_recommendation_feedback:
           operation:
@@ -1468,7 +1450,6 @@ components:
             $ref: "#/paths/~1feedback/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1476,12 +1457,12 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/recommendation_feedbacks/methods/describe_recommendation_feedback"
-          - $ref: "#/components/x-stackQL-resources/recommendation_feedbacks/methods/list_recommendation_feedback"
+          - $ref: "#/components/x-stackQL-resources/recommendation_feedback/methods/describe_recommendation_feedback"
+          - $ref: "#/components/x-stackQL-resources/recommendation_feedback/methods/list_recommendation_feedback"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/recommendation_feedbacks/methods/put_recommendation_feedback"
+          - $ref: "#/components/x-stackQL-resources/recommendation_feedback/methods/put_recommendation_feedback"
         delete: []
     recommendations:
       id: aws.codeguru_reviewer.recommendations
@@ -1518,7 +1499,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1529,7 +1509,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

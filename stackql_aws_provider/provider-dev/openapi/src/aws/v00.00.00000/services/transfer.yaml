@@ -63,7 +63,6 @@ paths:
                   $ref: "#/components/schemas/ExternalId"
                   description: 'A unique identifier that is required to identify specific groups within your directory. The users of the group that you associate have access to your Amazon S3 or Amazon EFS resources over the enabled protocols using Transfer Family. If you know the group name, you can view the SID values by running the following command using Windows PowerShell. Get-ADGroup -Filter {samAccountName -like "YourGroupName*"} -Properties * | Select SamAccountName,ObjectSid In that command, replace YourGroupName with the name of your Active Directory group. The regular expression used to validate this parameter is a string of characters consisting of uppercase and lowercase alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-'
               required:
-                - Role
                 - ServerId
                 - ExternalId
       responses:
@@ -1338,9 +1337,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
                   description: Key-value pairs that can be used to group and search for certificates.
-              required:
-                - Usage
-                - Certificate
       responses:
         "200":
           description: Success
@@ -1991,10 +1987,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendWorkflowStepStateResponse"
   /StartDirectoryListing:
     post:
       operationId: StartDirectoryListing
@@ -3237,6 +3229,9 @@ components:
         MaxConcurrentConnections:
           $ref: "#/components/schemas/MaxConcurrentConnections"
           description: Specify the number of concurrent connections that your connector creates to the remote server. The default value is 1. The maximum values is 5. If you are using the Amazon Web Services Management Console, the default value is 5. This parameter specifies the number of active connections that your connector can establish with the remote server at the same time. Increasing this value can enhance connector performance when transferring large file batches by enabling parallel operations.
+        OrderedUserSecretVersionStages:
+          $ref: "#/components/schemas/SecretVersionStageList"
+          description: An ordered list of Amazon Web Services Secrets Manager version stages (staging labels, such as AWSCURRENT and AWSPREVIOUS) for the secret identified by UserSecretId. When establishing a connection, the connector attempts to retrieve the SFTP user's credentials from each version stage in the order listed, and uses the first version it can successfully retrieve. This lets you rotate the user secret without interrupting connector operations.
     SecretId:
       type: string
       minLength: 1
@@ -3253,6 +3248,14 @@ components:
       description: The number of concurrent connections that the connector will create to the remote server.
       type: integer
       minimum: 1
+    SecretVersionStageList:
+      type: array
+      items:
+        $ref: "#/components/schemas/SecretVersionStage"
+    SecretVersionStage:
+      type: string
+      minLength: 1
+      maxLength: 256
     ConnectorSecurityPolicyName:
       type: string
       minLength: 0
@@ -3483,6 +3486,9 @@ components:
         As2Transports:
           $ref: "#/components/schemas/As2Transports"
           description: Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
+        ProxyConfig:
+          $ref: "#/components/schemas/ProxyConfig"
+          description: The configuration for PROXY protocol version 2 (PPv2) support on the Transfer Family server. For more information, see Working with Network Load Balancers.
     PassiveIp:
       type: string
       minLength: 0
@@ -3506,6 +3512,18 @@ components:
       type: string
       enum:
         - HTTP
+    ProxyConfig:
+      description: Contains configuration for PROXY protocol version 2 (PPv2) support on an Transfer Family server. When enabled, Transfer Family reads the added PPv2 header from incoming connections to extract the original client IP address. This address is then available in Amazon CloudWatch Logs entries and is passed to custom identity providers during authentication, enabling IP-based access policies. For more information, see Working with Network Load Balancers.
+      type: object
+      properties:
+        SftpMode:
+          $ref: "#/components/schemas/ProxyMode"
+          description: "Specifies whether the Transfer Family server requires or ignores a PPv2 header containing the original client IP address on incoming SFTP connections. If you don't specify a value, the default is NONE NONE: the server reads and ignores any PPv2 header on incoming SFTP connections. This is the default value. Use this value when your SFTP server is not behind an NLB, or when you do not need to preserve client source IP addresses through an NLB. PROXY_PROTOCOL_V2_ENFORCED: the server requires a valid PPv2 header on every incoming SFTP connection. When a valid header is present, the server applies it and uses the client IP address from the header. If a connection arrives without a PPv2 header, the server refuses the connection and logs an error to Amazon CloudWatch Logs indicating that the expected PPv2 header was missing. Use this value when your SFTP server is behind an NLB with PPv2 enabled on the target group. When you enable PROXY_PROTOCOL_V2_ENFORCED, the server trusts the source IP address in the PPv2 header. You must configure security groups on your server's VPC endpoint to restrict inbound traffic to only the NLB's private IP addresses. For the full requirements, see Working with Network Load Balancers."
+    ProxyMode:
+      type: string
+      enum:
+        - NONE
+        - PROXY_PROTOCOL_V2_ENFORCED
     SecurityPolicyName:
       type: string
       minLength: 0
@@ -5428,8 +5446,6 @@ components:
       enum:
         - SUCCESS
         - FAILURE
-    SendWorkflowStepStateResponse:
-      type: object
     MaxItems:
       type: integer
       minimum: 1
@@ -5722,10 +5738,10 @@ components:
       required:
         - WebAppId
   x-stackQL-resources:
-    access:
-      id: aws.transfer.access
-      name: access
-      title: access
+    accesses:
+      id: aws.transfer.accesses
+      name: accesses
+      title: accesses
       methods:
         create_access:
           operation:
@@ -5765,6 +5781,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_accesses:
+          operation:
+            $ref: "#/paths/~1ListAccesses/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Accesses
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_access:
           operation:
             $ref: "#/paths/~1UpdateAccess/post"
@@ -5780,13 +5817,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/access/methods/describe_access"
+          - $ref: "#/components/x-stackQL-resources/accesses/methods/describe_access"
+          - $ref: "#/components/x-stackQL-resources/accesses/methods/list_accesses"
         insert:
-          - $ref: "#/components/x-stackQL-resources/access/methods/create_access"
+          - $ref: "#/components/x-stackQL-resources/accesses/methods/create_access"
         update:
-          - $ref: "#/components/x-stackQL-resources/access/methods/update_access"
+          - $ref: "#/components/x-stackQL-resources/accesses/methods/update_access"
         delete:
-          - $ref: "#/components/x-stackQL-resources/access/methods/delete_access"
+          - $ref: "#/components/x-stackQL-resources/accesses/methods/delete_access"
     agreements:
       id: aws.transfer.agreements
       name: agreements
@@ -6525,7 +6563,6 @@ components:
             $ref: "#/paths/~1SendWorkflowStepState/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6566,6 +6603,19 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Certificate
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_certificate:
+          operation:
+            $ref: "#/paths/~1ImportCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6830,38 +6880,6 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/security_policies/methods/describe_security_policy"
           - $ref: "#/components/x-stackQL-resources/security_policies/methods/list_security_policies"
-        insert: []
-        update: []
-        delete: []
-    accesses:
-      id: aws.transfer.accesses
-      name: accesses
-      title: accesses
-      methods:
-        list_accesses:
-          operation:
-            $ref: "#/paths/~1ListAccesses/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Accesses
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/accesses/methods/list_accesses"
         insert: []
         update: []
         delete: []

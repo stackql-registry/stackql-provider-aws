@@ -290,6 +290,13 @@ The following methods are available for this resource:
     <td>Copies a snapshot of a cluster. To copy a cluster snapshot from a shared manual cluster snapshot, SourceDBClusterSnapshotIdentifier must be the Amazon Resource Name (ARN) of the shared cluster snapshot. You can only copy a shared DB cluster snapshot, whether encrypted or not, in the same Amazon Web Services Region. To cancel the copy operation after it is in progress, delete the target cluster snapshot identified by TargetDBClusterSnapshotIdentifier while that cluster snapshot is in the copying status.</td>
 </tr>
 <tr>
+    <td><a href="#failover_db_cluster"><CopyableCode code="failover_db_cluster" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-TargetDBInstanceIdentifier"><code>TargetDBInstanceIdentifier</code></a></td>
+    <td>Forces a failover for a cluster. A failover for a cluster promotes one of the Amazon DocumentDB replicas (read-only instances) in the cluster to be the primary instance (the cluster writer). If the primary instance fails, Amazon DocumentDB automatically fails over to an Amazon DocumentDB replica, if one exists. You can force a failover when you want to simulate a failure of a primary instance for testing.</td>
+</tr>
+<tr>
     <td><a href="#restore_db_cluster_from_snapshot"><CopyableCode code="restore_db_cluster_from_snapshot" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-DBClusterIdentifier"><code>DBClusterIdentifier</code></a>, <a href="#parameter-SnapshotIdentifier"><code>SnapshotIdentifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -396,7 +403,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-DBClusterIdentifier">
     <td><CopyableCode code="DBClusterIdentifier" /></td>
     <td><code>string</code></td>
-    <td>The user-provided cluster identifier. If this parameter is specified, information from only the specific cluster is returned. This parameter isn't case sensitive. Constraints: If provided, must match an existing DBClusterIdentifier.</td>
+    <td>A cluster identifier to force a failover for. This parameter is not case sensitive. Constraints: Must match the identifier of an existing DBCluster.</td>
 </tr>
 <tr id="parameter-DBClusterParameterGroupName">
     <td><CopyableCode code="DBClusterParameterGroupName" /></td>
@@ -547,6 +554,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Tags" /></td>
     <td><code>array</code></td>
     <td>The tags to be assigned to the restored cluster.</td>
+</tr>
+<tr id="parameter-TargetDBInstanceIdentifier">
+    <td><CopyableCode code="TargetDBInstanceIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The name of the instance to promote to the primary instance. You must specify the instance identifier for an Amazon DocumentDB replica in the cluster. For example, mydbcluster-replica1.</td>
 </tr>
 <tr id="parameter-UseLatestRestorableTime">
     <td><CopyableCode code="UseLatestRestorableTime" /></td>
@@ -958,6 +970,7 @@ AND FinalDBSnapshotIdentifier = '{{ FinalDBSnapshotIdentifier }}'
     defaultValue="copy_db_cluster_snapshot"
     values={[
         { label: 'copy_db_cluster_snapshot', value: 'copy_db_cluster_snapshot' },
+        { label: 'failover_db_cluster', value: 'failover_db_cluster' },
         { label: 'restore_db_cluster_from_snapshot', value: 'restore_db_cluster_from_snapshot' },
         { label: 'restore_db_cluster_to_point_in_time', value: 'restore_db_cluster_to_point_in_time' },
         { label: 'start_db_cluster', value: 'start_db_cluster' },
@@ -977,6 +990,18 @@ EXEC aws.docdb.db_clusters.copy_db_cluster_snapshot
 @PreSignedUrl='{{ PreSignedUrl }}', 
 @CopyTags={{ CopyTags }}, 
 @Tags='{{ Tags }}'
+;
+```
+</TabItem>
+<TabItem value="failover_db_cluster">
+
+Forces a failover for a cluster. A failover for a cluster promotes one of the Amazon DocumentDB replicas (read-only instances) in the cluster to be the primary instance (the cluster writer). If the primary instance fails, Amazon DocumentDB automatically fails over to an Amazon DocumentDB replica, if one exists. You can force a failover when you want to simulate a failure of a primary instance for testing.
+
+```sql
+EXEC aws.docdb.db_clusters.failover_db_cluster 
+@region='{{ region }}' --required, 
+@DBClusterIdentifier='{{ DBClusterIdentifier }}', 
+@TargetDBInstanceIdentifier='{{ TargetDBInstanceIdentifier }}'
 ;
 ```
 </TabItem>

@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>deployment_groups</code> resour
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_deployment_groups"
+    defaultValue="get_deployment_group"
     values={[
-        { label: 'batch_get_deployment_groups', value: 'batch_get_deployment_groups' },
         { label: 'get_deployment_group', value: 'get_deployment_group' },
+        { label: 'batch_get_deployment_groups', value: 'batch_get_deployment_groups' },
         { label: 'list_deployment_groups', value: 'list_deployment_groups' }
     ]}
 >
-<TabItem value="batch_get_deployment_groups">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="deployment_groups_info" /></td>
-    <td><code>array</code></td>
-    <td>Information about the deployment groups.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="error_message" /></td>
-    <td><code>string</code></td>
-    <td>Information about errors that might have occurred during the API call.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_deployment_group">
 
 <table>
@@ -83,7 +59,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
-    <td>The application name.</td>
+    <td>The application name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="auto_rollback_configuration" /></td>
@@ -108,7 +84,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
-    <td>The deployment configuration name.</td>
+    <td>The deployment configuration name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="deployment_group_id" /></td>
@@ -118,7 +94,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_group_name" /></td>
     <td><code>string</code></td>
-    <td>The deployment group name.</td>
+    <td>The deployment group name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="deployment_style" /></td>
@@ -193,6 +169,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_deployment_groups">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="deployment_groups_info" /></td>
+    <td><code>array</code></td>
+    <td>Information about the deployment groups.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="error_message" /></td>
+    <td><code>string</code></td>
+    <td>Information about errors that might have occurred during the API call.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_deployment_groups">
 
 <table>
@@ -230,18 +230,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_deployment_groups"><CopyableCode code="batch_get_deployment_groups" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Gets information about one or more deployment groups.</td>
-</tr>
-<tr>
     <td><a href="#get_deployment_group"><CopyableCode code="get_deployment_group" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about a deployment group.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_deployment_groups"><CopyableCode code="batch_get_deployment_groups" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about one or more deployment groups.</td>
 </tr>
 <tr>
     <td><a href="#list_deployment_groups"><CopyableCode code="list_deployment_groups" /></a></td>
@@ -298,26 +298,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_deployment_groups"
+    defaultValue="get_deployment_group"
     values={[
-        { label: 'batch_get_deployment_groups', value: 'batch_get_deployment_groups' },
         { label: 'get_deployment_group', value: 'get_deployment_group' },
+        { label: 'batch_get_deployment_groups', value: 'batch_get_deployment_groups' },
         { label: 'list_deployment_groups', value: 'list_deployment_groups' }
     ]}
 >
-<TabItem value="batch_get_deployment_groups">
-
-Gets information about one or more deployment groups.
-
-```sql
-SELECT
-deployment_groups_info,
-error_message
-FROM aws.codedeploy.deployment_groups
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_deployment_group">
 
 Gets information about a deployment group.
@@ -347,6 +334,19 @@ service_role_arn,
 target_revision,
 termination_hook_enabled,
 trigger_configurations
+FROM aws.codedeploy.deployment_groups
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_deployment_groups">
+
+Gets information about one or more deployment groups.
+
+```sql
+SELECT
+deployment_groups_info,
+error_message
 FROM aws.codedeploy.deployment_groups
 WHERE region = '{{ region }}' -- required
 ;

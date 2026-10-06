@@ -148,6 +148,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves information about an action.</td>
 </tr>
+<tr>
+    <td><a href="#execute_action"><CopyableCode code="execute_action" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-targetResource"><code>targetResource</code></a>, <a href="#parameter-actionDefinitionId"><code>actionDefinitionId</code></a>, <a href="#parameter-actionPayload"><code>actionPayload</code></a></td>
+    <td></td>
+    <td>Executes an action on a target resource.</td>
+</tr>
 </tbody>
 </table>
 
@@ -252,6 +259,35 @@ target_resource
 FROM aws.iotsitewise.actions
 WHERE action_id = '{{ action_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="execute_action"
+    values={[
+        { label: 'execute_action', value: 'execute_action' }
+    ]}
+>
+<TabItem value="execute_action">
+
+Executes an action on a target resource.
+
+```sql
+EXEC aws.iotsitewise.actions.execute_action 
+@region='{{ region }}' --required 
+@@json=
+'{
+"targetResource": "{{ targetResource }}", 
+"actionDefinitionId": "{{ actionDefinitionId }}", 
+"actionPayload": "{{ actionPayload }}", 
+"clientToken": "{{ clientToken }}", 
+"resolveTo": "{{ resolveTo }}"
+}'
 ;
 ```
 </TabItem>

@@ -203,12 +203,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="scan_listener_port_tcp" /></td>
     <td><code>integer</code></td>
-    <td>The port number for TCP connections to the single client access name (SCAN) listener for the Exascale VM cluster.</td>
+    <td>The port number for TCP connections to the Single Client Access Name (SCAN) listener for the Exascale VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_listener_port_tcp_ssl" /></td>
     <td><code>integer</code></td>
-    <td>The port number for TCP connections with SSL to the single client access name (SCAN) listener for the Exascale VM cluster.</td>
+    <td>The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener for the Exascale VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="shape" /></td>
@@ -437,12 +437,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="scan_listener_port_tcp" /></td>
     <td><code>integer</code></td>
-    <td>The port number for TCP connections to the single client access name (SCAN) listener for the Exascale VM cluster.</td>
+    <td>The port number for TCP connections to the Single Client Access Name (SCAN) listener for the Exascale VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="scan_listener_port_tcp_ssl" /></td>
     <td><code>integer</code></td>
-    <td>The port number for TCP connections with SSL to the single client access name (SCAN) listener for the Exascale VM cluster.</td>
+    <td>The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener for the Exascale VM cluster.</td>
 </tr>
 <tr>
     <td><CopyableCode code="shape" /></td>
@@ -860,11 +860,11 @@ status_reason
     - name: scanListenerPortTcp
       value: {{ scanListenerPortTcp }}
       description: |
-        The port number for TCP connections to the single client access name (SCAN) listener.
+        The port number for TCP connections to the Single Client Access Name (SCAN) listener.
     - name: scanListenerPortTcpSsl
       value: {{ scanListenerPortTcpSsl }}
       description: |
-        The port number for TCP connections with SSL to the single client access name (SCAN) listener.
+        The port number for TCP connections with SSL to the Single Client Access Name (SCAN) listener.
     - name: shapeAttribute
       value: "{{ shapeAttribute }}"
       description: |
@@ -885,7 +885,7 @@ status_reason
     - name: clientToken
       value: "{{ clientToken }}"
       description: |
-        A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. If you don't specify a client token, the Amazon Web Services SDK automatically generates one and uses it for the request to ensure idempotency. The client token is valid for up to 24 hours after it's first used.
+        A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you submit the same request twice with the same client token, the service ignores the second request and returns the result of the first. If you don't specify a client token, the AWS SDK automatically generates one. The client token is valid for up to 24 hours after it's first used.
 `}</CodeBlock>
 
 </TabItem>

@@ -33,12 +33,62 @@ Creates, updates, deletes, gets or lists a <code>place_indexes</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_place_index"
+    defaultValue="search_place_index_for_position"
     values={[
+        { label: 'search_place_index_for_position', value: 'search_place_index_for_position' },
+        { label: 'search_place_index_for_suggestions', value: 'search_place_index_for_suggestions' },
         { label: 'describe_place_index', value: 'describe_place_index' },
         { label: 'list_place_indexes', value: 'list_place_indexes' }
     ]}
 >
+<TabItem value="search_place_index_for_position">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="results" /></td>
+    <td><code>array</code></td>
+    <td>Returns a list of Places closest to the specified position. Each result contains additional information about the Places returned.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="summary" /></td>
+    <td><code>object</code></td>
+    <td>Contains a summary of the request. Echoes the input values for Position, Language, MaxResults, and the DataSource of the place index.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search_place_index_for_suggestions">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="results" /></td>
+    <td><code>array</code></td>
+    <td>A list of place suggestions that best match the search text.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="summary" /></td>
+    <td><code>object</code></td>
+    <td>Contains a summary of the request. Echoes the input values for BiasPosition, FilterBBox, FilterCountries, Language, MaxResults, and Text. Also includes the DataSource of the place index.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_place_index">
 
 <table>
@@ -160,6 +210,20 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#search_place_index_for_position"><CopyableCode code="search_place_index_for_position" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-index_name"><code>index_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-key"><code>key</code></a></td>
+    <td>This operation is no longer current and may be deprecated in the future. We recommend you upgrade to ReverseGeocode or SearchNearby unless you require Grab data. SearchPlaceIndexForPosition is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The version 2 ReverseGeocode operation gives better results in the address reverse-geocoding use case, while the version 2 SearchNearby operation gives better results when searching for businesses and points of interest near a specific location. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.</td>
+</tr>
+<tr>
+    <td><a href="#search_place_index_for_suggestions"><CopyableCode code="search_place_index_for_suggestions" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-index_name"><code>index_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-key"><code>key</code></a></td>
+    <td>This operation is no longer current and may be deprecated in the future. We recommend you upgrade to Suggest or Autocomplete unless you require Grab data. SearchPlaceIndexForSuggestions is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The version 2 Suggest operation gives better results for typeahead place search suggestions with fuzzy matching, while the version 2 Autocomplete operation gives better results for address completion based on partial input. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching. Optional parameters let you narrow your search results by bounding box or country, or bias your search toward a specific position on the globe. You can search for suggested place names near a specified position by using BiasPosition, or filter results within a bounding box by using FilterBBox. These parameters are mutually exclusive; using both BiasPosition and FilterBBox in the same command returns an error.</td>
+</tr>
+<tr>
     <td><a href="#describe_place_index"><CopyableCode code="describe_place_index" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-index_name"><code>index_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -220,18 +284,55 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-key">
+    <td><CopyableCode code="key" /></td>
+    <td><code>string</code></td>
+    <td>The optional API key to authorize the request.</td>
+</tr>
 </tbody>
 </table>
 
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_place_index"
+    defaultValue="search_place_index_for_position"
     values={[
+        { label: 'search_place_index_for_position', value: 'search_place_index_for_position' },
+        { label: 'search_place_index_for_suggestions', value: 'search_place_index_for_suggestions' },
         { label: 'describe_place_index', value: 'describe_place_index' },
         { label: 'list_place_indexes', value: 'list_place_indexes' }
     ]}
 >
+<TabItem value="search_place_index_for_position">
+
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to ReverseGeocode or SearchNearby unless you require Grab data. SearchPlaceIndexForPosition is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The version 2 ReverseGeocode operation gives better results in the address reverse-geocoding use case, while the version 2 SearchNearby operation gives better results when searching for businesses and points of interest near a specific location. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.
+
+```sql
+SELECT
+results,
+summary
+FROM aws.location.place_indexes
+WHERE index_name = '{{ index_name }}' -- required
+AND region = '{{ region }}' -- required
+AND key = '{{ key }}'
+;
+```
+</TabItem>
+<TabItem value="search_place_index_for_suggestions">
+
+This operation is no longer current and may be deprecated in the future. We recommend you upgrade to Suggest or Autocomplete unless you require Grab data. SearchPlaceIndexForSuggestions is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The version 2 Suggest operation gives better results for typeahead place search suggestions with fuzzy matching, while the version 2 Autocomplete operation gives better results for address completion based on partial input. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching. Optional parameters let you narrow your search results by bounding box or country, or bias your search toward a specific position on the globe. You can search for suggested place names near a specified position by using BiasPosition, or filter results within a bounding box by using FilterBBox. These parameters are mutually exclusive; using both BiasPosition and FilterBBox in the same command returns an error.
+
+```sql
+SELECT
+results,
+summary
+FROM aws.location.place_indexes
+WHERE index_name = '{{ index_name }}' -- required
+AND region = '{{ region }}' -- required
+AND key = '{{ key }}'
+;
+```
+</TabItem>
 <TabItem value="describe_place_index">
 
 This operation is no longer current and may be deprecated in the future. We recommend you upgrade to the Places API V2 unless you require Grab data. DescribePlaceIndex is part of a previous Amazon Location Service Places API (version 1) which has been superseded by a more intuitive, powerful, and complete API (version 2). The Places API version 2 has a simplified interface that can be used without creating or managing place index resources. If you are using an Amazon Web Services SDK or the Amazon Web Services CLI, note that the Places API version 2 is found under geo-places or geo_places, not under location. Since Grab is not yet fully supported in Places API version 2, we recommend you continue using API version 1 when using Grab. Start your version 2 API journey with the Places V2 API Reference or the Developer Guide. Retrieves the place index resource details.

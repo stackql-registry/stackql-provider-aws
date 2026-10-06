@@ -97,10 +97,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTargetResult"
   /describeNotificationRule:
     post:
       operationId: DescribeNotificationRule
@@ -317,10 +313,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResult"
   /updateNotificationRule:
     post:
       operationId: UpdateNotificationRule
@@ -348,10 +340,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotificationRuleResult"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -469,8 +457,6 @@ components:
           description: The Amazon Resource Name (ARN) of the deleted notification rule.
     ForceUnsubscribeAll:
       type: boolean
-    DeleteTargetResult:
-      type: object
     DescribeNotificationRuleResult:
       type: object
       properties:
@@ -738,10 +724,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    UntagResourceResult:
-      type: object
-    UpdateNotificationRuleResult:
-      type: object
   x-stackQL-resources:
     notification_rules:
       id: aws.codestar_notifications.notification_rules
@@ -805,7 +787,6 @@ components:
             $ref: "#/paths/~1updateNotificationRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -830,7 +811,6 @@ components:
             $ref: "#/paths/~1deleteTarget/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -924,7 +904,6 @@ components:
             $ref: "#/paths/~1untagResource~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -934,4 +913,46 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    subscribes:
+      id: aws.codestar_notifications.subscribes
+      name: subscribes
+      title: subscribes
+      methods:
+        subscribe:
+          operation:
+            $ref: "#/paths/~1subscribe/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    unsubscribes:
+      id: aws.codestar_notifications.unsubscribes
+      name: unsubscribes
+      title: unsubscribes
+      methods:
+        unsubscribe:
+          operation:
+            $ref: "#/paths/~1unsubscribe/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

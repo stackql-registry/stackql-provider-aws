@@ -34,11 +34,11 @@ total resources: __29__
 <a href="/services/omics/read_set_activation_jobs/">read_set_activation_jobs</a><br />
 <a href="/services/omics/read_set_export_jobs/">read_set_export_jobs</a><br />
 <a href="/services/omics/read_set_import_jobs/">read_set_import_jobs</a><br />
-<a href="/services/omics/read_set_metadatas/">read_set_metadatas</a><br />
+<a href="/services/omics/read_set_metadata/">read_set_metadata</a><br />
 <a href="/services/omics/read_set_upload_parts/">read_set_upload_parts</a><br />
 <a href="/services/omics/read_sets/">read_sets</a><br />
 <a href="/services/omics/reference_import_jobs/">reference_import_jobs</a><br />
-<a href="/services/omics/reference_metadatas/">reference_metadatas</a><br />
+<a href="/services/omics/reference_metadata/">reference_metadata</a><br />
 <a href="/services/omics/reference_stores/">reference_stores</a>
 </div>
 <div class="providerDocColumn">

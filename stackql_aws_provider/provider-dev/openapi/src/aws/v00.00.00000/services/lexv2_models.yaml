@@ -1391,10 +1391,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBotAnalyzerRecommendationResponse"
   /bots/{bot_id}/replicas/{replica_region}/:
     delete:
       operationId: DeleteBotReplica
@@ -2156,10 +2152,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUtterancesResponse"
   /bots/{bot_id}/botanalyzer/describe/{bot_analyzer_request_id}/:
     post:
       operationId: DescribeBotAnalyzerRecommendation
@@ -3198,10 +3190,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a bot, bot alias, or bot channel.
@@ -3221,10 +3209,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /testexecutions/{test_execution_id}/results:
     post:
       operationId: ListTestExecutionResultItems
@@ -6130,8 +6114,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
-    DeleteBotAnalyzerRecommendationResponse:
-      type: object
     DeleteBotLocaleResponse:
       type: object
       properties:
@@ -6242,8 +6224,6 @@ components:
       minLength: 2
       maxLength: 100
       pattern: "[0-9a-zA-Z._:-]+"
-    DeleteUtterancesResponse:
-      type: object
     DescribeBotResponse:
       type: object
       properties:
@@ -10926,8 +10906,6 @@ components:
         botRecommendationId:
           $ref: "#/components/schemas/Id"
           description: The unique identifier of the bot recommendation that is being stopped.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -10936,8 +10914,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateBotResponse:
       type: object
       properties:
@@ -11418,7 +11394,6 @@ components:
             $ref: "#/paths/~1bots~1{bot_id}~1utterances~1/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         generate_bot_element:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1generate/post"
@@ -11546,16 +11521,27 @@ components:
           - $ref: "#/components/x-stackQL-resources/bot_locales/methods/update_bot_locale"
         delete:
           - $ref: "#/components/x-stackQL-resources/bot_locales/methods/delete_bot_locale"
-    bot_alias:
-      id: aws.lexv2_models.bot_alias
-      name: bot_alias
-      title: bot_alias
+    bot_aliases:
+      id: aws.lexv2_models.bot_aliases
+      name: bot_aliases
+      title: bot_aliases
       methods:
         create_bot_alias:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botaliases~1/put"
           response:
             openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_bot_aliases:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botaliases~1/post"
+          response:
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -11589,35 +11575,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/describe_bot_alias"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/create_bot_alias"
-        update:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/update_bot_alias"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/delete_bot_alias"
-    bot_aliases:
-      id: aws.lexv2_models.bot_aliases
-      name: bot_aliases
-      title: bot_aliases
-      methods:
-        list_bot_aliases:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1botaliases~1/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/describe_bot_alias"
           - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/list_bot_aliases"
-        insert: []
-        update: []
-        delete: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/create_bot_alias"
+        update:
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/update_bot_alias"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/delete_bot_alias"
     bot_replicas:
       id: aws.lexv2_models.bot_replicas
       name: bot_replicas
@@ -11894,8 +11859,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/describe_resource_policy"
         insert:
-          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy_statement"
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy"
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy_statement"
         update:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/update_resource_policy"
         delete:
@@ -12077,7 +12042,6 @@ components:
             $ref: "#/paths/~1bots~1{bot_id}~1botanalyzer~1{bot_analyzer_request_id}~1/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         describe_bot_analyzer_recommendation:
           operation:
             $ref: "#/paths/~1bots~1{bot_id}~1botanalyzer~1describe~1{bot_analyzer_request_id}~1/post"
@@ -12290,10 +12254,10 @@ components:
         insert: []
         update: []
         delete: []
-    custom_vocabulary_metadatas:
-      id: aws.lexv2_models.custom_vocabulary_metadatas
-      name: custom_vocabulary_metadatas
-      title: custom_vocabulary_metadatas
+    custom_vocabulary_metadata:
+      id: aws.lexv2_models.custom_vocabulary_metadata
+      name: custom_vocabulary_metadata
+      title: custom_vocabulary_metadata
       methods:
         describe_custom_vocabulary_metadata:
           operation:
@@ -12303,7 +12267,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/custom_vocabulary_metadatas/methods/describe_custom_vocabulary_metadata"
+          - $ref: "#/components/x-stackQL-resources/custom_vocabulary_metadata/methods/describe_custom_vocabulary_metadata"
         insert: []
         update: []
         delete: []
@@ -12620,10 +12584,10 @@ components:
         insert: []
         update: []
         delete: []
-    session_analytics_datas:
-      id: aws.lexv2_models.session_analytics_datas
-      name: session_analytics_datas
-      title: session_analytics_datas
+    session_analytics_data:
+      id: aws.lexv2_models.session_analytics_data
+      name: session_analytics_data
+      title: session_analytics_data
       methods:
         list_session_analytics_data:
           operation:
@@ -12638,7 +12602,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/session_analytics_datas/methods/list_session_analytics_data"
+          - $ref: "#/components/x-stackQL-resources/session_analytics_data/methods/list_session_analytics_data"
         insert: []
         update: []
         delete: []
@@ -12680,7 +12644,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12691,7 +12654,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -12747,10 +12709,10 @@ components:
         insert: []
         update: []
         delete: []
-    utterance_analytics_datas:
-      id: aws.lexv2_models.utterance_analytics_datas
-      name: utterance_analytics_datas
-      title: utterance_analytics_datas
+    utterance_analytics_data:
+      id: aws.lexv2_models.utterance_analytics_data
+      name: utterance_analytics_data
+      title: utterance_analytics_data
       methods:
         list_utterance_analytics_data:
           operation:
@@ -12765,7 +12727,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/utterance_analytics_datas/methods/list_utterance_analytics_data"
+          - $ref: "#/components/x-stackQL-resources/utterance_analytics_data/methods/list_utterance_analytics_data"
         insert: []
         update: []
         delete: []

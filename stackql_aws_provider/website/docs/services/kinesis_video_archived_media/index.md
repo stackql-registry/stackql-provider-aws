@@ -32,6 +32,6 @@ total resources: __6__
 <div class="providerDocColumn">
 <a href="/services/kinesis_video_archived_media/hls_streaming_session_urls/">hls_streaming_session_urls</a><br />
 <a href="/services/kinesis_video_archived_media/images/">images</a><br />
-<a href="/services/kinesis_video_archived_media/media_for_fragment_lists/">media_for_fragment_lists</a>
+<a href="/services/kinesis_video_archived_media/medias/">medias</a>
 </div>
 </div>

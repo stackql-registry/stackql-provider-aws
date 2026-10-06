@@ -709,10 +709,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Disassociates tags from an Amazon Q Apps resource.
@@ -732,10 +728,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /apps.predictQApp:
     post:
       operationId: PredictQApp
@@ -2447,8 +2439,6 @@ components:
     Tags:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -2457,8 +2447,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     LibraryItemStatus:
       type: string
       enum:
@@ -2815,6 +2803,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        predict_q_app:
+          operation:
+            $ref: "#/paths/~1apps.predictQApp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_q_app_session:
           operation:
             $ref: "#/paths/~1runtime.startQAppSession/post"
@@ -2857,6 +2856,53 @@ components:
           - $ref: "#/components/x-stackQL-resources/q_apps/methods/update_q_app"
         delete:
           - $ref: "#/components/x-stackQL-resources/q_apps/methods/delete_q_app"
+    categories:
+      id: aws.qapps.categories
+      name: categories
+      title: categories
+      methods:
+        batch_create_category:
+          operation:
+            $ref: "#/paths/~1catalog.createCategories/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_category:
+          operation:
+            $ref: "#/paths/~1catalog.deleteCategories/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_category:
+          operation:
+            $ref: "#/paths/~1catalog.updateCategories/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_categories:
+          operation:
+            $ref: "#/paths/~1catalog.listCategories/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/categories/methods/list_categories"
+        insert: []
+        update: []
+        delete: []
     presigned_urls:
       id: aws.qapps.presigned_urls
       name: presigned_urls
@@ -2952,10 +2998,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/q_app_sessions/methods/update_q_app_session"
         delete: []
-    q_app_session_metadatas:
-      id: aws.qapps.q_app_session_metadatas
-      name: q_app_session_metadatas
-      title: q_app_session_metadatas
+    q_app_session_metadata:
+      id: aws.qapps.q_app_session_metadata
+      name: q_app_session_metadata
+      title: q_app_session_metadata
       methods:
         get_q_app_session_metadata:
           operation:
@@ -2978,32 +3024,36 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/q_app_session_metadatas/methods/get_q_app_session_metadata"
+          - $ref: "#/components/x-stackQL-resources/q_app_session_metadata/methods/get_q_app_session_metadata"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/q_app_session_metadatas/methods/update_q_app_session_metadata"
+          - $ref: "#/components/x-stackQL-resources/q_app_session_metadata/methods/update_q_app_session_metadata"
         delete: []
-    categories:
-      id: aws.qapps.categories
-      name: categories
-      title: categories
+    documents:
+      id: aws.qapps.documents
+      name: documents
+      title: documents
       methods:
-        list_categories:
+        import_document:
           operation:
-            $ref: "#/paths/~1catalog.listCategories/get"
+            $ref: "#/paths/~1apps.importDocument/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/categories/methods/list_categories"
+        select: []
         insert: []
         update: []
         delete: []
-    q_app_session_datas:
-      id: aws.qapps.q_app_session_datas
-      name: q_app_session_datas
-      title: q_app_session_datas
+    q_app_session_data:
+      id: aws.qapps.q_app_session_data
+      name: q_app_session_data
+      title: q_app_session_data
       methods:
         list_q_app_session_data:
           operation:
@@ -3015,7 +3065,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/q_app_session_datas/methods/list_q_app_session_data"
+          - $ref: "#/components/x-stackQL-resources/q_app_session_data/methods/list_q_app_session_data"
         insert: []
         update: []
         delete: []
@@ -3035,7 +3085,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3046,7 +3095,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

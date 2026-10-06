@@ -101,6 +101,11 @@ The following fields are returned by `SELECT` queries:
     <td>Deployment type of the DB cluster. (MULTI_NODE_READ_REPLICAS)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="effective_db_parameter_group_identifier" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the DB parameter group actually applied to your DB cluster. When the service applies optimized defaults, it creates a service-managed DB parameter group and this field reflects that group, while dbParameterGroupIdentifier reflects the customer-provided DB parameter group. When no service-managed DB parameter group is applied, this value matches dbParameterGroupIdentifier. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="endpoint" /></td>
     <td><code>string</code></td>
     <td>The endpoint used to connect to the Timestream for InfluxDB cluster for write and read operations.</td>
@@ -370,6 +375,7 @@ db_instance_type,
 db_parameter_group_identifier,
 db_storage_type,
 deployment_type,
+effective_db_parameter_group_identifier,
 endpoint,
 engine_type,
 failover_mode,

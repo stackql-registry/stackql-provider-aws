@@ -112,15 +112,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AddTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_AddTags
       description: Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application
@@ -130,10 +124,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -143,8 +133,6 @@ paths:
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AddTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=AddTrustStoreRevocations&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -863,15 +851,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteListenerOutputDisplay'
       x-stackql-resource: listeners
       x-stackql-method: delete_listener
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteListenerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteListener
       description: Deletes the specified listener. Alternatively, your listener is deleted when you delete the load balancer
@@ -879,10 +861,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteListenerOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -892,8 +870,6 @@ paths:
       x-stackql-resource: listeners
       x-stackql-method: delete_listener
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteListenerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteLoadBalancer&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -920,15 +896,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteLoadBalancer
       description: Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting
@@ -939,10 +909,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLoadBalancerOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -952,8 +918,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLoadBalancerOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteRule&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -976,25 +940,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleOutputDisplay'
       x-stackql-resource: rules
       x-stackql-method: delete_rule
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteRule
       description: Deletes the specified rule. You can't delete the default rule.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1004,8 +958,6 @@ paths:
       x-stackql-resource: rules
       x-stackql-method: delete_rule
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteRuleOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteSharedTrustStoreAssociation&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1034,25 +986,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay'
       x-stackql-resource: trust_store_associations
       x-stackql-method: delete_shared_trust_store_association
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteSharedTrustStoreAssociationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteSharedTrustStoreAssociation
       description: Deletes a shared trust store association.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1062,8 +1004,6 @@ paths:
       x-stackql-resource: trust_store_associations
       x-stackql-method: delete_shared_trust_store_association
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteSharedTrustStoreAssociationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteTargetGroup&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1088,15 +1028,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTargetGroupOutputDisplay'
       x-stackql-resource: target_groups
       x-stackql-method: delete_target_group
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTargetGroupOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteTargetGroup
       description: Deletes the specified target group. You can delete a target group if it is not referenced by any actions.
@@ -1105,10 +1039,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTargetGroupOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1118,8 +1048,6 @@ paths:
       x-stackql-resource: target_groups
       x-stackql-method: delete_target_group
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTargetGroupOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteTrustStore&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1142,25 +1070,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTrustStoreOutputDisplay'
       x-stackql-resource: trust_stores
       x-stackql-method: delete_trust_store
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTrustStoreOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteTrustStore
       description: Deletes a trust store.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteTrustStoreOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1170,8 +1088,6 @@ paths:
       x-stackql-resource: trust_stores
       x-stackql-method: delete_trust_store
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTrustStoreOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeregisterTargets&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1207,15 +1123,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterTargetsOutputDisplay'
       x-stackql-resource: target_groups
       x-stackql-method: deregister_targets
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeregisterTargets
       description: 'Deregisters the specified targets from the specified target group. After the targets are deregistered,
@@ -1228,10 +1138,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterTargetsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1241,8 +1147,6 @@ paths:
       x-stackql-resource: target_groups
       x-stackql-method: deregister_targets
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAccountLimits&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2419,7 +2323,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetTrustStoreRevocationContentOutputDisplay'
-      x-stackql-resource: trust_store_revocation_contents
+      x-stackql-resource: trust_store_revocation_content
       x-stackql-method: get_trust_store_revocation_content
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTrustStoreRevocationContentOutputDisplay
@@ -2441,7 +2345,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetTrustStoreRevocationContentInput'
-      x-stackql-resource: trust_store_revocation_contents
+      x-stackql-resource: trust_store_revocation_content
       x-stackql-method: get_trust_store_revocation_content
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetTrustStoreRevocationContentOutputDisplay
@@ -3172,15 +3076,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RegisterTargetsOutputDisplay'
       x-stackql-resource: target_groups
       x-stackql-method: register_targets
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: RegisterTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RegisterTargets
       description: 'Registers the specified targets with the specified target group. If the target is an EC2 instance, it
@@ -3192,10 +3090,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RegisterTargetsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3205,8 +3099,6 @@ paths:
       x-stackql-resource: target_groups
       x-stackql-method: register_targets
       x-stackql-verb: INSERT
-      x-stackql-responseEnvelope: RegisterTargetsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=RemoveListenerCertificates&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3236,25 +3128,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveListenerCertificatesOutputDisplay'
       x-stackql-resource: listener_certificates
       x-stackql-method: remove_listener_certificates
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveListenerCertificatesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RemoveListenerCertificates
       description: Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveListenerCertificatesOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3264,8 +3146,6 @@ paths:
       x-stackql-resource: listener_certificates
       x-stackql-method: remove_listener_certificates
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveListenerCertificatesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=RemoveTags&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3296,15 +3176,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RemoveTags
       description: Removes the specified tags from the specified Elastic Load Balancing resources. You can remove the tags
@@ -3313,10 +3187,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3326,8 +3196,6 @@ paths:
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTagsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=RemoveTrustStoreRevocations&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3356,25 +3224,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay'
       x-stackql-resource: trust_store_revocations
       x-stackql-method: remove_trust_store_revocations
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTrustStoreRevocationsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RemoveTrustStoreRevocations
       description: Removes the specified revocation file from the specified trust store.
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3384,8 +3242,6 @@ paths:
       x-stackql-resource: trust_store_revocations
       x-stackql-method: remove_trust_store_revocations
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: RemoveTrustStoreRevocationsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SetIpAddressType&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3790,13 +3646,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddTagsOutputDisplay'
     AddTagsInput:
       type: object
       properties:
@@ -5002,13 +4851,6 @@ components:
       - Name
       - CaCertificatesBundleS3Bucket
       - CaCertificatesBundleS3Key
-    DeleteListenerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteListenerOutputDisplay'
     DeleteListenerInput:
       type: object
       properties:
@@ -5017,13 +4859,6 @@ components:
           description: The Amazon Resource Name (ARN) of the listener.
       required:
       - ListenerArn
-    DeleteLoadBalancerOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteLoadBalancerOutputDisplay'
     DeleteLoadBalancerInput:
       type: object
       properties:
@@ -5034,13 +4869,6 @@ components:
       - LoadBalancerArn
     RuleArn:
       type: string
-    DeleteRuleOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteRuleOutputDisplay'
     DeleteRuleInput:
       type: object
       properties:
@@ -5049,13 +4877,6 @@ components:
           description: The Amazon Resource Name (ARN) of the rule.
       required:
       - RuleArn
-    DeleteSharedTrustStoreAssociationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay'
     DeleteSharedTrustStoreAssociationInput:
       type: object
       properties:
@@ -5068,13 +4889,6 @@ components:
       required:
       - TrustStoreArn
       - ResourceArn
-    DeleteTargetGroupOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteTargetGroupOutputDisplay'
     DeleteTargetGroupInput:
       type: object
       properties:
@@ -5083,13 +4897,6 @@ components:
           description: The Amazon Resource Name (ARN) of the target group.
       required:
       - TargetGroupArn
-    DeleteTrustStoreOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteTrustStoreOutputDisplay'
     DeleteTrustStoreInput:
       type: object
       properties:
@@ -5144,13 +4951,6 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-    DeregisterTargetsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeregisterTargetsOutputDisplay'
     DeregisterTargetsInput:
       type: object
       properties:
@@ -5227,11 +5027,14 @@ components:
       properties:
         Key:
           type: string
-          description: The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway
+          description: 'The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway
             Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000
-            seconds. The default is 350 seconds. The following attributes are only supported by Application Load Balancers.
-            routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name
-            of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name
+            seconds. The default is 350 seconds. The following attribute is only supported by Gateway Load Balancers: send_tcp_reset.on_idle_timeout.enabled
+            – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a TCP flow''s idle
+            timeout expires. This attribute also applies to non-SYN TCP packets received for flows that are not in the flow
+            table. The value is true or false. The default is false. The following attributes are only supported by Application
+            Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify
+            the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name
@@ -5252,7 +5055,7 @@ components:
             Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats.
             routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the
             Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value
-            - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.
+            - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.'
         Value:
           type: string
           description: The value of the attribute.
@@ -5712,7 +5515,15 @@ components:
             - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values
             are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration
             and target_failover.on_unhealthy) can''t be set independently. The value you set for both attributes must be the
-            same.'
+            same. send_tcp_reset.on_unhealthy.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the
+            sender of traffic when a target becomes unhealthy. After sending the reset, the Gateway Load Balancer removes
+            the flow entry from its flow table. The value is true or false. The default is false. This attribute does not
+            apply when target_failover.on_unhealthy is set to rebalance. This feature requires 5-tuple flow stickiness, which
+            the target group uses by default when stickiness.enabled is set to false. send_tcp_reset.on_deregistration.enabled
+            – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target is deregistered.
+            The reset occurs after the connection drain time has elapsed. The value is true or false. The default is false.
+            This attribute does not apply when target_failover.on_deregistration is set to rebalance. This feature requires
+            5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false.'
         Value:
           type: string
           description: The value of the attribute.
@@ -6170,11 +5981,14 @@ components:
       properties:
         Key:
           $ref: '#/components/schemas/ListenerAttributeKey'
-          description: The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway
+          description: 'The name of the attribute. The following attribute is supported by Network Load Balancers, and Gateway
             Load Balancers. tcp.idle_timeout.seconds - The tcp idle timeout value, in seconds. The valid range is 60-6000
-            seconds. The default is 350 seconds. The following attributes are only supported by Application Load Balancers.
-            routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify the header name
-            of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name
+            seconds. The default is 350 seconds. The following attribute is only supported by Gateway Load Balancers: send_tcp_reset.on_idle_timeout.enabled
+            – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a TCP flow''s idle
+            timeout expires. This attribute also applies to non-SYN TCP packets received for flows that are not in the flow
+            table. The value is true or false. The default is false. The following attributes are only supported by Application
+            Load Balancers. routing.http.request.x_amzn_mtls_clientcert_serial_number.header_name - Enables you to modify
+            the header name of the X-Amzn-Mtls-Clientcert-Serial-Number HTTP request header. routing.http.request.x_amzn_mtls_clientcert_issuer.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Issuer HTTP request header. routing.http.request.x_amzn_mtls_clientcert_subject.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Subject HTTP request header. routing.http.request.x_amzn_mtls_clientcert_validity.header_name
             - Enables you to modify the header name of the X-Amzn-Mtls-Clientcert-Validity HTTP request header. routing.http.request.x_amzn_mtls_clientcert_leaf.header_name
@@ -6195,7 +6009,7 @@ components:
             Specifies restrictions enforced by the browser to help minimize the risk of certain types of security threats.
             routing.http.response.x_content_type_options.header_value - Indicates whether the MIME types advertised in the
             Content-Type headers should be followed and not be changed. routing.http.response.x_frame_options.header_value
-            - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.
+            - Indicates whether the browser is allowed to render a page in a frame, iframe, embed or object.'
         Value:
           $ref: '#/components/schemas/ListenerAttributeValue'
           description: The value of the attribute.
@@ -6476,7 +6290,15 @@ components:
             - Indicates how the Gateway Load Balancer handles existing flows when a target is unhealthy. The possible values
             are rebalance and no_rebalance. The default is no_rebalance. The two attributes (target_failover.on_deregistration
             and target_failover.on_unhealthy) can''t be set independently. The value you set for both attributes must be the
-            same.'
+            same. send_tcp_reset.on_unhealthy.enabled – Specifies whether the Gateway Load Balancer sends a TCP Reset to the
+            sender of traffic when a target becomes unhealthy. After sending the reset, the Gateway Load Balancer removes
+            the flow entry from its flow table. The value is true or false. The default is false. This attribute does not
+            apply when target_failover.on_unhealthy is set to rebalance. This feature requires 5-tuple flow stickiness, which
+            the target group uses by default when stickiness.enabled is set to false. send_tcp_reset.on_deregistration.enabled
+            – Specifies whether the Gateway Load Balancer sends a TCP Reset to the sender of traffic when a target is deregistered.
+            The reset occurs after the connection drain time has elapsed. The value is true or false. The default is false.
+            This attribute does not apply when target_failover.on_deregistration is set to rebalance. This feature requires
+            5-tuple flow stickiness, which the target group uses by default when stickiness.enabled is set to false.'
         Value:
           $ref: '#/components/schemas/TargetGroupAttributeValue'
           description: The value of the attribute.
@@ -6531,13 +6353,6 @@ components:
       - TrustStoreArn
       - CaCertificatesBundleS3Bucket
       - CaCertificatesBundleS3Key
-    RegisterTargetsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RegisterTargetsOutputDisplay'
     RegisterTargetsInput:
       type: object
       properties:
@@ -6550,13 +6365,6 @@ components:
       required:
       - TargetGroupArn
       - Targets
-    RemoveListenerCertificatesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RemoveListenerCertificatesOutputDisplay'
     RemoveListenerCertificatesInput:
       type: object
       properties:
@@ -6574,13 +6382,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    RemoveTagsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RemoveTagsOutputDisplay'
     RemoveTagsInput:
       type: object
       properties:
@@ -6593,13 +6394,6 @@ components:
       required:
       - ResourceArns
       - TagKeys
-    RemoveTrustStoreRevocationsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RemoveTrustStoreRevocationsOutputDisplay'
     RemoveTrustStoreRevocationsInput:
       type: object
       properties:

@@ -189,18 +189,18 @@ The following methods are available for this resource:
     <td>Lists the executions of a Region switch plan. This operation returns information about both current and historical executions.</td>
 </tr>
 <tr>
-    <td><a href="#update_plan_execution_step"><CopyableCode code="update_plan_execution_step" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-planArn"><code>planArn</code></a>, <a href="#parameter-executionId"><code>executionId</code></a>, <a href="#parameter-comment"><code>comment</code></a>, <a href="#parameter-stepName"><code>stepName</code></a>, <a href="#parameter-actionToTake"><code>actionToTake</code></a></td>
-    <td></td>
-    <td>Updates a specific step in an in-progress plan execution. This operation allows you to modify the step's comment or action.</td>
-</tr>
-<tr>
     <td><a href="#update_plan_execution"><CopyableCode code="update_plan_execution" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-planArn"><code>planArn</code></a>, <a href="#parameter-executionId"><code>executionId</code></a>, <a href="#parameter-action"><code>action</code></a></td>
     <td></td>
     <td>Updates an in-progress plan execution. This operation allows you to modify certain aspects of the execution, such as adding a comment or changing the action.</td>
+</tr>
+<tr>
+    <td><a href="#update_plan_execution_step"><CopyableCode code="update_plan_execution_step" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-planArn"><code>planArn</code></a>, <a href="#parameter-executionId"><code>executionId</code></a>, <a href="#parameter-comment"><code>comment</code></a>, <a href="#parameter-stepName"><code>stepName</code></a>, <a href="#parameter-actionToTake"><code>actionToTake</code></a></td>
+    <td></td>
+    <td>Updates a specific step in an in-progress plan execution. This operation allows you to modify the step's comment or action.</td>
 </tr>
 <tr>
     <td><a href="#approve_plan_execution_step"><CopyableCode code="approve_plan_execution_step" /></a></td>
@@ -288,12 +288,30 @@ WHERE region = '{{ region }}' -- required
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_plan_execution_step"
+    defaultValue="update_plan_execution"
     values={[
-        { label: 'update_plan_execution_step', value: 'update_plan_execution_step' },
-        { label: 'update_plan_execution', value: 'update_plan_execution' }
+        { label: 'update_plan_execution', value: 'update_plan_execution' },
+        { label: 'update_plan_execution_step', value: 'update_plan_execution_step' }
     ]}
 >
+<TabItem value="update_plan_execution">
+
+Updates an in-progress plan execution. This operation allows you to modify certain aspects of the execution, such as adding a comment or changing the action.
+
+```sql
+UPDATE aws.arc_region_switch.plan_executions
+SET 
+planArn = '{{ planArn }}',
+executionId = '{{ executionId }}',
+action = '{{ action }}',
+comment = '{{ comment }}'
+WHERE 
+region = '{{ region }}' --required
+AND planArn = '{{ planArn }}' --required
+AND executionId = '{{ executionId }}' --required
+AND action = '{{ action }}' --required;
+```
+</TabItem>
 <TabItem value="update_plan_execution_step">
 
 Updates a specific step in an in-progress plan execution. This operation allows you to modify the step's comment or action.
@@ -313,24 +331,6 @@ AND executionId = '{{ executionId }}' --required
 AND comment = '{{ comment }}' --required
 AND stepName = '{{ stepName }}' --required
 AND actionToTake = '{{ actionToTake }}' --required;
-```
-</TabItem>
-<TabItem value="update_plan_execution">
-
-Updates an in-progress plan execution. This operation allows you to modify certain aspects of the execution, such as adding a comment or changing the action.
-
-```sql
-UPDATE aws.arc_region_switch.plan_executions
-SET 
-planArn = '{{ planArn }}',
-executionId = '{{ executionId }}',
-action = '{{ action }}',
-comment = '{{ comment }}'
-WHERE 
-region = '{{ region }}' --required
-AND planArn = '{{ planArn }}' --required
-AND executionId = '{{ executionId }}' --required
-AND action = '{{ action }}' --required;
 ```
 </TabItem>
 </Tabs>

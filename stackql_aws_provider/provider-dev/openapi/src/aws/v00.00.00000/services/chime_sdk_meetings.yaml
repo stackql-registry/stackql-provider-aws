@@ -371,10 +371,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /tags?operation=untag-resource:
     post:
       operationId: UntagResource
@@ -397,10 +393,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /meetings/{meeting_id}/attendees/{attendee_id}/capabilities:
     put:
       operationId: UpdateAttendeeCapabilities
@@ -1053,14 +1045,10 @@ components:
       type: string
       enum:
         - PHI
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAttendeeCapabilitiesResponse:
       type: object
       properties:
@@ -1203,8 +1191,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/attendees/methods/get_attendee"
           - $ref: "#/components/x-stackQL-resources/attendees/methods/list_attendees"
         insert:
-          - $ref: "#/components/x-stackQL-resources/attendees/methods/create_meeting_with_attendees"
           - $ref: "#/components/x-stackQL-resources/attendees/methods/create_attendee"
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/create_meeting_with_attendees"
         update:
           - $ref: "#/components/x-stackQL-resources/attendees/methods/update_attendee_capabilities"
         delete:
@@ -1227,7 +1215,6 @@ components:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1238,7 +1225,6 @@ components:
             $ref: "#/paths/~1tags?operation=untag-resource/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

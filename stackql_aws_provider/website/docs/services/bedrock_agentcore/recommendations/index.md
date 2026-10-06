@@ -200,6 +200,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a recommendation and its associated results.</td>
 </tr>
+<tr>
+    <td><a href="#start_recommendation"><CopyableCode code="start_recommendation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-type"><code>type</code></a>, <a href="#parameter-recommendationConfig"><code>recommendationConfig</code></a></td>
+    <td></td>
+    <td>Starts a recommendation job that analyzes agent traces and generates optimization suggestions for system prompts or tool descriptions to improve agent performance.</td>
+</tr>
 </tbody>
 </table>
 
@@ -317,6 +324,37 @@ Deletes a recommendation and its associated results.
 DELETE FROM aws.bedrock_agentcore.recommendations
 WHERE recommendation_id = '{{ recommendation_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_recommendation"
+    values={[
+        { label: 'start_recommendation', value: 'start_recommendation' }
+    ]}
+>
+<TabItem value="start_recommendation">
+
+Starts a recommendation job that analyzes agent traces and generates optimization suggestions for system prompts or tool descriptions to improve agent performance.
+
+```sql
+EXEC aws.bedrock_agentcore.recommendations.start_recommendation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"name": "{{ name }}", 
+"description": "{{ description }}", 
+"type": "{{ type }}", 
+"recommendationConfig": "{{ recommendationConfig }}", 
+"kmsKeyArn": "{{ kmsKeyArn }}", 
+"clientToken": "{{ clientToken }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

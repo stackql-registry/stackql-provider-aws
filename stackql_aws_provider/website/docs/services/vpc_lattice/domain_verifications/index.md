@@ -185,6 +185,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified domain verification.</td>
 </tr>
+<tr>
+    <td><a href="#start_domain_verification"><CopyableCode code="start_domain_verification" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-domainName"><code>domainName</code></a></td>
+    <td></td>
+    <td>Starts the domain verification process for a custom domain name.</td>
+</tr>
 </tbody>
 </table>
 
@@ -293,6 +300,33 @@ Deletes the specified domain verification.
 DELETE FROM aws.vpc_lattice.domain_verifications
 WHERE domain_verification_identifier = '{{ domain_verification_identifier }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_domain_verification"
+    values={[
+        { label: 'start_domain_verification', value: 'start_domain_verification' }
+    ]}
+>
+<TabItem value="start_domain_verification">
+
+Starts the domain verification process for a custom domain name.
+
+```sql
+EXEC aws.vpc_lattice.domain_verifications.start_domain_verification 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientToken": "{{ clientToken }}", 
+"domainName": "{{ domainName }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

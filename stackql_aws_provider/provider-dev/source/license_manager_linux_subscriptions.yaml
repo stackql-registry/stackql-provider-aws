@@ -37,10 +37,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterSubscriptionProviderResponse'
       x-stackql-resource: subscription_providers
       x-stackql-method: deregister_subscription_provider
       x-stackql-verb: DELETE
@@ -228,10 +224,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -254,10 +246,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -371,8 +359,6 @@ components:
     SubscriptionProviderArn:
       type: string
       pattern: ^arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{1,510}/[a-z0-9-\.]{1,510}$
-    DeregisterSubscriptionProviderResponse:
-      type: object
     GetRegisteredSubscriptionProviderResponse:
       type: object
       properties:
@@ -685,14 +671,10 @@ components:
         SubscriptionProviderStatus:
           $ref: '#/components/schemas/SubscriptionProviderStatus'
           description: Indicates the status of the registration action for the Linux subscription provider that you requested.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     Boolean:
       type: boolean
     UpdateServiceSettingsResponse:

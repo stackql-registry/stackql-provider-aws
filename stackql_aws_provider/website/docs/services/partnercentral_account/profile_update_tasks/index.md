@@ -121,6 +121,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves information about a specific profile update task.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_profile_update_task"><CopyableCode code="cancel_profile_update_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-TaskId"><code>TaskId</code></a></td>
+    <td></td>
+    <td>Cancels an in-progress profile update task, stopping any pending changes to the partner profile.</td>
+</tr>
+<tr>
+    <td><a href="#start_profile_update_task"><CopyableCode code="start_profile_update_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-TaskDetails"><code>TaskDetails</code></a></td>
+    <td></td>
+    <td>Initiates a profile update task to modify partner profile information asynchronously.</td>
+</tr>
 </tbody>
 </table>
 
@@ -170,6 +184,52 @@ task_details,
 task_id
 FROM aws.partnercentral_account.profile_update_tasks
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_profile_update_task"
+    values={[
+        { label: 'cancel_profile_update_task', value: 'cancel_profile_update_task' },
+        { label: 'start_profile_update_task', value: 'start_profile_update_task' }
+    ]}
+>
+<TabItem value="cancel_profile_update_task">
+
+Cancels an in-progress profile update task, stopping any pending changes to the partner profile.
+
+```sql
+EXEC aws.partnercentral_account.profile_update_tasks.cancel_profile_update_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"ClientToken": "{{ ClientToken }}", 
+"TaskId": "{{ TaskId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_profile_update_task">
+
+Initiates a profile update task to modify partner profile information asynchronously.
+
+```sql
+EXEC aws.partnercentral_account.profile_update_tasks.start_profile_update_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"ClientToken": "{{ ClientToken }}", 
+"TaskDetails": "{{ TaskDetails }}"
+}'
 ;
 ```
 </TabItem>

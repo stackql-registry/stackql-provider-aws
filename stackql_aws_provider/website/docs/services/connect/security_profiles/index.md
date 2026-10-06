@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_security_profile"
     values={[
         { label: 'describe_security_profile', value: 'describe_security_profile' },
-        { label: 'list_security_profiles', value: 'list_security_profiles' },
-        { label: 'search_security_profiles', value: 'search_security_profiles' }
+        { label: 'list_security_profiles', value: 'list_security_profiles' }
     ]}
 >
 <TabItem value="describe_security_profile">
@@ -158,50 +157,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_security_profiles">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the security profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the security profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the security profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="organization_resource_id" /></td>
-    <td><code>string</code></td>
-    <td>The organization resource identifier.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="security_profile_name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the security profile.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -234,13 +189,6 @@ The following methods are available for this resource:
     <td>Provides summary information about the security profiles for the specified Connect Customer instance. For more information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 <tr>
-    <td><a href="#search_security_profiles"><CopyableCode code="search_security_profiles" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
-</tr>
-<tr>
     <td><a href="#create_security_profile"><CopyableCode code="create_security_profile" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfileName"><code>SecurityProfileName</code></a></td>
@@ -255,18 +203,18 @@ The following methods are available for this resource:
     <td>Associate security profiles with an Entity in an Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><a href="#update_user_security_profiles"><CopyableCode code="update_user_security_profiles" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfileIds"><code>SecurityProfileIds</code></a></td>
-    <td></td>
-    <td>Assigns the specified security profiles to the specified user.</td>
-</tr>
-<tr>
     <td><a href="#update_security_profile"><CopyableCode code="update_security_profile" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-security_profile_id"><code>security_profile_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Updates a security profile. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
+</tr>
+<tr>
+    <td><a href="#update_user_security_profiles"><CopyableCode code="update_user_security_profiles" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-user_id"><code>user_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfileIds"><code>SecurityProfileIds</code></a></td>
+    <td></td>
+    <td>Assigns the specified security profiles to the specified user.</td>
 </tr>
 <tr>
     <td><a href="#delete_security_profile"><CopyableCode code="delete_security_profile" /></a></td>
@@ -281,6 +229,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SecurityProfiles"><code>SecurityProfiles</code></a>, <a href="#parameter-EntityType"><code>EntityType</code></a>, <a href="#parameter-EntityArn"><code>EntityArn</code></a></td>
     <td></td>
     <td>Disassociates a security profile attached to a Q in Connect AI Agent Entity in an Amazon Connect instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_security_profiles"><CopyableCode code="search_security_profiles" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.</td>
 </tr>
 </tbody>
 </table>
@@ -337,8 +292,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_security_profile"
     values={[
         { label: 'describe_security_profile', value: 'describe_security_profile' },
-        { label: 'list_security_profiles', value: 'list_security_profiles' },
-        { label: 'search_security_profiles', value: 'search_security_profiles' }
+        { label: 'list_security_profiles', value: 'list_security_profiles' }
     ]}
 >
 <TabItem value="describe_security_profile">
@@ -383,23 +337,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_security_profiles">
-
-Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
-
-```sql
-SELECT
-arn,
-description,
-id,
-organization_resource_id,
-security_profile_name,
-tags
-FROM aws.connect.security_profiles
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -516,8 +453,8 @@ security_profile_id
     defaultValue="associate_security_profiles"
     values={[
         { label: 'associate_security_profiles', value: 'associate_security_profiles' },
-        { label: 'update_user_security_profiles', value: 'update_user_security_profiles' },
-        { label: 'update_security_profile', value: 'update_security_profile' }
+        { label: 'update_security_profile', value: 'update_security_profile' },
+        { label: 'update_user_security_profiles', value: 'update_user_security_profiles' }
     ]}
 >
 <TabItem value="associate_security_profiles">
@@ -536,21 +473,6 @@ AND region = '{{ region }}' --required
 AND SecurityProfiles = '{{ SecurityProfiles }}' --required
 AND EntityType = '{{ EntityType }}' --required
 AND EntityArn = '{{ EntityArn }}' --required;
-```
-</TabItem>
-<TabItem value="update_user_security_profiles">
-
-Assigns the specified security profiles to the specified user.
-
-```sql
-UPDATE aws.connect.security_profiles
-SET 
-SecurityProfileIds = '{{ SecurityProfileIds }}'
-WHERE 
-user_id = '{{ user_id }}' --required
-AND instance_id = '{{ instance_id }}' --required
-AND region = '{{ region }}' --required
-AND SecurityProfileIds = '{{ SecurityProfileIds }}' --required;
 ```
 </TabItem>
 <TabItem value="update_security_profile">
@@ -573,6 +495,21 @@ WHERE
 security_profile_id = '{{ security_profile_id }}' --required
 AND instance_id = '{{ instance_id }}' --required
 AND region = '{{ region }}' --required;
+```
+</TabItem>
+<TabItem value="update_user_security_profiles">
+
+Assigns the specified security profiles to the specified user.
+
+```sql
+UPDATE aws.connect.security_profiles
+SET 
+SecurityProfileIds = '{{ SecurityProfileIds }}'
+WHERE 
+user_id = '{{ user_id }}' --required
+AND instance_id = '{{ instance_id }}' --required
+AND region = '{{ region }}' --required
+AND SecurityProfileIds = '{{ SecurityProfileIds }}' --required;
 ```
 </TabItem>
 </Tabs>
@@ -606,7 +543,8 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="disassociate_security_profiles"
     values={[
-        { label: 'disassociate_security_profiles', value: 'disassociate_security_profiles' }
+        { label: 'disassociate_security_profiles', value: 'disassociate_security_profiles' },
+        { label: 'search_security_profiles', value: 'search_security_profiles' }
     ]}
 >
 <TabItem value="disassociate_security_profiles">
@@ -622,6 +560,24 @@ EXEC aws.connect.security_profiles.disassociate_security_profiles
 "SecurityProfiles": "{{ SecurityProfiles }}", 
 "EntityType": "{{ EntityType }}", 
 "EntityArn": "{{ EntityArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="search_security_profiles">
+
+Searches security profiles in an Connect Customer instance, with optional filtering. For information about security profiles, see Security Profiles in the Connect Customer Administrator Guide. For a mapping of the API name and user interface name of the security profile permissions, see List of security profile permissions.
+
+```sql
+EXEC aws.connect.security_profiles.search_security_profiles 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchCriteria": "{{ SearchCriteria }}", 
+"SearchFilter": "{{ SearchFilter }}"
 }'
 ;
 ```

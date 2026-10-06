@@ -199,7 +199,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchApplyUpdateActionOutputDisplay'
-      x-stackql-resource: service_updates
+      x-stackql-resource: update_actions
       x-stackql-method: batch_apply_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchApplyUpdateActionOutputDisplay
@@ -221,7 +221,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchApplyUpdateActionMessage'
-      x-stackql-resource: service_updates
+      x-stackql-resource: update_actions
       x-stackql-method: batch_apply_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchApplyUpdateActionOutputDisplay
@@ -265,7 +265,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchStopUpdateActionOutputDisplay'
-      x-stackql-resource: service_updates
+      x-stackql-resource: update_actions
       x-stackql-method: batch_stop_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchStopUpdateActionOutputDisplay
@@ -287,7 +287,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchStopUpdateActionMessage'
-      x-stackql-resource: service_updates
+      x-stackql-resource: update_actions
       x-stackql-method: batch_stop_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchStopUpdateActionOutputDisplay
@@ -400,7 +400,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyServerlessCacheSnapshotOutputDisplay'
-      x-stackql-resource: serverless_caches
+      x-stackql-resource: serverless_cache_snapshots
       x-stackql-method: copy_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyServerlessCacheSnapshotOutputDisplay
@@ -422,7 +422,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyServerlessCacheSnapshotRequest'
-      x-stackql-resource: serverless_caches
+      x-stackql-resource: serverless_cache_snapshots
       x-stackql-method: copy_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyServerlessCacheSnapshotOutputDisplay
@@ -504,7 +504,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopySnapshotOutputDisplay'
-      x-stackql-resource: snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: copy_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopySnapshotOutputDisplay
@@ -545,7 +545,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopySnapshotMessage'
-      x-stackql-resource: snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: copy_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopySnapshotOutputDisplay
@@ -4583,7 +4583,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ExportServerlessCacheSnapshotOutputDisplay'
-      x-stackql-resource: serverless_caches
+      x-stackql-resource: serverless_cache_snapshots
       x-stackql-method: export_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExportServerlessCacheSnapshotOutputDisplay
@@ -4605,7 +4605,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ExportServerlessCacheSnapshotRequest'
-      x-stackql-resource: serverless_caches
+      x-stackql-resource: serverless_cache_snapshots
       x-stackql-method: export_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExportServerlessCacheSnapshotOutputDisplay
@@ -6409,7 +6409,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetCacheParameterGroupOutputDisplay'
-      x-stackql-resource: cache_parameters
+      x-stackql-resource: cache_parameter_groups
       x-stackql-method: reset_cache_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetCacheParameterGroupOutputDisplay
@@ -6432,7 +6432,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetCacheParameterGroupMessage'
-      x-stackql-resource: cache_parameters
+      x-stackql-resource: cache_parameter_groups
       x-stackql-method: reset_cache_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetCacheParameterGroupOutputDisplay

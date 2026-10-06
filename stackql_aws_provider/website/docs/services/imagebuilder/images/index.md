@@ -127,7 +127,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="version" /></td>
     <td><code>string</code></td>
-    <td>Details for a specific version of an Image Builder image. This version follows the semantic version syntax. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+$&lt;/code&gt;)</td>
+    <td>Details for a specific version of an Image Builder image. This version follows the semantic version syntax. The semantic version has four nodes: <code>&lt;major&gt;</code>.<code>&lt;minor&gt;</code>.<code>&lt;patch&gt;</code>/<code>&lt;build&gt;</code>. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards. (pattern: &lt;code&gt;^&#91;0-9&#93;+\.&#91;0-9&#93;+\.&#91;0-9&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -154,7 +154,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-imageBuildVersionArn"><code>imageBuildVersionArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets an image.</td>
+    <td>Retrieves an image.</td>
 </tr>
 <tr>
     <td><a href="#list_images"><CopyableCode code="list_images" /></a></td>
@@ -168,7 +168,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-infrastructureConfigurationArn"><code>infrastructureConfigurationArn</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.</td>
+    <td>Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.</td>
 </tr>
 <tr>
     <td><a href="#delete_image"><CopyableCode code="delete_image" /></a></td>
@@ -182,7 +182,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-imageBuildVersionArn"><code>imageBuildVersionArn</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.</td>
+    <td>Cancels the creation of an image. This operation can only be used on images in a non-terminal state.</td>
 </tr>
 </tbody>
 </table>
@@ -224,7 +224,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_image">
 
-Gets an image.
+Retrieves an image.
 
 ```sql
 SELECT
@@ -272,7 +272,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_image">
 
-Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
 
 ```sql
 INSERT INTO aws.imagebuilder.images (
@@ -400,7 +400,7 @@ AND region = '{{ region }}' --required
 >
 <TabItem value="cancel_image_creation">
 
-CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.
+Cancels the creation of an image. This operation can only be used on images in a non-terminal state.
 
 ```sql
 EXEC aws.imagebuilder.images.cancel_image_creation 

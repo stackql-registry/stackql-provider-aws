@@ -27,11 +27,11 @@ total resources: __22__
 <div class="providerDocColumn">
 <a href="/services/ecr/account_settings/">account_settings</a><br />
 <a href="/services/ecr/authorization_tokens/">authorization_tokens</a><br />
-<a href="/services/ecr/download_url_for_layers/">download_url_for_layers</a><br />
+<a href="/services/ecr/download_urls/">download_urls</a><br />
 <a href="/services/ecr/image_referrers/">image_referrers</a><br />
-<a href="/services/ecr/image_replication_status/">image_replication_status</a><br />
+<a href="/services/ecr/image_replication_statuses/">image_replication_statuses</a><br />
 <a href="/services/ecr/image_scan_findings/">image_scan_findings</a><br />
-<a href="/services/ecr/image_signing_status/">image_signing_status</a><br />
+<a href="/services/ecr/image_signing_statuses/">image_signing_statuses</a><br />
 <a href="/services/ecr/images/">images</a><br />
 <a href="/services/ecr/lifecycle_policies/">lifecycle_policies</a><br />
 <a href="/services/ecr/lifecycle_policy_previews/">lifecycle_policy_previews</a><br />

@@ -86,6 +86,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-ResourceIdentifier"><code>ResourceIdentifier</code></a>, <a href="#parameter-Filters"><code>Filters</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxRecords"><code>MaxRecords</code></a></td>
     <td>Returns a list of resources (for example, DB instances) that have at least one pending maintenance action. This API follows an eventual consistency model. This means that the result of the DescribePendingMaintenanceActions command might not be immediately visible to all subsequent RDS commands. Keep this in mind when you use DescribePendingMaintenanceActions immediately after using a previous API command such as ApplyPendingMaintenanceActions.</td>
 </tr>
+<tr>
+    <td><a href="#apply_pending_maintenance_action"><CopyableCode code="apply_pending_maintenance_action" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-ResourceIdentifier"><code>ResourceIdentifier</code></a>, <a href="#parameter-ApplyAction"><code>ApplyAction</code></a>, <a href="#parameter-OptInType"><code>OptInType</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Applies a pending maintenance action to a resource (for example, to a DB instance).</td>
+</tr>
 </tbody>
 </table>
 
@@ -102,6 +109,21 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-ApplyAction">
+    <td><CopyableCode code="ApplyAction" /></td>
+    <td><code>string</code></td>
+    <td>The pending maintenance action to apply to this resource. Valid Values: ca-certificate-rotation db-upgrade hardware-maintenance os-upgrade system-update For more information about these actions, see Maintenance actions for Amazon Aurora or Maintenance actions for Amazon RDS.</td>
+</tr>
+<tr id="parameter-OptInType">
+    <td><CopyableCode code="OptInType" /></td>
+    <td><code>string</code></td>
+    <td>A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type immediate can't be undone. Valid Values: immediate - Apply the maintenance action immediately. next-maintenance - Apply the maintenance action during the next maintenance window for the resource. undo-opt-in - Cancel any existing next-maintenance opt-in requests.</td>
+</tr>
+<tr id="parameter-ResourceIdentifier">
+    <td><CopyableCode code="ResourceIdentifier" /></td>
+    <td><code>string</code></td>
+    <td>The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see Constructing an RDS Amazon Resource Name (ARN).</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -152,6 +174,30 @@ AND ResourceIdentifier = '{{ ResourceIdentifier }}'
 AND Filters = '{{ Filters }}'
 AND Marker = '{{ Marker }}'
 AND MaxRecords = '{{ MaxRecords }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="apply_pending_maintenance_action"
+    values={[
+        { label: 'apply_pending_maintenance_action', value: 'apply_pending_maintenance_action' }
+    ]}
+>
+<TabItem value="apply_pending_maintenance_action">
+
+Applies a pending maintenance action to a resource (for example, to a DB instance).
+
+```sql
+EXEC aws.rds.pending_maintenance_actions.apply_pending_maintenance_action 
+@ResourceIdentifier='{{ ResourceIdentifier }}' --required, 
+@ApplyAction='{{ ApplyAction }}' --required, 
+@OptInType='{{ OptInType }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

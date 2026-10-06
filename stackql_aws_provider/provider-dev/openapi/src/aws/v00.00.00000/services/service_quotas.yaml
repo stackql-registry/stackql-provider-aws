@@ -41,10 +41,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateServiceQuotaTemplateResponse"
   /CreateSupportCase:
     post:
       operationId: CreateSupportCase
@@ -74,10 +70,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateSupportCaseResponse"
   /DeleteServiceQuotaIncreaseRequestFromTemplate:
     post:
       operationId: DeleteServiceQuotaIncreaseRequestFromTemplate
@@ -115,10 +107,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteServiceQuotaIncreaseRequestFromTemplateResponse"
   /DisassociateServiceQuotaTemplate:
     post:
       operationId: DisassociateServiceQuotaTemplate
@@ -142,10 +130,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateServiceQuotaTemplateResponse"
   /GetAWSDefaultServiceQuota:
     post:
       operationId: GetAWSDefaultServiceQuota
@@ -804,10 +788,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartAutoManagementResponse"
   /StartQuotaUtilizationReport:
     post:
       operationId: StartQuotaUtilizationReport
@@ -858,10 +838,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopAutoManagementResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -894,10 +870,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -931,10 +903,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAutoManagement:
     post:
       operationId: UpdateAutoManagement
@@ -968,10 +936,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAutoManagementResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1017,15 +981,11 @@ components:
       schema:
         type: string
   schemas:
-    AssociateServiceQuotaTemplateResponse:
-      type: object
     RequestId:
       type: string
       minLength: 1
       maxLength: 128
       pattern: "[0-9a-zA-Z][a-zA-Z0-9-]{1,128}"
-    CreateSupportCaseResponse:
-      type: object
     ServiceCode:
       type: string
       minLength: 1
@@ -1041,10 +1001,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z][a-zA-Z0-9-]{1,128}"
-    DeleteServiceQuotaIncreaseRequestFromTemplateResponse:
-      type: object
-    DisassociateServiceQuotaTemplateResponse:
-      type: object
     GetAWSDefaultServiceQuotaResponse:
       type: object
       properties:
@@ -1203,6 +1159,9 @@ components:
         ContextId:
           $ref: "#/components/schemas/QuotaContextId"
           description: Specifies the resource, or resources, to which the quota applies. The value for this field is either an Amazon Resource Name (ARN) or *. If the value is an ARN, the quota value applies to that resource. If the value is *, then the quota value applies to all resources listed in the ContextScopeType field. The quota value applies to all resources for which you haven’t previously applied a quota value, and any new resources you create in your Amazon Web Services account.
+        AdjustableAtLevel:
+          $ref: "#/components/schemas/AdjustableAtLevelEnum"
+          description: "Specifies the level at which you can request an increase for this quota: ACCOUNT – You can request an increase only at the account level. PER_RESOURCE – You can request an increase only for an individual resource. ALL – You can request an increase at either the account level or for an individual resource."
     QuotaContextScope:
       type: string
       enum:
@@ -1212,6 +1171,12 @@ components:
       type: string
     QuotaContextId:
       type: string
+    AdjustableAtLevelEnum:
+      type: string
+      enum:
+        - ACCOUNT
+        - PER_RESOURCE
+        - ALL
     QuotaDescription:
       type: string
       minLength: 0
@@ -1631,8 +1596,6 @@ components:
     ExclusionList:
       type: object
       properties: {}
-    StartAutoManagementResponse:
-      type: object
     StartQuotaUtilizationReportResponse:
       type: object
       properties:
@@ -1650,22 +1613,14 @@ components:
       minLength: 0
       maxLength: 350
       pattern: ^.{0,350}$
-    StopAutoManagementResponse:
-      type: object
     InputTags:
       type: array
       items:
         $ref: "#/components/schemas/Tag"
-    TagResourceResponse:
-      type: object
     InputTagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateAutoManagementResponse:
-      type: object
   x-stackQL-resources:
     service_quotas:
       id: aws.service_quotas.service_quotas
@@ -1677,7 +1632,6 @@ components:
             $ref: "#/paths/~1AssociateServiceQuotaTemplate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1690,7 +1644,6 @@ components:
             $ref: "#/paths/~1DisassociateServiceQuotaTemplate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1766,7 +1719,6 @@ components:
             $ref: "#/paths/~1CreateSupportCase/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1790,7 +1742,6 @@ components:
             $ref: "#/paths/~1DeleteServiceQuotaIncreaseRequestFromTemplate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1866,10 +1817,10 @@ components:
         insert: []
         update: []
         delete: []
-    association_for_service_quota_templates:
-      id: aws.service_quotas.association_for_service_quota_templates
-      name: association_for_service_quota_templates
-      title: association_for_service_quota_templates
+    associations:
+      id: aws.service_quotas.associations
+      name: associations
+      title: associations
       methods:
         get_association_for_service_quota_template:
           operation:
@@ -1886,7 +1837,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/association_for_service_quota_templates/methods/get_association_for_service_quota_template"
+          - $ref: "#/components/x-stackQL-resources/associations/methods/get_association_for_service_quota_template"
         insert: []
         update: []
         delete: []
@@ -1922,6 +1873,19 @@ components:
         get_quota_utilization_report:
           operation:
             $ref: "#/paths/~1GetQuotaUtilizationReport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_quota_utilization_report:
+          operation:
+            $ref: "#/paths/~1StartQuotaUtilizationReport/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1989,17 +1953,6 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/requested_service_quota_change_histories/methods/list_requested_service_quota_change_history"
-        insert: []
-        update: []
-        delete: []
-    requested_service_quota_change_history_by_quotas:
-      id: aws.service_quotas.requested_service_quota_change_history_by_quotas
-      name: requested_service_quota_change_history_by_quotas
-      title: requested_service_quota_change_history_by_quotas
-      methods:
         list_requested_service_quota_change_history_by_quota:
           operation:
             $ref: "#/paths/~1ListRequestedServiceQuotaChangeHistoryByQuota/post"
@@ -2023,7 +1976,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/requested_service_quota_change_history_by_quotas/methods/list_requested_service_quota_change_history_by_quota"
+          - $ref: "#/components/x-stackQL-resources/requested_service_quota_change_histories/methods/list_requested_service_quota_change_history_by_quota"
+          - $ref: "#/components/x-stackQL-resources/requested_service_quota_change_histories/methods/list_requested_service_quota_change_history"
         insert: []
         update: []
         delete: []
@@ -2114,7 +2068,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2127,7 +2080,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2143,17 +2095,63 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
+    service_quota_increases:
+      id: aws.service_quotas.service_quota_increases
+      name: service_quota_increases
+      title: service_quota_increases
+      methods:
+        request_service_quota_increase:
+          operation:
+            $ref: "#/paths/~1RequestServiceQuotaIncrease/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     auto_managements:
       id: aws.service_quotas.auto_managements
       name: auto_managements
       title: auto_managements
       methods:
+        start_auto_management:
+          operation:
+            $ref: "#/paths/~1StartAutoManagement/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_auto_management:
+          operation:
+            $ref: "#/paths/~1StopAutoManagement/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_auto_management:
           operation:
             $ref: "#/paths/~1UpdateAutoManagement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -157,10 +157,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAutomationRuleResponse"
   /DisassociateAccounts:
     post:
       operationId: DisassociateAccounts
@@ -802,10 +798,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -846,10 +838,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAutomationRule:
     post:
       operationId: UpdateAutomationRule
@@ -1307,8 +1295,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteAutomationRuleResponse:
-      type: object
     DisassociateAccountsResponse:
       type: object
       properties:
@@ -2176,14 +2162,10 @@ components:
         eventStatus:
           $ref: "#/components/schemas/EventStatus"
           description: The current status of the automation event.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateAutomationRuleResponse:
       type: object
       properties:
@@ -2323,7 +2305,6 @@ components:
             $ref: "#/paths/~1DeleteAutomationRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2425,6 +2406,19 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        rollback_automation_event:
+          operation:
+            $ref: "#/paths/~1RollbackAutomationEvent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2700,7 +2694,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2713,7 +2706,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

@@ -210,6 +210,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Use this operation to delete a Vector Enrichment job.</td>
 </tr>
+<tr>
+    <td><a href="#export_vector_enrichment_job"><CopyableCode code="export_vector_enrichment_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-OutputConfig"><code>OutputConfig</code></a></td>
+    <td></td>
+    <td>Use this operation to copy results of a Vector Enrichment job to an Amazon S3 location.</td>
+</tr>
+<tr>
+    <td><a href="#start_vector_enrichment_job"><CopyableCode code="start_vector_enrichment_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-InputConfig"><code>InputConfig</code></a>, <a href="#parameter-JobConfig"><code>JobConfig</code></a></td>
+    <td></td>
+    <td>Creates a Vector Enrichment job for the supplied job type. Currently, there are two supported job types: reverse geocoding and map matching.</td>
+</tr>
+<tr>
+    <td><a href="#stop_vector_enrichment_job"><CopyableCode code="stop_vector_enrichment_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the Vector Enrichment job for a given job ARN.</td>
+</tr>
 </tbody>
 </table>
 
@@ -311,6 +332,70 @@ Use this operation to delete a Vector Enrichment job.
 DELETE FROM aws.sagemaker_geospatial.vector_enrichment_jobs
 WHERE arn = '{{ arn }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="export_vector_enrichment_job"
+    values={[
+        { label: 'export_vector_enrichment_job', value: 'export_vector_enrichment_job' },
+        { label: 'start_vector_enrichment_job', value: 'start_vector_enrichment_job' },
+        { label: 'stop_vector_enrichment_job', value: 'stop_vector_enrichment_job' }
+    ]}
+>
+<TabItem value="export_vector_enrichment_job">
+
+Use this operation to copy results of a Vector Enrichment job to an Amazon S3 location.
+
+```sql
+EXEC aws.sagemaker_geospatial.vector_enrichment_jobs.export_vector_enrichment_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Arn": "{{ Arn }}", 
+"ClientToken": "{{ ClientToken }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"OutputConfig": "{{ OutputConfig }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_vector_enrichment_job">
+
+Creates a Vector Enrichment job for the supplied job type. Currently, there are two supported job types: reverse geocoding and map matching.
+
+```sql
+EXEC aws.sagemaker_geospatial.vector_enrichment_jobs.start_vector_enrichment_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"ExecutionRoleArn": "{{ ExecutionRoleArn }}", 
+"InputConfig": "{{ InputConfig }}", 
+"JobConfig": "{{ JobConfig }}", 
+"KmsKeyId": "{{ KmsKeyId }}", 
+"Name": "{{ Name }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_vector_enrichment_job">
+
+Stops the Vector Enrichment job for a given job ARN.
+
+```sql
+EXEC aws.sagemaker_geospatial.vector_enrichment_jobs.stop_vector_enrichment_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Arn": "{{ Arn }}"
+}'
 ;
 ```
 </TabItem>

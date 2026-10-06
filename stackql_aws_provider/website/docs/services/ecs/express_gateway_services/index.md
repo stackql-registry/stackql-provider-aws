@@ -228,6 +228,7 @@ taskRoleArn,
 networkConfiguration,
 cpu,
 memory,
+cpuArchitecture,
 scalingTarget,
 tags,
 taskDefinitionArn,
@@ -244,6 +245,7 @@ SELECT
 '{{ networkConfiguration }}',
 '{{ cpu }}',
 '{{ memory }}',
+'{{ cpuArchitecture }}',
 '{{ scalingTarget }}',
 '{{ tags }}',
 '{{ taskDefinitionArn }}',
@@ -320,6 +322,11 @@ service
       value: "{{ memory }}"
       description: |
         The amount of memory (in MiB) used by the task. This parameter determines the memory allocation for each task in the Express service. The default value for an express service is 512 MiB.
+    - name: cpuArchitecture
+      value: "{{ cpuArchitecture }}"
+      description: |
+        The CPU architecture that the tasks in the Express service run on. Amazon ECS applies this value to the task definition revision that it registers for the service. If you don't specify a value, the default is X86_64. Valid values: X86_64 - The x86 64-bit architecture. ARM64 - The 64-bit ARM architecture. Make sure that the container image that you specify supports the architecture that you choose. The operating system family for an Express service is always LINUX. You can't specify cpuArchitecture when you also specify taskDefinitionArn, because this value applies only to a task definition that Amazon ECS registers on your behalf.
+      valid_values: ['X86_64', 'ARM64']
     - name: scalingTarget
       description: |
         The auto-scaling configuration for the Express service. This defines how the service automatically adjusts the number of running tasks based on demand. You can specify the minimum and maximum number of tasks, the scaling metric (CPU utilization, memory utilization, or request count per target), and the target value for the metric. If not specified, the default target value for an Express service is 60.
@@ -337,7 +344,7 @@ service
     - name: taskDefinitionArn
       value: "{{ taskDefinitionArn }}"
       description: |
-        The Amazon Resource Name (ARN) of a task definition to use to create the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers. The task definition must have a container named Main with a single TCP port mapping that includes a container port and port name. The task definition must also have FARGATE compatibility. If you provide a task definition ARN, you cannot also specify primaryContainer, executionRoleArn, taskRoleArn, cpu, or memory.
+        The Amazon Resource Name (ARN) of a task definition to use to create the Express Gateway service. This allows you to manage your own task definition, giving you more control over the service configuration such as adding sidecar containers. The task definition must have a container named Main with a single TCP port mapping that includes a container port and port name. The task definition must also have FARGATE compatibility. If you provide a task definition ARN, you cannot also specify primaryContainer, executionRoleArn, taskRoleArn, cpu, memory, or cpuArchitecture.
 `}</CodeBlock>
 
 </TabItem>
@@ -367,6 +374,7 @@ taskRoleArn = '{{ taskRoleArn }}',
 networkConfiguration = '{{ networkConfiguration }}',
 cpu = '{{ cpu }}',
 memory = '{{ memory }}',
+cpuArchitecture = '{{ cpuArchitecture }}',
 scalingTarget = '{{ scalingTarget }}',
 taskDefinitionArn = '{{ taskDefinitionArn }}'
 WHERE 

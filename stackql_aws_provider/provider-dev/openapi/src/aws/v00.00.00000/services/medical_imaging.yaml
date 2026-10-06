@@ -417,10 +417,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a medical imaging resource.
@@ -440,10 +436,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /datastore/{datastore_id}/searchImageSets:
     post:
       operationId: SearchImageSets
@@ -1608,8 +1600,6 @@ components:
         - jobId
         - jobStatus
         - submittedAt
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1619,8 +1609,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     MetadataUpdates:
       description: Contains DICOMUpdates.
       type: object
@@ -1860,10 +1848,10 @@ components:
         insert: []
         update: []
         delete: []
-    image_set_metadatas:
-      id: aws.medical_imaging.image_set_metadatas
-      name: image_set_metadatas
-      title: image_set_metadatas
+    image_set_metadata:
+      id: aws.medical_imaging.image_set_metadata
+      name: image_set_metadata
+      title: image_set_metadata
       methods:
         get_image_set_metadata:
           operation:
@@ -1886,10 +1874,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/image_set_metadatas/methods/get_image_set_metadata"
+          - $ref: "#/components/x-stackQL-resources/image_set_metadata/methods/get_image_set_metadata"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/image_set_metadatas/methods/update_image_set_metadata"
+          - $ref: "#/components/x-stackQL-resources/image_set_metadata/methods/update_image_set_metadata"
         delete: []
     image_set_versions:
       id: aws.medical_imaging.image_set_versions
@@ -1935,7 +1923,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1946,7 +1933,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

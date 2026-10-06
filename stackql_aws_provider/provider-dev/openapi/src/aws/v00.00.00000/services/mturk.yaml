@@ -50,10 +50,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptQualificationRequestResponse"
   /ApproveAssignment:
     post:
       operationId: ApproveAssignment
@@ -89,10 +85,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ApproveAssignmentResponse"
   /AssociateQualificationWithWorker:
     post:
       operationId: AssociateQualificationWithWorker
@@ -132,10 +124,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateQualificationWithWorkerResponse"
   /CreateAdditionalAssignmentsForHIT:
     post:
       operationId: CreateAdditionalAssignmentsForHIT
@@ -172,10 +160,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateAdditionalAssignmentsForHITResponse"
   /CreateHIT:
     post:
       operationId: CreateHIT
@@ -465,10 +449,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateWorkerBlockResponse"
   /DeleteHIT:
     post:
       operationId: DeleteHIT
@@ -498,10 +478,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteHITResponse"
   /DeleteQualificationType:
     post:
       operationId: DeleteQualificationType
@@ -531,10 +507,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQualificationTypeResponse"
   /DeleteWorkerBlock:
     post:
       operationId: DeleteWorkerBlock
@@ -567,10 +539,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkerBlockResponse"
   /DisassociateQualificationFromWorker:
     post:
       operationId: DisassociateQualificationFromWorker
@@ -607,10 +575,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateQualificationFromWorkerResponse"
   /GetAccountBalance:
     post:
       operationId: GetAccountBalance
@@ -1280,10 +1244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RejectAssignmentResponse"
   /RejectQualificationRequest:
     post:
       operationId: RejectQualificationRequest
@@ -1316,10 +1276,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RejectQualificationRequestResponse"
   /SendBonus:
     post:
       operationId: SendBonus
@@ -1364,10 +1320,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendBonusResponse"
   /SendTestEventNotification:
     post:
       operationId: SendTestEventNotification
@@ -1401,10 +1353,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendTestEventNotificationResponse"
   /UpdateExpirationForHIT:
     post:
       operationId: UpdateExpirationForHIT
@@ -1438,10 +1386,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateExpirationForHITResponse"
   /UpdateHITReviewStatus:
     post:
       operationId: UpdateHITReviewStatus
@@ -1474,10 +1418,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateHITReviewStatusResponse"
   /UpdateHITTypeOfHIT:
     post:
       operationId: UpdateHITTypeOfHIT
@@ -1511,10 +1451,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateHITTypeOfHITResponse"
   /UpdateNotificationSettings:
     post:
       operationId: UpdateNotificationSettings
@@ -1550,10 +1486,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotificationSettingsResponse"
   /UpdateQualificationType:
     post:
       operationId: UpdateQualificationType
@@ -1660,8 +1592,6 @@ components:
       type: string
     Integer:
       type: integer
-    AcceptQualificationRequestResponse:
-      type: object
     EntityId:
       type: string
       minLength: 1
@@ -1669,21 +1599,15 @@ components:
       pattern: ^[A-Z0-9]+$
     Boolean:
       type: boolean
-    ApproveAssignmentResponse:
-      type: object
     CustomerId:
       type: string
       minLength: 1
       maxLength: 64
       pattern: ^A[A-Z0-9]+$
-    AssociateQualificationWithWorkerResponse:
-      type: object
     IdempotencyToken:
       type: string
       minLength: 1
       maxLength: 64
-    CreateAdditionalAssignmentsForHITResponse:
-      type: object
     Long:
       type: integer
       format: int64
@@ -1983,16 +1907,6 @@ components:
         AutoGrantedValue:
           $ref: "#/components/schemas/Integer"
           description: The Qualification integer value to use for automatically granted Qualifications, if AutoGranted is true. This is 1 by default.
-    CreateWorkerBlockResponse:
-      type: object
-    DeleteHITResponse:
-      type: object
-    DeleteQualificationTypeResponse:
-      type: object
-    DeleteWorkerBlockResponse:
-      type: object
-    DisassociateQualificationFromWorkerResponse:
-      type: object
     GetAccountBalanceResponse:
       type: object
       properties:
@@ -2436,12 +2350,6 @@ components:
       enum:
         - SoftFailure
         - HardFailure
-    RejectAssignmentResponse:
-      type: object
-    RejectQualificationRequestResponse:
-      type: object
-    SendBonusResponse:
-      type: object
     NotificationSpecification:
       description: The NotificationSpecification data structure describes a HIT event notification for a HIT type.
       type: object
@@ -2488,16 +2396,6 @@ components:
         - HITExtended
         - HITDisposed
         - Ping
-    SendTestEventNotificationResponse:
-      type: object
-    UpdateExpirationForHITResponse:
-      type: object
-    UpdateHITReviewStatusResponse:
-      type: object
-    UpdateHITTypeOfHITResponse:
-      type: object
-    UpdateNotificationSettingsResponse:
-      type: object
     UpdateQualificationTypeResponse:
       type: object
       properties:
@@ -2515,7 +2413,6 @@ components:
             $ref: "#/paths/~1AcceptQualificationRequest/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2549,7 +2446,6 @@ components:
             $ref: "#/paths/~1RejectQualificationRequest/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2573,7 +2469,18 @@ components:
             $ref: "#/paths/~1ApproveAssignment/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_additional_assignments_for_hit:
+          operation:
+            $ref: "#/paths/~1CreateAdditionalAssignmentsForHIT/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2594,12 +2501,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_assignments_for_hit:
+          operation:
+            $ref: "#/paths/~1ListAssignmentsForHIT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Assignments
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         reject_assignment:
           operation:
             $ref: "#/paths/~1RejectAssignment/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2612,7 +2539,6 @@ components:
             $ref: "#/paths/~1SendBonus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2623,7 +2549,9 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assignments/methods/get_assignment"
-        insert: []
+          - $ref: "#/components/x-stackQL-resources/assignments/methods/list_assignments_for_hit"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/assignments/methods/create_additional_assignments_for_hit"
         update: []
         delete: []
     qualification_types:
@@ -2636,7 +2564,6 @@ components:
             $ref: "#/paths/~1AssociateQualificationWithWorker/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2662,7 +2589,6 @@ components:
             $ref: "#/paths/~1DeleteQualificationType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2675,7 +2601,6 @@ components:
             $ref: "#/paths/~1DisassociateQualificationFromWorker/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2742,52 +2667,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/qualification_types/methods/update_qualification_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/qualification_types/methods/delete_qualification_type"
-    assignments_for_hits:
-      id: aws.mturk.assignments_for_hits
-      name: assignments_for_hits
-      title: assignments_for_hits
-      methods:
-        create_additional_assignments_for_hit:
-          operation:
-            $ref: "#/paths/~1CreateAdditionalAssignmentsForHIT/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_assignments_for_hit:
-          operation:
-            $ref: "#/paths/~1ListAssignmentsForHIT/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Assignments
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/assignments_for_hits/methods/list_assignments_for_hit"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/assignments_for_hits/methods/create_additional_assignments_for_hit"
-        update: []
-        delete: []
     hits:
       id: aws.mturk.hits
       name: hits
@@ -2837,7 +2716,6 @@ components:
             $ref: "#/paths/~1DeleteHIT/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2864,7 +2742,6 @@ components:
             $ref: "#/paths/~1UpdateExpirationForHIT/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2877,7 +2754,6 @@ components:
             $ref: "#/paths/~1UpdateHITReviewStatus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2890,7 +2766,6 @@ components:
             $ref: "#/paths/~1UpdateHITTypeOfHIT/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2921,7 +2796,6 @@ components:
             $ref: "#/paths/~1CreateWorkerBlock/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2934,7 +2808,6 @@ components:
             $ref: "#/paths/~1DeleteWorkerBlock/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3102,17 +2975,6 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/hi_ts/methods/list_hi_ts"
-        insert: []
-        update: []
-        delete: []
-    hi_ts_for_qualification_types:
-      id: aws.mturk.hi_ts_for_qualification_types
-      name: hi_ts_for_qualification_types
-      title: hi_ts_for_qualification_types
-      methods:
         list_hi_ts_for_qualification_type:
           operation:
             $ref: "#/paths/~1ListHITsForQualificationType/post"
@@ -3136,14 +2998,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/hi_ts_for_qualification_types/methods/list_hi_ts_for_qualification_type"
+          - $ref: "#/components/x-stackQL-resources/hi_ts/methods/list_hi_ts_for_qualification_type"
+          - $ref: "#/components/x-stackQL-resources/hi_ts/methods/list_hi_ts"
         insert: []
         update: []
         delete: []
-    review_policy_results_for_hits:
-      id: aws.mturk.review_policy_results_for_hits
-      name: review_policy_results_for_hits
-      title: review_policy_results_for_hits
+    review_policy_results:
+      id: aws.mturk.review_policy_results
+      name: review_policy_results
+      title: review_policy_results
       methods:
         list_review_policy_results_for_hit:
           operation:
@@ -3160,7 +3023,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/review_policy_results_for_hits/methods/list_review_policy_results_for_hit"
+          - $ref: "#/components/x-stackQL-resources/review_policy_results/methods/list_review_policy_results_for_hit"
         insert: []
         update: []
         delete: []
@@ -3228,6 +3091,51 @@ components:
         insert: []
         update: []
         delete: []
+    workers:
+      id: aws.mturk.workers
+      name: workers
+      title: workers
+      methods:
+        notify_workers:
+          operation:
+            $ref: "#/paths/~1NotifyWorkers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    test_event_notifications:
+      id: aws.mturk.test_event_notifications
+      name: test_event_notifications
+      title: test_event_notifications
+      methods:
+        send_test_event_notification:
+          operation:
+            $ref: "#/paths/~1SendTestEventNotification/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     notification_settings:
       id: aws.mturk.notification_settings
       name: notification_settings
@@ -3238,7 +3146,6 @@ components:
             $ref: "#/paths/~1UpdateNotificationSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

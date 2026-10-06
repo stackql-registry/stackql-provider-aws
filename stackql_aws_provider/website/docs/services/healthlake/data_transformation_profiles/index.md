@@ -199,6 +199,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a data transformation profile and all its versions, including the DRAFT and all published versions.</td>
 </tr>
+<tr>
+    <td><a href="#publish_data_transformation_profile"><CopyableCode code="publish_data_transformation_profile" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProfileId"><code>ProfileId</code></a>, <a href="#parameter-SourceFormat"><code>SourceFormat</code></a></td>
+    <td></td>
+    <td>Promotes the current DRAFT version of a data transformation profile to a new immutable published version. Also supports rollback by publishing from a previously published version.</td>
+</tr>
 </tbody>
 </table>
 
@@ -345,7 +352,7 @@ version
     - name: KmsKeyId
       value: "{{ KmsKeyId }}"
       description: |
-        The AWS Key Management Service (AWS KMS) key identifier used to encrypt the profile content at rest.
+        The Amazon Web Services Key Management Service (Amazon Web Services KMS) key identifier used to encrypt the profile content at rest.
     - name: ProfileDescription
       value: "{{ ProfileDescription }}"
       description: |
@@ -416,6 +423,34 @@ Deletes a data transformation profile and all its versions, including the DRAFT 
 ```sql
 DELETE FROM aws.healthlake.data_transformation_profiles
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="publish_data_transformation_profile"
+    values={[
+        { label: 'publish_data_transformation_profile', value: 'publish_data_transformation_profile' }
+    ]}
+>
+<TabItem value="publish_data_transformation_profile">
+
+Promotes the current DRAFT version of a data transformation profile to a new immutable published version. Also supports rollback by publishing from a previously published version.
+
+```sql
+EXEC aws.healthlake.data_transformation_profiles.publish_data_transformation_profile 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ProfileId": "{{ ProfileId }}", 
+"SourceFormat": "{{ SourceFormat }}", 
+"FromExistingVersion": {{ FromExistingVersion }}, 
+"ChangeDescription": "{{ ChangeDescription }}"
+}'
 ;
 ```
 </TabItem>

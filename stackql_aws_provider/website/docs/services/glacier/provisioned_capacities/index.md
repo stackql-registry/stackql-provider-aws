@@ -81,6 +81,13 @@ The following methods are available for this resource:
     <td></td>
     <td>This operation lists the provisioned capacity units for the specified AWS account.</td>
 </tr>
+<tr>
+    <td><a href="#purchase_provisioned_capacity"><CopyableCode code="purchase_provisioned_capacity" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-account_id"><code>account_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This operation purchases a provisioned capacity unit for an AWS account.</td>
+</tr>
 </tbody>
 </table>
 
@@ -128,6 +135,28 @@ provisioned_capacity_list
 FROM aws.glacier.provisioned_capacities
 WHERE account_id = '{{ account_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="purchase_provisioned_capacity"
+    values={[
+        { label: 'purchase_provisioned_capacity', value: 'purchase_provisioned_capacity' }
+    ]}
+>
+<TabItem value="purchase_provisioned_capacity">
+
+This operation purchases a provisioned capacity unit for an AWS account.
+
+```sql
+EXEC aws.glacier.provisioned_capacities.purchase_provisioned_capacity 
+@account_id='{{ account_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

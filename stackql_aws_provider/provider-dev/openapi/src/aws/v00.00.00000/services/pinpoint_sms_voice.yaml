@@ -34,10 +34,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetResponse"
     get:
       operationId: ListConfigurationSets
       description: List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
@@ -86,10 +82,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateConfigurationSetEventDestinationResponse"
     get:
       operationId: GetConfigurationSetEventDestinations
       description: Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
@@ -121,10 +113,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetResponse"
   /v1/sms-voice/configuration-sets/{configuration_set_name}/event-destinations/{event_destination_name}:
     delete:
       operationId: DeleteConfigurationSetEventDestination
@@ -145,10 +133,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationResponse"
     put:
       operationId: UpdateConfigurationSetEventDestination
       description: Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
@@ -177,10 +161,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationSetEventDestinationResponse"
   /v1/sms-voice/voice/message:
     post:
       operationId: SendVoiceMessage
@@ -257,9 +237,6 @@ components:
   schemas:
     WordCharactersWithDelimiters:
       type: string
-    CreateConfigurationSetResponse:
-      description: An empty object that indicates that the configuration set was successfully created.
-      type: object
     __string:
       type: string
     EventDestinationDefinition:
@@ -326,15 +303,6 @@ components:
           description: The Amazon Resource Name (ARN) of the Amazon SNS topic that you want to publish events to.
     NonEmptyString:
       type: string
-    CreateConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was created successfully.
-      type: object
-    DeleteConfigurationSetResponse:
-      description: An empty object that indicates that the configuration set was deleted successfully.
-      type: object
-    DeleteConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was deleted successfully.
-      type: object
     GetConfigurationSetEventDestinationsResponse:
       description: An object that contains information about an event destination.
       type: object
@@ -427,9 +395,6 @@ components:
         MessageId:
           $ref: "#/components/schemas/String"
           description: A unique identifier for the voice message.
-    UpdateConfigurationSetEventDestinationResponse:
-      description: An empty object that indicates that the event destination was updated successfully.
-      type: object
   x-stackQL-resources:
     configuration_sets:
       id: aws.pinpoint_sms_voice.configuration_sets
@@ -441,7 +406,6 @@ components:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -467,7 +431,6 @@ components:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets~1{configuration_set_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/list_configuration_sets"
@@ -486,7 +449,6 @@ components:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets~1{configuration_set_name}~1event-destinations/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -503,13 +465,11 @@ components:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets~1{configuration_set_name}~1event-destinations~1{event_destination_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_configuration_set_event_destination:
           operation:
             $ref: "#/paths/~1v1~1sms-voice~1configuration-sets~1{configuration_set_name}~1event-destinations~1{event_destination_name}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -524,3 +484,24 @@ components:
           - $ref: "#/components/x-stackQL-resources/configuration_set_event_destinations/methods/update_configuration_set_event_destination"
         delete:
           - $ref: "#/components/x-stackQL-resources/configuration_set_event_destinations/methods/delete_configuration_set_event_destination"
+    voice_messages:
+      id: aws.pinpoint_sms_voice.voice_messages
+      name: voice_messages
+      title: voice_messages
+      methods:
+        send_voice_message:
+          operation:
+            $ref: "#/paths/~1v1~1sms-voice~1voice~1message/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

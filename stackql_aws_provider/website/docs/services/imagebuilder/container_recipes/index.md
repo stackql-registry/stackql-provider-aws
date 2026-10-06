@@ -279,6 +279,7 @@ workingDirectory,
 targetRepository,
 kmsKeyId,
 clientToken,
+dryRun,
 region
 )
 SELECT 
@@ -298,6 +299,7 @@ SELECT
 '{{ targetRepository }}' /* required */,
 '{{ kmsKeyId }}',
 '{{ clientToken }}' /* required */,
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -371,6 +373,8 @@ request_id
       value: "{{ kmsKeyId }}"
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>

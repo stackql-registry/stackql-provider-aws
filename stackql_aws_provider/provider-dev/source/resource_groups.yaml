@@ -36,7 +36,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags
+      x-stackql-resource: tag_sync_tasks
       x-stackql-method: cancel_tag_sync_task
       x-stackql-verb: EXEC
   /groups:
@@ -292,7 +292,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagOutput'
-      x-stackql-resource: tag
+      x-stackql-resource: gs
       x-stackql-method: tag
       x-stackql-verb: EXEC
     patch:
@@ -325,7 +325,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagOutput'
-      x-stackql-resource: untag
+      x-stackql-resource: gs
       x-stackql-method: untag
       x-stackql-verb: EXEC
   /group-resources:
@@ -357,7 +357,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupResourcesOutput'
-      x-stackql-resource: group_resources
+      x-stackql-resource: resources
       x-stackql-method: group_resources
       x-stackql-verb: EXEC
   /list-group-resources:
@@ -538,10 +538,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutGroupConfigurationOutput'
       x-stackql-resource: group_configurations
       x-stackql-method: put_group_configuration
       x-stackql-verb: REPLACE
@@ -620,7 +616,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTagSyncTaskOutput'
-      x-stackql-resource: tags
+      x-stackql-resource: tag_sync_tasks
       x-stackql-method: start_tag_sync_task
       x-stackql-verb: EXEC
   /ungroup-resources:
@@ -1611,8 +1607,6 @@ components:
         CreatedAt:
           $ref: '#/components/schemas/timestamp'
           description: The timestamp of when the tag-sync task was created.
-    PutGroupConfigurationOutput:
-      type: object
     SearchResourcesOutput:
       type: object
       properties:

@@ -237,10 +237,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a support permit resource.
@@ -260,10 +256,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /support-permit-requests/{request_arn}/reject:
     put:
       operationId: RejectSupportPermitRequest
@@ -750,8 +742,6 @@ components:
           description: The ARN of the rejected permit request.
       required:
         - requestArn
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -760,8 +750,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
   x-stackQL-resources:
     support_permits:
       id: aws.supportauthz.support_permits
@@ -902,7 +890,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -913,7 +900,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

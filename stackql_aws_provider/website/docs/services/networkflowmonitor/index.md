@@ -28,12 +28,12 @@ total resources: __9__
 <a href="/services/networkflowmonitor/monitors/">monitors</a><br />
 <a href="/services/networkflowmonitor/query_results_monitor_top_contributors/">query_results_monitor_top_contributors</a><br />
 <a href="/services/networkflowmonitor/query_results_workload_insights_top_contributors/">query_results_workload_insights_top_contributors</a><br />
-<a href="/services/networkflowmonitor/query_results_workload_insights_top_contributors_datas/">query_results_workload_insights_top_contributors_datas</a><br />
+<a href="/services/networkflowmonitor/query_results_workload_insights_top_contributors_data/">query_results_workload_insights_top_contributors_data</a><br />
 <a href="/services/networkflowmonitor/query_status_monitor_top_contributors/">query_status_monitor_top_contributors</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/networkflowmonitor/query_status_workload_insights_top_contributors/">query_status_workload_insights_top_contributors</a><br />
-<a href="/services/networkflowmonitor/query_status_workload_insights_top_contributors_datas/">query_status_workload_insights_top_contributors_datas</a><br />
+<a href="/services/networkflowmonitor/query_status_workload_insights_top_contributors_data/">query_status_workload_insights_top_contributors_data</a><br />
 <a href="/services/networkflowmonitor/scopes/">scopes</a><br />
 <a href="/services/networkflowmonitor/tags/">tags</a>
 </div>

@@ -184,6 +184,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns the list of all inference experiments.</td>
 </tr>
+<tr>
+    <td><a href="#start_inference_experiment"><CopyableCode code="start_inference_experiment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts an inference experiment.</td>
+</tr>
+<tr>
+    <td><a href="#stop_inference_experiment"><CopyableCode code="stop_inference_experiment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ModelVariantActions"><code>ModelVariantActions</code></a></td>
+    <td></td>
+    <td>Stops an inference experiment.</td>
+</tr>
 </tbody>
 </table>
 
@@ -429,7 +443,9 @@ WHERE region = '{{ region }}' --required
 <Tabs
     defaultValue="list_inference_experiments"
     values={[
-        { label: 'list_inference_experiments', value: 'list_inference_experiments' }
+        { label: 'list_inference_experiments', value: 'list_inference_experiments' },
+        { label: 'start_inference_experiment', value: 'start_inference_experiment' },
+        { label: 'stop_inference_experiment', value: 'stop_inference_experiment' }
     ]}
 >
 <TabItem value="list_inference_experiments">
@@ -452,6 +468,38 @@ EXEC aws.sagemaker.inference_experiments.list_inference_experiments
 "SortOrder": "{{ SortOrder }}", 
 "NextToken": "{{ NextToken }}", 
 "MaxResults": {{ MaxResults }}
+}'
+;
+```
+</TabItem>
+<TabItem value="start_inference_experiment">
+
+Starts an inference experiment.
+
+```sql
+EXEC aws.sagemaker.inference_experiments.start_inference_experiment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_inference_experiment">
+
+Stops an inference experiment.
+
+```sql
+EXEC aws.sagemaker.inference_experiments.stop_inference_experiment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"ModelVariantActions": "{{ ModelVariantActions }}", 
+"DesiredModelVariants": "{{ DesiredModelVariants }}", 
+"DesiredState": "{{ DesiredState }}", 
+"Reason": "{{ Reason }}"
 }'
 ;
 ```

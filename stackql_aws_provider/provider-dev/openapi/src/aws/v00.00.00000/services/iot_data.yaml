@@ -809,10 +809,10 @@ components:
         insert: []
         update: []
         delete: []
-    named_shadows_for_things:
-      id: aws.iot_data.named_shadows_for_things
-      name: named_shadows_for_things
-      title: named_shadows_for_things
+    named_shadows:
+      id: aws.iot_data.named_shadows
+      name: named_shadows
+      title: named_shadows
       methods:
         list_named_shadows_for_thing:
           operation:
@@ -824,7 +824,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/named_shadows_for_things/methods/list_named_shadows_for_thing"
+          - $ref: "#/components/x-stackQL-resources/named_shadows/methods/list_named_shadows_for_thing"
         insert: []
         update: []
         delete: []
@@ -853,6 +853,47 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
+        insert: []
+        update: []
+        delete: []
+    publishes:
+      id: aws.iot_data.publishes
+      name: publishes
+      title: publishes
+      methods:
+        publish:
+          operation:
+            $ref: "#/paths/~1topics~1{topic}/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    direct_messages:
+      id: aws.iot_data.direct_messages
+      name: direct_messages
+      title: direct_messages
+      methods:
+        send_direct_message:
+          operation:
+            $ref: "#/paths/~1connections~1{client_id}~1messages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

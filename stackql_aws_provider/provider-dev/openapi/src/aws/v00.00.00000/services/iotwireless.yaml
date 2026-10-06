@@ -88,10 +88,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMulticastGroupWithFuotaTaskResponse"
   /fuota-tasks/{id}/wireless-device:
     put:
       operationId: AssociateWirelessDeviceWithFuotaTask
@@ -116,10 +112,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateWirelessDeviceWithFuotaTaskResponse"
   /multicast-groups/{id}/wireless-device:
     put:
       operationId: AssociateWirelessDeviceWithMulticastGroup
@@ -144,10 +136,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateWirelessDeviceWithMulticastGroupResponse"
   /wireless-devices/{id}/thing:
     put:
       operationId: AssociateWirelessDeviceWithThing
@@ -173,10 +161,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateWirelessDeviceWithThingResponse"
     delete:
       operationId: DisassociateWirelessDeviceFromThing
       description: Disassociates a wireless device from its currently associated thing.
@@ -190,10 +174,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWirelessDeviceFromThingResponse"
   /wireless-gateways/{id}/certificate:
     put:
       operationId: AssociateWirelessGatewayWithCertificate
@@ -236,10 +216,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWirelessGatewayFromCertificateResponse"
     get:
       operationId: GetWirelessGatewayCertificate
       description: Gets the ID of the certificate that is currently associated with a wireless gateway.
@@ -282,10 +258,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateWirelessGatewayWithThingResponse"
     delete:
       operationId: DisassociateWirelessGatewayFromThing
       description: Disassociates a wireless gateway from its currently associated thing.
@@ -299,10 +271,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWirelessGatewayFromThingResponse"
   /multicast-groups/{id}/session:
     delete:
       operationId: CancelMulticastGroupSession
@@ -316,10 +284,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelMulticastGroupSessionResponse"
     get:
       operationId: GetMulticastGroupSession
       description: Gets information about a multicast group session.
@@ -359,10 +323,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartMulticastGroupSessionResponse"
   /destinations:
     post:
       operationId: CreateDestination
@@ -898,10 +858,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWirelessGatewayTaskResponse"
     get:
       operationId: GetWirelessGatewayTask
       description: Gets information about a wireless gateway task.
@@ -993,10 +949,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDestinationResponse"
     get:
       operationId: GetDestination
       description: Gets information about a destination.
@@ -1042,10 +994,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDestinationResponse"
   /device-profiles/{id}:
     delete:
       operationId: DeleteDeviceProfile
@@ -1060,10 +1008,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDeviceProfileResponse"
     get:
       operationId: GetDeviceProfile
       description: Gets information about a device profile.
@@ -1094,10 +1038,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFuotaTaskResponse"
     get:
       operationId: GetFuotaTask
       description: Gets information about a FUOTA task.
@@ -1135,10 +1075,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartFuotaTaskResponse"
     patch:
       operationId: UpdateFuotaTask
       description: Updates properties of a FUOTA task.
@@ -1176,10 +1112,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFuotaTaskResponse"
   /multicast-groups/{id}:
     delete:
       operationId: DeleteMulticastGroup
@@ -1193,10 +1125,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMulticastGroupResponse"
     get:
       operationId: GetMulticastGroup
       description: Gets information about a multicast group.
@@ -1238,10 +1166,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMulticastGroupResponse"
   /network-analyzer-configurations/{configuration_name}:
     delete:
       operationId: DeleteNetworkAnalyzerConfiguration
@@ -1255,10 +1179,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNetworkAnalyzerConfigurationResponse"
     get:
       operationId: GetNetworkAnalyzerConfiguration
       description: Get network analyzer configuration.
@@ -1310,10 +1230,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNetworkAnalyzerConfigurationResponse"
   /wireless-devices/{id}/data:
     delete:
       operationId: DeleteQueuedMessages
@@ -1340,10 +1256,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueuedMessagesResponse"
     get:
       operationId: ListQueuedMessages
       description: List queued messages in the downlink queue.
@@ -1426,10 +1338,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteServiceProfileResponse"
     get:
       operationId: GetServiceProfile
       description: Gets information about a service profile.
@@ -1461,10 +1369,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWirelessDeviceResponse"
     patch:
       operationId: UpdateWirelessDevice
       description: Updates properties of a wireless device.
@@ -1497,10 +1401,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWirelessDeviceResponse"
   /wireless_device_import_task/{id}:
     delete:
       operationId: DeleteWirelessDeviceImportTask
@@ -1515,10 +1415,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWirelessDeviceImportTaskResponse"
     get:
       operationId: GetWirelessDeviceImportTask
       description: Get information about an import task and count of device onboarding summary information for the import task.
@@ -1558,10 +1454,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWirelessDeviceImportTaskResponse"
   /wireless-gateways/{id}:
     delete:
       operationId: DeleteWirelessGateway
@@ -1576,10 +1468,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWirelessGatewayResponse"
     patch:
       operationId: UpdateWirelessGateway
       description: Updates properties of a wireless gateway.
@@ -1610,10 +1498,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWirelessGatewayResponse"
   /wireless-gateway-task-definitions/{id}:
     delete:
       operationId: DeleteWirelessGatewayTaskDefinition
@@ -1628,10 +1512,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWirelessGatewayTaskDefinitionResponse"
     get:
       operationId: GetWirelessGatewayTaskDefinition
       description: Gets information about a wireless gateway task definition.
@@ -1669,10 +1549,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterWirelessDeviceResponse"
   /partner-accounts/{partner_account_id}:
     delete:
       operationId: DisassociateAwsAccountFromPartnerAccount
@@ -1693,10 +1569,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAwsAccountFromPartnerAccountResponse"
     get:
       operationId: GetPartnerAccount
       description: Gets information about a partner account. If PartnerAccountId and PartnerType are null, returns all partner accounts.
@@ -1748,10 +1620,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePartnerAccountResponse"
   /fuota-tasks/{id}/multicast-groups/{multicast_group_id}:
     delete:
       operationId: DisassociateMulticastGroupFromFuotaTask
@@ -1770,10 +1638,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMulticastGroupFromFuotaTaskResponse"
   /fuota-tasks/{id}/wireless-devices/{wireless_device_id}:
     delete:
       operationId: DisassociateWirelessDeviceFromFuotaTask
@@ -1792,10 +1656,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWirelessDeviceFromFuotaTaskResponse"
   /multicast-groups/{id}/wireless-devices/{wireless_device_id}:
     delete:
       operationId: DisassociateWirelessDeviceFromMulticastGroup
@@ -1814,10 +1674,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateWirelessDeviceFromMulticastGroupResponse"
   /event-configurations-resource-types:
     get:
       operationId: GetEventConfigurationByResourceTypes
@@ -1854,10 +1710,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEventConfigurationByResourceTypesResponse"
   /log-levels:
     get:
       operationId: GetLogLevelsByResourceTypes
@@ -1877,10 +1729,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResetAllResourceLogLevelsResponse"
     post:
       operationId: UpdateLogLevelsByResourceTypes
       description: Set default log level, or log levels by resource types. This can be for wireless device, wireless gateway, or FUOTA task log options, and is used to control the log messages that'll be displayed in CloudWatch.
@@ -1903,10 +1751,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLogLevelsByResourceTypesResponse"
   /metric-configuration:
     get:
       operationId: GetMetricConfiguration
@@ -1935,10 +1779,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMetricConfigurationResponse"
   /metrics:
     post:
       operationId: GetMetrics
@@ -2012,10 +1852,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePositionResponse"
   /position-configurations/{resource_identifier}:
     get:
       operationId: GetPositionConfiguration
@@ -2070,10 +1906,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPositionConfigurationResponse"
   /position-estimate:
     post:
       operationId: GetPositionEstimate
@@ -2094,6 +1926,8 @@ paths:
                   $ref: "#/components/schemas/Ip"
                 Gnss:
                   $ref: "#/components/schemas/Gnss"
+                GnssMultiFrame:
+                  $ref: "#/components/schemas/GnssMultiFrame"
                 Timestamp:
                   $ref: "#/components/schemas/CreationDate"
                 AdvancedConfiguration:
@@ -2177,10 +2011,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceEventConfigurationResponse"
   /log-levels/{resource_identifier}:
     get:
       operationId: GetResourceLogLevel
@@ -2233,10 +2063,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourceLogLevelResponse"
     delete:
       operationId: ResetResourceLogLevel
       description: Removes the log-level override, if any, for a specific resource ID and resource type. It can be used for a wireless device, a wireless gateway, or a FUOTA task.
@@ -2255,10 +2081,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResetResourceLogLevelResponse"
   /resource-positions/{resource_identifier}:
     get:
       operationId: GetResourcePosition
@@ -2311,10 +2133,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourcePositionResponse"
   /service-endpoint:
     get:
       operationId: GetServiceEndpoint
@@ -2626,10 +2444,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a resource.
@@ -2649,10 +2463,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /wireless_device_import_tasks:
     get:
       operationId: ListWirelessDeviceImportTasks
@@ -2731,10 +2541,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartBulkAssociateWirelessDeviceWithMulticastGroupResponse"
     post:
       operationId: StartBulkDisassociateWirelessDeviceFromMulticastGroup
       description: Starts a bulk disassociatin of all qualifying wireless devices from a multicast group.
@@ -2758,10 +2564,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse"
   /wireless_single_device_import_task:
     post:
       operationId: StartSingleWirelessDeviceImportTask
@@ -2929,20 +2731,12 @@ components:
       description: The ID of the multicast group.
       type: string
       maxLength: 256
-    AssociateMulticastGroupWithFuotaTaskResponse:
-      type: object
     WirelessDeviceId:
       description: The ID of the wireless device.
       type: string
       maxLength: 256
-    AssociateWirelessDeviceWithFuotaTaskResponse:
-      type: object
-    AssociateWirelessDeviceWithMulticastGroupResponse:
-      type: object
     ThingArn:
       type: string
-    AssociateWirelessDeviceWithThingResponse:
-      type: object
     WirelessGatewayId:
       type: string
       maxLength: 256
@@ -2956,10 +2750,6 @@ components:
         IotCertificateId:
           $ref: "#/components/schemas/IotCertificateId"
           description: The ID of the certificate associated with the wireless gateway.
-    AssociateWirelessGatewayWithThingResponse:
-      type: object
-    CancelMulticastGroupSessionResponse:
-      type: object
     DestinationName:
       type: string
       maxLength: 128
@@ -3863,40 +3653,14 @@ components:
           description: The Amazon Resource Name of the resource.
     WirelessGatewayTaskDefinitionArn:
       type: string
-    DeleteDestinationResponse:
-      type: object
-    DeleteDeviceProfileResponse:
-      type: object
-    DeleteFuotaTaskResponse:
-      type: object
-    DeleteMulticastGroupResponse:
-      type: object
-    DeleteNetworkAnalyzerConfigurationResponse:
-      type: object
     MessageId:
       type: string
-    DeleteQueuedMessagesResponse:
-      type: object
-    DeleteServiceProfileResponse:
-      type: object
-    DeleteWirelessDeviceResponse:
-      type: object
     ImportTaskId:
       type: string
       maxLength: 256
-    DeleteWirelessDeviceImportTaskResponse:
-      type: object
-    DeleteWirelessGatewayResponse:
-      type: object
-    DeleteWirelessGatewayTaskResponse:
-      type: object
-    DeleteWirelessGatewayTaskDefinitionResponse:
-      type: object
     Identifier:
       type: string
       maxLength: 256
-    DeregisterWirelessDeviceResponse:
-      type: object
     PartnerAccountId:
       type: string
       maxLength: 256
@@ -3904,20 +3668,6 @@ components:
       type: string
       enum:
         - Sidewalk
-    DisassociateAwsAccountFromPartnerAccountResponse:
-      type: object
-    DisassociateMulticastGroupFromFuotaTaskResponse:
-      type: object
-    DisassociateWirelessDeviceFromFuotaTaskResponse:
-      type: object
-    DisassociateWirelessDeviceFromMulticastGroupResponse:
-      type: object
-    DisassociateWirelessDeviceFromThingResponse:
-      type: object
-    DisassociateWirelessGatewayFromCertificateResponse:
-      type: object
-    DisassociateWirelessGatewayFromThingResponse:
-      type: object
     GetDestinationResponse:
       type: object
       properties:
@@ -5380,23 +5130,60 @@ components:
       format: float
     Use2DSolver:
       type: boolean
+    GnssMultiFrame:
+      description: Global navigation satellite system (GNSS) multi-frame object used for positioning. Contains multiple GNSS scan captures that are combined by the solver.
+      type: object
+      properties:
+        Captures:
+          $ref: "#/components/schemas/GnssCaptures"
+          description: List of GNSS scan captures. Each capture contains a payload from a single GNSS scan. The number of captures must be 2, 4, 8, 16, or 32.
+        CaptureTimeAccuracy:
+          $ref: "#/components/schemas/CaptureTimeAccuracy"
+          description: Optional value that gives the capture time estimate accuracy, in seconds. If capture time accuracy is not specified, default value of 300 is used.
+        AssistPosition:
+          $ref: "#/components/schemas/AssistPosition"
+          description: Optional assistance position information, specified using latitude and longitude values in degrees. The coordinates are inside the WGS84 reference frame.
+        AssistAltitude:
+          $ref: "#/components/schemas/Coordinate"
+          description: Optional assistance altitude, which is the altitude of the device at capture time, specified in meters above the WGS84 reference ellipsoid. This parameter is required when Use2DSolver is enabled.
+        Use2DSolver:
+          $ref: "#/components/schemas/Use2DSolver"
+          description: Optional parameter that forces 2D solve, which modifies the positioning algorithm to a 2D solution problem. When this parameter is specified, the assistance altitude should have an accuracy of at least 10 meters.
+      required:
+        - Captures
+    GnssCaptures:
+      type: array
+      items:
+        $ref: "#/components/schemas/GnssCapture"
+    GnssCapture:
+      description: A single GNSS scan capture containing the scan payload and optional capture time.
+      type: object
+      properties:
+        Payload:
+          $ref: "#/components/schemas/GnssNav"
+          description: Payload that contains the GNSS scan result, or NAV message, in hexadecimal notation.
+        CaptureTime:
+          $ref: "#/components/schemas/GPST"
+          description: Optional parameter that gives an estimate of the time when the GNSS scan information is taken, in seconds GPS time (GPST). If capture time is not specified, the local server time is used.
+      required:
+        - Payload
     CreationDate:
       type: string
       format: date-time
     AdvancedConfiguration:
-      description: Optional configuration to customize location estimates.
+      description: Optional configuration for customizing position estimates, including parameters that affect the accuracy and uncertainty of WiFi and cellular-based location estimates.
       type: object
       properties:
         WiFiCellular:
           $ref: "#/components/schemas/WiFiCellular"
-          description: Configuration for WiFi and cellular-based payloads for location estimates.
+          description: Configuration for WiFi and cellular-based location estimate payloads resolved by HERE's solvers.
     WiFiCellular:
-      description: Configuration for WiFi and cellular location payloads.
+      description: Configuration for WiFi and cellular location payloads. Contains the confidence level that determines the size of the uncertainty radius in the position estimate.
       type: object
       properties:
         ConfidencePercent:
           $ref: "#/components/schemas/ConfidencePercent"
-          description: "Confidence level for WiFi and cellular position estimates, expressed as a percentage. Valid range: 50–99 inclusive. Defaults to 68 if not specified."
+          description: "The confidence level for WiFi and cellular position estimates, expressed as a percentage. This value determines the size of the confidence area or uncertainty radius for the estimated position. A higher confidence level produces a larger uncertainty radius, while a lower confidence level produces a smaller, more precise radius. Valid range: 50 to 99 inclusive. If not specified, the default value of 68 is used, which corresponds to approximately one standard deviation of the normal distribution."
     ConfidencePercent:
       type: integer
       minimum: 50
@@ -6832,14 +6619,6 @@ components:
       required:
         - Status
         - Fec
-    PutPositionConfigurationResponse:
-      type: object
-    PutResourceLogLevelResponse:
-      type: object
-    ResetAllResourceLogLevelsResponse:
-      type: object
-    ResetResourceLogLevelResponse:
-      type: object
     PayloadData:
       description: The binary to be sent to the end device, encoded in base64.
       type: string
@@ -6914,20 +6693,12 @@ components:
       description: Query string used to search for wireless devices as part of the bulk associate and disassociate process.
       type: string
       maxLength: 4096
-    StartBulkAssociateWirelessDeviceWithMulticastGroupResponse:
-      type: object
-    StartBulkDisassociateWirelessDeviceFromMulticastGroupResponse:
-      type: object
     LoRaWANStartFuotaTask:
       description: The LoRaWAN information used to start a FUOTA task.
       type: object
       properties:
         StartTime:
           $ref: "#/components/schemas/StartTime"
-    StartFuotaTaskResponse:
-      type: object
-    StartMulticastGroupSessionResponse:
-      type: object
     DeviceName:
       type: string
     SidewalkSingleStartImportInfo:
@@ -6971,8 +6742,6 @@ components:
         Arn:
           $ref: "#/components/schemas/ImportTaskArn"
           description: The ARN (Amazon Resource Name) of the import task.
-    TagResourceResponse:
-      type: object
     TestWirelessDeviceResponse:
       type: object
       properties:
@@ -6986,22 +6755,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateDestinationResponse:
-      type: object
-    UpdateEventConfigurationByResourceTypesResponse:
-      type: object
-    UpdateFuotaTaskResponse:
-      type: object
-    UpdateLogLevelsByResourceTypesResponse:
-      type: object
-    UpdateMetricConfigurationResponse:
-      type: object
-    UpdateMulticastGroupResponse:
-      type: object
-    UpdateNetworkAnalyzerConfigurationResponse:
-      type: object
     SidewalkUpdateAccount:
       description: Sidewalk update.
       type: object
@@ -7009,14 +6762,6 @@ components:
         AppServerPrivateKey:
           $ref: "#/components/schemas/AppServerPrivateKey"
           description: The new Sidewalk application server private key.
-    UpdatePartnerAccountResponse:
-      type: object
-    UpdatePositionResponse:
-      type: object
-    UpdateResourceEventConfigurationResponse:
-      type: object
-    UpdateResourcePositionResponse:
-      type: object
     LoRaWANUpdateDevice:
       description: LoRaWAN object for update functions.
       type: object
@@ -7067,8 +6812,6 @@ components:
         Positioning:
           $ref: "#/components/schemas/SidewalkPositioning"
           description: The Positioning object of the Sidewalk device.
-    UpdateWirelessDeviceResponse:
-      type: object
     SidewalkUpdateImportInfo:
       description: Sidewalk object information for updating an import task.
       type: object
@@ -7076,10 +6819,6 @@ components:
         DeviceCreationFile:
           $ref: "#/components/schemas/DeviceCreationFile"
           description: The CSV file contained in an S3 bucket that's used for appending devices to an existing import task.
-    UpdateWirelessDeviceImportTaskResponse:
-      type: object
-    UpdateWirelessGatewayResponse:
-      type: object
   x-stackQL-resources:
     partner_accounts:
       id: aws.iotwireless.partner_accounts
@@ -7110,7 +6849,6 @@ components:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_partner_account:
           operation:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/get"
@@ -7124,7 +6862,6 @@ components:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7149,7 +6886,6 @@ components:
             $ref: "#/paths/~1fuota-tasks~1{id}~1multicast-group/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7160,7 +6896,6 @@ components:
             $ref: "#/paths/~1fuota-tasks~1{id}~1wireless-device/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7190,19 +6925,27 @@ components:
             $ref: "#/paths/~1fuota-tasks~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_fuota_task:
           operation:
             $ref: "#/paths/~1fuota-tasks~1{id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}/put"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_fuota_task:
           operation:
             $ref: "#/paths/~1fuota-tasks~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7213,13 +6956,11 @@ components:
             $ref: "#/paths/~1fuota-tasks~1{id}~1multicast-groups~1{multicast_group_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         disassociate_wireless_device_from_fuota_task:
           operation:
             $ref: "#/paths/~1fuota-tasks~1{id}~1wireless-devices~1{wireless_device_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/get_fuota_task"
@@ -7229,8 +6970,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/associate_multicast_group_with_fuota_task"
           - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/associate_wireless_device_with_fuota_task"
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/disassociate_multicast_group_from_fuota_task"
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/disassociate_wireless_device_from_fuota_task"
           - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/update_fuota_task"
         delete:
           - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/delete_fuota_task"
@@ -7244,7 +6983,6 @@ components:
             $ref: "#/paths/~1multicast-groups~1{id}~1wireless-device/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7255,13 +6993,11 @@ components:
             $ref: "#/paths/~1multicast-groups~1{id}~1session/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         start_multicast_group_session:
           operation:
             $ref: "#/paths/~1multicast-groups~1{id}~1session/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7291,7 +7027,6 @@ components:
             $ref: "#/paths/~1multicast-groups~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_multicast_group:
           operation:
             $ref: "#/paths/~1multicast-groups~1{id}/get"
@@ -7303,7 +7038,6 @@ components:
             $ref: "#/paths/~1multicast-groups~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7314,7 +7048,6 @@ components:
             $ref: "#/paths/~1multicast-groups~1{id}~1wireless-devices~1{wireless_device_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/get_multicast_group"
@@ -7323,7 +7056,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/create_multicast_group"
         update:
           - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/associate_wireless_device_with_multicast_group"
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/disassociate_wireless_device_from_multicast_group"
           - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/update_multicast_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/delete_multicast_group"
@@ -7337,7 +7069,6 @@ components:
             $ref: "#/paths/~1wireless-devices~1{id}~1thing/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7348,7 +7079,6 @@ components:
             $ref: "#/paths/~1wireless-devices~1{id}~1thing/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         create_wireless_device:
           operation:
             $ref: "#/paths/~1wireless-devices/post"
@@ -7373,13 +7103,11 @@ components:
             $ref: "#/paths/~1wireless-devices~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         update_wireless_device:
           operation:
             $ref: "#/paths/~1wireless-devices~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7390,7 +7118,6 @@ components:
             $ref: "#/paths/~1wireless-devices~1{identifier}~1deregister/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_wireless_device:
@@ -7412,6 +7139,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        test_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{id}~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/get_wireless_device"
@@ -7445,13 +7178,11 @@ components:
             $ref: "#/paths/~1wireless-gateways~1{id}~1certificate/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         associate_wireless_gateway_with_thing:
           operation:
             $ref: "#/paths/~1wireless-gateways~1{id}~1thing/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7462,7 +7193,6 @@ components:
             $ref: "#/paths/~1wireless-gateways~1{id}~1thing/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         create_wireless_gateway:
           operation:
             $ref: "#/paths/~1wireless-gateways/post"
@@ -7487,13 +7217,11 @@ components:
             $ref: "#/paths/~1wireless-gateways~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         update_wireless_gateway:
           operation:
             $ref: "#/paths/~1wireless-gateways~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7583,7 +7311,6 @@ components:
             $ref: "#/paths/~1destinations~1{name}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_destination:
           operation:
             $ref: "#/paths/~1destinations~1{name}/get"
@@ -7595,7 +7322,6 @@ components:
             $ref: "#/paths/~1destinations~1{name}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7651,7 +7377,6 @@ components:
             $ref: "#/paths/~1device-profiles~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_device_profile:
           operation:
             $ref: "#/paths/~1device-profiles~1{id}/get"
@@ -7696,7 +7421,6 @@ components:
             $ref: "#/paths/~1network-analyzer-configurations~1{configuration_name}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_network_analyzer_configuration:
           operation:
             $ref: "#/paths/~1network-analyzer-configurations~1{configuration_name}/get"
@@ -7708,7 +7432,6 @@ components:
             $ref: "#/paths/~1network-analyzer-configurations~1{configuration_name}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7753,7 +7476,6 @@ components:
             $ref: "#/paths/~1service-profiles~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_service_profile:
           operation:
             $ref: "#/paths/~1service-profiles~1{id}/get"
@@ -7790,7 +7512,6 @@ components:
             $ref: "#/paths/~1wireless-gateways~1{id}~1tasks/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_wireless_gateway_task:
           operation:
             $ref: "#/paths/~1wireless-gateways~1{id}~1tasks/get"
@@ -7834,7 +7555,6 @@ components:
             $ref: "#/paths/~1wireless-gateway-task-definitions~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_wireless_gateway_task_definition:
           operation:
             $ref: "#/paths/~1wireless-gateway-task-definitions~1{id}/get"
@@ -7860,7 +7580,6 @@ components:
             $ref: "#/paths/~1wireless-devices~1{id}~1data/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_queued_messages:
@@ -7878,6 +7597,27 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/queued_messages/methods/delete_queued_messages"
+    data_to_wireless_devices:
+      id: aws.iotwireless.data_to_wireless_devices
+      name: data_to_wireless_devices
+      title: data_to_wireless_devices
+      methods:
+        send_data_to_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{id}~1data/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     wireless_device_import_tasks:
       id: aws.iotwireless.wireless_device_import_tasks
       name: wireless_device_import_tasks
@@ -7888,7 +7628,6 @@ components:
             $ref: "#/paths/~1wireless_device_import_task~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_wireless_device_import_task:
           operation:
             $ref: "#/paths/~1wireless_device_import_task~1{id}/get"
@@ -7900,7 +7639,6 @@ components:
             $ref: "#/paths/~1wireless_device_import_task~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7923,10 +7661,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/wireless_device_import_tasks/methods/update_wireless_device_import_task"
         delete:
           - $ref: "#/components/x-stackQL-resources/wireless_device_import_tasks/methods/delete_wireless_device_import_task"
-    event_configuration_by_resource_types:
-      id: aws.iotwireless.event_configuration_by_resource_types
-      name: event_configuration_by_resource_types
-      title: event_configuration_by_resource_types
+    event_configurations:
+      id: aws.iotwireless.event_configurations
+      name: event_configurations
+      title: event_configurations
       methods:
         get_event_configuration_by_resource_types:
           operation:
@@ -7939,23 +7677,31 @@ components:
             $ref: "#/paths/~1event-configurations-resource-types/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_event_configurations:
+          operation:
+            $ref: "#/paths/~1event-configurations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/event_configuration_by_resource_types/methods/get_event_configuration_by_resource_types"
+          - $ref: "#/components/x-stackQL-resources/event_configurations/methods/list_event_configurations"
+          - $ref: "#/components/x-stackQL-resources/event_configurations/methods/get_event_configuration_by_resource_types"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/event_configuration_by_resource_types/methods/update_event_configuration_by_resource_types"
+          - $ref: "#/components/x-stackQL-resources/event_configurations/methods/update_event_configuration_by_resource_types"
         delete: []
-    log_levels_by_resource_types:
-      id: aws.iotwireless.log_levels_by_resource_types
-      name: log_levels_by_resource_types
-      title: log_levels_by_resource_types
+    log_levels:
+      id: aws.iotwireless.log_levels
+      name: log_levels
+      title: log_levels
       methods:
         get_log_levels_by_resource_types:
           operation:
@@ -7968,7 +7714,6 @@ components:
             $ref: "#/paths/~1log-levels/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7976,10 +7721,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/log_levels_by_resource_types/methods/get_log_levels_by_resource_types"
+          - $ref: "#/components/x-stackQL-resources/log_levels/methods/get_log_levels_by_resource_types"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/log_levels_by_resource_types/methods/update_log_levels_by_resource_types"
+          - $ref: "#/components/x-stackQL-resources/log_levels/methods/update_log_levels_by_resource_types"
         delete: []
     resource_log_levels:
       id: aws.iotwireless.resource_log_levels
@@ -7991,7 +7736,6 @@ components:
             $ref: "#/paths/~1log-levels/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_resource_log_level:
           operation:
             $ref: "#/paths/~1log-levels~1{resource_identifier}/get"
@@ -8005,12 +7749,16 @@ components:
             $ref: "#/paths/~1log-levels~1{resource_identifier}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        reset_resource_log_level:
+          operation:
+            $ref: "#/paths/~1log-levels~1{resource_identifier}/delete"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_log_levels/methods/get_resource_log_level"
@@ -8036,7 +7784,6 @@ components:
             $ref: "#/paths/~1metric-configuration/put"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8089,7 +7836,6 @@ components:
             $ref: "#/paths/~1positions~1{resource_identifier}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8120,7 +7866,6 @@ components:
             $ref: "#/paths/~1position-configurations~1{resource_identifier}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8183,7 +7928,6 @@ components:
             $ref: "#/paths/~1event-configurations~1{identifier}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8214,7 +7958,6 @@ components:
             $ref: "#/paths/~1resource-positions~1{resource_identifier}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8263,10 +8006,10 @@ components:
         insert: []
         update: []
         delete: []
-    wireless_gateway_firmware_informations:
-      id: aws.iotwireless.wireless_gateway_firmware_informations
-      name: wireless_gateway_firmware_informations
-      title: wireless_gateway_firmware_informations
+    wireless_gateway_firmware_information:
+      id: aws.iotwireless.wireless_gateway_firmware_information
+      name: wireless_gateway_firmware_information
+      title: wireless_gateway_firmware_information
       methods:
         get_wireless_gateway_firmware_information:
           operation:
@@ -8277,7 +8020,7 @@ components:
             objectKey: $.LoRaWAN
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateway_firmware_informations/methods/get_wireless_gateway_firmware_information"
+          - $ref: "#/components/x-stackQL-resources/wireless_gateway_firmware_information/methods/get_wireless_gateway_firmware_information"
         insert: []
         update: []
         delete: []
@@ -8298,10 +8041,10 @@ components:
         insert: []
         update: []
         delete: []
-    devices_for_wireless_device_import_tasks:
-      id: aws.iotwireless.devices_for_wireless_device_import_tasks
-      name: devices_for_wireless_device_import_tasks
-      title: devices_for_wireless_device_import_tasks
+    devices:
+      id: aws.iotwireless.devices
+      name: devices
+      title: devices
       methods:
         list_devices_for_wireless_device_import_task:
           operation:
@@ -8313,26 +8056,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/devices_for_wireless_device_import_tasks/methods/list_devices_for_wireless_device_import_task"
-        insert: []
-        update: []
-        delete: []
-    event_configurations:
-      id: aws.iotwireless.event_configurations
-      name: event_configurations
-      title: event_configurations
-      methods:
-        list_event_configurations:
-          operation:
-            $ref: "#/paths/~1event-configurations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/event_configurations/methods/list_event_configurations"
+          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices_for_wireless_device_import_task"
         insert: []
         update: []
         delete: []
@@ -8373,7 +8097,6 @@ components:
             $ref: "#/paths/~1tags/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8384,7 +8107,6 @@ components:
             $ref: "#/paths/~1tags/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -8394,4 +8116,65 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    data_to_multicast_groups:
+      id: aws.iotwireless.data_to_multicast_groups
+      name: data_to_multicast_groups
+      title: data_to_multicast_groups
+      methods:
+        send_data_to_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1data/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    bulk_associate_wireless_device_with_multicast_groups:
+      id: aws.iotwireless.bulk_associate_wireless_device_with_multicast_groups
+      name: bulk_associate_wireless_device_with_multicast_groups
+      title: bulk_associate_wireless_device_with_multicast_groups
+      methods:
+        start_bulk_associate_wireless_device_with_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1bulk/patch"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    bulk_disassociate_wireless_device_from_multicast_groups:
+      id: aws.iotwireless.bulk_disassociate_wireless_device_from_multicast_groups
+      name: bulk_disassociate_wireless_device_from_multicast_groups
+      title: bulk_disassociate_wireless_device_from_multicast_groups
+      methods:
+        start_bulk_disassociate_wireless_device_from_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1bulk/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

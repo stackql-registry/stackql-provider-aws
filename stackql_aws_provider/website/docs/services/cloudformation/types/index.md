@@ -211,6 +211,34 @@ The following methods are available for this resource:
     <td><a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-VersionId"><code>VersionId</code></a></td>
     <td>Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations. To deregister an entire extension, you must individually deregister all active versions of that extension. If an extension has only a single active version, deregistering that version results in the extension itself being deregistered and marked as deprecated in the registry. You can't deregister the default version of an extension if there are other active version of that extension. If you do deregister the default version of an extension, the extension type itself is deregistered as well and marked as deprecated. To view the deprecation status of an extension or extension version, use DescribeType. For more information, see Remove third-party private extensions from your account in the CloudFormation User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#activate_type"><CopyableCode code="activate_type" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-PublicTypeArn"><code>PublicTypeArn</code></a>, <a href="#parameter-PublisherId"><code>PublisherId</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-TypeNameAlias"><code>TypeNameAlias</code></a>, <a href="#parameter-AutoUpdate"><code>AutoUpdate</code></a>, <a href="#parameter-LoggingConfig"><code>LoggingConfig</code></a>, <a href="#parameter-ExecutionRoleArn"><code>ExecutionRoleArn</code></a>, <a href="#parameter-VersionBump"><code>VersionBump</code></a>, <a href="#parameter-MajorVersion"><code>MajorVersion</code></a></td>
+    <td>Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region. It can also create CloudFormation Hooks, which allow you to evaluate resource configurations before CloudFormation provisions them. Hooks integrate with both CloudFormation and Cloud Control API operations. After you activate an extension, you can use SetTypeConfiguration to set specific properties for the extension. To see which extensions have been activated, use ListTypes. To see configuration details for an extension, use DescribeType. For more information, see Activate a third-party public extension in your account in the CloudFormation User Guide. For information about creating Hooks, see the CloudFormation Hooks User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#deactivate_type"><CopyableCode code="deactivate_type" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Arn"><code>Arn</code></a></td>
+    <td>Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it. Deactivating an extension deletes the configuration details that are associated with it. To temporarily disable a CloudFormation Hook instead, you can use SetTypeConfiguration. Once deactivated, an extension can't be used in any CloudFormation operation. This includes stack update operations where the stack template includes the extension, even if no updates are being made to the extension. In addition, deactivated extensions aren't automatically updated if a new version of the extension is released. To see which extensions are currently activated, use ListTypes.</td>
+</tr>
+<tr>
+    <td><a href="#publish_type"><CopyableCode code="publish_type" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-PublicVersionNumber"><code>PublicVersionNumber</code></a></td>
+    <td>Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide. To publish an extension, you must be registered as a publisher with CloudFormation. For more information, see RegisterPublisher.</td>
+</tr>
+<tr>
+    <td><a href="#test_type"><CopyableCode code="test_type" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-VersionId"><code>VersionId</code></a>, <a href="#parameter-LogDeliveryBucket"><code>LogDeliveryBucket</code></a></td>
+    <td>Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry. For resource types, this includes passing all contracts tests defined for the type. For modules, this includes determining if the module's model meets all necessary requirements. For more information, see Testing your public extension before publishing in the CloudFormation Command Line Interface (CLI) User Guide. If you don't specify a version, CloudFormation uses the default version of the extension in your account and Region for testing. To perform testing, CloudFormation assumes the execution role specified when the type was registered. For more information, see RegisterType. Once you've initiated testing on an extension using TestType, you can pass the returned TypeVersionArn into DescribeType to monitor the current test status and test status description for the extension. An extension must have a test status of PASSED before it can be published. For more information, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -250,7 +278,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Arn">
     <td><CopyableCode code="Arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the extension. Conditional: You must specify either TypeName and Type, or Arn.</td>
+    <td>The Amazon Resource Name (ARN) of the extension. Conditional: You must specify Arn, or TypeName and Type.</td>
+</tr>
+<tr id="parameter-AutoUpdate">
+    <td><CopyableCode code="AutoUpdate" /></td>
+    <td><code>boolean</code></td>
+    <td>Whether to automatically update the extension in this account and Region when a new minor version is published by the extension publisher. Major versions released by the publisher must be manually updated. The default is true.</td>
 </tr>
 <tr id="parameter-ClientRequestToken">
     <td><CopyableCode code="ClientRequestToken" /></td>
@@ -270,17 +303,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ExecutionRoleArn">
     <td><CopyableCode code="ExecutionRoleArn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the IAM role for CloudFormation to assume when invoking the extension. For CloudFormation to assume the specified execution role, the role must contain a trust relationship with the CloudFormation service principal (resources.cloudformation.amazonaws.com). For more information about adding trust relationships, see Modifying a role trust policy in the Identity and Access Management User Guide. If your extension calls Amazon Web Services APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.</td>
+    <td>The name of the IAM execution role to use to activate the extension.</td>
 </tr>
 <tr id="parameter-Filters">
     <td><CopyableCode code="Filters" /></td>
     <td><code>object</code></td>
     <td>Filter criteria to use in determining which extensions to return. Filters must be compatible with Visibility to return valid results. For example, specifying AWS_TYPES for Category and PRIVATE for Visibility returns an empty list of types, but specifying PUBLIC for Visibility returns the desired list.</td>
 </tr>
+<tr id="parameter-LogDeliveryBucket">
+    <td><CopyableCode code="LogDeliveryBucket" /></td>
+    <td><code>string</code></td>
+    <td>The S3 bucket to which CloudFormation delivers the contract test execution logs. CloudFormation delivers the logs by the time contract testing has completed and the extension has been assigned a test type status of PASSED or FAILED. The user calling TestType must be able to access items in the specified S3 bucket. Specifically, the user needs the following permissions: GetObject PutObject For more information, see Actions, Resources, and Condition Keys for Amazon S3 in the Identity and Access Management User Guide.</td>
+</tr>
 <tr id="parameter-LoggingConfig">
     <td><CopyableCode code="LoggingConfig" /></td>
     <td><code>object</code></td>
-    <td>Specifies logging configuration information for an extension.</td>
+    <td>Contains logging configuration information for an extension.</td>
+</tr>
+<tr id="parameter-MajorVersion">
+    <td><CopyableCode code="MajorVersion" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The major version of this extension you want to activate, if multiple major versions are available. The default is the latest major version. CloudFormation uses the latest available minor version of the major version selected. You can specify MajorVersion or VersionBump, but not both.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -297,20 +340,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>For resource types, the provisioning behavior of the resource type. CloudFormation determines the provisioning type during registration, based on the types of handlers in the schema handler package submitted. Valid values include: FULLY_MUTABLE: The resource type includes an update handler to process updates to the type during stack update operations. IMMUTABLE: The resource type doesn't include an update handler, so the type can't be updated and must instead be replaced during stack update operations. NON_PROVISIONABLE: The resource type doesn't include create, read, and delete handlers, and therefore can't actually be provisioned. The default is FULLY_MUTABLE.</td>
 </tr>
+<tr id="parameter-PublicTypeArn">
+    <td><CopyableCode code="PublicTypeArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the public extension. Conditional: You must specify PublicTypeArn, or TypeName, Type, and PublisherId.</td>
+</tr>
 <tr id="parameter-PublicVersionNumber">
     <td><CopyableCode code="PublicVersionNumber" /></td>
     <td><code>string</code></td>
-    <td>The version number of a public third-party extension.</td>
+    <td>The version number to assign to this version of the extension. Use the following format, and adhere to semantic versioning when assigning a version number to your extension: MAJOR.MINOR.PATCH For more information, see Semantic Versioning 2.0.0. If you don't specify a version number, CloudFormation increments the version number by one minor version release. You cannot specify a version number the first time you publish a type. CloudFormation automatically sets the first version number to be 1.0.0.</td>
 </tr>
 <tr id="parameter-PublisherId">
     <td><CopyableCode code="PublisherId" /></td>
     <td><code>string</code></td>
-    <td>The publisher ID of the extension publisher. Extensions provided by Amazon Web Services are not assigned a publisher ID.</td>
+    <td>The ID of the extension publisher. Conditional: You must specify PublicTypeArn, or TypeName, Type, and PublisherId.</td>
 </tr>
 <tr id="parameter-Type">
     <td><CopyableCode code="Type" /></td>
     <td><code>string</code></td>
-    <td>The kind of extension. Conditional: You must specify either TypeName and Type, or Arn.</td>
+    <td>The type of the extension to test. Conditional: You must specify Arn, or TypeName and Type.</td>
 </tr>
 <tr id="parameter-TypeArn">
     <td><CopyableCode code="TypeArn" /></td>
@@ -320,12 +368,22 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-TypeName">
     <td><CopyableCode code="TypeName" /></td>
     <td><code>string</code></td>
-    <td>The name of the extension. Conditional: You must specify either TypeName and Type, or Arn.</td>
+    <td>The name of the extension to test. Conditional: You must specify Arn, or TypeName and Type.</td>
+</tr>
+<tr id="parameter-TypeNameAlias">
+    <td><CopyableCode code="TypeNameAlias" /></td>
+    <td><code>string</code></td>
+    <td>An alias to assign to the public extension in this account and Region. If you specify an alias for the extension, CloudFormation treats the alias as the extension type name within this account and Region. You must use the alias to refer to the extension in your templates, API calls, and CloudFormation console. An extension alias must be unique within a given account and Region. You can activate the same public resource multiple times in the same account and Region, using different type name aliases.</td>
+</tr>
+<tr id="parameter-VersionBump">
+    <td><CopyableCode code="VersionBump" /></td>
+    <td><code>string</code></td>
+    <td>Manually updates a previously-activated type to a new major or minor version, if available. You can also use this parameter to update the value of AutoUpdate. MAJOR: CloudFormation updates the extension to the newest major version, if one is available. MINOR: CloudFormation updates the extension to the newest minor version, if one is available.</td>
 </tr>
 <tr id="parameter-VersionId">
     <td><CopyableCode code="VersionId" /></td>
     <td><code>string</code></td>
-    <td>The ID of a specific version of the extension. The version ID is the value at the end of the Amazon Resource Name (ARN) assigned to the extension version when it is registered.</td>
+    <td>The version of the extension to test. You can specify the version id with either Arn, or with TypeName and Type. If you don't specify a version, CloudFormation uses the default version of the extension in this account and Region for testing.</td>
 </tr>
 <tr id="parameter-Visibility">
     <td><CopyableCode code="Visibility" /></td>
@@ -512,9 +570,7 @@ region = '{{ region }}' --required
 AND Arn = '{{ Arn}}'
 AND Type = '{{ Type}}'
 AND TypeName = '{{ TypeName}}'
-AND VersionId = '{{ VersionId}}'
-RETURNING
-line_items;
+AND VersionId = '{{ VersionId}}';
 ```
 </TabItem>
 </Tabs>
@@ -539,6 +595,82 @@ AND Arn = '{{ Arn }}'
 AND Type = '{{ Type }}'
 AND TypeName = '{{ TypeName }}'
 AND VersionId = '{{ VersionId }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="activate_type"
+    values={[
+        { label: 'activate_type', value: 'activate_type' },
+        { label: 'deactivate_type', value: 'deactivate_type' },
+        { label: 'publish_type', value: 'publish_type' },
+        { label: 'test_type', value: 'test_type' }
+    ]}
+>
+<TabItem value="activate_type">
+
+Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region. It can also create CloudFormation Hooks, which allow you to evaluate resource configurations before CloudFormation provisions them. Hooks integrate with both CloudFormation and Cloud Control API operations. After you activate an extension, you can use SetTypeConfiguration to set specific properties for the extension. To see which extensions have been activated, use ListTypes. To see configuration details for an extension, use DescribeType. For more information, see Activate a third-party public extension in your account in the CloudFormation User Guide. For information about creating Hooks, see the CloudFormation Hooks User Guide.
+
+```sql
+EXEC aws.cloudformation.types.activate_type 
+@region='{{ region }}' --required, 
+@Type='{{ Type }}', 
+@PublicTypeArn='{{ PublicTypeArn }}', 
+@PublisherId='{{ PublisherId }}', 
+@TypeName='{{ TypeName }}', 
+@TypeNameAlias='{{ TypeNameAlias }}', 
+@AutoUpdate={{ AutoUpdate }}, 
+@LoggingConfig='{{ LoggingConfig }}', 
+@ExecutionRoleArn='{{ ExecutionRoleArn }}', 
+@VersionBump='{{ VersionBump }}', 
+@MajorVersion='{{ MajorVersion }}'
+;
+```
+</TabItem>
+<TabItem value="deactivate_type">
+
+Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it. Deactivating an extension deletes the configuration details that are associated with it. To temporarily disable a CloudFormation Hook instead, you can use SetTypeConfiguration. Once deactivated, an extension can't be used in any CloudFormation operation. This includes stack update operations where the stack template includes the extension, even if no updates are being made to the extension. In addition, deactivated extensions aren't automatically updated if a new version of the extension is released. To see which extensions are currently activated, use ListTypes.
+
+```sql
+EXEC aws.cloudformation.types.deactivate_type 
+@region='{{ region }}' --required, 
+@TypeName='{{ TypeName }}', 
+@Type='{{ Type }}', 
+@Arn='{{ Arn }}'
+;
+```
+</TabItem>
+<TabItem value="publish_type">
+
+Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide. To publish an extension, you must be registered as a publisher with CloudFormation. For more information, see RegisterPublisher.
+
+```sql
+EXEC aws.cloudformation.types.publish_type 
+@region='{{ region }}' --required, 
+@Type='{{ Type }}', 
+@Arn='{{ Arn }}', 
+@TypeName='{{ TypeName }}', 
+@PublicVersionNumber='{{ PublicVersionNumber }}'
+;
+```
+</TabItem>
+<TabItem value="test_type">
+
+Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry. For resource types, this includes passing all contracts tests defined for the type. For modules, this includes determining if the module's model meets all necessary requirements. For more information, see Testing your public extension before publishing in the CloudFormation Command Line Interface (CLI) User Guide. If you don't specify a version, CloudFormation uses the default version of the extension in your account and Region for testing. To perform testing, CloudFormation assumes the execution role specified when the type was registered. For more information, see RegisterType. Once you've initiated testing on an extension using TestType, you can pass the returned TypeVersionArn into DescribeType to monitor the current test status and test status description for the extension. An extension must have a test status of PASSED before it can be published. For more information, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide.
+
+```sql
+EXEC aws.cloudformation.types.test_type 
+@region='{{ region }}' --required, 
+@Arn='{{ Arn }}', 
+@Type='{{ Type }}', 
+@TypeName='{{ TypeName }}', 
+@VersionId='{{ VersionId }}', 
+@LogDeliveryBucket='{{ LogDeliveryBucket }}'
 ;
 ```
 </TabItem>

@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetFrameMetricDataResponse'
-      x-stackql-resource: frame_metric_datas
+      x-stackql-resource: frame_metric_data
       x-stackql-method: batch_get_frame_metric_data
       x-stackql-verb: SELECT
   /profilingGroups/{profiling_group_name}/configureAgent:
@@ -259,10 +259,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProfilingGroupResponse'
       x-stackql-resource: profiling_groups
       x-stackql-method: delete_profiling_group
       x-stackql-verb: DELETE
@@ -689,10 +685,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -716,10 +708,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -765,11 +753,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostAgentProfileResponse'
-      x-stackql-resource: profiling_groups
+      x-stackql-resource: profiles
       x-stackql-method: post_agent_profile
       x-stackql-verb: EXEC
   /profilingGroups/{profiling_group_name}/policy/{action_group}:
@@ -922,10 +906,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubmitFeedbackResponse'
       x-stackql-resource: profiling_groups
       x-stackql-method: submit_feedback
       x-stackql-verb: EXEC
@@ -1311,9 +1291,6 @@ components:
             contains profiles posted by the agent starting at this time for an aggregation period specified by the period
             property of the AggregatedProfileTime object. Specify start using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z
             represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-    DeleteProfilingGroupResponse:
-      description: The structure representing the deleteProfilingGroupResponse.
-      type: object
     DescribeProfilingGroupResponse:
       description: The structure representing the describeProfilingGroupResponse.
       type: object
@@ -1724,9 +1701,6 @@ components:
     AgentProfile:
       type: string
       format: byte
-    PostAgentProfileResponse:
-      description: The structure representing the postAgentProfileResponse.
-      type: object
     ActionGroup:
       type: string
       enum:
@@ -1776,17 +1750,10 @@ components:
     AnomalyInstanceId:
       type: string
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    SubmitFeedbackResponse:
-      description: The structure representing the SubmitFeedbackResponse.
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateProfilingGroupResponse:
       description: The structure representing the updateProfilingGroupResponse.
       type: object

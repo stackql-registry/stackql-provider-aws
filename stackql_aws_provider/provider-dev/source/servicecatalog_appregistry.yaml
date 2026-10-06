@@ -648,7 +648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAttributeGroupsForApplicationResponse'
-      x-stackql-resource: attribute_groups_for_applications
+      x-stackql-resource: attribute_groups
       x-stackql-method: list_attribute_groups_for_application
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attributeGroupsDetails
@@ -702,10 +702,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -728,10 +724,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -762,7 +754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SyncResourceResponse'
-      x-stackql-resource: sync_resource
+      x-stackql-resource: resources
       x-stackql-method: sync_resource
       x-stackql-verb: EXEC
 components:
@@ -1435,8 +1427,6 @@ components:
       enum:
       - START_SYNC
       - NO_ACTION
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1446,8 +1436,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^([\p{L}\p{Z}\p{N}_.:\/=+\-@]*)$
-    UntagResourceResponse:
-      type: object
     UpdateApplicationResponse:
       type: object
       properties:

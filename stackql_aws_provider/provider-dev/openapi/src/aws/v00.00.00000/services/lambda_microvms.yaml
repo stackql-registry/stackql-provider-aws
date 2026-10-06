@@ -361,10 +361,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TerminateMicrovmResponse"
   /2025-09-09/microvm-images/{image_identifier}/versions/{image_version}/builds/{build_id}:
     get:
       operationId: GetMicrovmImageBuild
@@ -595,7 +591,7 @@ paths:
                 logging:
                   $ref: "#/components/schemas/Logging"
                 runHookPayload:
-                  $ref: "#/components/schemas/RunMicrovmRequestRunHookPayloadString"
+                  $ref: "#/components/schemas/RunHookPayload"
                 maximumDurationInSeconds:
                   $ref: "#/components/schemas/RunMicrovmRequestMaximumDurationInSecondsInteger"
                 clientToken:
@@ -682,10 +678,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResumeMicrovmResponse"
   /2025-09-09/microvms/{microvm_identifier}/suspend:
     post:
       operationId: SuspendMicrovm
@@ -700,10 +692,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SuspendMicrovmResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -829,7 +817,7 @@ components:
       properties:
         uri:
           $ref: "#/components/schemas/NonBlankString"
-          description: The URI of the code artifact, such as an Amazon S3 path or Amazon ECR image URI.
+          description: The URI of the code artifact in Amazon S3.
     Logging:
       description: "Configuration for MicroVM logging output. Specify exactly one: cloudWatch to enable CloudWatch logging, or disabled to turn off logging."
       type: object
@@ -1238,6 +1226,7 @@ components:
       type: string
       minLength: 20
       maxLength: 2048
+      pattern: arn:[a-z0-9-]+:lambda:[a-z0-9-]*:[a-z0-9]*:microvm-image:.+
     IdlePolicy:
       description: Configuration that controls MicroVM auto-suspend and auto-resume behavior. Idle time is measured by inbound traffic through the MicroVM proxy endpoint — if no requests arrive within the configured duration, the MicroVM is suspended.
       type: object
@@ -1480,6 +1469,9 @@ components:
         imageVersion:
           $ref: "#/components/schemas/NonBlankString"
           description: The version of the managed MicroVM image.
+        status:
+          $ref: "#/components/schemas/ManagedMicrovmImageVersionStatus"
+          description: "The lifecycle status of the managed MicroVM image version. Valid values: AVAILABLE (the version is available for use) or DEPRECATED (the version is deprecated; do not use it for new MicroVM images)."
         createdAt:
           $ref: "#/components/schemas/Timestamp"
           description: The timestamp when the version was created.
@@ -1490,6 +1482,12 @@ components:
         - imageArn
         - imageVersion
         - createdAt
+    ManagedMicrovmImageVersionStatus:
+      description: The lifecycle status of a managed MicroVM image version.
+      type: string
+      enum:
+        - AVAILABLE
+        - DEPRECATED
     ListManagedMicrovmImagesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1786,9 +1784,7 @@ components:
           type: object
           properties: {}
           description: The key-value pairs of tags associated with the resource.
-    ResumeMicrovmResponse:
-      type: object
-    RunMicrovmRequestRunHookPayloadString:
+    RunHookPayload:
       type: string
       minLength: 0
       maxLength: 4096
@@ -1854,10 +1850,6 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    SuspendMicrovmResponse:
-      type: object
-    TerminateMicrovmResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2068,7 +2060,6 @@ components:
             $ref: "#/paths/~12025-09-09~1microvms~1{microvm_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_microvms:
           operation:
             $ref: "#/paths/~12025-09-09~1microvms/get"
@@ -2086,12 +2077,27 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        run_microvm:
+          operation:
+            $ref: "#/paths/~12025-09-09~1microvms/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_microvm:
+          operation:
+            $ref: "#/paths/~12025-09-09~1microvms~1{microvm_identifier}~1resume/post"
+          response:
+            openAPIDocKey: "200"
         suspend_microvm:
           operation:
             $ref: "#/paths/~12025-09-09~1microvms~1{microvm_identifier}~1suspend/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/microvms/methods/get_microvm"

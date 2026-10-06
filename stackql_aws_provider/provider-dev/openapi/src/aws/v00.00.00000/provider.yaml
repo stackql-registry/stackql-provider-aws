@@ -1226,6 +1226,15 @@ providerServices:
     title: ec2 API
     version: v00.00.00000
     description: Amazon Elastic Compute Cloud
+  ec2_instance_connect:
+    id: ec2_instance_connect:v00.00.00000
+    name: ec2_instance_connect
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/ec2_instance_connect.yaml
+    title: ec2_instance_connect API
+    version: v00.00.00000
+    description: AWS EC2 Instance Connect
   ecr:
     id: ecr:v00.00.00000
     name: ecr
@@ -1271,6 +1280,15 @@ providerServices:
     title: eks API
     version: v00.00.00000
     description: Amazon Elastic Kubernetes Service
+  eks_auth:
+    id: eks_auth:v00.00.00000
+    name: eks_auth
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/eks_auth.yaml
+    title: eks_auth API
+    version: v00.00.00000
+    description: Amazon EKS Auth
   elasticache:
     id: elasticache:v00.00.00000
     name: elasticache
@@ -1433,6 +1451,15 @@ providerServices:
     title: forecast API
     version: v00.00.00000
     description: Amazon Forecast Service
+  forecastquery:
+    id: forecastquery:v00.00.00000
+    name: forecastquery
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/forecastquery.yaml
+    title: forecastquery API
+    version: v00.00.00000
+    description: Amazon Forecast Query Service
   frauddetector:
     id: frauddetector:v00.00.00000
     name: frauddetector
@@ -1496,6 +1523,15 @@ providerServices:
     title: geo_places API
     version: v00.00.00000
     description: Amazon Location Service Places V2
+  geo_routes:
+    id: geo_routes:v00.00.00000
+    name: geo_routes
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/geo_routes.yaml
+    title: geo_routes API
+    version: v00.00.00000
+    description: Amazon Location Service Routes V2
   glacier:
     id: glacier:v00.00.00000
     name: glacier
@@ -1595,6 +1631,15 @@ providerServices:
     title: iam API
     version: v00.00.00000
     description: AWS Identity and Access Management
+  iam_toolbox:
+    id: iam_toolbox:v00.00.00000
+    name: iam_toolbox
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/iam_toolbox.yaml
+    title: iam_toolbox API
+    version: v00.00.00000
+    description: IAM Toolbox (Preview)
   identitystore:
     id: identitystore:v00.00.00000
     name: identitystore
@@ -1640,6 +1685,15 @@ providerServices:
     title: inspector2 API
     version: v00.00.00000
     description: Inspector2
+  inspector_scan:
+    id: inspector_scan:v00.00.00000
+    name: inspector_scan
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/inspector_scan.yaml
+    title: inspector_scan API
+    version: v00.00.00000
+    description: Inspector Scan
   interconnect:
     id: interconnect:v00.00.00000
     name: interconnect
@@ -1883,6 +1937,15 @@ providerServices:
     title: kinesis_video_signaling API
     version: v00.00.00000
     description: Amazon Kinesis Video Signaling Channels
+  kinesis_video_webrtc_storage:
+    id: kinesis_video_webrtc_storage:v00.00.00000
+    name: kinesis_video_webrtc_storage
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/kinesis_video_webrtc_storage.yaml
+    title: kinesis_video_webrtc_storage API
+    version: v00.00.00000
+    description: Amazon Kinesis Video WebRTC Storage
   kinesisanalytics:
     id: kinesisanalytics:v00.00.00000
     name: kinesisanalytics
@@ -2171,6 +2234,15 @@ providerServices:
     title: marketplace_reporting API
     version: v00.00.00000
     description: AWS Marketplace Reporting Service
+  marketplacecommerceanalytics:
+    id: marketplacecommerceanalytics:v00.00.00000
+    name: marketplacecommerceanalytics
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/marketplacecommerceanalytics.yaml
+    title: marketplacecommerceanalytics API
+    version: v00.00.00000
+    description: AWS Marketplace Commerce Analytics
   mediaconnect:
     id: mediaconnect:v00.00.00000
     name: mediaconnect
@@ -2594,6 +2666,15 @@ providerServices:
     title: payment_cryptography API
     version: v00.00.00000
     description: Payment Cryptography Control Plane
+  payment_cryptography_data:
+    id: payment_cryptography_data:v00.00.00000
+    name: payment_cryptography_data
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/payment_cryptography_data.yaml
+    title: payment_cryptography_data API
+    version: v00.00.00000
+    description: Payment Cryptography Data Plane
   pca_connector_ad:
     id: pca_connector_ad:v00.00.00000
     name: pca_connector_ad
@@ -2801,6 +2882,15 @@ providerServices:
     title: rds API
     version: v00.00.00000
     description: Amazon Relational Database Service
+  rds_data:
+    id: rds_data:v00.00.00000
+    name: rds_data
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/rds_data.yaml
+    title: rds_data API
+    version: v00.00.00000
+    description: AWS RDS DataService
   redshift:
     id: redshift:v00.00.00000
     name: redshift
@@ -3098,6 +3188,15 @@ providerServices:
     title: sagemaker_metrics API
     version: v00.00.00000
     description: Amazon SageMaker Metrics Service
+  sagemaker_runtime:
+    id: sagemaker_runtime:v00.00.00000
+    name: sagemaker_runtime
+    preferred: true
+    service:
+      $ref: aws/v00.00.00000/services/sagemaker_runtime.yaml
+    title: sagemaker_runtime API
+    version: v00.00.00000
+    description: Amazon SageMaker Runtime
   sagemakerjobruntime:
     id: sagemakerjobruntime:v00.00.00000
     name: sagemakerjobruntime

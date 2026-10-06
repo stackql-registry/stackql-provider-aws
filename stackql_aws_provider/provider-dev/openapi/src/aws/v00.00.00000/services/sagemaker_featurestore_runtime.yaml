@@ -197,6 +197,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListRecordsOutputDisplay"
+  /FeatureGroup/{feature_group_name}/Record:
+    post:
+      operationId: UpdateRecord
+      description: Updates one or more feature values for an existing record in the specified feature group. Features that you do not include in the request remain unchanged. You can update up to 100 features per call. This operation is available only for feature groups that use the Standard_V2 or InMemory online store type. The record must already exist. If the record does not exist or has been soft-deleted, the operation returns a ResourceNotFound error. To create a record, use PutRecord. If you provide an EventTime that is older than the record's current EventTime, the service rejects the update with a ConflictException. If the EventTime is equal to or newer than the current value, the service applies the update. If you omit EventTime, the service keeps the record's existing EventTime and applies the update. If you specify a TtlDuration, you must also provide an EventTime in the request. Otherwise, the operation returns a ValidationError.
+      parameters:
+        - name: feature_group_name
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/FeatureGroupNameOrArn"
+          description: "The identifier for the feature group that contains the record to update. You can specify one of the following: The feature group name. The feature group Amazon Resource Name (ARN)."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                RecordIdentifierValueAsString:
+                  $ref: "#/components/schemas/ValueAsString"
+                Features:
+                  $ref: "#/components/schemas/Record"
+                TargetStores:
+                  $ref: "#/components/schemas/TargetStores"
+                TtlDuration:
+                  $ref: "#/components/schemas/TtlDuration"
+              required:
+                - RecordIdentifierValueAsString
+                - Features
+      responses:
+        "200":
+          description: Success
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -533,6 +565,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_write_record:
+          operation:
+            $ref: "#/paths/~1BatchWriteRecord/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_record:
           operation:
             $ref: "#/paths/~1FeatureGroup~1{feature_group_name}/delete"
@@ -583,13 +626,24 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        update_record:
+          operation:
+            $ref: "#/paths/~1FeatureGroup~1{feature_group_name}~1Record/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/records/methods/get_record"
-          - $ref: "#/components/x-stackQL-resources/records/methods/batch_get_record"
           - $ref: "#/components/x-stackQL-resources/records/methods/list_records"
+          - $ref: "#/components/x-stackQL-resources/records/methods/batch_get_record"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/records/methods/update_record"
         replace:
           - $ref: "#/components/x-stackQL-resources/records/methods/put_record"
         delete:

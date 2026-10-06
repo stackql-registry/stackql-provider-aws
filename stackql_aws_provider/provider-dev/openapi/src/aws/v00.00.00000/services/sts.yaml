@@ -101,6 +101,11 @@ paths:
           description: A list of previously acquired trusted context assertions in the format of a JSON array. The trusted context assertion is signed and encrypted by Amazon Web Services STS. The following is an example of a ProvidedContext value that includes a single trusted context assertion and the ARN of the context provider from which the trusted context assertion was generated. [{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]
           schema:
             $ref: "#/components/schemas/ProvidedContextsListType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -173,6 +178,11 @@ paths:
           description: The duration, in seconds, of the role session. Your role session lasts for the duration that you specify for the DurationSeconds parameter, or until the time specified in the SAML authentication response's SessionNotOnOrAfter value, whichever is shorter. You can provide a DurationSeconds value from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours. If you specify a value higher than this setting, the operation fails. For example, if you specify a session duration of 12 hours, but your administrator set the maximum session duration to 6 hours, your operation fails. To learn how to view the maximum value for your role, see View the Maximum Session Duration Setting for a Role in the IAM User Guide. By default, the value is set to 3600 seconds. The DurationSeconds parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console in the IAM User Guide.
           schema:
             $ref: "#/components/schemas/roleDurationSecondsType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -251,6 +261,11 @@ paths:
           description: The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours. If you specify a value higher than this setting, the operation fails. For example, if you specify a session duration of 12 hours, but your administrator set the maximum session duration to 6 hours, your operation fails. To learn how to view the maximum value for your role, see View the Maximum Session Duration Setting for a Role in the IAM User Guide. By default, the value is set to 3600 seconds. The DurationSeconds parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console in the IAM User Guide.
           schema:
             $ref: "#/components/schemas/roleDurationSecondsType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -305,6 +320,11 @@ paths:
           description: The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the maximum session duration of 900 seconds (15 minutes). If you specify a value higher than this setting, the operation fails. By default, the value is set to 900 seconds.
           schema:
             $ref: "#/components/schemas/RootDurationSecondsType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -533,6 +553,11 @@ paths:
           description: A list of session tags. Each session tag consists of a key name and an associated value. For more information about session tags, see Passing Session Tags in STS in the IAM User Guide. This parameter is optional. You can pass up to 50 session tags. The plaintext session tag keys can’t exceed 128 characters and the values can’t exceed 256 characters. For these and additional limits, see IAM and STS Character Limits in the IAM User Guide. An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The PackedPolicySize response element indicates by percentage how close the policies and tags for your request are to the upper size limit. You can pass a session tag with the same key as a tag that is already attached to the user you are federating. When you do, session tags override a user tag with the same key. Tag key–value pairs are not case sensitive, but case is preserved. This means that you cannot have separate Department and department tag keys. Assume that the role has the Department=Marketing tag and you pass the department=engineering session tag. Department and department are not saved as separate tags, and the session tag passed in the request takes precedence over the role tag.
           schema:
             $ref: "#/components/schemas/tagListType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -587,6 +612,11 @@ paths:
           description: The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, the user must provide a code when requesting a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response when requesting resources that require MFA authentication. The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
           schema:
             $ref: "#/components/schemas/tokenCodeType"
+        - name: MinimumSessionTokenSize
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/minimumSessionTokenSizeType"
       responses:
         "200":
           description: Success
@@ -621,7 +651,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_GetWebIdentityToken
-      description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint.
+      description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint. The GetWebIdentityToken API is not available on the STS Global endpoint.
       parameters:
         - name: Audience
           in: query
@@ -656,7 +686,7 @@ paths:
                 $ref: "#/components/schemas/GetWebIdentityTokenOutputDisplay"
     post:
       operationId: POST_GetWebIdentityToken
-      description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint.
+      description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint. The GetWebIdentityToken API is not available on the STS Global endpoint.
       responses:
         "200":
           description: Success
@@ -813,6 +843,11 @@ components:
       type: string
       minLength: 4
       maxLength: 2048
+    minimumSessionTokenSizeType:
+      description: The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to 0 or not specified, the session token size is unchanged.
+      type: integer
+      minimum: 0
+      maximum: 4096
     AssumeRoleResponseDisplay:
       type: object
       properties:
@@ -828,6 +863,12 @@ components:
         SourceIdentity:
           type: string
           description: "The source identity specified by the principal that is calling the AssumeRole operation. You can require users to specify a source identity when they assume a role. You do this by using the sts:SourceIdentity condition key in a role trust policy. You can use source identity information in CloudTrail logs to determine who took actions with a role. You can use the aws:SourceIdentity condition key to further control access to Amazon Web Services resources based on the value of source identity. For more information about using source identity, see Monitor and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-"
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleOutputDisplay:
       type: object
       properties:
@@ -874,6 +915,8 @@ components:
         ProvidedContexts:
           $ref: "#/components/schemas/ProvidedContextsListType"
           description: A list of previously acquired trusted context assertions in the format of a JSON array. The trusted context assertion is signed and encrypted by Amazon Web Services STS. The following is an example of a ProvidedContext value that includes a single trusted context assertion and the ARN of the context provider from which the trusted context assertion was generated. [{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
       required:
         - RoleArn
         - RoleSessionName
@@ -916,6 +959,12 @@ components:
         SourceIdentity:
           type: string
           description: "The value in the SourceIdentity attribute in the SAML assertion. The source identity value persists across chained role sessions. You can require users to set a source identity value when they assume a role. You do this by using the sts:SourceIdentity condition key in a role trust policy. That way, actions that are taken with the role are associated with that user. After the source identity is set, the value cannot be changed. It is present in the request for all actions that are taken by the role and persists across chained role sessions. You can configure your SAML identity provider to use an attribute associated with your users, like user name or email, as the source identity when calling AssumeRoleWithSAML. You do this by adding an attribute to the SAML assertion. For more information about using source identity, see Monitor and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-"
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleWithSAMLOutputDisplay:
       type: object
       properties:
@@ -944,6 +993,8 @@ components:
         DurationSeconds:
           $ref: "#/components/schemas/roleDurationSecondsType"
           description: The duration, in seconds, of the role session. Your role session lasts for the duration that you specify for the DurationSeconds parameter, or until the time specified in the SAML authentication response's SessionNotOnOrAfter value, whichever is shorter. You can provide a DurationSeconds value from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours. If you specify a value higher than this setting, the operation fails. For example, if you specify a session duration of 12 hours, but your administrator set the maximum session duration to 6 hours, your operation fails. To learn how to view the maximum value for your role, see View the Maximum Session Duration Setting for a Role in the IAM User Guide. By default, the value is set to 3600 seconds. The DurationSeconds parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console in the IAM User Guide.
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
       required:
         - RoleArn
         - PrincipalArn
@@ -980,6 +1031,12 @@ components:
         SourceIdentity:
           type: string
           description: "The value of the source identity that is returned in the JSON web token (JWT) from the identity provider. You can require users to set a source identity value when they assume a role. You do this by using the sts:SourceIdentity condition key in a role trust policy. That way, actions that are taken with the role are associated with that user. After the source identity is set, the value cannot be changed. It is present in the request for all actions that are taken by the role and persists across chained role sessions. You can configure your identity provider to use an attribute associated with your users, like user name or email, as the source identity when calling AssumeRoleWithWebIdentity. You do this by adding a claim to the JSON web token. To learn more about OIDC tokens and claims, see Using Tokens with User Pools in the Amazon Cognito Developer Guide. For more information about using source identity, see Monitor and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-"
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleWithWebIdentityOutputDisplay:
       type: object
       properties:
@@ -1011,6 +1068,8 @@ components:
         DurationSeconds:
           $ref: "#/components/schemas/roleDurationSecondsType"
           description: The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) up to the maximum session duration setting for the role. This setting can have a value from 1 hour to 12 hours. If you specify a value higher than this setting, the operation fails. For example, if you specify a session duration of 12 hours, but your administrator set the maximum session duration to 6 hours, your operation fails. To learn how to view the maximum value for your role, see View the Maximum Session Duration Setting for a Role in the IAM User Guide. By default, the value is set to 3600 seconds. The DurationSeconds parameter is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services Management Console in the IAM User Guide.
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
       required:
         - RoleArn
         - RoleSessionName
@@ -1032,6 +1091,12 @@ components:
         SourceIdentity:
           type: string
           description: "The source identity specified by the principal that is calling the AssumeRoot operation. You can use the aws:SourceIdentity condition key to control access based on the value of source identity. For more information about using source identity, see Monitor and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-"
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRootOutputDisplay:
       type: object
       properties:
@@ -1051,6 +1116,8 @@ components:
         DurationSeconds:
           $ref: "#/components/schemas/RootDurationSecondsType"
           description: The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the maximum session duration of 900 seconds (15 minutes). If you specify a value higher than this setting, the operation fails. By default, the value is set to 900 seconds.
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
       required:
         - TargetPrincipal
         - TaskPolicyArn
@@ -1176,6 +1243,12 @@ components:
         PackedPolicySize:
           type: integer
           description: A percentage value that indicates the packed size of the session policies and session tags combined passed in the request. The request fails if the packed size is greater than 100 percent, which means the policies and tags exceeded the allowed space.
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     GetFederationTokenOutputDisplay:
       type: object
       properties:
@@ -1201,30 +1274,29 @@ components:
         Tags:
           $ref: "#/components/schemas/tagListType"
           description: A list of session tags. Each session tag consists of a key name and an associated value. For more information about session tags, see Passing Session Tags in STS in the IAM User Guide. This parameter is optional. You can pass up to 50 session tags. The plaintext session tag keys can’t exceed 128 characters and the values can’t exceed 256 characters. For these and additional limits, see IAM and STS Character Limits in the IAM User Guide. An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The PackedPolicySize response element indicates by percentage how close the policies and tags for your request are to the upper size limit. You can pass a session tag with the same key as a tag that is already attached to the user you are federating. When you do, session tags override a user tag with the same key. Tag key–value pairs are not case sensitive, but case is preserved. This means that you cannot have separate Department and department tag keys. Assume that the role has the Department=Marketing tag and you pass the department=engineering session tag. Department and department are not saved as separate tags, and the session tag passed in the request takes precedence over the role tag.
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
       required:
         - Name
-    CredentialsDisplay:
+    GetSessionTokenResponseDisplay:
       type: object
       properties:
-        AccessKeyId:
+        Credentials:
           type: string
-          description: The access key ID that identifies the temporary security credentials.
-        SecretAccessKey:
-          type: string
-          description: The secret access key that can be used to sign requests.
-        SessionToken:
-          type: string
-          description: The token that users must pass to the service API to use the temporary credentials.
-        Expiration:
-          type: string
-          description: The date on which the current credentials expire.
+          description: The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token. The size of the security token that STS API operations return is not fixed. We strongly recommend that you make no assumptions about the maximum size.
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     GetSessionTokenOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/CredentialsDisplay"
+            $ref: "#/components/schemas/GetSessionTokenResponseDisplay"
     GetSessionTokenRequest:
       type: object
       properties:
@@ -1237,6 +1309,8 @@ components:
         TokenCode:
           $ref: "#/components/schemas/tokenCodeType"
           description: The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, the user must provide a code when requesting a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response when requesting resources that require MFA authentication. The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.
+        MinimumSessionTokenSize:
+          $ref: "#/components/schemas/minimumSessionTokenSizeType"
     webIdentityTokenAudienceListType:
       type: array
       items:
@@ -1288,10 +1362,125 @@ components:
         - Audience
         - SigningAlgorithm
   x-stackQL-resources:
-    access_key_infos:
-      id: aws.sts.access_key_infos
-      name: access_key_infos
-      title: access_key_infos
+    roles:
+      id: aws.sts.roles
+      name: roles
+      title: roles
+      methods:
+        assume_role:
+          operation:
+            $ref: "#/paths/~1?Action=AssumeRole&Version=2011-06-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssumeRoleOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        assume_role_with_saml:
+          operation:
+            $ref: "#/paths/~1?Action=AssumeRoleWithSAML&Version=2011-06-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssumeRoleWithSAMLOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        assume_role_with_web_identity:
+          operation:
+            $ref: "#/paths/~1?Action=AssumeRoleWithWebIdentity&Version=2011-06-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssumeRoleWithWebIdentityOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    roots:
+      id: aws.sts.roots
+      name: roots
+      title: roots
+      methods:
+        assume_root:
+          operation:
+            $ref: "#/paths/~1?Action=AssumeRoot&Version=2011-06-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssumeRootOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    authorization_messages:
+      id: aws.sts.authorization_messages
+      name: authorization_messages
+      title: authorization_messages
+      methods:
+        decode_authorization_message:
+          operation:
+            $ref: "#/paths/~1?Action=DecodeAuthorizationMessage&Version=2011-06-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DecodeAuthorizationMessageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    access_key_info:
+      id: aws.sts.access_key_info
+      name: access_key_info
+      title: access_key_info
       methods:
         get_access_key_info:
           operation:
@@ -1314,7 +1503,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/access_key_infos/methods/get_access_key_info"
+          - $ref: "#/components/x-stackQL-resources/access_key_info/methods/get_access_key_info"
         insert: []
         update: []
         delete: []

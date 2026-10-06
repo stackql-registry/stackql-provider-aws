@@ -767,10 +767,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Deletes specified tags from a resource.
@@ -790,10 +786,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /update-billing-group:
     post:
       operationId: UpdateBillingGroup
@@ -1333,8 +1325,9 @@ components:
         FreeTier:
           $ref: "#/components/schemas/CreateFreeTierConfig"
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-        - FreeTier
+        CustomTiers:
+          $ref: "#/components/schemas/CustomTiersList"
+          description: The set of custom tiers for the pricing rule.
     CreateFreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object
@@ -1346,6 +1339,38 @@ components:
         - Activated
     TieringActivated:
       type: boolean
+    CustomTiersList:
+      type: array
+      items:
+        $ref: "#/components/schemas/CustomTier"
+    CustomTier:
+      description: A custom tier for the pricing rule. Each custom tier applies a rate to the usage that falls within the tier's range.
+      type: object
+      properties:
+        BeginRangeInclusive:
+          $ref: "#/components/schemas/CustomTierBeginRangeInclusive"
+          description: The inclusive start of the usage range that this tier applies to.
+        EndRangeExclusive:
+          $ref: "#/components/schemas/CustomTierEndRangeExclusive"
+          description: The exclusive end of the usage range that this tier applies to. If you don't specify a value, this tier applies to all usage that is greater than or equal to BeginRangeInclusive.
+        RateValue:
+          $ref: "#/components/schemas/CustomTierRateValue"
+          description: The rate that's applied to the usage that falls within this tier.
+      required:
+        - BeginRangeInclusive
+        - RateValue
+    CustomTierBeginRangeInclusive:
+      type: number
+      format: double
+      minimum: 0
+    CustomTierEndRangeExclusive:
+      type: number
+      format: double
+      minimum: 0
+    CustomTierRateValue:
+      type: number
+      format: double
+      minimum: 0
     UsageType:
       type: string
       minLength: 1
@@ -2115,8 +2140,9 @@ components:
         FreeTier:
           $ref: "#/components/schemas/FreeTierConfig"
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-        - FreeTier
+        CustomTiers:
+          $ref: "#/components/schemas/CustomTiersList"
+          description: The set of custom tiers for the pricing rule.
     FreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object
@@ -2192,8 +2218,6 @@ components:
           type: object
           properties: {}
           description: The tags for the resource.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2202,8 +2226,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateBillingGroupAccountGrouping:
       description: Specifies if the billing group has the following features enabled.
       type: object
@@ -2330,8 +2352,9 @@ components:
         FreeTier:
           $ref: "#/components/schemas/UpdateFreeTierConfig"
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-        - FreeTier
+        CustomTiers:
+          $ref: "#/components/schemas/CustomTiersList"
+          description: The set of custom tiers for the pricing rule.
     UpdateFreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object
@@ -2506,6 +2529,94 @@ components:
           - $ref: "#/components/x-stackQL-resources/pricing_rules/methods/update_pricing_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/pricing_rules/methods/delete_pricing_rule"
+    custom_line_items:
+      id: aws.billingconductor.custom_line_items
+      name: custom_line_items
+      title: custom_line_items
+      methods:
+        batch_associate_resources_to_custom_line_item:
+          operation:
+            $ref: "#/paths/~1batch-associate-resources-to-custom-line-item/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_resources_from_custom_line_item:
+          operation:
+            $ref: "#/paths/~1batch-disassociate-resources-from-custom-line-item/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_custom_line_item:
+          operation:
+            $ref: "#/paths/~1create-custom-line-item/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_custom_line_item:
+          operation:
+            $ref: "#/paths/~1delete-custom-line-item/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_custom_line_items:
+          operation:
+            $ref: "#/paths/~1list-custom-line-items/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.CustomLineItems
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_custom_line_item:
+          operation:
+            $ref: "#/paths/~1update-custom-line-item/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/list_custom_line_items"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/create_custom_line_item"
+        update:
+          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/update_custom_line_item"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/delete_custom_line_item"
     billing_groups:
       id: aws.billingconductor.billing_groups
       name: billing_groups
@@ -2572,72 +2683,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/billing_groups/methods/update_billing_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/billing_groups/methods/delete_billing_group"
-    custom_line_items:
-      id: aws.billingconductor.custom_line_items
-      name: custom_line_items
-      title: custom_line_items
-      methods:
-        create_custom_line_item:
-          operation:
-            $ref: "#/paths/~1create-custom-line-item/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_custom_line_item:
-          operation:
-            $ref: "#/paths/~1delete-custom-line-item/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_custom_line_items:
-          operation:
-            $ref: "#/paths/~1list-custom-line-items/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.CustomLineItems
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_custom_line_item:
-          operation:
-            $ref: "#/paths/~1update-custom-line-item/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/list_custom_line_items"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/create_custom_line_item"
-        update:
-          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/update_custom_line_item"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/custom_line_items/methods/delete_custom_line_item"
     pricing_plans:
       id: aws.billingconductor.pricing_plans
       name: pricing_plans
@@ -2923,7 +2968,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2934,7 +2978,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

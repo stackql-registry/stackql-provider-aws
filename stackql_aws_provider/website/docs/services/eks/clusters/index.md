@@ -634,6 +634,8 @@ cluster
       description: |
         The configuration for the Kubernetes controller manager on an Amazon EKS cluster.
       value:
+        podGcControllerConfig:
+          terminatedPodGcThreshold: {{ terminatedPodGcThreshold }}
         horizontalPodAutoscalerControllerConfig:
           horizontalPodAutoscalerSyncPeriod: "{{ horizontalPodAutoscalerSyncPeriod }}"
     - name: connectorConfig

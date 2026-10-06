@@ -129,7 +129,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: trained_models
+      x-stackql-resource: trained_model_inference_jobs
       x-stackql-method: cancel_trained_model_inference_job
       x-stackql-verb: EXEC
     get:
@@ -1320,7 +1320,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: audience_generation_jobs
+      x-stackql-resource: audience_export_jobs
       x-stackql-method: start_audience_export_job
       x-stackql-verb: EXEC
   /audience-generation-job:
@@ -1404,7 +1404,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAudienceGenerationJobResponse'
-      x-stackql-resource: configured_audience_models
+      x-stackql-resource: audience_generation_jobs
       x-stackql-method: start_audience_generation_job
       x-stackql-verb: EXEC
   /collaborations/{collaboration_identifier}/configured-model-algorithm-associations:
@@ -1668,10 +1668,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1694,10 +1690,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1808,7 +1800,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTrainedModelInferenceJobResponse'
-      x-stackql-resource: trained_models
+      x-stackql-resource: trained_model_inference_jobs
       x-stackql-method: start_trained_model_inference_job
       x-stackql-verb: EXEC
   /memberships/{membership_identifier}/trained-models/{trained_model_arn}/versions:
@@ -5434,8 +5426,6 @@ components:
           description: The Amazon Resource Name (ARN) of the trained model inference job.
       required:
       - trainedModelInferenceJobArn
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -5444,8 +5434,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateConfiguredAudienceModelResponse:
       type: object
       properties:

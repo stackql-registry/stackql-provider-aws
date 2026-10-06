@@ -18,7 +18,7 @@ batch service documentation.
 
 :::info[Service Summary]
 
-total resources: __12__  
+total resources: __11__  
 
 :::
 
@@ -33,7 +33,6 @@ total resources: __12__
 <a href="/services/batch/jobs/">jobs</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/batch/jobs_by_consumable_resources/">jobs_by_consumable_resources</a><br />
 <a href="/services/batch/quota_shares/">quota_shares</a><br />
 <a href="/services/batch/scheduling_policies/">scheduling_policies</a><br />
 <a href="/services/batch/service_environments/">service_environments</a><br />

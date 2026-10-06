@@ -603,10 +603,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes one or more tag key and value pairs from an Amazon Web Services Resource Explorer view or index.
@@ -626,10 +622,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /ListViews:
     post:
       operationId: ListViews
@@ -1641,14 +1633,10 @@ components:
     Long:
       type: integer
       format: int64
-    TagResourceOutput:
-      type: object
     StringList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceOutput:
-      type: object
     UpdateIndexTypeOutput:
       type: object
       properties:
@@ -1857,6 +1845,25 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_indexes_for_members:
+          operation:
+            $ref: "#/paths/~1ListIndexesForMembers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Indexes
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_index_type:
           operation:
             $ref: "#/paths/~1UpdateIndexType/post"
@@ -1870,6 +1877,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/list_indexes_for_members"
           - $ref: "#/components/x-stackQL-resources/indexes/methods/get_index"
         insert:
           - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
@@ -2083,36 +2091,6 @@ components:
         insert: []
         update: []
         delete: []
-    indexes_for_members:
-      id: aws.resource_explorer_2.indexes_for_members
-      name: indexes_for_members
-      title: indexes_for_members
-      methods:
-        list_indexes_for_members:
-          operation:
-            $ref: "#/paths/~1ListIndexesForMembers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Indexes
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/indexes_for_members/methods/list_indexes_for_members"
-        insert: []
-        update: []
-        delete: []
     resources:
       id: aws.resource_explorer_2.resources
       name: resources
@@ -2143,10 +2121,10 @@ components:
         insert: []
         update: []
         delete: []
-    streaming_access_for_services:
-      id: aws.resource_explorer_2.streaming_access_for_services
-      name: streaming_access_for_services
-      title: streaming_access_for_services
+    streaming_accesses:
+      id: aws.resource_explorer_2.streaming_accesses
+      name: streaming_accesses
+      title: streaming_accesses
       methods:
         list_streaming_access_for_services:
           operation:
@@ -2169,7 +2147,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/streaming_access_for_services/methods/list_streaming_access_for_services"
+          - $ref: "#/components/x-stackQL-resources/streaming_accesses/methods/list_streaming_access_for_services"
         insert: []
         update: []
         delete: []
@@ -2219,7 +2197,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2230,7 +2207,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2241,10 +2217,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    search:
-      id: aws.resource_explorer_2.search
-      name: search
-      title: search
+    searches:
+      id: aws.resource_explorer_2.searches
+      name: searches
+      title: searches
       methods:
         search:
           operation:
@@ -2266,7 +2242,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/search/methods/search"
+          - $ref: "#/components/x-stackQL-resources/searches/methods/search"
         insert: []
         update: []
         delete: []

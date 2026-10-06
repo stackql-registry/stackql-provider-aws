@@ -18,7 +18,7 @@ cost_optimization_hub service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __5__  
 
 :::
 
@@ -26,11 +26,10 @@ total resources: __6__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/cost_optimization_hub/efficiency_metrics/">efficiency_metrics</a><br />
-<a href="/services/cost_optimization_hub/enrollment_status/">enrollment_status</a><br />
-<a href="/services/cost_optimization_hub/enrollment_statuses/">enrollment_statuses</a>
+<a href="/services/cost_optimization_hub/enrollment_statuses/">enrollment_statuses</a><br />
+<a href="/services/cost_optimization_hub/preferences/">preferences</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/cost_optimization_hub/preferences/">preferences</a><br />
 <a href="/services/cost_optimization_hub/recommendation_summaries/">recommendation_summaries</a><br />
 <a href="/services/cost_optimization_hub/recommendations/">recommendations</a>
 </div>

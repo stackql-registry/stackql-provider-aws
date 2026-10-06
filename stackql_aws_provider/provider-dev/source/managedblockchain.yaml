@@ -451,10 +451,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccessorOutput'
       x-stackql-resource: accessors
       x-stackql-method: delete_accessor
       x-stackql-verb: DELETE
@@ -504,10 +500,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMemberOutput'
       x-stackql-resource: members
       x-stackql-method: delete_member
       x-stackql-verb: DELETE
@@ -566,10 +558,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMemberOutput'
       x-stackql-resource: members
       x-stackql-method: update_member
       x-stackql-verb: UPDATE
@@ -602,10 +590,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNodeOutput'
       x-stackql-resource: nodes
       x-stackql-method: delete_node
       x-stackql-verb: DELETE
@@ -673,10 +657,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNodeOutput'
       x-stackql-resource: nodes
       x-stackql-method: update_node
       x-stackql-verb: UPDATE
@@ -833,10 +813,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VoteOnProposalOutput'
       x-stackql-resource: proposals
       x-stackql-method: vote_on_proposal
       x-stackql-verb: EXEC
@@ -894,10 +870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -923,10 +895,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -945,10 +913,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RejectInvitationOutput'
       x-stackql-resource: invitations
       x-stackql-method: reject_invitation
       x-stackql-verb: EXEC
@@ -1360,12 +1324,6 @@ components:
         ProposalId:
           $ref: '#/components/schemas/ResourceIdString'
           description: The unique identifier of the proposal.
-    DeleteAccessorOutput:
-      type: object
-    DeleteMemberOutput:
-      type: object
-    DeleteNodeOutput:
-      type: object
     GetAccessorOutput:
       type: object
       properties:
@@ -2117,10 +2075,6 @@ components:
           type: object
           properties: {}
           description: The tags assigned to the resource.
-    RejectInvitationOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2129,11 +2083,3 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
-    UpdateMemberOutput:
-      type: object
-    UpdateNodeOutput:
-      type: object
-    VoteOnProposalOutput:
-      type: object

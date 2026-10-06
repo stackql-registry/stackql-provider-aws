@@ -18,7 +18,7 @@ ec2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __280__  
+total resources: __284__  
 
 :::
 
@@ -27,35 +27,37 @@ total resources: __280__
 <div class="providerDocColumn">
 <a href="/services/ec2/account_attributes/">account_attributes</a><br />
 <a href="/services/ec2/account_vpc_encryption_controls/">account_vpc_encryption_controls</a><br />
-<a href="/services/ec2/active_vpn_tunnel_status/">active_vpn_tunnel_status</a><br />
-<a href="/services/ec2/address/">address</a><br />
+<a href="/services/ec2/active_vpn_tunnel_statuses/">active_vpn_tunnel_statuses</a><br />
 <a href="/services/ec2/address_attributes/">address_attributes</a><br />
+<a href="/services/ec2/address_to_classics/">address_to_classics</a><br />
+<a href="/services/ec2/address_to_vpcs/">address_to_vpcs</a><br />
 <a href="/services/ec2/address_transfers/">address_transfers</a><br />
 <a href="/services/ec2/addresses/">addresses</a><br />
 <a href="/services/ec2/addresses_attributes/">addresses_attributes</a><br />
 <a href="/services/ec2/aggregate_id_formats/">aggregate_id_formats</a><br />
 <a href="/services/ec2/allowed_images_settings/">allowed_images_settings</a><br />
-<a href="/services/ec2/application_status/">application_status</a><br />
 <a href="/services/ec2/application_status_check_associations/">application_status_check_associations</a><br />
 <a href="/services/ec2/application_status_checks/">application_status_checks</a><br />
+<a href="/services/ec2/application_statuses/">application_statuses</a><br />
 <a href="/services/ec2/associated_enclave_certificate_iam_roles/">associated_enclave_certificate_iam_roles</a><br />
 <a href="/services/ec2/associated_ipv6_pool_cidrs/">associated_ipv6_pool_cidrs</a><br />
 <a href="/services/ec2/availability_zones/">availability_zones</a><br />
-<a href="/services/ec2/aws_network_performance_datas/">aws_network_performance_datas</a><br />
+<a href="/services/ec2/aws_network_performance_data/">aws_network_performance_data</a><br />
 <a href="/services/ec2/aws_network_performance_metric_subscriptions/">aws_network_performance_metric_subscriptions</a><br />
 <a href="/services/ec2/bundle_tasks/">bundle_tasks</a><br />
 <a href="/services/ec2/byoip_cidrs/">byoip_cidrs</a><br />
 <a href="/services/ec2/capacity_block_extension_histories/">capacity_block_extension_histories</a><br />
 <a href="/services/ec2/capacity_block_extension_offerings/">capacity_block_extension_offerings</a><br />
 <a href="/services/ec2/capacity_block_offerings/">capacity_block_offerings</a><br />
-<a href="/services/ec2/capacity_block_status/">capacity_block_status</a><br />
+<a href="/services/ec2/capacity_block_statuses/">capacity_block_statuses</a><br />
 <a href="/services/ec2/capacity_blocks/">capacity_blocks</a><br />
 <a href="/services/ec2/capacity_manager_attributes/">capacity_manager_attributes</a><br />
 <a href="/services/ec2/capacity_manager_data_exports/">capacity_manager_data_exports</a><br />
-<a href="/services/ec2/capacity_manager_metric_datas/">capacity_manager_metric_datas</a><br />
+<a href="/services/ec2/capacity_manager_metric_data/">capacity_manager_metric_data</a><br />
 <a href="/services/ec2/capacity_manager_metric_dimensions/">capacity_manager_metric_dimensions</a><br />
 <a href="/services/ec2/capacity_manager_monitored_tag_keys/">capacity_manager_monitored_tag_keys</a><br />
-<a href="/services/ec2/capacity_manager_organizations_access/">capacity_manager_organizations_access</a><br />
+<a href="/services/ec2/capacity_manager_organizations_accesses/">capacity_manager_organizations_accesses</a><br />
+<a href="/services/ec2/capacity_managers/">capacity_managers</a><br />
 <a href="/services/ec2/capacity_reservation_billing_requests/">capacity_reservation_billing_requests</a><br />
 <a href="/services/ec2/capacity_reservation_cancellation_quotes/">capacity_reservation_cancellation_quotes</a><br />
 <a href="/services/ec2/capacity_reservation_fleets/">capacity_reservation_fleets</a><br />
@@ -80,7 +82,7 @@ total resources: __280__
 <a href="/services/ec2/default_credit_specifications/">default_credit_specifications</a><br />
 <a href="/services/ec2/dhcp_options/">dhcp_options</a><br />
 <a href="/services/ec2/ebs_default_kms_key_ids/">ebs_default_kms_key_ids</a><br />
-<a href="/services/ec2/ebs_encryption_by_defaults/">ebs_encryption_by_defaults</a><br />
+<a href="/services/ec2/ebs_encryptions/">ebs_encryptions</a><br />
 <a href="/services/ec2/egress_only_internet_gateways/">egress_only_internet_gateways</a><br />
 <a href="/services/ec2/elastic_gpus/">elastic_gpus</a><br />
 <a href="/services/ec2/enabled_ipam_policies/">enabled_ipam_policies</a><br />
@@ -96,7 +98,7 @@ total resources: __280__
 <a href="/services/ec2/flow_logs_integration_templates/">flow_logs_integration_templates</a><br />
 <a href="/services/ec2/fpga_image_attributes/">fpga_image_attributes</a><br />
 <a href="/services/ec2/fpga_images/">fpga_images</a><br />
-<a href="/services/ec2/groups_for_capacity_reservations/">groups_for_capacity_reservations</a><br />
+<a href="/services/ec2/groups/">groups</a><br />
 <a href="/services/ec2/host_reservation_offerings/">host_reservation_offerings</a><br />
 <a href="/services/ec2/host_reservation_purchase_previews/">host_reservation_purchase_previews</a><br />
 <a href="/services/ec2/host_reservations/">host_reservations</a><br />
@@ -115,20 +117,21 @@ total resources: __280__
 <a href="/services/ec2/images_in_recycle_bins/">images_in_recycle_bins</a><br />
 <a href="/services/ec2/import_image_tasks/">import_image_tasks</a><br />
 <a href="/services/ec2/import_snapshot_tasks/">import_snapshot_tasks</a><br />
+<a href="/services/ec2/import_tasks/">import_tasks</a><br />
 <a href="/services/ec2/instance_attributes/">instance_attributes</a><br />
 <a href="/services/ec2/instance_connect_endpoints/">instance_connect_endpoints</a><br />
 <a href="/services/ec2/instance_credit_specifications/">instance_credit_specifications</a><br />
 <a href="/services/ec2/instance_event_notification_attributes/">instance_event_notification_attributes</a><br />
 <a href="/services/ec2/instance_event_windows/">instance_event_windows</a><br />
-<a href="/services/ec2/instance_image_metadatas/">instance_image_metadatas</a><br />
+<a href="/services/ec2/instance_image_metadata/">instance_image_metadata</a><br />
 <a href="/services/ec2/instance_metadata_defaults/">instance_metadata_defaults</a><br />
 <a href="/services/ec2/instance_sql_ha_history_states/">instance_sql_ha_history_states</a><br />
 <a href="/services/ec2/instance_sql_ha_states/">instance_sql_ha_states</a><br />
-<a href="/services/ec2/instance_status/">instance_status</a><br />
+<a href="/services/ec2/instance_statuses/">instance_statuses</a><br />
 <a href="/services/ec2/instance_topologies/">instance_topologies</a><br />
 <a href="/services/ec2/instance_tpm_ek_pubs/">instance_tpm_ek_pubs</a><br />
 <a href="/services/ec2/instance_types/">instance_types</a><br />
-<a href="/services/ec2/instance_uefi_datas/">instance_uefi_datas</a><br />
+<a href="/services/ec2/instance_uefi_data/">instance_uefi_data</a><br />
 <a href="/services/ec2/instances/">instances</a><br />
 <a href="/services/ec2/internet_gateways/">internet_gateways</a><br />
 <a href="/services/ec2/ipam_address_histories/">ipam_address_histories</a><br />
@@ -163,10 +166,10 @@ total resources: __280__
 <a href="/services/ec2/ipams/">ipams</a><br />
 <a href="/services/ec2/ipv6_pools/">ipv6_pools</a><br />
 <a href="/services/ec2/key_pairs/">key_pairs</a><br />
-<a href="/services/ec2/launch_template_datas/">launch_template_datas</a><br />
-<a href="/services/ec2/launch_template_versions/">launch_template_versions</a>
+<a href="/services/ec2/launch_template_data/">launch_template_data</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/ec2/launch_template_versions/">launch_template_versions</a><br />
 <a href="/services/ec2/launch_templates/">launch_templates</a><br />
 <a href="/services/ec2/local_gateway_route_table_virtual_interface_group_associations/">local_gateway_route_table_virtual_interface_group_associations</a><br />
 <a href="/services/ec2/local_gateway_route_table_vpc_associations/">local_gateway_route_table_vpc_associations</a><br />
@@ -187,20 +190,20 @@ total resources: __280__
 <a href="/services/ec2/network_acls/">network_acls</a><br />
 <a href="/services/ec2/network_insights_access_scope_analyses/">network_insights_access_scope_analyses</a><br />
 <a href="/services/ec2/network_insights_access_scope_analysis_findings/">network_insights_access_scope_analysis_findings</a><br />
-<a href="/services/ec2/network_insights_access_scope_contents/">network_insights_access_scope_contents</a><br />
+<a href="/services/ec2/network_insights_access_scope_content/">network_insights_access_scope_content</a><br />
 <a href="/services/ec2/network_insights_access_scopes/">network_insights_access_scopes</a><br />
 <a href="/services/ec2/network_insights_analyses/">network_insights_analyses</a><br />
-<a href="/services/ec2/network_insights_analysis/">network_insights_analysis</a><br />
 <a href="/services/ec2/network_insights_paths/">network_insights_paths</a><br />
 <a href="/services/ec2/network_interface_attributes/">network_interface_attributes</a><br />
 <a href="/services/ec2/network_interface_permissions/">network_interface_permissions</a><br />
 <a href="/services/ec2/network_interfaces/">network_interfaces</a><br />
 <a href="/services/ec2/outpost_lags/">outpost_lags</a><br />
-<a href="/services/ec2/password_datas/">password_datas</a><br />
+<a href="/services/ec2/password_data/">password_data</a><br />
 <a href="/services/ec2/placement_groups/">placement_groups</a><br />
 <a href="/services/ec2/prefix_lists/">prefix_lists</a><br />
 <a href="/services/ec2/principal_id_formats/">principal_id_formats</a><br />
 <a href="/services/ec2/public_ipv4_pools/">public_ipv4_pools</a><br />
+<a href="/services/ec2/reachability_analyzer_organization_sharings/">reachability_analyzer_organization_sharings</a><br />
 <a href="/services/ec2/regions/">regions</a><br />
 <a href="/services/ec2/replace_root_volume_tasks/">replace_root_volume_tasks</a><br />
 <a href="/services/ec2/reserved_instances/">reserved_instances</a><br />
@@ -225,18 +228,19 @@ total resources: __280__
 <a href="/services/ec2/security_group_rules/">security_group_rules</a><br />
 <a href="/services/ec2/security_group_vpc_associations/">security_group_vpc_associations</a><br />
 <a href="/services/ec2/security_groups/">security_groups</a><br />
-<a href="/services/ec2/security_groups_for_vpcs/">security_groups_for_vpcs</a><br />
-<a href="/services/ec2/serial_console_access_status/">serial_console_access_status</a><br />
+<a href="/services/ec2/serial_console_access_statuses/">serial_console_access_statuses</a><br />
+<a href="/services/ec2/serial_console_accesses/">serial_console_accesses</a><br />
 <a href="/services/ec2/service_link_virtual_interfaces/">service_link_virtual_interfaces</a><br />
 <a href="/services/ec2/snapshot_attributes/">snapshot_attributes</a><br />
 <a href="/services/ec2/snapshot_block_public_access_states/">snapshot_block_public_access_states</a><br />
-<a href="/services/ec2/snapshot_tier_status/">snapshot_tier_status</a><br />
+<a href="/services/ec2/snapshot_tier_statuses/">snapshot_tier_statuses</a><br />
 <a href="/services/ec2/snapshots/">snapshots</a><br />
 <a href="/services/ec2/snapshots_in_recycle_bins/">snapshots_in_recycle_bins</a><br />
 <a href="/services/ec2/spot_datafeed_subscriptions/">spot_datafeed_subscriptions</a><br />
 <a href="/services/ec2/spot_fleet_instances/">spot_fleet_instances</a><br />
 <a href="/services/ec2/spot_fleet_request_histories/">spot_fleet_request_histories</a><br />
 <a href="/services/ec2/spot_fleet_requests/">spot_fleet_requests</a><br />
+<a href="/services/ec2/spot_fleets/">spot_fleets</a><br />
 <a href="/services/ec2/spot_instance_requests/">spot_instance_requests</a><br />
 <a href="/services/ec2/spot_placement_scores/">spot_placement_scores</a><br />
 <a href="/services/ec2/spot_price_histories/">spot_price_histories</a><br />
@@ -281,7 +285,7 @@ total resources: __280__
 <a href="/services/ec2/verified_access_instances/">verified_access_instances</a><br />
 <a href="/services/ec2/verified_access_trust_providers/">verified_access_trust_providers</a><br />
 <a href="/services/ec2/volume_attributes/">volume_attributes</a><br />
-<a href="/services/ec2/volume_status/">volume_status</a><br />
+<a href="/services/ec2/volume_statuses/">volume_statuses</a><br />
 <a href="/services/ec2/volumes/">volumes</a><br />
 <a href="/services/ec2/volumes_in_recycle_bins/">volumes_in_recycle_bins</a><br />
 <a href="/services/ec2/volumes_modifications/">volumes_modifications</a><br />
@@ -306,6 +310,6 @@ total resources: __280__
 <a href="/services/ec2/vpn_connection_device_types/">vpn_connection_device_types</a><br />
 <a href="/services/ec2/vpn_connections/">vpn_connections</a><br />
 <a href="/services/ec2/vpn_gateways/">vpn_gateways</a><br />
-<a href="/services/ec2/vpn_tunnel_replacement_status/">vpn_tunnel_replacement_status</a>
+<a href="/services/ec2/vpn_tunnel_replacement_statuses/">vpn_tunnel_replacement_statuses</a>
 </div>
 </div>

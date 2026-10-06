@@ -163,6 +163,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets information about jobs for a given test run.</td>
 </tr>
+<tr>
+    <td><a href="#stop_job"><CopyableCode code="stop_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Initiates a stop request for the current job. AWS Device Farm immediately stops the job on the device where tests have not started. You are not billed for this device. On the device where tests have started, setup suite and teardown suite tests run to completion on the device. You are billed for setup, teardown, and any tests that were in progress or already completed.</td>
+</tr>
 </tbody>
 </table>
 
@@ -230,7 +237,8 @@ WHERE region = '{{ region }}' -- required
 <Tabs
     defaultValue="list_jobs"
     values={[
-        { label: 'list_jobs', value: 'list_jobs' }
+        { label: 'list_jobs', value: 'list_jobs' },
+        { label: 'stop_job', value: 'stop_job' }
     ]}
 >
 <TabItem value="list_jobs">
@@ -244,6 +252,20 @@ EXEC aws.devicefarm.jobs.list_jobs
 '{
 "arn": "{{ arn }}", 
 "nextToken": "{{ nextToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_job">
+
+Initiates a stop request for the current job. AWS Device Farm immediately stops the job on the device where tests have not started. You are not billed for this device. On the device where tests have started, setup suite and teardown suite tests run to completion on the device. You are billed for setup, teardown, and any tests that were in progress or already completed.
+
+```sql
+EXEC aws.devicefarm.jobs.stop_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}"
 }'
 ;
 ```

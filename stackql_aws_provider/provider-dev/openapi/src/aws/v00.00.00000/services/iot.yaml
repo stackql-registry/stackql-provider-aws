@@ -59,10 +59,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddThingToBillingGroupResponse"
   /thing-groups/addThingToThingGroup:
     put:
       operationId: AddThingToThingGroup
@@ -88,10 +84,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddThingToThingGroupResponse"
   /packages/{package_name}/versions/{version_name}/sbom:
     put:
       operationId: AssociateSbomWithPackageVersion
@@ -158,10 +150,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateSbomFromPackageVersionResponse"
   /jobs/{job_id}/targets:
     post:
       operationId: AssociateTargetsWithJob
@@ -290,7 +278,7 @@ paths:
   /security-profiles/{security_profile_name}/targets:
     put:
       operationId: AttachSecurityProfile
-      description: Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -307,13 +295,9 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AttachSecurityProfileResponse"
     delete:
       operationId: DetachSecurityProfile
-      description: Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -330,13 +314,9 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DetachSecurityProfileResponse"
     get:
       operationId: ListTargetsForSecurityProfile
-      description: Lists the targets (thing groups) associated with a given Device Defender security profile. Requires permission to access the ListTargetsForSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the targets (thing groups) associated with a given Device Defender security profile. Requires permission to access the ListTargetsForSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -389,10 +369,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AttachThingPrincipalResponse"
     delete:
       operationId: DetachThingPrincipal
       description: Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. This call is asynchronous. It might take several seconds for the detachment to propagate. Requires permission to access the DetachThingPrincipal action.
@@ -412,10 +388,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DetachThingPrincipalResponse"
     get:
       operationId: ListThingPrincipals
       description: Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. Requires permission to access the ListThingPrincipals action.
@@ -459,10 +431,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelAuditMitigationActionsTaskResponse"
   /audit/tasks/{task_id}/cancel:
     put:
       operationId: CancelAuditTask
@@ -477,10 +445,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelAuditTaskResponse"
   /cancel-certificate-transfer/{certificate_id}:
     patch:
       operationId: CancelCertificateTransfer
@@ -498,7 +462,7 @@ paths:
   /detect/mitigationactions/tasks/{task_id}/cancel:
     put:
       operationId: CancelDetectMitigationActionsTask
-      description: Cancels a Device Defender ML Detect mitigation action. Requires permission to access the CancelDetectMitigationActionsTask action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Cancels a Device Defender ML Detect mitigation action. Requires permission to access the CancelDetectMitigationActionsTask action.
       parameters:
         - name: task_id
           in: path
@@ -509,10 +473,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelDetectMitigationActionsTaskResponse"
   /jobs/{job_id}/cancel:
     put:
       operationId: CancelJob
@@ -593,10 +553,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ClearDefaultAuthorizerResponse"
     get:
       operationId: DescribeDefaultAuthorizer
       description: Describes the default authorizer. Requires permission to access the DescribeDefaultAuthorizer action.
@@ -644,10 +600,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ConfirmTopicRuleDestinationResponse"
   /audit/suppressions/create:
     post:
       operationId: CreateAuditSuppression
@@ -679,10 +631,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateAuditSuppressionResponse"
   /authorizer/{authorizer_name}:
     post:
       operationId: CreateAuthorizer
@@ -737,10 +685,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAuthorizerResponse"
     get:
       operationId: DescribeAuthorizer
       description: Describes an authorizer. Requires permission to access the DescribeAuthorizer action.
@@ -840,10 +784,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBillingGroupResponse"
     get:
       operationId: DescribeBillingGroup
       description: Returns information about a billing group. Requires permission to access the DescribeBillingGroup action.
@@ -998,10 +938,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCertificateProviderResponse"
     get:
       operationId: DescribeCertificateProvider
       description: Describes a certificate provider. Requires permission to access the DescribeCertificateProvider action.
@@ -1157,7 +1093,7 @@ paths:
   /custom-metric/{metric_name}:
     post:
       operationId: CreateCustomMetric
-      description: Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Use this API to define a Custom Metric published by your devices to Device Defender. Requires permission to access the CreateCustomMetric action.
       parameters:
         - name: metric_name
           in: path
@@ -1192,7 +1128,7 @@ paths:
                 $ref: "#/components/schemas/CreateCustomMetricResponse"
     delete:
       operationId: DeleteCustomMetric
-      description: Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender detect custom metric. Requires permission to access the DeleteCustomMetric action. Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name.
       parameters:
         - name: metric_name
           in: path
@@ -1203,13 +1139,9 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomMetricResponse"
     get:
       operationId: DescribeCustomMetric
-      description: Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender detect custom metric. Requires permission to access the DescribeCustomMetric action.
       parameters:
         - name: metric_name
           in: path
@@ -1226,7 +1158,7 @@ paths:
                 $ref: "#/components/schemas/DescribeCustomMetricResponse"
     patch:
       operationId: UpdateCustomMetric
-      description: Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender detect custom metric. Requires permission to access the UpdateCustomMetric action.
       parameters:
         - name: metric_name
           in: path
@@ -1255,7 +1187,7 @@ paths:
   /dimensions/{name}:
     post:
       operationId: CreateDimension
-      description: Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.
       parameters:
         - name: name
           in: path
@@ -1291,7 +1223,7 @@ paths:
                 $ref: "#/components/schemas/CreateDimensionResponse"
     delete:
       operationId: DeleteDimension
-      description: Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.
       parameters:
         - name: name
           in: path
@@ -1302,13 +1234,9 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDimensionResponse"
     get:
       operationId: DescribeDimension
-      description: Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.
       parameters:
         - name: name
           in: path
@@ -1325,7 +1253,7 @@ paths:
                 $ref: "#/components/schemas/DescribeDimensionResponse"
     patch:
       operationId: UpdateDimension
-      description: Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.
       parameters:
         - name: name
           in: path
@@ -1411,10 +1339,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDomainConfigurationResponse"
     get:
       operationId: DescribeDomainConfiguration
       description: Gets summary information about a domain configuration. Requires permission to access the DescribeDomainConfiguration action.
@@ -1528,10 +1452,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDynamicThingGroupResponse"
     patch:
       operationId: UpdateDynamicThingGroup
       description: Updates a dynamic thing group. Requires permission to access the UpdateDynamicThingGroup action.
@@ -1983,10 +1903,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMitigationActionResponse"
     get:
       operationId: DescribeMitigationAction
       description: Gets information about a mitigation action. Requires permission to access the DescribeMitigationAction action.
@@ -2110,10 +2026,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteOTAUpdateResponse"
     get:
       operationId: GetOTAUpdate
       description: Gets an OTA update. Requires permission to access the GetOTAUpdate action.
@@ -2185,10 +2097,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePackageResponse"
     get:
       operationId: GetPackage
       description: Gets information about the specified software package. Requires permission to access the GetPackage action.
@@ -2238,10 +2146,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePackageResponse"
   /packages/{package_name}/versions/{version_name}:
     put:
       operationId: CreatePackageVersion
@@ -2314,10 +2218,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePackageVersionResponse"
     get:
       operationId: GetPackageVersion
       description: Gets information about the specified package version. Requires permission to access the GetPackageVersion action.
@@ -2383,10 +2283,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePackageVersionResponse"
   /policies/{policy_name}:
     post:
       operationId: CreatePolicy
@@ -2690,10 +2586,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRoleAliasResponse"
     get:
       operationId: DescribeRoleAlias
       description: Describes a role alias. Requires permission to access the DescribeRoleAlias action.
@@ -2790,10 +2682,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteScheduledAuditResponse"
     get:
       operationId: DescribeScheduledAudit
       description: Gets information about a scheduled audit. Requires permission to access the DescribeScheduledAudit action.
@@ -2846,7 +2734,7 @@ paths:
   /security-profiles/{security_profile_name}:
     post:
       operationId: CreateSecurityProfile
-      description: Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -2884,7 +2772,7 @@ paths:
                 $ref: "#/components/schemas/CreateSecurityProfileResponse"
     delete:
       operationId: DeleteSecurityProfile
-      description: Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -2901,13 +2789,9 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSecurityProfileResponse"
     get:
       operationId: DescribeSecurityProfile
-      description: Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -2924,7 +2808,7 @@ paths:
                 $ref: "#/components/schemas/DescribeSecurityProfileResponse"
     patch:
       operationId: UpdateSecurityProfile
-      description: Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.
       parameters:
         - name: security_profile_name
           in: path
@@ -3021,10 +2905,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStreamResponse"
     get:
       operationId: DescribeStream
       description: Gets information about a stream. Requires permission to access the DescribeStream action.
@@ -3122,10 +3002,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteThingResponse"
     get:
       operationId: DescribeThing
       description: Gets information about the specified thing. Requires permission to access the DescribeThing action.
@@ -3171,10 +3047,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateThingResponse"
   /thing-groups/{thing_group_name}:
     post:
       operationId: CreateThingGroup
@@ -3225,10 +3097,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteThingGroupResponse"
     get:
       operationId: DescribeThingGroup
       description: Describe a thing group. Requires permission to access the DescribeThingGroup action.
@@ -3318,10 +3186,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteThingTypeResponse"
     get:
       operationId: DescribeThingType
       description: Gets information about the specified thing type. Requires permission to access the DescribeThingType action.
@@ -3361,10 +3225,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateThingTypeResponse"
   /rules/{rule_name}:
     post:
       operationId: CreateTopicRule
@@ -3517,10 +3377,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTopicRuleDestinationResponse"
   /audit/configuration:
     delete:
       operationId: DeleteAccountAuditConfiguration
@@ -3535,10 +3391,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccountAuditConfigurationResponse"
     get:
       operationId: DescribeAccountAuditConfiguration
       description: Gets information about the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled. Requires permission to access the DescribeAccountAuditConfiguration action.
@@ -3570,10 +3422,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAccountAuditConfigurationResponse"
   /audit/suppressions/delete:
     post:
       operationId: DeleteAuditSuppression
@@ -3596,10 +3444,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAuditSuppressionResponse"
   /cacertificate/{ca_certificate_id}:
     delete:
       operationId: DeleteCACertificate
@@ -3614,10 +3458,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCACertificateResponse"
     get:
       operationId: DescribeCACertificate
       description: Describes a registered CA certificate. Requires permission to access the DescribeCACertificate action.
@@ -3747,10 +3587,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCommandExecutionResponse"
     get:
       operationId: GetCommandExecution
       description: Gets information about the specific command execution on a single device.
@@ -3894,10 +3730,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProvisioningTemplateResponse"
     get:
       operationId: DescribeProvisioningTemplate
       description: Returns information about a provisioning template. Requires permission to access the DescribeProvisioningTemplate action.
@@ -3947,10 +3779,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateProvisioningTemplateResponse"
   /provisioning-templates/{template_name}/versions/{version_id}:
     delete:
       operationId: DeleteProvisioningTemplateVersion
@@ -3971,10 +3799,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProvisioningTemplateVersionResponse"
     get:
       operationId: DescribeProvisioningTemplateVersion
       description: Returns information about a provisioning template version. Requires permission to access the DescribeProvisioningTemplateVersion action.
@@ -4006,10 +3830,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRegistrationCodeResponse"
     get:
       operationId: GetRegistrationCode
       description: Gets a registration code used to register a CA certificate with IoT. IoT will create a registration code as part of this API call if the registration code doesn't exist or has been deleted. If you already have a registration code, this API call will return the same registration code. Requires permission to access the GetRegistrationCode action.
@@ -4035,10 +3855,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTopicRuleDestinationResponse"
     get:
       operationId: GetTopicRuleDestination
       description: Gets information about a topic rule destination. Requires permission to access the GetTopicRuleDestination action.
@@ -4149,10 +3965,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeprecateThingTypeResponse"
   /audit/findings/{finding_id}:
     get:
       operationId: DescribeAuditFinding
@@ -4270,7 +4082,7 @@ paths:
   /detect/mitigationactions/tasks/{task_id}:
     get:
       operationId: DescribeDetectMitigationActionsTask
-      description: Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender ML Detect mitigation action. Requires permission to access the DescribeDetectMitigationActionsTask action.
       parameters:
         - name: task_id
           in: path
@@ -4287,7 +4099,7 @@ paths:
                 $ref: "#/components/schemas/DescribeDetectMitigationActionsTaskResponse"
     put:
       operationId: StartDetectMitigationActionsTask
-      description: Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask action.
       parameters:
         - name: task_id
           in: path
@@ -4359,10 +4171,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEncryptionConfigurationResponse"
   /endpoint:
     get:
       operationId: DescribeEndpoint
@@ -4409,10 +4217,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEventConfigurationsResponse"
   /indices/{index_name}:
     get:
       operationId: DescribeIndex
@@ -4534,7 +4338,7 @@ paths:
   /behavior-model-training/summaries:
     get:
       operationId: GetBehaviorModelTrainingSummaries
-      description: Returns a Device Defender's ML Detect Security Profile training model's status. Requires permission to access the GetBehaviorModelTrainingSummaries action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Returns a Device Defender's ML Detect Security Profile training model's status. Requires permission to access the GetBehaviorModelTrainingSummaries action.
       parameters:
         - name: securityProfileName
           in: query
@@ -4682,10 +4486,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateIndexingConfigurationResponse"
   /jobs/{job_id}/job-document:
     get:
       operationId: GetJobDocument
@@ -4774,10 +4574,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePackageConfigurationResponse"
   /indices/percentiles:
     post:
       operationId: GetPercentiles
@@ -4908,7 +4704,7 @@ paths:
   /active-violations:
     get:
       operationId: ListActiveViolations
-      description: Lists the active violations for a given Device Defender security profile. Requires permission to access the ListActiveViolations action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the active violations for a given Device Defender security profile. Requires permission to access the ListActiveViolations action.
       parameters:
         - name: thingName
           in: query
@@ -5477,7 +5273,7 @@ paths:
   /custom-metrics:
     get:
       operationId: ListCustomMetrics
-      description: Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists your Device Defender detect custom metrics. Requires permission to access the ListCustomMetrics action.
       parameters:
         - name: nextToken
           in: query
@@ -5501,7 +5297,7 @@ paths:
   /detect/mitigationactions/executions:
     get:
       operationId: ListDetectMitigationActionsExecutions
-      description: Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists mitigation actions executions for a Device Defender ML Detect Security Profile. Requires permission to access the ListDetectMitigationActionsExecutions action.
       parameters:
         - name: taskId
           in: query
@@ -5555,7 +5351,7 @@ paths:
   /detect/mitigationactions/tasks:
     get:
       operationId: ListDetectMitigationActionsTasks
-      description: List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List of Device Defender ML Detect mitigation actions tasks. Requires permission to access the ListDetectMitigationActionsTasks action.
       parameters:
         - name: maxResults
           in: query
@@ -5591,7 +5387,7 @@ paths:
   /dimensions:
     get:
       operationId: ListDimensions
-      description: List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.
       parameters:
         - name: nextToken
           in: query
@@ -6389,7 +6185,7 @@ paths:
   /security-profiles:
     get:
       operationId: ListSecurityProfiles
-      description: Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.
       parameters:
         - name: nextToken
           in: query
@@ -6425,7 +6221,7 @@ paths:
   /security-profiles-for-target:
     get:
       operationId: ListSecurityProfilesForTarget
-      description: Lists the Device Defender security profiles attached to a target (thing group). Requires permission to access the ListSecurityProfilesForTarget action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles attached to a target (thing group). Requires permission to access the ListSecurityProfilesForTarget action.
       parameters:
         - name: nextToken
           in: query
@@ -6533,10 +6329,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /policy-targets/{policy_name}:
     post:
       operationId: ListTargetsForPolicy
@@ -6979,7 +6771,7 @@ paths:
   /violation-events:
     get:
       operationId: ListViolationEvents
-      description: Lists the Device Defender security profile violations discovered during the given time period. You can use filters to limit the results to those alerts issued for a particular security profile, behavior, or thing (device). Requires permission to access the ListViolationEvents action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profile violations discovered during the given time period. You can use filters to limit the results to those alerts issued for a particular security profile, behavior, or thing (device). Requires permission to access the ListViolationEvents action.
       parameters:
         - name: startTime
           in: query
@@ -7045,7 +6837,7 @@ paths:
   /violations/verification-state/{violation_id}:
     post:
       operationId: PutVerificationStateOnViolation
-      description: Set a verification state and provide a description of that verification state on a violation (detect alarm).
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Set a verification state and provide a description of that verification state on a violation (detect alarm).
       parameters:
         - name: violation_id
           in: path
@@ -7069,10 +6861,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutVerificationStateOnViolationResponse"
   /cacertificate:
     post:
       operationId: RegisterCACertificate
@@ -7220,10 +7008,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveThingFromBillingGroupResponse"
   /thing-groups/removeThingFromThingGroup:
     put:
       operationId: RemoveThingFromThingGroup
@@ -7247,10 +7031,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveThingFromThingGroupResponse"
   /indices/search:
     post:
       operationId: SearchIndex
@@ -7296,10 +7076,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopThingRegistrationTaskResponse"
   /test-authorization:
     post:
       operationId: TestAuthorization
@@ -7427,10 +7203,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /audit/suppressions/update:
     patch:
       operationId: UpdateAuditSuppression
@@ -7459,10 +7231,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAuditSuppressionResponse"
   /thing-groups/updateThingGroupsForThing:
     put:
       operationId: UpdateThingGroupsForThing
@@ -7486,14 +7254,10 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateThingGroupsForThingResponse"
   /security-profile-behaviors/validate:
     post:
       operationId: ValidateSecurityProfileBehaviors
-      description: Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.
+      description: The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.
       parameters: []
       requestBody:
         required: true
@@ -7579,8 +7343,6 @@ components:
       pattern: "[a-zA-Z0-9:_-]+"
     ThingArn:
       type: string
-    AddThingToBillingGroupResponse:
-      type: object
     ThingGroupName:
       type: string
       minLength: 1
@@ -7590,8 +7352,6 @@ components:
       type: string
     OverrideDynamicGroups:
       type: boolean
-    AddThingToThingGroupResponse:
-      type: object
     PackageName:
       type: string
       minLength: 1
@@ -7707,32 +7467,21 @@ components:
       pattern: "[a-zA-Z0-9:_-]+"
     SecurityProfileTargetArn:
       type: string
-    AttachSecurityProfileResponse:
-      type: object
     ThingPrincipalType:
       type: string
       enum:
         - EXCLUSIVE_THING
         - NON_EXCLUSIVE_THING
-    AttachThingPrincipalResponse:
-      description: The output from the AttachThingPrincipal operation.
-      type: object
     MitigationActionsTaskId:
       type: string
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9_-]+"
-    CancelAuditMitigationActionsTaskResponse:
-      type: object
     AuditTaskId:
       type: string
       minLength: 1
       maxLength: 40
       pattern: "[a-zA-Z0-9\\-]+"
-    CancelAuditTaskResponse:
-      type: object
-    CancelDetectMitigationActionsTaskResponse:
-      type: object
     ForceFlag:
       type: boolean
     ReasonCode:
@@ -7757,14 +7506,10 @@ components:
     DetailsMap:
       type: object
       properties: {}
-    ClearDefaultAuthorizerResponse:
-      type: object
     ConfirmationToken:
       type: string
       minLength: 1
       maxLength: 2048
-    ConfirmTopicRuleDestinationResponse:
-      type: object
     AuditCheckName:
       description: An audit check name. Checks must be enabled for your account. (Use DescribeAccountAuditConfiguration to see the list of all checks, including those that are enabled or use UpdateAccountAuditConfiguration to select which checks are enabled.)
       type: string
@@ -7873,8 +7618,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[a-zA-Z0-9-_]+$
-    CreateAuditSuppressionResponse:
-      type: object
     AuthorizerName:
       type: string
       minLength: 1
@@ -10096,6 +9839,9 @@ components:
         location:
           $ref: "#/components/schemas/LocationAction"
           description: The Amazon Location Service rule action sends device location updates from an MQTT message to an Amazon Location tracker resource.
+        influxDB:
+          $ref: "#/components/schemas/InfluxDBAction"
+          description: Write data to an InfluxDB database.
     DynamoDBAction:
       description: 'Describes an action to write to a DynamoDB table. The tableName, hashKeyField, and rangeKeyField values must match the values used when you created the table. The hashKeyValue and rangeKeyvalue fields use a substitution template syntax. These templates provide data at runtime. The syntax is as follows: ${sql-expression}. You can specify any valid expression in a WHERE or SELECT clause, including JSON properties, comparisons, calculations, and functions. For example, the following field uses the third level of the topic: "hashKeyValue": "${topic(3)}" The following field uses the timestamp: "rangeKeyValue": "${timestamp()}"'
       type: object
@@ -10998,6 +10744,91 @@ components:
           description: "The precision of the timestamp value that results from the expression described in value. Valid values: SECONDS | MILLISECONDS | MICROSECONDS | NANOSECONDS. The default is MILLISECONDS."
       required:
         - value
+    InfluxDBAction:
+      description: The InfluxDB rule action converts the message payload into InfluxDB line protocol. It writes the result to a table in an InfluxDB database. The database can be an Amazon Timestream for InfluxDB instance or a self-managed InfluxDB cluster. The action connects to InfluxDB through an InfluxDB topic rule destination, which must be in the ENABLED state before the action can write data.
+      type: object
+      properties:
+        destinationArn:
+          $ref: "#/components/schemas/AwsArn"
+          description: The ARN of the InfluxDB topic rule destination that identifies the InfluxDB instance to write to.
+        roleArn:
+          $ref: "#/components/schemas/AwsArn"
+          description: The ARN of the role that grants permission to retrieve the InfluxDB API token from Amazon Web Services Secrets Manager.
+        databaseName:
+          $ref: "#/components/schemas/InfluxDBDatabaseName"
+          description: The name of the InfluxDB database to write to. In InfluxDB 2, this is the name of the bucket.
+        tableName:
+          $ref: "#/components/schemas/InfluxDBTableName"
+          description: The name of the table to write the data point to. This is the measurement name of the InfluxDB line protocol record. Accepts substitution templates.
+        organization:
+          $ref: "#/components/schemas/InfluxDBOrganization"
+          description: The name of the InfluxDB organization that owns the database. A write to an InfluxDB 2 instance fails if this value isn't set. This value isn't used when the destination is an InfluxDB 3 instance.
+        tags:
+          type: object
+          properties: {}
+          description: The set of tags to write with each data point. Tags are the indexed metadata of an InfluxDB data point. Tag names and tag values accept substitution templates. A tag name can't use the @{...} per-element form. A tag name must resolve to the same value for every element of an array payload.
+        timestampUnit:
+          $ref: "#/components/schemas/InfluxDBTimestampUnit"
+          description: The precision of the timestamp written with each data point. Valid values are s (seconds), ms (milliseconds), us (microseconds), and ns (nanoseconds). If omitted, the topic rule action uses ms.
+        batchConfig:
+          $ref: "#/components/schemas/InfluxDBBatchConfig"
+          description: The batching configuration for the action. When present, IoT collects data points from multiple messages and writes them to InfluxDB in a single request. If omitted, each message is written to InfluxDB in its own request.
+      required:
+        - destinationArn
+        - roleArn
+        - databaseName
+        - tableName
+    InfluxDBDatabaseName:
+      type: string
+      minLength: 2
+      maxLength: 64
+      pattern: ^[^_\"][^\"]+$
+    InfluxDBTableName:
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: ^[^_].*$
+    InfluxDBOrganization:
+      type: string
+      minLength: 1
+      maxLength: 64
+    InfluxDBTimestampUnit:
+      type: string
+      enum:
+        - s
+        - ms
+        - us
+        - ns
+    InfluxDBBatchConfig:
+      description: The batching configuration of an InfluxDB rule action. IoT closes a batch and writes it to InfluxDB when the first of the configured limits is reached.
+      type: object
+      properties:
+        maxBatchSize:
+          $ref: "#/components/schemas/InfluxDBMaxBatchSize"
+          description: The maximum number of data points to collect in a batch. If you don't specify a value, this limit doesn't apply. IoT then closes each batch when another configured limit is reached.
+        maxBatchOpenMs:
+          $ref: "#/components/schemas/InfluxDBMaxBatchOpenMs"
+          description: The maximum length of time, in milliseconds, to keep a batch open before writing it to InfluxDB. If you don't specify a value, this limit doesn't apply. IoT then closes each batch when another configured limit is reached.
+        maxBatchSizeBytes:
+          $ref: "#/components/schemas/InfluxDBMaxBatchSizeBytes"
+          description: The maximum size of a batch, in bytes, before IoT writes it to InfluxDB. If you don't specify a value, this limit doesn't apply. IoT then closes each batch when another configured limit is reached.
+        batchAcrossTopics:
+          $ref: "#/components/schemas/InfluxDBBatchAcrossTopics"
+          description: Specifies whether to collect data points from different topics into the same batch. If omitted or false, IoT batches data points for each topic separately.
+    InfluxDBMaxBatchSize:
+      type: integer
+      minimum: 1
+      maximum: 500
+    InfluxDBMaxBatchOpenMs:
+      type: integer
+      minimum: 5
+      maximum: 1000
+    InfluxDBMaxBatchSizeBytes:
+      type: integer
+      minimum: 100
+      maximum: 131072
+    InfluxDBBatchAcrossTopics:
+      type: boolean
     IsDisabled:
       type: boolean
     AwsIotSqlVersion:
@@ -11012,6 +10843,9 @@ components:
         vpcConfiguration:
           $ref: "#/components/schemas/VpcDestinationConfiguration"
           description: Configuration of the virtual private cloud (VPC) connection.
+        influxDBConfiguration:
+          $ref: "#/components/schemas/InfluxDBDestinationConfiguration"
+          description: The configuration of an InfluxDB topic rule destination, which you specify when you call CreateTopicRuleDestination.
     HttpUrlDestinationConfiguration:
       description: HTTP URL destination configuration used by the topic rule's HTTP action.
       type: object
@@ -11055,6 +10889,47 @@ components:
       type: string
     VpcId:
       type: string
+    InfluxDBDestinationConfiguration:
+      description: The configuration of an InfluxDB topic rule destination.
+      type: object
+      properties:
+        endpoint:
+          $ref: "#/components/schemas/Url"
+          description: The URL of the InfluxDB instance to write to.
+        influxDBVersion:
+          $ref: "#/components/schemas/InfluxDBVersion"
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: "#/components/schemas/InfluxDBSecretId"
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: "#/components/schemas/InfluxDBSecretType"
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary. If omitted, IoT reads the secret as a string.
+        secretKey:
+          $ref: "#/components/schemas/InfluxDBSecretKey"
+          description: The key to read from the secret value when the secret contains a JSON object. If omitted, IoT uses the entire secret value as the InfluxDB API token.
+      required:
+        - endpoint
+        - influxDBVersion
+        - secretId
+    InfluxDBVersion:
+      type: string
+      enum:
+        - V2
+        - V3
+    InfluxDBSecretId:
+      type: string
+      minLength: 1
+      maxLength: 512
+    InfluxDBSecretType:
+      type: string
+      enum:
+        - SecretString
+        - SecretBinary
+    InfluxDBSecretKey:
+      type: string
+      minLength: 1
+      maxLength: 128
     CreateTopicRuleDestinationResponse:
       type: object
       properties:
@@ -11086,6 +10961,9 @@ components:
         vpcProperties:
           $ref: "#/components/schemas/VpcDestinationProperties"
           description: Properties of the virtual private cloud (VPC) connection.
+        influxDBProperties:
+          $ref: "#/components/schemas/InfluxDBDestinationProperties"
+          description: The properties of an InfluxDB topic rule destination, as returned by CreateTopicRuleDestination and GetTopicRuleDestination.
     TopicRuleDestinationStatus:
       type: string
       enum:
@@ -11123,26 +11001,32 @@ components:
         roleArn:
           $ref: "#/components/schemas/AwsArn"
           description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+    InfluxDBDestinationProperties:
+      description: The properties of an existing InfluxDB topic rule destination, as returned by CreateTopicRuleDestination and GetTopicRuleDestination.
+      type: object
+      properties:
+        endpoint:
+          $ref: "#/components/schemas/Url"
+          description: The URL of the InfluxDB instance that the destination writes to.
+        influxDBVersion:
+          $ref: "#/components/schemas/InfluxDBVersion"
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: "#/components/schemas/InfluxDBSecretId"
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: "#/components/schemas/InfluxDBSecretType"
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary.
+        secretKey:
+          $ref: "#/components/schemas/InfluxDBSecretKey"
+          description: The key that is read from the secret value when the secret contains a JSON object.
     DeleteScheduledAudits:
       type: boolean
-    DeleteAccountAuditConfigurationResponse:
-      type: object
-    DeleteAuditSuppressionResponse:
-      type: object
-    DeleteAuthorizerResponse:
-      type: object
     OptionalVersion:
       type: integer
       format: int64
-    DeleteBillingGroupResponse:
-      type: object
-    DeleteCACertificateResponse:
-      description: The output for the DeleteCACertificate operation.
-      type: object
     ForceDelete:
       type: boolean
-    DeleteCertificateProviderResponse:
-      type: object
     DeleteCommandResponse:
       type: object
       properties:
@@ -11156,56 +11040,13 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9_-]+"
-    DeleteCommandExecutionResponse:
-      type: object
-    DeleteCustomMetricResponse:
-      type: object
-    DeleteDimensionResponse:
-      type: object
-    DeleteDomainConfigurationResponse:
-      type: object
-    DeleteDynamicThingGroupResponse:
-      type: object
     ExecutionNumber:
       type: integer
       format: int64
-    DeleteMitigationActionResponse:
-      type: object
     DeleteStream:
       type: boolean
     ForceDeleteAWSJob:
       type: boolean
-    DeleteOTAUpdateResponse:
-      type: object
-    DeletePackageResponse:
-      type: object
-    DeletePackageVersionResponse:
-      type: object
-    DeleteProvisioningTemplateResponse:
-      type: object
-    DeleteProvisioningTemplateVersionResponse:
-      type: object
-    DeleteRegistrationCodeResponse:
-      description: The output for the DeleteRegistrationCode operation.
-      type: object
-    DeleteRoleAliasResponse:
-      type: object
-    DeleteScheduledAuditResponse:
-      type: object
-    DeleteSecurityProfileResponse:
-      type: object
-    DeleteStreamResponse:
-      type: object
-    DeleteThingResponse:
-      description: The output of the DeleteThing operation.
-      type: object
-    DeleteThingGroupResponse:
-      type: object
-    DeleteThingTypeResponse:
-      description: The output for the DeleteThingType operation.
-      type: object
-    DeleteTopicRuleDestinationResponse:
-      type: object
     LogTargetType:
       type: string
       enum:
@@ -11218,9 +11059,6 @@ components:
       type: string
     UndoDeprecate:
       type: boolean
-    DeprecateThingTypeResponse:
-      description: The output for the DeprecateThingType operation.
-      type: object
     DescribeAccountAuditConfigurationResponse:
       type: object
       properties:
@@ -12903,13 +12741,6 @@ components:
     DeprecationDate:
       type: string
       format: date-time
-    DetachSecurityProfileResponse:
-      type: object
-    DetachThingPrincipalResponse:
-      description: The output from the DetachThingPrincipal operation.
-      type: object
-    DisassociateSbomFromPackageVersionResponse:
-      type: object
     TinyMaxResults:
       type: integer
       minimum: 1
@@ -15429,6 +15260,9 @@ components:
         vpcDestinationSummary:
           $ref: "#/components/schemas/VpcDestinationSummary"
           description: Information about the virtual private cloud (VPC) connection.
+        influxDBSummary:
+          $ref: "#/components/schemas/InfluxDBDestinationSummary"
+          description: A summary of an InfluxDB topic rule destination, as returned by ListTopicRuleDestinations.
     HttpUrlDestinationSummary:
       description: Information about an HTTP URL destination.
       type: object
@@ -15452,6 +15286,25 @@ components:
         roleArn:
           $ref: "#/components/schemas/AwsArn"
           description: The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
+    InfluxDBDestinationSummary:
+      description: A summary of an InfluxDB topic rule destination, as returned by ListTopicRuleDestinations. For the full set of destination properties, see InfluxDBDestinationProperties.
+      type: object
+      properties:
+        endpoint:
+          $ref: "#/components/schemas/Url"
+          description: The URL of the InfluxDB instance that the destination writes to.
+        influxDBVersion:
+          $ref: "#/components/schemas/InfluxDBVersion"
+          description: The major version of the InfluxDB instance. Valid values are V2 and V3.
+        secretId:
+          $ref: "#/components/schemas/InfluxDBSecretId"
+          description: The ARN or name of the Amazon Web Services Secrets Manager secret that contains the InfluxDB API token.
+        secretType:
+          $ref: "#/components/schemas/InfluxDBSecretType"
+          description: The type of the secret that contains the InfluxDB API token. Valid values are SecretString and SecretBinary.
+        secretKey:
+          $ref: "#/components/schemas/InfluxDBSecretKey"
+          description: The key that is read from the secret value when the secret contains a JSON object.
     Topic:
       type: string
     TopicRuleMaxResults:
@@ -15583,8 +15436,6 @@ components:
         - in-alarm
         - alarm-cleared
         - alarm-invalidated
-    PutVerificationStateOnViolationResponse:
-      type: object
     AllowAutoRegistration:
       type: boolean
     RegisterCACertificateResponse:
@@ -15631,10 +15482,6 @@ components:
           type: object
           properties: {}
           description: ARNs for the generated resources.
-    RemoveThingFromBillingGroupResponse:
-      type: object
-    RemoveThingFromThingGroupResponse:
-      type: object
     SearchQueryMaxResults:
       type: integer
       minimum: 1
@@ -15795,10 +15642,6 @@ components:
         taskId:
           $ref: "#/components/schemas/TaskId"
           description: The bulk thing provisioning task ID.
-    StopThingRegistrationTaskResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     AuthInfos:
       type: array
       items:
@@ -16014,18 +15857,12 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     AuditNotificationTargetConfigurations:
       type: object
       properties: {}
     AuditCheckConfigurations:
       type: object
       properties: {}
-    UpdateAccountAuditConfigurationResponse:
-      type: object
-    UpdateAuditSuppressionResponse:
-      type: object
     UpdateAuthorizerResponse:
       type: object
       properties:
@@ -16129,15 +15966,9 @@ components:
         version:
           $ref: "#/components/schemas/Version"
           description: The dynamic thing group version.
-    UpdateEncryptionConfigurationResponse:
-      type: object
     EventConfigurations:
       type: object
       properties: {}
-    UpdateEventConfigurationsResponse:
-      type: object
-    UpdateIndexingConfigurationResponse:
-      type: object
     UpdateMitigationActionResponse:
       type: object
       properties:
@@ -16149,21 +15980,13 @@ components:
           description: A unique identifier for the mitigation action.
     UnsetDefaultVersion:
       type: boolean
-    UpdatePackageResponse:
-      type: object
-    UpdatePackageConfigurationResponse:
-      type: object
     PackageVersionAction:
       type: string
       enum:
         - PUBLISH
         - DEPRECATE
-    UpdatePackageVersionResponse:
-      type: object
     RemoveHook:
       type: boolean
-    UpdateProvisioningTemplateResponse:
-      type: object
     UpdateRoleAliasResponse:
       type: object
       properties:
@@ -16241,9 +16064,6 @@ components:
           description: The stream version.
     RemoveThingType:
       type: boolean
-    UpdateThingResponse:
-      description: The output from the UpdateThing operation.
-      type: object
     UpdateThingGroupResponse:
       type: object
       properties:
@@ -16254,12 +16074,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ThingGroupName"
-    UpdateThingGroupsForThingResponse:
-      type: object
-    UpdateThingTypeResponse:
-      type: object
-    UpdateTopicRuleDestinationResponse:
-      type: object
     ValidateSecurityProfileBehaviorsResponse:
       type: object
       properties:
@@ -16355,6 +16169,23 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+        list_certificates_by_ca:
+          operation:
+            $ref: "#/paths/~1certificates-by-ca~1{ca_certificate_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.certificates
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
         register_certificate:
           operation:
             $ref: "#/paths/~1certificate~1register/post"
@@ -16401,10 +16232,11 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/certificates/methods/describe_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/list_certificates_by_ca"
           - $ref: "#/components/x-stackQL-resources/certificates/methods/list_certificates"
         insert:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/create_certificate_from_csr"
           - $ref: "#/components/x-stackQL-resources/certificates/methods/register_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/create_certificate_from_csr"
           - $ref: "#/components/x-stackQL-resources/certificates/methods/create_keys_and_certificate"
         update:
           - $ref: "#/components/x-stackQL-resources/certificates/methods/update_certificate"
@@ -16420,7 +16252,6 @@ components:
             $ref: "#/paths/~1billing-groups~1addThingToBillingGroup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -16442,7 +16273,6 @@ components:
             $ref: "#/paths/~1billing-groups~1{billing_group_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_billing_group:
@@ -16484,7 +16314,6 @@ components:
             $ref: "#/paths/~1billing-groups~1removeThingFromBillingGroup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -16511,7 +16340,6 @@ components:
             $ref: "#/paths/~1thing-groups~1addThingToThingGroup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -16533,7 +16361,6 @@ components:
             $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_dynamic_thing_group:
           operation:
             $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/patch"
@@ -16561,7 +16388,6 @@ components:
             $ref: "#/paths/~1thing-groups~1{thing_group_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_thing_group:
@@ -16603,7 +16429,6 @@ components:
             $ref: "#/paths/~1thing-groups~1removeThingFromThingGroup/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -16642,7 +16467,6 @@ components:
             $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}~1sbom/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_package_version:
           operation:
             $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/put"
@@ -16659,7 +16483,6 @@ components:
             $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_package_version:
@@ -16673,7 +16496,6 @@ components:
             $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -16931,7 +16753,6 @@ components:
             $ref: "#/paths/~1security-profiles~1{security_profile_name}~1targets/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         detach_security_profile:
@@ -16939,7 +16760,6 @@ components:
             $ref: "#/paths/~1security-profiles~1{security_profile_name}~1targets/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_security_profile:
           operation:
             $ref: "#/paths/~1security-profiles~1{security_profile_name}/post"
@@ -16956,7 +16776,6 @@ components:
             $ref: "#/paths/~1security-profiles~1{security_profile_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_security_profile:
@@ -16993,6 +16812,23 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        list_security_profiles_for_target:
+          operation:
+            $ref: "#/paths/~1security-profiles-for-target/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.securityProfileTargetMappings
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         validate_security_profile_behaviors:
           operation:
             $ref: "#/paths/~1security-profile-behaviors~1validate/post"
@@ -17007,6 +16843,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/describe_security_profile"
+          - $ref: "#/components/x-stackQL-resources/security_profiles/methods/list_security_profiles_for_target"
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/list_security_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/create_security_profile"
@@ -17015,10 +16852,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_security_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/delete_security_profile"
-    targets_for_security_profiles:
-      id: aws.iot.targets_for_security_profiles
-      name: targets_for_security_profiles
-      title: targets_for_security_profiles
+    targets:
+      id: aws.iot.targets
+      name: targets
+      title: targets
       methods:
         list_targets_for_security_profile:
           operation:
@@ -17037,9 +16874,33 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        list_targets_for_policy:
+          operation:
+            $ref: "#/paths/~1policy-targets~1{policy_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTargetsForPolicyOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "targets" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/targets_for_security_profiles/methods/list_targets_for_security_profile"
+          - $ref: "#/components/x-stackQL-resources/targets/methods/list_targets_for_security_profile"
+          - $ref: "#/components/x-stackQL-resources/targets/methods/list_targets_for_policy"
         insert: []
         update: []
         delete: []
@@ -17053,7 +16914,6 @@ components:
             $ref: "#/paths/~1things~1{thing_name}~1principals/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         detach_thing_principal:
@@ -17061,7 +16921,6 @@ components:
             $ref: "#/paths/~1things~1{thing_name}~1principals/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_thing_principals:
           operation:
             $ref: "#/paths/~1things~1{thing_name}~1principals/get"
@@ -17092,11 +16951,159 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/thing_principals/methods/attach_thing_principal"
         delete: []
+    audit_mitigation_actions_tasks:
+      id: aws.iot.audit_mitigation_actions_tasks
+      name: audit_mitigation_actions_tasks
+      title: audit_mitigation_actions_tasks
+      methods:
+        cancel_audit_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1audit~1mitigationactions~1tasks~1{task_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+        describe_audit_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1audit~1mitigationactions~1tasks~1{task_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_audit_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1audit~1mitigationactions~1tasks~1{task_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_audit_mitigation_actions_tasks:
+          operation:
+            $ref: "#/paths/~1audit~1mitigationactions~1tasks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.tasks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_tasks/methods/list_audit_mitigation_actions_tasks"
+          - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_tasks/methods/describe_audit_mitigation_actions_task"
+        insert: []
+        update: []
+        delete: []
+    audit_tasks:
+      id: aws.iot.audit_tasks
+      name: audit_tasks
+      title: audit_tasks
+      methods:
+        cancel_audit_task:
+          operation:
+            $ref: "#/paths/~1audit~1tasks~1{task_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+        describe_audit_task:
+          operation:
+            $ref: "#/paths/~1audit~1tasks~1{task_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_audit_tasks:
+          operation:
+            $ref: "#/paths/~1audit~1tasks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.tasks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/audit_tasks/methods/list_audit_tasks"
+          - $ref: "#/components/x-stackQL-resources/audit_tasks/methods/describe_audit_task"
+        insert: []
+        update: []
+        delete: []
+    detect_mitigation_actions_tasks:
+      id: aws.iot.detect_mitigation_actions_tasks
+      name: detect_mitigation_actions_tasks
+      title: detect_mitigation_actions_tasks
+      methods:
+        cancel_detect_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1detect~1mitigationactions~1tasks~1{task_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+        describe_detect_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1detect~1mitigationactions~1tasks~1{task_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.taskSummary
+        start_detect_mitigation_actions_task:
+          operation:
+            $ref: "#/paths/~1detect~1mitigationactions~1tasks~1{task_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_detect_mitigation_actions_tasks:
+          operation:
+            $ref: "#/paths/~1detect~1mitigationactions~1tasks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.tasks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_tasks/methods/list_detect_mitigation_actions_tasks"
+          - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_tasks/methods/describe_detect_mitigation_actions_task"
+        insert: []
+        update: []
+        delete: []
     default_authorizers:
       id: aws.iot.default_authorizers
       name: default_authorizers
       title: default_authorizers
       methods:
+        clear_default_authorizer:
+          operation:
+            $ref: "#/paths/~1default-authorizer/delete"
+          response:
+            openAPIDocKey: "200"
         describe_default_authorizer:
           operation:
             $ref: "#/paths/~1default-authorizer/get"
@@ -17132,7 +17139,6 @@ components:
             $ref: "#/paths/~1confirmdestination~1{confirmation_token}/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_topic_rule:
           operation:
             $ref: "#/paths/~1rules~1{rule_name}/post"
@@ -17164,6 +17170,16 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}~1disable/post"
+          response:
+            openAPIDocKey: "200"
+        enable_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}~1enable/post"
+          response:
+            openAPIDocKey: "200"
         list_topic_rules:
           operation:
             $ref: "#/paths/~1rules/get"
@@ -17202,7 +17218,6 @@ components:
             $ref: "#/paths/~1audit~1suppressions~1create/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -17213,7 +17228,6 @@ components:
             $ref: "#/paths/~1audit~1suppressions~1delete/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -17254,7 +17268,6 @@ components:
             $ref: "#/paths/~1audit~1suppressions~1update/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -17291,7 +17304,6 @@ components:
             $ref: "#/paths/~1authorizer~1{authorizer_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_authorizer:
           operation:
             $ref: "#/paths/~1authorizer~1{authorizer_name}/get"
@@ -17369,7 +17381,6 @@ components:
             $ref: "#/paths/~1certificate-providers~1{certificate_provider_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_certificate_provider:
           operation:
             $ref: "#/paths/~1certificate-providers~1{certificate_provider_name}/get"
@@ -17492,7 +17503,6 @@ components:
             $ref: "#/paths/~1custom-metric~1{metric_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_custom_metric:
           operation:
             $ref: "#/paths/~1custom-metric~1{metric_name}/get"
@@ -17564,7 +17574,6 @@ components:
             $ref: "#/paths/~1dimensions~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_dimension:
           operation:
             $ref: "#/paths/~1dimensions~1{name}/get"
@@ -17636,7 +17645,6 @@ components:
             $ref: "#/paths/~1domainConfigurations~1{domain_configuration_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_domain_configuration:
           operation:
             $ref: "#/paths/~1domainConfigurations~1{domain_configuration_name}/get"
@@ -17821,7 +17829,6 @@ components:
             $ref: "#/paths/~1mitigationactions~1actions~1{action_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_mitigation_action:
           operation:
             $ref: "#/paths/~1mitigationactions~1actions~1{action_name}/get"
@@ -17887,7 +17894,6 @@ components:
             $ref: "#/paths/~1otaUpdates~1{ota_update_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_ota_update:
@@ -17944,7 +17950,6 @@ components:
             $ref: "#/paths/~1packages~1{package_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_package:
@@ -17958,7 +17963,6 @@ components:
             $ref: "#/paths/~1packages~1{package_name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18094,7 +18098,6 @@ components:
             $ref: "#/paths/~1provisioning-templates~1{template_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_provisioning_template:
           operation:
             $ref: "#/paths/~1provisioning-templates~1{template_name}/get"
@@ -18106,7 +18109,6 @@ components:
             $ref: "#/paths/~1provisioning-templates~1{template_name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18160,7 +18162,6 @@ components:
             $ref: "#/paths/~1provisioning-templates~1{template_name}~1versions~1{version_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_provisioning_template_version:
           operation:
             $ref: "#/paths/~1provisioning-templates~1{template_name}~1versions~1{version_id}/get"
@@ -18176,10 +18177,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/provisioning_template_versions/methods/delete_provisioning_template_version"
-    role_alias:
-      id: aws.iot.role_alias
-      name: role_alias
-      title: role_alias
+    role_aliases:
+      id: aws.iot.role_aliases
+      name: role_aliases
+      title: role_aliases
       methods:
         create_role_alias:
           operation:
@@ -18197,7 +18198,6 @@ components:
             $ref: "#/paths/~1role-aliases~1{role_alias}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_role_alias:
           operation:
             $ref: "#/paths/~1role-aliases~1{role_alias}/get"
@@ -18216,15 +18216,39 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_role_aliases:
+          operation:
+            $ref: "#/paths/~1role-aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRoleAliasesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "roleAliases" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"role_alias": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/role_alias/methods/describe_role_alias"
+          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/describe_role_alias"
+          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/list_role_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/role_alias/methods/create_role_alias"
+          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/create_role_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/role_alias/methods/update_role_alias"
+          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/update_role_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/role_alias/methods/delete_role_alias"
+          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/delete_role_alias"
     scheduled_audits:
       id: aws.iot.scheduled_audits
       name: scheduled_audits
@@ -18246,7 +18270,6 @@ components:
             $ref: "#/paths/~1audit~1scheduledaudits~1{scheduled_audit_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_scheduled_audit:
           operation:
             $ref: "#/paths/~1audit~1scheduledaudits~1{scheduled_audit_name}/get"
@@ -18312,7 +18335,6 @@ components:
             $ref: "#/paths/~1streams~1{stream_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_stream:
           operation:
             $ref: "#/paths/~1streams~1{stream_id}/get"
@@ -18379,7 +18401,6 @@ components:
             $ref: "#/paths/~1things~1{thing_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_thing:
@@ -18393,7 +18414,6 @@ components:
             $ref: "#/paths/~1things~1{thing_name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18443,7 +18463,6 @@ components:
             $ref: "#/paths/~1thing-registration-tasks~1{task_id}~1cancel/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/things/methods/describe_thing"
@@ -18476,7 +18495,6 @@ components:
             $ref: "#/paths/~1thing-types~1{thing_type_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_thing_type:
           operation:
             $ref: "#/paths/~1thing-types~1{thing_type_name}/get"
@@ -18488,7 +18506,6 @@ components:
             $ref: "#/paths/~1thing-types~1{thing_type_name}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18499,7 +18516,6 @@ components:
             $ref: "#/paths/~1thing-types~1{thing_type_name}~1deprecate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18570,7 +18586,6 @@ components:
             $ref: "#/paths/~1destinations/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18581,7 +18596,6 @@ components:
             $ref: "#/paths/~1destinations~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_topic_rule_destination:
           operation:
             $ref: "#/paths/~1destinations~1{arn}/get"
@@ -18609,7 +18623,6 @@ components:
             $ref: "#/paths/~1audit~1configuration/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_account_audit_configuration:
@@ -18623,7 +18636,6 @@ components:
             $ref: "#/paths/~1audit~1configuration/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -18647,7 +18659,6 @@ components:
             $ref: "#/paths/~1cacertificate~1{ca_certificate_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_ca_certificate:
           operation:
             $ref: "#/paths/~1cacertificate~1{ca_certificate_id}/get"
@@ -18712,7 +18723,6 @@ components:
             $ref: "#/paths/~1command-executions~1{execution_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_command_execution:
@@ -18771,9 +18781,45 @@ components:
             objectKey: $.execution
           request:
             nativeCasing: pascal
+        list_job_executions_for_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}~1things/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.executionSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        list_job_executions_for_thing:
+          operation:
+            $ref: "#/paths/~1things~1{thing_name}~1jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.executionSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_executions/methods/describe_job_execution"
+          - $ref: "#/components/x-stackQL-resources/job_executions/methods/list_job_executions_for_job"
+          - $ref: "#/components/x-stackQL-resources/job_executions/methods/list_job_executions_for_thing"
         insert: []
         update: []
         delete:
@@ -18788,7 +18834,6 @@ components:
             $ref: "#/paths/~1registrationcode/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_registration_code:
           operation:
             $ref: "#/paths/~1registrationcode/get"
@@ -18887,112 +18932,6 @@ components:
         insert: []
         update: []
         delete: []
-    audit_mitigation_actions_tasks:
-      id: aws.iot.audit_mitigation_actions_tasks
-      name: audit_mitigation_actions_tasks
-      title: audit_mitigation_actions_tasks
-      methods:
-        describe_audit_mitigation_actions_task:
-          operation:
-            $ref: "#/paths/~1audit~1mitigationactions~1tasks~1{task_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_audit_mitigation_actions_tasks:
-          operation:
-            $ref: "#/paths/~1audit~1mitigationactions~1tasks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.tasks
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_tasks/methods/list_audit_mitigation_actions_tasks"
-          - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_tasks/methods/describe_audit_mitigation_actions_task"
-        insert: []
-        update: []
-        delete: []
-    audit_tasks:
-      id: aws.iot.audit_tasks
-      name: audit_tasks
-      title: audit_tasks
-      methods:
-        describe_audit_task:
-          operation:
-            $ref: "#/paths/~1audit~1tasks~1{task_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_audit_tasks:
-          operation:
-            $ref: "#/paths/~1audit~1tasks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.tasks
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/audit_tasks/methods/list_audit_tasks"
-          - $ref: "#/components/x-stackQL-resources/audit_tasks/methods/describe_audit_task"
-        insert: []
-        update: []
-        delete: []
-    detect_mitigation_actions_tasks:
-      id: aws.iot.detect_mitigation_actions_tasks
-      name: detect_mitigation_actions_tasks
-      title: detect_mitigation_actions_tasks
-      methods:
-        describe_detect_mitigation_actions_task:
-          operation:
-            $ref: "#/paths/~1detect~1mitigationactions~1tasks~1{task_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.taskSummary
-        list_detect_mitigation_actions_tasks:
-          operation:
-            $ref: "#/paths/~1detect~1mitigationactions~1tasks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.tasks
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_tasks/methods/list_detect_mitigation_actions_tasks"
-          - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_tasks/methods/describe_detect_mitigation_actions_task"
-        insert: []
-        update: []
-        delete: []
     encryption_configurations:
       id: aws.iot.encryption_configurations
       name: encryption_configurations
@@ -19009,7 +18948,6 @@ components:
             $ref: "#/paths/~1encryption-configuration/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19057,7 +18995,6 @@ components:
             $ref: "#/paths/~1event-configurations/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19287,7 +19224,6 @@ components:
             $ref: "#/paths/~1indexing~1config/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19364,7 +19300,6 @@ components:
             $ref: "#/paths/~1package-configuration/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19422,10 +19357,10 @@ components:
         insert: []
         update: []
         delete: []
-    thing_connectivity_datas:
-      id: aws.iot.thing_connectivity_datas
-      name: thing_connectivity_datas
-      title: thing_connectivity_datas
+    thing_connectivity_data:
+      id: aws.iot.thing_connectivity_data
+      name: thing_connectivity_data
+      title: thing_connectivity_data
       methods:
         get_thing_connectivity_data:
           operation:
@@ -19440,7 +19375,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/thing_connectivity_datas/methods/get_thing_connectivity_data"
+          - $ref: "#/components/x-stackQL-resources/thing_connectivity_data/methods/get_thing_connectivity_data"
         insert: []
         update: []
         delete: []
@@ -19558,31 +19493,24 @@ components:
         insert: []
         update: []
         delete: []
-    certificates_by_cas:
-      id: aws.iot.certificates_by_cas
-      name: certificates_by_cas
-      title: certificates_by_cas
+    on_demand_audit_tasks:
+      id: aws.iot.on_demand_audit_tasks
+      name: on_demand_audit_tasks
+      title: on_demand_audit_tasks
       methods:
-        list_certificates_by_ca:
+        start_on_demand_audit_task:
           operation:
-            $ref: "#/paths/~1certificates-by-ca~1{ca_certificate_id}/get"
+            $ref: "#/paths/~1audit~1tasks/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.certificates
           request:
             nativeCasing: pascal
           config:
-            pagination:
-              requestToken:
-                key: marker
-                location: query
-              responseToken:
-                key: $.nextMarker
-                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/certificates_by_cas/methods/list_certificates_by_ca"
+        select: []
         insert: []
         update: []
         delete: []
@@ -19645,62 +19573,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/indices/methods/list_indices"
-        insert: []
-        update: []
-        delete: []
-    job_executions_for_jobs:
-      id: aws.iot.job_executions_for_jobs
-      name: job_executions_for_jobs
-      title: job_executions_for_jobs
-      methods:
-        list_job_executions_for_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{job_id}~1things/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.executionSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/job_executions_for_jobs/methods/list_job_executions_for_job"
-        insert: []
-        update: []
-        delete: []
-    job_executions_for_things:
-      id: aws.iot.job_executions_for_things
-      name: job_executions_for_things
-      title: job_executions_for_things
-      methods:
-        list_job_executions_for_thing:
-          operation:
-            $ref: "#/paths/~1things~1{thing_name}~1jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.executionSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/job_executions_for_things/methods/list_job_executions_for_thing"
         insert: []
         update: []
         delete: []
@@ -19828,10 +19700,10 @@ components:
         insert: []
         update: []
         delete: []
-    principal_things_v2s:
-      id: aws.iot.principal_things_v2s
-      name: principal_things_v2s
-      title: principal_things_v2s
+    principal_things_v2:
+      id: aws.iot.principal_things_v2
+      name: principal_things_v2
+      title: principal_things_v2
       methods:
         list_principal_things_v2:
           operation:
@@ -19852,14 +19724,14 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/principal_things_v2s/methods/list_principal_things_v2"
+          - $ref: "#/components/x-stackQL-resources/principal_things_v2/methods/list_principal_things_v2"
         insert: []
         update: []
         delete: []
-    related_resources_for_audit_findings:
-      id: aws.iot.related_resources_for_audit_findings
-      name: related_resources_for_audit_findings
-      title: related_resources_for_audit_findings
+    related_resources:
+      id: aws.iot.related_resources
+      name: related_resources
+      title: related_resources
       methods:
         list_related_resources_for_audit_finding:
           operation:
@@ -19880,41 +19752,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/related_resources_for_audit_findings/methods/list_related_resources_for_audit_finding"
-        insert: []
-        update: []
-        delete: []
-    role_aliases:
-      id: aws.iot.role_aliases
-      name: role_aliases
-      title: role_aliases
-      methods:
-        list_role_aliases:
-          operation:
-            $ref: "#/paths/~1role-aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListRoleAliasesOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "roleAliases" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"role_alias": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: marker
-                location: query
-              responseToken:
-                key: $.nextMarker
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/role_aliases/methods/list_role_aliases"
+          - $ref: "#/components/x-stackQL-resources/related_resources/methods/list_related_resources_for_audit_finding"
         insert: []
         update: []
         delete: []
@@ -19946,34 +19784,6 @@ components:
         insert: []
         update: []
         delete: []
-    security_profiles_for_targets:
-      id: aws.iot.security_profiles_for_targets
-      name: security_profiles_for_targets
-      title: security_profiles_for_targets
-      methods:
-        list_security_profiles_for_target:
-          operation:
-            $ref: "#/paths/~1security-profiles-for-target/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.securityProfileTargetMappings
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/security_profiles_for_targets/methods/list_security_profiles_for_target"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.iot.tags
       name: tags
@@ -20001,7 +19811,6 @@ components:
             $ref: "#/paths/~1tags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20012,7 +19821,6 @@ components:
             $ref: "#/paths/~1untag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20025,40 +19833,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
-        delete: []
-    targets_for_policies:
-      id: aws.iot.targets_for_policies
-      name: targets_for_policies
-      title: targets_for_policies
-      methods:
-        list_targets_for_policy:
-          operation:
-            $ref: "#/paths/~1policy-targets~1{policy_name}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTargetsForPolicyOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "targets" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: marker
-                location: query
-              responseToken:
-                key: $.nextMarker
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/targets_for_policies/methods/list_targets_for_policy"
-        insert: []
-        update: []
         delete: []
     thing_groups_for_things:
       id: aws.iot.thing_groups_for_things
@@ -20087,7 +19861,6 @@ components:
             $ref: "#/paths/~1thing-groups~1updateThingGroupsForThing/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20100,10 +19873,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/thing_groups_for_things/methods/update_thing_groups_for_thing"
         delete: []
-    thing_principals_v2s:
-      id: aws.iot.thing_principals_v2s
-      name: thing_principals_v2s
-      title: thing_principals_v2s
+    thing_principals_v2:
+      id: aws.iot.thing_principals_v2
+      name: thing_principals_v2
+      title: thing_principals_v2
       methods:
         list_thing_principals_v2:
           operation:
@@ -20124,7 +19897,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/thing_principals_v2s/methods/list_thing_principals_v2"
+          - $ref: "#/components/x-stackQL-resources/thing_principals_v2/methods/list_thing_principals_v2"
         insert: []
         update: []
         delete: []
@@ -20268,7 +20041,6 @@ components:
             $ref: "#/paths/~1violations~1verification-state~1{violation_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20280,4 +20052,25 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/verification_state_on_violations/methods/put_verification_state_on_violation"
+        delete: []
+    authorizations:
+      id: aws.iot.authorizations
+      name: authorizations
+      title: authorizations
+      methods:
+        test_authorization:
+          operation:
+            $ref: "#/paths/~1test-authorization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

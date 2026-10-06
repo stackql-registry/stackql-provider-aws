@@ -148,6 +148,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a single version of a DataBrew recipe.</td>
 </tr>
+<tr>
+    <td><a href="#batch_delete_recipe_version"><CopyableCode code="batch_delete_recipe_version" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RecipeVersions"><code>RecipeVersions</code></a></td>
+    <td></td>
+    <td>Deletes one or more versions of a recipe at a time. The entire request will be rejected if: The recipe does not exist. There is an invalid version identifier in the list of versions. The version list is empty. The version list size exceeds 50. The version list contains duplicate entries. The request will complete successfully, but with partial failures, if: A version does not exist. A version is being used by a job. You specify LATEST_WORKING, but it's being used by a project. The version fails to be deleted. The LATEST_WORKING version will only be deleted if the recipe has no other versions. If you try to delete LATEST_WORKING while other versions exist (or if they can't be deleted), then LATEST_WORKING will be listed as partial failure in the response.</td>
+</tr>
 </tbody>
 </table>
 
@@ -167,7 +174,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the recipe.</td>
+    <td>The name of the recipe whose versions are to be deleted.</td>
 </tr>
 <tr id="parameter-recipe_version">
     <td><CopyableCode code="recipe_version" /></td>
@@ -247,6 +254,32 @@ DELETE FROM aws.databrew.recipe_versions
 WHERE name = '{{ name }}' --required
 AND recipe_version = '{{ recipe_version }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_delete_recipe_version"
+    values={[
+        { label: 'batch_delete_recipe_version', value: 'batch_delete_recipe_version' }
+    ]}
+>
+<TabItem value="batch_delete_recipe_version">
+
+Deletes one or more versions of a recipe at a time. The entire request will be rejected if: The recipe does not exist. There is an invalid version identifier in the list of versions. The version list is empty. The version list size exceeds 50. The version list contains duplicate entries. The request will complete successfully, but with partial failures, if: A version does not exist. A version is being used by a job. You specify LATEST_WORKING, but it's being used by a project. The version fails to be deleted. The LATEST_WORKING version will only be deleted if the recipe has no other versions. If you try to delete LATEST_WORKING while other versions exist (or if they can't be deleted), then LATEST_WORKING will be listed as partial failure in the response.
+
+```sql
+EXEC aws.databrew.recipe_versions.batch_delete_recipe_version 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"RecipeVersions": "{{ RecipeVersions }}"
+}'
 ;
 ```
 </TabItem>

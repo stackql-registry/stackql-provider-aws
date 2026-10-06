@@ -18,7 +18,7 @@ codestar_notifications service documentation.
 
 :::info[Service Summary]
 
-total resources: __4__  
+total resources: __6__  
 
 :::
 
@@ -26,10 +26,12 @@ total resources: __4__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/codestar_notifications/event_types/">event_types</a><br />
-<a href="/services/codestar_notifications/notification_rules/">notification_rules</a>
+<a href="/services/codestar_notifications/notification_rules/">notification_rules</a><br />
+<a href="/services/codestar_notifications/subscribes/">subscribes</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/codestar_notifications/tags/">tags</a><br />
-<a href="/services/codestar_notifications/targets/">targets</a>
+<a href="/services/codestar_notifications/targets/">targets</a><br />
+<a href="/services/codestar_notifications/unsubscribes/">unsubscribes</a>
 </div>
 </div>

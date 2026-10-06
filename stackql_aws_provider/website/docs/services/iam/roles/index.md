@@ -254,6 +254,13 @@ The following methods are available for this resource:
     <td>Deletes the specified role. Unlike the Amazon Web Services Management Console, when you delete a role programmatically, you must delete the items attached to the role manually, or the deletion fails. For more information, see Deleting an IAM role. Before attempting to delete a role, remove the following attached items: Inline policies (DeleteRolePolicy) Attached managed policies (DetachRolePolicy) Instance profile (RemoveRoleFromInstanceProfile) Optional – Delete instance profile after detaching from role for resource clean up (DeleteInstanceProfile) Make sure that you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.</td>
 </tr>
 <tr>
+    <td><a href="#acquire_role"><CopyableCode code="acquire_role" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-TemplateArn"><code>TemplateArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TemplateMinorVersion"><code>TemplateMinorVersion</code></a>, <a href="#parameter-ReplacementValues"><code>ReplacementValues</code></a></td>
+    <td>Creates an IAM role from the specified role template. The new role takes its configuration—including its name, path, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—from the role template version that you specify. For more information about roles, see IAM roles in the IAM User Guide. If the template version defines parameters, use the ReplacementValues parameter to supply the values that the service substitutes into the role during creation.</td>
+</tr>
+<tr>
     <td><a href="#delete_role_permissions_boundary"><CopyableCode code="delete_role_permissions_boundary" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-RoleName"><code>RoleName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -310,6 +317,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The name of the role that you want to modify.</td>
 </tr>
+<tr id="parameter-TemplateArn">
+    <td><CopyableCode code="TemplateArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the role template to create the role from. For more information about ARNs, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -355,10 +367,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ARN of the managed policy that is used to set the permissions boundary for the role. A permissions boundary policy defines the maximum permissions that identity-based policies can grant to an entity, but does not grant permissions. Permissions boundaries do not define the maximum permissions that a resource-based policy can grant to an entity. To learn more, see Permissions boundaries for IAM entities in the IAM User Guide. For more information about policy types, see Policy types in the IAM User Guide.</td>
 </tr>
+<tr id="parameter-ReplacementValues">
+    <td><CopyableCode code="ReplacementValues" /></td>
+    <td><code>object</code></td>
+    <td>A map of values to substitute for the parameters that are defined in the role template version. Each key is a parameter name from the template, and each value is a structure that contains the replacement values for that parameter.</td>
+</tr>
 <tr id="parameter-Tags">
     <td><CopyableCode code="Tags" /></td>
     <td><code>array</code></td>
     <td>A list of tags that you want to attach to the new role. Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the IAM User Guide. If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request fails and the resource is not created.</td>
+</tr>
+<tr id="parameter-TemplateMinorVersion">
+    <td><CopyableCode code="TemplateMinorVersion" /></td>
+    <td><code>integer</code></td>
+    <td>The minor version of the role template to use. If you do not specify a minor version, the service uses the template's default minor version.</td>
 </tr>
 </tbody>
 </table>
@@ -630,13 +652,27 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="delete_role_permissions_boundary"
+    defaultValue="acquire_role"
     values={[
+        { label: 'acquire_role', value: 'acquire_role' },
         { label: 'delete_role_permissions_boundary', value: 'delete_role_permissions_boundary' },
         { label: 'delete_service_linked_role', value: 'delete_service_linked_role' },
         { label: 'update_role_description', value: 'update_role_description' }
     ]}
 >
+<TabItem value="acquire_role">
+
+Creates an IAM role from the specified role template. The new role takes its configuration—including its name, path, trust policy, inline and managed policies, permissions boundary, tags, and maximum session duration—from the role template version that you specify. For more information about roles, see IAM roles in the IAM User Guide. If the template version defines parameters, use the ReplacementValues parameter to supply the values that the service substitutes into the role during creation.
+
+```sql
+EXEC aws.iam.roles.acquire_role 
+@TemplateArn='{{ TemplateArn }}' --required, 
+@region='{{ region }}' --required, 
+@TemplateMinorVersion='{{ TemplateMinorVersion }}', 
+@ReplacementValues='{{ ReplacementValues }}'
+;
+```
+</TabItem>
 <TabItem value="delete_role_permissions_boundary">
 
 Deletes the permissions boundary for the specified IAM role. You cannot set the boundary for a service-linked role. Deleting the permissions boundary for a role might increase its permissions. For example, it might allow anyone who assumes the role to perform all the actions granted in its permissions policies.

@@ -349,10 +349,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPortfolioPreferencesResponse"
   /start-assessment:
     post:
       operationId: StartAssessment
@@ -457,10 +453,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopAssessmentResponse"
   /update-applicationcomponent-config/:
     post:
       operationId: UpdateApplicationComponentConfig
@@ -492,10 +484,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationComponentConfigResponse"
   /update-server-config/:
     post:
       operationId: UpdateServerConfig
@@ -517,10 +505,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateServerConfigResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2094,8 +2078,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ServerDetail"
-    PutPortfolioPreferencesResponse:
-      type: object
     AssessmentDataSourceType:
       type: string
       enum:
@@ -2152,8 +2134,6 @@ components:
         id:
           $ref: "#/components/schemas/RecommendationTaskId"
           description: The ID of the recommendation report generation task.
-    StopAssessmentResponse:
-      type: object
     SecretsManagerKey:
       type: string
       minLength: 1
@@ -2216,10 +2196,6 @@ components:
         toolName:
           $ref: "#/components/schemas/TransformationToolName"
           description: The name of the tool that can be used to transform an application component using this strategy.
-    UpdateApplicationComponentConfigResponse:
-      type: object
-    UpdateServerConfigResponse:
-      type: object
   x-stackQL-resources:
     application_component_details:
       id: aws.migrationhubstrategy.application_component_details
@@ -2266,6 +2242,27 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_assessment:
+          operation:
+            $ref: "#/paths/~1start-assessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_assessment:
+          operation:
+            $ref: "#/paths/~1stop-assessment/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/get_assessment"
@@ -2300,6 +2297,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_import_file_task:
+          operation:
+            $ref: "#/paths/~1start-import-file-task/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_file_tasks/methods/get_import_file_task"
@@ -2340,7 +2348,6 @@ components:
             $ref: "#/paths/~1put-portfolio-preferences/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2493,7 +2500,6 @@ components:
             $ref: "#/paths/~1update-applicationcomponent-config~1/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2563,7 +2569,6 @@ components:
             $ref: "#/paths/~1update-server-config~1/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2575,4 +2580,25 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/servers/methods/update_server_config"
+        delete: []
+    recommendation_report_generations:
+      id: aws.migrationhubstrategy.recommendation_report_generations
+      name: recommendation_report_generations
+      title: recommendation_report_generations
+      methods:
+        start_recommendation_report_generation:
+          operation:
+            $ref: "#/paths/~1start-recommendation-report-generation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

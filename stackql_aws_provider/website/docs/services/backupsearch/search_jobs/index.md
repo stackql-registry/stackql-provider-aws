@@ -199,11 +199,25 @@ The following methods are available for this resource:
     <td>This operation returns a list of search jobs belonging to an account.</td>
 </tr>
 <tr>
+    <td><a href="#start_search_job"><CopyableCode code="start_search_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SearchScope"><code>SearchScope</code></a></td>
+    <td></td>
+    <td>This operation creates a search job which returns recovery points filtered by SearchScope and items filtered by ItemFilters. You can optionally include ClientToken, EncryptionKeyArn, Name, and/or Tags.</td>
+</tr>
+<tr>
     <td><a href="#start_search_result_export_job"><CopyableCode code="start_search_result_export_job" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SearchJobIdentifier"><code>SearchJobIdentifier</code></a>, <a href="#parameter-ExportSpecification"><code>ExportSpecification</code></a></td>
     <td></td>
     <td>This operations starts a job to export the results of search job to a designated S3 bucket.</td>
+</tr>
+<tr>
+    <td><a href="#stop_search_job"><CopyableCode code="stop_search_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-search_job_identifier"><code>search_job_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This operations ends a search job. Only a search job with a status of RUNNING can be stopped.</td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +243,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-search_job_identifier">
     <td><CopyableCode code="search_job_identifier" /></td>
     <td><code>string</code></td>
-    <td>Required unique string that specifies the search job.</td>
+    <td>The unique string that specifies the search job.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -310,11 +324,32 @@ AND MaxResults = '{{ MaxResults }}'
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_search_result_export_job"
+    defaultValue="start_search_job"
     values={[
-        { label: 'start_search_result_export_job', value: 'start_search_result_export_job' }
+        { label: 'start_search_job', value: 'start_search_job' },
+        { label: 'start_search_result_export_job', value: 'start_search_result_export_job' },
+        { label: 'stop_search_job', value: 'stop_search_job' }
     ]}
 >
+<TabItem value="start_search_job">
+
+This operation creates a search job which returns recovery points filtered by SearchScope and items filtered by ItemFilters. You can optionally include ClientToken, EncryptionKeyArn, Name, and/or Tags.
+
+```sql
+EXEC aws.backupsearch.search_jobs.start_search_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Tags": "{{ Tags }}", 
+"Name": "{{ Name }}", 
+"EncryptionKeyArn": "{{ EncryptionKeyArn }}", 
+"ClientToken": "{{ ClientToken }}", 
+"SearchScope": "{{ SearchScope }}", 
+"ItemFilters": "{{ ItemFilters }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_search_result_export_job">
 
 This operations starts a job to export the results of search job to a designated S3 bucket.
@@ -330,6 +365,17 @@ EXEC aws.backupsearch.search_jobs.start_search_result_export_job
 "Tags": "{{ Tags }}", 
 "RoleArn": "{{ RoleArn }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="stop_search_job">
+
+This operations ends a search job. Only a search job with a status of RUNNING can be stopped.
+
+```sql
+EXEC aws.backupsearch.search_jobs.stop_search_job 
+@search_job_identifier='{{ search_job_identifier }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

@@ -452,6 +452,12 @@ algorithm_arn
                 InstancePlacementConfig:
                   EnableMultipleJobs: {{ EnableMultipleJobs }}
                   PlacementSpecifications: "{{ PlacementSpecifications }}"
+                InstancePreferences:
+                  - InstanceType: "{{ InstanceType }}"
+                    InstanceCount: {{ InstanceCount }}
+                    TrainingPlanArns: "{{ TrainingPlanArns }}"
+                SelectedInstanceType: "{{ SelectedInstanceType }}"
+                SelectedInstanceCount: {{ SelectedInstanceCount }}
               StoppingCondition:
                 MaxRuntimeInSeconds: {{ MaxRuntimeInSeconds }}
                 MaxWaitTimeInSeconds: {{ MaxWaitTimeInSeconds }}

@@ -144,14 +144,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for EventDataStore. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding StartTime and EndTime parameters, and a QueryStatus value. Valid values for QueryStatus include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for EventDataStore. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding StartTime and EndTime parameters, and a QueryStatus value. Valid values for QueryStatus include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED.</td>
 </tr>
 <tr>
     <td><a href="#describe_query"><CopyableCode code="describe_query" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status. You must specify either QueryId or QueryAlias. Specifying the QueryAlias parameter returns information about the last query run for the alias. You can provide RefreshId along with QueryAlias to view the query results of a dashboard query for the specified RefreshId.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status. You must specify either QueryId or QueryAlias. Specifying the QueryAlias parameter returns information about the last query run for the alias. You can provide RefreshId along with QueryAlias to view the query results of a dashboard query for the specified RefreshId.</td>
+</tr>
+<tr>
+    <td><a href="#cancel_query"><CopyableCode code="cancel_query" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QueryId"><code>QueryId</code></a></td>
+    <td></td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Cancels a query if the query is not in a terminated state, such as CANCELLED, FAILED, TIMED_OUT, or FINISHED. You must specify an ARN value for EventDataStore. The ID of the query that you want to cancel is also required. When you run CancelQuery, the query status might show as CANCELLED even if the operation is not yet finished.</td>
+</tr>
+<tr>
+    <td><a href="#generate_query"><CopyableCode code="generate_query" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EventDataStores"><code>EventDataStores</code></a></td>
+    <td></td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt. The prompt can be a question or a statement about the event data in your event data store. For example, you can enter prompts like "What are my top errors in the past month?" and “Give me a list of users that used SNS.” The prompt must be in English. For information about limitations, permissions, and supported Regions, see Create CloudTrail Lake queries from natural language prompts in the CloudTrail user guide. Do not include any personally identifying, confidential, or sensitive information in your prompts. This feature uses generative AI large language models (LLMs); we recommend double-checking the LLM response.</td>
+</tr>
+<tr>
+    <td><a href="#start_query"><CopyableCode code="start_query" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts a CloudTrail Lake query. Use the QueryStatement parameter to provide your SQL query, enclosed in single quotation marks. Use the optional DeliveryS3Uri parameter to deliver the query results to an S3 bucket. StartQuery requires you specify either the QueryStatement parameter, or a QueryAlias and any QueryParameters. In the current release, the QueryAlias and QueryParameters parameters are used only for the queries that populate the CloudTrail Lake dashboards.</td>
 </tr>
 </tbody>
 </table>
@@ -188,7 +209,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_queries">
 
-Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for EventDataStore. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding StartTime and EndTime parameters, and a QueryStatus value. Valid values for QueryStatus include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for EventDataStore. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding StartTime and EndTime parameters, and a QueryStatus value. Valid values for QueryStatus include QUEUED, RUNNING, FINISHED, FAILED, TIMED_OUT, or CANCELLED.
 
 ```sql
 SELECT
@@ -201,7 +222,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="describe_query">
 
-Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status. You must specify either QueryId or QueryAlias. Specifying the QueryAlias parameter returns information about the last query run for the alias. You can provide RefreshId along with QueryAlias to view the query results of a dashboard query for the specified RefreshId.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status. You must specify either QueryId or QueryAlias. Specifying the QueryAlias parameter returns information about the last query run for the alias. You can provide RefreshId along with QueryAlias to view the query results of a dashboard query for the specified RefreshId.
 
 ```sql
 SELECT
@@ -216,6 +237,68 @@ query_status,
 query_string
 FROM aws.cloudtrail.queries
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_query"
+    values={[
+        { label: 'cancel_query', value: 'cancel_query' },
+        { label: 'generate_query', value: 'generate_query' },
+        { label: 'start_query', value: 'start_query' }
+    ]}
+>
+<TabItem value="cancel_query">
+
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Cancels a query if the query is not in a terminated state, such as CANCELLED, FAILED, TIMED_OUT, or FINISHED. You must specify an ARN value for EventDataStore. The ID of the query that you want to cancel is also required. When you run CancelQuery, the query status might show as CANCELLED even if the operation is not yet finished.
+
+```sql
+EXEC aws.cloudtrail.queries.cancel_query 
+@region='{{ region }}' --required 
+@@json=
+'{
+"EventDataStore": "{{ EventDataStore }}", 
+"QueryId": "{{ QueryId }}", 
+"EventDataStoreOwnerAccountId": "{{ EventDataStoreOwnerAccountId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="generate_query">
+
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt. The prompt can be a question or a statement about the event data in your event data store. For example, you can enter prompts like "What are my top errors in the past month?" and “Give me a list of users that used SNS.” The prompt must be in English. For information about limitations, permissions, and supported Regions, see Create CloudTrail Lake queries from natural language prompts in the CloudTrail user guide. Do not include any personally identifying, confidential, or sensitive information in your prompts. This feature uses generative AI large language models (LLMs); we recommend double-checking the LLM response.
+
+```sql
+EXEC aws.cloudtrail.queries.generate_query 
+@region='{{ region }}' --required 
+@@json=
+'{
+"EventDataStores": "{{ EventDataStores }}", 
+"Prompt": "{{ Prompt }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_query">
+
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts a CloudTrail Lake query. Use the QueryStatement parameter to provide your SQL query, enclosed in single quotation marks. Use the optional DeliveryS3Uri parameter to deliver the query results to an S3 bucket. StartQuery requires you specify either the QueryStatement parameter, or a QueryAlias and any QueryParameters. In the current release, the QueryAlias and QueryParameters parameters are used only for the queries that populate the CloudTrail Lake dashboards.
+
+```sql
+EXEC aws.cloudtrail.queries.start_query 
+@region='{{ region }}' --required 
+@@json=
+'{
+"QueryStatement": "{{ QueryStatement }}", 
+"DeliveryS3Uri": "{{ DeliveryS3Uri }}", 
+"QueryAlias": "{{ QueryAlias }}", 
+"QueryParameters": "{{ QueryParameters }}", 
+"EventDataStoreOwnerAccountId": "{{ EventDataStoreOwnerAccountId }}"
+}'
 ;
 ```
 </TabItem>

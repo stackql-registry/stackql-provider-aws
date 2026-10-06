@@ -30,7 +30,7 @@ total resources: __14__
 <a href="/services/workspaces_web/identity_providers/">identity_providers</a><br />
 <a href="/services/workspaces_web/ip_access_settings/">ip_access_settings</a><br />
 <a href="/services/workspaces_web/network_settings/">network_settings</a><br />
-<a href="/services/workspaces_web/portal_service_provider_metadatas/">portal_service_provider_metadatas</a><br />
+<a href="/services/workspaces_web/portal_service_provider_metadata/">portal_service_provider_metadata</a><br />
 <a href="/services/workspaces_web/portals/">portals</a>
 </div>
 <div class="providerDocColumn">

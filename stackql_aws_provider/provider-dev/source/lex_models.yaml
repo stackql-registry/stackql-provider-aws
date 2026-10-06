@@ -170,7 +170,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: delete_bot_alias
       x-stackql-verb: DELETE
     get:
@@ -197,7 +197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: get_bot_alias
       x-stackql-verb: SELECT
     put:
@@ -244,7 +244,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: put_bot_alias
       x-stackql-verb: REPLACE
   /bots/{bot_name}/aliases/{alias_name}/channels/{name}:
@@ -1078,7 +1078,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMigrationResponse'
-      x-stackql-resource: migration
+      x-stackql-resource: migrations
       x-stackql-method: start_migration
       x-stackql-verb: EXEC
   /slottypes/{name}/versions/{version}:
@@ -1287,10 +1287,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1313,10 +1309,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1549,7 +1541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportResponse'
-      x-stackql-resource: import
+      x-stackql-resource: imports
       x-stackql-method: start_import
       x-stackql-verb: EXEC
 components:
@@ -3622,11 +3614,7 @@ components:
         migrationTimestamp:
           $ref: '#/components/schemas/Timestamp'
           description: The date and time that the migration started.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

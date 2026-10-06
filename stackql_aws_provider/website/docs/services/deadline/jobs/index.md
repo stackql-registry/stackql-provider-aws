@@ -406,6 +406,13 @@ The following methods are available for this resource:
     <td>Updates a job. When you change the status of the job to ARCHIVED, the job can't be scheduled or archived. An archived jobs and its steps and tasks are deleted after 120 days. The job can't be recovered.</td>
 </tr>
 <tr>
+    <td><a href="#batch_update_job"><CopyableCode code="batch_update_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobs"><code>jobs</code></a></td>
+    <td><a href="#parameter-X-Amz-Client-Token"><code>X-Amz-Client-Token</code></a></td>
+    <td>Updates multiple jobs in a single request. This is a batch version of the UpdateJob API. The result of updating each job is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. When you change the status of a job to ARCHIVED, the job can't be scheduled or archived. An archived job and its steps and tasks are deleted after 120 days. The job can't be recovered.</td>
+</tr>
+<tr>
     <td><a href="#copy_job_template"><CopyableCode code="copy_job_template" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-farm_id"><code>farm_id</code></a>, <a href="#parameter-queue_id"><code>queue_id</code></a>, <a href="#parameter-job_id"><code>job_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-targetS3Location"><code>targetS3Location</code></a></td>
@@ -789,11 +796,27 @@ AND `X-Amz-Client-Token` = '{{ X-Amz-Client-Token}}';
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="copy_job_template"
+    defaultValue="batch_update_job"
     values={[
+        { label: 'batch_update_job', value: 'batch_update_job' },
         { label: 'copy_job_template', value: 'copy_job_template' }
     ]}
 >
+<TabItem value="batch_update_job">
+
+Updates multiple jobs in a single request. This is a batch version of the UpdateJob API. The result of updating each job is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. When you change the status of a job to ARCHIVED, the job can't be scheduled or archived. An archived job and its steps and tasks are deleted after 120 days. The job can't be recovered.
+
+```sql
+EXEC aws.deadline.jobs.batch_update_job 
+@region='{{ region }}' --required, 
+@X-Amz-Client-Token='{{ X-Amz-Client-Token }}' 
+@@json=
+'{
+"jobs": "{{ jobs }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="copy_job_template">
 
 Copies a job template to an Amazon S3 bucket.

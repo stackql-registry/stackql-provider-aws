@@ -51,6 +51,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="account_constraints" /></td>
+    <td><code>array</code></td>
+    <td>Optional list of constraints describing what kind of AWS account is allowed to deploy this workload or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list at this level means no constraint at this level.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>The description of a workload.</td>
@@ -99,6 +104,11 @@ The following fields are returned by `SELECT` queries:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><CopyableCode code="account_constraints" /></td>
+    <td><code>array</code></td>
+    <td>Optional list of constraints describing what kind of AWS account is allowed to deploy this workload or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list at this level means no constraint at this level.</td>
+</tr>
 <tr>
     <td><CopyableCode code="display_name" /></td>
     <td><code>string</code></td>
@@ -187,6 +197,7 @@ Returns information about a workload.
 
 ```sql
 SELECT
+account_constraints,
 description,
 display_name,
 documentation_url,
@@ -205,6 +216,7 @@ Lists the available workload names. You can use the ListWorkloadDeploymentPatter
 
 ```sql
 SELECT
+account_constraints,
 display_name,
 status,
 workload_name

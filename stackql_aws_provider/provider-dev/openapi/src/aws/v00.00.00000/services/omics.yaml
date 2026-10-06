@@ -36,10 +36,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AbortMultipartReadSetUploadResponse"
   /share/{share_id}:
     post:
       operationId: AcceptShare
@@ -135,10 +131,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelAnnotationImportResponse"
     get:
       operationId: GetAnnotationImportJob
       description: Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Gets information about an annotation import job.
@@ -189,10 +181,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelRunBatchResponse"
   /import/variant/{job_id}:
     delete:
       operationId: CancelVariantImportJob
@@ -207,10 +195,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelVariantImportResponse"
     get:
       operationId: GetVariantImportJob
       description: Amazon Web Services HealthOmics variant stores and annotation stores are no longer open to new customers. Existing customers can continue to use the service as normal. For more information, see Amazon Web Services HealthOmics variant store and annotation store availability change. Gets information about a variant import job.
@@ -635,7 +619,7 @@ paths:
   /share:
     post:
       operationId: CreateShare
-      description: "Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows"
+      description: "Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an Amazon Web Services user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows"
       parameters: []
       requestBody:
         required: true
@@ -1001,7 +985,7 @@ paths:
   /runBatch/{batch_id}:
     delete:
       operationId: DeleteBatch
-      description: "Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch."
+      description: "Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, RUNS_DELETE_FAILED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch."
       parameters:
         - name: batch_id
           in: path
@@ -1080,10 +1064,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReferenceResponse"
     get:
       operationId: GetReference
       description: Downloads parts of data from a reference genome and returns the reference file in the same format that it was uploaded. For more information, see Creating a HealthOmics reference store in the Amazon Web Services HealthOmics User Guide.
@@ -1139,10 +1119,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReferenceStoreResponse"
     get:
       operationId: GetReferenceStore
       description: Gets information about a reference store.
@@ -1216,10 +1192,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRunBatchResponse"
   /runCache/{id}:
     delete:
       operationId: DeleteRunCache
@@ -1352,10 +1324,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteS3AccessPolicyResponse"
     get:
       operationId: GetS3AccessPolicy
       description: Retrieves details about an access policy on a given store.
@@ -1415,10 +1383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSequenceStoreResponse"
     get:
       operationId: GetSequenceStore
       description: Retrieves metadata for a sequence store using its ID and returns it in JSON format.
@@ -2641,6 +2605,8 @@ paths:
                   $ref: "#/components/schemas/ScratchStorageMode"
                 configurationName:
                   $ref: "#/components/schemas/ConfigurationName"
+                sessionPolicy:
+                  $ref: "#/components/schemas/SessionPolicy"
                 engineSettings:
                   $ref: "#/components/schemas/EngineSettings"
               required:
@@ -2814,10 +2780,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource.
@@ -2837,10 +2799,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /import/variants:
     post:
       operationId: ListVariantImportJobs
@@ -2951,7 +2909,7 @@ paths:
   /sequencestore/{sequence_store_id}/activationjob:
     post:
       operationId: StartReadSetActivationJob
-      description: Activates an archived read set and returns its metadata in a JSON formatted output. AWS HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the GetReadSetActivationJob operation. To learn more, see Activating read sets in the Amazon Web Services HealthOmics User Guide.
+      description: Activates an archived read set and returns its metadata in a JSON formatted output. Amazon Web Services HealthOmics automatically archives unused read sets after 30 days. To monitor the status of your read set activation job, use the GetReadSetActivationJob operation. To learn more, see Activating read sets in the Amazon Web Services HealthOmics User Guide.
       parameters:
         - name: sequence_store_id
           in: path
@@ -3219,8 +3177,6 @@ components:
       minLength: 10
       maxLength: 36
       pattern: "[0-9]+"
-    AbortMultipartReadSetUploadResponse:
-      type: object
     String:
       type: string
     AcceptShareResponse:
@@ -3277,8 +3233,6 @@ components:
     ResourceId:
       type: string
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
-    CancelAnnotationImportResponse:
-      type: object
     RunId:
       type: string
       minLength: 1
@@ -3289,10 +3243,6 @@ components:
       minLength: 1
       maxLength: 18
       pattern: "[0-9]+"
-    CancelRunBatchResponse:
-      type: object
-    CancelVariantImportResponse:
-      type: object
     CompleteReadSetUploadPartList:
       type: array
       items:
@@ -4385,16 +4335,6 @@ components:
       minLength: 10
       maxLength: 36
       pattern: "[0-9]+"
-    DeleteReferenceResponse:
-      type: object
-    DeleteReferenceStoreResponse:
-      type: object
-    DeleteRunBatchResponse:
-      type: object
-    DeleteS3AccessPolicyResponse:
-      type: object
-    DeleteSequenceStoreResponse:
-      type: object
     DeleteShareResponse:
       type: object
       properties:
@@ -4740,11 +4680,11 @@ components:
           description: The optional user-friendly name of the batch.
         status:
           $ref: "#/components/schemas/BatchStatus"
-          description: "The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress), PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs), RUNS_DELETED (runs deleted)."
+          description: "The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress), PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs), RUNS_DELETE_FAILED (run deletion failed for some or all runs), RUNS_DELETED (runs deleted)."
         tags:
           type: object
           properties: {}
-          description: AWS tags associated with the run batch.
+          description: Amazon Web Services tags associated with the run batch.
         totalRuns:
           $ref: "#/components/schemas/Integer"
           description: The total number of runs in the batch.
@@ -4799,6 +4739,7 @@ components:
         - FAILED
         - PROCESSED
         - RUNS_DELETING
+        - RUNS_DELETE_FAILED
         - RUNS_DELETED
       minLength: 1
       maxLength: 64
@@ -4814,7 +4755,7 @@ components:
           description: The type of the originating workflow. Batch runs are not supported with READY2RUN workflows.
         roleArn:
           $ref: "#/components/schemas/RunRoleArn"
-          description: The IAM role ARN that grants HealthOmics permissions to access required AWS resources such as Amazon S3 and CloudWatch. The role must have the same permissions required for individual StartRun calls.
+          description: The IAM role ARN that grants HealthOmics permissions to access required Amazon Web Services resources such as Amazon S3 and CloudWatch. The role must have the same permissions required for individual StartRun calls.
         name:
           $ref: "#/components/schemas/RunName"
           description: An optional user-friendly name applied to each workflow run. Can be overridden per run.
@@ -4845,7 +4786,7 @@ components:
         runTags:
           type: object
           properties: {}
-          description: AWS tags to associate with each workflow run. Merged with per-run runTags; run-specific values take precedence when keys overlap.
+          description: Amazon Web Services tags to associate with each workflow run. Merged with per-run runTags; run-specific values take precedence when keys overlap.
         retentionMode:
           $ref: "#/components/schemas/RunRetentionMode"
           description: The retention behavior for runs after completion.
@@ -4854,10 +4795,10 @@ components:
           description: The storage type for the workflow runs.
         workflowOwnerId:
           $ref: "#/components/schemas/WorkflowOwnerId"
-          description: The AWS account ID of the workflow owner, used for cross-account workflow sharing.
+          description: The Amazon Web Services account ID of the workflow owner, used for cross-account workflow sharing.
         outputBucketOwnerId:
           $ref: "#/components/schemas/AwsAccountId"
-          description: The expected AWS account ID of the owner of the output S3 bucket. Can be overridden per run.
+          description: The expected Amazon Web Services account ID of the owner of the output S3 bucket. Can be overridden per run.
         workflowVersionName:
           $ref: "#/components/schemas/WorkflowVersionName"
           description: The version name of the specified workflow.
@@ -4867,6 +4808,9 @@ components:
         configurationName:
           $ref: "#/components/schemas/ConfigurationName"
           description: Optional configuration name to use for the workflow run.
+        sessionPolicy:
+          $ref: "#/components/schemas/SessionPolicy"
+          description: Optional inline policy json for scoping down permissions via a session policy on the IAM role provided in the roleArn parameter.
         engineSettings:
           $ref: "#/components/schemas/EngineSettings"
           description: Engine-specific settings for the workflow run. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles).
@@ -4937,6 +4881,11 @@ components:
       enum:
         - RESTRICTED
         - VPC
+    SessionPolicy:
+      type: string
+      minLength: 1
+      maxLength: 2048
+      pattern: "[\\p{L}\\p{M}\\p{Z}\\p{S}\\p{N}\\p{P}\\t\\n\\r]+"
     EngineSettings:
       type: object
     ScratchStorageMode:
@@ -5862,6 +5811,9 @@ components:
         engineSettings:
           $ref: "#/components/schemas/EngineSettings"
           description: The engine-specific settings for the workflow run.
+        sessionPolicy:
+          $ref: "#/components/schemas/SessionPolicy"
+          description: Inline policy json for scoping down permissions via a session policy on the IAM role.
     RunArn:
       type: string
       minLength: 1
@@ -8578,11 +8530,11 @@ components:
           description: Per-run workflow parameters. Merged with defaultRunSetting.parameters; values in this object take precedence when keys overlap.
         outputBucketOwnerId:
           $ref: "#/components/schemas/AwsAccountId"
-          description: The expected AWS account ID of the owner of the output S3 bucket for this run.
+          description: The expected Amazon Web Services account ID of the owner of the output S3 bucket for this run.
         runTags:
           type: object
           properties: {}
-          description: Per-run AWS tags. Merged with defaultRunSetting.runTags; values in this object take precedence when keys overlap.
+          description: Per-run Amazon Web Services tags. Merged with defaultRunSetting.runTags; values in this object take precedence when keys overlap.
         engineSettings:
           $ref: "#/components/schemas/EngineSettings"
           description: Per-run engine-specific settings. Use this field to specify configuration options that are specific to the workflow engine (for example, Nextflow profiles). Overrides defaultRunSetting.engineSettings for this run.
@@ -8615,7 +8567,7 @@ components:
         tags:
           type: object
           properties: {}
-          description: AWS tags associated with the run batch.
+          description: Amazon Web Services tags associated with the run batch.
     VariantImportItemSources:
       type: array
       items:
@@ -8640,14 +8592,10 @@ components:
     TagResourceRequestTagsMap:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAnnotationStoreResponse:
       type: object
       properties:
@@ -8848,7 +8796,6 @@ components:
             $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1upload~1{upload_id}~1abort/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         complete_multipart_read_set_upload:
           operation:
             $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1upload~1{upload_id}~1complete/post"
@@ -8876,7 +8823,6 @@ components:
             $ref: "#/paths/~1sequencestore~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_sequence_store:
           operation:
             $ref: "#/paths/~1sequencestore~1{id}/get"
@@ -9029,7 +8975,6 @@ components:
             $ref: "#/paths/~1runBatch~1delete/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -9060,12 +9005,16 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/batches/methods/delete_batch"
-          - $ref: "#/components/x-stackQL-resources/batches/methods/delete_run_batch"
     annotation_import_jobs:
       id: aws.omics.annotation_import_jobs
       name: annotation_import_jobs
       title: annotation_import_jobs
       methods:
+        cancel_annotation_import_job:
+          operation:
+            $ref: "#/paths/~1import~1annotation~1{job_id}/delete"
+          response:
+            openAPIDocKey: "200"
         get_annotation_import_job:
           operation:
             $ref: "#/paths/~1import~1annotation~1{job_id}/get"
@@ -9091,6 +9040,17 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_annotation_import_job:
+          operation:
+            $ref: "#/paths/~1import~1annotation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/annotation_import_jobs/methods/get_annotation_import_job"
@@ -9103,12 +9063,16 @@ components:
       name: runs
       title: runs
       methods:
+        cancel_run:
+          operation:
+            $ref: "#/paths/~1run~1{id}~1cancel/post"
+          response:
+            openAPIDocKey: "202"
         cancel_run_batch:
           operation:
             $ref: "#/paths/~1runBatch~1cancel/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -9155,6 +9119,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_run:
+          operation:
+            $ref: "#/paths/~1run/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/runs/methods/get_run"
@@ -9168,6 +9143,11 @@ components:
       name: variant_import_jobs
       title: variant_import_jobs
       methods:
+        cancel_variant_import_job:
+          operation:
+            $ref: "#/paths/~1import~1variant~1{job_id}/delete"
+          response:
+            openAPIDocKey: "200"
         get_variant_import_job:
           operation:
             $ref: "#/paths/~1import~1variant~1{job_id}/get"
@@ -9191,6 +9171,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_variant_import_job:
+          operation:
+            $ref: "#/paths/~1import~1variant/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9457,7 +9448,6 @@ components:
             $ref: "#/paths/~1referencestore~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_reference_store:
           operation:
             $ref: "#/paths/~1referencestore~1{id}/get"
@@ -9832,7 +9822,6 @@ components:
             $ref: "#/paths/~1referencestore~1{reference_store_id}~1reference~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_reference:
           operation:
             $ref: "#/paths/~1referencestore~1{reference_store_id}~1reference~1{id}/get"
@@ -9889,7 +9878,6 @@ components:
             $ref: "#/paths/~1s3accesspolicy~1{s3_access_point_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_s3_access_policy:
           operation:
             $ref: "#/paths/~1s3accesspolicy~1{s3_access_point_arn}/get"
@@ -10099,10 +10087,10 @@ components:
         insert: []
         update: []
         delete: []
-    read_set_metadatas:
-      id: aws.omics.read_set_metadatas
-      name: read_set_metadatas
-      title: read_set_metadatas
+    read_set_metadata:
+      id: aws.omics.read_set_metadata
+      name: read_set_metadata
+      title: read_set_metadata
       methods:
         get_read_set_metadata:
           operation:
@@ -10112,7 +10100,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/read_set_metadatas/methods/get_read_set_metadata"
+          - $ref: "#/components/x-stackQL-resources/read_set_metadata/methods/get_read_set_metadata"
         insert: []
         update: []
         delete: []
@@ -10153,10 +10141,10 @@ components:
         insert: []
         update: []
         delete: []
-    reference_metadatas:
-      id: aws.omics.reference_metadatas
-      name: reference_metadatas
-      title: reference_metadatas
+    reference_metadata:
+      id: aws.omics.reference_metadata
+      name: reference_metadata
+      title: reference_metadata
       methods:
         get_reference_metadata:
           operation:
@@ -10166,7 +10154,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/reference_metadatas/methods/get_reference_metadata"
+          - $ref: "#/components/x-stackQL-resources/reference_metadata/methods/get_reference_metadata"
         insert: []
         update: []
         delete: []
@@ -10279,7 +10267,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10290,7 +10277,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

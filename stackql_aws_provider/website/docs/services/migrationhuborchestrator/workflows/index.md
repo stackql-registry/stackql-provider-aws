@@ -276,6 +276,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retry a failed step in a migration workflow.</td>
 </tr>
+<tr>
+    <td><a href="#start_workflow"><CopyableCode code="start_workflow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Start a migration workflow.</td>
+</tr>
+<tr>
+    <td><a href="#stop_workflow"><CopyableCode code="stop_workflow" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stop an ongoing migration workflow.</td>
+</tr>
 </tbody>
 </table>
 
@@ -295,7 +309,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the step.</td>
+    <td>The ID of the migration workflow.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -560,7 +574,9 @@ AND region = '{{ region }}' --required
 <Tabs
     defaultValue="retry_workflow_step"
     values={[
-        { label: 'retry_workflow_step', value: 'retry_workflow_step' }
+        { label: 'retry_workflow_step', value: 'retry_workflow_step' },
+        { label: 'start_workflow', value: 'start_workflow' },
+        { label: 'stop_workflow', value: 'stop_workflow' }
     ]}
 >
 <TabItem value="retry_workflow_step">
@@ -571,6 +587,28 @@ Retry a failed step in a migration workflow.
 EXEC aws.migrationhuborchestrator.workflows.retry_workflow_step 
 @workflowId='{{ workflowId }}' --required, 
 @stepGroupId='{{ stepGroupId }}' --required, 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_workflow">
+
+Start a migration workflow.
+
+```sql
+EXEC aws.migrationhuborchestrator.workflows.start_workflow 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_workflow">
+
+Stop an ongoing migration workflow.
+
+```sql
+EXEC aws.migrationhuborchestrator.workflows.stop_workflow 
 @id='{{ id }}' --required, 
 @region='{{ region }}' --required
 ;

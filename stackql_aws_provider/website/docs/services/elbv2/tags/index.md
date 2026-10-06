@@ -184,9 +184,7 @@ SET
 WHERE 
 ResourceArns = '{{ ResourceArns }}' --required
 AND TagKeys = '{{ TagKeys }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-line_items;
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="add_tags">
@@ -200,9 +198,7 @@ SET
 WHERE 
 ResourceArns = '{{ ResourceArns }}' --required
 AND region = '{{ region }}' --required
-AND Tags = '{{ Tags}}'
-RETURNING
-line_items;
+AND Tags = '{{ Tags}}';
 ```
 </TabItem>
 </Tabs>

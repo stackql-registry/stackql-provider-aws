@@ -188,6 +188,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-max_results"><code>max_results</code></a>, <a href="#parameter-nextpage_opaque_marker"><code>nextpage_opaque_marker</code></a>, <a href="#parameter-nsInstanceId"><code>nsInstanceId</code></a></td>
     <td>Lists details for a network operation, including when the operation started and the status of the operation. A network operation is any operation that is done to your network, such as network instance instantiation or termination.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_sol_network_operation"><CopyableCode code="cancel_sol_network_operation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-ns_lcm_op_occ_id"><code>ns_lcm_op_occ_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancels a network operation. A network operation is any operation that is done to your network, such as network instance instantiation or termination.</td>
+</tr>
 </tbody>
 </table>
 
@@ -282,6 +289,28 @@ WHERE region = '{{ region }}' -- required
 AND max_results = '{{ max_results }}'
 AND nextpage_opaque_marker = '{{ nextpage_opaque_marker }}'
 AND nsInstanceId = '{{ nsInstanceId }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_sol_network_operation"
+    values={[
+        { label: 'cancel_sol_network_operation', value: 'cancel_sol_network_operation' }
+    ]}
+>
+<TabItem value="cancel_sol_network_operation">
+
+Cancels a network operation. A network operation is any operation that is done to your network, such as network instance instantiation or termination.
+
+```sql
+EXEC aws.tnb.sol_network_operations.cancel_sol_network_operation 
+@ns_lcm_op_occ_id='{{ ns_lcm_op_occ_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

@@ -102,10 +102,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDeviceResponse"
     get:
       operationId: GetDevice
       description: Returns information for a thin client device.
@@ -173,10 +169,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEnvironmentResponse"
     get:
       operationId: GetEnvironment
       description: Returns information for an environment.
@@ -259,10 +251,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterDeviceResponse"
   /softwaresets/{id}:
     get:
       operationId: GetSoftwareSet
@@ -305,10 +293,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSoftwareSetResponse"
   /devices:
     get:
       operationId: ListDevices
@@ -399,10 +383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag or tags from a resource.
@@ -422,10 +402,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -643,17 +619,11 @@ components:
     DeviceId:
       type: string
       pattern: "[a-zA-Z0-9]{24}"
-    DeleteDeviceResponse:
-      type: object
-    DeleteEnvironmentResponse:
-      type: object
     TargetDeviceStatus:
       type: string
       enum:
         - DEREGISTERED
         - ARCHIVED
-    DeregisterDeviceResponse:
-      type: object
     GetDeviceResponse:
       type: object
       properties:
@@ -1010,14 +980,10 @@ components:
           type: object
           properties: {}
           description: A map of the key-value pairs for the tag or tags assigned to the specified resource.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateDeviceResponse:
       type: object
       properties:
@@ -1033,8 +999,6 @@ components:
         environment:
           $ref: "#/components/schemas/EnvironmentSummary"
           description: Describes an environment.
-    UpdateSoftwareSetResponse:
-      type: object
   x-stackQL-resources:
     environments:
       id: aws.workspaces_thin_client.environments
@@ -1074,7 +1038,6 @@ components:
             $ref: "#/paths/~1environments~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_environment:
@@ -1115,7 +1078,6 @@ components:
             $ref: "#/paths/~1devices~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_device:
@@ -1141,7 +1103,6 @@ components:
             $ref: "#/paths/~1deregister-device~1{id}/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1190,7 +1151,6 @@ components:
             $ref: "#/paths/~1softwaresets~1{id}/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1237,7 +1197,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1248,7 +1207,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

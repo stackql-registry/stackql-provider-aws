@@ -483,10 +483,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateApplicationSnapshotResponse'
       x-stackql-resource: application_snapshots
       x-stackql-method: create_application_snapshot
       x-stackql-verb: INSERT
@@ -524,10 +520,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -767,10 +759,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationSnapshotResponse'
       x-stackql-resource: application_snapshots
       x-stackql-method: delete_application_snapshot
       x-stackql-verb: DELETE
@@ -1044,7 +1032,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscoverInputSchemaResponse'
-      x-stackql-resource: discover_input_schema
+      x-stackql-resource: input_schemas
       x-stackql-method: discover_input_schema
       x-stackql-verb: EXEC
   /ListApplicationOperations:
@@ -1442,10 +1430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1483,10 +1467,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3450,10 +3430,6 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    CreateApplicationSnapshotResponse:
-      type: object
-    DeleteApplicationResponse:
-      type: object
     DeleteApplicationCloudWatchLoggingOptionResponse:
       type: object
       properties:
@@ -3497,8 +3473,6 @@ components:
         ApplicationVersionId:
           $ref: '#/components/schemas/ApplicationVersionId'
           description: The updated version ID of the application.
-    DeleteApplicationSnapshotResponse:
-      type: object
     DeleteApplicationVpcConfigurationResponse:
       type: object
       properties:
@@ -3903,14 +3877,10 @@ components:
         OperationId:
           $ref: '#/components/schemas/OperationId'
           description: The operation ID that can be used to track the request.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     ApplicationConfigurationUpdate:
       description: Describes updates to an application's configuration.
       type: object

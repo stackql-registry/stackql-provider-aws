@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_user_hierarchy_group"
     values={[
         { label: 'describe_user_hierarchy_group', value: 'describe_user_hierarchy_group' },
-        { label: 'list_user_hierarchy_groups', value: 'list_user_hierarchy_groups' },
-        { label: 'search_user_hierarchy_groups', value: 'search_user_hierarchy_groups' }
+        { label: 'list_user_hierarchy_groups', value: 'list_user_hierarchy_groups' }
     ]}
 >
 <TabItem value="describe_user_hierarchy_group">
@@ -133,60 +132,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_user_hierarchy_groups">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="hierarchy_path" /></td>
-    <td><code>object</code></td>
-    <td>Information about the levels in the hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="level_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the level in the hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the hierarchy group.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -219,13 +164,6 @@ The following methods are available for this resource:
     <td>Provides summary information about the hierarchy groups for the specified Connect Customer instance. For more information about agent hierarchies, see Set Up Agent Hierarchies in the Connect Customer Administrator Guide.</td>
 </tr>
 <tr>
-    <td><a href="#search_user_hierarchy_groups"><CopyableCode code="search_user_hierarchy_groups" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.</td>
-</tr>
-<tr>
     <td><a href="#create_user_hierarchy_group"><CopyableCode code="create_user_hierarchy_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -245,6 +183,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-hierarchy_group_id"><code>hierarchy_group_id</code></a>, <a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes an existing user hierarchy group. It must not be associated with any agents or have any active child groups.</td>
+</tr>
+<tr>
+    <td><a href="#search_user_hierarchy_groups"><CopyableCode code="search_user_hierarchy_groups" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.</td>
 </tr>
 </tbody>
 </table>
@@ -296,8 +241,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_user_hierarchy_group"
     values={[
         { label: 'describe_user_hierarchy_group', value: 'describe_user_hierarchy_group' },
-        { label: 'list_user_hierarchy_groups', value: 'list_user_hierarchy_groups' },
-        { label: 'search_user_hierarchy_groups', value: 'search_user_hierarchy_groups' }
+        { label: 'list_user_hierarchy_groups', value: 'list_user_hierarchy_groups' }
     ]}
 >
 <TabItem value="describe_user_hierarchy_group">
@@ -337,25 +281,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_user_hierarchy_groups">
-
-Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.
-
-```sql
-SELECT
-arn,
-hierarchy_path,
-id,
-last_modified_region,
-last_modified_time,
-level_id,
-name,
-tags
-FROM aws.connect.user_hierarchy_groups
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -460,6 +385,35 @@ DELETE FROM aws.connect.user_hierarchy_groups
 WHERE hierarchy_group_id = '{{ hierarchy_group_id }}' --required
 AND instance_id = '{{ instance_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_user_hierarchy_groups"
+    values={[
+        { label: 'search_user_hierarchy_groups', value: 'search_user_hierarchy_groups' }
+    ]}
+>
+<TabItem value="search_user_hierarchy_groups">
+
+Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering. The UserHierarchyGroup with "LevelId": "0" is the foundation for building levels on top of an instance. It is not user-definable, nor is it visible in the UI.
+
+```sql
+EXEC aws.connect.user_hierarchy_groups.search_user_hierarchy_groups 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

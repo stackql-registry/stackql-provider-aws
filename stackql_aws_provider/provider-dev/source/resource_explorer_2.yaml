@@ -534,7 +534,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListIndexesForMembersOutput'
-      x-stackql-resource: indexes_for_members
+      x-stackql-resource: indexes
       x-stackql-method: list_indexes_for_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Indexes
@@ -709,7 +709,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListStreamingAccessForServicesOutput'
-      x-stackql-resource: streaming_access_for_services
+      x-stackql-resource: streaming_accesses
       x-stackql-method: list_streaming_access_for_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StreamingAccessForServices
@@ -789,10 +789,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -815,10 +811,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -895,7 +887,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchOutput'
-      x-stackql-resource: search
+      x-stackql-resource: hs
       x-stackql-method: search
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: NextToken
@@ -1985,14 +1977,10 @@ components:
     Long:
       type: integer
       format: int64
-    TagResourceOutput:
-      type: object
     StringList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceOutput:
-      type: object
     UpdateIndexTypeOutput:
       type: object
       properties:

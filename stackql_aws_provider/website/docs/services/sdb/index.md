@@ -18,16 +18,17 @@ sdb service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/sdb/attributes/">attributes</a>
+<a href="/services/sdb/attributes/">attributes</a><br />
+<a href="/services/sdb/domains/">domains</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sdb/domains/">domains</a>
+<a href="/services/sdb/items/">items</a>
 </div>
 </div>

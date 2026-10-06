@@ -102,18 +102,18 @@ The following methods are available for this resource:
     <td>Describes the specified customer-owned address pools or all of your customer-owned address pools.</td>
 </tr>
 <tr>
-    <td><a href="#create_coip_cidr"><CopyableCode code="create_coip_cidr" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-CoipPoolId"><code>CoipPoolId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Cidr"><code>Cidr</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Creates a range of customer-owned IP addresses.</td>
-</tr>
-<tr>
     <td><a href="#create_coip_pool"><CopyableCode code="create_coip_pool" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-LocalGatewayRouteTableId"><code>LocalGatewayRouteTableId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Creates a pool of customer-owned IP (CoIP) addresses.</td>
+</tr>
+<tr>
+    <td><a href="#create_coip_cidr"><CopyableCode code="create_coip_cidr" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-CoipPoolId"><code>CoipPoolId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Cidr"><code>Cidr</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Creates a range of customer-owned IP addresses.</td>
 </tr>
 <tr>
     <td><a href="#delete_coip_pool"><CopyableCode code="delete_coip_pool" /></a></td>
@@ -233,36 +233,13 @@ AND DryRun = '{{ DryRun }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_coip_cidr"
+    defaultValue="create_coip_pool"
     values={[
-        { label: 'create_coip_cidr', value: 'create_coip_cidr' },
         { label: 'create_coip_pool', value: 'create_coip_pool' },
+        { label: 'create_coip_cidr', value: 'create_coip_cidr' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_coip_cidr">
-
-Creates a range of customer-owned IP addresses.
-
-```sql
-INSERT INTO aws.ec2.coip_pools (
-CoipPoolId,
-region,
-Cidr,
-DryRun
-)
-SELECT 
-'{{ CoipPoolId }}',
-'{{ region }}',
-'{{ Cidr }}',
-'{{ DryRun }}'
-RETURNING
-cidr,
-coip_pool_id,
-local_gateway_route_table_id
-;
-```
-</TabItem>
 <TabItem value="create_coip_pool">
 
 Creates a pool of customer-owned IP (CoIP) addresses.
@@ -288,32 +265,55 @@ tags
 ;
 ```
 </TabItem>
+<TabItem value="create_coip_cidr">
+
+Creates a range of customer-owned IP addresses.
+
+```sql
+INSERT INTO aws.ec2.coip_pools (
+CoipPoolId,
+region,
+Cidr,
+DryRun
+)
+SELECT 
+'{{ CoipPoolId }}',
+'{{ region }}',
+'{{ Cidr }}',
+'{{ DryRun }}'
+RETURNING
+cidr,
+coip_pool_id,
+local_gateway_route_table_id
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: coip_pools
   props:
-    - name: CoipPoolId
-      value: "{{ CoipPoolId }}"
+    - name: LocalGatewayRouteTableId
+      value: "{{ LocalGatewayRouteTableId }}"
       description: Required parameter for the coip_pools resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the coip_pools resource.
-    - name: LocalGatewayRouteTableId
-      value: "{{ LocalGatewayRouteTableId }}"
+    - name: CoipPoolId
+      value: "{{ CoipPoolId }}"
       description: Required parameter for the coip_pools resource.
-    - name: Cidr
-      value: "{{ Cidr }}"
-      description: A customer-owned IP address range to create.
-      description: A customer-owned IP address range to create.
-    - name: DryRun
-      value: {{ DryRun }}
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
     - name: TagSpecification
       value: "{{ TagSpecification }}"
       description: The tags to assign to the CoIP address pool.
       description: The tags to assign to the CoIP address pool.
+    - name: DryRun
+      value: {{ DryRun }}
+      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+    - name: Cidr
+      value: "{{ Cidr }}"
+      description: A customer-owned IP address range to create.
+      description: A customer-owned IP address range to create.
 `}</CodeBlock>
 
 </TabItem>

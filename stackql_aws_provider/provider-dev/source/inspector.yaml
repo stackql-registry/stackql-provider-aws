@@ -751,7 +751,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTelemetryMetadataResponse'
-      x-stackql-resource: telemetry_metadatas
+      x-stackql-resource: telemetry_metadata
       x-stackql-method: get_telemetry_metadata
       x-stackql-verb: SELECT
   /ListAssessmentRunAgents:
@@ -1267,7 +1267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PreviewAgentsResponse'
-      x-stackql-resource: preview_agents
+      x-stackql-resource: agents
       x-stackql-method: preview_agents
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: nextToken
@@ -1421,7 +1421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssessmentRunResponse'
-      x-stackql-resource: assessment_run
+      x-stackql-resource: assessment_runs
       x-stackql-method: start_assessment_run
       x-stackql-verb: EXEC
   /StopAssessmentRun:
@@ -1459,7 +1459,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: assessment_run
+      x-stackql-resource: assessment_runs
       x-stackql-method: stop_assessment_run
       x-stackql-verb: EXEC
   /SubscribeToEvent:
@@ -1501,7 +1501,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: to_event
+      x-stackql-resource: to_events
       x-stackql-method: subscribe_to_event
       x-stackql-verb: EXEC
   /UnsubscribeFromEvent:
@@ -1543,7 +1543,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: from_event
+      x-stackql-resource: from_events
       x-stackql-method: unsubscribe_from_event
       x-stackql-verb: EXEC
   /UpdateAssessmentTarget:

@@ -14639,10 +14639,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/authorize_cluster_security_group_ingress"
         delete:
           - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/delete_cluster_security_group"
-    endpoint_access:
-      id: aws.redshift.endpoint_access
-      name: endpoint_access
-      title: endpoint_access
+    endpoint_accesses:
+      id: aws.redshift.endpoint_accesses
+      name: endpoint_accesses
+      title: endpoint_accesses
       methods:
         authorize_endpoint_access:
           operation:
@@ -14760,19 +14760,19 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/describe_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/describe_endpoint_access"
         insert:
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/create_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/create_endpoint_access"
         update:
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/authorize_endpoint_access"
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/modify_endpoint_access"
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/revoke_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/authorize_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/modify_endpoint_access"
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/revoke_endpoint_access"
         delete:
-          - $ref: "#/components/x-stackQL-resources/endpoint_access/methods/delete_endpoint_access"
-    snapshot_access:
-      id: aws.redshift.snapshot_access
-      name: snapshot_access
-      title: snapshot_access
+          - $ref: "#/components/x-stackQL-resources/endpoint_accesses/methods/delete_endpoint_access"
+    snapshot_accesses:
+      id: aws.redshift.snapshot_accesses
+      name: snapshot_accesses
+      title: snapshot_accesses
       methods:
         authorize_snapshot_access:
           operation:
@@ -14814,7 +14814,7 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/snapshot_access/methods/authorize_snapshot_access"
+          - $ref: "#/components/x-stackQL-resources/snapshot_accesses/methods/authorize_snapshot_access"
         delete: []
     cluster_snapshots:
       id: aws.redshift.cluster_snapshots
@@ -17052,10 +17052,10 @@ components:
         insert: []
         update: []
         delete: []
-    logging_status:
-      id: aws.redshift.logging_status
-      name: logging_status
-      title: logging_status
+    logging_statuses:
+      id: aws.redshift.logging_statuses
+      name: logging_statuses
+      title: logging_statuses
       methods:
         describe_logging_status:
           operation:
@@ -17078,7 +17078,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/logging_status/methods/describe_logging_status"
+          - $ref: "#/components/x-stackQL-resources/logging_statuses/methods/describe_logging_status"
         insert: []
         update: []
         delete: []
@@ -17142,10 +17142,10 @@ components:
         insert: []
         update: []
         delete: []
-    reserved_node_exchange_status:
-      id: aws.redshift.reserved_node_exchange_status
-      name: reserved_node_exchange_status
-      title: reserved_node_exchange_status
+    reserved_node_exchange_statuses:
+      id: aws.redshift.reserved_node_exchange_statuses
+      name: reserved_node_exchange_statuses
+      title: reserved_node_exchange_statuses
       methods:
         describe_reserved_node_exchange_status:
           operation:
@@ -17168,7 +17168,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/reserved_node_exchange_status/methods/describe_reserved_node_exchange_status"
+          - $ref: "#/components/x-stackQL-resources/reserved_node_exchange_statuses/methods/describe_reserved_node_exchange_status"
         insert: []
         update: []
         delete: []
@@ -17250,10 +17250,10 @@ components:
         insert: []
         update: []
         delete: []
-    storages:
-      id: aws.redshift.storages
-      name: storages
-      title: storages
+    storage:
+      id: aws.redshift.storage
+      name: storage
+      title: storage
       methods:
         describe_storage:
           operation:
@@ -17274,14 +17274,14 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/storages/methods/describe_storage"
+          - $ref: "#/components/x-stackQL-resources/storage/methods/describe_storage"
         insert: []
         update: []
         delete: []
-    table_restore_status:
-      id: aws.redshift.table_restore_status
-      name: table_restore_status
-      title: table_restore_status
+    table_restore_statuses:
+      id: aws.redshift.table_restore_statuses
+      name: table_restore_statuses
+      title: table_restore_statuses
       methods:
         describe_table_restore_status:
           operation:
@@ -17304,7 +17304,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/table_restore_status/methods/describe_table_restore_status"
+          - $ref: "#/components/x-stackQL-resources/table_restore_statuses/methods/describe_table_restore_status"
         insert: []
         update: []
         delete: []

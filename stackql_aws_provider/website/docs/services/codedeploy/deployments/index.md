@@ -33,32 +33,13 @@ Creates, updates, deletes, gets or lists a <code>deployments</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_deployments"
+    defaultValue="get_deployment"
     values={[
-        { label: 'batch_get_deployments', value: 'batch_get_deployments' },
         { label: 'get_deployment', value: 'get_deployment' },
+        { label: 'batch_get_deployments', value: 'batch_get_deployments' },
         { label: 'list_deployments', value: 'list_deployments' }
     ]}
 >
-<TabItem value="batch_get_deployments">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="deployments_info" /></td>
-    <td><code>array</code></td>
-    <td>Information about the deployments.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_deployment">
 
 <table>
@@ -78,7 +59,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="application_name" /></td>
     <td><code>string</code></td>
-    <td>The application name.</td>
+    <td>The application name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="auto_rollback_configuration" /></td>
@@ -113,17 +94,22 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
-    <td>The deployment configuration name.</td>
+    <td>The deployment configuration name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="deployment_group_name" /></td>
     <td><code>string</code></td>
-    <td>The deployment group name.</td>
+    <td>The deployment group name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="deployment_id" /></td>
     <td><code>string</code></td>
     <td>The unique ID of a deployment.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="deployment_mode" /></td>
+    <td><code>string</code></td>
+    <td>The deployment's type. Valid values are: STANDARD: The deployment installed the specified revision. RESTART: The deployment restarted the application on the target instances using the revision from the deployment group's last successful deployment, without downloading a new revision. This field is absent for deployments created before deploymentMode existed, and for STANDARD deployments. An absent value must not be interpreted as STANDARD; it simply means no value was recorded either way. (STANDARD, RESTART)</td>
 </tr>
 <tr>
     <td><CopyableCode code="deployment_overview" /></td>
@@ -223,6 +209,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_deployments">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="deployments_info" /></td>
+    <td><code>array</code></td>
+    <td>Information about the deployments.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_deployments">
 
 <table>
@@ -260,18 +265,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_deployments"><CopyableCode code="batch_get_deployments" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.</td>
-</tr>
-<tr>
     <td><a href="#get_deployment"><CopyableCode code="get_deployment" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about a deployment. The content property of the appSpecContent object in the returned revision is always null. Use GetApplicationRevision and the sha256 property of the returned appSpecContent object to get the content of the deployment’s AppSpec file.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_deployments"><CopyableCode code="batch_get_deployments" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.</td>
 </tr>
 <tr>
     <td><a href="#list_deployments"><CopyableCode code="list_deployments" /></a></td>
@@ -286,6 +291,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-applicationName"><code>applicationName</code></a></td>
     <td></td>
     <td>Deploys an application revision through the specified deployment group.</td>
+</tr>
+<tr>
+    <td><a href="#continue_deployment"><CopyableCode code="continue_deployment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)</td>
 </tr>
 <tr>
     <td><a href="#stop_deployment"><CopyableCode code="stop_deployment" /></a></td>
@@ -321,25 +333,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_deployments"
+    defaultValue="get_deployment"
     values={[
-        { label: 'batch_get_deployments', value: 'batch_get_deployments' },
         { label: 'get_deployment', value: 'get_deployment' },
+        { label: 'batch_get_deployments', value: 'batch_get_deployments' },
         { label: 'list_deployments', value: 'list_deployments' }
     ]}
 >
-<TabItem value="batch_get_deployments">
-
-Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
-
-```sql
-SELECT
-deployments_info
-FROM aws.codedeploy.deployments
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_deployment">
 
 Gets information about a deployment. The content property of the appSpecContent object in the returned revision is always null. Use GetApplicationRevision and the sha256 property of the returned appSpecContent object to get the content of the deployment’s AppSpec file.
@@ -357,6 +357,7 @@ creator,
 deployment_config_name,
 deployment_group_name,
 deployment_id,
+deployment_mode,
 deployment_overview,
 deployment_status_messages,
 deployment_style,
@@ -376,6 +377,18 @@ start_time,
 status,
 target_instances,
 update_outdated_instances_only
+FROM aws.codedeploy.deployments
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_deployments">
+
+Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
+
+```sql
+SELECT
+deployments_info
 FROM aws.codedeploy.deployments
 WHERE region = '{{ region }}' -- required
 ;
@@ -421,6 +434,7 @@ targetInstances,
 autoRollbackConfiguration,
 updateOutdatedInstancesOnly,
 fileExistsBehavior,
+deploymentMode,
 overrideAlarmConfiguration,
 region
 )
@@ -435,6 +449,7 @@ SELECT
 '{{ autoRollbackConfiguration }}',
 {{ updateOutdatedInstancesOnly }},
 '{{ fileExistsBehavior }}',
+'{{ deploymentMode }}',
 '{{ overrideAlarmConfiguration }}',
 '{{ region }}'
 RETURNING
@@ -519,6 +534,11 @@ deployment_id
       description: |
         Information about how CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment. The fileExistsBehavior parameter takes any of the following values: DISALLOW: The deployment fails. This is also the default behavior if no option is specified. OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance. RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.
       valid_values: ['DISALLOW', 'OVERWRITE', 'RETAIN']
+    - name: deploymentMode
+      value: "{{ deploymentMode }}"
+      description: |
+        The type of deployment to create. Valid values are: STANDARD: Deploys the specified revision. This is the default behavior if deploymentMode is not specified. RESTART: Restarts the application on the target instances using the revision from the deployment group's last successful deployment, without downloading a new revision. RESTART is supported only for EC2/On-premises in-place deployments. When deploymentMode is RESTART, the following apply: The call is rejected for Amazon ECS and Lambda deployments. The revision parameter (including its s3Location and gitHubLocation) must not be specified, and is rejected if provided. The revision is resolved by the service from the deployment group's last successful deployment. The updateOutdatedInstancesOnly parameter must not be set to true, and is rejected if provided.
+      valid_values: ['STANDARD', 'RESTART']
     - name: overrideAlarmConfiguration
       description: |
         Information about alarms associated with a deployment or deployment group.
@@ -536,11 +556,27 @@ deployment_id
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="stop_deployment"
+    defaultValue="continue_deployment"
     values={[
+        { label: 'continue_deployment', value: 'continue_deployment' },
         { label: 'stop_deployment', value: 'stop_deployment' }
     ]}
 >
+<TabItem value="continue_deployment">
+
+For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
+
+```sql
+EXEC aws.codedeploy.deployments.continue_deployment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"deploymentId": "{{ deploymentId }}", 
+"deploymentWaitType": "{{ deploymentWaitType }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="stop_deployment">
 
 Attempts to stop an ongoing deployment.

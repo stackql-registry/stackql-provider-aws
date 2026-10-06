@@ -348,6 +348,33 @@ compute_environment_name
             imageKubernetesVersion: "{{ imageKubernetesVersion }}"
         scalingPolicy:
           minScaleDownDelayMinutes: {{ minScaleDownDelayMinutes }}
+        managedInstancesProvider:
+          propagateTags: "{{ propagateTags }}"
+          infrastructureRoleArn: "{{ infrastructureRoleArn }}"
+          instanceLaunchTemplate:
+            ec2InstanceProfileArn: "{{ ec2InstanceProfileArn }}"
+            networkConfiguration:
+              subnets:
+                - "{{ subnets }}"
+              securityGroups:
+                - "{{ securityGroups }}"
+            instanceRequirements:
+              allowedInstanceTypes:
+                - "{{ allowedInstanceTypes }}"
+            capacityOptionType: "{{ capacityOptionType }}"
+            storageConfiguration:
+              storageSizeGiB: {{ storageSizeGiB }}
+            monitoring: "{{ monitoring }}"
+            fipsEnabled: {{ fipsEnabled }}
+            capacityReservations:
+              reservationGroupArn: "{{ reservationGroupArn }}"
+              reservationPreference: "{{ reservationPreference }}"
+            instanceMetadataTagsPropagation: {{ instanceMetadataTagsPropagation }}
+            localStorageConfiguration:
+              useLocalStorage: {{ useLocalStorage }}
+          infrastructureOptimization:
+            scaleInAfter: {{ scaleInAfter }}
+        capacityTags: "{{ capacityTags }}"
     - name: serviceRole
       value: "{{ serviceRole }}"
     - name: tags

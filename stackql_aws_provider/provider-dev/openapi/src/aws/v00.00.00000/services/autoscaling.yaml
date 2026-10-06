@@ -84,20 +84,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachLoadBalancerTargetGroupsOutputDisplay"
     post:
       operationId: POST_AttachLoadBalancerTargetGroups
       description: "This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types. We recommend using AttachTrafficSources to simplify how you manage traffic sources. However, we continue to support AttachLoadBalancerTargetGroups. You can use both the original AttachLoadBalancerTargetGroups API operation and AttachTrafficSources on the same Auto Scaling group. Attaches one or more target groups to the specified Auto Scaling group. This operation is used with the following load balancer types: Application Load Balancer - Operates at the application layer (layer 7) and supports HTTP and HTTPS. Network Load Balancer - Operates at the transport layer (layer 4) and supports TCP, TLS, and UDP. Gateway Load Balancer - Operates at the network layer (layer 3). To describe the target groups for an Auto Scaling group, call the DescribeLoadBalancerTargetGroups API. To detach the target group from the Auto Scaling group, call the DetachLoadBalancerTargetGroups API. This operation is additive and does not detach existing target groups or Classic Load Balancers from the Auto Scaling group. For more information, see Use Elastic Load Balancing to distribute traffic across the instances in your Auto Scaling group in the Amazon EC2 Auto Scaling User Guide."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachLoadBalancerTargetGroupsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -132,20 +124,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachLoadBalancersOutputDisplay"
     post:
       operationId: POST_AttachLoadBalancers
       description: This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types. We recommend using AttachTrafficSources to simplify how you manage traffic sources. However, we continue to support AttachLoadBalancers. You can use both the original AttachLoadBalancers API operation and AttachTrafficSources on the same Auto Scaling group. Attaches one or more Classic Load Balancers to the specified Auto Scaling group. Amazon EC2 Auto Scaling registers the running instances with these Classic Load Balancers. To describe the load balancers for an Auto Scaling group, call the DescribeLoadBalancers API. To detach a load balancer from the Auto Scaling group, call the DetachLoadBalancers API. This operation is additive and does not detach existing Classic Load Balancers or target groups from the Auto Scaling group. For more information, see Use Elastic Load Balancing to distribute traffic across the instances in your Auto Scaling group in the Amazon EC2 Auto Scaling User Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachLoadBalancersOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -186,20 +170,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachTrafficSourcesOutputDisplay"
     post:
       operationId: POST_AttachTrafficSources
       description: "Attaches one or more traffic sources to the specified Auto Scaling group. You can use any of the following as traffic sources for an Auto Scaling group: Application Load Balancer Classic Load Balancer Gateway Load Balancer Network Load Balancer VPC Lattice This operation is additive and does not detach existing traffic sources from the Auto Scaling group. After the operation completes, use the DescribeTrafficSources API to return details about the state of the attachments between traffic sources and your Auto Scaling group. To detach a traffic source from the Auto Scaling group, call the DetachTrafficSources API."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/AttachTrafficSourcesOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -396,20 +372,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CompleteLifecycleActionOutputDisplay"
     post:
       operationId: POST_CompleteLifecycleAction
       description: "Completes the lifecycle action for the specified token or instance with the specified result. This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group: (Optional) Create a launch template or launch configuration with a user data script that runs while an instance is in a wait state due to a lifecycle hook. (Optional) Create a Lambda function and a rule that allows Amazon EventBridge to invoke your Lambda function when an instance is put into a wait state due to a lifecycle hook. (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target. Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate. If you need more time, record the lifecycle action heartbeat to keep the instance in a wait state. If you finish before the timeout period ends, send a callback by using the CompleteLifecycleAction API call. For more information, see Complete a lifecycle action in the Amazon EC2 Auto Scaling User Guide."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/CompleteLifecycleActionOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -450,7 +418,7 @@ paths:
         - name: MixedInstancesPolicy
           in: query
           required: false
-          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
           schema:
             $ref: "#/components/schemas/MixedInstancesPolicy"
         - name: InstanceId
@@ -938,20 +906,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLifecycleHookOutputDisplay"
     post:
       operationId: POST_DeleteLifecycleHook
       description: Deletes the specified lifecycle hook. If there are any outstanding lifecycle actions, they are completed first (ABANDON for launching instances, CONTINUE for terminating instances).
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteLifecycleHookOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1140,20 +1100,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteWarmPoolOutputDisplay"
     post:
       operationId: POST_DeleteWarmPool
       description: Deletes the warm pool for the specified Auto Scaling group. For more information, see Warm pools for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteWarmPoolOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2281,20 +2233,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachLoadBalancerTargetGroupsOutputDisplay"
     post:
       operationId: POST_DetachLoadBalancerTargetGroups
       description: This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types. We recommend using DetachTrafficSources to simplify how you manage traffic sources. However, we continue to support DetachLoadBalancerTargetGroups. You can use both the original DetachLoadBalancerTargetGroups API operation and DetachTrafficSources on the same Auto Scaling group. Detaches one or more target groups from the specified Auto Scaling group. When you detach a target group, it enters the Removing state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the target group using the DescribeLoadBalancerTargetGroups API call. The instances remain running. You can use this operation to detach target groups that were attached by using AttachLoadBalancerTargetGroups, but not for target groups that were attached by using AttachTrafficSources.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachLoadBalancerTargetGroupsOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2329,20 +2273,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachLoadBalancersOutputDisplay"
     post:
       operationId: POST_DetachLoadBalancers
       description: This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types. We recommend using DetachTrafficSources to simplify how you manage traffic sources. However, we continue to support DetachLoadBalancers. You can use both the original DetachLoadBalancers API operation and DetachTrafficSources on the same Auto Scaling group. Detaches one or more Classic Load Balancers from the specified Auto Scaling group. This operation detaches only Classic Load Balancers. If you have Application Load Balancers, Network Load Balancers, or Gateway Load Balancers, use the DetachLoadBalancerTargetGroups API instead. When you detach a load balancer, it enters the Removing state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the load balancer using the DescribeLoadBalancers API call. The instances remain running.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachLoadBalancersOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2377,20 +2313,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachTrafficSourcesOutputDisplay"
     post:
       operationId: POST_DetachTrafficSources
       description: Detaches one or more traffic sources from the specified Auto Scaling group. When you detach a traffic source, it enters the Removing state while deregistering the instances in the group. When all instances are deregistered, then you can no longer describe the traffic source using the DescribeTrafficSources API call. The instances continue to run.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DetachTrafficSourcesOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2845,20 +2773,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutLifecycleHookOutputDisplay"
     post:
       operationId: POST_PutLifecycleHook
       description: "Creates or updates a lifecycle hook for the specified Auto Scaling group. Lifecycle hooks let you create solutions that are aware of events in the Auto Scaling instance lifecycle, and then perform a custom action on instances when the corresponding lifecycle event occurs. This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group: (Optional) Create a launch template or launch configuration with a user data script that runs while an instance is in a wait state due to a lifecycle hook. (Optional) Create a Lambda function and a rule that allows Amazon EventBridge to invoke your Lambda function when an instance is put into a wait state due to a lifecycle hook. (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target. Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate. If you need more time, record the lifecycle action heartbeat to keep the instance in a wait state using the RecordLifecycleActionHeartbeat API call. If you finish before the timeout period ends, send a callback by using the CompleteLifecycleAction API call. For more information, see Amazon EC2 Auto Scaling lifecycle hooks in the Amazon EC2 Auto Scaling User Guide. If you exceed your maximum limit of lifecycle hooks, which by default is 50 per Auto Scaling group, the call fails. You can view the lifecycle hooks for an Auto Scaling group using the DescribeLifecycleHooks API call. If you are no longer using a lifecycle hook, you can delete it by calling the DeleteLifecycleHook API."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutLifecycleHookOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3165,20 +3085,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutWarmPoolOutputDisplay"
     post:
       operationId: POST_PutWarmPool
       description: Creates or updates a warm pool for the specified Auto Scaling group. A warm pool is a pool of pre-initialized EC2 instances that sits alongside the Auto Scaling group. Whenever your application needs to scale out, the Auto Scaling group can draw on the warm pool to meet its new desired capacity. This operation must be called from the Region in which the Auto Scaling group was created. You can view the instances in the warm pool using the DescribeWarmPool API call. If you are no longer using a warm pool, you can delete it by calling the DeleteWarmPool API. For more information, see Warm pools for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/PutWarmPoolOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3225,20 +3137,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay"
     post:
       operationId: POST_RecordLifecycleActionHeartbeat
       description: "Records a heartbeat for the lifecycle action associated with the specified token or instance. This extends the timeout by the length of time defined using the PutLifecycleHook API call. This step is a part of the procedure for adding a lifecycle hook to an Auto Scaling group: (Optional) Create a launch template or launch configuration with a user data script that runs while an instance is in a wait state due to a lifecycle hook. (Optional) Create a Lambda function and a rule that allows Amazon EventBridge to invoke your Lambda function when an instance is put into a wait state due to a lifecycle hook. (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target. Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate. If you need more time, record the lifecycle action heartbeat to keep the instance in a wait state. If you finish before the timeout period ends, send a callback by using the CompleteLifecycleAction API call. For more information, see Amazon EC2 Auto Scaling lifecycle hooks in the Amazon EC2 Auto Scaling User Guide."
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3453,20 +3357,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetInstanceProtectionOutputDisplay"
     post:
       operationId: POST_SetInstanceProtection
       description: Updates the instance protection settings of the specified instances. This operation cannot be called on instances in a warm pool. For more information, see Use instance scale-in protection in the Amazon EC2 Auto Scaling User Guide. If you exceed your maximum limit of instance IDs, which is 50 per Auto Scaling group, the call fails.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetInstanceProtectionOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -3667,7 +3563,7 @@ paths:
         - name: MixedInstancesPolicy
           in: query
           required: false
-          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. You can remove the Distribution Segments configuration by specifying OnDemandBaseCapacity or OnDemandPercentageAboveBaseCapacity. You can also remove it explicitly by specifying an empty list for DistributionSegments.
           schema:
             $ref: "#/components/schemas/MixedInstancesPolicy"
         - name: MinSize
@@ -3914,16 +3810,6 @@ components:
       minLength: 1
       maxLength: 511
       pattern: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
-    AttachLoadBalancerTargetGroupsResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachLoadBalancerTargetGroupsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/AttachLoadBalancerTargetGroupsResultTypeDisplay"
     AttachLoadBalancerTargetGroupsType:
       type: object
       properties:
@@ -3940,16 +3826,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/XmlStringMaxLen255"
-    AttachLoadBalancersResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachLoadBalancersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/AttachLoadBalancersResultTypeDisplay"
     AttachLoadBalancersType:
       type: object
       properties:
@@ -3980,16 +3856,6 @@ components:
         - Identifier
     SkipZonalShiftValidation:
       type: boolean
-    AttachTrafficSourcesResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachTrafficSourcesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/AttachTrafficSourcesResultTypeDisplay"
     AttachTrafficSourcesType:
       type: object
       properties:
@@ -4144,16 +4010,6 @@ components:
       maxLength: 36
     LifecycleActionResult:
       type: string
-    CompleteLifecycleActionAnswerDisplay:
-      type: object
-      properties: {}
-    CompleteLifecycleActionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/CompleteLifecycleActionAnswerDisplay"
     CompleteLifecycleActionType:
       type: object
       properties:
@@ -4195,12 +4051,12 @@ components:
       maxLength: 128
       pattern: "[a-zA-Z0-9\\(\\)\\.\\-/_]+"
     MixedInstancesPolicy:
-      description: Use this structure to launch multiple instance types and On-Demand Instances and Spot Instances within a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use to launch instances and help optimize your costs. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+      description: Use this structure to launch multiple instance types and configure how capacity is distributed across On-Demand, Spot, and supported Capacity Reservation types within a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use to launch instances, prioritize capacity types, and help optimize your costs. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
       type: object
       properties:
         LaunchTemplate:
           $ref: "#/components/schemas/LaunchTemplate"
-          description: One or more launch templates and the instance types (overrides) that are used to launch EC2 instances to fulfill On-Demand and Spot capacities.
+          description: One or more launch templates and the instance types (overrides) that are used to launch EC2 instances to fulfill the configured capacities.
         InstancesDistribution:
           $ref: "#/components/schemas/InstancesDistribution"
           description: The instances distribution.
@@ -4560,7 +4416,7 @@ components:
       maxLength: 21
       pattern: ^ami-[a-z0-9]{1,17}$
     InstancesDistribution:
-      description: Use this structure to specify the distribution of On-Demand Instances and Spot Instances and the allocation strategies used to fulfill On-Demand and Spot capacities for a mixed instances policy.
+      description: Use this structure to specify how a mixed instances policy distributes capacity across On-Demand, Spot, and supported Capacity Reservation types, and to specify the allocation strategies that are used to fulfill the capacity.
       type: object
       properties:
         OnDemandAllocationStrategy:
@@ -4581,6 +4437,9 @@ components:
         SpotMaxPrice:
           $ref: "#/components/schemas/MixedInstanceSpotPrice"
           description: 'The maximum price per unit hour that you are willing to pay for a Spot Instance. If your maximum price is lower than the Spot price for the instance types that you selected, your Spot Instances are not launched. We do not recommend specifying a maximum price because it can lead to increased interruptions. When Spot Instances launch, you pay the current Spot price. To remove a maximum price that you previously set, include the property but specify an empty string ("") for the value. If you specify a maximum price, your instances will be interrupted more frequently than if you do not specify one. Valid Range: Minimum value of 0.001'
+        DistributionSegments:
+          $ref: "#/components/schemas/DistributionSegments"
+          description: The Distribution Segments configuration. Each segment contains an ordered list of capacity types to prioritize. For more information, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
     XmlString:
       type: string
       pattern: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
@@ -4594,6 +4453,28 @@ components:
       type: string
       minLength: 0
       maxLength: 255
+    DistributionSegments:
+      type: array
+      items:
+        $ref: "#/components/schemas/DistributionSegment"
+    DistributionSegment:
+      description: Use this structure to specify the capacity types that Amazon EC2 Auto Scaling prioritizes when it launches instances.
+      type: object
+      properties:
+        TargetCapacityTypes:
+          $ref: "#/components/schemas/TargetCapacityTypes"
+          description: "The capacity types to prioritize, in order. Amazon EC2 Auto Scaling attempts to launch instances in the priority order of the capacity types, and within each capacity type, in the order of instance types listed in your launch template Overrides. The following lists the valid values: on-demand-capacity-reservation On-Demand Capacity Reservations. capacity-block Capacity Blocks. interruptible-capacity-reservation Interruptible Capacity Reservations. on-demand On-Demand capacity. Include this value to allow the group to fall back to On-Demand capacity when the preceding capacity types are unavailable."
+    TargetCapacityTypes:
+      type: array
+      items:
+        $ref: "#/components/schemas/TargetCapacityType"
+    TargetCapacityType:
+      type: string
+      enum:
+        - on-demand-capacity-reservation
+        - capacity-block
+        - interruptible-capacity-reservation
+        - on-demand
     Cooldown:
       type: integer
     AvailabilityZones:
@@ -4848,7 +4729,7 @@ components:
           description: "Information used to specify the launch template and version to use to launch instances. Conditional: You must specify either a launch template (LaunchTemplate or MixedInstancesPolicy) or a launch configuration (LaunchConfigurationName or InstanceId). The launch template that is specified must be configured for use with an Auto Scaling group. For more information, see Create a launch template for an Auto Scaling group in the Amazon EC2 Auto Scaling User Guide."
         MixedInstancesPolicy:
           $ref: "#/components/schemas/MixedInstancesPolicy"
-          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
         InstanceId:
           $ref: "#/components/schemas/XmlStringMaxLen19"
           description: The ID of the instance used to base the launch configuration on. If specified, Amazon EC2 Auto Scaling uses the configuration values from the specified instance to create a new launch configuration. To get the instance ID, use the Amazon EC2 DescribeInstances API operation. For more information, see Create an Auto Scaling group using parameters from an existing instance in the Amazon EC2 Auto Scaling User Guide.
@@ -5170,16 +5051,6 @@ components:
           description: The name of the launch configuration.
       required:
         - LaunchConfigurationName
-    DeleteLifecycleHookAnswerDisplay:
-      type: object
-      properties: {}
-    DeleteLifecycleHookOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteLifecycleHookAnswerDisplay"
     DeleteLifecycleHookType:
       type: object
       properties:
@@ -5235,16 +5106,6 @@ components:
           description: One or more tags.
       required:
         - Tags
-    DeleteWarmPoolAnswerDisplay:
-      type: object
-      properties: {}
-    DeleteWarmPoolOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteWarmPoolAnswerDisplay"
     DeleteWarmPoolType:
       type: object
       properties:
@@ -6283,16 +6144,6 @@ components:
       required:
         - AutoScalingGroupName
         - ShouldDecrementDesiredCapacity
-    DetachLoadBalancerTargetGroupsResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachLoadBalancerTargetGroupsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DetachLoadBalancerTargetGroupsResultTypeDisplay"
     DetachLoadBalancerTargetGroupsType:
       type: object
       properties:
@@ -6305,16 +6156,6 @@ components:
       required:
         - AutoScalingGroupName
         - TargetGroupARNs
-    DetachLoadBalancersResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachLoadBalancersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DetachLoadBalancersResultTypeDisplay"
     DetachLoadBalancersType:
       type: object
       properties:
@@ -6327,16 +6168,6 @@ components:
       required:
         - AutoScalingGroupName
         - LoadBalancerNames
-    DetachTrafficSourcesResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachTrafficSourcesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DetachTrafficSourcesResultTypeDisplay"
     DetachTrafficSourcesType:
       type: object
       properties:
@@ -6570,16 +6401,6 @@ components:
         - AutoScalingGroupName
         - RequestedCapacity
         - ClientToken
-    PutLifecycleHookAnswerDisplay:
-      type: object
-      properties: {}
-    PutLifecycleHookOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutLifecycleHookAnswerDisplay"
     PutLifecycleHookType:
       type: object
       properties:
@@ -7160,16 +6981,6 @@ components:
           description: Specifies whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
     ReuseOnScaleIn:
       type: boolean
-    PutWarmPoolAnswerDisplay:
-      type: object
-      properties: {}
-    PutWarmPoolOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutWarmPoolAnswerDisplay"
     PutWarmPoolType:
       type: object
       properties:
@@ -7190,16 +7001,6 @@ components:
           description: Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in. The default is to terminate instances in the Auto Scaling group when the group scales in.
       required:
         - AutoScalingGroupName
-    RecordLifecycleActionHeartbeatAnswerDisplay:
-      type: object
-      properties: {}
-    RecordLifecycleActionHeartbeatOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RecordLifecycleActionHeartbeatAnswerDisplay"
     RecordLifecycleActionHeartbeatType:
       type: object
       properties:
@@ -7288,16 +7089,6 @@ components:
         - HealthStatus
     ProtectedFromScaleIn:
       type: boolean
-    SetInstanceProtectionAnswerDisplay:
-      type: object
-      properties: {}
-    SetInstanceProtectionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetInstanceProtectionAnswerDisplay"
     SetInstanceProtectionQuery:
       type: object
       properties:
@@ -7328,7 +7119,7 @@ components:
           description: Describes the launch template and the version of the launch template that Amazon EC2 Auto Scaling uses to launch Amazon EC2 instances. For more information about launch templates, see Launch templates in the Amazon EC2 Auto Scaling User Guide.
         MixedInstancesPolicy:
           $ref: "#/components/schemas/MixedInstancesPolicy"
-          description: Use this structure to launch multiple instance types and On-Demand Instances and Spot Instances within a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use to launch instances and help optimize your costs. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: Use this structure to launch multiple instance types and configure how capacity is distributed across On-Demand, Spot, and supported Capacity Reservation types within a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use to launch instances, prioritize capacity types, and help optimize your costs. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
     RefreshPreferences:
       description: Describes the preferences for an instance refresh.
       type: object
@@ -7506,7 +7297,7 @@ components:
           description: The launch template and version to use to specify the updates. If you specify LaunchTemplate in your update request, you can't specify LaunchConfigurationName or MixedInstancesPolicy.
         MixedInstancesPolicy:
           $ref: "#/components/schemas/MixedInstancesPolicy"
-          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types and purchase options in the Amazon EC2 Auto Scaling User Guide. You can remove the Distribution Segments configuration by specifying OnDemandBaseCapacity or OnDemandPercentageAboveBaseCapacity. You can also remove it explicitly by specifying an empty list for DistributionSegments.
         MinSize:
           $ref: "#/components/schemas/AutoScalingGroupMinSize"
           description: The minimum size of the Auto Scaling group.
@@ -7656,13 +7447,6 @@ components:
             $ref: "#/paths/~1?Action=CompleteLifecycleAction&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CompleteLifecycleActionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -7818,13 +7602,6 @@ components:
             $ref: "#/paths/~1?Action=RecordLifecycleActionHeartbeat&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -7874,13 +7651,6 @@ components:
             $ref: "#/paths/~1?Action=SetInstanceProtection&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetInstanceProtectionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -7971,13 +7741,6 @@ components:
             $ref: "#/paths/~1?Action=AttachLoadBalancerTargetGroups&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AttachLoadBalancerTargetGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8009,13 +7772,6 @@ components:
             $ref: "#/paths/~1?Action=DetachLoadBalancerTargetGroups&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DetachLoadBalancerTargetGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -8038,13 +7794,6 @@ components:
             $ref: "#/paths/~1?Action=AttachLoadBalancers&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AttachLoadBalancersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8076,13 +7825,6 @@ components:
             $ref: "#/paths/~1?Action=DetachLoadBalancers&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DetachLoadBalancersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -8105,13 +7847,6 @@ components:
             $ref: "#/paths/~1?Action=AttachTrafficSources&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AttachTrafficSourcesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8143,13 +7878,6 @@ components:
             $ref: "#/paths/~1?Action=DetachTrafficSources&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DetachTrafficSourcesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -8284,13 +8012,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteLifecycleHook&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLifecycleHookOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8322,13 +8043,6 @@ components:
             $ref: "#/paths/~1?Action=PutLifecycleHook&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutLifecycleHookOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8529,13 +8243,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteWarmPool&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteWarmPoolOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8567,13 +8274,6 @@ components:
             $ref: "#/paths/~1?Action=PutWarmPool&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutWarmPoolOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:

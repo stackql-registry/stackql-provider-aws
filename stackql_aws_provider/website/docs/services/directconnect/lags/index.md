@@ -193,6 +193,7 @@ tags,
 childConnectionTags,
 providerName,
 requestMACSec,
+billingMode,
 region
 )
 SELECT 
@@ -205,12 +206,14 @@ SELECT
 '{{ childConnectionTags }}',
 '{{ providerName }}',
 {{ requestMACSec }},
+'{{ billingMode }}',
 '{{ region }}'
 RETURNING
 allows_hosted_connections,
 aws_device,
 aws_device_v2,
 aws_logical_device_id,
+billing_mode,
 connections,
 connections_bandwidth,
 encryption_mode,
@@ -225,6 +228,10 @@ mac_sec_keys,
 minimum_links,
 number_of_connections,
 owner_account,
+prefix_pool_size_ipv_4,
+prefix_pool_size_ipv_6,
+prefix_pool_unallocated_count_ipv_4,
+prefix_pool_unallocated_count_ipv_6,
 provider_name,
 rate_limiter_status,
 region,
@@ -280,6 +287,11 @@ tags
       value: {{ requestMACSec }}
       description: |
         Indicates whether the connection will support MAC Security (MACsec). All connections in the LAG must be capable of supporting MAC Security (MACsec). For information about MAC Security (MACsec) prerequisties, see MACsec prerequisties in the Direct Connect User Guide.
+    - name: billingMode
+      value: "{{ billingMode }}"
+      description: |
+        The billing mode for the LAG.
+      valid_values: ['PayAsYouGo', 'FlatRateTier1', 'FlatRateTier2', 'FlatRateTier3', 'FlatRateTier4', 'FlatRateTier5']
 `}</CodeBlock>
 
 </TabItem>
@@ -313,6 +325,7 @@ aws_device,
 aws_device_v2,
 aws_logical_device_id,
 bandwidth,
+billing_mode,
 connection_id,
 connection_name,
 connection_state,
@@ -328,6 +341,10 @@ owner_account,
 partner_interconnect_mac_sec_capable,
 partner_name,
 port_encryption_status,
+prefix_pool_size_ipv_4,
+prefix_pool_size_ipv_6,
+prefix_pool_unallocated_count_ipv_4,
+prefix_pool_unallocated_count_ipv_6,
 provider_name,
 rate_limiter_status,
 region,
@@ -354,6 +371,7 @@ allows_hosted_connections,
 aws_device,
 aws_device_v2,
 aws_logical_device_id,
+billing_mode,
 connections,
 connections_bandwidth,
 encryption_mode,
@@ -368,6 +386,10 @@ mac_sec_keys,
 minimum_links,
 number_of_connections,
 owner_account,
+prefix_pool_size_ipv_4,
+prefix_pool_size_ipv_6,
+prefix_pool_unallocated_count_ipv_4,
+prefix_pool_unallocated_count_ipv_6,
 provider_name,
 rate_limiter_status,
 region,

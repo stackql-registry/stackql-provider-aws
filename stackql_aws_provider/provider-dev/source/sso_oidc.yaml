@@ -185,7 +185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDeviceAuthorizationResponse'
-      x-stackql-resource: device_authorization
+      x-stackql-resource: device_authorizations
       x-stackql-method: start_device_authorization
       x-stackql-verb: EXEC
 components:

@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_contact_flow_module"
     values={[
         { label: 'describe_contact_flow_module', value: 'describe_contact_flow_module' },
-        { label: 'list_contact_flow_modules', value: 'list_contact_flow_modules' },
-        { label: 'search_contact_flow_modules', value: 'search_contact_flow_modules' }
+        { label: 'list_contact_flow_modules', value: 'list_contact_flow_modules' }
     ]}
 >
 <TabItem value="describe_contact_flow_module">
@@ -153,85 +152,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_contact_flow_modules">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN).</td>
-</tr>
-<tr>
-    <td><CopyableCode code="content" /></td>
-    <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="external_invocation_configuration" /></td>
-    <td><code>object</code></td>
-    <td>The external invocation configuration for the flow module</td>
-</tr>
-<tr>
-    <td><CopyableCode code="flow_module_content_sha_256" /></td>
-    <td><code>string</code></td>
-    <td>Hash of the module content for integrity verification. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the flow module.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the flow module. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="settings" /></td>
-    <td><code>string</code></td>
-    <td>The configuration settings for the flow module.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="state" /></td>
-    <td><code>string</code></td>
-    <td>The type of flow module. (ACTIVE, ARCHIVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The status of the flow module. (PUBLISHED, SAVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The version of the flow module.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version_description" /></td>
-    <td><code>string</code></td>
-    <td>Description of the version. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -264,13 +184,6 @@ The following methods are available for this resource:
     <td>Provides information about the flow modules for the specified Connect Customer instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_contact_flow_modules"><CopyableCode code="search_contact_flow_modules" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches the flow modules in an Connect Customer instance, with optional filtering.</td>
-</tr>
-<tr>
     <td><a href="#create_contact_flow_module"><CopyableCode code="create_contact_flow_module" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -290,6 +203,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_module_id"><code>contact_flow_module_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified flow module.</td>
+</tr>
+<tr>
+    <td><a href="#search_contact_flow_modules"><CopyableCode code="search_contact_flow_modules" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches the flow modules in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#update_contact_flow_module_metadata"><CopyableCode code="update_contact_flow_module_metadata" /></a></td>
@@ -353,8 +273,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_contact_flow_module"
     values={[
         { label: 'describe_contact_flow_module', value: 'describe_contact_flow_module' },
-        { label: 'list_contact_flow_modules', value: 'list_contact_flow_modules' },
-        { label: 'search_contact_flow_modules', value: 'search_contact_flow_modules' }
+        { label: 'list_contact_flow_modules', value: 'list_contact_flow_modules' }
     ]}
 >
 <TabItem value="describe_contact_flow_module">
@@ -399,30 +318,6 @@ AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
 AND state = '{{ state }}'
-;
-```
-</TabItem>
-<TabItem value="search_contact_flow_modules">
-
-Searches the flow modules in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-arn,
-content,
-description,
-external_invocation_configuration,
-flow_module_content_sha_256,
-id,
-name,
-settings,
-state,
-status,
-tags,
-version,
-version_description
-FROM aws.connect.contact_flow_modules
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -556,11 +451,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_contact_flow_module_metadata"
+    defaultValue="search_contact_flow_modules"
     values={[
+        { label: 'search_contact_flow_modules', value: 'search_contact_flow_modules' },
         { label: 'update_contact_flow_module_metadata', value: 'update_contact_flow_module_metadata' }
     ]}
 >
+<TabItem value="search_contact_flow_modules">
+
+Searches the flow modules in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.contact_flow_modules.search_contact_flow_modules 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_contact_flow_module_metadata">
 
 Updates metadata about specified flow module.

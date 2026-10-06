@@ -39,10 +39,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptAdministratorInvitationResponse"
     get:
       operationId: GetAdministratorAccount
       description: Provides the details for the Security Hub CSPM administrator account for the current member account. Can be used by both member accounts that are managed using Organizations and accounts that were invited manually.
@@ -76,10 +72,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptInvitationResponse"
     get:
       operationId: GetMasterAccount
       description: This method is deprecated. Instead, use GetAdministratorAccount. The Security Hub CSPM console continues to use GetMasterAccount. It will eventually change to use GetAdministratorAccount. Any IAM policies that specifically control access to this function must continue to use GetMasterAccount. You should also add GetAdministratorAccount to your policies to ensure that the correct permissions are in place after the console begins to use GetAdministratorAccount. Provides the details for the Security Hub CSPM administrator account for the current member account. Can be used by both member accounts that are managed using Organizations and accounts that were invited manually.
@@ -929,10 +921,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateActionTargetResponse"
   /aggregatorv2/delete/{aggregator_v2_arn}:
     delete:
       operationId: DeleteAggregatorV2
@@ -947,10 +935,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAggregatorV2Response"
   /automationrulesv2/{identifier}:
     delete:
       operationId: DeleteAutomationRuleV2
@@ -965,10 +949,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAutomationRuleV2Response"
     get:
       operationId: GetAutomationRuleV2
       description: Returns an automation rule for the V2 service.
@@ -1018,10 +998,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAutomationRuleV2Response"
   /configurationPolicy/{identifier}:
     delete:
       operationId: DeleteConfigurationPolicy
@@ -1036,10 +1012,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConfigurationPolicyResponse"
     patch:
       operationId: UpdateConfigurationPolicy
       description: Updates a configuration policy. Only the Security Hub CSPM delegated administrator can invoke this operation from the home Region.
@@ -1212,10 +1184,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFindingAggregatorResponse"
   /insights/{insight_arn}:
     delete:
       operationId: DeleteInsight
@@ -1260,10 +1228,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateInsightResponse"
   /invitations/delete:
     post:
       operationId: DeleteInvitations
@@ -1360,10 +1324,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableSecurityHubResponse"
     post:
       operationId: EnableSecurityHub
       description: "Enables Security Hub CSPM for your account in the current Region or the Region you specify in the request. When you enable Security Hub CSPM, you grant to Security Hub CSPM the permissions necessary to gather findings from other services that are integrated with Security Hub CSPM. When you use the EnableSecurityHub operation to enable Security Hub CSPM, you also automatically enable the following standards: Center for Internet Security (CIS) Amazon Web Services Foundations Benchmark v1.2.0 Amazon Web Services Foundational Security Best Practices Other standards are not automatically enabled. To opt out of automatically enabled standards, set EnableDefaultStandards to false. After you enable Security Hub CSPM, to enable a standard, use the BatchEnableStandards operation. To disable a standard, use the BatchDisableStandards operation. To learn more, see the setup information in the Security Hub CSPM User Guide."
@@ -1384,10 +1344,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableSecurityHubResponse"
     patch:
       operationId: UpdateSecurityHubConfiguration
       description: Updates configuration options for Security Hub CSPM.
@@ -1406,10 +1362,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSecurityHubConfigurationResponse"
   /organization/configuration:
     get:
       operationId: DescribeOrganizationConfiguration
@@ -1444,10 +1396,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateOrganizationConfigurationResponse"
   /products:
     get:
       operationId: DescribeProducts
@@ -1521,10 +1469,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableSecurityHubV2Response"
     post:
       operationId: EnableSecurityHubV2
       description: Enables the service in account for the current Amazon Web Services Region or specified Amazon Web Services Region.
@@ -1619,10 +1563,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableImportFindingsForProductResponse"
   /organization/admin/disable:
     post:
       operationId: DisableOrganizationAdminAccount
@@ -1644,10 +1584,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableOrganizationAdminAccountResponse"
   /hubv2/feature/{feature_name}:
     delete:
       operationId: DisableSecurityHubFeatureV2
@@ -1662,10 +1598,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableSecurityHubFeatureV2Response"
     post:
       operationId: EnableSecurityHubFeatureV2
       description: Enables an opt-in feature for the calling account in the current Amazon Web Services Region. The service must be enabled before you can enable a feature. The operation is idempotent. If the feature is already enabled, no changes are made. You cannot enable a feature that is managed by an organization policy.
@@ -1679,10 +1611,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableSecurityHubFeatureV2Response"
   /administrator/disassociate:
     post:
       operationId: DisassociateFromAdministratorAccount
@@ -1691,10 +1619,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFromAdministratorAccountResponse"
   /master/disassociate:
     post:
       operationId: DisassociateFromMasterAccount
@@ -1703,10 +1627,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFromMasterAccountResponse"
   /members/disassociate:
     post:
       operationId: DisassociateMembers
@@ -1726,10 +1646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMembersResponse"
   /productSubscriptions:
     post:
       operationId: EnableImportFindingsForProduct
@@ -1815,10 +1731,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GenerateRecommendedPolicyV2Response"
     get:
       operationId: GetRecommendedPolicyV2
       description: Retrieves the recommended policy to remediate a Security Hub finding. GetRecommendedPolicyV2 only supports findings for unused permissions.
@@ -2061,10 +1973,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFindingsResponse"
   /findingsTrendsv2:
     post:
       operationId: GetFindingsTrendsV2
@@ -2637,10 +2545,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags from a resource.
@@ -2660,10 +2564,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /connectorsv2/register:
     post:
       operationId: RegisterConnectorV2
@@ -2737,10 +2637,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartConfigurationPolicyDisassociationResponse"
   /aggregatorv2/update/{aggregator_v2_arn}:
     patch:
       operationId: UpdateAggregatorV2
@@ -2824,10 +2720,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSecurityControlResponse"
   /standards/control/{standards_control_arn}:
     patch:
       operationId: UpdateStandardsControl
@@ -2853,10 +2745,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStandardsControlResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2905,10 +2793,6 @@ components:
     NonEmptyString:
       type: string
       pattern: .*\S.*
-    AcceptAdministratorInvitationResponse:
-      type: object
-    AcceptInvitationResponse:
-      type: object
     AutomationRulesArnsList:
       type: array
       items:
@@ -16980,12 +16864,6 @@ components:
           description: The ARN of the custom action target that was deleted.
       required:
         - ActionTargetArn
-    DeleteAggregatorV2Response:
-      type: object
-    DeleteAutomationRuleV2Response:
-      type: object
-    DeleteConfigurationPolicyResponse:
-      type: object
     DeleteConnectorResponse:
       type: object
       properties:
@@ -16998,8 +16876,6 @@ components:
         EnablementStatus:
           $ref: "#/components/schemas/EnablementStatus"
           description: The enablement status of the connector after deletion.
-    DeleteFindingAggregatorResponse:
-      type: object
     DeleteInsightResponse:
       type: object
       properties:
@@ -17352,32 +17228,16 @@ components:
         RelatedRequirements:
           $ref: "#/components/schemas/RelatedRequirementsList"
           description: The list of requirements that are related to this control.
-    DisableImportFindingsForProductResponse:
-      type: object
     SecurityHubFeature:
       type: string
       enum:
         - SecurityHub
         - SecurityHubV2
-    DisableOrganizationAdminAccountResponse:
-      type: object
-    DisableSecurityHubResponse:
-      type: object
     FeatureName:
       description: "The name of an opt-in feature. Valid values: NETWORK_SCANNING."
       type: string
       enum:
         - NETWORK_SCANNING
-    DisableSecurityHubFeatureV2Response:
-      type: object
-    DisableSecurityHubV2Response:
-      type: object
-    DisassociateFromAdministratorAccountResponse:
-      type: object
-    DisassociateFromMasterAccountResponse:
-      type: object
-    DisassociateMembersResponse:
-      type: object
     EnableImportFindingsForProductResponse:
       type: object
       properties:
@@ -17393,18 +17253,12 @@ components:
         Feature:
           $ref: "#/components/schemas/SecurityHubFeature"
           description: The feature where the delegated administrator is enabled. The default is Security Hub CSPM CSPM if no delegated administrator is specified in the request.
-    EnableSecurityHubResponse:
-      type: object
-    EnableSecurityHubFeatureV2Response:
-      type: object
     EnableSecurityHubV2Response:
       type: object
       properties:
         HubV2Arn:
           $ref: "#/components/schemas/NonEmptyString"
           description: The ARN of the V2 resource that was created.
-    GenerateRecommendedPolicyV2Response:
-      type: object
     GetAdministratorAccountResponse:
       type: object
       properties:
@@ -19524,10 +19378,6 @@ components:
         AssociationStatusMessage:
           $ref: "#/components/schemas/NonEmptyString"
           description: An explanation for a FAILED value for AssociationStatus.
-    StartConfigurationPolicyDisassociationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -19537,10 +19387,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateActionTargetResponse:
-      type: object
     UpdateAggregatorV2Response:
       type: object
       properties:
@@ -19556,8 +19402,6 @@ components:
         LinkedRegions:
           $ref: "#/components/schemas/StringList"
           description: A list of Amazon Web Services Regions linked to the aggegation Region.
-    UpdateAutomationRuleV2Response:
-      type: object
     UpdateConfigurationPolicyResponse:
       type: object
       properties:
@@ -19662,21 +19506,9 @@ components:
         Regions:
           $ref: "#/components/schemas/StringList"
           description: The list of excluded Regions or included Regions.
-    UpdateFindingsResponse:
-      type: object
-    UpdateInsightResponse:
-      type: object
-    UpdateOrganizationConfigurationResponse:
-      type: object
     Parameters:
       type: object
       properties: {}
-    UpdateSecurityControlResponse:
-      type: object
-    UpdateSecurityHubConfigurationResponse:
-      type: object
-    UpdateStandardsControlResponse:
-      type: object
   x-stackQL-resources:
     invitations:
       id: aws.securityhub.invitations
@@ -19688,7 +19520,6 @@ components:
             $ref: "#/paths/~1administrator/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19699,7 +19530,6 @@ components:
             $ref: "#/paths/~1master/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -19768,7 +19598,6 @@ components:
             $ref: "#/paths/~1administrator~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/get_administrator_account"
@@ -19793,7 +19622,6 @@ components:
             $ref: "#/paths/~1master~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/master_accounts/methods/get_master_account"
@@ -19964,8 +19792,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/configuration_policy_associations/methods/batch_get_configuration_policy_associations"
           - $ref: "#/components/x-stackQL-resources/configuration_policy_associations/methods/get_configuration_policy_association"
+          - $ref: "#/components/x-stackQL-resources/configuration_policy_associations/methods/batch_get_configuration_policy_associations"
           - $ref: "#/components/x-stackQL-resources/configuration_policy_associations/methods/list_configuration_policy_associations"
         insert: []
         update: []
@@ -19991,7 +19819,6 @@ components:
             $ref: "#/paths/~1securityControl~1update/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20050,8 +19877,8 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/batch_get_standards_control_associations"
           - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/list_standards_control_associations"
+          - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/batch_get_standards_control_associations"
         insert: []
         update: []
         delete: []
@@ -20106,7 +19933,6 @@ components:
             $ref: "#/paths/~1findings/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20118,6 +19944,53 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings"
+        delete: []
+    findings_v2:
+      id: aws.securityhub.findings_v2
+      name: findings_v2
+      title: findings_v2
+      methods:
+        batch_update_findings_v2:
+          operation:
+            $ref: "#/paths/~1findingsv2~1batchupdatev2/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_findings_v2:
+          operation:
+            $ref: "#/paths/~1findingsv2/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetFindingsV2OutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Findings" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings_v2/methods/get_findings_v2"
+        insert: []
+        update: []
         delete: []
     action_targets:
       id: aws.securityhub.action_targets
@@ -20146,7 +20019,6 @@ components:
             $ref: "#/paths/~1actionTargets~1{action_target_arn}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20180,10 +20052,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/action_targets/methods/update_action_target"
         delete:
           - $ref: "#/components/x-stackQL-resources/action_targets/methods/delete_action_target"
-    aggregator_v2s:
-      id: aws.securityhub.aggregator_v2s
-      name: aggregator_v2s
-      title: aggregator_v2s
+    aggregators_v2:
+      id: aws.securityhub.aggregators_v2
+      name: aggregators_v2
+      title: aggregators_v2
       methods:
         create_aggregator_v2:
           operation:
@@ -20201,13 +20073,29 @@ components:
             $ref: "#/paths/~1aggregatorv2~1delete~1{aggregator_v2_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_aggregator_v2:
           operation:
             $ref: "#/paths/~1aggregatorv2~1get~1{aggregator_v2_arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        list_aggregators_v2:
+          operation:
+            $ref: "#/paths/~1aggregatorv2~1list/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AggregatorsV2
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_aggregator_v2:
           operation:
             $ref: "#/paths/~1aggregatorv2~1update~1{aggregator_v2_arn}/patch"
@@ -20221,17 +20109,18 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aggregator_v2s/methods/get_aggregator_v2"
+          - $ref: "#/components/x-stackQL-resources/aggregators_v2/methods/get_aggregator_v2"
+          - $ref: "#/components/x-stackQL-resources/aggregators_v2/methods/list_aggregators_v2"
         insert:
-          - $ref: "#/components/x-stackQL-resources/aggregator_v2s/methods/create_aggregator_v2"
+          - $ref: "#/components/x-stackQL-resources/aggregators_v2/methods/create_aggregator_v2"
         update:
-          - $ref: "#/components/x-stackQL-resources/aggregator_v2s/methods/update_aggregator_v2"
+          - $ref: "#/components/x-stackQL-resources/aggregators_v2/methods/update_aggregator_v2"
         delete:
-          - $ref: "#/components/x-stackQL-resources/aggregator_v2s/methods/delete_aggregator_v2"
-    automation_rule_v2s:
-      id: aws.securityhub.automation_rule_v2s
-      name: automation_rule_v2s
-      title: automation_rule_v2s
+          - $ref: "#/components/x-stackQL-resources/aggregators_v2/methods/delete_aggregator_v2"
+    automation_rules_v2:
+      id: aws.securityhub.automation_rules_v2
+      name: automation_rules_v2
+      title: automation_rules_v2
       methods:
         create_automation_rule_v2:
           operation:
@@ -20249,7 +20138,6 @@ components:
             $ref: "#/paths/~1automationrulesv2~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_automation_rule_v2:
           operation:
             $ref: "#/paths/~1automationrulesv2~1{identifier}/get"
@@ -20261,21 +20149,29 @@ components:
             $ref: "#/paths/~1automationrulesv2~1{identifier}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_automation_rules_v2:
+          operation:
+            $ref: "#/paths/~1automationrulesv2~1list/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/automation_rule_v2s/methods/get_automation_rule_v2"
+          - $ref: "#/components/x-stackQL-resources/automation_rules_v2/methods/get_automation_rule_v2"
+          - $ref: "#/components/x-stackQL-resources/automation_rules_v2/methods/list_automation_rules_v2"
         insert:
-          - $ref: "#/components/x-stackQL-resources/automation_rule_v2s/methods/create_automation_rule_v2"
+          - $ref: "#/components/x-stackQL-resources/automation_rules_v2/methods/create_automation_rule_v2"
         update:
-          - $ref: "#/components/x-stackQL-resources/automation_rule_v2s/methods/update_automation_rule_v2"
+          - $ref: "#/components/x-stackQL-resources/automation_rules_v2/methods/update_automation_rule_v2"
         delete:
-          - $ref: "#/components/x-stackQL-resources/automation_rule_v2s/methods/delete_automation_rule_v2"
+          - $ref: "#/components/x-stackQL-resources/automation_rules_v2/methods/delete_automation_rule_v2"
     configuration_policies:
       id: aws.securityhub.configuration_policies
       name: configuration_policies
@@ -20297,7 +20193,6 @@ components:
             $ref: "#/paths/~1configurationPolicy~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_configuration_policy:
           operation:
             $ref: "#/paths/~1configurationPolicy~1{identifier}/patch"
@@ -20348,7 +20243,6 @@ components:
             $ref: "#/paths/~1configurationPolicyAssociation~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20421,10 +20315,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/update_connector"
         delete:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/delete_connector"
-    connector_v2s:
-      id: aws.securityhub.connector_v2s
-      name: connector_v2s
-      title: connector_v2s
+    connectors_v2:
+      id: aws.securityhub.connectors_v2
+      name: connectors_v2
+      title: connectors_v2
       methods:
         create_connector_v2:
           operation:
@@ -20437,6 +20331,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_connectors_v2:
+          operation:
+            $ref: "#/paths/~1connectorsv2/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         delete_connector_v2:
           operation:
             $ref: "#/paths/~1connectorsv2~1{connector_id}/delete"
@@ -20473,33 +20375,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/get_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/get_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/list_connectors_v2"
         insert:
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/register_connector_v2"
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/create_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/register_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/create_connector_v2"
         update:
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/update_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/update_connector_v2"
         delete:
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/delete_connector_v2"
-    connectors_v2s:
-      id: aws.securityhub.connectors_v2s
-      name: connectors_v2s
-      title: connectors_v2s
-      methods:
-        list_connectors_v2:
-          operation:
-            $ref: "#/paths/~1connectorsv2/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/connectors_v2s/methods/list_connectors_v2"
-        insert: []
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/connectors_v2/methods/delete_connector_v2"
     finding_aggregators:
       id: aws.securityhub.finding_aggregators
       name: finding_aggregators
@@ -20521,7 +20405,6 @@ components:
             $ref: "#/paths/~1findingAggregator~1delete~1{finding_aggregator_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_finding_aggregator:
           operation:
             $ref: "#/paths/~1findingAggregator~1get~1{finding_aggregator_arn}/get"
@@ -20593,7 +20476,6 @@ components:
             $ref: "#/paths/~1insights~1{insight_arn}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20676,7 +20558,6 @@ components:
             $ref: "#/paths/~1members~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20714,10 +20595,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/members/methods/disassociate_members"
         delete:
           - $ref: "#/components/x-stackQL-resources/members/methods/delete_members"
-    ticket_v2s:
-      id: aws.securityhub.ticket_v2s
-      name: ticket_v2s
-      title: ticket_v2s
+    tickets_v2:
+      id: aws.securityhub.tickets_v2
+      name: tickets_v2
+      title: tickets_v2
       methods:
         create_ticket_v2:
           operation:
@@ -20733,7 +20614,7 @@ components:
       sqlVerbs:
         select: []
         insert:
-          - $ref: "#/components/x-stackQL-resources/ticket_v2s/methods/create_ticket_v2"
+          - $ref: "#/components/x-stackQL-resources/tickets_v2/methods/create_ticket_v2"
         update: []
         delete: []
     hubs:
@@ -20755,6 +20636,31 @@ components:
         insert: []
         update: []
         delete: []
+    security_hubs:
+      id: aws.securityhub.security_hubs
+      name: security_hubs
+      title: security_hubs
+      methods:
+        disable_security_hub:
+          operation:
+            $ref: "#/paths/~1accounts/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_security_hub:
+          operation:
+            $ref: "#/paths/~1accounts/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     security_hub_configurations:
       id: aws.securityhub.security_hub_configurations
       name: security_hub_configurations
@@ -20765,7 +20671,6 @@ components:
             $ref: "#/paths/~1accounts/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20793,7 +20698,6 @@ components:
             $ref: "#/paths/~1organization~1configuration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20834,10 +20738,10 @@ components:
         insert: []
         update: []
         delete: []
-    products_v2s:
-      id: aws.securityhub.products_v2s
-      name: products_v2s
-      title: products_v2s
+    products_v2:
+      id: aws.securityhub.products_v2
+      name: products_v2
+      title: products_v2
       methods:
         describe_products_v2:
           operation:
@@ -20858,14 +20762,14 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/products_v2s/methods/describe_products_v2"
+          - $ref: "#/components/x-stackQL-resources/products_v2/methods/describe_products_v2"
         insert: []
         update: []
         delete: []
-    security_hub_v2s:
-      id: aws.securityhub.security_hub_v2s
-      name: security_hub_v2s
-      title: security_hub_v2s
+    security_hubs_v2:
+      id: aws.securityhub.security_hubs_v2
+      name: security_hubs_v2
+      title: security_hubs_v2
       methods:
         describe_security_hub_v2:
           operation:
@@ -20873,9 +20777,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        disable_security_hub_v2:
+          operation:
+            $ref: "#/paths/~1hubv2/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_security_hub_v2:
+          operation:
+            $ref: "#/paths/~1hubv2/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/security_hub_v2s/methods/describe_security_hub_v2"
+          - $ref: "#/components/x-stackQL-resources/security_hubs_v2/methods/describe_security_hub_v2"
         insert: []
         update: []
         delete: []
@@ -20906,7 +20826,6 @@ components:
             $ref: "#/paths/~1standards~1control~1{standards_control_arn}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20919,10 +20838,105 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/standards_controls/methods/update_standards_control"
         delete: []
-    enabled_products_for_imports:
-      id: aws.securityhub.enabled_products_for_imports
-      name: enabled_products_for_imports
-      title: enabled_products_for_imports
+    import_findings:
+      id: aws.securityhub.import_findings
+      name: import_findings
+      title: import_findings
+      methods:
+        disable_import_findings_for_product:
+          operation:
+            $ref: "#/paths/~1productSubscriptions~1{product_subscription_arn}/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_import_findings_for_product:
+          operation:
+            $ref: "#/paths/~1productSubscriptions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    organization_admin_accounts:
+      id: aws.securityhub.organization_admin_accounts
+      name: organization_admin_accounts
+      title: organization_admin_accounts
+      methods:
+        disable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1organization~1admin~1disable/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1organization~1admin~1enable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_organization_admin_accounts:
+          operation:
+            $ref: "#/paths/~1organization~1admin/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AdminAccounts
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
+        insert: []
+        update: []
+        delete: []
+    security_hub_features_v2:
+      id: aws.securityhub.security_hub_features_v2
+      name: security_hub_features_v2
+      title: security_hub_features_v2
+      methods:
+        disable_security_hub_feature_v2:
+          operation:
+            $ref: "#/paths/~1hubv2~1feature~1{feature_name}/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_security_hub_feature_v2:
+          operation:
+            $ref: "#/paths/~1hubv2~1feature~1{feature_name}/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    enabled_products:
+      id: aws.securityhub.enabled_products
+      name: enabled_products
+      title: enabled_products
       methods:
         list_enabled_products_for_import:
           operation:
@@ -20949,15 +20963,20 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/enabled_products_for_imports/methods/list_enabled_products_for_import"
+          - $ref: "#/components/x-stackQL-resources/enabled_products/methods/list_enabled_products_for_import"
         insert: []
         update: []
         delete: []
-    recommended_policy_v2s:
-      id: aws.securityhub.recommended_policy_v2s
-      name: recommended_policy_v2s
-      title: recommended_policy_v2s
+    recommended_policies_v2:
+      id: aws.securityhub.recommended_policies_v2
+      name: recommended_policies_v2
+      title: recommended_policies_v2
       methods:
+        generate_recommended_policy_v2:
+          operation:
+            $ref: "#/paths/~1recommendedPolicyV2~1{metadata_uid}/post"
+          response:
+            openAPIDocKey: "200"
         get_recommended_policy_v2:
           operation:
             $ref: "#/paths/~1recommendedPolicyV2~1{metadata_uid}/get"
@@ -20977,7 +20996,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/recommended_policy_v2s/methods/get_recommended_policy_v2"
+          - $ref: "#/components/x-stackQL-resources/recommended_policies_v2/methods/get_recommended_policy_v2"
         insert: []
         update: []
         delete: []
@@ -21041,10 +21060,10 @@ components:
         insert: []
         update: []
         delete: []
-    finding_statistics_v2s:
-      id: aws.securityhub.finding_statistics_v2s
-      name: finding_statistics_v2s
-      title: finding_statistics_v2s
+    finding_statistics_v2:
+      id: aws.securityhub.finding_statistics_v2
+      name: finding_statistics_v2
+      title: finding_statistics_v2
       methods:
         get_finding_statistics_v2:
           operation:
@@ -21059,14 +21078,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/finding_statistics_v2s/methods/get_finding_statistics_v2"
+          - $ref: "#/components/x-stackQL-resources/finding_statistics_v2/methods/get_finding_statistics_v2"
         insert: []
         update: []
         delete: []
-    findings_trends_v2s:
-      id: aws.securityhub.findings_trends_v2s
-      name: findings_trends_v2s
-      title: findings_trends_v2s
+    findings_trends_v2:
+      id: aws.securityhub.findings_trends_v2
+      name: findings_trends_v2
+      title: findings_trends_v2
       methods:
         get_findings_trends_v2:
           operation:
@@ -21089,43 +21108,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/findings_trends_v2s/methods/get_findings_trends_v2"
-        insert: []
-        update: []
-        delete: []
-    findings_v2s:
-      id: aws.securityhub.findings_v2s
-      name: findings_v2s
-      title: findings_v2s
-      methods:
-        get_findings_v2:
-          operation:
-            $ref: "#/paths/~1findingsv2/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetFindingsV2OutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "Findings" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings_v2s/methods/get_findings_v2"
+          - $ref: "#/components/x-stackQL-resources/findings_trends_v2/methods/get_findings_trends_v2"
         insert: []
         update: []
         delete: []
@@ -21164,10 +21147,10 @@ components:
         insert: []
         update: []
         delete: []
-    resources_statistics_v2s:
-      id: aws.securityhub.resources_statistics_v2s
-      name: resources_statistics_v2s
-      title: resources_statistics_v2s
+    resources_statistics_v2:
+      id: aws.securityhub.resources_statistics_v2
+      name: resources_statistics_v2
+      title: resources_statistics_v2
       methods:
         get_resources_statistics_v2:
           operation:
@@ -21182,14 +21165,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resources_statistics_v2s/methods/get_resources_statistics_v2"
+          - $ref: "#/components/x-stackQL-resources/resources_statistics_v2/methods/get_resources_statistics_v2"
         insert: []
         update: []
         delete: []
-    resources_trends_v2s:
-      id: aws.securityhub.resources_trends_v2s
-      name: resources_trends_v2s
-      title: resources_trends_v2s
+    resources_trends_v2:
+      id: aws.securityhub.resources_trends_v2
+      name: resources_trends_v2
+      title: resources_trends_v2
       methods:
         get_resources_trends_v2:
           operation:
@@ -21212,14 +21195,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resources_trends_v2s/methods/get_resources_trends_v2"
+          - $ref: "#/components/x-stackQL-resources/resources_trends_v2/methods/get_resources_trends_v2"
         insert: []
         update: []
         delete: []
-    resources_v2s:
-      id: aws.securityhub.resources_v2s
-      name: resources_v2s
-      title: resources_v2s
+    resources_v2:
+      id: aws.securityhub.resources_v2
+      name: resources_v2
+      title: resources_v2
       methods:
         get_resources_v2:
           operation:
@@ -21242,7 +21225,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resources_v2s/methods/get_resources_v2"
+          - $ref: "#/components/x-stackQL-resources/resources_v2/methods/get_resources_v2"
         insert: []
         update: []
         delete: []
@@ -21284,57 +21267,10 @@ components:
         insert: []
         update: []
         delete: []
-    aggregators_v2s:
-      id: aws.securityhub.aggregators_v2s
-      name: aggregators_v2s
-      title: aggregators_v2s
-      methods:
-        list_aggregators_v2:
-          operation:
-            $ref: "#/paths/~1aggregatorv2~1list/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AggregatorsV2
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/aggregators_v2s/methods/list_aggregators_v2"
-        insert: []
-        update: []
-        delete: []
-    automation_rules_v2s:
-      id: aws.securityhub.automation_rules_v2s
-      name: automation_rules_v2s
-      title: automation_rules_v2s
-      methods:
-        list_automation_rules_v2:
-          operation:
-            $ref: "#/paths/~1automationrulesv2~1list/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/automation_rules_v2s/methods/list_automation_rules_v2"
-        insert: []
-        update: []
-        delete: []
-    free_trial_statuses_v2s:
-      id: aws.securityhub.free_trial_statuses_v2s
-      name: free_trial_statuses_v2s
-      title: free_trial_statuses_v2s
+    free_trial_statuses_v2:
+      id: aws.securityhub.free_trial_statuses_v2
+      name: free_trial_statuses_v2
+      title: free_trial_statuses_v2
       methods:
         list_free_trial_statuses_v2:
           operation:
@@ -21357,35 +21293,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/free_trial_statuses_v2s/methods/list_free_trial_statuses_v2"
-        insert: []
-        update: []
-        delete: []
-    organization_admin_accounts:
-      id: aws.securityhub.organization_admin_accounts
-      name: organization_admin_accounts
-      title: organization_admin_accounts
-      methods:
-        list_organization_admin_accounts:
-          operation:
-            $ref: "#/paths/~1organization~1admin/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AdminAccounts
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: query
-              responseToken:
-                key: $.NextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
+          - $ref: "#/components/x-stackQL-resources/free_trial_statuses_v2/methods/list_free_trial_statuses_v2"
         insert: []
         update: []
         delete: []
@@ -21405,7 +21313,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -21416,7 +21323,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

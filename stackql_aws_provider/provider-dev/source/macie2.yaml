@@ -40,10 +40,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptInvitationResponse'
       x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
@@ -508,10 +504,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSampleFindingsResponse'
       x-stackql-resource: findings
       x-stackql-method: create_sample_findings
       x-stackql-verb: INSERT
@@ -565,10 +557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAllowListResponse'
       x-stackql-resource: allow_lists
       x-stackql-method: delete_allow_list
       x-stackql-verb: DELETE
@@ -642,10 +630,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomDataIdentifierResponse'
       x-stackql-resource: custom_data_identifiers
       x-stackql-method: delete_custom_data_identifier
       x-stackql-verb: DELETE
@@ -683,10 +667,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFindingsFilterResponse'
       x-stackql-resource: findings_filters
       x-stackql-method: delete_findings_filter
       x-stackql-verb: DELETE
@@ -789,10 +769,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMemberResponse'
       x-stackql-resource: members
       x-stackql-method: delete_member
       x-stackql-verb: DELETE
@@ -896,10 +872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateClassificationJobResponse'
       x-stackql-resource: classification_jobs
       x-stackql-method: update_classification_job
       x-stackql-verb: UPDATE
@@ -936,10 +908,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOrganizationConfigurationResponse'
       x-stackql-resource: organization_configurations
       x-stackql-method: update_organization_configuration
       x-stackql-verb: UPDATE
@@ -951,11 +919,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableMacieResponse'
-      x-stackql-resource: macie
+      x-stackql-resource: macies
       x-stackql-method: disable_macie
       x-stackql-verb: EXEC
     post:
@@ -978,11 +942,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableMacieResponse'
-      x-stackql-resource: macie
+      x-stackql-resource: macies
       x-stackql-method: enable_macie
       x-stackql-verb: EXEC
     get:
@@ -1017,10 +977,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMacieSessionResponse'
       x-stackql-resource: macie_sessions
       x-stackql-method: update_macie_session
       x-stackql-verb: UPDATE
@@ -1038,11 +994,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: disable_organization_admin_account
       x-stackql-verb: EXEC
     post:
@@ -1065,11 +1017,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: enable_organization_admin_account
       x-stackql-verb: EXEC
     get:
@@ -1110,10 +1058,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
       x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
@@ -1126,10 +1070,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
       x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
@@ -1147,10 +1087,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMemberResponse'
       x-stackql-resource: members
       x-stackql-method: disassociate_member
       x-stackql-verb: UPDATE
@@ -1207,10 +1143,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAutomatedDiscoveryConfigurationResponse'
       x-stackql-resource: automated_discovery_configurations
       x-stackql-method: update_automated_discovery_configuration
       x-stackql-verb: UPDATE
@@ -1323,10 +1255,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateClassificationScopeResponse'
       x-stackql-resource: classification_scopes
       x-stackql-method: update_classification_scope
       x-stackql-verb: UPDATE
@@ -1424,10 +1352,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutFindingsPublicationConfigurationResponse'
       x-stackql-resource: findings_publication_configurations
       x-stackql-method: put_findings_publication_configuration
       x-stackql-verb: REPLACE
@@ -1506,10 +1430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceProfileResponse'
       x-stackql-resource: resource_profiles
       x-stackql-method: update_resource_profile
       x-stackql-verb: UPDATE
@@ -1646,10 +1566,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSensitivityInspectionTemplateResponse'
       x-stackql-resource: sensitivity_inspection_templates
       x-stackql-method: update_sensitivity_inspection_template
       x-stackql-verb: UPDATE
@@ -1965,10 +1881,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceProfileDetectionsResponse'
       x-stackql-resource: resource_profile_detections
       x-stackql-method: update_resource_profile_detections
       x-stackql-verb: UPDATE
@@ -2048,10 +1960,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2075,10 +1983,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2149,7 +2053,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestCustomDataIdentifierResponse'
-      x-stackql-resource: custom_data_identifier
+      x-stackql-resource: custom_data_identifiers
       x-stackql-method: test_custom_data_identifier
       x-stackql-verb: EXEC
   /macie/members/{id}:
@@ -2177,10 +2081,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMemberSessionResponse'
       x-stackql-resource: members
       x-stackql-method: update_member_session
       x-stackql-verb: UPDATE
@@ -2231,8 +2131,6 @@ components:
   schemas:
     __string:
       type: string
-    AcceptInvitationResponse:
-      type: object
     __listOf__string:
       type: array
       items:
@@ -2872,8 +2770,6 @@ components:
       - Policy:IAMUser/S3BucketEncryptionDisabled
       - Policy:IAMUser/S3BlockPublicAccessDisabled
       - Policy:IAMUser/S3BucketSharedWithCloudFront
-    CreateSampleFindingsResponse:
-      type: object
     DeclineInvitationsResponse:
       type: object
       properties:
@@ -2881,12 +2777,6 @@ components:
           $ref: '#/components/schemas/__listOfUnprocessedAccount'
           description: An array of objects, one for each account whose invitation hasn't been declined. Each object identifies
             the account and explains why the request hasn't been processed for that account.
-    DeleteAllowListResponse:
-      type: object
-    DeleteCustomDataIdentifierResponse:
-      type: object
-    DeleteFindingsFilterResponse:
-      type: object
     DeleteInvitationsResponse:
       type: object
       properties:
@@ -2894,8 +2784,6 @@ components:
           $ref: '#/components/schemas/__listOfUnprocessedAccount'
           description: An array of objects, one for each account whose invitation hasn't been deleted. Each object identifies
             the account and explains why the request hasn't been processed for that account.
-    DeleteMemberResponse:
-      type: object
     BucketCriteria:
       description: Specifies, as a map, one or more property-based conditions that filter the results of a query for information
         about S3 buckets.
@@ -3516,16 +3404,6 @@ components:
         maxAccountLimitReached:
           $ref: '#/components/schemas/__boolean'
           description: Specifies whether the maximum number of Amazon Macie member accounts are part of the organization.
-    DisableMacieResponse:
-      type: object
-    DisableOrganizationAdminAccountResponse:
-      type: object
-    DisassociateFromAdministratorAccountResponse:
-      type: object
-    DisassociateFromMasterAccountResponse:
-      type: object
-    DisassociateMemberResponse:
-      type: object
     FindingPublishingFrequency:
       description: 'The frequency with which Amazon Macie publishes updates to policy findings for an account. This includes
         publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events). For more information,
@@ -3541,10 +3419,6 @@ components:
       enum:
       - PAUSED
       - ENABLED
-    EnableMacieResponse:
-      type: object
-    EnableOrganizationAdminAccountResponse:
-      type: object
     GetAdministratorAccountResponse:
       type: object
       properties:
@@ -6182,8 +6056,6 @@ components:
           $ref: '#/components/schemas/ClassificationExportConfiguration'
           description: The location where the data classification results are stored, and the encryption settings that are
             used when storing results in that location.
-    PutFindingsPublicationConfigurationResponse:
-      type: object
     SearchResourcesBucketCriteria:
       description: Specifies property- and tag-based conditions that define filter criteria for including or excluding S3
         buckets from the query results. Exclude conditions take precedence over include conditions.
@@ -6414,16 +6286,12 @@ components:
           description: The total storage size, in bytes, of the objects that Amazon Macie can't analyze in the bucket. These
             objects don't use a supported storage class or don't have a file name extension for a supported file or storage
             format.
-    TagResourceResponse:
-      type: object
     TestCustomDataIdentifierResponse:
       type: object
       properties:
         matchCount:
           $ref: '#/components/schemas/__integer'
           description: The number of occurrences of sample text that matched the criteria specified by the custom data identifier.
-    UntagResourceResponse:
-      type: object
     UpdateAllowListResponse:
       type: object
       properties:
@@ -6433,10 +6301,6 @@ components:
         id:
           $ref: '#/components/schemas/__stringMin22Max22PatternAZ0922'
           description: The unique identifier for the allow list.
-    UpdateAutomatedDiscoveryConfigurationResponse:
-      type: object
-    UpdateClassificationJobResponse:
-      type: object
     S3ClassificationScopeUpdate:
       description: Specifies changes to the list of S3 buckets that are excluded from automated sensitive data discovery for
         an Amazon Macie account.
@@ -6475,8 +6339,6 @@ components:
       - ADD
       - REPLACE
       - REMOVE
-    UpdateClassificationScopeResponse:
-      type: object
     UpdateFindingsFilterResponse:
       type: object
       properties:
@@ -6486,14 +6348,6 @@ components:
         id:
           $ref: '#/components/schemas/__string'
           description: The unique identifier for the filter that was updated.
-    UpdateMacieSessionResponse:
-      type: object
-    UpdateMemberSessionResponse:
-      type: object
-    UpdateOrganizationConfigurationResponse:
-      type: object
-    UpdateResourceProfileResponse:
-      type: object
     __listOfSuppressDataIdentifier:
       type: array
       items:
@@ -6511,8 +6365,6 @@ components:
           $ref: '#/components/schemas/DataIdentifierType'
           description: 'The type of data identifier that detected the sensitive data. Possible values are: CUSTOM, for a custom
             data identifier; and, MANAGED, for a managed data identifier.'
-    UpdateResourceProfileDetectionsResponse:
-      type: object
     UpdateRetrievalConfiguration:
       description: Specifies the access method and settings to use when retrieving occurrences of sensitive data reported
         by findings. If your request specifies an Identity and Access Management (IAM) role to assume, Amazon Macie verifies
@@ -6547,5 +6399,3 @@ components:
         retrievalConfiguration:
           $ref: '#/components/schemas/RetrievalConfiguration'
           description: The access method and settings to use when retrieving the sensitive data.
-    UpdateSensitivityInspectionTemplateResponse:
-      type: object

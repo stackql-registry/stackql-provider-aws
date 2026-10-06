@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_view"
     values={[
         { label: 'describe_view', value: 'describe_view' },
-        { label: 'list_views', value: 'list_views' },
-        { label: 'search_views', value: 'search_views' }
+        { label: 'list_views', value: 'list_views' }
     ]}
 >
 <TabItem value="describe_view">
@@ -163,85 +162,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_views">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the view.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="content" /></td>
-    <td><code>object</code></td>
-    <td>View content containing all content necessary to render a view except for runtime input data.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="created_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp of when the view was created.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the view. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\_\-:\/$&#93;+$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>Latest timestamp of the UpdateViewContent or CreateViewVersion operations.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the view. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@()'&#93;*)$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>Indicates the view status as either SAVED or PUBLISHED. The PUBLISHED status will initiate validation on the content. (PUBLISHED, SAVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags associated with the view resource (not specific to view version).</td>
-</tr>
-<tr>
-    <td><CopyableCode code="type" /></td>
-    <td><code>string</code></td>
-    <td>The type of the view - CUSTOMER_MANAGED. (CUSTOMER_MANAGED, AWS_MANAGED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version" /></td>
-    <td><code>integer</code></td>
-    <td>Current version of the view.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version_description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the version. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;+&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:\/=+\-@,()'&#93;*)$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="view_content_sha_256" /></td>
-    <td><code>string</code></td>
-    <td>Indicates the checksum value of the latest published view content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;$&lt;/code&gt;)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -274,13 +194,6 @@ The following methods are available for this resource:
     <td>Returns views in the given instance. Results are sorted primarily by type, and secondarily by name.</td>
 </tr>
 <tr>
-    <td><a href="#search_views"><CopyableCode code="search_views" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches views based on name, description, or tags.</td>
-</tr>
-<tr>
     <td><a href="#create_view"><CopyableCode code="create_view" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -300,6 +213,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-view_id"><code>view_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the view entirely. It deletes the view and all associated qualifiers (versions and aliases).</td>
+</tr>
+<tr>
+    <td><a href="#search_views"><CopyableCode code="search_views" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches views based on name, description, or tags.</td>
 </tr>
 <tr>
     <td><a href="#update_view_metadata"><CopyableCode code="update_view_metadata" /></a></td>
@@ -363,8 +283,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_view"
     values={[
         { label: 'describe_view', value: 'describe_view' },
-        { label: 'list_views', value: 'list_views' },
-        { label: 'search_views', value: 'search_views' }
+        { label: 'list_views', value: 'list_views' }
     ]}
 >
 <TabItem value="describe_view">
@@ -411,30 +330,6 @@ AND region = '{{ region }}' -- required
 AND type = '{{ type }}'
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_views">
-
-Searches views based on name, description, or tags.
-
-```sql
-SELECT
-arn,
-content,
-created_time,
-description,
-id,
-last_modified_time,
-name,
-status,
-tags,
-type,
-version,
-version_description,
-view_content_sha_256
-FROM aws.connect.views
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -568,11 +463,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_view_metadata"
+    defaultValue="search_views"
     values={[
+        { label: 'search_views', value: 'search_views' },
         { label: 'update_view_metadata', value: 'update_view_metadata' }
     ]}
 >
+<TabItem value="search_views">
+
+Searches views based on name, description, or tags.
+
+```sql
+EXEC aws.connect.views.search_views 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_view_metadata">
 
 Updates the view metadata. Note that either Name or Description must be provided.

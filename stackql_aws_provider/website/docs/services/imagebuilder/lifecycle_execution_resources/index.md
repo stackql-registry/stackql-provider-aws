@@ -119,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>List resources that the runtime instance of the image lifecycle identified for lifecycle actions.</td>
+    <td>Lists resources that the runtime instance of the image lifecycle identified for lifecycle actions.</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +155,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_lifecycle_execution_resources">
 
-List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
+Lists resources that the runtime instance of the image lifecycle identified for lifecycle actions.
 
 ```sql
 SELECT

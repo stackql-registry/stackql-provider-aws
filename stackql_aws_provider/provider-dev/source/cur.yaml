@@ -161,10 +161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyReportDefinitionResponse'
       x-stackql-resource: report_definitions
       x-stackql-method: modify_report_definition
       x-stackql-verb: UPDATE
@@ -201,10 +197,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutReportDefinitionResponse'
       x-stackql-resource: report_definitions
       x-stackql-method: put_report_definition
       x-stackql-verb: REPLACE
@@ -241,10 +233,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -281,10 +269,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -579,16 +563,7 @@ components:
       minLength: 0
       maxLength: 256
       pattern: .*
-    ModifyReportDefinitionResponse:
-      type: object
-    PutReportDefinitionResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

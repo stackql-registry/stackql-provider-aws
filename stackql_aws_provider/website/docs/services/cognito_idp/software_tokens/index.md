@@ -57,6 +57,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response. You can authorize an AssociateSoftwareToken request with either the user's access token, or a session string from a challenge response that you received from Amazon Cognito. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin.</td>
 </tr>
+<tr>
+    <td><a href="#verify_software_token"><CopyableCode code="verify_software_token" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UserCode"><code>UserCode</code></a></td>
+    <td></td>
+    <td>Registers the current user's time-based one-time password (TOTP) authenticator with a code generated in their authenticator app from a private key that's supplied by your user pool. Marks the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.</td>
+</tr>
 </tbody>
 </table>
 
@@ -103,6 +110,34 @@ region = '{{ region }}' --required
 RETURNING
 secret_code,
 session;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="verify_software_token"
+    values={[
+        { label: 'verify_software_token', value: 'verify_software_token' }
+    ]}
+>
+<TabItem value="verify_software_token">
+
+Registers the current user's time-based one-time password (TOTP) authenticator with a code generated in their authenticator app from a private key that's supplied by your user pool. Marks the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.
+
+```sql
+EXEC aws.cognito_idp.software_tokens.verify_software_token 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AccessToken": "{{ AccessToken }}", 
+"Session": "{{ Session }}", 
+"UserCode": "{{ UserCode }}", 
+"FriendlyDeviceName": "{{ FriendlyDeviceName }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

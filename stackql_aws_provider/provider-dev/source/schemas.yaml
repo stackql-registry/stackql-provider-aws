@@ -606,7 +606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportSchemaResponse'
-      x-stackql-resource: registries
+      x-stackql-resource: schemas
       x-stackql-method: export_schema
       x-stackql-verb: EXEC
   /v1/registries/name/{registry_name}/schemas/name/{schema_name}/language/{language}/source:

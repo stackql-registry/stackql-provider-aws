@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_security_profile"
     values={[
         { label: 'describe_security_profile', value: 'describe_security_profile' },
+        { label: 'list_security_profiles_for_target', value: 'list_security_profiles_for_target' },
         { label: 'list_security_profiles', value: 'list_security_profiles' }
     ]}
 >
@@ -108,6 +109,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_security_profiles_for_target">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="security_profile_identifier" /></td>
+    <td><code>object</code></td>
+    <td>Identifying information for a Device Defender security profile.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target" /></td>
+    <td><code>object</code></td>
+    <td>A target to which an alert is sent when a security profile behavior is violated.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_security_profiles">
 
 <table>
@@ -154,56 +179,63 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.</td>
+</tr>
+<tr>
+    <td><a href="#list_security_profiles_for_target"><CopyableCode code="list_security_profiles_for_target" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-securityProfileTargetArn"><code>securityProfileTargetArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-recursive"><code>recursive</code></a></td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles attached to a target (thing group). Requires permission to access the ListSecurityProfilesForTarget action.</td>
 </tr>
 <tr>
     <td><a href="#list_security_profiles"><CopyableCode code="list_security_profiles" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-dimensionName"><code>dimensionName</code></a>, <a href="#parameter-metricName"><code>metricName</code></a></td>
-    <td>Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.</td>
 </tr>
 <tr>
     <td><a href="#create_security_profile"><CopyableCode code="create_security_profile" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.</td>
 </tr>
 <tr>
     <td><a href="#attach_security_profile"><CopyableCode code="attach_security_profile" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-securityProfileTargetArn"><code>securityProfileTargetArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.</td>
 </tr>
 <tr>
     <td><a href="#update_security_profile"><CopyableCode code="update_security_profile" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-expectedVersion"><code>expectedVersion</code></a></td>
-    <td>Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.</td>
 </tr>
 <tr>
     <td><a href="#delete_security_profile"><CopyableCode code="delete_security_profile" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-expectedVersion"><code>expectedVersion</code></a></td>
-    <td>Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.</td>
 </tr>
 <tr>
     <td><a href="#detach_security_profile"><CopyableCode code="detach_security_profile" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-security_profile_name"><code>security_profile_name</code></a>, <a href="#parameter-securityProfileTargetArn"><code>securityProfileTargetArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.</td>
 </tr>
 <tr>
     <td><a href="#validate_security_profile_behaviors"><CopyableCode code="validate_security_profile_behaviors" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-behaviors"><code>behaviors</code></a></td>
     <td></td>
-    <td>Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.</td>
 </tr>
 </tbody>
 </table>
@@ -261,6 +293,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The token for the next set of results.</td>
 </tr>
+<tr id="parameter-recursive">
+    <td><CopyableCode code="recursive" /></td>
+    <td><code>boolean</code></td>
+    <td>If true, return child groups too.</td>
+</tr>
 </tbody>
 </table>
 
@@ -270,12 +307,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_security_profile"
     values={[
         { label: 'describe_security_profile', value: 'describe_security_profile' },
+        { label: 'list_security_profiles_for_target', value: 'list_security_profiles_for_target' },
         { label: 'list_security_profiles', value: 'list_security_profiles' }
     ]}
 >
 <TabItem value="describe_security_profile">
 
-Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Gets information about a Device Defender security profile. Requires permission to access the DescribeSecurityProfile action.
 
 ```sql
 SELECT
@@ -296,9 +334,26 @@ AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
+<TabItem value="list_security_profiles_for_target">
+
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles attached to a target (thing group). Requires permission to access the ListSecurityProfilesForTarget action.
+
+```sql
+SELECT
+security_profile_identifier,
+target
+FROM aws.iot.security_profiles
+WHERE securityProfileTargetArn = '{{ securityProfileTargetArn }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+AND maxResults = '{{ maxResults }}'
+AND recursive = '{{ recursive }}'
+;
+```
+</TabItem>
 <TabItem value="list_security_profiles">
 
-Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric. Requires permission to access the ListSecurityProfiles action. dimensionName and metricName cannot be used in the same request.
 
 ```sql
 SELECT
@@ -327,7 +382,7 @@ AND metricName = '{{ metricName }}'
 >
 <TabItem value="create_security_profile">
 
-Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Creates a Device Defender security profile. Requires permission to access the CreateSecurityProfile action.
 
 ```sql
 INSERT INTO aws.iot.security_profiles (
@@ -438,7 +493,7 @@ security_profile_name
 >
 <TabItem value="attach_security_profile">
 
-Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it. Requires permission to access the AttachSecurityProfile action.
 
 ```sql
 UPDATE aws.iot.security_profiles
@@ -452,7 +507,7 @@ AND region = '{{ region }}' --required;
 </TabItem>
 <TabItem value="update_security_profile">
 
-Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates a Device Defender security profile. Requires permission to access the UpdateSecurityProfile action.
 
 ```sql
 UPDATE aws.iot.security_profiles
@@ -498,7 +553,7 @@ version;
 >
 <TabItem value="delete_security_profile">
 
-Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Deletes a Device Defender security profile. Requires permission to access the DeleteSecurityProfile action.
 
 ```sql
 DELETE FROM aws.iot.security_profiles
@@ -522,7 +577,7 @@ AND expectedVersion = '{{ expectedVersion }}'
 >
 <TabItem value="detach_security_profile">
 
-Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Disassociates a Device Defender security profile from a thing group or from this account. Requires permission to access the DetachSecurityProfile action.
 
 ```sql
 EXEC aws.iot.security_profiles.detach_security_profile 
@@ -534,7 +589,7 @@ EXEC aws.iot.security_profiles.detach_security_profile
 </TabItem>
 <TabItem value="validate_security_profile_behaviors">
 
-Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Validates a Device Defender security profile behaviors specification. Requires permission to access the ValidateSecurityProfileBehaviors action.
 
 ```sql
 EXEC aws.iot.security_profiles.validate_security_profile_behaviors 

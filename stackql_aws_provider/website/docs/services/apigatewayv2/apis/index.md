@@ -290,9 +290,16 @@ The following methods are available for this resource:
     <td>Deletes an Api resource.</td>
 </tr>
 <tr>
+    <td><a href="#import_api"><CopyableCode code="import_api" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-basepath"><code>basepath</code></a>, <a href="#parameter-failOnWarnings"><code>failOnWarnings</code></a></td>
+    <td>Imports an API.</td>
+</tr>
+<tr>
     <td><a href="#reimport_api"><CopyableCode code="reimport_api" /></a></td>
     <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Body"><code>Body</code></a></td>
+    <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-basepath"><code>basepath</code></a>, <a href="#parameter-failOnWarnings"><code>failOnWarnings</code></a></td>
     <td>Puts an Api resource.</td>
 </tr>
@@ -302,6 +309,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a CORS configuration.</td>
+</tr>
+<tr>
+    <td><a href="#export_api"><CopyableCode code="export_api" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-api_id"><code>api_id</code></a>, <a href="#parameter-outputType"><code>outputType</code></a>, <a href="#parameter-specification"><code>specification</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-exportVersion"><code>exportVersion</code></a>, <a href="#parameter-includeExtensions"><code>includeExtensions</code></a>, <a href="#parameter-stageName"><code>stageName</code></a></td>
+    <td></td>
 </tr>
 </tbody>
 </table>
@@ -324,20 +338,40 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The API identifier.</td>
 </tr>
+<tr id="parameter-outputType">
+    <td><CopyableCode code="outputType" /></td>
+    <td><code>string</code></td>
+    <td>The output type of the exported definition file. Valid values are JSON and YAML.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-specification">
+    <td><CopyableCode code="specification" /></td>
+    <td><code>string</code></td>
+    <td>The version of the API specification to use. OAS30, for OpenAPI 3.0, is the only supported value.</td>
 </tr>
 <tr id="parameter-basepath">
     <td><CopyableCode code="basepath" /></td>
     <td><code>string</code></td>
     <td>Specifies how to interpret the base path of the API during import. Valid values are ignore, prepend, and split. The default value is ignore. To learn more, see Set the OpenAPI basePath Property. Supported only for HTTP APIs.</td>
 </tr>
+<tr id="parameter-exportVersion">
+    <td><CopyableCode code="exportVersion" /></td>
+    <td><code>string</code></td>
+    <td>The version of the API Gateway export algorithm. API Gateway uses the latest version by default. Currently, the only supported version is 1.0.</td>
+</tr>
 <tr id="parameter-failOnWarnings">
     <td><CopyableCode code="failOnWarnings" /></td>
     <td><code>boolean</code></td>
     <td>Specifies whether to rollback the API creation when a warning is encountered. By default, API creation continues if a warning is encountered.</td>
+</tr>
+<tr id="parameter-includeExtensions">
+    <td><CopyableCode code="includeExtensions" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to include API Gateway extensions in the exported API definition. API Gateway extensions are included by default.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -348,6 +382,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="nextToken" /></td>
     <td><code>string</code></td>
     <td>The next page of elements from this collection. Not valid for the last element of the collection.</td>
+</tr>
+<tr id="parameter-stageName">
+    <td><CopyableCode code="stageName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the API stage to export. If you don't specify this property, a representation of the latest API configuration is exported.</td>
 </tr>
 </tbody>
 </table>
@@ -647,12 +686,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="reimport_api"
+    defaultValue="import_api"
     values={[
+        { label: 'import_api', value: 'import_api' },
         { label: 'reimport_api', value: 'reimport_api' },
-        { label: 'delete_cors_configuration', value: 'delete_cors_configuration' }
+        { label: 'delete_cors_configuration', value: 'delete_cors_configuration' },
+        { label: 'export_api', value: 'export_api' }
     ]}
 >
+<TabItem value="import_api">
+
+Imports an API.
+
+```sql
+EXEC aws.apigatewayv2.apis.import_api 
+@region='{{ region }}' --required, 
+@basepath='{{ basepath }}', 
+@failOnWarnings={{ failOnWarnings }} 
+@@json=
+'{
+"Body": "{{ Body }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="reimport_api">
 
 Puts an Api resource.
@@ -678,6 +735,22 @@ Deletes a CORS configuration.
 EXEC aws.apigatewayv2.apis.delete_cors_configuration 
 @api_id='{{ api_id }}' --required, 
 @region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="export_api">
+
+Success
+
+```sql
+EXEC aws.apigatewayv2.apis.export_api 
+@api_id='{{ api_id }}' --required, 
+@outputType='{{ outputType }}' --required, 
+@specification='{{ specification }}' --required, 
+@region='{{ region }}' --required, 
+@exportVersion='{{ exportVersion }}', 
+@includeExtensions={{ includeExtensions }}, 
+@stageName='{{ stageName }}'
 ;
 ```
 </TabItem>

@@ -426,10 +426,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPortfolioPreferencesResponse'
       x-stackql-resource: portfolio_preferences
       x-stackql-method: put_portfolio_preferences
       x-stackql-verb: REPLACE
@@ -460,7 +456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssessmentResponse'
-      x-stackql-resource: assessment
+      x-stackql-resource: assessments
       x-stackql-method: start_assessment
       x-stackql-verb: EXEC
   /start-import-file-task:
@@ -498,7 +494,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportFileTaskResponse'
-      x-stackql-resource: import_file_task
+      x-stackql-resource: import_file_tasks
       x-stackql-method: start_import_file_task
       x-stackql-verb: EXEC
   /start-recommendation-report-generation:
@@ -524,7 +520,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecommendationReportGenerationResponse'
-      x-stackql-resource: recommendation_report_generation
+      x-stackql-resource: recommendation_report_generations
       x-stackql-method: start_recommendation_report_generation
       x-stackql-verb: EXEC
   /stop-assessment:
@@ -546,11 +542,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopAssessmentResponse'
-      x-stackql-resource: assessment
+      x-stackql-resource: assessments
       x-stackql-method: stop_assessment
       x-stackql-verb: EXEC
   /update-applicationcomponent-config/:
@@ -584,10 +576,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationComponentConfigResponse'
       x-stackql-resource: application_components
       x-stackql-method: update_application_component_config
       x-stackql-verb: UPDATE
@@ -612,10 +600,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateServerConfigResponse'
       x-stackql-resource: servers
       x-stackql-method: update_server_config
       x-stackql-verb: UPDATE
@@ -2197,8 +2181,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ServerDetail'
-    PutPortfolioPreferencesResponse:
-      type: object
     AssessmentDataSourceType:
       type: string
       enum:
@@ -2255,8 +2237,6 @@ components:
         id:
           $ref: '#/components/schemas/RecommendationTaskId'
           description: The ID of the recommendation report generation task.
-    StopAssessmentResponse:
-      type: object
     SecretsManagerKey:
       type: string
       minLength: 1
@@ -2320,7 +2300,3 @@ components:
         toolName:
           $ref: '#/components/schemas/TransformationToolName'
           description: The name of the tool that can be used to transform an application component using this strategy.
-    UpdateApplicationComponentConfigResponse:
-      type: object
-    UpdateServerConfigResponse:
-      type: object

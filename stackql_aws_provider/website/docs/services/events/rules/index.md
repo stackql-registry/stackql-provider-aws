@@ -141,6 +141,20 @@ The following methods are available for this resource:
     <td>Deletes the specified rule. Before you can delete the rule, you must remove all targets, using RemoveTargets. When you delete a rule, incoming events might continue to match to the deleted rule. Allow a short period of time for changes to take effect. If you call delete rule multiple times for the same rule, all calls will succeed. When you call delete rule for a non-existent custom eventbus, ResourceNotFoundException is returned. Managed rules are rules created and managed by another Amazon Web Services service on your behalf. These rules are created by those other Amazon Web Services services to support functionality in those services. You can delete these rules using the Force option, but you should do so only if you are sure the other service is not still using that rule.</td>
 </tr>
 <tr>
+    <td><a href="#disable_rule"><CopyableCode code="disable_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression. When you disable a rule, incoming events might continue to match to the disabled rule. Allow a short period of time for changes to take effect.</td>
+</tr>
+<tr>
+    <td><a href="#enable_rule"><CopyableCode code="enable_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Enables the specified rule. If the rule does not exist, the operation fails. When you enable a rule, incoming events might not immediately start matching to a newly enabled rule. Allow a short period of time for changes to take effect.</td>
+</tr>
+<tr>
     <td><a href="#list_rules"><CopyableCode code="list_rules" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -259,11 +273,43 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_rules"
+    defaultValue="disable_rule"
     values={[
+        { label: 'disable_rule', value: 'disable_rule' },
+        { label: 'enable_rule', value: 'enable_rule' },
         { label: 'list_rules', value: 'list_rules' }
     ]}
 >
+<TabItem value="disable_rule">
+
+Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression. When you disable a rule, incoming events might continue to match to the disabled rule. Allow a short period of time for changes to take effect.
+
+```sql
+EXEC aws.events.rules.disable_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"EventBusName": "{{ EventBusName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="enable_rule">
+
+Enables the specified rule. If the rule does not exist, the operation fails. When you enable a rule, incoming events might not immediately start matching to a newly enabled rule. Allow a short period of time for changes to take effect.
+
+```sql
+EXEC aws.events.rules.enable_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"EventBusName": "{{ EventBusName }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="list_rules">
 
 Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names. The maximum number of results per page for requests is 100. ListRules does not list the targets of a rule. To see the targets associated with a rule, use ListTargetsByRule.

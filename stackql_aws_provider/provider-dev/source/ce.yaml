@@ -206,10 +206,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAnomalyMonitorResponse'
       x-stackql-resource: anomaly_monitors
       x-stackql-method: delete_anomaly_monitor
       x-stackql-verb: DELETE
@@ -242,10 +238,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAnomalySubscriptionResponse'
       x-stackql-resource: anomaly_subscriptions
       x-stackql-method: delete_anomaly_subscription
       x-stackql-verb: DELETE
@@ -563,7 +555,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCommitmentPurchaseAnalysisResponse'
-      x-stackql-resource: commitment_purchase_analysis
+      x-stackql-resource: commitment_purchase_analyses
       x-stackql-method: get_commitment_purchase_analysis
       x-stackql-verb: SELECT
   /GetCostAndUsage:
@@ -2272,7 +2264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCommitmentPurchaseAnalysisResponse'
-      x-stackql-resource: commitment_purchase_analysis
+      x-stackql-resource: commitment_purchase_analyses
       x-stackql-method: start_commitment_purchase_analysis
       x-stackql-verb: EXEC
   /StartCostAllocationTagBackfill:
@@ -2344,7 +2336,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSavingsPlansPurchaseRecommendationGenerationResponse'
-      x-stackql-resource: savings_plans_purchase_recommendations
+      x-stackql-resource: savings_plans_purchase_recommendation_generations
       x-stackql-method: start_savings_plans_purchase_recommendation_generation
       x-stackql-verb: EXEC
   /TagResource:
@@ -2391,10 +2383,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2433,10 +2421,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3240,10 +3224,6 @@ components:
         EffectiveStart:
           $ref: '#/components/schemas/ZonedDateTime'
           description: The cost category's effective start date. It can only be a billing start date (first day of the month).
-    DeleteAnomalyMonitorResponse:
-      type: object
-    DeleteAnomalySubscriptionResponse:
-      type: object
     DeleteCostCategoryDefinitionResponse:
       type: object
       properties:
@@ -6116,14 +6096,10 @@ components:
         EstimatedCompletionTime:
           $ref: '#/components/schemas/ZonedDateTime'
           description: The estimated time for when the recommendation generation will complete.
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourceTagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAnomalyMonitorResponse:
       type: object
       properties:

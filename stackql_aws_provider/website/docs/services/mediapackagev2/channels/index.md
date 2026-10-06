@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="attached_multiview_channels" /></td>
+    <td><code>array</code></td>
+    <td>The multiview channels, in the same channel group, that list this channel as an available source. This is a read-only field. You can't delete a channel while any multiview channel still lists it as a source. Use this field to find the multiview channels that you need to update first.</td>
+</tr>
+<tr>
     <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
@@ -93,12 +98,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="input_type" /></td>
     <td><code>string</code></td>
-    <td>The input type will be an immutable field which will be used to define whether the channel will allow CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). (HLS, CMAF)</td>
+    <td>The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest, or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source channels in its MultiviewConfiguration into a single tiled output stream. (HLS, CMAF, MULTIVIEW)</td>
 </tr>
 <tr>
     <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was modified.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="multiview_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The multiview configuration for a channel. A multiview channel composites video from several source channels into a single tiled output stream. Players receive one standard HLS or DASH stream instead of several separate streams. This setting is required when InputType is MULTIVIEW, and can't be set for any other input type.</td>
 </tr>
 <tr>
     <td><CopyableCode code="output_header_configuration" /></td>
@@ -140,6 +150,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) associated with the resource.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="attached_multiview_channels" /></td>
+    <td><code>array</code></td>
+    <td>The multiview channels, in the same channel group, that list this channel as an available source. This is a read-only field.</td>
+</tr>
+<tr>
     <td><CopyableCode code="channel_group_name" /></td>
     <td><code>string</code></td>
     <td>The name that describes the channel group. The name is the primary identifier for the channel group, and must be unique for your account in the AWS Region.</td>
@@ -162,12 +177,17 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="input_type" /></td>
     <td><code>string</code></td>
-    <td>The input type will be an immutable field which will be used to define whether the channel will allow CMAF ingest or HLS ingest. If unprovided, it will default to HLS to preserve current behavior. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). (HLS, CMAF)</td>
+    <td>The input type is an immutable field. It defines whether the channel allows CMAF ingest, HLS ingest, or server-side multiview output. Multiview channels receive no ingest of their own. If unprovided, the value defaults to HLS. The allowed values are: HLS - The HLS streaming specification (which defines M3U8 manifests and TS segments). CMAF - The DASH-IF CMAF Ingest specification (which defines CMAF segments with optional DASH manifests). MULTIVIEW – Server-side multiview. The channel receives no ingest of its own. Instead, it composites video from the source channels in its MultiviewConfiguration into a single tiled output stream. (HLS, CMAF, MULTIVIEW)</td>
 </tr>
 <tr>
     <td><CopyableCode code="modified_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time the channel was modified.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="multiview_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The multiview configuration for a channel. A multiview channel composites video from several source channels into a single tiled output stream. Players receive one standard HLS or DASH stream instead of several separate streams. This setting is required when InputType is MULTIVIEW, and can't be set for any other input type.</td>
 </tr>
 <tr>
     <td><CopyableCode code="output_locking_mode" /></td>
@@ -306,6 +326,7 @@ Retrieves the specified channel that's configured in AWS Elemental MediaPackage.
 ```sql
 SELECT
 arn,
+attached_multiview_channels,
 channel_group_name,
 channel_name,
 created_at,
@@ -315,6 +336,7 @@ ingest_endpoints,
 input_switch_configuration,
 input_type,
 modified_at,
+multiview_configuration,
 output_header_configuration,
 output_locking_mode,
 reset_at,
@@ -333,12 +355,14 @@ Retrieves all channels in a specific channel group that are configured in AWS El
 ```sql
 SELECT
 arn,
+attached_multiview_channels,
 channel_group_name,
 channel_name,
 created_at,
 description,
 input_type,
 modified_at,
+multiview_configuration,
 output_locking_mode
 FROM aws.mediapackagev2.channels
 WHERE channel_group_name = '{{ channel_group_name }}' -- required
@@ -371,6 +395,7 @@ InputType,
 Description,
 InputSwitchConfiguration,
 OutputHeaderConfiguration,
+MultiviewConfiguration,
 OutputLockingMode,
 Tags,
 channel_group_name,
@@ -383,6 +408,7 @@ SELECT
 '{{ Description }}',
 '{{ InputSwitchConfiguration }}',
 '{{ OutputHeaderConfiguration }}',
+'{{ MultiviewConfiguration }}',
 '{{ OutputLockingMode }}',
 '{{ Tags }}',
 '{{ channel_group_name }}',
@@ -390,6 +416,7 @@ SELECT
 '{{ x-amzn-client-token }}'
 RETURNING
 arn,
+attached_multiview_channels,
 channel_group_name,
 channel_name,
 created_at,
@@ -399,6 +426,7 @@ ingest_endpoints,
 input_switch_configuration,
 input_type,
 modified_at,
+multiview_configuration,
 output_header_configuration,
 output_locking_mode,
 tags
@@ -420,7 +448,7 @@ tags
       value: "{{ ChannelName }}"
     - name: InputType
       value: "{{ InputType }}"
-      valid_values: ['HLS', 'CMAF']
+      valid_values: ['HLS', 'CMAF', 'MULTIVIEW']
     - name: Description
       value: "{{ Description }}"
     - name: InputSwitchConfiguration
@@ -434,6 +462,14 @@ tags
         The settings for what common media server data (CMSD) headers AWS Elemental MediaPackage includes in responses to the CDN.
       value:
         PublishMQCS: {{ PublishMQCS }}
+    - name: MultiviewConfiguration
+      description: |
+        The multiview configuration for a channel. A multiview channel composites video from several source channels into a single tiled output stream. Players receive one standard HLS or DASH stream instead of several separate streams. This setting is required when InputType is MULTIVIEW, and can't be set for any other input type.
+      value:
+        AvailableSources:
+          - "{{ AvailableSources }}"
+        AvailableLayouts:
+          - "{{ AvailableLayouts }}"
     - name: OutputLockingMode
       value: "{{ OutputLockingMode }}"
       valid_values: ['EPOCH_LOCKED', 'NON_EPOCH_LOCKED']
@@ -466,7 +502,8 @@ UPDATE aws.mediapackagev2.channels
 SET 
 Description = '{{ Description }}',
 InputSwitchConfiguration = '{{ InputSwitchConfiguration }}',
-OutputHeaderConfiguration = '{{ OutputHeaderConfiguration }}'
+OutputHeaderConfiguration = '{{ OutputHeaderConfiguration }}',
+MultiviewConfiguration = '{{ MultiviewConfiguration }}'
 WHERE 
 channel_group_name = '{{ channel_group_name }}' --required
 AND channel_name = '{{ channel_name }}' --required
@@ -474,6 +511,7 @@ AND region = '{{ region }}' --required
 AND `x-amzn-update-if-match` = '{{ x-amzn-update-if-match}}'
 RETURNING
 arn,
+attached_multiview_channels,
 channel_group_name,
 channel_name,
 created_at,
@@ -483,6 +521,7 @@ ingest_endpoints,
 input_switch_configuration,
 input_type,
 modified_at,
+multiview_configuration,
 output_header_configuration,
 output_locking_mode,
 tags;

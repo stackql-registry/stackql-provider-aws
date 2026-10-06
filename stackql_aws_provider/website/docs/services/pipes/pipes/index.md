@@ -259,6 +259,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Delete an existing pipe. For more information about pipes, see Amazon EventBridge Pipes in the Amazon EventBridge User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#start_pipe"><CopyableCode code="start_pipe" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Start an existing pipe.</td>
+</tr>
+<tr>
+    <td><a href="#stop_pipe"><CopyableCode code="stop_pipe" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stop an existing pipe.</td>
+</tr>
 </tbody>
 </table>
 
@@ -765,6 +779,40 @@ Delete an existing pipe. For more information about pipes, see Amazon EventBridg
 DELETE FROM aws.pipes.pipes
 WHERE name = '{{ name }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_pipe"
+    values={[
+        { label: 'start_pipe', value: 'start_pipe' },
+        { label: 'stop_pipe', value: 'stop_pipe' }
+    ]}
+>
+<TabItem value="start_pipe">
+
+Start an existing pipe.
+
+```sql
+EXEC aws.pipes.pipes.start_pipe 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_pipe">
+
+Stop an existing pipe.
+
+```sql
+EXEC aws.pipes.pipes.stop_pipe 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

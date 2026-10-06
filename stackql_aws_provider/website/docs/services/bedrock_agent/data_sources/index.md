@@ -372,6 +372,14 @@ data_source
             videoExtractionConfiguration:
               videoExtractionStatus: "{{ videoExtractionStatus }}"
           connectorParameters: "{{ connectorParameters }}"
+          syncSchedule:
+            daily: "{{ daily }}"
+            weekly:
+              dayOfWeek: "{{ dayOfWeek }}"
+            monthly:
+              dayOfMonth:
+                dayNumber: {{ dayNumber }}
+                lastDayOfMonth: "{{ lastDayOfMonth }}"
         s3Configuration:
           bucketArn: "{{ bucketArn }}"
           inclusionPrefixes:

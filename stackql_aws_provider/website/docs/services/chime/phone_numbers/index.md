@@ -195,6 +195,13 @@ The following methods are available for this resource:
     <td>Moves phone numbers into the Deletion queue. Phone numbers must be disassociated from any users or Amazon Chime Voice Connectors before they can be deleted. Phone numbers remain in the Deletion queue for 7 days before they are deleted permanently.</td>
 </tr>
 <tr>
+    <td><a href="#batch_update_phone_number"><CopyableCode code="batch_update_phone_number" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UpdatePhoneNumberRequestItems"><code>UpdatePhoneNumberRequestItems</code></a></td>
+    <td></td>
+    <td>Updates phone number product types or calling names. You can update one attribute at a time for each UpdatePhoneNumberRequestItem. For example, you can update the product type or the calling name. For toll-free numbers, you cannot use the Amazon Chime Business Calling product type. For numbers outside the U.S., you must use the Amazon Chime SIP Media Application Dial-In product type. Updates to outbound calling names can take up to 72 hours to complete. Pending updates to outbound calling names must be complete before you can request another update.</td>
+</tr>
+<tr>
     <td><a href="#restore_phone_number"><CopyableCode code="restore_phone_number" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-phone_number_id"><code>phone_number_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -371,6 +378,7 @@ AND region = '{{ region }}' --required
     defaultValue="batch_delete_phone_number"
     values={[
         { label: 'batch_delete_phone_number', value: 'batch_delete_phone_number' },
+        { label: 'batch_update_phone_number', value: 'batch_update_phone_number' },
         { label: 'restore_phone_number', value: 'restore_phone_number' }
     ]}
 >
@@ -384,6 +392,20 @@ EXEC aws.chime.phone_numbers.batch_delete_phone_number
 @@json=
 '{
 "PhoneNumberIds": "{{ PhoneNumberIds }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_update_phone_number">
+
+Updates phone number product types or calling names. You can update one attribute at a time for each UpdatePhoneNumberRequestItem. For example, you can update the product type or the calling name. For toll-free numbers, you cannot use the Amazon Chime Business Calling product type. For numbers outside the U.S., you must use the Amazon Chime SIP Media Application Dial-In product type. Updates to outbound calling names can take up to 72 hours to complete. Pending updates to outbound calling names must be complete before you can request another update.
+
+```sql
+EXEC aws.chime.phone_numbers.batch_update_phone_number 
+@region='{{ region }}' --required 
+@@json=
+'{
+"UpdatePhoneNumberRequestItems": "{{ UpdatePhoneNumberRequestItems }}"
 }'
 ;
 ```

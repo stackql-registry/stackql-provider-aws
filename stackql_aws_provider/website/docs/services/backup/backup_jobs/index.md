@@ -408,6 +408,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-resourceArn"><code>resourceArn</code></a>, <a href="#parameter-state"><code>state</code></a>, <a href="#parameter-backupVaultName"><code>backupVaultName</code></a>, <a href="#parameter-createdBefore"><code>createdBefore</code></a>, <a href="#parameter-createdAfter"><code>createdAfter</code></a>, <a href="#parameter-resourceType"><code>resourceType</code></a>, <a href="#parameter-accountId"><code>accountId</code></a>, <a href="#parameter-completeAfter"><code>completeAfter</code></a>, <a href="#parameter-completeBefore"><code>completeBefore</code></a>, <a href="#parameter-parentJobId"><code>parentJobId</code></a>, <a href="#parameter-messageCategory"><code>messageCategory</code></a></td>
     <td>Returns a list of existing backup jobs for an authenticated account for the last 30 days. For a longer period of time, consider using these monitoring tools.</td>
 </tr>
+<tr>
+    <td><a href="#stop_backup_job"><CopyableCode code="stop_backup_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-backup_job_id"><code>backup_job_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Attempts to cancel a job to create a one-time backup of a resource. This action is not supported for the following services: Amazon Aurora Amazon DocumentDB (with MongoDB compatibility) Amazon FSx for Lustre Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File Server Amazon Neptune SAP HANA databases on Amazon EC2 instances Amazon RDS</td>
+</tr>
+<tr>
+    <td><a href="#start_backup_job"><CopyableCode code="start_backup_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-BackupVaultName"><code>BackupVaultName</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a>, <a href="#parameter-IamRoleArn"><code>IamRoleArn</code></a></td>
+    <td></td>
+    <td>Starts an on-demand backup job for the specified resource.</td>
+</tr>
 </tbody>
 </table>
 
@@ -606,6 +620,53 @@ AND completeAfter = '{{ completeAfter }}'
 AND completeBefore = '{{ completeBefore }}'
 AND parentJobId = '{{ parentJobId }}'
 AND messageCategory = '{{ messageCategory }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="stop_backup_job"
+    values={[
+        { label: 'stop_backup_job', value: 'stop_backup_job' },
+        { label: 'start_backup_job', value: 'start_backup_job' }
+    ]}
+>
+<TabItem value="stop_backup_job">
+
+Attempts to cancel a job to create a one-time backup of a resource. This action is not supported for the following services: Amazon Aurora Amazon DocumentDB (with MongoDB compatibility) Amazon FSx for Lustre Amazon FSx for NetApp ONTAP Amazon FSx for OpenZFS Amazon FSx for Windows File Server Amazon Neptune SAP HANA databases on Amazon EC2 instances Amazon RDS
+
+```sql
+EXEC aws.backup.backup_jobs.stop_backup_job 
+@backup_job_id='{{ backup_job_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_backup_job">
+
+Starts an on-demand backup job for the specified resource.
+
+```sql
+EXEC aws.backup.backup_jobs.start_backup_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"BackupVaultName": "{{ BackupVaultName }}", 
+"LogicallyAirGappedBackupVaultArn": "{{ LogicallyAirGappedBackupVaultArn }}", 
+"ResourceArn": "{{ ResourceArn }}", 
+"IamRoleArn": "{{ IamRoleArn }}", 
+"IdempotencyToken": "{{ IdempotencyToken }}", 
+"StartWindowMinutes": {{ StartWindowMinutes }}, 
+"CompleteWindowMinutes": {{ CompleteWindowMinutes }}, 
+"Lifecycle": "{{ Lifecycle }}", 
+"RecoveryPointTags": "{{ RecoveryPointTags }}", 
+"BackupOptions": "{{ BackupOptions }}", 
+"Index": "{{ Index }}"
+}'
 ;
 ```
 </TabItem>

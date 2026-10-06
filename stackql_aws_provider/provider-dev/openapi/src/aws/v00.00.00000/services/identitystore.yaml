@@ -218,10 +218,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupResponse"
   /DeleteGroupMembership:
     post:
       operationId: DeleteGroupMembership
@@ -255,10 +251,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupMembershipResponse"
   /DeleteUser:
     post:
       operationId: DeleteUser
@@ -292,10 +284,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResponse"
   /DescribeGroup:
     post:
       operationId: DescribeGroup
@@ -776,10 +764,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateGroupResponse"
   /UpdateUser:
     post:
       operationId: UpdateUser
@@ -817,10 +801,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1066,12 +1046,6 @@ components:
       required:
         - IdentityStoreId
         - UserId
-    DeleteGroupResponse:
-      type: object
-    DeleteGroupMembershipResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
     DescribeGroupResponse:
       type: object
       properties:
@@ -1611,10 +1585,6 @@ components:
           description: The value of the attribute. This is a Document type. This type is not supported by Java V1, Go V1, and older versions of the CLI.
       required:
         - AttributePath
-    UpdateGroupResponse:
-      type: object
-    UpdateUserResponse:
-      type: object
   x-stackQL-resources:
     groups:
       id: aws.identitystore.groups
@@ -1639,7 +1609,6 @@ components:
             $ref: "#/paths/~1DeleteGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1699,7 +1668,6 @@ components:
             $ref: "#/paths/~1UpdateGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1740,7 +1708,6 @@ components:
             $ref: "#/paths/~1DeleteGroupMembership/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1782,10 +1749,32 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_group_memberships_for_member:
+          operation:
+            $ref: "#/paths/~1ListGroupMembershipsForMember/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.GroupMemberships
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/group_memberships/methods/describe_group_membership"
           - $ref: "#/components/x-stackQL-resources/group_memberships/methods/list_group_memberships"
+          - $ref: "#/components/x-stackQL-resources/group_memberships/methods/list_group_memberships_for_member"
         insert:
           - $ref: "#/components/x-stackQL-resources/group_memberships/methods/create_group_membership"
         update: []
@@ -1814,7 +1803,6 @@ components:
             $ref: "#/paths/~1DeleteUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1861,7 +1849,6 @@ components:
             $ref: "#/paths/~1UpdateUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1948,38 +1935,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/user_ids/methods/get_user_id"
-        insert: []
-        update: []
-        delete: []
-    group_memberships_for_members:
-      id: aws.identitystore.group_memberships_for_members
-      name: group_memberships_for_members
-      title: group_memberships_for_members
-      methods:
-        list_group_memberships_for_member:
-          operation:
-            $ref: "#/paths/~1ListGroupMembershipsForMember/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.GroupMemberships
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/group_memberships_for_members/methods/list_group_memberships_for_member"
         insert: []
         update: []
         delete: []

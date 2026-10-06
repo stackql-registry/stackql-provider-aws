@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>device_positions</code> resourc
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_device_position"
+    defaultValue="get_device_position"
     values={[
-        { label: 'batch_get_device_position', value: 'batch_get_device_position' },
         { label: 'get_device_position', value: 'get_device_position' },
+        { label: 'batch_get_device_position', value: 'batch_get_device_position' },
         { label: 'list_device_positions', value: 'list_device_positions' }
     ]}
 >
-<TabItem value="batch_get_device_position">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="device_positions" /></td>
-    <td><code>array</code></td>
-    <td>Contains device position details such as the device ID, position, and timestamps for when the position was received and sampled.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Contains error details for each device that failed to send its position to the tracker resource.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_device_position">
 
 <table>
@@ -104,6 +80,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="sample_time" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp at which the device's position was determined. Uses ISO 8601 format: YYYY-MM-DDThh:mm:ss.sssZ.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_device_position">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="device_positions" /></td>
+    <td><code>array</code></td>
+    <td>Contains device position details such as the device ID, position, and timestamps for when the position was received and sampled.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Contains error details for each device that failed to send its position to the tracker resource.</td>
 </tr>
 </tbody>
 </table>
@@ -165,18 +165,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_device_position"><CopyableCode code="batch_get_device_position" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-tracker_name"><code>tracker_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Lists the latest device positions for requested devices.</td>
-</tr>
-<tr>
     <td><a href="#get_device_position"><CopyableCode code="get_device_position" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-tracker_name"><code>tracker_name</code></a>, <a href="#parameter-device_id"><code>device_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves a device's most recent position according to its sample time. Device positions are deleted after 30 days.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_device_position"><CopyableCode code="batch_get_device_position" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-tracker_name"><code>tracker_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the latest device positions for requested devices.</td>
 </tr>
 <tr>
     <td><a href="#list_device_positions"><CopyableCode code="list_device_positions" /></a></td>
@@ -222,27 +222,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_device_position"
+    defaultValue="get_device_position"
     values={[
-        { label: 'batch_get_device_position', value: 'batch_get_device_position' },
         { label: 'get_device_position', value: 'get_device_position' },
+        { label: 'batch_get_device_position', value: 'batch_get_device_position' },
         { label: 'list_device_positions', value: 'list_device_positions' }
     ]}
 >
-<TabItem value="batch_get_device_position">
-
-Lists the latest device positions for requested devices.
-
-```sql
-SELECT
-device_positions,
-errors
-FROM aws.location.device_positions
-WHERE tracker_name = '{{ tracker_name }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_device_position">
 
 Retrieves a device's most recent position according to its sample time. Device positions are deleted after 30 days.
@@ -258,6 +244,20 @@ sample_time
 FROM aws.location.device_positions
 WHERE tracker_name = '{{ tracker_name }}' -- required
 AND device_id = '{{ device_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_device_position">
+
+Lists the latest device positions for requested devices.
+
+```sql
+SELECT
+device_positions,
+errors
+FROM aws.location.device_positions
+WHERE tracker_name = '{{ tracker_name }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

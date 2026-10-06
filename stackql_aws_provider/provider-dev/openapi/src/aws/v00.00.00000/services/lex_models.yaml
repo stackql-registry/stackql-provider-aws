@@ -1005,10 +1005,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a bot, bot alias or bot channel.
@@ -1028,10 +1024,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /bots/{name}/versions/$LATEST:
     put:
       operationId: PutBot
@@ -3063,14 +3055,10 @@ components:
         migrationTimestamp:
           $ref: "#/components/schemas/Timestamp"
           description: The date and time that the migration started.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     bot_versions:
       id: aws.lex_models.bot_versions
@@ -3268,12 +3256,12 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/bots/methods/put_bot"
         delete:
-          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_utterances"
           - $ref: "#/components/x-stackQL-resources/bots/methods/delete_bot"
-    bot_alias:
-      id: aws.lex_models.bot_alias
-      name: bot_alias
-      title: bot_alias
+          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_utterances"
+    bot_aliases:
+      id: aws.lex_models.bot_aliases
+      name: bot_aliases
+      title: bot_aliases
       methods:
         delete_bot_alias:
           operation:
@@ -3297,15 +3285,33 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_bot_aliases:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_name}~1aliases~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.BotAliases
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/get_bot_alias"
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/get_bot_alias"
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/get_bot_aliases"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/put_bot_alias"
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/put_bot_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/bot_alias/methods/delete_bot_alias"
+          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/delete_bot_alias"
     bot_channel_associations:
       id: aws.lex_models.bot_channel_associations
       name: bot_channel_associations
@@ -3455,34 +3461,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/slot_types/methods/put_slot_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/slot_types/methods/delete_slot_type"
-    bot_aliases:
-      id: aws.lex_models.bot_aliases
-      name: bot_aliases
-      title: bot_aliases
-      methods:
-        get_bot_aliases:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_name}~1aliases~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.BotAliases
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/get_bot_aliases"
-        insert: []
-        update: []
-        delete: []
     builtin_intents:
       id: aws.lex_models.builtin_intents
       name: builtin_intents
@@ -3576,6 +3554,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_import:
+          operation:
+            $ref: "#/paths/~1imports~1/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/imports/methods/get_import"
@@ -3601,6 +3590,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        start_migration:
+          operation:
+            $ref: "#/paths/~1migrations/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/migrations/methods/get_migration"
@@ -3643,7 +3643,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3654,7 +3653,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

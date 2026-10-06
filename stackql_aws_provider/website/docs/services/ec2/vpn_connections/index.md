@@ -162,18 +162,18 @@ The following methods are available for this resource:
     <td>Describes one or more of your VPN connections. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.</td>
 </tr>
 <tr>
-    <td><a href="#create_vpn_connection_route"><CopyableCode code="create_vpn_connection_route" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-DestinationCidrBlock"><code>DestinationCidrBlock</code></a>, <a href="#parameter-VpnConnectionId"><code>VpnConnectionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.</td>
-</tr>
-<tr>
     <td><a href="#create_vpn_connection"><CopyableCode code="create_vpn_connection" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-CustomerGatewayId"><code>CustomerGatewayId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-VpnGatewayId"><code>VpnGatewayId</code></a>, <a href="#parameter-TransitGatewayId"><code>TransitGatewayId</code></a>, <a href="#parameter-VpnConcentratorId"><code>VpnConcentratorId</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-PreSharedKeyStorage"><code>PreSharedKeyStorage</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Options"><code>Options</code></a></td>
     <td>Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway. The supported connection type is ipsec.1. The response includes information that you need to give to your network administrator to configure your customer gateway. We strongly recommend that you use HTTPS when calling this operation because the response contains sensitive cryptographic information for configuring your customer gateway device. If you decide to shut down your VPN connection for any reason and later create a new VPN connection, you must reconfigure your customer gateway with the new information returned from this call. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_vpn_connection_route"><CopyableCode code="create_vpn_connection_route" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-DestinationCidrBlock"><code>DestinationCidrBlock</code></a>, <a href="#parameter-VpnConnectionId"><code>VpnConnectionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.</td>
 </tr>
 <tr>
     <td><a href="#modify_vpn_tunnel_options"><CopyableCode code="modify_vpn_tunnel_options" /></a></td>
@@ -408,30 +408,13 @@ AND DryRun = '{{ DryRun }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_vpn_connection_route"
+    defaultValue="create_vpn_connection"
     values={[
-        { label: 'create_vpn_connection_route', value: 'create_vpn_connection_route' },
         { label: 'create_vpn_connection', value: 'create_vpn_connection' },
+        { label: 'create_vpn_connection_route', value: 'create_vpn_connection_route' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_vpn_connection_route">
-
-Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.
-
-```sql
-INSERT INTO aws.ec2.vpn_connections (
-DestinationCidrBlock,
-VpnConnectionId,
-region
-)
-SELECT 
-'{{ DestinationCidrBlock }}',
-'{{ VpnConnectionId }}',
-'{{ region }}'
-;
-```
-</TabItem>
 <TabItem value="create_vpn_connection">
 
 Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway. The supported connection type is ipsec.1. The response includes information that you need to give to your network administrator to configure your customer gateway. We strongly recommend that you use HTTPS when calling this operation because the response contains sensitive cryptographic information for configuring your customer gateway device. If you decide to shut down your VPN connection for any reason and later create a new VPN connection, you must reconfigure your customer gateway with the new information returned from this call. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.
@@ -481,22 +464,39 @@ vpn_gateway_id
 ;
 ```
 </TabItem>
+<TabItem value="create_vpn_connection_route">
+
+Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway. For more information, see Amazon Web Services Site-to-Site VPN in the Amazon Web Services Site-to-Site VPN User Guide.
+
+```sql
+INSERT INTO aws.ec2.vpn_connections (
+DestinationCidrBlock,
+VpnConnectionId,
+region
+)
+SELECT 
+'{{ DestinationCidrBlock }}',
+'{{ VpnConnectionId }}',
+'{{ region }}'
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: vpn_connections
   props:
+    - name: CustomerGatewayId
+      value: "{{ CustomerGatewayId }}"
+      description: Required parameter for the vpn_connections resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the vpn_connections resource.
     - name: DestinationCidrBlock
       value: "{{ DestinationCidrBlock }}"
       description: Required parameter for the vpn_connections resource.
     - name: VpnConnectionId
       value: "{{ VpnConnectionId }}"
-      description: Required parameter for the vpn_connections resource.
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the vpn_connections resource.
-    - name: CustomerGatewayId
-      value: "{{ CustomerGatewayId }}"
       description: Required parameter for the vpn_connections resource.
     - name: Type
       value: "{{ Type }}"

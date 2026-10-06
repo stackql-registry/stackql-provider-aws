@@ -33,11 +33,36 @@ Creates, updates, deletes, gets or lists a <code>received_grants</code> resource
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_received_grants"
+    defaultValue="list_received_grants_for_organization"
     values={[
+        { label: 'list_received_grants_for_organization', value: 'list_received_grants_for_organization' },
         { label: 'list_received_grants', value: 'list_received_grants' }
     ]}
 >
+<TabItem value="list_received_grants_for_organization">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="grants" /></td>
+    <td><code>array</code></td>
+    <td>Lists the grants the organization has received.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>Token for the next set of results.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_received_grants">
 
 <table>
@@ -80,6 +105,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_received_grants_for_organization"><CopyableCode code="list_received_grants_for_organization" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the grants received for all accounts in the organization.</td>
+</tr>
+<tr>
     <td><a href="#list_received_grants"><CopyableCode code="list_received_grants" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -113,11 +145,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_received_grants"
+    defaultValue="list_received_grants_for_organization"
     values={[
+        { label: 'list_received_grants_for_organization', value: 'list_received_grants_for_organization' },
         { label: 'list_received_grants', value: 'list_received_grants' }
     ]}
 >
+<TabItem value="list_received_grants_for_organization">
+
+Lists the grants received for all accounts in the organization.
+
+```sql
+SELECT
+grants,
+next_token
+FROM aws.license_manager.received_grants
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_received_grants">
 
 Lists grants that are received. Received grants are grants created while specifying the recipient as this Amazon Web Services account, your organization, or an organizational unit (OU) to which this member account belongs.

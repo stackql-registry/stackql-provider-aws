@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeRoleForPodIdentityResponse'
-      x-stackql-resource: assume_role_for_pod_identity
+      x-stackql-resource: pod_identities
       x-stackql-method: assume_role_for_pod_identity
       x-stackql-verb: EXEC
 components:

@@ -406,13 +406,6 @@ The following methods are available for this resource:
     <td>Creates a new branch for an Amplify app.</td>
 </tr>
 <tr>
-    <td><a href="#create_deployment"><CopyableCode code="create_deployment" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-branch_name"><code>branch_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Creates a deployment for a manually deployed Amplify app. Manually deployed apps are not connected to a Git repository. The maximum duration between the CreateDeployment call and the StartDeployment call cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the associated Job will fail.</td>
-</tr>
-<tr>
     <td><a href="#update_branch"><CopyableCode code="update_branch" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-branch_name"><code>branch_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -425,6 +418,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-branch_name"><code>branch_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a branch for an Amplify app.</td>
+</tr>
+<tr>
+    <td><a href="#create_deployment"><CopyableCode code="create_deployment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-app_id"><code>app_id</code></a>, <a href="#parameter-branch_name"><code>branch_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a deployment for a manually deployed Amplify app. Manually deployed apps are not connected to a Git repository. The maximum duration between the CreateDeployment call and the StartDeployment call cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the associated Job will fail.</td>
 </tr>
 <tr>
     <td><a href="#start_job"><CopyableCode code="start_job" /></a></td>
@@ -601,7 +601,6 @@ AND maxResults = '{{ maxResults }}'
     defaultValue="create_branch"
     values={[
         { label: 'create_branch', value: 'create_branch' },
-        { label: 'create_deployment', value: 'create_deployment' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
@@ -662,29 +661,6 @@ branch
 ;
 ```
 </TabItem>
-<TabItem value="create_deployment">
-
-Creates a deployment for a manually deployed Amplify app. Manually deployed apps are not connected to a Git repository. The maximum duration between the CreateDeployment call and the StartDeployment call cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the associated Job will fail.
-
-```sql
-INSERT INTO aws.amplify.branches (
-fileMap,
-app_id,
-branch_name,
-region
-)
-SELECT 
-'{{ fileMap }}',
-'{{ app_id }}',
-'{{ branch_name }}',
-'{{ region }}'
-RETURNING
-file_upload_urls,
-job_id,
-zip_upload_url
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -695,9 +671,6 @@ zip_upload_url
       description: Required parameter for the branches resource.
     - name: region
       value: "{{ region }}"
-      description: Required parameter for the branches resource.
-    - name: branch_name
-      value: "{{ branch_name }}"
       description: Required parameter for the branches resource.
     - name: branchName
       value: "{{ branchName }}"
@@ -747,8 +720,6 @@ zip_upload_url
         stackArn: "{{ stackArn }}"
     - name: computeRoleArn
       value: "{{ computeRoleArn }}"
-    - name: fileMap
-      value: "{{ fileMap }}"
 `}</CodeBlock>
 
 </TabItem>
@@ -825,13 +796,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_job"
+    defaultValue="create_deployment"
     values={[
+        { label: 'create_deployment', value: 'create_deployment' },
         { label: 'start_job', value: 'start_job' },
         { label: 'start_deployment', value: 'start_deployment' },
         { label: 'stop_job', value: 'stop_job' }
     ]}
 >
+<TabItem value="create_deployment">
+
+Creates a deployment for a manually deployed Amplify app. Manually deployed apps are not connected to a Git repository. The maximum duration between the CreateDeployment call and the StartDeployment call cannot exceed 8 hours. If the duration exceeds 8 hours, the StartDeployment call and the associated Job will fail.
+
+```sql
+EXEC aws.amplify.branches.create_deployment 
+@app_id='{{ app_id }}' --required, 
+@branch_name='{{ branch_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"fileMap": "{{ fileMap }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_job">
 
 Starts a new job for a branch of an Amplify app.

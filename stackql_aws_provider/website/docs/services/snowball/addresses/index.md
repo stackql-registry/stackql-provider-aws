@@ -33,11 +33,101 @@ Creates, updates, deletes, gets or lists an <code>addresses</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_addresses"
+    defaultValue="describe_address"
     values={[
+        { label: 'describe_address', value: 'describe_address' },
         { label: 'describe_addresses', value: 'describe_addresses' }
     ]}
 >
+<TabItem value="describe_address">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="address_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique ID for an address. (pattern: &lt;code&gt;ADID&#91;0-9a-f&#93;&#123;8&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;4&#125;-&#91;0-9a-f&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="city" /></td>
+    <td><code>string</code></td>
+    <td>The city in an address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="company" /></td>
+    <td><code>string</code></td>
+    <td>The name of the company to receive a Snow device at an address. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="country" /></td>
+    <td><code>string</code></td>
+    <td>The country in an address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_restricted" /></td>
+    <td><code>boolean</code></td>
+    <td>If the address you are creating is a primary address, then set this option to true. This field is not supported in most regions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="landmark" /></td>
+    <td><code>string</code></td>
+    <td>This field is no longer used and the value is ignored. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of a person to receive a Snow device at an address. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="phone_number" /></td>
+    <td><code>string</code></td>
+    <td>The phone number associated with an address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="postal_code" /></td>
+    <td><code>string</code></td>
+    <td>The postal code in an address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="prefecture_or_district" /></td>
+    <td><code>string</code></td>
+    <td>This field is no longer used and the value is ignored. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="state_or_province" /></td>
+    <td><code>string</code></td>
+    <td>The state or province in an address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="street_1" /></td>
+    <td><code>string</code></td>
+    <td>The first line in a street address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="street_2" /></td>
+    <td><code>string</code></td>
+    <td>The second line in a street address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="street_3" /></td>
+    <td><code>string</code></td>
+    <td>The third line in a street address that a Snow device is to be delivered to. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td>Differentiates between delivery address and pickup address in the customer account. Provided at job creation. (CUST_PICKUP, AWS_SHIP)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_addresses">
 
 <table>
@@ -145,11 +235,25 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#describe_address"><CopyableCode code="describe_address" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Takes an AddressId and returns specific details about that address in the form of an Address object.</td>
+</tr>
+<tr>
     <td><a href="#describe_addresses"><CopyableCode code="describe_addresses" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns a specified number of ADDRESS objects. Calling this API in one of the US regions will return addresses from the list of all addresses associated with this account in all US regions.</td>
+</tr>
+<tr>
+    <td><a href="#create_address"><CopyableCode code="create_address" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates an address for a Snow device to be shipped to. In most regions, addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. If the address is invalid or unsupported, then an exception is thrown. If providing an address as a JSON file through the cli-input-json option, include the full file path. For example, --cli-input-json file:​//create-address.json.</td>
 </tr>
 </tbody>
 </table>
@@ -178,11 +282,38 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_addresses"
+    defaultValue="describe_address"
     values={[
+        { label: 'describe_address', value: 'describe_address' },
         { label: 'describe_addresses', value: 'describe_addresses' }
     ]}
 >
+<TabItem value="describe_address">
+
+Takes an AddressId and returns specific details about that address in the form of an Address object.
+
+```sql
+SELECT
+address_id,
+city,
+company,
+country,
+is_restricted,
+landmark,
+name,
+phone_number,
+postal_code,
+prefecture_or_district,
+state_or_province,
+street_1,
+street_2,
+street_3,
+type
+FROM aws.snowball.addresses
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_addresses">
 
 Returns a specified number of ADDRESS objects. Calling this API in one of the US regions will return addresses from the list of all addresses associated with this account in all US regions.
@@ -208,5 +339,64 @@ FROM aws.snowball.addresses
 WHERE region = '{{ region }}' -- required
 ;
 ```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_address"
+    values={[
+        { label: 'create_address', value: 'create_address' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_address">
+
+Creates an address for a Snow device to be shipped to. In most regions, addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. If the address is invalid or unsupported, then an exception is thrown. If providing an address as a JSON file through the cli-input-json option, include the full file path. For example, --cli-input-json file://create-address.json.
+
+```sql
+INSERT INTO aws.snowball.addresses (
+Address,
+region
+)
+SELECT 
+'{{ Address }}',
+'{{ region }}'
+RETURNING
+address_id
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: addresses
+  props:
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the addresses resource.
+    - name: Address
+      description: |
+        The address that you want the Snow device shipped to.
+      value:
+        AddressId: "{{ AddressId }}"
+        Name: "{{ Name }}"
+        Company: "{{ Company }}"
+        Street1: "{{ Street1 }}"
+        Street2: "{{ Street2 }}"
+        Street3: "{{ Street3 }}"
+        City: "{{ City }}"
+        StateOrProvince: "{{ StateOrProvince }}"
+        PrefectureOrDistrict: "{{ PrefectureOrDistrict }}"
+        Landmark: "{{ Landmark }}"
+        Country: "{{ Country }}"
+        PostalCode: "{{ PostalCode }}"
+        PhoneNumber: "{{ PhoneNumber }}"
+        IsRestricted: {{ IsRestricted }}
+        Type: "{{ Type }}"
+`}</CodeBlock>
+
 </TabItem>
 </Tabs>

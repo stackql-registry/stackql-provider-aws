@@ -188,6 +188,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-submitTimeAfter"><code>submitTimeAfter</code></a>, <a href="#parameter-submitTimeBefore"><code>submitTimeBefore</code></a>, <a href="#parameter-statusEquals"><code>statusEquals</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-sortBy"><code>sortBy</code></a>, <a href="#parameter-sortOrder"><code>sortOrder</code></a></td>
     <td>Lists asynchronous invocations.</td>
 </tr>
+<tr>
+    <td><a href="#start_async_invoke"><CopyableCode code="start_async_invoke" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-modelId"><code>modelId</code></a>, <a href="#parameter-modelInput"><code>modelInput</code></a>, <a href="#parameter-outputDataConfig"><code>outputDataConfig</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous invocation. This operation requires permission for the bedrock:InvokeModel action. To deny all inference access to resources that you specify in the modelId field, you need to deny access to the bedrock:InvokeModel and bedrock:InvokeModelWithResponseStream actions. Doing this also denies access to the resource through the Converse API actions (Converse and ConverseStream). For more information see Deny access for inference on specific models.</td>
+</tr>
 </tbody>
 </table>
 
@@ -306,6 +313,35 @@ AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
 AND sortBy = '{{ sortBy }}'
 AND sortOrder = '{{ sortOrder }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_async_invoke"
+    values={[
+        { label: 'start_async_invoke', value: 'start_async_invoke' }
+    ]}
+>
+<TabItem value="start_async_invoke">
+
+Starts an asynchronous invocation. This operation requires permission for the bedrock:InvokeModel action. To deny all inference access to resources that you specify in the modelId field, you need to deny access to the bedrock:InvokeModel and bedrock:InvokeModelWithResponseStream actions. Doing this also denies access to the resource through the Converse API actions (Converse and ConverseStream). For more information see Deny access for inference on specific models.
+
+```sql
+EXEC aws.bedrock_runtime.async_invokes.start_async_invoke 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientRequestToken": "{{ clientRequestToken }}", 
+"modelId": "{{ modelId }}", 
+"modelInput": "{{ modelInput }}", 
+"outputDataConfig": "{{ outputDataConfig }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

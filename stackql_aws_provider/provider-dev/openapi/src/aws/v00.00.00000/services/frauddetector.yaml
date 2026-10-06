@@ -116,10 +116,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelBatchImportJobResult"
   /CancelBatchPredictionJob:
     post:
       operationId: CancelBatchPredictionJob
@@ -149,10 +145,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelBatchPredictionJobResult"
   /CreateBatchImportJob:
     post:
       operationId: CreateBatchImportJob
@@ -201,10 +193,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateBatchImportJobResult"
   /CreateBatchPredictionJob:
     post:
       operationId: CreateBatchPredictionJob
@@ -260,10 +248,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateBatchPredictionJobResult"
   /CreateDetectorVersion:
     post:
       operationId: CreateDetectorVersion
@@ -357,10 +341,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateListResult"
   /CreateModel:
     post:
       operationId: CreateModel
@@ -404,10 +384,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateModelResult"
   /CreateModelVersion:
     post:
       operationId: CreateModelVersion
@@ -567,10 +543,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateVariableResult"
   /DeleteBatchImportJob:
     post:
       operationId: DeleteBatchImportJob
@@ -600,10 +572,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBatchImportJobResult"
   /DeleteBatchPredictionJob:
     post:
       operationId: DeleteBatchPredictionJob
@@ -633,10 +601,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBatchPredictionJobResult"
   /DeleteDetector:
     post:
       operationId: DeleteDetector
@@ -666,10 +630,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDetectorResult"
   /DeleteDetectorVersion:
     post:
       operationId: DeleteDetectorVersion
@@ -703,10 +663,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDetectorVersionResult"
   /DeleteEntityType:
     post:
       operationId: DeleteEntityType
@@ -736,10 +692,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEntityTypeResult"
   /DeleteEvent:
     post:
       operationId: DeleteEvent
@@ -776,10 +728,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEventResult"
   /DeleteEventType:
     post:
       operationId: DeleteEventType
@@ -809,10 +757,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEventTypeResult"
   /DeleteEventsByEventType:
     post:
       operationId: DeleteEventsByEventType
@@ -875,10 +819,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteExternalModelResult"
   /DeleteLabel:
     post:
       operationId: DeleteLabel
@@ -908,10 +848,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLabelResult"
   /DeleteList:
     post:
       operationId: DeleteList
@@ -941,10 +877,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteListResult"
   /DeleteModel:
     post:
       operationId: DeleteModel
@@ -978,10 +910,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteModelResult"
   /DeleteModelVersion:
     post:
       operationId: DeleteModelVersion
@@ -1019,10 +947,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteModelVersionResult"
   /DeleteOutcome:
     post:
       operationId: DeleteOutcome
@@ -1052,10 +976,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteOutcomeResult"
   /DeleteRule:
     post:
       operationId: DeleteRule
@@ -1084,10 +1004,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleResult"
   /DeleteVariable:
     post:
       operationId: DeleteVariable
@@ -1117,10 +1033,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVariableResult"
   /DescribeDetector:
     post:
       operationId: DescribeDetector
@@ -2101,10 +2013,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDetectorResult"
   /PutEntityType:
     post:
       operationId: PutEntityType
@@ -2140,10 +2048,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEntityTypeResult"
   /PutEventType:
     post:
       operationId: PutEventType
@@ -2196,10 +2100,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutEventTypeResult"
   /PutExternalModel:
     post:
       operationId: PutExternalModel
@@ -2252,10 +2152,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutExternalModelResult"
   /PutKMSEncryptionKey:
     post:
       operationId: PutKMSEncryptionKey
@@ -2285,10 +2181,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutKMSEncryptionKeyResult"
   /PutLabel:
     post:
       operationId: PutLabel
@@ -2324,10 +2216,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutLabelResult"
   /PutOutcome:
     post:
       operationId: PutOutcome
@@ -2363,10 +2251,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutOutcomeResult"
   /SendEvent:
     post:
       operationId: SendEvent
@@ -2418,10 +2302,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendEventResult"
   /TagResource:
     post:
       operationId: TagResource
@@ -2455,10 +2335,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResult"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2492,10 +2368,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResult"
   /UpdateDetectorVersion:
     post:
       operationId: UpdateDetectorVersion
@@ -2546,10 +2418,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDetectorVersionResult"
   /UpdateDetectorVersionMetadata:
     post:
       operationId: UpdateDetectorVersionMetadata
@@ -2587,10 +2455,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDetectorVersionMetadataResult"
   /UpdateDetectorVersionStatus:
     post:
       operationId: UpdateDetectorVersionStatus
@@ -2628,10 +2492,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDetectorVersionStatusResult"
   /UpdateEventLabel:
     post:
       operationId: UpdateEventLabel
@@ -2673,10 +2533,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEventLabelResult"
   /UpdateList:
     post:
       operationId: UpdateList
@@ -2718,10 +2574,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateListResult"
   /UpdateModel:
     post:
       operationId: UpdateModel
@@ -2758,10 +2610,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateModelResult"
   /UpdateModelVersion:
     post:
       operationId: UpdateModelVersion
@@ -2853,10 +2701,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateModelVersionStatusResult"
   /UpdateRuleMetadata:
     post:
       operationId: UpdateRuleMetadata
@@ -2890,10 +2734,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRuleMetadataResult"
   /UpdateRuleVersion:
     post:
       operationId: UpdateRuleVersion
@@ -2983,10 +2823,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateVariableResult"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3204,10 +3040,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[0-9a-z_-]+$
-    CancelBatchImportJobResult:
-      type: object
-    CancelBatchPredictionJobResult:
-      type: object
     s3BucketLocation:
       type: string
       minLength: 1
@@ -3218,15 +3050,11 @@ components:
       minLength: 1
       maxLength: 256
       pattern: ^arn\:aws[a-z-]{0,15}\:iam\:\:[0-9]{12}\:role\/[^\s]{2,64}$
-    CreateBatchImportJobResult:
-      type: object
     wholeNumberVersionString:
       type: string
       minLength: 1
       maxLength: 5
       pattern: ^([1-9][0-9]*)$
-    CreateBatchPredictionJobResult:
-      type: object
     description:
       type: string
       minLength: 1
@@ -3338,10 +3166,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: ^[A-Z_]{1,64}$
-    CreateListResult:
-      type: object
-    CreateModelResult:
-      type: object
     TrainingDataSourceEnum:
       type: string
       enum:
@@ -3444,24 +3268,8 @@ components:
         rule:
           $ref: "#/components/schemas/Rule"
           description: The created rule.
-    CreateVariableResult:
-      type: object
-    DeleteBatchImportJobResult:
-      type: object
-    DeleteBatchPredictionJobResult:
-      type: object
-    DeleteDetectorResult:
-      type: object
-    DeleteDetectorVersionResult:
-      type: object
-    DeleteEntityTypeResult:
-      type: object
     DeleteAuditHistory:
       type: boolean
-    DeleteEventResult:
-      type: object
-    DeleteEventTypeResult:
-      type: object
     DeleteEventsByEventTypeResult:
       type: object
       properties:
@@ -3476,22 +3284,6 @@ components:
       minLength: 1
       maxLength: 63
       pattern: ^[0-9A-Za-z_-]+$
-    DeleteExternalModelResult:
-      type: object
-    DeleteLabelResult:
-      type: object
-    DeleteListResult:
-      type: object
-    DeleteModelResult:
-      type: object
-    DeleteModelVersionResult:
-      type: object
-    DeleteOutcomeResult:
-      type: object
-    DeleteRuleResult:
-      type: object
-    DeleteVariableResult:
-      type: object
     DetectorVersionMaxResults:
       type: integer
       minimum: 1000
@@ -5047,48 +4839,16 @@ components:
         nextToken:
           $ref: "#/components/schemas/string"
           description: The next token for subsequent requests.
-    PutDetectorResult:
-      type: object
-    PutEntityTypeResult:
-      type: object
-    PutEventTypeResult:
-      type: object
-    PutExternalModelResult:
-      type: object
-    PutKMSEncryptionKeyResult:
-      type: object
-    PutLabelResult:
-      type: object
-    PutOutcomeResult:
-      type: object
-    SendEventResult:
-      type: object
-    TagResourceResult:
-      type: object
     tagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/tagKey"
-    UntagResourceResult:
-      type: object
-    UpdateDetectorVersionResult:
-      type: object
-    UpdateDetectorVersionMetadataResult:
-      type: object
-    UpdateDetectorVersionStatusResult:
-      type: object
-    UpdateEventLabelResult:
-      type: object
     ListUpdateMode:
       type: string
       enum:
         - REPLACE
         - APPEND
         - REMOVE
-    UpdateListResult:
-      type: object
-    UpdateModelResult:
-      type: object
     UpdateModelVersionResult:
       type: object
       properties:
@@ -5110,24 +4870,31 @@ components:
         - ACTIVE
         - INACTIVE
         - TRAINING_CANCELLED
-    UpdateModelVersionStatusResult:
-      type: object
-    UpdateRuleMetadataResult:
-      type: object
     UpdateRuleVersionResult:
       type: object
       properties:
         rule:
           $ref: "#/components/schemas/Rule"
           description: The new rule version that was created.
-    UpdateVariableResult:
-      type: object
   x-stackQL-resources:
     variables:
       id: aws.frauddetector.variables
       name: variables
       title: variables
       methods:
+        batch_create_variable:
+          operation:
+            $ref: "#/paths/~1BatchCreateVariable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         batch_get_variable:
           operation:
             $ref: "#/paths/~1BatchGetVariable/post"
@@ -5146,7 +4913,6 @@ components:
             $ref: "#/paths/~1CreateVariable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5159,7 +4925,6 @@ components:
             $ref: "#/paths/~1DeleteVariable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5185,7 +4950,6 @@ components:
             $ref: "#/paths/~1UpdateVariable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5208,12 +4972,23 @@ components:
       name: batch_import_jobs
       title: batch_import_jobs
       methods:
+        cancel_batch_import_job:
+          operation:
+            $ref: "#/paths/~1CancelBatchImportJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_batch_import_job:
           operation:
             $ref: "#/paths/~1CreateBatchImportJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5226,7 +5001,6 @@ components:
             $ref: "#/paths/~1DeleteBatchImportJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5260,12 +5034,23 @@ components:
       name: batch_prediction_jobs
       title: batch_prediction_jobs
       methods:
+        cancel_batch_prediction_job:
+          operation:
+            $ref: "#/paths/~1CancelBatchPredictionJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_batch_prediction_job:
           operation:
             $ref: "#/paths/~1CreateBatchPredictionJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5278,7 +5063,6 @@ components:
             $ref: "#/paths/~1DeleteBatchPredictionJob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5330,7 +5114,6 @@ components:
             $ref: "#/paths/~1DeleteDetectorVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5356,7 +5139,6 @@ components:
             $ref: "#/paths/~1UpdateDetectorVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5369,7 +5151,6 @@ components:
             $ref: "#/paths/~1UpdateDetectorVersionMetadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5382,7 +5163,6 @@ components:
             $ref: "#/paths/~1UpdateDetectorVersionStatus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5411,7 +5191,6 @@ components:
             $ref: "#/paths/~1CreateList/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5424,7 +5203,6 @@ components:
             $ref: "#/paths/~1DeleteList/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5437,7 +5215,6 @@ components:
             $ref: "#/paths/~1UpdateList/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5463,7 +5240,6 @@ components:
             $ref: "#/paths/~1CreateModel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5476,7 +5252,6 @@ components:
             $ref: "#/paths/~1DeleteModel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5502,7 +5277,6 @@ components:
             $ref: "#/paths/~1UpdateModel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5542,7 +5316,6 @@ components:
             $ref: "#/paths/~1DeleteModelVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5594,7 +5367,6 @@ components:
             $ref: "#/paths/~1UpdateModelVersionStatus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5609,8 +5381,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/model_versions/methods/create_model_version"
         update:
-          - $ref: "#/components/x-stackQL-resources/model_versions/methods/update_model_version_status"
           - $ref: "#/components/x-stackQL-resources/model_versions/methods/update_model_version"
+          - $ref: "#/components/x-stackQL-resources/model_versions/methods/update_model_version_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/model_versions/methods/delete_model_version"
     rules:
@@ -5636,7 +5408,6 @@ components:
             $ref: "#/paths/~1DeleteRule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5662,7 +5433,6 @@ components:
             $ref: "#/paths/~1UpdateRuleMetadata/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5703,7 +5473,6 @@ components:
             $ref: "#/paths/~1DeleteDetector/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5742,7 +5511,6 @@ components:
             $ref: "#/paths/~1PutDetector/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5770,7 +5538,6 @@ components:
             $ref: "#/paths/~1DeleteEntityType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5796,7 +5563,6 @@ components:
             $ref: "#/paths/~1PutEntityType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5823,7 +5589,6 @@ components:
             $ref: "#/paths/~1DeleteEvent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5862,7 +5627,6 @@ components:
             $ref: "#/paths/~1DeleteEventType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5901,7 +5665,6 @@ components:
             $ref: "#/paths/~1PutEventType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5914,7 +5677,6 @@ components:
             $ref: "#/paths/~1SendEvent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5942,7 +5704,6 @@ components:
             $ref: "#/paths/~1DeleteExternalModel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5968,7 +5729,6 @@ components:
             $ref: "#/paths/~1PutExternalModel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5995,7 +5755,6 @@ components:
             $ref: "#/paths/~1DeleteLabel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6021,7 +5780,6 @@ components:
             $ref: "#/paths/~1PutLabel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6034,7 +5792,6 @@ components:
             $ref: "#/paths/~1UpdateEventLabel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6062,7 +5819,6 @@ components:
             $ref: "#/paths/~1DeleteOutcome/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6088,7 +5844,6 @@ components:
             $ref: "#/paths/~1PutOutcome/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6105,10 +5860,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/outcomes/methods/put_outcome"
         delete:
           - $ref: "#/components/x-stackQL-resources/outcomes/methods/delete_outcome"
-    delete_events_by_event_type_status:
-      id: aws.frauddetector.delete_events_by_event_type_status
-      name: delete_events_by_event_type_status
-      title: delete_events_by_event_type_status
+    delete_events:
+      id: aws.frauddetector.delete_events
+      name: delete_events
+      title: delete_events
       methods:
         get_delete_events_by_event_type_status:
           operation:
@@ -6125,7 +5880,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/delete_events_by_event_type_status/methods/get_delete_events_by_event_type_status"
+          - $ref: "#/components/x-stackQL-resources/delete_events/methods/get_delete_events_by_event_type_status"
         insert: []
         update: []
         delete: []
@@ -6167,10 +5922,10 @@ components:
         insert: []
         update: []
         delete: []
-    event_prediction_metadatas:
-      id: aws.frauddetector.event_prediction_metadatas
-      name: event_prediction_metadatas
-      title: event_prediction_metadatas
+    event_prediction_metadata:
+      id: aws.frauddetector.event_prediction_metadata
+      name: event_prediction_metadata
+      title: event_prediction_metadata
       methods:
         get_event_prediction_metadata:
           operation:
@@ -6187,7 +5942,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/event_prediction_metadatas/methods/get_event_prediction_metadata"
+          - $ref: "#/components/x-stackQL-resources/event_prediction_metadata/methods/get_event_prediction_metadata"
         insert: []
         update: []
         delete: []
@@ -6211,7 +5966,6 @@ components:
             $ref: "#/paths/~1PutKMSEncryptionKey/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6258,10 +6012,10 @@ components:
         insert: []
         update: []
         delete: []
-    lists_metadatas:
-      id: aws.frauddetector.lists_metadatas
-      name: lists_metadatas
-      title: lists_metadatas
+    lists_metadata:
+      id: aws.frauddetector.lists_metadata
+      name: lists_metadata
+      title: lists_metadata
       methods:
         get_lists_metadata:
           operation:
@@ -6278,7 +6032,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/lists_metadatas/methods/get_lists_metadata"
+          - $ref: "#/components/x-stackQL-resources/lists_metadata/methods/get_lists_metadata"
         insert: []
         update: []
         delete: []
@@ -6305,7 +6059,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6318,7 +6071,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

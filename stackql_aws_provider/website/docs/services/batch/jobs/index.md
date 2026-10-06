@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_jobs"
     values={[
         { label: 'describe_jobs', value: 'describe_jobs' },
+        { label: 'list_jobs_by_consumable_resource', value: 'list_jobs_by_consumable_resource' },
         { label: 'list_jobs', value: 'list_jobs' }
     ]}
 >
@@ -54,6 +55,75 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="jobs" /></td>
     <td><code>array</code></td>
     <td>The list of jobs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_jobs_by_consumable_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="consumable_resource_properties" /></td>
+    <td><code>object</code></td>
+    <td>Contains a list of consumable resources required by the job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_at" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The Unix timestamp (in milliseconds) for when the consumable resource was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_definition_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the job definition.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_queue_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the job queue.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the job. Can be one of: SUBMITTED PENDING RUNNABLE STARTING RUNNING SUCCEEDED FAILED</td>
+</tr>
+<tr>
+    <td><CopyableCode code="quantity" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The total amount of the consumable resource that is available.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="share_identifier" /></td>
+    <td><code>string</code></td>
+    <td>The fair-share scheduling identifier for the job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="started_at" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The Unix timestamp for when the job was started. More specifically, it's when the job transitioned from the STARTING state to the RUNNING state.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status_reason" /></td>
+    <td><code>string</code></td>
+    <td>A short, human-readable string to provide more details for the current status of the job.</td>
 </tr>
 </tbody>
 </table>
@@ -88,6 +158,16 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="created_at" /></td>
     <td><code>integer (int64)</code></td>
     <td>The Unix timestamp (in milliseconds) for when the job was created. For non-array jobs and parent array jobs, this is when the job entered the SUBMITTED state (at the time SubmitJob was called). For array child jobs, this is when the child job was spawned by its parent and entered the PENDING state.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_cancelled" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether a cancellation request has been accepted for the job. This field is only present when the value is true.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="is_terminated" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether a termination request has been accepted for the job. This field is only present when the value is true.</td>
 </tr>
 <tr>
     <td><CopyableCode code="job_arn" /></td>
@@ -172,6 +252,13 @@ The following methods are available for this resource:
     <td>Describes a list of Batch jobs.</td>
 </tr>
 <tr>
+    <td><a href="#list_jobs_by_consumable_resource"><CopyableCode code="list_jobs_by_consumable_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of Batch jobs that require a specific consumable resource.</td>
+</tr>
+<tr>
     <td><a href="#list_jobs"><CopyableCode code="list_jobs" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -186,11 +273,25 @@ The following methods are available for this resource:
     <td>Terminates a job in a job queue. Jobs that are in the STARTING or RUNNING state are terminated, which causes them to transition to FAILED. Jobs that have not progressed to the STARTING state are cancelled.</td>
 </tr>
 <tr>
+    <td><a href="#terminate_jobs"><CopyableCode code="terminate_jobs" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Terminates up to 50 jobs in a job queue. This is a bulk version of TerminateJob. Jobs that are in the STARTING or RUNNING state are terminated, which causes them to transition to FAILED. Jobs that have not progressed to the STARTING state are cancelled. Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the successful list. Jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some jobs encountered errors, so check the errors list. Jobs that can't be found are treated as successfully processed.</td>
+</tr>
+<tr>
     <td><a href="#cancel_job"><CopyableCode code="cancel_job" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobId"><code>jobId</code></a>, <a href="#parameter-reason"><code>reason</code></a></td>
     <td></td>
-    <td>Cancels a job in an Batch job queue. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is canceled after all dependency jobs are completed. Therefore, it may take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is canceled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't canceled. However, the API operation still succeeds, even if no job is canceled. These jobs must be terminated with the TerminateJob operation.</td>
+    <td>Cancels a job in an Batch job queue. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't cancelled. However, the API operation still succeeds, even if no job is cancelled. These jobs must be terminated with the TerminateJob or TerminateJobs operation.</td>
+</tr>
+<tr>
+    <td><a href="#cancel_jobs"><CopyableCode code="cancel_jobs" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-jobs"><code>jobs</code></a>, <a href="#parameter-reason"><code>reason</code></a></td>
+    <td></td>
+    <td>Cancels up to 50 jobs in an Batch job queue. This is a bulk version of CancelJob. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't cancelled. These jobs must be terminated with the TerminateJob or TerminateJobs operation. Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the successful list. Jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some jobs encountered errors, so check the errors list. Jobs that can't be found are treated as successfully processed.</td>
 </tr>
 <tr>
     <td><a href="#submit_job"><CopyableCode code="submit_job" /></a></td>
@@ -236,6 +337,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_jobs"
     values={[
         { label: 'describe_jobs', value: 'describe_jobs' },
+        { label: 'list_jobs_by_consumable_resource', value: 'list_jobs_by_consumable_resource' },
         { label: 'list_jobs', value: 'list_jobs' }
     ]}
 >
@@ -251,6 +353,28 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
+<TabItem value="list_jobs_by_consumable_resource">
+
+Returns a list of Batch jobs that require a specific consumable resource.
+
+```sql
+SELECT
+consumable_resource_properties,
+created_at,
+job_arn,
+job_definition_arn,
+job_name,
+job_queue_arn,
+job_status,
+quantity,
+share_identifier,
+started_at,
+status_reason
+FROM aws.batch.jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_jobs">
 
 Returns a list of Batch jobs. You must specify only one of the following items: A job queue ID to return a list of jobs in that job queue A multi-node parallel job ID to return a list of nodes for that job An array job ID to return a list of the children for that job
@@ -261,6 +385,8 @@ array_properties,
 capacity_usage,
 container,
 created_at,
+is_cancelled,
+is_terminated,
 job_arn,
 job_definition,
 job_id,
@@ -285,12 +411,23 @@ WHERE region = '{{ region }}' -- required
 <Tabs
     defaultValue="terminate_job"
     values={[
-        { label: 'terminate_job', value: 'terminate_job' }
+        { label: 'terminate_job', value: 'terminate_job' },
+        { label: 'terminate_jobs', value: 'terminate_jobs' }
     ]}
 >
 <TabItem value="terminate_job">
 
 Terminates a job in a job queue. Jobs that are in the STARTING or RUNNING state are terminated, which causes them to transition to FAILED. Jobs that have not progressed to the STARTING state are cancelled.
+
+```sql
+DELETE FROM aws.batch.jobs
+WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="terminate_jobs">
+
+Terminates up to 50 jobs in a job queue. This is a bulk version of TerminateJob. Jobs that are in the STARTING or RUNNING state are terminated, which causes them to transition to FAILED. Jobs that have not progressed to the STARTING state are cancelled. Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the successful list. Jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some jobs encountered errors, so check the errors list. Jobs that can't be found are treated as successfully processed.
 
 ```sql
 DELETE FROM aws.batch.jobs
@@ -307,13 +444,14 @@ WHERE region = '{{ region }}' --required
     defaultValue="cancel_job"
     values={[
         { label: 'cancel_job', value: 'cancel_job' },
+        { label: 'cancel_jobs', value: 'cancel_jobs' },
         { label: 'submit_job', value: 'submit_job' },
         { label: 'submit_service_job', value: 'submit_service_job' }
     ]}
 >
 <TabItem value="cancel_job">
 
-Cancels a job in an Batch job queue. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is canceled after all dependency jobs are completed. Therefore, it may take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is canceled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't canceled. However, the API operation still succeeds, even if no job is canceled. These jobs must be terminated with the TerminateJob operation.
+Cancels a job in an Batch job queue. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't cancelled. However, the API operation still succeeds, even if no job is cancelled. These jobs must be terminated with the TerminateJob or TerminateJobs operation.
 
 ```sql
 EXEC aws.batch.jobs.cancel_job 
@@ -321,6 +459,21 @@ EXEC aws.batch.jobs.cancel_job
 @@json=
 '{
 "jobId": "{{ jobId }}", 
+"reason": "{{ reason }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="cancel_jobs">
+
+Cancels up to 50 jobs in an Batch job queue. This is a bulk version of CancelJob. Jobs that are in a SUBMITTED, PENDING, or RUNNABLE state are cancelled and the job status is updated to FAILED. A PENDING job is cancelled after all dependency jobs are completed. Therefore, it might take longer than expected to cancel a job in PENDING status. When you try to cancel an array parent job in PENDING, Batch attempts to cancel all child jobs. The array parent job is cancelled when all child jobs are completed. Jobs that progressed to the STARTING or RUNNING state aren't cancelled. These jobs must be terminated with the TerminateJob or TerminateJobs operation. Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the successful list. Jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some jobs encountered errors, so check the errors list. Jobs that can't be found are treated as successfully processed.
+
+```sql
+EXEC aws.batch.jobs.cancel_jobs 
+@region='{{ region }}' --required 
+@@json=
+'{
+"jobs": "{{ jobs }}", 
 "reason": "{{ reason }}"
 }'
 ;

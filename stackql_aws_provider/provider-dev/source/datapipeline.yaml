@@ -57,10 +57,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActivatePipelineOutput'
       x-stackql-resource: pipelines
       x-stackql-method: activate_pipeline
       x-stackql-verb: EXEC
@@ -97,10 +93,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutput'
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
@@ -195,10 +187,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeactivatePipelineOutput'
       x-stackql-resource: pipelines
       x-stackql-method: deactivate_pipeline
       x-stackql-verb: EXEC
@@ -513,7 +501,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollForTaskOutput'
-      x-stackql-resource: poll_for_task
+      x-stackql-resource: tasks
       x-stackql-method: poll_for_task
       x-stackql-verb: EXEC
   /PutPipelineDefinition:
@@ -658,10 +646,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutput'
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
@@ -708,7 +692,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportTaskProgressOutput'
-      x-stackql-resource: report_task_progress
+      x-stackql-resource: task_progresses
       x-stackql-method: report_task_progress
       x-stackql-verb: EXEC
   /ReportTaskRunnerHeartbeat:
@@ -757,7 +741,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportTaskRunnerHeartbeatOutput'
-      x-stackql-resource: report_task_runner_heartbeat
+      x-stackql-resource: task_runner_heartbeats
       x-stackql-method: report_task_runner_heartbeat
       x-stackql-verb: EXEC
   /SetStatus:
@@ -857,11 +841,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetTaskStatusOutput'
-      x-stackql-resource: task_status
+      x-stackql-resource: task_statuses
       x-stackql-method: set_task_status
       x-stackql-verb: UPDATE
   /ValidatePipelineDefinition:
@@ -907,7 +887,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePipelineDefinitionOutput'
-      x-stackql-resource: pipelines
+      x-stackql-resource: pipeline_definitions
       x-stackql-method: validate_pipeline_definition
       x-stackql-verb: EXEC
 components:
@@ -990,9 +970,6 @@ components:
     timestamp:
       type: string
       format: date-time
-    ActivatePipelineOutput:
-      description: Contains the output of ActivatePipeline.
-      type: object
     tagList:
       type: array
       items:
@@ -1022,9 +999,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    AddTagsOutput:
-      description: Contains the output of AddTags.
-      type: object
     string:
       type: string
       minLength: 0
@@ -1041,9 +1015,6 @@ components:
       - pipelineId
     cancelActive:
       type: boolean
-    DeactivatePipelineOutput:
-      description: Contains the output of DeactivatePipeline.
-      type: object
     idList:
       type: array
       items:
@@ -1420,9 +1391,6 @@ components:
         hasMoreResults:
           $ref: '#/components/schemas/boolean'
           description: Indicates whether there are more results that can be obtained by a subsequent call.
-    RemoveTagsOutput:
-      description: Contains the output of RemoveTags.
-      type: object
     ReportTaskProgressOutput:
       description: Contains the output of ReportTaskProgress.
       type: object
@@ -1450,9 +1418,6 @@ components:
       - 'FALSE'
     errorMessage:
       type: string
-    SetTaskStatusOutput:
-      description: Contains the output of SetTaskStatus.
-      type: object
     ValidatePipelineDefinitionOutput:
       description: Contains the output of ValidatePipelineDefinition.
       type: object

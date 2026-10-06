@@ -33,11 +33,46 @@ Creates, updates, deletes, gets or lists a <code>service_actions</code> resource
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_service_action"
+    defaultValue="list_service_actions_for_provisioning_artifact"
     values={[
+        { label: 'list_service_actions_for_provisioning_artifact', value: 'list_service_actions_for_provisioning_artifact' },
         { label: 'describe_service_action', value: 'describe_service_action' }
     ]}
 >
+<TabItem value="list_service_actions_for_provisioning_artifact">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="definition_type" /></td>
+    <td><code>string</code></td>
+    <td>The self-service action definition type. For example, SSM_AUTOMATION. (SSM_AUTOMATION)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The self-service action description.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The self-service action identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The self-service action name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_service_action">
 
 <table>
@@ -80,6 +115,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_service_actions_for_provisioning_artifact"><CopyableCode code="list_service_actions_for_provisioning_artifact" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.</td>
+</tr>
+<tr>
     <td><a href="#describe_service_action"><CopyableCode code="describe_service_action" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -106,6 +148,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a self-service action.</td>
+</tr>
+<tr>
+    <td><a href="#batch_associate_service_action_with_provisioning_artifact"><CopyableCode code="batch_associate_service_action_with_provisioning_artifact" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServiceActionAssociations"><code>ServiceActionAssociations</code></a></td>
+    <td></td>
+    <td>Associates multiple self-service actions with provisioning artifacts.</td>
 </tr>
 <tr>
     <td><a href="#list_service_actions"><CopyableCode code="list_service_actions" /></a></td>
@@ -141,11 +190,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_service_action"
+    defaultValue="list_service_actions_for_provisioning_artifact"
     values={[
+        { label: 'list_service_actions_for_provisioning_artifact', value: 'list_service_actions_for_provisioning_artifact' },
         { label: 'describe_service_action', value: 'describe_service_action' }
     ]}
 >
+<TabItem value="list_service_actions_for_provisioning_artifact">
+
+Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
+
+```sql
+SELECT
+definition_type,
+description,
+id,
+name
+FROM aws.servicecatalog.service_actions
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_service_action">
 
 Describes a self-service action.
@@ -290,11 +355,27 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_service_actions"
+    defaultValue="batch_associate_service_action_with_provisioning_artifact"
     values={[
+        { label: 'batch_associate_service_action_with_provisioning_artifact', value: 'batch_associate_service_action_with_provisioning_artifact' },
         { label: 'list_service_actions', value: 'list_service_actions' }
     ]}
 >
+<TabItem value="batch_associate_service_action_with_provisioning_artifact">
+
+Associates multiple self-service actions with provisioning artifacts.
+
+```sql
+EXEC aws.servicecatalog.service_actions.batch_associate_service_action_with_provisioning_artifact 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ServiceActionAssociations": "{{ ServiceActionAssociations }}", 
+"AcceptLanguage": "{{ AcceptLanguage }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="list_service_actions">
 
 Lists all self-service actions.

@@ -474,10 +474,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SubscribeToDatasetResponse"
     delete:
       operationId: UnsubscribeFromDataset
       description: Unsubscribes from receiving notifications when a dataset is modified by another device. This API can only be called with temporary credentials provided by Cognito Identity. You cannot call this API with developer credentials.
@@ -509,10 +505,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UnsubscribeFromDatasetResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -916,12 +908,6 @@ components:
         CognitoStreams:
           $ref: "#/components/schemas/CognitoStreams"
           description: Options to apply to this identity pool for Amazon Cognito streams.
-    SubscribeToDatasetResponse:
-      description: Response to a SubscribeToDataset request.
-      type: object
-    UnsubscribeFromDatasetResponse:
-      description: Response to an UnsubscribeFromDataset request.
-      type: object
     ClientContext:
       type: string
     RecordPatchList:
@@ -964,6 +950,22 @@ components:
           $ref: "#/components/schemas/RecordList"
           description: A list of records that have been updated.
   x-stackQL-resources:
+    publishes:
+      id: aws.cognito_sync.publishes
+      name: publishes
+      title: publishes
+      methods:
+        bulk_publish:
+          operation:
+            $ref: "#/paths/~1identitypools~1{identity_pool_id}~1bulkpublish/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     datasets:
       id: aws.cognito_sync.datasets
       name: datasets
@@ -995,13 +997,11 @@ components:
             $ref: "#/paths/~1identitypools~1{identity_pool_id}~1identities~1{identity_id}~1datasets~1{dataset_name}~1subscriptions~1{device_id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         unsubscribe_from_dataset:
           operation:
             $ref: "#/paths/~1identitypools~1{identity_pool_id}~1identities~1{identity_id}~1datasets~1{dataset_name}~1subscriptions~1{device_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/describe_dataset"

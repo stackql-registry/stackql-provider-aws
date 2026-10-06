@@ -18,16 +18,17 @@ lex_runtime service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/lex_runtime/content/">content</a><br />
 <a href="/services/lex_runtime/sessions/">sessions</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/lex_runtime/texts/">texts</a>
 </div>
 </div>

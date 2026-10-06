@@ -44,10 +44,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptAdministratorInvitationResponse'
       x-stackql-resource: invitations
       x-stackql-method: accept_administrator_invitation
       x-stackql-verb: EXEC
@@ -96,10 +92,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AcceptInvitationResponse'
       x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
@@ -468,7 +460,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateFindingsV2Response'
-      x-stackql-resource: batch_update_findings_v2
+      x-stackql-resource: findings_v2
       x-stackql-method: batch_update_findings_v2
       x-stackql-verb: EXEC
   /associations:
@@ -603,7 +595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAggregatorV2Response'
-      x-stackql-resource: aggregator_v2s
+      x-stackql-resource: aggregators_v2
       x-stackql-method: create_aggregator_v2
       x-stackql-verb: INSERT
   /automationrules/create:
@@ -691,7 +683,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAutomationRuleV2Response'
-      x-stackql-resource: automation_rule_v2s
+      x-stackql-resource: automation_rules_v2
       x-stackql-method: create_automation_rule_v2
       x-stackql-verb: INSERT
   /configurationPolicy/create:
@@ -843,7 +835,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateConnectorV2Response'
-      x-stackql-resource: connector_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: create_connector_v2
       x-stackql-verb: INSERT
     get:
@@ -887,7 +879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListConnectorsV2Response'
-      x-stackql-resource: connectors_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: list_connectors_v2
       x-stackql-verb: SELECT
   /findingAggregator/create:
@@ -1148,10 +1140,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateActionTargetResponse'
       x-stackql-resource: action_targets
       x-stackql-method: update_action_target
       x-stackql-verb: UPDATE
@@ -1169,11 +1157,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAggregatorV2Response'
-      x-stackql-resource: aggregator_v2s
+      x-stackql-resource: aggregators_v2
       x-stackql-method: delete_aggregator_v2
       x-stackql-verb: DELETE
   /automationrulesv2/{identifier}:
@@ -1190,11 +1174,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAutomationRuleV2Response'
-      x-stackql-resource: automation_rule_v2s
+      x-stackql-resource: automation_rules_v2
       x-stackql-method: delete_automation_rule_v2
       x-stackql-verb: DELETE
     get:
@@ -1214,7 +1194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAutomationRuleV2Response'
-      x-stackql-resource: automation_rule_v2s
+      x-stackql-resource: automation_rules_v2
       x-stackql-method: get_automation_rule_v2
       x-stackql-verb: SELECT
     patch:
@@ -1249,11 +1229,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAutomationRuleV2Response'
-      x-stackql-resource: automation_rule_v2s
+      x-stackql-resource: automation_rules_v2
       x-stackql-method: update_automation_rule_v2
       x-stackql-verb: UPDATE
   /configurationPolicy/{identifier}:
@@ -1272,10 +1248,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationPolicyResponse'
       x-stackql-resource: configuration_policies
       x-stackql-method: delete_configuration_policy
       x-stackql-verb: DELETE
@@ -1406,7 +1378,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteConnectorV2Response'
-      x-stackql-resource: connector_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: delete_connector_v2
       x-stackql-verb: DELETE
     get:
@@ -1426,7 +1398,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetConnectorV2Response'
-      x-stackql-resource: connector_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: get_connector_v2
       x-stackql-verb: SELECT
     patch:
@@ -1457,7 +1429,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateConnectorV2Response'
-      x-stackql-resource: connector_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: update_connector_v2
       x-stackql-verb: UPDATE
   /findingAggregator/delete/{finding_aggregator_arn}:
@@ -1478,10 +1450,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFindingAggregatorResponse'
       x-stackql-resource: finding_aggregators
       x-stackql-method: delete_finding_aggregator
       x-stackql-verb: DELETE
@@ -1532,10 +1500,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateInsightResponse'
       x-stackql-resource: insights
       x-stackql-method: update_insight
       x-stackql-verb: UPDATE
@@ -1665,11 +1629,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableSecurityHubResponse'
-      x-stackql-resource: security_hub
+      x-stackql-resource: hubs
       x-stackql-method: disable_security_hub
       x-stackql-verb: EXEC
     post:
@@ -1699,11 +1659,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableSecurityHubResponse'
-      x-stackql-resource: security_hub
+      x-stackql-resource: hubs
       x-stackql-method: enable_security_hub
       x-stackql-verb: EXEC
     patch:
@@ -1724,10 +1680,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSecurityHubConfigurationResponse'
       x-stackql-resource: security_hub_configurations
       x-stackql-method: update_security_hub_configuration
       x-stackql-verb: UPDATE
@@ -1770,10 +1722,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateOrganizationConfigurationResponse'
       x-stackql-resource: organization_configurations
       x-stackql-method: update_organization_configuration
       x-stackql-verb: UPDATE
@@ -1843,7 +1791,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeProductsV2Response'
-      x-stackql-resource: products_v2s
+      x-stackql-resource: products_v2
       x-stackql-method: describe_products_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProductsV2
@@ -1862,7 +1810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeSecurityHubV2Response'
-      x-stackql-resource: security_hub_v2s
+      x-stackql-resource: security_hubs_v2
       x-stackql-method: describe_security_hub_v2
       x-stackql-verb: SELECT
     delete:
@@ -1873,11 +1821,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableSecurityHubV2Response'
-      x-stackql-resource: security_hub_v2
+      x-stackql-resource: security_hubs_v2
       x-stackql-method: disable_security_hub_v2
       x-stackql-verb: EXEC
     post:
@@ -1901,7 +1845,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableSecurityHubV2Response'
-      x-stackql-resource: security_hub_v2
+      x-stackql-resource: security_hubs_v2
       x-stackql-method: enable_security_hub_v2
       x-stackql-verb: EXEC
   /standards:
@@ -2002,11 +1946,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableImportFindingsForProductResponse'
-      x-stackql-resource: import_findings_for_product
+      x-stackql-resource: findings
       x-stackql-method: disable_import_findings_for_product
       x-stackql-verb: EXEC
   /organization/admin/disable:
@@ -2030,11 +1970,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: disable_organization_admin_account
       x-stackql-verb: EXEC
   /hubv2/feature/{feature_name}:
@@ -2053,11 +1989,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableSecurityHubFeatureV2Response'
-      x-stackql-resource: security_hub_feature_v2
+      x-stackql-resource: security_hub_features_v2
       x-stackql-method: disable_security_hub_feature_v2
       x-stackql-verb: EXEC
     post:
@@ -2075,11 +2007,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnableSecurityHubFeatureV2Response'
-      x-stackql-resource: security_hub_feature_v2
+      x-stackql-resource: security_hub_features_v2
       x-stackql-method: enable_security_hub_feature_v2
       x-stackql-verb: EXEC
   /administrator/disassociate:
@@ -2092,10 +2020,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
       x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
@@ -2113,10 +2037,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
       x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
@@ -2140,10 +2060,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateMembersResponse'
       x-stackql-resource: members
       x-stackql-method: disassociate_members
       x-stackql-verb: UPDATE
@@ -2172,7 +2088,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableImportFindingsForProductResponse'
-      x-stackql-resource: import_findings_for_product
+      x-stackql-resource: findings
       x-stackql-method: enable_import_findings_for_product
       x-stackql-verb: EXEC
     get:
@@ -2201,7 +2117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListEnabledProductsForImportOutputDisplay'
-      x-stackql-resource: enabled_products_for_imports
+      x-stackql-resource: enabled_products
       x-stackql-method: list_enabled_products_for_import
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListEnabledProductsForImportOutputDisplay
@@ -2239,7 +2155,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableOrganizationAdminAccountResponse'
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: enable_organization_admin_account
       x-stackql-verb: EXEC
   /recommendedPolicyV2/{metadata_uid}:
@@ -2257,11 +2173,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GenerateRecommendedPolicyV2Response'
-      x-stackql-resource: recommended_policy_v2
+      x-stackql-resource: recommended_policies_v2
       x-stackql-method: generate_recommended_policy_v2
       x-stackql-verb: EXEC
     get:
@@ -2296,7 +2208,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRecommendedPolicyV2Response'
-      x-stackql-resource: recommended_policy_v2s
+      x-stackql-resource: recommended_policies_v2
       x-stackql-method: get_recommended_policy_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommendationSteps
@@ -2321,7 +2233,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAggregatorV2Response'
-      x-stackql-resource: aggregator_v2s
+      x-stackql-resource: aggregators_v2
       x-stackql-method: get_aggregator_v2
       x-stackql-verb: SELECT
   /configurationPolicy/get/{identifier}:
@@ -2508,7 +2420,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFindingStatisticsV2Response'
-      x-stackql-resource: finding_statistics_v2s
+      x-stackql-resource: finding_statistics_v2
       x-stackql-method: get_finding_statistics_v2
       x-stackql-verb: SELECT
   /findings:
@@ -2574,10 +2486,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateFindingsResponse'
       x-stackql-resource: findings
       x-stackql-method: update_findings
       x-stackql-verb: UPDATE
@@ -2614,7 +2522,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFindingsTrendsV2Response'
-      x-stackql-resource: findings_trends_v2s
+      x-stackql-resource: findings_trends_v2
       x-stackql-method: get_findings_trends_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrendsMetrics
@@ -2656,7 +2564,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFindingsV2OutputDisplay'
-      x-stackql-resource: findings_v2s
+      x-stackql-resource: findings_v2
       x-stackql-method: get_findings_v2
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetFindingsV2OutputDisplay
@@ -2803,7 +2711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetResourcesStatisticsV2Response'
-      x-stackql-resource: resources_statistics_v2s
+      x-stackql-resource: resources_statistics_v2
       x-stackql-method: get_resources_statistics_v2
       x-stackql-verb: SELECT
   /resourcesTrendsv2:
@@ -2839,7 +2747,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetResourcesTrendsV2Response'
-      x-stackql-resource: resources_trends_v2s
+      x-stackql-resource: resources_trends_v2
       x-stackql-method: get_resources_trends_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrendsMetrics
@@ -2884,7 +2792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetResourcesV2Response'
-      x-stackql-resource: resources_v2s
+      x-stackql-resource: resources_v2
       x-stackql-method: get_resources_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
@@ -2973,7 +2881,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAggregatorsV2Response'
-      x-stackql-resource: aggregators_v2s
+      x-stackql-resource: aggregators_v2
       x-stackql-method: list_aggregators_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregatorsV2
@@ -3033,7 +2941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAutomationRulesV2Response'
-      x-stackql-resource: automation_rules_v2s
+      x-stackql-resource: automation_rules_v2
       x-stackql-method: list_automation_rules_v2
       x-stackql-verb: SELECT
   /configurationPolicy/list:
@@ -3168,7 +3076,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListFreeTrialStatusesV2Response'
-      x-stackql-resource: free_trial_statuses_v2s
+      x-stackql-resource: free_trial_statuses_v2
       x-stackql-method: list_free_trial_statuses_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountFreeTrialStatuses
@@ -3344,10 +3252,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3371,10 +3275,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3404,7 +3304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterConnectorV2Response'
-      x-stackql-resource: connector_v2s
+      x-stackql-resource: connectors_v2
       x-stackql-method: register_connector_v2
       x-stackql-verb: INSERT
   /configurationPolicyAssociation/associate:
@@ -3435,7 +3335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigurationPolicyAssociationResponse'
-      x-stackql-resource: configuration_policies
+      x-stackql-resource: configuration_policy_associations
       x-stackql-method: start_configuration_policy_association
       x-stackql-verb: EXEC
   /configurationPolicyAssociation/disassociate:
@@ -3463,10 +3363,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartConfigurationPolicyDisassociationResponse'
       x-stackql-resource: configuration_policies
       x-stackql-method: start_configuration_policy_disassociation
       x-stackql-verb: EXEC
@@ -3501,7 +3397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAggregatorV2Response'
-      x-stackql-resource: aggregator_v2s
+      x-stackql-resource: aggregators_v2
       x-stackql-method: update_aggregator_v2
       x-stackql-verb: UPDATE
   /findingAggregator/update:
@@ -3562,10 +3458,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSecurityControlResponse'
       x-stackql-resource: security_controls
       x-stackql-method: update_security_control
       x-stackql-verb: UPDATE
@@ -3596,10 +3488,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStandardsControlResponse'
       x-stackql-resource: standards_controls
       x-stackql-method: update_standards_control
       x-stackql-verb: UPDATE
@@ -3651,10 +3539,6 @@ components:
     NonEmptyString:
       type: string
       pattern: .*\S.*
-    AcceptAdministratorInvitationResponse:
-      type: object
-    AcceptInvitationResponse:
-      type: object
     AutomationRulesArnsList:
       type: array
       items:
@@ -19190,12 +19074,6 @@ components:
           description: The ARN of the custom action target that was deleted.
       required:
       - ActionTargetArn
-    DeleteAggregatorV2Response:
-      type: object
-    DeleteAutomationRuleV2Response:
-      type: object
-    DeleteConfigurationPolicyResponse:
-      type: object
     DeleteConnectorResponse:
       type: object
       properties:
@@ -19208,8 +19086,6 @@ components:
         EnablementStatus:
           $ref: '#/components/schemas/EnablementStatus'
           description: The enablement status of the connector after deletion.
-    DeleteFindingAggregatorResponse:
-      type: object
     DeleteInsightResponse:
       type: object
       properties:
@@ -19615,32 +19491,16 @@ components:
         RelatedRequirements:
           $ref: '#/components/schemas/RelatedRequirementsList'
           description: The list of requirements that are related to this control.
-    DisableImportFindingsForProductResponse:
-      type: object
     SecurityHubFeature:
       type: string
       enum:
       - SecurityHub
       - SecurityHubV2
-    DisableOrganizationAdminAccountResponse:
-      type: object
-    DisableSecurityHubResponse:
-      type: object
     FeatureName:
       description: 'The name of an opt-in feature. Valid values: NETWORK_SCANNING.'
       type: string
       enum:
       - NETWORK_SCANNING
-    DisableSecurityHubFeatureV2Response:
-      type: object
-    DisableSecurityHubV2Response:
-      type: object
-    DisassociateFromAdministratorAccountResponse:
-      type: object
-    DisassociateFromMasterAccountResponse:
-      type: object
-    DisassociateMembersResponse:
-      type: object
     EnableImportFindingsForProductResponse:
       type: object
       properties:
@@ -19658,18 +19518,12 @@ components:
           $ref: '#/components/schemas/SecurityHubFeature'
           description: The feature where the delegated administrator is enabled. The default is Security Hub CSPM CSPM if
             no delegated administrator is specified in the request.
-    EnableSecurityHubResponse:
-      type: object
-    EnableSecurityHubFeatureV2Response:
-      type: object
     EnableSecurityHubV2Response:
       type: object
       properties:
         HubV2Arn:
           $ref: '#/components/schemas/NonEmptyString'
           description: The ARN of the V2 resource that was created.
-    GenerateRecommendedPolicyV2Response:
-      type: object
     GetAdministratorAccountResponse:
       type: object
       properties:
@@ -21968,10 +21822,6 @@ components:
         AssociationStatusMessage:
           $ref: '#/components/schemas/NonEmptyString'
           description: An explanation for a FAILED value for AssociationStatus.
-    StartConfigurationPolicyDisassociationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -21981,10 +21831,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateActionTargetResponse:
-      type: object
     UpdateAggregatorV2Response:
       type: object
       properties:
@@ -22000,8 +21846,6 @@ components:
         LinkedRegions:
           $ref: '#/components/schemas/StringList'
           description: A list of Amazon Web Services Regions linked to the aggegation Region.
-    UpdateAutomationRuleV2Response:
-      type: object
     UpdateConfigurationPolicyResponse:
       type: object
       properties:
@@ -22114,18 +21958,6 @@ components:
         Regions:
           $ref: '#/components/schemas/StringList'
           description: The list of excluded Regions or included Regions.
-    UpdateFindingsResponse:
-      type: object
-    UpdateInsightResponse:
-      type: object
-    UpdateOrganizationConfigurationResponse:
-      type: object
     Parameters:
       type: object
       properties: {}
-    UpdateSecurityControlResponse:
-      type: object
-    UpdateSecurityHubConfigurationResponse:
-      type: object
-    UpdateStandardsControlResponse:
-      type: object

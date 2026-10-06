@@ -306,6 +306,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified API.</td>
 </tr>
+<tr>
+    <td><a href="#import_rest_api"><CopyableCode code="import_rest_api" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-body"><code>body</code></a></td>
+    <td><a href="#parameter-failonwarnings"><code>failonwarnings</code></a>, <a href="#parameter-parameters"><code>parameters</code></a></td>
+    <td>A feature of the API Gateway control service for creating a new API from an external API definition file.</td>
+</tr>
 </tbody>
 </table>
 
@@ -335,7 +342,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-failonwarnings">
     <td><CopyableCode code="failonwarnings" /></td>
     <td><code>boolean</code></td>
-    <td>A query parameter to indicate whether to rollback the API update (true) or not (false) when a warning is encountered. The default value is false.</td>
+    <td>A query parameter to indicate whether to rollback the API creation (true) or not (false) when a warning is encountered. The default value is false.</td>
 </tr>
 <tr id="parameter-limit">
     <td><CopyableCode code="limit" /></td>
@@ -350,7 +357,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-parameters">
     <td><CopyableCode code="parameters" /></td>
     <td><code>object</code></td>
-    <td>Custom header parameters as part of the request. For example, to exclude DocumentationParts from an imported API, set ignore=documentation as a parameters value, as in the AWS CLI command of aws apigateway import-rest-api --parameters ignore=documentation --body 'file:​///path/to/imported-api-body.json'.</td>
+    <td>A key-value map of context-specific query string parameters specifying the behavior of different API importing operations. The following shows operation-specific parameters and their supported values. To exclude DocumentationParts from the import, set parameters as ignore=documentation. To configure the endpoint type, set parameters as endpointConfigurationTypes=EDGE, endpointConfigurationTypes=REGIONAL, or endpointConfigurationTypes=PRIVATE. The default endpoint type is EDGE. To handle imported basepath, set parameters as basepath=ignore, basepath=prepend or basepath=split.</td>
 </tr>
 <tr id="parameter-position">
     <td><CopyableCode code="position" /></td>
@@ -657,6 +664,33 @@ Deletes the specified API.
 DELETE FROM aws.apigateway.rest_apis
 WHERE restapi_id = '{{ restapi_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_rest_api"
+    values={[
+        { label: 'import_rest_api', value: 'import_rest_api' }
+    ]}
+>
+<TabItem value="import_rest_api">
+
+A feature of the API Gateway control service for creating a new API from an external API definition file.
+
+```sql
+EXEC aws.apigateway.rest_apis.import_rest_api 
+@region='{{ region }}' --required, 
+@failonwarnings={{ failonwarnings }}, 
+@parameters='{{ parameters }}' 
+@@json=
+'{
+"body": "{{ body }}"
+}'
 ;
 ```
 </TabItem>

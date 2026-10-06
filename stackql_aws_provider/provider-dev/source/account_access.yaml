@@ -92,10 +92,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -141,10 +137,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEntitlementResponse'
       x-stackql-resource: entitlements
       x-stackql-method: delete_entitlement
       x-stackql-verb: DELETE
@@ -289,10 +281,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -315,10 +303,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -466,10 +450,6 @@ components:
       - entitlementId
     String:
       type: string
-    DeleteApplicationResponse:
-      type: object
-    DeleteEntitlementResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -756,11 +736,7 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object

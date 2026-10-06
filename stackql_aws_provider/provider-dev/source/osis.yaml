@@ -109,10 +109,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePipelineResponse'
       x-stackql-resource: pipelines
       x-stackql-method: delete_pipeline
       x-stackql-verb: DELETE
@@ -130,10 +126,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePipelineEndpointResponse'
       x-stackql-resource: pipeline_endpoints
       x-stackql-method: delete_pipeline_endpoint
       x-stackql-verb: DELETE
@@ -151,10 +143,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -280,7 +268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPipelineChangeProgressResponse'
-      x-stackql-resource: pipeline_change_progress
+      x-stackql-resource: pipeline_change_progresses
       x-stackql-method: get_pipeline_change_progress
       x-stackql-verb: SELECT
   /2022-01-01/osis/listPipelineBlueprints:
@@ -462,7 +450,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipelineResponse'
-      x-stackql-resource: pipeline
+      x-stackql-resource: pipelines
       x-stackql-method: start_pipeline
       x-stackql-verb: EXEC
   /2022-01-01/osis/stopPipeline/{pipeline_name}:
@@ -483,7 +471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipelineResponse'
-      x-stackql-resource: pipeline
+      x-stackql-resource: pipelines
       x-stackql-method: stop_pipeline
       x-stackql-verb: EXEC
   /2022-01-01/osis/tagResource/:
@@ -511,10 +499,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -544,10 +528,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -618,7 +598,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePipelineResponse'
-      x-stackql-resource: pipeline
+      x-stackql-resource: pipelines
       x-stackql-method: validate_pipeline
       x-stackql-verb: EXEC
 components:
@@ -1010,12 +990,6 @@ components:
       - DELETING
       - REVOKING
       - REVOKED
-    DeletePipelineResponse:
-      type: object
-    DeletePipelineEndpointResponse:
-      type: object
-    DeleteResourcePolicyResponse:
-      type: object
     GetPipelineResponse:
       type: object
       properties:
@@ -1321,14 +1295,10 @@ components:
       properties:
         Pipeline:
           $ref: '#/components/schemas/Pipeline'
-    TagResourceResponse:
-      type: object
     StringList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdatePipelineResponse:
       type: object
       properties:

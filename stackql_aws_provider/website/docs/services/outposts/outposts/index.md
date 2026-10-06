@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="generation" /></td>
+    <td><code>string</code></td>
+    <td>The Outpost generation. Valid values are GENERATION_1 for first-generation rack deployments and GENERATION_2 for second-generation rack deployments. (GENERATION_2, GENERATION_1)</td>
+</tr>
+<tr>
     <td><CopyableCode code="life_cycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (pattern: &lt;code&gt;^&#91; A-Za-z&#93;+$&lt;/code&gt;)</td>
@@ -89,6 +94,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Outpost owner. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rack_scaling_type" /></td>
+    <td><code>string</code></td>
+    <td>The rack scaling type. Valid values are SINGLE_RACK for single-rack Outposts and MULTI_RACK for multi-rack Outposts that can expand across multiple racks. (SINGLE_RACK, MULTI_RACK)</td>
 </tr>
 <tr>
     <td><CopyableCode code="site_arn" /></td>
@@ -140,6 +150,11 @@ The following fields are returned by `SELECT` queries:
     <td>The description of the Outpost. (pattern: &lt;code&gt;^&#91;\S &#93;*$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="generation" /></td>
+    <td><code>string</code></td>
+    <td>The Outpost generation. Valid values are GENERATION_1 for first-generation rack deployments and GENERATION_2 for second-generation rack deployments. (GENERATION_2, GENERATION_1)</td>
+</tr>
+<tr>
     <td><CopyableCode code="life_cycle_status" /></td>
     <td><code>string</code></td>
     <td>The life cycle status. (pattern: &lt;code&gt;^&#91; A-Za-z&#93;+$&lt;/code&gt;)</td>
@@ -163,6 +178,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="owner_id" /></td>
     <td><code>string</code></td>
     <td>The Amazon Web Services account ID of the Outpost owner. (pattern: &lt;code&gt;\d&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="rack_scaling_type" /></td>
+    <td><code>string</code></td>
+    <td>The rack scaling type. Valid values are SINGLE_RACK for single-rack Outposts and MULTI_RACK for multi-rack Outposts that can expand across multiple racks. (SINGLE_RACK, MULTI_RACK)</td>
 </tr>
 <tr>
     <td><CopyableCode code="site_arn" /></td>
@@ -219,18 +239,18 @@ The following methods are available for this resource:
     <td>Lists the Outposts for your Amazon Web Services account. Use filters to return specific results. If you specify multiple filters, the results include only the resources that match all of the specified filters. For a filter where you can specify multiple values, the results include items that match any of the values that you specify for the filter.</td>
 </tr>
 <tr>
-    <td><a href="#create_renewal"><CopyableCode code="create_renewal" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PaymentOption"><code>PaymentOption</code></a>, <a href="#parameter-PaymentTerm"><code>PaymentTerm</code></a>, <a href="#parameter-OutpostIdentifier"><code>OutpostIdentifier</code></a></td>
-    <td></td>
-    <td>Creates a renewal contract for the specified Outpost.</td>
-</tr>
-<tr>
     <td><a href="#create_outpost"><CopyableCode code="create_outpost" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SiteId"><code>SiteId</code></a></td>
     <td></td>
     <td>Creates an Outpost. You can specify either an Availability one or an AZ ID.</td>
+</tr>
+<tr>
+    <td><a href="#create_renewal"><CopyableCode code="create_renewal" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PaymentOption"><code>PaymentOption</code></a>, <a href="#parameter-PaymentTerm"><code>PaymentTerm</code></a>, <a href="#parameter-OutpostIdentifier"><code>OutpostIdentifier</code></a></td>
+    <td></td>
+    <td>Creates a renewal contract for the specified Outpost.</td>
 </tr>
 <tr>
     <td><a href="#update_outpost"><CopyableCode code="update_outpost" /></a></td>
@@ -344,11 +364,13 @@ SELECT
 availability_zone,
 availability_zone_id,
 description,
+generation,
 life_cycle_status,
 name,
 outpost_arn,
 outpost_id,
 owner_id,
+rack_scaling_type,
 site_arn,
 site_id,
 supported_hardware_type,
@@ -368,11 +390,13 @@ SELECT
 availability_zone,
 availability_zone_id,
 description,
+generation,
 life_cycle_status,
 name,
 outpost_arn,
 outpost_id,
 owner_id,
+rack_scaling_type,
 site_arn,
 site_id,
 supported_hardware_type,
@@ -393,41 +417,13 @@ AND AvailabilityZoneIdFilter = '{{ AvailabilityZoneIdFilter }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_renewal"
+    defaultValue="create_outpost"
     values={[
-        { label: 'create_renewal', value: 'create_renewal' },
         { label: 'create_outpost', value: 'create_outpost' },
+        { label: 'create_renewal', value: 'create_renewal' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_renewal">
-
-Creates a renewal contract for the specified Outpost.
-
-```sql
-INSERT INTO aws.outposts.outposts (
-PaymentOption,
-PaymentTerm,
-OutpostIdentifier,
-ClientToken,
-region
-)
-SELECT 
-'{{ PaymentOption }}' /* required */,
-'{{ PaymentTerm }}' /* required */,
-'{{ OutpostIdentifier }}' /* required */,
-'{{ ClientToken }}',
-'{{ region }}'
-RETURNING
-currency,
-monthly_recurring_price,
-outpost_id,
-payment_option,
-payment_term,
-upfront_price
-;
-```
-</TabItem>
 <TabItem value="create_outpost">
 
 Creates an Outpost. You can specify either an Availability one or an AZ ID.
@@ -457,6 +453,34 @@ outpost
 ;
 ```
 </TabItem>
+<TabItem value="create_renewal">
+
+Creates a renewal contract for the specified Outpost.
+
+```sql
+INSERT INTO aws.outposts.outposts (
+PaymentOption,
+PaymentTerm,
+OutpostIdentifier,
+ClientToken,
+region
+)
+SELECT 
+'{{ PaymentOption }}' /* required */,
+'{{ PaymentTerm }}' /* required */,
+'{{ OutpostIdentifier }}' /* required */,
+'{{ ClientToken }}',
+'{{ region }}'
+RETURNING
+currency,
+monthly_recurring_price,
+outpost_id,
+payment_option,
+payment_term,
+upfront_price
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -465,16 +489,6 @@ outpost
     - name: region
       value: "{{ region }}"
       description: Required parameter for the outposts resource.
-    - name: PaymentOption
-      value: "{{ PaymentOption }}"
-      valid_values: ['ALL_UPFRONT', 'NO_UPFRONT', 'PARTIAL_UPFRONT']
-    - name: PaymentTerm
-      value: "{{ PaymentTerm }}"
-      valid_values: ['THREE_YEARS', 'ONE_YEAR', 'FIVE_YEARS']
-    - name: OutpostIdentifier
-      value: "{{ OutpostIdentifier }}"
-    - name: ClientToken
-      value: "{{ ClientToken }}"
     - name: Name
       value: "{{ Name }}"
       description: |
@@ -500,6 +514,16 @@ outpost
     - name: SupportedHardwareType
       value: "{{ SupportedHardwareType }}"
       valid_values: ['RACK', 'SERVER']
+    - name: PaymentOption
+      value: "{{ PaymentOption }}"
+      valid_values: ['ALL_UPFRONT', 'NO_UPFRONT', 'PARTIAL_UPFRONT']
+    - name: PaymentTerm
+      value: "{{ PaymentTerm }}"
+      valid_values: ['THREE_YEARS', 'ONE_YEAR', 'FIVE_YEARS']
+    - name: OutpostIdentifier
+      value: "{{ OutpostIdentifier }}"
+    - name: ClientToken
+      value: "{{ ClientToken }}"
 `}</CodeBlock>
 
 </TabItem>

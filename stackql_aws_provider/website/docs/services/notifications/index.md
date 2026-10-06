@@ -37,7 +37,7 @@ total resources: __13__
 <a href="/services/notifications/notification_configurations/">notification_configurations</a><br />
 <a href="/services/notifications/notification_events/">notification_events</a><br />
 <a href="/services/notifications/notification_hubs/">notification_hubs</a><br />
-<a href="/services/notifications/notifications_access_for_organizations/">notifications_access_for_organizations</a><br />
+<a href="/services/notifications/notifications_accesses/">notifications_accesses</a><br />
 <a href="/services/notifications/organizational_units/">organizational_units</a><br />
 <a href="/services/notifications/tags/">tags</a>
 </div>

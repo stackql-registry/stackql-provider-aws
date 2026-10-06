@@ -18,23 +18,22 @@ snowball service documentation.
 
 :::info[Service Summary]
 
-total resources: __14__  
+total resources: __13__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/snowball/address/">address</a><br />
 <a href="/services/snowball/addresses/">addresses</a><br />
 <a href="/services/snowball/cluster_jobs/">cluster_jobs</a><br />
 <a href="/services/snowball/clusters/">clusters</a><br />
 <a href="/services/snowball/compatible_images/">compatible_images</a><br />
 <a href="/services/snowball/job_manifests/">job_manifests</a><br />
-<a href="/services/snowball/job_unlock_codes/">job_unlock_codes</a>
+<a href="/services/snowball/job_unlock_codes/">job_unlock_codes</a><br />
+<a href="/services/snowball/jobs/">jobs</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/snowball/jobs/">jobs</a><br />
 <a href="/services/snowball/long_term_pricings/">long_term_pricings</a><br />
 <a href="/services/snowball/pickup_locations/">pickup_locations</a><br />
 <a href="/services/snowball/return_shipping_labels/">return_shipping_labels</a><br />

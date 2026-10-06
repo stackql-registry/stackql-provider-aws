@@ -112,18 +112,18 @@ The following methods are available for this resource:
     <td>Describes your network ACLs. The default is to describe all your network ACLs. Alternatively, you can specify specific network ACL IDs or filter the results to include only the network ACLs that match specific criteria. For more information, see Network ACLs in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><a href="#create_network_acl_entry"><CopyableCode code="create_network_acl_entry" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-NetworkAclId"><code>NetworkAclId</code></a>, <a href="#parameter-RuleNumber"><code>RuleNumber</code></a>, <a href="#parameter-RuleAction"><code>RuleAction</code></a>, <a href="#parameter-Egress"><code>Egress</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Protocol"><code>Protocol</code></a>, <a href="#parameter-CidrBlock"><code>CidrBlock</code></a>, <a href="#parameter-Ipv6CidrBlock"><code>Ipv6CidrBlock</code></a>, <a href="#parameter-Icmp"><code>Icmp</code></a>, <a href="#parameter-PortRange"><code>PortRange</code></a></td>
-    <td>Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules. We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules. After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one. For more information about network ACLs, see Network ACLs in the Amazon VPC User Guide.</td>
-</tr>
-<tr>
     <td><a href="#create_network_acl"><CopyableCode code="create_network_acl" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-VpcId"><code>VpcId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC. For more information, see Network ACLs in the Amazon VPC User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_network_acl_entry"><CopyableCode code="create_network_acl_entry" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-NetworkAclId"><code>NetworkAclId</code></a>, <a href="#parameter-RuleNumber"><code>RuleNumber</code></a>, <a href="#parameter-RuleAction"><code>RuleAction</code></a>, <a href="#parameter-Egress"><code>Egress</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Protocol"><code>Protocol</code></a>, <a href="#parameter-CidrBlock"><code>CidrBlock</code></a>, <a href="#parameter-Ipv6CidrBlock"><code>Ipv6CidrBlock</code></a>, <a href="#parameter-Icmp"><code>Icmp</code></a>, <a href="#parameter-PortRange"><code>PortRange</code></a></td>
+    <td>Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules. We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules. After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one. For more information about network ACLs, see Network ACLs in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
     <td><a href="#replace_network_acl_entry"><CopyableCode code="replace_network_acl_entry" /></a></td>
@@ -304,13 +304,42 @@ AND Filter = '{{ Filter }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_network_acl_entry"
+    defaultValue="create_network_acl"
     values={[
-        { label: 'create_network_acl_entry', value: 'create_network_acl_entry' },
         { label: 'create_network_acl', value: 'create_network_acl' },
+        { label: 'create_network_acl_entry', value: 'create_network_acl_entry' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_network_acl">
+
+Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC. For more information, see Network ACLs in the Amazon VPC User Guide.
+
+```sql
+INSERT INTO aws.ec2.network_acls (
+VpcId,
+region,
+TagSpecification,
+ClientToken,
+DryRun
+)
+SELECT 
+'{{ VpcId }}',
+'{{ region }}',
+'{{ TagSpecification }}',
+'{{ ClientToken }}',
+'{{ DryRun }}'
+RETURNING
+associations,
+entries,
+is_default,
+network_acl_id,
+owner_id,
+tags,
+vpc_id
+;
+```
+</TabItem>
 <TabItem value="create_network_acl_entry">
 
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules. We recommend that you leave room between the rule numbers (for example, 100, 110, 120, ...), and not number them one right after the other (for example, 101, 102, 103, ...). This makes it easier to add a rule between existing ones without having to renumber the rules. After you add an entry, you can't modify it; you must either replace it, or create an entry and delete the old one. For more information about network ACLs, see Network ACLs in the Amazon VPC User Guide.
@@ -344,40 +373,17 @@ SELECT
 ;
 ```
 </TabItem>
-<TabItem value="create_network_acl">
-
-Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC. For more information, see Network ACLs in the Amazon VPC User Guide.
-
-```sql
-INSERT INTO aws.ec2.network_acls (
-VpcId,
-region,
-TagSpecification,
-ClientToken,
-DryRun
-)
-SELECT 
-'{{ VpcId }}',
-'{{ region }}',
-'{{ TagSpecification }}',
-'{{ ClientToken }}',
-'{{ DryRun }}'
-RETURNING
-associations,
-entries,
-is_default,
-network_acl_id,
-owner_id,
-tags,
-vpc_id
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: network_acls
   props:
+    - name: VpcId
+      value: "{{ VpcId }}"
+      description: Required parameter for the network_acls resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the network_acls resource.
     - name: NetworkAclId
       value: "{{ NetworkAclId }}"
       description: Required parameter for the network_acls resource.
@@ -390,12 +396,14 @@ vpc_id
     - name: Egress
       value: {{ Egress }}
       description: Required parameter for the network_acls resource.
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the network_acls resource.
-    - name: VpcId
-      value: "{{ VpcId }}"
-      description: Required parameter for the network_acls resource.
+    - name: TagSpecification
+      value: "{{ TagSpecification }}"
+      description: The tags to assign to the network ACL.
+      description: The tags to assign to the network ACL.
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
     - name: DryRun
       value: {{ DryRun }}
       description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -420,14 +428,6 @@ vpc_id
       value: "{{ PortRange }}"
       description: TCP or UDP protocols: The range of ports the rule applies to. Required if specifying protocol 6 (TCP) or 17 (UDP).
       description: TCP or UDP protocols: The range of ports the rule applies to. Required if specifying protocol 6 (TCP) or 17 (UDP).
-    - name: TagSpecification
-      value: "{{ TagSpecification }}"
-      description: The tags to assign to the network ACL.
-      description: The tags to assign to the network ACL.
-    - name: ClientToken
-      value: "{{ ClientToken }}"
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
 `}</CodeBlock>
 
 </TabItem>

@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMessageMoveTaskResult'
-      x-stackql-resource: message_move_task
+      x-stackql-resource: message_move_tasks
       x-stackql-method: cancel_message_move_task
       x-stackql-verb: EXEC
   /ChangeMessageVisibility:
@@ -183,7 +183,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: change_message_visibility
+      x-stackql-resource: message_visibilities
       x-stackql-method: change_message_visibility
       x-stackql-verb: EXEC
   /ChangeMessageVisibilityBatch:
@@ -227,7 +227,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChangeMessageVisibilityBatchResult'
-      x-stackql-resource: change_message_visibility_batch
+      x-stackql-resource: message_visibility_batches
       x-stackql-method: change_message_visibility_batch
       x-stackql-verb: EXEC
   /CreateQueue:
@@ -878,7 +878,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: purge_queue
+      x-stackql-resource: queues
       x-stackql-method: purge_queue
       x-stackql-verb: EXEC
   /ReceiveMessage:
@@ -1022,7 +1022,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReceiveMessageResult'
-      x-stackql-resource: receive_message
+      x-stackql-resource: messages
       x-stackql-method: receive_message
       x-stackql-verb: EXEC
   /RemovePermission:
@@ -1179,7 +1179,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageResult'
-      x-stackql-resource: message
+      x-stackql-resource: messages
       x-stackql-method: send_message
       x-stackql-verb: EXEC
   /SendMessageBatch:
@@ -1231,7 +1231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageBatchResult'
-      x-stackql-resource: message_batch
+      x-stackql-resource: message_batches
       x-stackql-method: send_message_batch
       x-stackql-verb: EXEC
   /SetQueueAttributes:
@@ -1396,7 +1396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMessageMoveTaskResult'
-      x-stackql-resource: message_move_task
+      x-stackql-resource: message_move_tasks
       x-stackql-method: start_message_move_task
       x-stackql-verb: EXEC
   /TagQueue:

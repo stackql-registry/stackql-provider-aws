@@ -45,7 +45,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alias
+      x-stackql-resource: aliases
       x-stackql-method: associate_alias
       x-stackql-verb: UPDATE
   /2020-05-31/distribution-tenant/{id}/associate-web-acl:
@@ -181,7 +181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyDistributionOutputDisplay'
-      x-stackql-resource: distribution
+      x-stackql-resource: distributions
       x-stackql-method: copy_distribution
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDistributionOutputDisplay
@@ -481,7 +481,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetConnectionGroupByRoutingEndpointOutputDisplay'
-      x-stackql-resource: connection_group_by_routing_endpoints
+      x-stackql-resource: connection_groups
       x-stackql-method: get_connection_group_by_routing_endpoint
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetConnectionGroupByRoutingEndpointOutputDisplay
@@ -673,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDistributionTenantByDomainOutputDisplay'
-      x-stackql-resource: distribution_tenant_by_domains
+      x-stackql-resource: distribution_tenants
       x-stackql-method: get_distribution_tenant_by_domain
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetDistributionTenantByDomainOutputDisplay
@@ -1009,7 +1009,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateInvalidationForDistributionTenantOutputDisplay'
-      x-stackql-resource: invalidation_for_distribution_tenants
+      x-stackql-resource: invalidations
       x-stackql-method: create_invalidation_for_distribution_tenant
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateInvalidationForDistributionTenantOutputDisplay
@@ -1047,7 +1047,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListInvalidationsForDistributionTenantOutputDisplay'
-      x-stackql-resource: invalidations_for_distribution_tenants
+      x-stackql-resource: invalidations
       x-stackql-method: list_invalidations_for_distribution_tenant
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListInvalidationsForDistributionTenantOutputDisplay
@@ -1236,15 +1236,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMonitoringSubscriptionOutputDisplay'
       x-stackql-resource: monitoring_subscriptions
       x-stackql-method: delete_monitoring_subscription
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteMonitoringSubscriptionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetMonitoringSubscription
       description: Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution.
@@ -3900,7 +3894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInvalidationForDistributionTenantOutputDisplay'
-      x-stackql-resource: invalidation_for_distribution_tenants
+      x-stackql-resource: invalidations
       x-stackql-method: get_invalidation_for_distribution_tenant
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetInvalidationForDistributionTenantOutputDisplay
@@ -4457,7 +4451,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionTenantsByCustomizationOutputDisplay'
-      x-stackql-resource: distribution_tenants_by_customizations
+      x-stackql-resource: distribution_tenants
       x-stackql-method: list_distribution_tenants_by_customization
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionTenantsByCustomizationOutputDisplay
@@ -4494,7 +4488,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByAnycastIpListIdOutputDisplay'
-      x-stackql-resource: distributions_by_anycast_ip_list_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_anycast_ip_list_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByAnycastIpListIdOutputDisplay
@@ -4535,7 +4529,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByCachePolicyIdOutputDisplay'
-      x-stackql-resource: distributions_by_cache_policy_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_cache_policy_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByCachePolicyIdOutputDisplay
@@ -4572,7 +4566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByConnectionFunctionOutputDisplay'
-      x-stackql-resource: distributions_by_connection_functions
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_connection_function
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByConnectionFunctionOutputDisplay
@@ -4608,7 +4602,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByConnectionModeOutputDisplay'
-      x-stackql-resource: distributions_by_connection_modes
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_connection_mode
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByConnectionModeOutputDisplay
@@ -4649,7 +4643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByKeyGroupOutputDisplay'
-      x-stackql-resource: distributions_by_key_groups
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_key_group
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByKeyGroupOutputDisplay
@@ -4690,7 +4684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByOriginRequestPolicyIdOutputDisplay'
-      x-stackql-resource: distributions_by_origin_request_policy_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_origin_request_policy_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByOriginRequestPolicyIdOutputDisplay
@@ -4727,7 +4721,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByOwnedResourceOutputDisplay'
-      x-stackql-resource: distributions_by_owned_resources
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_owned_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByOwnedResourceOutputDisplay
@@ -4765,7 +4759,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByRealtimeLogConfigOutputDisplay'
-      x-stackql-resource: distributions_by_realtime_log_configs
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_realtime_log_config
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByRealtimeLogConfigOutputDisplay
@@ -4806,7 +4800,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByResponseHeadersPolicyIdOutputDisplay'
-      x-stackql-resource: distributions_by_response_headers_policy_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_response_headers_policy_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByResponseHeadersPolicyIdOutputDisplay
@@ -4843,7 +4837,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByTrustStoreOutputDisplay'
-      x-stackql-resource: distributions_by_trust_stores
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_trust_store
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByTrustStoreOutputDisplay
@@ -4878,7 +4872,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByVpcOriginIdOutputDisplay'
-      x-stackql-resource: distributions_by_vpc_origin_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_vpc_origin_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByVpcOriginIdOutputDisplay
@@ -4920,7 +4914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDistributionsByWebACLIdOutputDisplay'
-      x-stackql-resource: distributions_by_web_acl_ids
+      x-stackql-resource: distributions
       x-stackql-method: list_distributions_by_web_acl_id
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDistributionsByWebACLIdOutputDisplay
@@ -5050,7 +5044,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishConnectionFunctionOutputDisplay'
-      x-stackql-resource: connection_function
+      x-stackql-resource: connection_functions
       x-stackql-method: publish_connection_function
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishConnectionFunctionOutputDisplay
@@ -5083,7 +5077,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishFunctionOutputDisplay'
-      x-stackql-resource: function
+      x-stackql-resource: functions
       x-stackql-method: publish_function
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishFunctionOutputDisplay
@@ -5183,7 +5177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestConnectionFunctionOutputDisplay'
-      x-stackql-resource: connection_function
+      x-stackql-resource: connection_functions
       x-stackql-method: test_connection_function
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestConnectionFunctionOutputDisplay
@@ -5231,7 +5225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestFunctionOutputDisplay'
-      x-stackql-resource: function
+      x-stackql-resource: functions
       x-stackql-method: test_function
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestFunctionOutputDisplay
@@ -5380,7 +5374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyDnsConfigurationOutputDisplay'
-      x-stackql-resource: dns_configuration
+      x-stackql-resource: dns_configurations
       x-stackql-method: verify_dns_configuration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: VerifyDnsConfigurationOutputDisplay
@@ -7540,7 +7534,7 @@ components:
             accepts HTTPS connections from all viewers including those that don't support SNI. This is not recommended, and
             results in additional monthly charges from CloudFront. static-ip - Do not specify this value unless your distribution
             has been enabled for this feature by the CloudFront team. If you have a use case that requires static IP addresses
-            for a distribution, contact CloudFront through the Amazon Web Services Support Center. If the distribution uses
+            for a distribution, contact CloudFront through the Amazon Web ServicesSupport Center. If the distribution uses
             the CloudFront domain name such as d111111abcdef8.cloudfront.net, don't set a value for this field.
         MinimumProtocolVersion:
           $ref: '#/components/schemas/MinimumProtocolVersion'
@@ -8446,7 +8440,7 @@ components:
         SigningProtocol:
           $ref: '#/components/schemas/OriginAccessControlSigningProtocols'
           description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates)
-            requests. The only valid value is sigv4.
+            requests. The only valid values are sigv4 and sigv4a.
         SigningBehavior:
           $ref: '#/components/schemas/OriginAccessControlSigningBehaviors'
           description: 'Specifies which requests CloudFront signs (adds authentication information to). Specify always for
@@ -8471,6 +8465,7 @@ components:
       type: string
       enum:
       - sigv4
+      - sigv4a
     OriginAccessControlSigningBehaviors:
       type: string
       enum:
@@ -9460,16 +9455,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VpcOriginDisplay'
-    DeleteMonitoringSubscriptionResultDisplay:
-      type: object
-      properties: {}
-    DeleteMonitoringSubscriptionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteMonitoringSubscriptionResultDisplay'
     DeleteVpcOriginOutputDisplay:
       type: object
       properties:
@@ -10097,7 +10082,7 @@ components:
         SigningProtocol:
           type: string
           description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates)
-            requests. The only valid value is sigv4.
+            requests. The only valid values are sigv4 and sigv4a.
         SigningBehavior:
           type: string
           description: 'Specifies which requests CloudFront signs (adds authentication information to). Specify always for

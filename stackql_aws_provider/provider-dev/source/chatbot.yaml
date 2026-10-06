@@ -38,10 +38,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateToConfigurationResult'
       x-stackql-resource: to_configurations
       x-stackql-method: associate_to_configuration
       x-stackql-verb: UPDATE
@@ -242,10 +238,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChimeWebhookConfigurationResult'
       x-stackql-resource: chime_webhook_configurations
       x-stackql-method: delete_chime_webhook_configuration
       x-stackql-verb: DELETE
@@ -268,10 +260,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCustomActionResult'
       x-stackql-resource: custom_actions
       x-stackql-method: delete_custom_action
       x-stackql-verb: DELETE
@@ -294,10 +282,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTeamsChannelConfigurationResult'
       x-stackql-resource: microsoft_teams_channel_configurations
       x-stackql-method: delete_microsoft_teams_channel_configuration
       x-stackql-verb: DELETE
@@ -321,10 +305,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTeamsConfiguredTeamResult'
       x-stackql-resource: microsoft_teams_configured_teams
       x-stackql-method: delete_microsoft_teams_configured_team
       x-stackql-verb: DELETE
@@ -350,10 +330,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMicrosoftTeamsUserIdentityResult'
       x-stackql-resource: microsoft_teams_user_identities
       x-stackql-method: delete_microsoft_teams_user_identity
       x-stackql-verb: DELETE
@@ -376,10 +352,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSlackChannelConfigurationResult'
       x-stackql-resource: slack_channel_configurations
       x-stackql-method: delete_slack_channel_configuration
       x-stackql-verb: DELETE
@@ -408,10 +380,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSlackUserIdentityResult'
       x-stackql-resource: slack_user_identities
       x-stackql-method: delete_slack_user_identity
       x-stackql-verb: DELETE
@@ -435,10 +403,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSlackWorkspaceAuthorizationResult'
       x-stackql-resource: slack_workspaces
       x-stackql-method: delete_slack_workspace_authorization
       x-stackql-verb: DELETE
@@ -590,10 +554,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateFromConfigurationResult'
       x-stackql-resource: from_configurations
       x-stackql-method: disassociate_from_configuration
       x-stackql-verb: UPDATE
@@ -880,10 +840,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -910,10 +866,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1149,8 +1101,6 @@ components:
       minLength: 19
       maxLength: 1169
       pattern: arn:aws:(wheatley|chatbot):[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}
-    AssociateToConfigurationResult:
-      type: object
     ChimeWebhookDescription:
       type: string
       minLength: 1
@@ -1550,27 +1500,11 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    DeleteChimeWebhookConfigurationResult:
-      type: object
-    DeleteCustomActionResult:
-      type: object
-    DeleteTeamsChannelConfigurationResult:
-      type: object
-    DeleteTeamsConfiguredTeamResult:
-      type: object
-    DeleteMicrosoftTeamsUserIdentityResult:
-      type: object
-    DeleteSlackChannelConfigurationResult:
-      type: object
     SlackUserId:
       type: string
       minLength: 1
       maxLength: 255
       pattern: (.*)
-    DeleteSlackUserIdentityResult:
-      type: object
-    DeleteSlackWorkspaceAuthorizationResult:
-      type: object
     MaxResults:
       type: integer
       minimum: 1
@@ -1691,8 +1625,6 @@ components:
       required:
       - SlackTeamId
       - SlackTeamName
-    DisassociateFromConfigurationResult:
-      type: object
     GetAccountPreferencesResult:
       type: object
       properties:
@@ -1928,14 +1860,10 @@ components:
           $ref: '#/components/schemas/TagList'
           description: Key-value pairs that are assigned to a resource, usually for the purpose of grouping and searching
             for items. Tags are metadata that you define.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAccountPreferencesResult:
       type: object
       properties:

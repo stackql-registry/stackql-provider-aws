@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>Used to associate a configuration set with a dedicated IP pool.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="message_security_options" /></td>
+    <td><code>object</code></td>
+    <td>An object that defines the message-level security options that apply to messages that you send using the configuration set. Currently, these options determine whether Amazon SES API v2 adds an S/MIME signature to your messages and, if so, the format of that signature.</td>
+</tr>
+<tr>
     <td><CopyableCode code="reputation_options" /></td>
     <td><code>object</code></td>
     <td>Enable or disable collection of reputation metrics for emails that you send using this configuration set in the current Amazon Web Services Region.</td>
@@ -154,6 +159,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConfigurationSetName"><code>ConfigurationSetName</code></a></td>
     <td></td>
     <td>Create a configuration set. Configuration sets are groups of rules that you can apply to the emails that you send. You apply a configuration set to an email by specifying the name of the configuration set when you call the Amazon SES API v2. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.</td>
+</tr>
+<tr>
+    <td><a href="#update_configuration_set"><CopyableCode code="update_configuration_set" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConfigurationSetName"><code>ConfigurationSetName</code></a></td>
+    <td></td>
+    <td>Updates an existing configuration set. This operation performs a partial update. Only the attributes that you include in the request are updated; any omitted attribute is left unchanged.</td>
 </tr>
 <tr>
     <td><a href="#put_configuration_set_archiving_options"><CopyableCode code="put_configuration_set_archiving_options" /></a></td>
@@ -268,6 +280,7 @@ SELECT
 archiving_options,
 configuration_set_name,
 delivery_options,
+message_security_options,
 reputation_options,
 sending_options,
 suppression_options,
@@ -321,6 +334,7 @@ Tags,
 SuppressionOptions,
 VdmOptions,
 ArchivingOptions,
+MessageSecurityOptions,
 region
 )
 SELECT 
@@ -333,6 +347,7 @@ SELECT
 '{{ SuppressionOptions }}',
 '{{ VdmOptions }}',
 '{{ ArchivingOptions }}',
+'{{ MessageSecurityOptions }}',
 '{{ region }}'
 ;
 ```
@@ -402,8 +417,41 @@ SELECT
         Used to associate a configuration set with a MailManager archive.
       value:
         ArchiveArn: "{{ ArchiveArn }}"
+    - name: MessageSecurityOptions
+      description: |
+        An object that defines the message-level security options that apply to messages that you send using the configuration set. Currently, these options determine whether Amazon SES API v2 adds an S/MIME signature to your messages and, if so, the format of that signature.
+      value:
+        SigningScheme:
+          DefaultScheme: "{{ DefaultScheme }}"
+          SmimeScheme:
+            SignatureFormat: "{{ SignatureFormat }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_configuration_set"
+    values={[
+        { label: 'update_configuration_set', value: 'update_configuration_set' }
+    ]}
+>
+<TabItem value="update_configuration_set">
+
+Updates an existing configuration set. This operation performs a partial update. Only the attributes that you include in the request are updated; any omitted attribute is left unchanged.
+
+```sql
+UPDATE aws.sesv2.configuration_sets
+SET 
+ConfigurationSetName = '{{ ConfigurationSetName }}',
+MessageSecurityOptions = '{{ MessageSecurityOptions }}'
+WHERE 
+region = '{{ region }}' --required
+AND ConfigurationSetName = '{{ ConfigurationSetName }}' --required;
+```
 </TabItem>
 </Tabs>
 

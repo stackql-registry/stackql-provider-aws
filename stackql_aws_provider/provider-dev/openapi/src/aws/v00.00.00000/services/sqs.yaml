@@ -1394,6 +1394,101 @@ components:
           - $ref: "#/components/x-stackQL-resources/permissions/methods/add_permission"
           - $ref: "#/components/x-stackQL-resources/permissions/methods/remove_permission"
         delete: []
+    message_move_tasks:
+      id: aws.sqs.message_move_tasks
+      name: message_move_tasks
+      title: message_move_tasks
+      methods:
+        cancel_message_move_task:
+          operation:
+            $ref: "#/paths/~1CancelMessageMoveTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_message_move_tasks:
+          operation:
+            $ref: "#/paths/~1ListMessageMoveTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_message_move_task:
+          operation:
+            $ref: "#/paths/~1StartMessageMoveTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/message_move_tasks/methods/list_message_move_tasks"
+        insert: []
+        update: []
+        delete: []
+    message_visibilities:
+      id: aws.sqs.message_visibilities
+      name: message_visibilities
+      title: message_visibilities
+      methods:
+        change_message_visibility:
+          operation:
+            $ref: "#/paths/~1ChangeMessageVisibility/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    message_visibility_batches:
+      id: aws.sqs.message_visibility_batches
+      name: message_visibility_batches
+      title: message_visibility_batches
+      methods:
+        change_message_visibility_batch:
+          operation:
+            $ref: "#/paths/~1ChangeMessageVisibilityBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     queues:
       id: aws.sqs.queues
       name: queues
@@ -1451,6 +1546,18 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        purge_queue:
+          operation:
+            $ref: "#/paths/~1PurgeQueue/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queues/methods/list_queues"
@@ -1476,6 +1583,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        receive_message:
+          operation:
+            $ref: "#/paths/~1ReceiveMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_message:
+          operation:
+            $ref: "#/paths/~1SendMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select: []
         insert: []
@@ -1490,6 +1623,19 @@ components:
         delete_message_batch:
           operation:
             $ref: "#/paths/~1DeleteMessageBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_message_batch:
+          operation:
+            $ref: "#/paths/~1SendMessageBatch/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1602,30 +1748,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dead_letter_source_queues/methods/list_dead_letter_source_queues"
-        insert: []
-        update: []
-        delete: []
-    message_move_tasks:
-      id: aws.sqs.message_move_tasks
-      name: message_move_tasks
-      title: message_move_tasks
-      methods:
-        list_message_move_tasks:
-          operation:
-            $ref: "#/paths/~1ListMessageMoveTasks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/message_move_tasks/methods/list_message_move_tasks"
         insert: []
         update: []
         delete: []

@@ -412,6 +412,21 @@ replicator_state
               SecretArn: "{{ SecretArn }}"
             MTLS:
               SecretArn: "{{ SecretArn }}"
+            SaslOAuthBearer:
+              TokenEndpointUrl: "{{ TokenEndpointUrl }}"
+              ClientCredentials:
+                TokenRequestSecretArn: "{{ TokenRequestSecretArn }}"
+              IamJwtBearer:
+                Audience: "{{ Audience }}"
+                SigningAlgorithm: "{{ SigningAlgorithm }}"
+                TokenRequestSecretArn: "{{ TokenRequestSecretArn }}"
+              ClientCredentialsAssertion:
+                Audience: "{{ Audience }}"
+                SigningAlgorithm: "{{ SigningAlgorithm }}"
+                TokenRequestSecretArn: "{{ TokenRequestSecretArn }}"
+              TokenEndpointAuthenticationMethod: "{{ TokenEndpointAuthenticationMethod }}"
+              Scope: "{{ Scope }}"
+              TokenEndpointTlsCertificateArn: "{{ TokenEndpointTlsCertificateArn }}"
           EncryptionInTransit:
             EncryptionType: "{{ EncryptionType }}"
             RootCaCertificate: "{{ RootCaCertificate }}"

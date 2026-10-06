@@ -26,7 +26,7 @@ total resources: __8__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/emr_serverless/applications/">applications</a><br />
-<a href="/services/emr_serverless/dashboard_for_job_runs/">dashboard_for_job_runs</a><br />
+<a href="/services/emr_serverless/dashboards/">dashboards</a><br />
 <a href="/services/emr_serverless/job_run_attempts/">job_run_attempts</a><br />
 <a href="/services/emr_serverless/job_runs/">job_runs</a>
 </div>

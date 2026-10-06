@@ -18,7 +18,7 @@ sso_oidc service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __4__  
 
 :::
 
@@ -26,9 +26,10 @@ total resources: __3__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/sso_oidc/clients/">clients</a><br />
-<a href="/services/sso_oidc/token_with_iams/">token_with_iams</a>
+<a href="/services/sso_oidc/device_authorizations/">device_authorizations</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/sso_oidc/token_with_iams/">token_with_iams</a><br />
 <a href="/services/sso_oidc/tokens/">tokens</a>
 </div>
 </div>

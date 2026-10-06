@@ -33,72 +33,13 @@ Creates, updates, deletes, gets or lists a <code>stream_keys</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_stream_key"
+    defaultValue="get_stream_key"
     values={[
-        { label: 'batch_get_stream_key', value: 'batch_get_stream_key' },
         { label: 'get_stream_key', value: 'get_stream_key' },
-        { label: 'list_stream_keys', value: 'list_stream_keys' }
+        { label: 'list_stream_keys', value: 'list_stream_keys' },
+        { label: 'batch_get_stream_key', value: 'batch_get_stream_key' }
     ]}
 >
-<TabItem value="batch_get_stream_key">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="access_control_allow_origin" /></td>
-    <td><code>string</code></td>
-    <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="access_control_expose_headers" /></td>
-    <td><code>string</code></td>
-    <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="cache_control" /></td>
-    <td><code>string</code></td>
-    <td>See Cache-Control in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="content_security_policy" /></td>
-    <td><code>string</code></td>
-    <td>See Content-Security-Policy in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="stream_keys" /></td>
-    <td><code>array</code></td>
-    <td></td>
-</tr>
-<tr>
-    <td><CopyableCode code="strict_transport_security" /></td>
-    <td><code>string</code></td>
-    <td>See Strict-Transport-Security in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="x_content_type_options" /></td>
-    <td><code>string</code></td>
-    <td>See X-Content-Type-Options in the MDN Web Docs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="x_frame_options" /></td>
-    <td><code>string</code></td>
-    <td>See X-Frame-Options in the MDN Web Docs.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_stream_key">
 
 <table>
@@ -162,6 +103,65 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_stream_key">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="access_control_allow_origin" /></td>
+    <td><code>string</code></td>
+    <td>See Access-Control-Allow-Origin in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="access_control_expose_headers" /></td>
+    <td><code>string</code></td>
+    <td>See Access-Control-Expose-Headers in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="cache_control" /></td>
+    <td><code>string</code></td>
+    <td>See Cache-Control in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="content_security_policy" /></td>
+    <td><code>string</code></td>
+    <td>See Content-Security-Policy in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="stream_keys" /></td>
+    <td><code>array</code></td>
+    <td></td>
+</tr>
+<tr>
+    <td><CopyableCode code="strict_transport_security" /></td>
+    <td><code>string</code></td>
+    <td>See Strict-Transport-Security in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="x_content_type_options" /></td>
+    <td><code>string</code></td>
+    <td>See X-Content-Type-Options in the MDN Web Docs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="x_frame_options" /></td>
+    <td><code>string</code></td>
+    <td>See X-Frame-Options in the MDN Web Docs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -180,13 +180,6 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_stream_key"><CopyableCode code="batch_get_stream_key" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Performs GetStreamKey on multiple ARNs simultaneously.</td>
-</tr>
-<tr>
     <td><a href="#get_stream_key"><CopyableCode code="get_stream_key" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -199,6 +192,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets summary information about stream keys for the specified channel.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_stream_key"><CopyableCode code="batch_get_stream_key" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Performs GetStreamKey on multiple ARNs simultaneously.</td>
 </tr>
 <tr>
     <td><a href="#create_stream_key"><CopyableCode code="create_stream_key" /></a></td>
@@ -241,33 +241,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_stream_key"
+    defaultValue="get_stream_key"
     values={[
-        { label: 'batch_get_stream_key', value: 'batch_get_stream_key' },
         { label: 'get_stream_key', value: 'get_stream_key' },
-        { label: 'list_stream_keys', value: 'list_stream_keys' }
+        { label: 'list_stream_keys', value: 'list_stream_keys' },
+        { label: 'batch_get_stream_key', value: 'batch_get_stream_key' }
     ]}
 >
-<TabItem value="batch_get_stream_key">
-
-Performs GetStreamKey on multiple ARNs simultaneously.
-
-```sql
-SELECT
-access_control_allow_origin,
-access_control_expose_headers,
-cache_control,
-content_security_policy,
-errors,
-stream_keys,
-strict_transport_security,
-x_content_type_options,
-x_frame_options
-FROM aws.ivs.stream_keys
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_stream_key">
 
 Gets stream-key information for a specified ARN.
@@ -292,6 +272,26 @@ SELECT
 arn,
 channel_arn,
 tags
+FROM aws.ivs.stream_keys
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_stream_key">
+
+Performs GetStreamKey on multiple ARNs simultaneously.
+
+```sql
+SELECT
+access_control_allow_origin,
+access_control_expose_headers,
+cache_control,
+content_security_policy,
+errors,
+stream_keys,
+strict_transport_security,
+x_content_type_options,
+x_frame_options
 FROM aws.ivs.stream_keys
 WHERE region = '{{ region }}' -- required
 ;

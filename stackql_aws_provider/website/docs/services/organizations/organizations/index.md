@@ -132,6 +132,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the organization. You can delete an organization only by using credentials from the management account. The organization must be empty of member accounts. When an organization is deleted, Organizations logs a membership event in CloudTrail. The event is an AccountDepartedOrganization event with departureMethod:LEFT and departureTime. This event is available only in the management account's event history.</td>
 </tr>
+<tr>
+    <td><a href="#invite_account_to_organization"><CopyableCode code="invite_account_to_organization" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Target"><code>Target</code></a></td>
+    <td></td>
+    <td>Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a Handshake whose details are in the response. If you receive an exception that indicates that you exceeded your account limits for the organization or that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists after an hour, contact Amazon Web Services Support. If the request includes tags, then the requester must have the organizations:TagResource permission. You can only call this operation from the management account.</td>
+</tr>
+<tr>
+    <td><a href="#leave_organization"><CopyableCode code="leave_organization" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the management account, use RemoveAccountFromOrganization instead. You can only call from operation from a member account. When an account leaves an organization, Organizations logs a membership event in CloudTrail. The event is an AccountDepartedOrganization event with departureMethod:LEFT and departureTime. This event is available only in the management account's event history. The management account in an organization with all features enabled can set service control policies (SCPs) that can restrict what administrators of member accounts can do. This includes preventing them from successfully calling LeaveOrganization and leaving the organization. You can leave an organization as a member account only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the Organizations console, API, or CLI commands, the information required of standalone accounts is not automatically collected. For each account that you want to make standalone, you must perform the following steps. If any of the steps are already completed for this account, that step doesn't appear. Choose a support plan Provide and verify the required contact information Provide a current payment method Amazon Web Services uses the payment method to charge for any billable (not free tier) Amazon Web Services activity that occurs while the account isn't attached to an organization. For more information, see Considerations before removing an account from an organization in the Organizations User Guide. The account that you want to leave must not be a delegated administrator account for any Amazon Web Services service enabled for your organization. If the account is a delegated administrator, you must first change the delegated administrator account to another account that is remaining in the organization. After the account leaves the organization, all tags that were attached to the account object in the organization are deleted. Amazon Web Services accounts outside of an organization do not support tags. A newly created account has a waiting period before it can be removed from its organization. You must wait until at least four days after the account was created. Invited accounts aren't subject to this waiting period. If you are using an organization principal to call LeaveOrganization across multiple accounts, you can only do this up to 5 accounts per second in a single organization.</td>
+</tr>
 </tbody>
 </table>
 
@@ -269,6 +283,44 @@ Deletes the organization. You can delete an organization only by using credentia
 ```sql
 DELETE FROM aws.organizations.organizations
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="invite_account_to_organization"
+    values={[
+        { label: 'invite_account_to_organization', value: 'invite_account_to_organization' },
+        { label: 'leave_organization', value: 'leave_organization' }
+    ]}
+>
+<TabItem value="invite_account_to_organization">
+
+Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a Handshake whose details are in the response. If you receive an exception that indicates that you exceeded your account limits for the organization or that the operation failed because your organization is still initializing, wait one hour and then try again. If the error persists after an hour, contact Amazon Web Services Support. If the request includes tags, then the requester must have the organizations:TagResource permission. You can only call this operation from the management account.
+
+```sql
+EXEC aws.organizations.organizations.invite_account_to_organization 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Target": "{{ Target }}", 
+"Notes": "{{ Notes }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="leave_organization">
+
+Removes a member account from its parent organization. This version of the operation is performed by the account that wants to leave. To remove a member account as a user in the management account, use RemoveAccountFromOrganization instead. You can only call from operation from a member account. When an account leaves an organization, Organizations logs a membership event in CloudTrail. The event is an AccountDepartedOrganization event with departureMethod:LEFT and departureTime. This event is available only in the management account's event history. The management account in an organization with all features enabled can set service control policies (SCPs) that can restrict what administrators of member accounts can do. This includes preventing them from successfully calling LeaveOrganization and leaving the organization. You can leave an organization as a member account only if the account is configured with the information required to operate as a standalone account. When you create an account in an organization using the Organizations console, API, or CLI commands, the information required of standalone accounts is not automatically collected. For each account that you want to make standalone, you must perform the following steps. If any of the steps are already completed for this account, that step doesn't appear. Choose a support plan Provide and verify the required contact information Provide a current payment method Amazon Web Services uses the payment method to charge for any billable (not free tier) Amazon Web Services activity that occurs while the account isn't attached to an organization. For more information, see Considerations before removing an account from an organization in the Organizations User Guide. The account that you want to leave must not be a delegated administrator account for any Amazon Web Services service enabled for your organization. If the account is a delegated administrator, you must first change the delegated administrator account to another account that is remaining in the organization. After the account leaves the organization, all tags that were attached to the account object in the organization are deleted. Amazon Web Services accounts outside of an organization do not support tags. A newly created account has a waiting period before it can be removed from its organization. You must wait until at least four days after the account was created. Invited accounts aren't subject to this waiting period. If you are using an organization principal to call LeaveOrganization across multiple accounts, you can only do this up to 5 accounts per second in a single organization.
+
+```sql
+EXEC aws.organizations.organizations.leave_organization 
+@region='{{ region }}' --required 
 ;
 ```
 </TabItem>

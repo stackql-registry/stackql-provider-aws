@@ -275,6 +275,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets information about runs, given an AWS Device Farm project ARN.</td>
 </tr>
+<tr>
+    <td><a href="#stop_run"><CopyableCode code="stop_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Initiates a stop request for the current test run. AWS Device Farm immediately stops the run on devices where tests have not started. You are not billed for these devices. On devices where tests have started executing, setup suite and teardown suite tests run to completion on those devices. You are billed for setup, teardown, and any tests that were in progress or already completed.</td>
+</tr>
 </tbody>
 </table>
 
@@ -384,7 +391,8 @@ WHERE region = '{{ region }}' --required
 <Tabs
     defaultValue="list_runs"
     values={[
-        { label: 'list_runs', value: 'list_runs' }
+        { label: 'list_runs', value: 'list_runs' },
+        { label: 'stop_run', value: 'stop_run' }
     ]}
 >
 <TabItem value="list_runs">
@@ -398,6 +406,20 @@ EXEC aws.devicefarm.runs.list_runs
 '{
 "arn": "{{ arn }}", 
 "nextToken": "{{ nextToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_run">
+
+Initiates a stop request for the current test run. AWS Device Farm immediately stops the run on devices where tests have not started. You are not billed for these devices. On devices where tests have started executing, setup suite and teardown suite tests run to completion on those devices. You are billed for setup, teardown, and any tests that were in progress or already completed.
+
+```sql
+EXEC aws.devicefarm.runs.stop_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}"
 }'
 ;
 ```

@@ -66,6 +66,11 @@ The following fields are returned by `SELECT` queries:
     <td>Properties of the HTTP URL.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="influx_db_properties" /></td>
+    <td><code>object</code></td>
+    <td>The properties of an InfluxDB topic rule destination, as returned by CreateTopicRuleDestination and GetTopicRuleDestination.</td>
+</tr>
+<tr>
     <td><CopyableCode code="last_updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The date and time when the topic rule destination was last updated.</td>
@@ -113,6 +118,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="http_url_summary" /></td>
     <td><code>object</code></td>
     <td>Information about the HTTP URL.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="influx_db_summary" /></td>
+    <td><code>object</code></td>
+    <td>A summary of an InfluxDB topic rule destination, as returned by ListTopicRuleDestinations.</td>
 </tr>
 <tr>
     <td><CopyableCode code="last_updated_at" /></td>
@@ -246,6 +256,7 @@ SELECT
 arn,
 created_at,
 http_url_properties,
+influx_db_properties,
 last_updated_at,
 status,
 status_reason,
@@ -265,6 +276,7 @@ SELECT
 arn,
 created_at,
 http_url_summary,
+influx_db_summary,
 last_updated_at,
 status,
 status_reason,
@@ -326,6 +338,12 @@ topic_rule_destination
             - "{{ securityGroups }}"
           vpcId: "{{ vpcId }}"
           roleArn: "{{ roleArn }}"
+        influxDBConfiguration:
+          endpoint: "{{ endpoint }}"
+          influxDBVersion: "{{ influxDBVersion }}"
+          secretId: "{{ secretId }}"
+          secretType: "{{ secretType }}"
+          secretKey: "{{ secretKey }}"
 `}</CodeBlock>
 
 </TabItem>

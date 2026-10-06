@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobRunResponse'
-      x-stackql-resource: virtual_clusters
+      x-stackql-resource: job_runs
       x-stackql-method: cancel_job_run
       x-stackql-verb: EXEC
     get:
@@ -851,7 +851,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: virtual_clusters
+      x-stackql-resource: job_runs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -905,10 +905,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -931,10 +927,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2144,8 +2136,6 @@ components:
         virtualClusterId:
           $ref: '#/components/schemas/ResourceIdString'
           description: This output displays the virtual cluster ID for which the job run was submitted.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2155,8 +2145,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: .*\S.*
-    UntagResourceResponse:
-      type: object
     UpdateVirtualClusterResponse:
       description: Contains the virtual cluster returned after a successful update request.
       type: object

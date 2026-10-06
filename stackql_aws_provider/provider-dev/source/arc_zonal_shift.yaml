@@ -35,7 +35,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelPracticeRunResponse'
-      x-stackql-resource: practice_run
+      x-stackql-resource: practice_runs
       x-stackql-method: cancel_practice_run
       x-stackql-verb: EXEC
   /zonalshifts/{zonal_shift_id}:
@@ -58,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ZonalShift'
-      x-stackql-resource: zonal_shift
+      x-stackql-resource: zonal_shifts
       x-stackql-method: cancel_zonal_shift
       x-stackql-verb: EXEC
     patch:
@@ -214,7 +214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAutoshiftObserverNotificationStatusResponse'
-      x-stackql-resource: autoshift_observer_notification_status
+      x-stackql-resource: autoshift_observer_notification_statuses
       x-stackql-method: get_autoshift_observer_notification_status
       x-stackql-verb: SELECT
     put:
@@ -244,7 +244,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAutoshiftObserverNotificationStatusResponse'
-      x-stackql-resource: autoshift_observer_notification_status
+      x-stackql-resource: autoshift_observer_notification_statuses
       x-stackql-method: update_autoshift_observer_notification_status
       x-stackql-verb: UPDATE
   /managedresources/{resource_identifier}:
@@ -478,7 +478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ZonalShift'
-      x-stackql-resource: zonal_shift
+      x-stackql-resource: zonal_shifts
       x-stackql-method: start_zonal_shift
       x-stackql-verb: EXEC
   /practiceruns:
@@ -513,7 +513,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPracticeRunResponse'
-      x-stackql-resource: practice_run
+      x-stackql-resource: practice_runs
       x-stackql-method: start_practice_run
       x-stackql-verb: EXEC
 components:

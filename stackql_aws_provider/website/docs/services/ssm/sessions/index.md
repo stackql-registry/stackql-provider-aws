@@ -143,6 +143,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node. A terminated session can't be resumed.</td>
 </tr>
+<tr>
+    <td><a href="#resume_session"><CopyableCode code="resume_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SessionId"><code>SessionId</code></a></td>
+    <td></td>
+    <td>Reconnects a session to a managed node after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions. This command is primarily for use by client machines to automatically reconnect during intermittent network issues. It isn't intended for any other use.</td>
+</tr>
+<tr>
+    <td><a href="#start_session"><CopyableCode code="start_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs. Amazon Web Services CLI usage: start-session is an interactive command that requires the Session Manager plugin to be installed on the client machine making the call. For information, see Install the Session Manager plugin for the Amazon Web Services CLI in the Amazon Web Services Systems Manager User Guide. Amazon Web Services Tools for PowerShell usage: Start-SSMSession isn't currently supported by Amazon Web Services Tools for PowerShell on Windows local machines.</td>
+</tr>
 </tbody>
 </table>
 
@@ -216,6 +230,49 @@ Permanently ends a session and closes the data connection between the Session Ma
 ```sql
 DELETE FROM aws.ssm.sessions
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="resume_session"
+    values={[
+        { label: 'resume_session', value: 'resume_session' },
+        { label: 'start_session', value: 'start_session' }
+    ]}
+>
+<TabItem value="resume_session">
+
+Reconnects a session to a managed node after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions. This command is primarily for use by client machines to automatically reconnect during intermittent network issues. It isn't intended for any other use.
+
+```sql
+EXEC aws.ssm.sessions.resume_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SessionId": "{{ SessionId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_session">
+
+Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs. Amazon Web Services CLI usage: start-session is an interactive command that requires the Session Manager plugin to be installed on the client machine making the call. For information, see Install the Session Manager plugin for the Amazon Web Services CLI in the Amazon Web Services Systems Manager User Guide. Amazon Web Services Tools for PowerShell usage: Start-SSMSession isn't currently supported by Amazon Web Services Tools for PowerShell on Windows local machines.
+
+```sql
+EXEC aws.ssm.sessions.start_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Target": "{{ Target }}", 
+"DocumentName": "{{ DocumentName }}", 
+"Reason": "{{ Reason }}", 
+"Parameters": "{{ Parameters }}"
+}'
 ;
 ```
 </TabItem>

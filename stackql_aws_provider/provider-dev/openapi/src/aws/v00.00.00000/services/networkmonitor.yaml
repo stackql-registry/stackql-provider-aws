@@ -124,10 +124,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMonitorOutput"
     get:
       operationId: GetMonitor
       description: Returns details about a specific monitor. This action requires the monitorName parameter. Run ListMonitors to get a list of monitor names.
@@ -193,10 +189,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProbeOutput"
     get:
       operationId: GetProbe
       description: Returns the details about a probe. This action requires both the monitorName and probeId parameters. Run ListMonitors to get a list of monitor names. Run GetMonitor to get a list of probes and probe IDs.
@@ -302,10 +294,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes a key-value pair from a monitor or probe.
@@ -325,10 +313,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -574,10 +558,6 @@ components:
     Iso8601Timestamp:
       type: string
       format: date-time
-    DeleteMonitorOutput:
-      type: object
-    DeleteProbeOutput:
-      type: object
     GetMonitorOutput:
       type: object
       properties:
@@ -766,8 +746,6 @@ components:
           type: object
           properties: {}
           description: Lists the tags assigned to the resource.
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -776,8 +754,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateMonitorOutput:
       type: object
       properties:
@@ -887,7 +863,6 @@ components:
             $ref: "#/paths/~1monitors~1{monitor_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_monitor:
           operation:
             $ref: "#/paths/~1monitors~1{monitor_name}/get"
@@ -936,7 +911,6 @@ components:
             $ref: "#/paths/~1monitors~1{monitor_name}~1probes~1{probe_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_probe:
           operation:
             $ref: "#/paths/~1monitors~1{monitor_name}~1probes~1{probe_id}/get"
@@ -979,7 +953,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -990,7 +963,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

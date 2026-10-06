@@ -785,7 +785,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDbInstancesForClusterOutput'
-      x-stackql-resource: db_instances_for_clusters
+      x-stackql-resource: db_instances
       x-stackql-method: list_db_instances_for_cluster
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
@@ -944,7 +944,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootDbInstanceOutput'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: reboot_db_instance
       x-stackql-verb: EXEC
   /RestoreFromDbBackup:
@@ -3005,6 +3005,12 @@ components:
         dbParameterGroupIdentifier:
           $ref: '#/components/schemas/DbParameterGroupIdentifier'
           description: The ID of the DB parameter group assigned to your DB cluster.
+        effectiveDbParameterGroupIdentifier:
+          $ref: '#/components/schemas/DbParameterGroupIdentifier'
+          description: The ID of the DB parameter group actually applied to your DB cluster. When the service applies optimized
+            defaults, it creates a service-managed DB parameter group and this field reflects that group, while dbParameterGroupIdentifier
+            reflects the customer-provided DB parameter group. When no service-managed DB parameter group is applied, this
+            value matches dbParameterGroupIdentifier.
         logDeliveryConfiguration:
           $ref: '#/components/schemas/LogDeliveryConfiguration'
           description: Configuration for sending InfluxDB engine logs to send to specified S3 bucket.

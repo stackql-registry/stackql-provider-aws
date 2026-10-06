@@ -199,6 +199,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a Recycle Bin retention rule. For more information, see Delete Recycle Bin retention rules in the Amazon Elastic Compute Cloud User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#lock_rule"><CopyableCode code="lock_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LockConfiguration"><code>LockConfiguration</code></a></td>
+    <td></td>
+    <td>Locks a Region-level retention rule. A locked retention rule can't be modified or deleted. You can't lock tag-level retention rules, or Region-level retention rules that have exclusion tags.</td>
+</tr>
+<tr>
+    <td><a href="#unlock_rule"><CopyableCode code="unlock_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only after the unlock delay period expires.</td>
+</tr>
 </tbody>
 </table>
 
@@ -426,6 +440,44 @@ Deletes a Recycle Bin retention rule. For more information, see Delete Recycle B
 DELETE FROM aws.rbin.rules
 WHERE identifier = '{{ identifier }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="lock_rule"
+    values={[
+        { label: 'lock_rule', value: 'lock_rule' },
+        { label: 'unlock_rule', value: 'unlock_rule' }
+    ]}
+>
+<TabItem value="lock_rule">
+
+Locks a Region-level retention rule. A locked retention rule can't be modified or deleted. You can't lock tag-level retention rules, or Region-level retention rules that have exclusion tags.
+
+```sql
+EXEC aws.rbin.rules.lock_rule 
+@identifier='{{ identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"LockConfiguration": "{{ LockConfiguration }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="unlock_rule">
+
+Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only after the unlock delay period expires.
+
+```sql
+EXEC aws.rbin.rules.unlock_rule 
+@identifier='{{ identifier }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

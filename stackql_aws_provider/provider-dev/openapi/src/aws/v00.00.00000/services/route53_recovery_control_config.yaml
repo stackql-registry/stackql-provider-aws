@@ -267,10 +267,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteClusterResponse"
     get:
       operationId: DescribeCluster
       description: Display the details about a cluster. The response includes the cluster name, endpoints, status, and Amazon Resource Name (ARN).
@@ -302,10 +298,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteControlPanelResponse"
     get:
       operationId: DescribeControlPanel
       description: Displays details about a control panel.
@@ -337,10 +329,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRoutingControlResponse"
     get:
       operationId: DescribeRoutingControl
       description: "Displays details about a routing control. A routing control has one of two states: ON and OFF. You can map the routing control state to the state of an Amazon Route 53 health check, which can be used to control routing. To get or update the routing control state, see the Recovery Cluster (data plane) API actions for Amazon Route 53 Application Recovery Controller."
@@ -372,10 +360,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSafetyRuleResponse"
     get:
       operationId: DescribeSafetyRule
       description: Returns information about a safety rule.
@@ -571,10 +555,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource.
@@ -594,10 +574,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -955,14 +931,6 @@ components:
         - Name
     __string:
       type: string
-    DeleteClusterResponse:
-      type: object
-    DeleteControlPanelResponse:
-      type: object
-    DeleteRoutingControlResponse:
-      type: object
-    DeleteSafetyRuleResponse:
-      type: object
     DescribeClusterResponse:
       type: object
       properties:
@@ -1092,14 +1060,10 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     __listOf__string:
       type: array
       items:
         $ref: "#/components/schemas/__string"
-    UntagResourceResponse:
-      type: object
     UpdateClusterResponse:
       type: object
       properties:
@@ -1211,7 +1175,6 @@ components:
             $ref: "#/paths/~1cluster~1{cluster_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_cluster:
           operation:
             $ref: "#/paths/~1cluster~1{cluster_arn}/get"
@@ -1261,7 +1224,6 @@ components:
             $ref: "#/paths/~1controlpanel~1{control_panel_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_control_panel:
           operation:
             $ref: "#/paths/~1controlpanel~1{control_panel_arn}/get"
@@ -1328,7 +1290,6 @@ components:
             $ref: "#/paths/~1routingcontrol~1{routing_control_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_routing_control:
           operation:
             $ref: "#/paths/~1routingcontrol~1{routing_control_arn}/get"
@@ -1395,7 +1356,6 @@ components:
             $ref: "#/paths/~1safetyrule~1{safety_rule_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         describe_safety_rule:
           operation:
             $ref: "#/paths/~1safetyrule~1{safety_rule_arn}/get"
@@ -1496,7 +1456,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1507,7 +1466,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

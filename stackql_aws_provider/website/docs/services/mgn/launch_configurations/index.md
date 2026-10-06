@@ -97,7 +97,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="post_launch_actions" /></td>
     <td><code>object</code></td>
-    <td>Post Launch Actions to executed on the Test or Cutover instance.</td>
+    <td>Post Launch Actions to be executed on the Test or Cutover instance.</td>
 </tr>
 <tr>
     <td><CopyableCode code="source_server_id" /></td>
@@ -141,7 +141,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-sourceServerID"><code>sourceServerID</code></a></td>
     <td></td>
-    <td>Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI</td>
+    <td>Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI | USE_SOURCE</td>
 </tr>
 </tbody>
 </table>
@@ -211,7 +211,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="update_launch_configuration">
 
-Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI
+Updates multiple LaunchConfigurations by Source Server ID. bootMode valid values are LEGACY_BIOS | UEFI | USE_SOURCE
 
 ```sql
 UPDATE aws.mgn.launch_configurations

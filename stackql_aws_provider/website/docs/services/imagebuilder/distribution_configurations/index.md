@@ -134,7 +134,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-distributionConfigurationArn"><code>distributionConfigurationArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets a distribution configuration.</td>
+    <td>Retrieves a distribution configuration.</td>
 </tr>
 <tr>
     <td><a href="#list_distribution_configurations"><CopyableCode code="list_distribution_configurations" /></a></td>
@@ -155,7 +155,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-distributionConfigurationArn"><code>distributionConfigurationArn</code></a>, <a href="#parameter-distributions"><code>distributions</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a></td>
     <td></td>
-    <td>Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.</td>
+    <td>Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.</td>
 </tr>
 <tr>
     <td><a href="#delete_distribution_configuration"><CopyableCode code="delete_distribution_configuration" /></a></td>
@@ -211,7 +211,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_distribution_configuration">
 
-Gets a distribution configuration.
+Retrieves a distribution configuration.
 
 ```sql
 SELECT
@@ -264,6 +264,7 @@ description,
 distributions,
 tags,
 clientToken,
+dryRun,
 region
 )
 SELECT 
@@ -272,6 +273,7 @@ SELECT
 '{{ distributions }}' /* required */,
 '{{ tags }}',
 '{{ clientToken }}' /* required */,
+{{ dryRun }},
 '{{ region }}'
 RETURNING
 client_token,
@@ -331,6 +333,8 @@ request_id
       value: "{{ tags }}"
     - name: clientToken
       value: "{{ clientToken }}"
+    - name: dryRun
+      value: {{ dryRun }}
 `}</CodeBlock>
 
 </TabItem>
@@ -347,7 +351,7 @@ request_id
 >
 <TabItem value="update_distribution_configuration">
 
-Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 
 ```sql
 UPDATE aws.imagebuilder.distribution_configurations

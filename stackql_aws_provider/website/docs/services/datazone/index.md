@@ -18,7 +18,7 @@ datazone service documentation.
 
 :::info[Service Summary]
 
-total resources: __53__  
+total resources: __52__  
 
 :::
 
@@ -31,7 +31,7 @@ total resources: __53__
 <a href="/services/datazone/asset_revisions/">asset_revisions</a><br />
 <a href="/services/datazone/asset_types/">asset_types</a><br />
 <a href="/services/datazone/assets/">assets</a><br />
-<a href="/services/datazone/attributes_metadatas/">attributes_metadatas</a><br />
+<a href="/services/datazone/attributes_metadata/">attributes_metadata</a><br />
 <a href="/services/datazone/connections/">connections</a><br />
 <a href="/services/datazone/data_export_configurations/">data_export_configurations</a><br />
 <a href="/services/datazone/data_product_revisions/">data_product_revisions</a><br />
@@ -40,7 +40,6 @@ total resources: __53__
 <a href="/services/datazone/data_source_runs/">data_source_runs</a><br />
 <a href="/services/datazone/data_sources/">data_sources</a><br />
 <a href="/services/datazone/domain_units/">domain_units</a><br />
-<a href="/services/datazone/domain_units_for_parents/">domain_units_for_parents</a><br />
 <a href="/services/datazone/domains/">domains</a><br />
 <a href="/services/datazone/entity_owners/">entity_owners</a><br />
 <a href="/services/datazone/environment_actions/">environment_actions</a><br />

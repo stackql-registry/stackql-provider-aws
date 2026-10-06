@@ -26,7 +26,7 @@ total resources: __17__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/groundstation/agent_configurations/">agent_configurations</a><br />
-<a href="/services/groundstation/agent_status/">agent_status</a><br />
+<a href="/services/groundstation/agent_statuses/">agent_statuses</a><br />
 <a href="/services/groundstation/agent_task_response_urls/">agent_task_response_urls</a><br />
 <a href="/services/groundstation/agents/">agents</a><br />
 <a href="/services/groundstation/antennas/">antennas</a><br />

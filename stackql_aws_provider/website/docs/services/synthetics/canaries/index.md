@@ -250,11 +250,25 @@ The following methods are available for this resource:
     <td>Permanently deletes the specified canary. If the canary's ProvisionedResourceCleanup field is set to AUTOMATIC or you specify DeleteLambda in this operation as true, CloudWatch Synthetics also deletes the Lambda functions and layers that are used by the canary. Other resources used and created by the canary are not automatically deleted. After you delete a canary, you should also delete the following: The CloudWatch alarms created for this canary. These alarms have a name of Synthetics-Alarm-first-198-characters-of-canary-name-canaryId-alarm number Amazon S3 objects and buckets, such as the canary's artifact location. IAM roles created for the canary. If they were created in the console, these roles have the name role/service-role/CloudWatchSyntheticsRole-First-21-Characters-of-CanaryName CloudWatch Logs log groups created for the canary. These logs groups have the name /aws/lambda/cwsyn-First-21-Characters-of-CanaryName Before you delete a canary, you might want to use GetCanary to display the information about this canary. Make note of the information returned by this operation so that you can delete these resources after you delete the canary.</td>
 </tr>
 <tr>
+    <td><a href="#start_canary"><CopyableCode code="start_canary" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's Schedule. To see a canary's schedule, use GetCanary.</td>
+</tr>
+<tr>
     <td><a href="#start_canary_dry_run"><CopyableCode code="start_canary_dry_run" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Use this operation to start a dry run for a canary that has already been created</td>
+</tr>
+<tr>
+    <td><a href="#stop_canary"><CopyableCode code="stop_canary" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the canary to prevent all future runs. If the canary is currently running,the run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run. You can use StartCanary to start it running again with the canary’s current schedule at any point in the future.</td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +289,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-name">
     <td><CopyableCode code="name" /></td>
     <td><code>string</code></td>
-    <td>The name of the canary that you want to dry run. To find canary names, use DescribeCanaries.</td>
+    <td>The name of the canary that you want to stop. To find the names of your canaries, use ListCanaries.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -578,11 +592,24 @@ AND deleteLambda = '{{ deleteLambda }}'
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_canary_dry_run"
+    defaultValue="start_canary"
     values={[
-        { label: 'start_canary_dry_run', value: 'start_canary_dry_run' }
+        { label: 'start_canary', value: 'start_canary' },
+        { label: 'start_canary_dry_run', value: 'start_canary_dry_run' },
+        { label: 'stop_canary', value: 'stop_canary' }
     ]}
 >
+<TabItem value="start_canary">
+
+Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's Schedule. To see a canary's schedule, use GetCanary.
+
+```sql
+EXEC aws.synthetics.canaries.start_canary 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="start_canary_dry_run">
 
 Use this operation to start a dry run for a canary that has already been created
@@ -607,6 +634,17 @@ EXEC aws.synthetics.canaries.start_canary_dry_run
 "BrowserConfigs": "{{ BrowserConfigs }}", 
 "VisualReferences": "{{ VisualReferences }}"
 }'
+;
+```
+</TabItem>
+<TabItem value="stop_canary">
+
+Stops the canary to prevent all future runs. If the canary is currently running,the run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run. You can use StartCanary to start it running again with the canary’s current schedule at any point in the future.
+
+```sql
+EXEC aws.synthetics.canaries.stop_canary 
+@name='{{ name }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

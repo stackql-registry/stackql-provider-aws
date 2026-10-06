@@ -1179,7 +1179,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_AssociateApplicationStatusCheck
-      description: "Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. The application status check must already exist and belong to your account. Tag keys must not be blank. Maximum 50 tag associations per application status check. Use DisassociateApplicationStatusCheck to remove associations. When you associate tags, the application status check automatically monitors all current and future instances that have the specified tags."
+      description: "Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. You must own the application status check. The check must already exist in your account. You must not leave tag keys blank. You can create a maximum of 50 tag associations for each application status check. You can use DisassociateApplicationStatusCheck to remove associations. You can associate tags so that the application status check automatically monitors all current and future instances that have the specified tags."
       parameters:
         - name: ApplicationStatusCheckId
           in: query
@@ -1202,7 +1202,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -1220,7 +1220,7 @@ paths:
                 $ref: "#/components/schemas/AssociateApplicationStatusCheckOutputDisplay"
     post:
       operationId: POST_AssociateApplicationStatusCheck
-      description: "Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. The application status check must already exist and belong to your account. Tag keys must not be blank. Maximum 50 tag associations per application status check. Use DisassociateApplicationStatusCheck to remove associations. When you associate tags, the application status check automatically monitors all current and future instances that have the specified tags."
+      description: "Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. You must own the application status check. The check must already exist in your account. You must not leave tag keys blank. You can create a maximum of 50 tag associations for each application status check. You can use DisassociateApplicationStatusCheck to remove associations. You can associate tags so that the application status check automatically monitors all current and future instances that have the specified tags."
       responses:
         "200":
           description: Success
@@ -4089,6 +4089,18 @@ paths:
           description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensure Idempotency.
           schema:
             $ref: "#/components/schemas/String"
+        - name: Encrypted
+          in: query
+          required: false
+          description: Indicates whether to encrypt the volume copy. If the source volume is encrypted, the service always encrypts the copy regardless of this value. Set to true to encrypt a copy of an unencrypted source volume during the copy operation. If you set Encrypted to true but do not specify KmsKeyId, the service uses the default KMS key for EBS encryption in your account.
+          schema:
+            $ref: "#/components/schemas/Boolean"
+        - name: KmsKeyId
+          in: query
+          required: false
+          description: The identifier of the KMS key to use for encryption of the volume copy. Specify a symmetric encryption KMS key. You can specify a KMS key using the key ID, key ARN, alias name, or alias ARN. If you set Encrypted to true but do not specify this parameter, the service uses the default KMS key for EBS encryption in your account. For cross-account volume copies, this must be a KMS key in the calling account.
+          schema:
+            $ref: "#/components/schemas/KmsKeyId"
       responses:
         "200":
           description: Success
@@ -4123,7 +4135,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_CreateApplicationStatusCheck
-      description: "Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks per account. Health checks do not start until you associate the check with instances or tags using AssociateApplicationStatusCheck. The Timeout value must be less than the Interval value. The Path must start with a forward slash (/). Default: /. If you do not specify Aggregation, it defaults to included, which means the check contributes to the instance-level application status. Default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources."
+      description: "Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks for each account. You must associate the check with instances or tags using AssociateApplicationStatusCheck before health checks start. You must set the Timeout value to less than the Interval value. You must start the Path with a forward slash (/). Default: /. You can specify Aggregation as included or excluded. If you do not specify a value, it defaults to included, which means the check contributes to the instance-level application status. You can use the following default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources."
       parameters:
         - name: HealthCheckPath
           in: query
@@ -4218,7 +4230,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -4236,7 +4248,7 @@ paths:
                 $ref: "#/components/schemas/CreateApplicationStatusCheckOutputDisplay"
     post:
       operationId: POST_CreateApplicationStatusCheck
-      description: "Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks per account. Health checks do not start until you associate the check with instances or tags using AssociateApplicationStatusCheck. The Timeout value must be less than the Interval value. The Path must start with a forward slash (/). Default: /. If you do not specify Aggregation, it defaults to included, which means the check contributes to the instance-level application status. Default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources."
+      description: "Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks for each account. You must associate the check with instances or tags using AssociateApplicationStatusCheck before health checks start. You must set the Timeout value to less than the Interval value. You must start the Path with a forward slash (/). Default: /. You can specify Aggregation as included or excluded. If you do not specify a value, it defaults to included, which means the check contributes to the instance-level application status. You can use the following default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources."
       responses:
         "200":
           description: Success
@@ -5835,6 +5847,12 @@ paths:
           description: "Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)"
           schema:
             $ref: "#/components/schemas/SnapshotLocationEnum"
+        - name: BootModeOverride
+          in: query
+          required: false
+          description: The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the boot-mode from the source instance. A value of uefi indicates that the image only supports UEFI boot mode. You can specify this parameter only if the current-instance-boot-mode of the source instance is uefi. To find the boot-mode or current-instance-boot-mode of an instance, see DescribeInstances. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.
+          schema:
+            $ref: "#/components/schemas/BootModeOverrideValues"
         - name: DryRun
           in: query
           required: false
@@ -6267,6 +6285,12 @@ paths:
           description: The tags to apply to the interruptible Capacity Reservation during creation.
           schema:
             $ref: "#/components/schemas/TagSpecificationList"
+        - name: ZeroSizePreference
+          in: query
+          required: false
+          description: Specifies the behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation. The default value is default.
+          schema:
+            $ref: "#/components/schemas/ZeroSizePreference"
       responses:
         "200":
           description: Success
@@ -12720,7 +12744,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -18181,7 +18205,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_DescribeApplicationStatus
-      description: "Describes the application status for the specified instances. Returns the aggregated application health status for each instance. The following rules apply: The instance-level status is derived from all application status checks with the aggregation setting set to included. Use DescribeApplicationStatusChecks to view the configuration of individual checks. Use EnableApplicationStatusCheckSuppression to temporarily suppress health check results from affecting the instance-level status."
+      description: "Describes the aggregated application health status for the specified instances. The following rules apply: The instance-level status is derived from all application status checks with the aggregation setting set to included. Use DescribeApplicationStatusChecks to view the configuration of individual checks. Use EnableApplicationStatusCheckSuppression to temporarily suppress health check results from affecting the instance-level status."
       parameters:
         - name: InstanceId
           in: query
@@ -18222,7 +18246,7 @@ paths:
                 $ref: "#/components/schemas/DescribeApplicationStatusOutputDisplay"
     post:
       operationId: POST_DescribeApplicationStatus
-      description: "Describes the application status for the specified instances. Returns the aggregated application health status for each instance. The following rules apply: The instance-level status is derived from all application status checks with the aggregation setting set to included. Use DescribeApplicationStatusChecks to view the configuration of individual checks. Use EnableApplicationStatusCheckSuppression to temporarily suppress health check results from affecting the instance-level status."
+      description: "Describes the aggregated application health status for the specified instances. The following rules apply: The instance-level status is derived from all application status checks with the aggregation setting set to included. Use DescribeApplicationStatusChecks to view the configuration of individual checks. Use EnableApplicationStatusCheckSuppression to temporarily suppress health check results from affecting the instance-level status."
       responses:
         "200":
           description: Success
@@ -18313,7 +18337,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_DescribeApplicationStatusChecks
-      description: "Describes one or more application status checks. Returns configuration details for your application status checks, including protocol, port, path, thresholds, and associations. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances."
+      description: "Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the NextToken parameter to retrieve additional results. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances."
       parameters:
         - name: ApplicationStatusCheckId
           in: query
@@ -18360,7 +18384,7 @@ paths:
                 $ref: "#/components/schemas/DescribeApplicationStatusChecksOutputDisplay"
     post:
       operationId: POST_DescribeApplicationStatusChecks
-      description: "Describes one or more application status checks. Returns configuration details for your application status checks, including protocol, port, path, thresholds, and associations. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances."
+      description: "Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the NextToken parameter to retrieve additional results. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances."
       responses:
         "200":
           description: Success
@@ -21582,7 +21606,7 @@ paths:
         - name: Filter
           in: query
           required: false
-          description: The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:`<key>` - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).
+          description: The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. boot-mode – The boot mode of the image (legacy-bios | uefi | uefi-preferred). creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). instance-type-specification.supported-instance-type – The instance types that are compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). instance-type-specification.unsupported-instance-type – The instance types that are not compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:`<key>` - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).
           schema:
             $ref: "#/components/schemas/FilterList"
       responses:
@@ -21871,7 +21895,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_DescribeInstanceCreditSpecifications
-      description: Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are standard and unlimited. If you do not specify an instance ID, Amazon EC2 returns burstable performance instances with the unlimited credit option, as well as instances that were previously configured as T2, T3, and T3a with the unlimited credit option. For example, if you resize a T2 instance, while it is configured as unlimited, to an M4 instance, Amazon EC2 returns the M4 instance. If you specify one or more instance IDs, Amazon EC2 returns the credit option (standard or unlimited) of those instances. If you specify an instance ID that is not valid, such as an instance that is not a burstable performance instance, an error is returned. Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally. For more information, see Burstable performance instances in the Amazon EC2 User Guide.
+      description: Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are standard and unlimited. If you do not specify an instance ID, Amazon EC2 returns burstable performance instances with the unlimited credit option, as well as instances that were previously configured as T2, T3, and T3a with the unlimited credit option. For example, if you resize a T2 instance, while it is configured as unlimited, to an M4 instance, Amazon EC2 returns the M4 instance. If you specify one or more instance IDs, Amazon EC2 returns the credit option (standard or unlimited) of those instances. If you specify an instance ID that is not a burstable performance instance, Amazon EC2 returns the standard credit option. Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally. For more information, see Burstable performance instances in the Amazon EC2 User Guide.
       parameters:
         - name: DryRun
           in: query
@@ -21912,7 +21936,7 @@ paths:
                 $ref: "#/components/schemas/DescribeInstanceCreditSpecificationsOutputDisplay"
     post:
       operationId: POST_DescribeInstanceCreditSpecifications
-      description: Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are standard and unlimited. If you do not specify an instance ID, Amazon EC2 returns burstable performance instances with the unlimited credit option, as well as instances that were previously configured as T2, T3, and T3a with the unlimited credit option. For example, if you resize a T2 instance, while it is configured as unlimited, to an M4 instance, Amazon EC2 returns the M4 instance. If you specify one or more instance IDs, Amazon EC2 returns the credit option (standard or unlimited) of those instances. If you specify an instance ID that is not valid, such as an instance that is not a burstable performance instance, an error is returned. Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally. For more information, see Burstable performance instances in the Amazon EC2 User Guide.
+      description: Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are standard and unlimited. If you do not specify an instance ID, Amazon EC2 returns burstable performance instances with the unlimited credit option, as well as instances that were previously configured as T2, T3, and T3a with the unlimited credit option. For example, if you resize a T2 instance, while it is configured as unlimited, to an M4 instance, Amazon EC2 returns the M4 instance. If you specify one or more instance IDs, Amazon EC2 returns the credit option (standard or unlimited) of those instances. If you specify an instance ID that is not a burstable performance instance, Amazon EC2 returns the standard credit option. Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If an Availability Zone is experiencing a service disruption and you specify instance IDs in the affected zone, or do not specify any instance IDs at all, the call fails. If you specify only instance IDs in an unaffected zone, the call works normally. For more information, see Burstable performance instances in the Amazon EC2 User Guide.
       responses:
         "200":
           description: Success
@@ -30883,7 +30907,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_DisableApplicationStatusCheckSuppression
-      description: Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs per request.
+      description: Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.
       parameters:
         - name: InstanceId
           in: query
@@ -30894,7 +30918,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -30912,7 +30936,7 @@ paths:
                 $ref: "#/components/schemas/DisableApplicationStatusCheckSuppressionOutputDisplay"
     post:
       operationId: POST_DisableApplicationStatusCheckSuppression
-      description: Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs per request.
+      description: Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.
       responses:
         "200":
           description: Success
@@ -31946,7 +31970,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -32965,7 +32989,7 @@ paths:
       - $ref: "#/components/parameters/X-Amz-SignedHeaders"
     get:
       operationId: GET_EnableApplicationStatusCheckSuppression
-      description: "Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: Maximum 100 instance IDs per request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression."
+      description: "Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: You can specify a maximum of 100 instance IDs for each request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression."
       parameters:
         - name: InstanceId
           in: query
@@ -32982,7 +33006,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -33000,7 +33024,7 @@ paths:
                 $ref: "#/components/schemas/EnableApplicationStatusCheckSuppressionOutputDisplay"
     post:
       operationId: POST_EnableApplicationStatusCheckSuppression
-      description: "Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: Maximum 100 instance IDs per request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression."
+      description: "Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: You can specify a maximum of 100 instance IDs for each request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression."
       responses:
         "200":
           description: Success
@@ -40124,7 +40148,7 @@ paths:
         - name: ClientToken
           in: query
           required: false
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
           schema:
             $ref: "#/components/schemas/String"
         - name: DryRun
@@ -47670,6 +47694,60 @@ paths:
           text/xml:
             schema:
               $ref: "#/components/schemas/ReplaceImageCriteriaInAllowedImagesSettingsRequest"
+  /?Action=ReplaceImageInstanceTypeSpecification&Version=2016-11-15:
+    parameters:
+      - $ref: "#/components/parameters/X-Amz-Content-Sha256"
+      - $ref: "#/components/parameters/X-Amz-Date"
+      - $ref: "#/components/parameters/X-Amz-Algorithm"
+      - $ref: "#/components/parameters/X-Amz-Credential"
+      - $ref: "#/components/parameters/X-Amz-Security-Token"
+      - $ref: "#/components/parameters/X-Amz-Signature"
+      - $ref: "#/components/parameters/X-Amz-SignedHeaders"
+    get:
+      operationId: GET_ReplaceImageInstanceTypeSpecification
+      description: "Replaces or removes the instance type specification for an AMI. The instance type specification defines which instance types are compatible with the AMI. When you launch an instance using RunInstances, Amazon EC2 validates the requested instance type against the AMI's instance type specification. If the instance type is not compatible, the request fails with an InvalidParameterCombination error. You can specify supported instance types, unsupported instance types, or both. The evaluation logic is as follows: No specification set – all instance types are allowed. Only UnsupportedInstanceTypes set – All instance types are allowed except those that match the unsupported list. SupportedInstanceTypes set – The instance type must match the supported list and must not match the unsupported list. Instance type entries support wildcard patterns using * (for example, t3.* matches all t3 sizes). To remove an existing instance type specification, omit the InstanceTypeSpecification parameter or set it to null. To set the instance type specification, you must be the AMI owner. You cannot set an instance type specification on an AMI that is listed in Amazon Web Services Marketplace, and you cannot list an AMI in Amazon Web Services Marketplace if it has an instance type specification set."
+      parameters:
+        - name: ImageId
+          in: query
+          required: true
+          description: The ID of the AMI.
+          schema:
+            $ref: "#/components/schemas/ImageId"
+        - name: InstanceTypeSpecification
+          in: query
+          required: false
+          description: The instance type specification to set on the AMI. Omit this parameter to remove the existing instance type specification.
+          schema:
+            $ref: "#/components/schemas/InstanceTypeSpecificationRequest"
+        - name: DryRun
+          in: query
+          required: false
+          description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+          schema:
+            $ref: "#/components/schemas/Boolean"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ReplaceImageInstanceTypeSpecificationOutputDisplay"
+    post:
+      operationId: POST_ReplaceImageInstanceTypeSpecification
+      description: "Replaces or removes the instance type specification for an AMI. The instance type specification defines which instance types are compatible with the AMI. When you launch an instance using RunInstances, Amazon EC2 validates the requested instance type against the AMI's instance type specification. If the instance type is not compatible, the request fails with an InvalidParameterCombination error. You can specify supported instance types, unsupported instance types, or both. The evaluation logic is as follows: No specification set – all instance types are allowed. Only UnsupportedInstanceTypes set – All instance types are allowed except those that match the unsupported list. SupportedInstanceTypes set – The instance type must match the supported list and must not match the unsupported list. Instance type entries support wildcard patterns using * (for example, t3.* matches all t3 sizes). To remove an existing instance type specification, omit the InstanceTypeSpecification parameter or set it to null. To set the instance type specification, you must be the AMI owner. You cannot set an instance type specification on an AMI that is listed in Amazon Web Services Marketplace, and you cannot list an AMI in Amazon Web Services Marketplace if it has an instance type specification set."
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ReplaceImageInstanceTypeSpecificationOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/ReplaceImageInstanceTypeSpecificationRequest"
   /?Action=ReplaceNetworkAclAssociation&Version=2016-11-15:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -50757,7 +50835,7 @@ paths:
             $ref: "#/components/schemas/CapacityReservationId"
         - name: TargetInstanceCount
           in: query
-          required: true
+          required: false
           description: The new number of instances to allocate. Enter a higher number to add more capacity to share, or a lower number to reclaim capacity to your source Capacity Reservation.
           schema:
             $ref: "#/components/schemas/Integer"
@@ -50767,6 +50845,12 @@ paths:
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.
           schema:
             $ref: "#/components/schemas/Boolean"
+        - name: ZeroSizePreference
+          in: query
+          required: false
+          description: Specifies the updated behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation.
+          schema:
+            $ref: "#/components/schemas/ZeroSizePreference"
       responses:
         "200":
           description: Success
@@ -50922,6 +51006,54 @@ paths:
           text/xml:
             schema:
               $ref: "#/components/schemas/UpdateSecurityGroupRuleDescriptionsIngressRequest"
+  /?Action=ValidateSecurityGroupQuotasForInterface&Version=2016-11-15:
+    parameters:
+      - $ref: "#/components/parameters/X-Amz-Content-Sha256"
+      - $ref: "#/components/parameters/X-Amz-Date"
+      - $ref: "#/components/parameters/X-Amz-Algorithm"
+      - $ref: "#/components/parameters/X-Amz-Credential"
+      - $ref: "#/components/parameters/X-Amz-Security-Token"
+      - $ref: "#/components/parameters/X-Amz-Signature"
+      - $ref: "#/components/parameters/X-Amz-SignedHeaders"
+    get:
+      operationId: GET_ValidateSecurityGroupQuotasForInterface
+      description: Validates whether the specified security groups can be associated with a single network interface. The operation checks Amazon Virtual Private Cloud (Amazon VPC) quotas. It checks inbound or outbound rules per security group and security groups per network interface. Only authorized AWS services can call this operation. For more information about security group quotas, see Amazon VPC quotas in the Amazon VPC User Guide.
+      parameters:
+        - name: SecurityGroupId
+          in: query
+          required: true
+          description: The IDs of the security groups to validate for association with a single network interface. You must specify at least one ID, and each ID must be unique. The number of IDs cannot exceed the maximum number of security groups allowed per network interface.
+          schema:
+            $ref: "#/components/schemas/SecurityGroupIdList"
+        - name: DryRun
+          in: query
+          required: false
+          description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+          schema:
+            $ref: "#/components/schemas/Boolean"
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ValidateSecurityGroupQuotasForInterfaceOutputDisplay"
+    post:
+      operationId: POST_ValidateSecurityGroupQuotasForInterface
+      description: Validates whether the specified security groups can be associated with a single network interface. The operation checks Amazon Virtual Private Cloud (Amazon VPC) quotas. It checks inbound or outbound rules per security group and security groups per network interface. Only authorized AWS services can call this operation. For more information about security group quotas, see Amazon VPC quotas in the Amazon VPC User Guide.
+      responses:
+        "200":
+          description: Success
+          content:
+            text/xml:
+              schema:
+                $ref: "#/components/schemas/ValidateSecurityGroupQuotasForInterfaceOutputDisplay"
+      parameters: []
+      requestBody:
+        content:
+          text/xml:
+            schema:
+              $ref: "#/components/schemas/ValidateSecurityGroupQuotasForInterfaceRequest"
   /?Action=WithdrawByoipCidr&Version=2016-11-15:
     parameters:
       - $ref: "#/components/parameters/X-Amz-Content-Sha256"
@@ -52281,7 +52413,7 @@ components:
           description: The IDs of the instances to associate with the application status check.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -54542,6 +54674,16 @@ components:
           description: The Amazon EBS Provisioned Rate for Volume Initialization (volume initialization rate) specified for the volume during creation, in MiB/s. If no volume initialization rate was specified, the value is null.
           xml:
             name: volumeInitializationRate
+        VolumeArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the volume.
+          xml:
+            name: volumeArn
+        OwnerId:
+          type: string
+          description: The ID of the Amazon Web Services account that owns the volume.
+          xml:
+            name: ownerId
         VolumeId:
           type: string
           description: The ID of the volume.
@@ -54624,6 +54766,12 @@ components:
         ClientToken:
           $ref: "#/components/schemas/String"
           description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensure Idempotency.
+        Encrypted:
+          $ref: "#/components/schemas/Boolean"
+          description: Indicates whether to encrypt the volume copy. If the source volume is encrypted, the service always encrypts the copy regardless of this value. Set to true to encrypt a copy of an unencrypted source volume during the copy operation. If you set Encrypted to true but do not specify KmsKeyId, the service uses the default KMS key for EBS encryption in your account.
+        KmsKeyId:
+          $ref: "#/components/schemas/KmsKeyId"
+          description: The identifier of the KMS key to use for encryption of the volume copy. Specify a symmetric encryption KMS key. You can specify a KMS key using the key ID, key ARN, alias name, or alias ARN. If you set Encrypted to true but do not specify this parameter, the service uses the default KMS key for EBS encryption in your account. For cross-account volume copies, this must be a KMS key in the calling account.
       required:
         - SourceVolumeId
     HealthCheckPathRequestList:
@@ -54856,7 +55004,7 @@ components:
           description: The tags to apply to the application status check.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -55131,6 +55279,11 @@ components:
           description: Information about the interruption configuration and association with the source reservation for interruptible Capacity Reservations.
           xml:
             name: interruptionInfo
+        ZeroSizePreference:
+          type: string
+          description: The zero-size preference configured for the interruptible Capacity Reservation. A value of retain keeps the interruptible Capacity Reservation active at zero capacity when you reduce its allocation to zero. A value of default cancels the interruptible Capacity Reservation when you reduce its allocation to zero.
+          xml:
+            name: zeroSizePreference
     CreateCapacityReservationOutputDisplay:
       type: object
       properties:
@@ -56752,6 +56905,29 @@ components:
         - c9gd.24xlarge
         - c9gd.48xlarge
         - c9gd.metal-48xl
+        - r9g.medium
+        - r9g.large
+        - r9g.xlarge
+        - r9g.2xlarge
+        - r9g.4xlarge
+        - r9g.8xlarge
+        - r9g.12xlarge
+        - r9g.16xlarge
+        - r9g.24xlarge
+        - r9g.48xlarge
+        - r9g.metal-48xl
+        - r9gd.medium
+        - r9gd.large
+        - r9gd.xlarge
+        - r9gd.2xlarge
+        - r9gd.4xlarge
+        - r9gd.8xlarge
+        - r9gd.12xlarge
+        - r9gd.16xlarge
+        - r9gd.24xlarge
+        - r9gd.48xlarge
+        - r9gd.metal-48xl
+        - m9g.medium
     DoubleWithConstraints:
       type: number
       format: double
@@ -57869,12 +58045,25 @@ components:
       enum:
         - use-capacity-reservations-first
     ReservedCapacityOptionsRequest:
-      description: Defines EC2 Fleet preferences for utilizing reserved capacity when DefaultTargetCapacityType is set to reserved-capacity. This configuration can only be used if the EC2 Fleet is of type instant. When you specify ReservedCapacityOptions, you must also set DefaultTargetCapacityType to reserved-capacity in the TargetCapacitySpecification. For more information about Interruptible Capacity Reservations, see Launch instances into an Interruptible Capacity Reservation in the Amazon EC2 User Guide.
+      description: Defines EC2 Fleet preferences for utilizing reserved capacity when DefaultTargetCapacityType is set to reserved-capacity. EC2 Fleet can fulfill reserved capacity using On-Demand Capacity Reservations, Capacity Blocks for ML, and interruptible Capacity Reservations. This configuration can only be used if the EC2 Fleet is of type instant. When you specify ReservedCapacityOptions, you must also set DefaultTargetCapacityType to reserved-capacity in the TargetCapacitySpecification. For more information about interruptible Capacity Reservations, see Launch instances into an interruptible Capacity Reservation in the Amazon EC2 User Guide.
       type: object
       properties:
+        AllocationStrategy:
+          $ref: "#/components/schemas/ReservedCapacityAllocationStrategy"
+          description: The strategy that determines the order in which EC2 Fleet launches instances across the reservation types that you specify. The only supported value is prioritized, which launches instances in the priority order that you specify in your launch template overrides. If you don't specify an allocation strategy, instances are launched in a random order.
         ReservationTypes:
           $ref: "#/components/schemas/ReservationTypeListRequest"
-          description: The types of Capacity Reservations to use for fulfilling the EC2 Fleet request.
+          description: "The types of Capacity Reservations to use for fulfilling the EC2 Fleet request. This is an ordered list: EC2 Fleet attempts to launch instances into each Capacity Reservation type in the order that you specify them before moving on to the next type."
+        CapacityReservationTarget:
+          $ref: "#/components/schemas/FleetCapacityReservationTargetRequest"
+          description: The Capacity Reservations or Capacity Reservation Resource Groups to use for fulfilling the EC2 Fleet request. You can specify Capacity Reservation IDs or a Capacity Reservation Resource Group ARN, but not both.
+        ReservedCapacityFallbackOptions:
+          $ref: "#/components/schemas/ReservedCapacityFallbackOptionsRequest"
+          description: The fallback behavior for the EC2 Fleet when there is not enough reserved capacity available to meet the target capacity. This member takes a ReservedCapacityFallbackOptionsRequest structure, in which you set MarketTypes to the instance purchasing options to fall back to.
+    ReservedCapacityAllocationStrategy:
+      type: string
+      enum:
+        - prioritized
     ReservationTypeListRequest:
       type: array
       items:
@@ -57882,7 +58071,44 @@ components:
     FleetReservationType:
       type: string
       enum:
+        - on-demand-capacity-reservation
+        - capacity-block
         - interruptible-capacity-reservation
+    FleetCapacityReservationTargetRequest:
+      description: Describes the target Capacity Reservations or Capacity Reservation Resource Groups for an EC2 Fleet that launches into reserved capacity. You can specify Capacity Reservation IDs or a Capacity Reservation Resource Group ARN, but not both.
+      type: object
+      properties:
+        CapacityReservationIds:
+          $ref: "#/components/schemas/CapacityReservationIdSet"
+          description: The IDs of the Capacity Reservations in which to launch the instances.
+        CapacityReservationResourceGroupArns:
+          $ref: "#/components/schemas/CapacityReservationResourceGroupArnSet"
+          description: The ARNs of the Capacity Reservation Resource Groups in which to launch the instances.
+    CapacityReservationIdSet:
+      type: array
+      items:
+        $ref: "#/components/schemas/CapacityReservationId"
+    CapacityReservationResourceGroupArnSet:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResourceGroupName"
+    ResourceGroupName:
+      type: string
+    ReservedCapacityFallbackOptionsRequest:
+      description: Describes the fallback behavior for an EC2 Fleet that uses reserved capacity when the reserved capacity is not enough to meet the target capacity. If you don't specify fallback options, EC2 Fleet does not fall back to any other market type after the specified reservation types are exhausted.
+      type: object
+      properties:
+        MarketTypes:
+          $ref: "#/components/schemas/ReservedCapacityFallbackMarketTypeList"
+          description: The instance purchasing options to fall back to when the reserved capacity is not enough to meet the target capacity. The only supported value is on-demand, which launches On-Demand Instances to fulfill the remaining target capacity.
+    ReservedCapacityFallbackMarketTypeList:
+      type: array
+      items:
+        $ref: "#/components/schemas/ReservedCapacityFallbackMarketType"
+    ReservedCapacityFallbackMarketType:
+      type: string
+      enum:
+        - on-demand
     FleetExcessCapacityTerminationPolicy:
       type: string
       enum:
@@ -58751,6 +58977,10 @@ components:
       enum:
         - regional
         - local
+    BootModeOverrideValues:
+      type: string
+      enum:
+        - uefi
     BlockDeviceMappingRequestList:
       type: array
       items:
@@ -58838,6 +59068,9 @@ components:
         SnapshotLocation:
           $ref: "#/components/schemas/SnapshotLocationEnum"
           description: "Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)"
+        BootModeOverride:
+          $ref: "#/components/schemas/BootModeOverrideValues"
+          description: The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the boot-mode from the source instance. A value of uefi indicates that the image only supports UEFI boot mode. You can specify this parameter only if the current-instance-boot-mode of the source instance is uefi. To find the boot-mode or current-instance-boot-mode of an instance, see DescribeInstances. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -59277,6 +59510,11 @@ components:
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+    ZeroSizePreference:
+      type: string
+      enum:
+        - retain
+        - default
     CreateInterruptibleCapacityReservationAllocationResultDisplay:
       type: object
       properties:
@@ -59325,6 +59563,9 @@ components:
         TagSpecifications:
           $ref: "#/components/schemas/TagSpecificationList"
           description: The tags to apply to the interruptible Capacity Reservation during creation.
+        ZeroSizePreference:
+          $ref: "#/components/schemas/ZeroSizePreference"
+          description: Specifies the behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation. The default value is default.
       required:
         - CapacityReservationId
         - InstanceCount
@@ -59614,6 +59855,11 @@ components:
           description: "The state of the internet registry association. Valid values: pending-activation | pending-enable | create-in-progress | create-failed | enable-in-progress | enable-complete | enable-failed | delete-in-progress | delete-complete | delete-failed."
           xml:
             name: state
+        StateMessage:
+          type: string
+          description: A message describing the current state of the internet registry association, including additional details such as the reason for a failure.
+          xml:
+            name: stateMessage
         ChildRequestXml:
           type: string
           description: The XML content for the child request to be submitted to the internet registry to complete the BPKI setup.
@@ -60994,6 +61240,7 @@ components:
         - spot
         - capacity-block
         - interruptible-capacity-reservation
+        - on-demand
     LaunchTemplateSpotMarketOptionsRequest:
       description: The options for Spot Instances.
       type: object
@@ -66786,6 +67033,7 @@ components:
         - GatewayLoadBalancer
         - Resource
         - ServiceNetwork
+        - Tunnel
     VpcEndpointRouteTableIdList:
       type: array
       items:
@@ -67681,7 +67929,7 @@ components:
           description: The ID of the application status check to delete.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -70716,10 +70964,6 @@ components:
           description: The token for the next page of results.
       required:
         - MaxResults
-    CapacityReservationIdSet:
-      type: array
-      items:
-        $ref: "#/components/schemas/CapacityReservationId"
     DescribeFutureCapacityMaxResults:
       type: integer
       minimum: 1
@@ -74187,6 +74431,11 @@ components:
           description: The watermarks attached to the AMI.
           xml:
             name: imageWatermarkSet
+        InstanceTypeSpecification:
+          type: string
+          description: The instance type specification for the AMI, which defines which instance types are compatible with this image.
+          xml:
+            name: instanceTypeSpecification
         ImageId:
           type: string
           description: The ID of the AMI.
@@ -74283,7 +74532,7 @@ components:
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
         Filters:
           $ref: "#/components/schemas/FilterList"
-          description: The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:`<key>` - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).
+          description: The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. boot-mode – The boot mode of the image (legacy-bios | uefi | uefi-preferred). creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). instance-type-specification.supported-instance-type – The instance types that are compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). instance-type-specification.unsupported-instance-type – The instance types that are not compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:`<key>` - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).
     ImportTaskIdList:
       type: array
       items:
@@ -74939,7 +75188,7 @@ components:
             name: attachedEbsStatus
         ApplicationStatus:
           type: string
-          description: Reports impaired functionality that stems from issues with applications running on the instance.
+          description: Reports the application-level health status for the instance.
           xml:
             name: applicationStatus
     DescribeInstanceStatusOutputDisplay:
@@ -81804,7 +82053,7 @@ components:
           description: The IDs of the instances for which to disable application status check suppression.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -82447,7 +82696,7 @@ components:
           description: The IDs of the instances to disassociate from the application status check.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -83006,7 +83255,7 @@ components:
           description: The duration, in seconds, for which to suppress application status checks. If omitted, the application status check is suppressed indefinitely until you call DisableApplicationStatusCheckSuppression.
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -88966,7 +89215,7 @@ components:
           description: "The number of seconds to wait before starting health checks after an instance is launched. Valid values: 1 to 600."
         ClientToken:
           $ref: "#/components/schemas/String"
-          description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+          description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -89548,10 +89797,12 @@ components:
           $ref: "#/components/schemas/Boolean"
           description: Indicates whether the volume is deleted on instance termination.
     SecureBlobAttributeValue:
+      description: Describes a value for a resource attribute that is a Base64-encoded binary data object.
       type: object
       properties:
         Value:
           $ref: "#/components/schemas/SecureBlob"
+          description: The attribute value.
     ModifyInstanceAttributeRequest:
       type: object
       properties:
@@ -92417,11 +92668,13 @@ components:
       type: string
       enum:
         - vpc-endpoint-account
+        - resource-gateway-account
         - vpc-endpoint-service-account
     PayerResponsibilityScope:
       type: string
       enum:
         - vpc-endpoint-charges
+        - resource-gateway-charges
     ModifyVpcEndpointPayerResponsibilityResultDisplay:
       type: object
       properties:
@@ -93970,6 +94223,57 @@ components:
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+    InstanceTypeSpecificationRequest:
+      description: The instance type specification for an AMI, which contains lists of supported and unsupported instance types that define which instance types are compatible with the AMI.
+      type: object
+      properties:
+        SupportedInstanceTypes:
+          $ref: "#/components/schemas/SupportedInstanceTypeRequestSet"
+          description: "The instance types that the AMI supports. You can specify instance type names or use wildcard patterns (for example, t3.*). Constraints: Maximum 100 entries. Each entry must be 1-24 characters and match the pattern ^[A-Za-z0-9_.*-]+$. Consecutive wildcard characters (**) are not allowed. Entries must be unique within each list and across both lists; duplicate entries cause the request to fail."
+        UnsupportedInstanceTypes:
+          $ref: "#/components/schemas/UnsupportedInstanceTypeRequestSet"
+          description: "The instance types that the AMI does not support. You can specify instance type names or use wildcard patterns (for example, t3.*). Constraints: Maximum 100 entries. Each entry must be 1-24 characters and match the pattern ^[A-Za-z0-9_.*-]+$. Consecutive wildcard characters (**) are not allowed. Entries must be unique within each list and across both lists; duplicate entries cause the request to fail."
+    SupportedInstanceTypeRequestSet:
+      type: array
+      items:
+        $ref: "#/components/schemas/InstanceTypeItemRequest"
+    InstanceTypeItemRequest:
+      type: string
+      minLength: 0
+      maxLength: 24
+    UnsupportedInstanceTypeRequestSet:
+      type: array
+      items:
+        $ref: "#/components/schemas/InstanceTypeItemRequest"
+    ReplaceImageInstanceTypeSpecificationResultDisplay:
+      type: object
+      properties:
+        ReturnValue:
+          type: boolean
+          description: Returns true if the request succeeds; otherwise, it returns an error.
+          xml:
+            name: returnValue
+    ReplaceImageInstanceTypeSpecificationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReplaceImageInstanceTypeSpecificationResultDisplay"
+    ReplaceImageInstanceTypeSpecificationRequest:
+      type: object
+      properties:
+        ImageId:
+          $ref: "#/components/schemas/ImageId"
+          description: The ID of the AMI.
+        InstanceTypeSpecification:
+          $ref: "#/components/schemas/InstanceTypeSpecificationRequest"
+          description: The instance type specification to set on the AMI. Omit this parameter to remove the existing instance type specification.
+        DryRun:
+          $ref: "#/components/schemas/Boolean"
+          description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+      required:
+        - ImageId
     NetworkAclAssociationId:
       type: string
     ReplaceNetworkAclAssociationResultDisplay:
@@ -96529,9 +96833,11 @@ components:
         DryRun:
           $ref: "#/components/schemas/Boolean"
           description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response.
+        ZeroSizePreference:
+          $ref: "#/components/schemas/ZeroSizePreference"
+          description: Specifies the updated behavior for the interruptible Capacity Reservation when you reduce its allocation to zero instances. Specify retain to keep the interruptible Capacity Reservation active at zero capacity so that you can allocate instances to it again later. Specify default to cancel the interruptible Capacity Reservation and return the capacity to your source Capacity Reservation.
       required:
         - CapacityReservationId
-        - TargetInstanceCount
     SecurityGroupRuleDescriptionList:
       type: array
       items:
@@ -96612,6 +96918,32 @@ components:
         SecurityGroupRuleDescriptions:
           $ref: "#/components/schemas/SecurityGroupRuleDescriptionList"
           description: The description for the ingress security group rules. You must specify either a description or IP permissions.
+    ValidateSecurityGroupQuotasForInterfaceResultDisplay:
+      type: object
+      properties:
+        Valid:
+          type: boolean
+          description: Specifies whether the specified security groups can be associated with a single network interface without exceeding the quotas. If associating the security groups would exceed a quota, the operation returns an error.
+          xml:
+            name: valid
+    ValidateSecurityGroupQuotasForInterfaceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ValidateSecurityGroupQuotasForInterfaceResultDisplay"
+    ValidateSecurityGroupQuotasForInterfaceRequest:
+      type: object
+      properties:
+        SecurityGroupIds:
+          $ref: "#/components/schemas/SecurityGroupIdList"
+          description: The IDs of the security groups to validate for association with a single network interface. You must specify at least one ID, and each ID must be unique. The number of IDs cannot exceed the maximum number of security groups allowed per network interface.
+        DryRun:
+          $ref: "#/components/schemas/Boolean"
+          description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+      required:
+        - SecurityGroupIds
     WithdrawByoipCidrOutputDisplay:
       type: object
       properties:
@@ -96631,6 +96963,87 @@ components:
       required:
         - Cidr
   x-stackQL-resources:
+    address_transfers:
+      id: aws.ec2.address_transfers
+      name: address_transfers
+      title: address_transfers
+      methods:
+        accept_address_transfer:
+          operation:
+            $ref: "#/paths/~1?Action=AcceptAddressTransfer&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AcceptAddressTransferOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_address_transfers:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeAddressTransfers&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeAddressTransfersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        disable_address_transfer:
+          operation:
+            $ref: "#/paths/~1?Action=DisableAddressTransfer&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableAddressTransferOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_address_transfer:
+          operation:
+            $ref: "#/paths/~1?Action=EnableAddressTransfer&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableAddressTransferOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/address_transfers/methods/describe_address_transfers"
+        insert: []
+        update: []
+        delete: []
     capacity_reservations:
       id: aws.ec2.capacity_reservations
       name: capacity_reservations
@@ -96830,8 +97243,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -96846,7 +97257,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/capacity_reservations/methods/create_interruptible_capacity_reservation_allocation"
         update:
           - $ref: "#/components/x-stackQL-resources/capacity_reservations/methods/associate_capacity_reservation_billing_owner"
-          - $ref: "#/components/x-stackQL-resources/capacity_reservations/methods/update_interruptible_capacity_reservation_allocation"
           - $ref: "#/components/x-stackQL-resources/capacity_reservations/methods/modify_capacity_reservation"
         delete: []
     reserved_instances:
@@ -97693,10 +98103,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/byoip_cidrs/methods/advertise_byoip_cidr"
         delete: []
-    address:
-      id: aws.ec2.address
-      name: address
-      title: address
+    addresses:
+      id: aws.ec2.addresses
+      name: addresses
+      title: addresses
       methods:
         allocate_address:
           operation:
@@ -97717,6 +98127,42 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        assign_ipv6_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=AssignIpv6Addresses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssignIpv6AddressesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        assign_private_ip_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=AssignPrivateIpAddresses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AssignPrivateIpAddressesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         associate_address:
           operation:
             $ref: "#/paths/~1?Action=AssociateAddress&Version=2016-11-15/get"
@@ -97729,6 +98175,25 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeAddresses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeAddressesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -97754,11 +98219,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        unassign_ipv6_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=UnassignIpv6Addresses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UnassignIpv6AddressesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        unassign_private_ip_addresses:
+          operation:
+            $ref: "#/paths/~1?Action=UnassignPrivateIpAddresses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/describe_addresses"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/address/methods/allocate_address"
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/assign_ipv6_addresses"
+          - $ref: "#/components/x-stackQL-resources/addresses/methods/allocate_address"
         delete: []
     hosts:
       id: aws.ec2.hosts
@@ -98126,100 +98620,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/client_vpn_endpoints/methods/modify_client_vpn_endpoint"
         delete:
           - $ref: "#/components/x-stackQL-resources/client_vpn_endpoints/methods/delete_client_vpn_endpoint"
-    addresses:
-      id: aws.ec2.addresses
-      name: addresses
-      title: addresses
-      methods:
-        assign_ipv6_addresses:
-          operation:
-            $ref: "#/paths/~1?Action=AssignIpv6Addresses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AssignIpv6AddressesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        assign_private_ip_addresses:
-          operation:
-            $ref: "#/paths/~1?Action=AssignPrivateIpAddresses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AssignPrivateIpAddressesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_addresses:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeAddresses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeAddressesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        unassign_ipv6_addresses:
-          operation:
-            $ref: "#/paths/~1?Action=UnassignIpv6Addresses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UnassignIpv6AddressesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        unassign_private_ip_addresses:
-          operation:
-            $ref: "#/paths/~1?Action=UnassignPrivateIpAddresses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/addresses/methods/describe_addresses"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/addresses/methods/assign_ipv6_addresses"
-        delete: []
     nat_gateways:
       id: aws.ec2.nat_gateways
       name: nat_gateways
@@ -99466,8 +99866,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/route_tables/methods/describe_route_tables"
         insert:
-          - $ref: "#/components/x-stackQL-resources/route_tables/methods/create_route"
           - $ref: "#/components/x-stackQL-resources/route_tables/methods/create_route_table"
+          - $ref: "#/components/x-stackQL-resources/route_tables/methods/create_route"
         update:
           - $ref: "#/components/x-stackQL-resources/route_tables/methods/associate_route_table"
           - $ref: "#/components/x-stackQL-resources/route_tables/methods/disassociate_route_table"
@@ -100055,6 +100455,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        copy_image:
+          operation:
+            $ref: "#/paths/~1?Action=CopyImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         create_image:
           operation:
             $ref: "#/paths/~1?Action=CreateImage&Version=2016-11-15/get"
@@ -100148,6 +100565,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        disable_image:
+          operation:
+            $ref: "#/paths/~1?Action=DisableImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         disable_image_block_public_access:
           operation:
             $ref: "#/paths/~1?Action=DisableImageBlockPublicAccess&Version=2016-11-15/get"
@@ -100216,6 +100650,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        enable_image:
+          operation:
+            $ref: "#/paths/~1?Action=EnableImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         enable_image_block_public_access:
           operation:
             $ref: "#/paths/~1?Action=EnableImageBlockPublicAccess&Version=2016-11-15/get"
@@ -100267,6 +100718,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        export_image:
+          operation:
+            $ref: "#/paths/~1?Action=ExportImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ExportImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        import_image:
+          operation:
+            $ref: "#/paths/~1?Action=ImportImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         register_image:
           operation:
             $ref: "#/paths/~1?Action=RegisterImage&Version=2016-11-15/get"
@@ -100276,6 +100761,25 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/RegisterImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        replace_image_instance_type_specification:
+          operation:
+            $ref: "#/paths/~1?Action=ReplaceImageInstanceTypeSpecification&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ReplaceImageInstanceTypeSpecificationOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -100322,6 +100826,8 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/images/methods/attach_image_watermark"
           - $ref: "#/components/x-stackQL-resources/images/methods/detach_image_watermark"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/images/methods/replace_image_instance_type_specification"
         delete:
           - $ref: "#/components/x-stackQL-resources/images/methods/deregister_image"
     internet_gateways:
@@ -100532,8 +101038,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/create_network_interface"
         update:
           - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/attach_network_interface"
-          - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/modify_public_ip_dns_name_options"
           - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/detach_network_interface"
+          - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/modify_public_ip_dns_name_options"
         delete:
           - $ref: "#/components/x-stackQL-resources/network_interfaces/methods/delete_network_interface"
     verified_access_trust_providers:
@@ -100784,6 +101290,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        import_volume:
+          operation:
+            $ref: "#/paths/~1?Action=ImportVolume&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportVolumeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         modify_volume:
           operation:
             $ref: "#/paths/~1?Action=ModifyVolume&Version=2016-11-15/get"
@@ -101021,6 +101544,25 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        get_security_groups_for_vpc:
+          operation:
+            $ref: "#/paths/~1?Action=GetSecurityGroupsForVpc&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetSecurityGroupsForVpcOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         revoke_security_group_egress:
           operation:
             $ref: "#/paths/~1?Action=RevokeSecurityGroupEgress&Version=2016-11-15/get"
@@ -101055,8 +101597,26 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        validate_security_group_quotas_for_interface:
+          operation:
+            $ref: "#/paths/~1?Action=ValidateSecurityGroupQuotasForInterface&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ValidateSecurityGroupQuotasForInterfaceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/security_groups/methods/get_security_groups_for_vpc"
           - $ref: "#/components/x-stackQL-resources/security_groups/methods/describe_security_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/security_groups/methods/create_security_group"
@@ -101296,6 +101856,23 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/EnableInstanceSqlHaStandbyDetectionsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        import_instance:
+          operation:
+            $ref: "#/paths/~1?Action=ImportInstance&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportInstanceOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -101623,9 +102200,9 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/instances/methods/describe_instances"
         insert:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/run_instances"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_delegate_mac_volume_ownership_task"
           - $ref: "#/components/x-stackQL-resources/instances/methods/create_mac_system_integrity_protection_modification_task"
-          - $ref: "#/components/x-stackQL-resources/instances/methods/run_instances"
         update:
           - $ref: "#/components/x-stackQL-resources/instances/methods/modify_instance_event_start_time"
           - $ref: "#/components/x-stackQL-resources/instances/methods/modify_instance_capacity_reservation_attributes"
@@ -101633,6 +102210,53 @@ components:
           - $ref: "#/components/x-stackQL-resources/instances/methods/modify_instance_cpu_options"
         delete:
           - $ref: "#/components/x-stackQL-resources/instances/methods/terminate_instances"
+    bundle_tasks:
+      id: aws.ec2.bundle_tasks
+      name: bundle_tasks
+      title: bundle_tasks
+      methods:
+        cancel_bundle_task:
+          operation:
+            $ref: "#/paths/~1?Action=CancelBundleTask&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelBundleTaskOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_bundle_tasks:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeBundleTasks&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeBundleTasksOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/bundle_tasks/methods/describe_bundle_tasks"
+        insert: []
+        update: []
+        delete: []
     capacity_reservation_fleets:
       id: aws.ec2.capacity_reservation_fleets
       name: capacity_reservation_fleets
@@ -101760,6 +102384,70 @@ components:
         insert: []
         update: []
         delete: []
+    declarative_policies_reports:
+      id: aws.ec2.declarative_policies_reports
+      name: declarative_policies_reports
+      title: declarative_policies_reports
+      methods:
+        cancel_declarative_policies_report:
+          operation:
+            $ref: "#/paths/~1?Action=CancelDeclarativePoliciesReport&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelDeclarativePoliciesReportOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_declarative_policies_reports:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDeclarativePoliciesReports&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDeclarativePoliciesReportsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        start_declarative_policies_report:
+          operation:
+            $ref: "#/paths/~1?Action=StartDeclarativePoliciesReport&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartDeclarativePoliciesReportOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/declarative_policies_reports/methods/describe_declarative_policies_reports"
+        insert: []
+        update: []
+        delete: []
     export_tasks:
       id: aws.ec2.export_tasks
       name: export_tasks
@@ -101818,6 +102506,33 @@ components:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/describe_export_tasks"
         insert:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/create_instance_export_task"
+        update: []
+        delete: []
+    import_tasks:
+      id: aws.ec2.import_tasks
+      name: import_tasks
+      title: import_tasks
+      methods:
+        cancel_import_task:
+          operation:
+            $ref: "#/paths/~1?Action=CancelImportTask&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelImportTaskOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
         update: []
         delete: []
     spot_fleet_requests:
@@ -101934,6 +102649,360 @@ components:
         insert: []
         update: []
         delete: []
+    fpga_images:
+      id: aws.ec2.fpga_images
+      name: fpga_images
+      title: fpga_images
+      methods:
+        copy_fpga_image:
+          operation:
+            $ref: "#/paths/~1?Action=CopyFpgaImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyFpgaImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_fpga_image:
+          operation:
+            $ref: "#/paths/~1?Action=CreateFpgaImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateFpgaImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_fpga_image:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteFpgaImage&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteFpgaImageOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_fpga_images:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeFpgaImages&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeFpgaImagesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reset_fpga_image_attribute:
+          operation:
+            $ref: "#/paths/~1?Action=ResetFpgaImageAttribute&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetFpgaImageAttributeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/describe_fpga_images"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/create_fpga_image"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/delete_fpga_image"
+    snapshots:
+      id: aws.ec2.snapshots
+      name: snapshots
+      title: snapshots
+      methods:
+        copy_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CopySnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopySnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CreateSnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_snapshots:
+          operation:
+            $ref: "#/paths/~1?Action=CreateSnapshots&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateSnapshotsOutputDisplay"
+            transform:
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $s := separator ", " -}}{{- $n := index . "CreateSnapshotsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "snapshotSet" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteSnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_snapshots:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeSnapshots&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeSnapshotsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        disable_snapshot_block_public_access:
+          operation:
+            $ref: "#/paths/~1?Action=DisableSnapshotBlockPublicAccess&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableSnapshotBlockPublicAccessOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_snapshot_block_public_access:
+          operation:
+            $ref: "#/paths/~1?Action=EnableSnapshotBlockPublicAccess&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableSnapshotBlockPublicAccessOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        import_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=ImportSnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        lock_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=LockSnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/LockSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_snapshot_tier:
+          operation:
+            $ref: "#/paths/~1?Action=ModifySnapshotTier&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifySnapshotTierOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reset_snapshot_attribute:
+          operation:
+            $ref: "#/paths/~1?Action=ResetSnapshotAttribute&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_snapshot_from_recycle_bin:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreSnapshotFromRecycleBin&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreSnapshotFromRecycleBinOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_snapshot_tier:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreSnapshotTier&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreSnapshotTierOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        unlock_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=UnlockSnapshot&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UnlockSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshots"
+        update:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/modify_snapshot_tier"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     capacity_manager_data_exports:
       id: aws.ec2.capacity_manager_data_exports
       name: capacity_manager_data_exports
@@ -102296,8 +103365,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/coip_pools/methods/describe_coip_pools"
         insert:
-          - $ref: "#/components/x-stackQL-resources/coip_pools/methods/create_coip_cidr"
           - $ref: "#/components/x-stackQL-resources/coip_pools/methods/create_coip_pool"
+          - $ref: "#/components/x-stackQL-resources/coip_pools/methods/create_coip_cidr"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/coip_pools/methods/delete_coip_pool"
@@ -102594,93 +103663,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/flow_logs/methods/delete_flow_logs"
-    fpga_images:
-      id: aws.ec2.fpga_images
-      name: fpga_images
-      title: fpga_images
-      methods:
-        create_fpga_image:
-          operation:
-            $ref: "#/paths/~1?Action=CreateFpgaImage&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateFpgaImageOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_fpga_image:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteFpgaImage&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteFpgaImageOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_fpga_images:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeFpgaImages&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeFpgaImagesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        reset_fpga_image_attribute:
-          operation:
-            $ref: "#/paths/~1?Action=ResetFpgaImageAttribute&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ResetFpgaImageAttributeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/describe_fpga_images"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/create_fpga_image"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/fpga_images/methods/delete_fpga_image"
     image_usage_reports:
       id: aws.ec2.image_usage_reports
       name: image_usage_reports
@@ -103648,6 +104630,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        import_key_pair:
+          operation:
+            $ref: "#/paths/~1?Action=ImportKeyPair&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportKeyPairOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/key_pairs/methods/describe_key_pairs"
@@ -104477,8 +105476,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/network_acls/methods/describe_network_acls"
         insert:
-          - $ref: "#/components/x-stackQL-resources/network_acls/methods/create_network_acl_entry"
           - $ref: "#/components/x-stackQL-resources/network_acls/methods/create_network_acl"
+          - $ref: "#/components/x-stackQL-resources/network_acls/methods/create_network_acl_entry"
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/network_acls/methods/replace_network_acl_entry"
@@ -105316,222 +106315,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/secondary_subnets/methods/delete_secondary_subnet"
-    snapshots:
-      id: aws.ec2.snapshots
-      name: snapshots
-      title: snapshots
-      methods:
-        create_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=CreateSnapshot&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        create_snapshots:
-          operation:
-            $ref: "#/paths/~1?Action=CreateSnapshots&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateSnapshotsOutputDisplay"
-            transform:
-              type: golang_template_mxj_v0.3.0
-              body: '{{- $s := separator ", " -}}{{- $n := index . "CreateSnapshotsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "snapshotSet" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}{{- end -}}]}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteSnapshot&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_snapshots:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeSnapshots&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeSnapshotsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        disable_snapshot_block_public_access:
-          operation:
-            $ref: "#/paths/~1?Action=DisableSnapshotBlockPublicAccess&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DisableSnapshotBlockPublicAccessOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        enable_snapshot_block_public_access:
-          operation:
-            $ref: "#/paths/~1?Action=EnableSnapshotBlockPublicAccess&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/EnableSnapshotBlockPublicAccessOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        lock_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=LockSnapshot&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/LockSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_snapshot_tier:
-          operation:
-            $ref: "#/paths/~1?Action=ModifySnapshotTier&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifySnapshotTierOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        reset_snapshot_attribute:
-          operation:
-            $ref: "#/paths/~1?Action=ResetSnapshotAttribute&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        restore_snapshot_from_recycle_bin:
-          operation:
-            $ref: "#/paths/~1?Action=RestoreSnapshotFromRecycleBin&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RestoreSnapshotFromRecycleBinOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        restore_snapshot_tier:
-          operation:
-            $ref: "#/paths/~1?Action=RestoreSnapshotTier&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RestoreSnapshotTierOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        unlock_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=UnlockSnapshot&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UnlockSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshots"
-        update:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/modify_snapshot_tier"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     spot_datafeed_subscriptions:
       id: aws.ec2.spot_datafeed_subscriptions
       name: spot_datafeed_subscriptions
@@ -108023,8 +108806,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/describe_vpn_connections"
         insert:
-          - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/create_vpn_connection_route"
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/create_vpn_connection"
+          - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/create_vpn_connection_route"
         update:
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/modify_vpn_tunnel_options"
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/modify_vpn_tunnel_certificate"
@@ -108034,10 +108817,10 @@ components:
         delete:
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/delete_vpn_connection_route"
           - $ref: "#/components/x-stackQL-resources/vpn_connections/methods/delete_vpn_connection"
-    network_insights_analysis:
-      id: aws.ec2.network_insights_analysis
-      name: network_insights_analysis
-      title: network_insights_analysis
+    network_insights_analyses:
+      id: aws.ec2.network_insights_analyses
+      name: network_insights_analyses
+      title: network_insights_analyses
       methods:
         delete_network_insights_analysis:
           operation:
@@ -108048,6 +108831,25 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/DeleteNetworkInsightsAnalysisOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_network_insights_analyses:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeNetworkInsightsAnalyses&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeNetworkInsightsAnalysesOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -108076,11 +108878,12 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/network_insights_analyses/methods/describe_network_insights_analyses"
         insert: []
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/network_insights_analysis/methods/delete_network_insights_analysis"
+          - $ref: "#/components/x-stackQL-resources/network_insights_analyses/methods/delete_network_insights_analysis"
     instance_event_notification_attributes:
       id: aws.ec2.instance_event_notification_attributes
       name: instance_event_notification_attributes
@@ -108335,36 +109138,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/account_vpc_encryption_controls/methods/modify_account_vpc_encryption_control"
         delete: []
-    address_transfers:
-      id: aws.ec2.address_transfers
-      name: address_transfers
-      title: address_transfers
-      methods:
-        describe_address_transfers:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeAddressTransfers&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeAddressTransfersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/address_transfers/methods/describe_address_transfers"
-        insert: []
-        update: []
-        delete: []
     addresses_attributes:
       id: aws.ec2.addresses_attributes
       name: addresses_attributes
@@ -108425,10 +109198,10 @@ components:
         insert: []
         update: []
         delete: []
-    application_status:
-      id: aws.ec2.application_status
-      name: application_status
-      title: application_status
+    application_statuses:
+      id: aws.ec2.application_statuses
+      name: application_statuses
+      title: application_statuses
       methods:
         describe_application_status:
           operation:
@@ -108451,7 +109224,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/application_status/methods/describe_application_status"
+          - $ref: "#/components/x-stackQL-resources/application_statuses/methods/describe_application_status"
         insert: []
         update: []
         delete: []
@@ -108559,31 +109332,35 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/aws_network_performance_metric_subscriptions/methods/describe_aws_network_performance_metric_subscriptions"
-        insert: []
-        update: []
-        delete: []
-    bundle_tasks:
-      id: aws.ec2.bundle_tasks
-      name: bundle_tasks
-      title: bundle_tasks
-      methods:
-        describe_bundle_tasks:
+        disable_aws_network_performance_metric_subscription:
           operation:
-            $ref: "#/paths/~1?Action=DescribeBundleTasks&Version=2016-11-15/get"
+            $ref: "#/paths/~1?Action=DisableAwsNetworkPerformanceMetricSubscription&Version=2016-11-15/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/DescribeBundleTasksOutputDisplay"
+              $ref: "#/components/schemas/DisableAwsNetworkPerformanceMetricSubscriptionOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_aws_network_performance_metric_subscription:
+          operation:
+            $ref: "#/paths/~1?Action=EnableAwsNetworkPerformanceMetricSubscription&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableAwsNetworkPerformanceMetricSubscriptionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -108591,7 +109368,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/bundle_tasks/methods/describe_bundle_tasks"
+          - $ref: "#/components/x-stackQL-resources/aws_network_performance_metric_subscriptions/methods/describe_aws_network_performance_metric_subscriptions"
         insert: []
         update: []
         delete: []
@@ -108719,10 +109496,10 @@ components:
         insert: []
         update: []
         delete: []
-    capacity_block_status:
-      id: aws.ec2.capacity_block_status
-      name: capacity_block_status
-      title: capacity_block_status
+    capacity_block_statuses:
+      id: aws.ec2.capacity_block_statuses
+      name: capacity_block_statuses
+      title: capacity_block_statuses
       methods:
         describe_capacity_block_status:
           operation:
@@ -108745,7 +109522,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/capacity_block_status/methods/describe_capacity_block_status"
+          - $ref: "#/components/x-stackQL-resources/capacity_block_statuses/methods/describe_capacity_block_status"
         insert: []
         update: []
         delete: []
@@ -108949,36 +109726,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/client_vpn_connections/methods/terminate_client_vpn_connections"
-    declarative_policies_reports:
-      id: aws.ec2.declarative_policies_reports
-      name: declarative_policies_reports
-      title: declarative_policies_reports
-      methods:
-        describe_declarative_policies_reports:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDeclarativePoliciesReports&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDeclarativePoliciesReportsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/declarative_policies_reports/methods/describe_declarative_policies_reports"
-        insert: []
-        update: []
-        delete: []
     elastic_gpus:
       id: aws.ec2.elastic_gpus
       name: elastic_gpus
@@ -109292,6 +110039,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        purchase_host_reservation:
+          operation:
+            $ref: "#/paths/~1?Action=PurchaseHostReservation&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PurchaseHostReservationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -109696,10 +110460,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/instance_credit_specifications/methods/modify_instance_credit_specification"
         delete: []
-    instance_image_metadatas:
-      id: aws.ec2.instance_image_metadatas
-      name: instance_image_metadatas
-      title: instance_image_metadatas
+    instance_image_metadata:
+      id: aws.ec2.instance_image_metadata
+      name: instance_image_metadata
+      title: instance_image_metadata
       methods:
         describe_instance_image_metadata:
           operation:
@@ -109722,7 +110486,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_image_metadatas/methods/describe_instance_image_metadata"
+          - $ref: "#/components/x-stackQL-resources/instance_image_metadata/methods/describe_instance_image_metadata"
         insert: []
         update: []
         delete: []
@@ -109786,10 +110550,10 @@ components:
         insert: []
         update: []
         delete: []
-    instance_status:
-      id: aws.ec2.instance_status
-      name: instance_status
-      title: instance_status
+    instance_statuses:
+      id: aws.ec2.instance_statuses
+      name: instance_statuses
+      title: instance_statuses
       methods:
         describe_instance_status:
           operation:
@@ -109822,7 +110586,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_status/methods/describe_instance_status"
+          - $ref: "#/components/x-stackQL-resources/instance_statuses/methods/describe_instance_status"
         insert: []
         update: []
         delete: []
@@ -110253,36 +111017,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_insights_access_scope_analyses/methods/describe_network_insights_access_scope_analyses"
-        insert: []
-        update: []
-        delete: []
-    network_insights_analyses:
-      id: aws.ec2.network_insights_analyses
-      name: network_insights_analyses
-      title: network_insights_analyses
-      methods:
-        describe_network_insights_analyses:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeNetworkInsightsAnalyses&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeNetworkInsightsAnalysesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/network_insights_analyses/methods/describe_network_insights_analyses"
         insert: []
         update: []
         delete: []
@@ -110870,10 +111604,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/snapshot_attributes/methods/modify_snapshot_attribute"
         delete: []
-    snapshot_tier_status:
-      id: aws.ec2.snapshot_tier_status
-      name: snapshot_tier_status
-      title: snapshot_tier_status
+    snapshot_tier_statuses:
+      id: aws.ec2.snapshot_tier_statuses
+      name: snapshot_tier_statuses
+      title: snapshot_tier_statuses
       methods:
         describe_snapshot_tier_status:
           operation:
@@ -110896,7 +111630,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/snapshot_tier_status/methods/describe_snapshot_tier_status"
+          - $ref: "#/components/x-stackQL-resources/snapshot_tier_statuses/methods/describe_snapshot_tier_status"
         insert: []
         update: []
         delete: []
@@ -111173,10 +111907,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/volume_attributes/methods/modify_volume_attribute"
         delete: []
-    volume_status:
-      id: aws.ec2.volume_status
-      name: volume_status
-      title: volume_status
+    volume_statuses:
+      id: aws.ec2.volume_statuses
+      name: volume_statuses
+      title: volume_statuses
       methods:
         describe_volume_status:
           operation:
@@ -111199,7 +111933,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/volume_status/methods/describe_volume_status"
+          - $ref: "#/components/x-stackQL-resources/volume_statuses/methods/describe_volume_status"
         insert: []
         update: []
         delete: []
@@ -111652,10 +112386,189 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/allowed_images_settings/methods/replace_image_criteria_in_allowed_images_settings"
         delete: []
-    active_vpn_tunnel_status:
-      id: aws.ec2.active_vpn_tunnel_status
-      name: active_vpn_tunnel_status
-      title: active_vpn_tunnel_status
+    capacity_managers:
+      id: aws.ec2.capacity_managers
+      name: capacity_managers
+      title: capacity_managers
+      methods:
+        disable_capacity_manager:
+          operation:
+            $ref: "#/paths/~1?Action=DisableCapacityManager&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableCapacityManagerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_capacity_manager:
+          operation:
+            $ref: "#/paths/~1?Action=EnableCapacityManager&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableCapacityManagerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ebs_encryptions:
+      id: aws.ec2.ebs_encryptions
+      name: ebs_encryptions
+      title: ebs_encryptions
+      methods:
+        disable_ebs_encryption_by_default:
+          operation:
+            $ref: "#/paths/~1?Action=DisableEbsEncryptionByDefault&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableEbsEncryptionByDefaultOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_ebs_encryption_by_default:
+          operation:
+            $ref: "#/paths/~1?Action=EnableEbsEncryptionByDefault&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableEbsEncryptionByDefaultOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        get_ebs_encryption_by_default:
+          operation:
+            $ref: "#/paths/~1?Action=GetEbsEncryptionByDefault&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetEbsEncryptionByDefaultOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/ebs_encryptions/methods/get_ebs_encryption_by_default"
+        insert: []
+        update: []
+        delete: []
+    serial_console_accesses:
+      id: aws.ec2.serial_console_accesses
+      name: serial_console_accesses
+      title: serial_console_accesses
+      methods:
+        disable_serial_console_access:
+          operation:
+            $ref: "#/paths/~1?Action=DisableSerialConsoleAccess&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableSerialConsoleAccessOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_serial_console_access:
+          operation:
+            $ref: "#/paths/~1?Action=EnableSerialConsoleAccess&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableSerialConsoleAccessOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    reachability_analyzer_organization_sharings:
+      id: aws.ec2.reachability_analyzer_organization_sharings
+      name: reachability_analyzer_organization_sharings
+      title: reachability_analyzer_organization_sharings
+      methods:
+        enable_reachability_analyzer_organization_sharing:
+          operation:
+            $ref: "#/paths/~1?Action=EnableReachabilityAnalyzerOrganizationSharing&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableReachabilityAnalyzerOrganizationSharingOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    active_vpn_tunnel_statuses:
+      id: aws.ec2.active_vpn_tunnel_statuses
+      name: active_vpn_tunnel_statuses
+      title: active_vpn_tunnel_statuses
       methods:
         get_active_vpn_tunnel_status:
           operation:
@@ -111678,7 +112591,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/active_vpn_tunnel_status/methods/get_active_vpn_tunnel_status"
+          - $ref: "#/components/x-stackQL-resources/active_vpn_tunnel_statuses/methods/get_active_vpn_tunnel_status"
         insert: []
         update: []
         delete: []
@@ -111742,10 +112655,10 @@ components:
         insert: []
         update: []
         delete: []
-    aws_network_performance_datas:
-      id: aws.ec2.aws_network_performance_datas
-      name: aws_network_performance_datas
-      title: aws_network_performance_datas
+    aws_network_performance_data:
+      id: aws.ec2.aws_network_performance_data
+      name: aws_network_performance_data
+      title: aws_network_performance_data
       methods:
         get_aws_network_performance_data:
           operation:
@@ -111768,7 +112681,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aws_network_performance_datas/methods/get_aws_network_performance_data"
+          - $ref: "#/components/x-stackQL-resources/aws_network_performance_data/methods/get_aws_network_performance_data"
         insert: []
         update: []
         delete: []
@@ -111802,10 +112715,10 @@ components:
         insert: []
         update: []
         delete: []
-    capacity_manager_metric_datas:
-      id: aws.ec2.capacity_manager_metric_datas
-      name: capacity_manager_metric_datas
-      title: capacity_manager_metric_datas
+    capacity_manager_metric_data:
+      id: aws.ec2.capacity_manager_metric_data
+      name: capacity_manager_metric_data
+      title: capacity_manager_metric_data
       methods:
         get_capacity_manager_metric_data:
           operation:
@@ -111828,7 +112741,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/capacity_manager_metric_datas/methods/get_capacity_manager_metric_data"
+          - $ref: "#/components/x-stackQL-resources/capacity_manager_metric_data/methods/get_capacity_manager_metric_data"
         insert: []
         update: []
         delete: []
@@ -112155,32 +113068,18 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/ebs_default_kms_key_ids/methods/get_ebs_default_kms_key_id"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/ebs_default_kms_key_ids/methods/modify_ebs_default_kms_key_id"
-        delete: []
-    ebs_encryption_by_defaults:
-      id: aws.ec2.ebs_encryption_by_defaults
-      name: ebs_encryption_by_defaults
-      title: ebs_encryption_by_defaults
-      methods:
-        get_ebs_encryption_by_default:
+        reset_ebs_default_kms_key_id:
           operation:
-            $ref: "#/paths/~1?Action=GetEbsEncryptionByDefault&Version=2016-11-15/get"
+            $ref: "#/paths/~1?Action=ResetEbsDefaultKmsKeyId&Version=2016-11-15/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/GetEbsEncryptionByDefaultOutputDisplay"
+              $ref: "#/components/schemas/ResetEbsDefaultKmsKeyIdOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -112188,9 +113087,10 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/ebs_encryption_by_defaults/methods/get_ebs_encryption_by_default"
+          - $ref: "#/components/x-stackQL-resources/ebs_default_kms_key_ids/methods/get_ebs_default_kms_key_id"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/ebs_default_kms_key_ids/methods/modify_ebs_default_kms_key_id"
         delete: []
     enabled_ipam_policies:
       id: aws.ec2.enabled_ipam_policies
@@ -112252,10 +113152,10 @@ components:
         insert: []
         update: []
         delete: []
-    groups_for_capacity_reservations:
-      id: aws.ec2.groups_for_capacity_reservations
-      name: groups_for_capacity_reservations
-      title: groups_for_capacity_reservations
+    groups:
+      id: aws.ec2.groups
+      name: groups
+      title: groups
       methods:
         get_groups_for_capacity_reservation:
           operation:
@@ -112278,7 +113178,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/groups_for_capacity_reservations/methods/get_groups_for_capacity_reservation"
+          - $ref: "#/components/x-stackQL-resources/groups/methods/get_groups_for_capacity_reservation"
         insert: []
         update: []
         delete: []
@@ -112452,10 +113352,10 @@ components:
         insert: []
         update: []
         delete: []
-    instance_uefi_datas:
-      id: aws.ec2.instance_uefi_datas
-      name: instance_uefi_datas
-      title: instance_uefi_datas
+    instance_uefi_data:
+      id: aws.ec2.instance_uefi_data
+      name: instance_uefi_data
+      title: instance_uefi_data
       methods:
         get_instance_uefi_data:
           operation:
@@ -112478,7 +113378,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/instance_uefi_datas/methods/get_instance_uefi_data"
+          - $ref: "#/components/x-stackQL-resources/instance_uefi_data/methods/get_instance_uefi_data"
         insert: []
         update: []
         delete: []
@@ -113008,10 +113908,10 @@ components:
         insert: []
         update: []
         delete: []
-    launch_template_datas:
-      id: aws.ec2.launch_template_datas
-      name: launch_template_datas
-      title: launch_template_datas
+    launch_template_data:
+      id: aws.ec2.launch_template_data
+      name: launch_template_data
+      title: launch_template_data
       methods:
         get_launch_template_data:
           operation:
@@ -113034,7 +113934,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/launch_template_datas/methods/get_launch_template_data"
+          - $ref: "#/components/x-stackQL-resources/launch_template_data/methods/get_launch_template_data"
         insert: []
         update: []
         delete: []
@@ -113178,10 +114078,10 @@ components:
         insert: []
         update: []
         delete: []
-    network_insights_access_scope_contents:
-      id: aws.ec2.network_insights_access_scope_contents
-      name: network_insights_access_scope_contents
-      title: network_insights_access_scope_contents
+    network_insights_access_scope_content:
+      id: aws.ec2.network_insights_access_scope_content
+      name: network_insights_access_scope_content
+      title: network_insights_access_scope_content
       methods:
         get_network_insights_access_scope_content:
           operation:
@@ -113204,14 +114104,14 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/network_insights_access_scope_contents/methods/get_network_insights_access_scope_content"
+          - $ref: "#/components/x-stackQL-resources/network_insights_access_scope_content/methods/get_network_insights_access_scope_content"
         insert: []
         update: []
         delete: []
-    password_datas:
-      id: aws.ec2.password_datas
-      name: password_datas
-      title: password_datas
+    password_data:
+      id: aws.ec2.password_data
+      name: password_data
+      title: password_data
       methods:
         get_password_data:
           operation:
@@ -113234,7 +114134,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/password_datas/methods/get_password_data"
+          - $ref: "#/components/x-stackQL-resources/password_data/methods/get_password_data"
         insert: []
         update: []
         delete: []
@@ -113360,40 +114260,10 @@ components:
         insert: []
         update: []
         delete: []
-    security_groups_for_vpcs:
-      id: aws.ec2.security_groups_for_vpcs
-      name: security_groups_for_vpcs
-      title: security_groups_for_vpcs
-      methods:
-        get_security_groups_for_vpc:
-          operation:
-            $ref: "#/paths/~1?Action=GetSecurityGroupsForVpc&Version=2016-11-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetSecurityGroupsForVpcOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/security_groups_for_vpcs/methods/get_security_groups_for_vpc"
-        insert: []
-        update: []
-        delete: []
-    serial_console_access_status:
-      id: aws.ec2.serial_console_access_status
-      name: serial_console_access_status
-      title: serial_console_access_status
+    serial_console_access_statuses:
+      id: aws.ec2.serial_console_access_statuses
+      name: serial_console_access_statuses
+      title: serial_console_access_statuses
       methods:
         get_serial_console_access_status:
           operation:
@@ -113416,7 +114286,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/serial_console_access_status/methods/get_serial_console_access_status"
+          - $ref: "#/components/x-stackQL-resources/serial_console_access_statuses/methods/get_serial_console_access_status"
         insert: []
         update: []
         delete: []
@@ -113821,10 +114691,10 @@ components:
         insert: []
         update: []
         delete: []
-    vpn_tunnel_replacement_status:
-      id: aws.ec2.vpn_tunnel_replacement_status
-      name: vpn_tunnel_replacement_status
-      title: vpn_tunnel_replacement_status
+    vpn_tunnel_replacement_statuses:
+      id: aws.ec2.vpn_tunnel_replacement_statuses
+      name: vpn_tunnel_replacement_statuses
+      title: vpn_tunnel_replacement_statuses
       methods:
         get_vpn_tunnel_replacement_status:
           operation:
@@ -113847,7 +114717,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/vpn_tunnel_replacement_status/methods/get_vpn_tunnel_replacement_status"
+          - $ref: "#/components/x-stackQL-resources/vpn_tunnel_replacement_statuses/methods/get_vpn_tunnel_replacement_status"
         insert: []
         update: []
         delete: []
@@ -113965,16 +114835,114 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        reset_address_attribute:
+          operation:
+            $ref: "#/paths/~1?Action=ResetAddressAttribute&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetAddressAttributeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select: []
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/address_attributes/methods/modify_address_attribute"
         delete: []
-    capacity_manager_organizations_access:
-      id: aws.ec2.capacity_manager_organizations_access
-      name: capacity_manager_organizations_access
-      title: capacity_manager_organizations_access
+    address_to_vpcs:
+      id: aws.ec2.address_to_vpcs
+      name: address_to_vpcs
+      title: address_to_vpcs
+      methods:
+        move_address_to_vpc:
+          operation:
+            $ref: "#/paths/~1?Action=MoveAddressToVpc&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/MoveAddressToVpcOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    spot_fleets:
+      id: aws.ec2.spot_fleets
+      name: spot_fleets
+      title: spot_fleets
+      methods:
+        request_spot_fleet:
+          operation:
+            $ref: "#/paths/~1?Action=RequestSpotFleet&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RequestSpotFleetOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    address_to_classics:
+      id: aws.ec2.address_to_classics
+      name: address_to_classics
+      title: address_to_classics
+      methods:
+        restore_address_to_classic:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreAddressToClassic&Version=2016-11-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreAddressToClassicOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    capacity_manager_organizations_accesses:
+      id: aws.ec2.capacity_manager_organizations_accesses
+      name: capacity_manager_organizations_accesses
+      title: capacity_manager_organizations_accesses
       methods:
         update_capacity_manager_organizations_access:
           operation:
@@ -113999,5 +114967,5 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/capacity_manager_organizations_access/methods/update_capacity_manager_organizations_access"
+          - $ref: "#/components/x-stackQL-resources/capacity_manager_organizations_accesses/methods/update_capacity_manager_organizations_access"
         delete: []

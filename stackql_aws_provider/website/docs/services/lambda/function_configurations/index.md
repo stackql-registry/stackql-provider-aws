@@ -102,7 +102,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="file_system_configs" /></td>
     <td><code>array</code></td>
-    <td>Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.</td>
+    <td>Connection settings for an Amazon EFS file system or an Amazon S3 file system.</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_arn" /></td>
@@ -112,7 +112,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:|(((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?))(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:)?((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="handler" /></td>

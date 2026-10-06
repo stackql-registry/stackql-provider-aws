@@ -33,57 +33,13 @@ Creates, updates, deletes, gets or lists an <code>agent_statuses</code> resource
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_agent_statuses"
+    defaultValue="describe_agent_status"
     values={[
-        { label: 'list_agent_statuses', value: 'list_agent_statuses' },
-        { label: 'search_agent_statuses', value: 'search_agent_statuses' }
+        { label: 'describe_agent_status', value: 'describe_agent_status' },
+        { label: 'list_agent_statuses', value: 'list_agent_statuses' }
     ]}
 >
-<TabItem value="list_agent_statuses">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) for the agent status.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier for an agent status.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the agent status.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="type" /></td>
-    <td><code>string</code></td>
-    <td>The type of the agent status. (ROUTABLE, CUSTOM, OFFLINE)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
-<TabItem value="search_agent_statuses">
+<TabItem value="describe_agent_status">
 
 <table>
 <thead>
@@ -147,6 +103,50 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_agent_statuses">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) for the agent status.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier for an agent status.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_region" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp when this resource was last modified.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the agent status.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the agent status. (ROUTABLE, CUSTOM, OFFLINE)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -165,6 +165,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#describe_agent_status"><CopyableCode code="describe_agent_status" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-agent_status_id"><code>agent_status_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Describes an agent status.</td>
+</tr>
+<tr>
     <td><a href="#list_agent_statuses"><CopyableCode code="list_agent_statuses" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -172,9 +179,23 @@ The following methods are available for this resource:
     <td>Lists agent statuses.</td>
 </tr>
 <tr>
+    <td><a href="#create_agent_status"><CopyableCode code="create_agent_status" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates an agent status for the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#update_agent_status"><CopyableCode code="update_agent_status" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-agent_status_id"><code>agent_status_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Updates agent status.</td>
+</tr>
+<tr>
     <td><a href="#search_agent_statuses"><CopyableCode code="search_agent_statuses" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
     <td></td>
     <td>Searches AgentStatuses in an Connect Customer instance, with optional filtering.</td>
 </tr>
@@ -194,6 +215,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-agent_status_id">
+    <td><CopyableCode code="agent_status_id" /></td>
+    <td><code>string</code></td>
+    <td>The identifier of the agent status.</td>
+</tr>
 <tr id="parameter-instance_id">
     <td><CopyableCode code="instance_id" /></td>
     <td><code>string</code></td>
@@ -225,12 +251,35 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_agent_statuses"
+    defaultValue="describe_agent_status"
     values={[
-        { label: 'list_agent_statuses', value: 'list_agent_statuses' },
-        { label: 'search_agent_statuses', value: 'search_agent_statuses' }
+        { label: 'describe_agent_status', value: 'describe_agent_status' },
+        { label: 'list_agent_statuses', value: 'list_agent_statuses' }
     ]}
 >
+<TabItem value="describe_agent_status">
+
+Describes an agent status.
+
+```sql
+SELECT
+agent_status_arn,
+agent_status_id,
+description,
+display_order,
+last_modified_region,
+last_modified_time,
+name,
+state,
+tags,
+type
+FROM aws.connect.agent_statuses
+WHERE instance_id = '{{ instance_id }}' -- required
+AND agent_status_id = '{{ agent_status_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_agent_statuses">
 
 Lists agent statuses.
@@ -252,24 +301,126 @@ AND AgentStatusTypes = '{{ AgentStatusTypes }}'
 ;
 ```
 </TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_agent_status"
+    values={[
+        { label: 'create_agent_status', value: 'create_agent_status' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_agent_status">
+
+Creates an agent status for the specified Connect Customer instance.
+
+```sql
+INSERT INTO aws.connect.agent_statuses (
+Name,
+Description,
+State,
+DisplayOrder,
+Tags,
+instance_id,
+region
+)
+SELECT 
+'{{ Name }}',
+'{{ Description }}',
+'{{ State }}',
+{{ DisplayOrder }},
+'{{ Tags }}',
+'{{ instance_id }}',
+'{{ region }}'
+RETURNING
+agent_status_arn,
+agent_status_id
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: agent_statuses
+  props:
+    - name: instance_id
+      value: "{{ instance_id }}"
+      description: Required parameter for the agent_statuses resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the agent_statuses resource.
+    - name: Name
+      value: "{{ Name }}"
+    - name: Description
+      value: "{{ Description }}"
+    - name: State
+      value: "{{ State }}"
+      valid_values: ['ENABLED', 'DISABLED']
+    - name: DisplayOrder
+      value: {{ DisplayOrder }}
+    - name: Tags
+      value: "{{ Tags }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_agent_status"
+    values={[
+        { label: 'update_agent_status', value: 'update_agent_status' }
+    ]}
+>
+<TabItem value="update_agent_status">
+
+Updates agent status.
+
+```sql
+UPDATE aws.connect.agent_statuses
+SET 
+Name = '{{ Name }}',
+Description = '{{ Description }}',
+State = '{{ State }}',
+DisplayOrder = {{ DisplayOrder }},
+ResetOrderNumber = {{ ResetOrderNumber }}
+WHERE 
+instance_id = '{{ instance_id }}' --required
+AND agent_status_id = '{{ agent_status_id }}' --required
+AND region = '{{ region }}' --required;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_agent_statuses"
+    values={[
+        { label: 'search_agent_statuses', value: 'search_agent_statuses' }
+    ]}
+>
 <TabItem value="search_agent_statuses">
 
 Searches AgentStatuses in an Connect Customer instance, with optional filtering.
 
 ```sql
-SELECT
-agent_status_arn,
-agent_status_id,
-description,
-display_order,
-last_modified_region,
-last_modified_time,
-name,
-state,
-tags,
-type
-FROM aws.connect.agent_statuses
-WHERE region = '{{ region }}' -- required
+EXEC aws.connect.agent_statuses.search_agent_statuses 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

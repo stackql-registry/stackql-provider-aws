@@ -49,10 +49,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set
       x-stackql-verb: INSERT
@@ -129,10 +125,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
@@ -184,10 +176,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDedicatedIpPoolResponse'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: create_dedicated_ip_pool
       x-stackql-verb: INSERT
@@ -354,10 +342,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set
       x-stackql-verb: DELETE
@@ -408,10 +392,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
@@ -449,10 +429,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationResponse'
       x-stackql-resource: configuration_set_event_destinations
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
@@ -470,10 +446,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDedicatedIpPoolResponse'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: delete_dedicated_ip_pool
       x-stackql-verb: DELETE
@@ -493,10 +465,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEmailIdentityResponse'
       x-stackql-resource: email_identities
       x-stackql-method: delete_email_identity
       x-stackql-verb: DELETE
@@ -667,10 +635,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDeliverabilityDashboardOptionResponse'
       x-stackql-resource: deliverability_dashboard_options
       x-stackql-method: put_deliverability_dashboard_option
       x-stackql-verb: REPLACE
@@ -891,10 +855,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -919,10 +879,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -943,10 +899,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountDedicatedIpWarmupAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
@@ -967,10 +919,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAccountSendingAttributesResponse'
       x-stackql-resource: accounts
       x-stackql-method: put_account_sending_attributes
       x-stackql-verb: REPLACE
@@ -1000,10 +948,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
@@ -1031,10 +975,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetReputationOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_reputation_options
       x-stackql-verb: REPLACE
@@ -1062,10 +1002,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetSendingOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_sending_options
       x-stackql-verb: REPLACE
@@ -1093,10 +1029,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutConfigurationSetTrackingOptionsResponse'
       x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_tracking_options
       x-stackql-verb: REPLACE
@@ -1128,10 +1060,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDedicatedIpInPoolResponse'
       x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_in_pool
       x-stackql-verb: REPLACE
@@ -1159,10 +1087,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDedicatedIpWarmupAttributesResponse'
       x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
@@ -1189,10 +1113,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityDkimAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_dkim_attributes
       x-stackql-verb: REPLACE
@@ -1226,10 +1146,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityFeedbackAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_feedback_attributes
       x-stackql-verb: REPLACE
@@ -1258,10 +1174,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutEmailIdentityMailFromAttributesResponse'
       x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_mail_from_attributes
       x-stackql-verb: REPLACE
@@ -1305,7 +1217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendEmailResponse'
-      x-stackql-resource: email
+      x-stackql-resource: emails
       x-stackql-method: send_email
       x-stackql-verb: EXEC
 components:
@@ -1463,9 +1375,6 @@ components:
       type: string
     TagValue:
       type: string
-    CreateConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     EventDestinationName:
       description: The name of an event destination. In Amazon Pinpoint, events include message sends, deliveries, opens,
         clicks, bounces, and complaints. Event destinations are places that you can send information about these events to.
@@ -1615,12 +1524,6 @@ components:
         ApplicationArn:
           $ref: '#/components/schemas/AmazonResourceName'
           description: The Amazon Resource Name (ARN) of the Amazon Pinpoint project that you want to send email events to.
-    CreateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    CreateDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     ReportName:
       description: A name that helps you identify a report generated by the Deliverability dashboard.
       type: string
@@ -1836,18 +1739,6 @@ components:
         $ref: '#/components/schemas/DnsToken'
     DnsToken:
       type: string
-    DeleteConfigurationSetResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteDedicatedIpPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    DeleteEmailIdentityResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     GetAccountResponse:
       description: A list of details about the email-sending capabilities of your Amazon Pinpoint account in the current AWS
         Region.
@@ -2621,45 +2512,9 @@ components:
             tag key (Key) and an associated tag value (Value)
       required:
       - Tags
-    PutAccountDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutAccountSendingAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     SendingPoolName:
       description: The name of the dedicated IP pool that you want to associate with the configuration set.
       type: string
-    PutConfigurationSetDeliveryOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetReputationOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetSendingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutConfigurationSetTrackingOptionsResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpInPoolResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDedicatedIpWarmupAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutDeliverabilityDashboardOptionResponse:
-      description: A response that indicates whether the Deliverability dashboard is enabled for your Amazon Pinpoint account.
-      type: object
-    PutEmailIdentityDkimAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutEmailIdentityFeedbackAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
-    PutEmailIdentityMailFromAttributesResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object
     Destination:
       description: An object that describes the recipients for an email.
       type: object
@@ -2720,14 +2575,7 @@ components:
             invalid personalization content, for example.
     OutboundMessageId:
       type: string
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateConfigurationSetEventDestinationResponse:
-      description: An HTTP 200 response if the request succeeds, or an error message if the request fails.
-      type: object

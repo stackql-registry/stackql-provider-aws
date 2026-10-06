@@ -113,18 +113,18 @@ The following methods are available for this resource:
     <td>Updates a TypedLinkFacet. For more information, see Typed Links.</td>
 </tr>
 <tr>
-    <td><a href="#add_facet_to_object"><CopyableCode code="add_facet_to_object" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SchemaFacet"><code>SchemaFacet</code></a>, <a href="#parameter-ObjectReference"><code>ObjectReference</code></a></td>
-    <td></td>
-    <td>Adds a new Facet to an object. An object can have more than one facet applied on it.</td>
-</tr>
-<tr>
     <td><a href="#update_facet"><CopyableCode code="update_facet" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a></td>
     <td></td>
     <td>Does the following: Adds new Attributes, Rules, or ObjectTypes. Updates existing Attributes, Rules, or ObjectTypes. Deletes existing Attributes, Rules, or ObjectTypes.</td>
+</tr>
+<tr>
+    <td><a href="#add_facet_to_object"><CopyableCode code="add_facet_to_object" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SchemaFacet"><code>SchemaFacet</code></a>, <a href="#parameter-ObjectReference"><code>ObjectReference</code></a></td>
+    <td></td>
+    <td>Adds a new Facet to an object. An object can have more than one facet applied on it.</td>
 </tr>
 <tr>
     <td><a href="#delete_facet"><CopyableCode code="delete_facet" /></a></td>
@@ -319,8 +319,8 @@ SELECT
     defaultValue="update_typed_link_facet"
     values={[
         { label: 'update_typed_link_facet', value: 'update_typed_link_facet' },
-        { label: 'add_facet_to_object', value: 'add_facet_to_object' },
-        { label: 'update_facet', value: 'update_facet' }
+        { label: 'update_facet', value: 'update_facet' },
+        { label: 'add_facet_to_object', value: 'add_facet_to_object' }
     ]}
 >
 <TabItem value="update_typed_link_facet">
@@ -341,6 +341,22 @@ AND AttributeUpdates = '{{ AttributeUpdates }}' --required
 AND IdentityAttributeOrder = '{{ IdentityAttributeOrder }}' --required;
 ```
 </TabItem>
+<TabItem value="update_facet">
+
+Does the following: Adds new Attributes, Rules, or ObjectTypes. Updates existing Attributes, Rules, or ObjectTypes. Deletes existing Attributes, Rules, or ObjectTypes.
+
+```sql
+UPDATE aws.clouddirectory.facets
+SET 
+Name = '{{ Name }}',
+AttributeUpdates = '{{ AttributeUpdates }}',
+ObjectType = '{{ ObjectType }}'
+WHERE 
+`x-amz-data-partition` = '{{ x-amz-data-partition }}' --required
+AND region = '{{ region }}' --required
+AND Name = '{{ Name }}' --required;
+```
+</TabItem>
 <TabItem value="add_facet_to_object">
 
 Adds a new Facet to an object. An object can have more than one facet applied on it.
@@ -356,22 +372,6 @@ WHERE
 AND region = '{{ region }}' --required
 AND SchemaFacet = '{{ SchemaFacet }}' --required
 AND ObjectReference = '{{ ObjectReference }}' --required;
-```
-</TabItem>
-<TabItem value="update_facet">
-
-Does the following: Adds new Attributes, Rules, or ObjectTypes. Updates existing Attributes, Rules, or ObjectTypes. Deletes existing Attributes, Rules, or ObjectTypes.
-
-```sql
-UPDATE aws.clouddirectory.facets
-SET 
-Name = '{{ Name }}',
-AttributeUpdates = '{{ AttributeUpdates }}',
-ObjectType = '{{ ObjectType }}'
-WHERE 
-`x-amz-data-partition` = '{{ x-amz-data-partition }}' --required
-AND region = '{{ region }}' --required
-AND Name = '{{ Name }}' --required;
 ```
 </TabItem>
 </Tabs>

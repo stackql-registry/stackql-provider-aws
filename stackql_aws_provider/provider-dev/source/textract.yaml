@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalyzeDocumentResponse'
-      x-stackql-resource: analyze_document
+      x-stackql-resource: documents
       x-stackql-method: analyze_document
       x-stackql-verb: EXEC
   /AnalyzeExpense:
@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalyzeExpenseResponse'
-      x-stackql-resource: analyze_expense
+      x-stackql-resource: expenses
       x-stackql-method: analyze_expense
       x-stackql-verb: EXEC
   /AnalyzeID:
@@ -167,7 +167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalyzeIDResponse'
-      x-stackql-resource: analyze_id
+      x-stackql-resource: ids
       x-stackql-method: analyze_id
       x-stackql-verb: EXEC
   /CreateAdapter:
@@ -314,10 +314,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAdapterResponse'
       x-stackql-resource: adapters
       x-stackql-method: delete_adapter
       x-stackql-verb: DELETE
@@ -355,10 +351,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAdapterVersionResponse'
       x-stackql-resource: adapter_versions
       x-stackql-method: delete_adapter_version
       x-stackql-verb: DELETE
@@ -404,7 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectDocumentTextResponse'
-      x-stackql-resource: detect_document_text
+      x-stackql-resource: document_texts
       x-stackql-method: detect_document_text
       x-stackql-verb: EXEC
   /GetAdapter:
@@ -552,7 +544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDocumentAnalysisResponse'
-      x-stackql-resource: document_analysis
+      x-stackql-resource: document_analyses
       x-stackql-method: get_document_analysis
       x-stackql-verb: SELECT
   /GetDocumentTextDetection:
@@ -671,7 +663,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetExpenseAnalysisResponse'
-      x-stackql-resource: expense_analysis
+      x-stackql-resource: expense_analyses
       x-stackql-method: get_expense_analysis
       x-stackql-verb: SELECT
   /GetLendingAnalysis:
@@ -722,7 +714,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetLendingAnalysisResponse'
-      x-stackql-resource: lending_analysis
+      x-stackql-resource: lending_analyses
       x-stackql-method: get_lending_analysis
       x-stackql-verb: SELECT
   /GetLendingAnalysisSummary:
@@ -984,7 +976,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDocumentAnalysisResponse'
-      x-stackql-resource: document_analysis
+      x-stackql-resource: document_analyses
       x-stackql-method: start_document_analysis
       x-stackql-verb: EXEC
   /StartDocumentTextDetection:
@@ -1053,7 +1045,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDocumentTextDetectionResponse'
-      x-stackql-resource: document_text_detection
+      x-stackql-resource: document_text_detections
       x-stackql-method: start_document_text_detection
       x-stackql-verb: EXEC
   /StartExpenseAnalysis:
@@ -1123,7 +1115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExpenseAnalysisResponse'
-      x-stackql-resource: expense_analysis
+      x-stackql-resource: expense_analyses
       x-stackql-method: start_expense_analysis
       x-stackql-verb: EXEC
   /StartLendingAnalysis:
@@ -1190,7 +1182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLendingAnalysisResponse'
-      x-stackql-resource: lending_analysis
+      x-stackql-resource: lending_analyses
       x-stackql-method: start_lending_analysis
       x-stackql-verb: EXEC
   /TagResource:
@@ -1226,10 +1218,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1266,10 +1254,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2184,10 +2168,6 @@ components:
         AdapterVersion:
           $ref: '#/components/schemas/AdapterVersion'
           description: A string describing the new version of the adapter.
-    DeleteAdapterResponse:
-      type: object
-    DeleteAdapterVersionResponse:
-      type: object
     DetectDocumentTextResponse:
       type: object
       properties:
@@ -2811,8 +2791,6 @@ components:
           $ref: '#/components/schemas/JobId'
           description: A unique identifier for the lending or text-detection job. The JobId is returned from StartLendingAnalysis.
             A JobId value is only valid for 7 days.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2822,8 +2800,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[\p{L}\p{Z}\p{N}_.:/=+\-@]*$
-    UntagResourceResponse:
-      type: object
     UpdateAdapterResponse:
       type: object
       properties:

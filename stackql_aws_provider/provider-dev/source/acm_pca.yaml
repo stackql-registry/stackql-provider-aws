@@ -690,7 +690,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_authorities
+      x-stackql-resource: certificate_authority_certificates
       x-stackql-method: import_certificate_authority_certificate
       x-stackql-verb: EXEC
   /IssueCertificate:
@@ -789,7 +789,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IssueCertificateResponse'
-      x-stackql-resource: certificate_authorities
+      x-stackql-resource: certificates
       x-stackql-method: issue_certificate
       x-stackql-verb: EXEC
   /ListCertificateAuthorities:
@@ -1041,7 +1041,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificates
+      x-stackql-resource: certificate_authorities
       x-stackql-method: restore_certificate_authority
       x-stackql-verb: EXEC
   /RevokeCertificate:

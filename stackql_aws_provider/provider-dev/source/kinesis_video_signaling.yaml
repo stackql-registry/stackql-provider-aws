@@ -88,7 +88,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendAlexaOfferToMasterResponse'
-      x-stackql-resource: alexa_offer_to_master
+      x-stackql-resource: alexa_offer_to_masters
       x-stackql-method: send_alexa_offer_to_master
       x-stackql-verb: EXEC
 components:

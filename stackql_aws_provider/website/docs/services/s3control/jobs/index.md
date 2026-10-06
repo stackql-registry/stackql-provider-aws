@@ -462,6 +462,7 @@ job_id
                 DisplayName: "{{ DisplayName }}"
               Permission: "{{ Permission }}"
           MetadataDirective: "{{ MetadataDirective }}"
+          AnnotationDirective: "{{ AnnotationDirective }}"
           ModifiedSinceConstraint: "{{ ModifiedSinceConstraint }}"
           NewObjectMetadata:
             CacheControl: "{{ CacheControl }}"
@@ -489,6 +490,10 @@ job_id
           ObjectLockRetainUntilDate: "{{ ObjectLockRetainUntilDate }}"
           BucketKeyEnabled: {{ BucketKeyEnabled }}
           ChecksumAlgorithm: "{{ ChecksumAlgorithm }}"
+          ObjectLockEventHold: "{{ ObjectLockEventHold }}"
+          ObjectLockEventHoldDuration:
+            Days: {{ Days }}
+            Years: {{ Years }}
         S3PutObjectAcl:
           AccessControlPolicy:
             AccessControlList:
@@ -518,6 +523,10 @@ job_id
           Retention:
             RetainUntilDate: "{{ RetainUntilDate }}"
             Mode: "{{ Mode }}"
+            EventHold: "{{ EventHold }}"
+            EventHoldDuration:
+              Days: {{ Days }}
+              Years: {{ Years }}
         S3ReplicateObject: "{{ S3ReplicateObject }}"
         S3ComputeObjectChecksum:
           ChecksumAlgorithm: "{{ ChecksumAlgorithm }}"

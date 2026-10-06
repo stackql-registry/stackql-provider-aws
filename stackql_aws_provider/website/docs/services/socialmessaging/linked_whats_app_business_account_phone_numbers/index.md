@@ -50,6 +50,11 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="call_settings" /></td>
+    <td><code>object</code></td>
+    <td>The calling settings configured for the phone number. This value is absent when calling is not configured.</td>
+</tr>
+<tr>
     <td><CopyableCode code="linked_whats_app_business_account_id" /></td>
     <td><code>string</code></td>
     <td>The WABA identifier linked to the phone number, formatted as waba-01234567890123456789012345678901. (pattern: &lt;code&gt;.*(^waba-.*$)|(^arn:.*:waba/&#91;0-9a-zA-Z&#93;+$).*&lt;/code&gt;)</td>
@@ -86,6 +91,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieve the WABA account id and phone number details of a WhatsApp business account phone number.</td>
 </tr>
+<tr>
+    <td><a href="#update_linked_whats_app_business_account_phone_number"><CopyableCode code="update_linked_whats_app_business_account_phone_number" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-callSettings"><code>callSettings</code></a></td>
+    <td></td>
+    <td>Updates the calling settings for a linked WhatsApp business phone number, such as whether calling is enabled and the hours during which the business accepts calls.</td>
+</tr>
 </tbody>
 </table>
 
@@ -105,7 +117,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the phone number. Phone number identifiers are formatted as phone-number-id-01234567890123456789012345678901. Use GetLinkedWhatsAppBusinessAccount to find a phone number's id.</td>
+    <td>The unique identifier of the phone number to update. The phone number identifiers are formatted as phone-number-id-01234567890123456789012345678901.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -129,12 +141,40 @@ Retrieve the WABA account id and phone number details of a WhatsApp business acc
 
 ```sql
 SELECT
+call_settings,
 linked_whats_app_business_account_id,
 phone_number
 FROM aws.socialmessaging.linked_whats_app_business_account_phone_numbers
 WHERE id = '{{ id }}' -- required
 AND region = '{{ region }}' -- required
 ;
+```
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_linked_whats_app_business_account_phone_number"
+    values={[
+        { label: 'update_linked_whats_app_business_account_phone_number', value: 'update_linked_whats_app_business_account_phone_number' }
+    ]}
+>
+<TabItem value="update_linked_whats_app_business_account_phone_number">
+
+Updates the calling settings for a linked WhatsApp business phone number, such as whether calling is enabled and the hours during which the business accepts calls.
+
+```sql
+UPDATE aws.socialmessaging.linked_whats_app_business_account_phone_numbers
+SET 
+callSettings = '{{ callSettings }}'
+WHERE 
+id = '{{ id }}' --required
+AND region = '{{ region }}' --required
+AND callSettings = '{{ callSettings }}' --required
+RETURNING
+phone_number_id;
 ```
 </TabItem>
 </Tabs>

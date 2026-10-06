@@ -241,8 +241,8 @@ The following methods are available for this resource:
     <td><a href="#delete_application"><CopyableCode code="delete_application" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-application_identifier"><code>application_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes the Application. Only Applications that don't have any Application Associations can be deleted.</td>
+    <td><a href="#parameter-force"><code>force</code></a></td>
+    <td>Deletes an application. If the application has associations, you must delete them first. Alternatively, use the force option to delete the application and remove its associations.</td>
 </tr>
 </tbody>
 </table>
@@ -274,6 +274,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="applicationType" /></td>
     <td><code>string</code></td>
     <td>The type of application.</td>
+</tr>
+<tr id="parameter-force">
+    <td><CopyableCode code="force" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to delete the application even if it still has application associations. If true, the operation removes the application and its associations. If false or absent, the delete fails when associations exist. Setting this parameter to true permanently removes all of the application's associations. Doing so might impact other resources that rely on and reference the application. This action can't be undone.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -515,12 +520,13 @@ AND region = '{{ region }}' --required;
 >
 <TabItem value="delete_application">
 
-Deletes the Application. Only Applications that don't have any Application Associations can be deleted.
+Deletes an application. If the application has associations, you must delete them first. Alternatively, use the force option to delete the application and remove its associations.
 
 ```sql
 DELETE FROM aws.appintegrations.applications
 WHERE application_identifier = '{{ application_identifier }}' --required
 AND region = '{{ region }}' --required
+AND force = '{{ force }}'
 ;
 ```
 </TabItem>

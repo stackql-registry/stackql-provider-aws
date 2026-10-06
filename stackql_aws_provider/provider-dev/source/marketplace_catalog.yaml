@@ -70,7 +70,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelChangeSetResponse'
-      x-stackql-resource: change_set
+      x-stackql-resource: change_sets
       x-stackql-method: cancel_change_set
       x-stackql-verb: EXEC
   /DeleteResourcePolicy:
@@ -87,10 +87,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -389,10 +385,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: put_resource_policy
       x-stackql-verb: REPLACE
@@ -439,7 +431,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartChangeSetResponse'
-      x-stackql-resource: change_set
+      x-stackql-resource: change_sets
       x-stackql-method: start_change_set
       x-stackql-verb: EXEC
   /TagResource:
@@ -464,10 +456,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -493,10 +481,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -607,8 +591,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: ^arn:[\w+=/,.@-]+:aws-marketplace:[\w+=/,.@-]*:[0-9]+:[\w+=,.@-]+(/[\w+=,.@-]+)*$
-    DeleteResourcePolicyResponse:
-      type: object
     AssessmentIdentifier:
       type: string
       minLength: 1
@@ -1882,6 +1864,12 @@ components:
         ResellerRole:
           $ref: '#/components/schemas/ResaleAuthorizationResellerRoleFilter'
           description: Allows filtering on the ResellerRole of a ResaleAuthorization.
+        SourceAuthorization:
+          $ref: '#/components/schemas/ResaleAuthorizationSourceAuthorizationFilter'
+          description: Allows filtering on the SourceAuthorization of a ResaleAuthorization.
+        IssuerAccountId:
+          $ref: '#/components/schemas/ResaleAuthorizationIssuerAccountIdFilter'
+          description: Allows filtering on the IssuerAccountId of a ResaleAuthorization.
     ResaleAuthorizationEntityIdFilter:
       description: Allows filtering on EntityId of a ResaleAuthorization.
       type: object
@@ -2180,6 +2168,38 @@ components:
       enum:
       - ChannelPartner
       - Distributor
+    ResaleAuthorizationSourceAuthorizationFilter:
+      description: Allows filtering on the SourceAuthorization of a ResaleAuthorization.
+      type: object
+      properties:
+        ValueList:
+          $ref: '#/components/schemas/ResaleAuthorizationSourceAuthorizationFilterValueList'
+          description: Allows filtering on the SourceAuthorization of a ResaleAuthorization with list input.
+    ResaleAuthorizationSourceAuthorizationFilterValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResaleAuthorizationSourceAuthorizationString'
+    ResaleAuthorizationSourceAuthorizationString:
+      type: string
+      minLength: 1
+      maxLength: 255
+      pattern: ^(.)+$
+    ResaleAuthorizationIssuerAccountIdFilter:
+      description: Allows filtering on the IssuerAccountId of a ResaleAuthorization.
+      type: object
+      properties:
+        ValueList:
+          $ref: '#/components/schemas/ResaleAuthorizationIssuerAccountIdFilterValueList'
+          description: Allows filtering on the IssuerAccountId of a ResaleAuthorization with list input.
+    ResaleAuthorizationIssuerAccountIdFilterValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResaleAuthorizationIssuerAccountIdString'
+    ResaleAuthorizationIssuerAccountIdString:
+      type: string
+      minLength: 12
+      maxLength: 12
+      pattern: ^\d{12}$
     MachineLearningProductFilters:
       description: The filters that you can use with the ListEntities operation to filter machine learning products. You can
         filter by EntityId, astModifiedDate, ProductTitle, and Visibility.
@@ -2573,6 +2593,9 @@ components:
       - CreatedDate
       - AvailabilityEndDate
       - LastModifiedDate
+      - ResellerRole
+      - SourceAuthorization
+      - IssuerAccountId
     MachineLearningProductSort:
       description: The sort options for machine learning products.
       type: object
@@ -2814,6 +2837,12 @@ components:
         ResellerRole:
           $ref: '#/components/schemas/ResaleAuthorizationResellerRoleString'
           description: The reseller role of the ResaleAuthorization.
+        SourceAuthorization:
+          $ref: '#/components/schemas/ResaleAuthorizationSourceAuthorizationString'
+          description: The source authorization of the ResaleAuthorization.
+        IssuerAccountId:
+          $ref: '#/components/schemas/ResaleAuthorizationIssuerAccountIdString'
+          description: The issuer account ID of the ResaleAuthorization.
     MachineLearningProductSummary:
       description: A summary of a machine learning product.
       type: object
@@ -2884,8 +2913,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    PutResourcePolicyResponse:
-      type: object
     RequestedChangeList:
       type: array
       items:
@@ -2936,11 +2963,7 @@ components:
         ChangeSetArn:
           $ref: '#/components/schemas/ARN'
           description: The ARN associated to the unique identifier generated for the request.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

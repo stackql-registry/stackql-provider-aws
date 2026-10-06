@@ -523,6 +523,12 @@ hyper_parameter_tuning_job_arn
             PlacementSpecifications:
               - UltraServerId: "{{ UltraServerId }}"
                 InstanceCount: {{ InstanceCount }}
+          InstancePreferences:
+            - InstanceType: "{{ InstanceType }}"
+              InstanceCount: {{ InstanceCount }}
+              TrainingPlanArns: "{{ TrainingPlanArns }}"
+          SelectedInstanceType: "{{ SelectedInstanceType }}"
+          SelectedInstanceCount: {{ SelectedInstanceCount }}
         HyperParameterTuningResourceConfig:
           InstanceType: "{{ InstanceType }}"
           InstanceCount: {{ InstanceCount }}
@@ -606,6 +612,12 @@ hyper_parameter_tuning_job_arn
               PlacementSpecifications:
                 - UltraServerId: "{{ UltraServerId }}"
                   InstanceCount: {{ InstanceCount }}
+            InstancePreferences:
+              - InstanceType: "{{ InstanceType }}"
+                InstanceCount: {{ InstanceCount }}
+                TrainingPlanArns: "{{ TrainingPlanArns }}"
+            SelectedInstanceType: "{{ SelectedInstanceType }}"
+            SelectedInstanceCount: {{ SelectedInstanceCount }}
           HyperParameterTuningResourceConfig:
             InstanceType: "{{ InstanceType }}"
             InstanceCount: {{ InstanceCount }}

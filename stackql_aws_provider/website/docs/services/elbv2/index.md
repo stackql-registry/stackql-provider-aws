@@ -43,7 +43,7 @@ total resources: __19__
 <a href="/services/elbv2/target_healths/">target_healths</a><br />
 <a href="/services/elbv2/trust_store_associations/">trust_store_associations</a><br />
 <a href="/services/elbv2/trust_store_ca_certificates_bundles/">trust_store_ca_certificates_bundles</a><br />
-<a href="/services/elbv2/trust_store_revocation_contents/">trust_store_revocation_contents</a><br />
+<a href="/services/elbv2/trust_store_revocation_content/">trust_store_revocation_content</a><br />
 <a href="/services/elbv2/trust_store_revocations/">trust_store_revocations</a><br />
 <a href="/services/elbv2/trust_stores/">trust_stores</a>
 </div>

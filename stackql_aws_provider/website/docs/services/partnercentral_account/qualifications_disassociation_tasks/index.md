@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the status and details of the most recent qualifications disassociation task for your partner account. Use this operation to poll the progress of a disassociation task initiated by StartQualificationsDisassociationTask.</td>
 </tr>
+<tr>
+    <td><a href="#start_qualifications_disassociation_task"><CopyableCode code="start_qualifications_disassociation_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Identifier"><code>Identifier</code></a>, <a href="#parameter-AssociatedPartner"><code>AssociatedPartner</code></a></td>
+    <td></td>
+    <td>Initiates an asynchronous task to disassociate your partner qualifications from a primary account. You must currently be associated and cannot disassociate if you are the primary partner. Use GetQualificationsDisassociationTask to monitor task progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,34 @@ status,
 task_id
 FROM aws.partnercentral_account.qualifications_disassociation_tasks
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_qualifications_disassociation_task"
+    values={[
+        { label: 'start_qualifications_disassociation_task', value: 'start_qualifications_disassociation_task' }
+    ]}
+>
+<TabItem value="start_qualifications_disassociation_task">
+
+Initiates an asynchronous task to disassociate your partner qualifications from a primary account. You must currently be associated and cannot disassociate if you are the primary partner. Use GetQualificationsDisassociationTask to monitor task progress.
+
+```sql
+EXEC aws.partnercentral_account.qualifications_disassociation_tasks.start_qualifications_disassociation_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"Identifier": "{{ Identifier }}", 
+"ClientToken": "{{ ClientToken }}", 
+"AssociatedPartner": "{{ AssociatedPartner }}"
+}'
 ;
 ```
 </TabItem>

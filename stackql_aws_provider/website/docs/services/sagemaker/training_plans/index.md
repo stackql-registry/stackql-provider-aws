@@ -275,6 +275,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a new training plan in SageMaker to reserve compute capacity. Amazon SageMaker Training Plan is a capability within SageMaker that allows customers to reserve and manage GPU capacity for large-scale AI model training. It provides a way to secure predictable access to computational resources within specific timelines and budgets, without the need to manage underlying infrastructure. How it works Plans can be created for specific resources such as SageMaker Training Jobs or SageMaker HyperPod clusters, automatically provisioning resources, setting up infrastructure, executing workloads, and handling infrastructure failures. Plan creation workflow Users search for available plan offerings based on their requirements (e.g., instance type, count, start time, duration) using the SearchTrainingPlanOfferings API operation. They create a plan that best matches their needs using the ID of the plan offering they want to use. After successful upfront payment, the plan's status becomes Scheduled. The plan can be used to: Queue training jobs. Allocate to an instance group of a SageMaker HyperPod cluster. When the plan start date arrives, it becomes Active. Based on available reserved capacity: Training jobs are launched. Instance groups are provisioned. Plan composition A plan can consist of one or more Reserved Capacities, each defined by a specific instance type, quantity, Availability Zone, duration, and start and end times. For more information about Reserved Capacity, see ReservedCapacitySummary .</td>
 </tr>
+<tr>
+    <td><a href="#extend_training_plan"><CopyableCode code="extend_training_plan" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TrainingPlanExtensionOfferingId"><code>TrainingPlanExtensionOfferingId</code></a></td>
+    <td></td>
+    <td>Extends an existing training plan by purchasing an extension offering. This allows you to add additional compute capacity time to your training plan without creating a new plan or reconfiguring your workloads. To find available extension offerings, use the SearchTrainingPlanOfferings API with the TrainingPlanArn parameter. To view the history of extensions for a training plan, use the DescribeTrainingPlanExtensionHistory API.</td>
+</tr>
 </tbody>
 </table>
 
@@ -427,5 +434,30 @@ training_plan_arn
           Value: "{{ Value }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="extend_training_plan"
+    values={[
+        { label: 'extend_training_plan', value: 'extend_training_plan' }
+    ]}
+>
+<TabItem value="extend_training_plan">
+
+Extends an existing training plan by purchasing an extension offering. This allows you to add additional compute capacity time to your training plan without creating a new plan or reconfiguring your workloads. To find available extension offerings, use the SearchTrainingPlanOfferings API with the TrainingPlanArn parameter. To view the history of extensions for a training plan, use the DescribeTrainingPlanExtensionHistory API.
+
+```sql
+EXEC aws.sagemaker.training_plans.extend_training_plan 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TrainingPlanExtensionOfferingId": "{{ TrainingPlanExtensionOfferingId }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

@@ -18,13 +18,14 @@ dataexchange service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __11__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/dataexchange/api_assets/">api_assets</a><br />
 <a href="/services/dataexchange/assets/">assets</a><br />
 <a href="/services/dataexchange/data_grants/">data_grants</a><br />
 <a href="/services/dataexchange/data_set_revisions/">data_set_revisions</a><br />

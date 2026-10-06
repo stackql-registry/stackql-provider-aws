@@ -18,16 +18,18 @@ sagemakerjobruntime service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __4__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/sagemakerjobruntime/response_streams/">response_streams</a><br />
 <a href="/services/sagemakerjobruntime/rewards/">rewards</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/sagemakerjobruntime/rollouts/">rollouts</a><br />
+<a href="/services/sagemakerjobruntime/samples/">samples</a>
 </div>
 </div>

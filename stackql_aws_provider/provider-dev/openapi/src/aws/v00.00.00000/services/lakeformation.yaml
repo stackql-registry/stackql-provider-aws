@@ -145,10 +145,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelTransactionResponse"
   /CommitTransaction:
     post:
       operationId: CommitTransaction
@@ -191,10 +187,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateDataCellsFilterResponse"
   /CreateLFTag:
     post:
       operationId: CreateLFTag
@@ -219,10 +211,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLFTagResponse"
   /CreateLFTagExpression:
     post:
       operationId: CreateLFTagExpression
@@ -246,10 +234,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLFTagExpressionResponse"
   /CreateLakeFormationIdentityCenterConfiguration:
     post:
       operationId: CreateLakeFormationIdentityCenterConfiguration
@@ -303,10 +287,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLakeFormationOptInResponse"
   /DeleteDataCellsFilter:
     post:
       operationId: DeleteDataCellsFilter
@@ -330,10 +310,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataCellsFilterResponse"
   /DeleteLFTag:
     post:
       operationId: DeleteLFTag
@@ -355,10 +331,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLFTagResponse"
   /DeleteLFTagExpression:
     post:
       operationId: DeleteLFTagExpression
@@ -378,10 +350,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLFTagExpressionResponse"
   /DeleteLakeFormationIdentityCenterConfiguration:
     post:
       operationId: DeleteLakeFormationIdentityCenterConfiguration
@@ -399,10 +367,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLakeFormationIdentityCenterConfigurationResponse"
   /DeleteLakeFormationOptIn:
     post:
       operationId: DeleteLakeFormationOptIn
@@ -427,10 +391,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLakeFormationOptInResponse"
   /DeleteObjectsOnCancel:
     post:
       operationId: DeleteObjectsOnCancel
@@ -461,10 +421,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteObjectsOnCancelResponse"
   /DeregisterResource:
     post:
       operationId: DeregisterResource
@@ -484,10 +440,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterResourceResponse"
   /DescribeLakeFormationIdentityCenterConfiguration:
     post:
       operationId: DescribeLakeFormationIdentityCenterConfiguration
@@ -572,10 +524,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ExtendTransactionResponse"
   /GetDataCellsFilter:
     post:
       operationId: GetDataCellsFilter
@@ -1011,10 +959,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GrantPermissionsResponse"
   /ListDataCellsFilter:
     post:
       operationId: ListDataCellsFilter
@@ -1259,10 +1203,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDataLakeSettingsResponse"
   /RegisterResource:
     post:
       operationId: RegisterResource
@@ -1294,10 +1234,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterResourceResponse"
   /RemoveLFTagsFromResource:
     post:
       operationId: RemoveLFTagsFromResource
@@ -1357,10 +1293,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokePermissionsResponse"
   /SearchDatabasesByLFTags:
     post:
       operationId: SearchDatabasesByLFTags
@@ -1485,10 +1417,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataCellsFilterResponse"
   /UpdateLFTag:
     post:
       operationId: UpdateLFTag
@@ -1514,10 +1442,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLFTagResponse"
   /UpdateLFTagExpression:
     post:
       operationId: UpdateLFTagExpression
@@ -1541,10 +1465,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLFTagExpressionResponse"
   /UpdateLakeFormationIdentityCenterConfiguration:
     post:
       operationId: UpdateLakeFormationIdentityCenterConfiguration
@@ -1570,10 +1490,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLakeFormationIdentityCenterConfigurationResponse"
   /UpdateResource:
     post:
       operationId: UpdateResource
@@ -1602,10 +1518,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceResponse"
   /UpdateTableObjects:
     post:
       operationId: UpdateTableObjects
@@ -1635,10 +1547,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTableObjectsResponse"
   /UpdateTableStorageOptimizer:
     post:
       operationId: UpdateTableStorageOptimizer
@@ -2140,8 +2048,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: "[\\p{L}\\p{N}\\p{P}]*"
-    CancelTransactionResponse:
-      type: object
     CommitTransactionResponse:
       type: object
       properties:
@@ -2211,12 +2117,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\t]*"
-    CreateDataCellsFilterResponse:
-      type: object
-    CreateLFTagResponse:
-      type: object
-    CreateLFTagExpressionResponse:
-      type: object
     IdentityCenterInstanceArn:
       type: string
     ExternalFilteringConfiguration:
@@ -2294,18 +2194,6 @@ components:
           description: The Amazon Resource Name (ARN) of the Lake Formation application integrated with IAM Identity Center.
     ApplicationArn:
       type: string
-    CreateLakeFormationOptInResponse:
-      type: object
-    DeleteDataCellsFilterResponse:
-      type: object
-    DeleteLFTagResponse:
-      type: object
-    DeleteLFTagExpressionResponse:
-      type: object
-    DeleteLakeFormationIdentityCenterConfigurationResponse:
-      type: object
-    DeleteLakeFormationOptInResponse:
-      type: object
     VirtualObjectList:
       type: array
       items:
@@ -2332,10 +2220,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: "[\\p{L}\\p{N}\\p{P}]*"
-    DeleteObjectsOnCancelResponse:
-      type: object
-    DeregisterResourceResponse:
-      type: object
     DescribeLakeFormationIdentityCenterConfigurationResponse:
       type: object
       properties:
@@ -2435,8 +2319,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    ExtendTransactionResponse:
-      type: object
     GetDataCellsFilterResponse:
       type: object
       properties:
@@ -2970,8 +2852,6 @@ components:
       format: int64
     WorkUnitTokenString:
       type: string
-    GrantPermissionsResponse:
-      type: object
     ListDataCellsFilterResponse:
       type: object
       properties:
@@ -3202,20 +3082,14 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TransactionDescription"
-    PutDataLakeSettingsResponse:
-      type: object
     Boolean:
       type: boolean
-    RegisterResourceResponse:
-      type: object
     RemoveLFTagsFromResourceResponse:
       type: object
       properties:
         Failures:
           $ref: "#/components/schemas/LFTagErrors"
           description: A list of failures to untag a resource.
-    RevokePermissionsResponse:
-      type: object
     SearchPageSize:
       type: integer
       minimum: 1
@@ -3321,21 +3195,11 @@ components:
         TransactionId:
           $ref: "#/components/schemas/TransactionIdString"
           description: An opaque identifier for the transaction.
-    UpdateDataCellsFilterResponse:
-      type: object
-    UpdateLFTagResponse:
-      type: object
-    UpdateLFTagExpressionResponse:
-      type: object
     ApplicationStatus:
       type: string
       enum:
         - ENABLED
         - DISABLED
-    UpdateLakeFormationIdentityCenterConfigurationResponse:
-      type: object
-    UpdateResourceResponse:
-      type: object
     WriteOperationList:
       type: array
       items:
@@ -3385,8 +3249,6 @@ components:
           description: A list of partition values for the object. A value must be specified for each partition key associated with the governed table.
       required:
         - Uri
-    UpdateTableObjectsResponse:
-      type: object
     StorageOptimizerConfigMap:
       type: object
       properties: {}
@@ -3420,7 +3282,6 @@ components:
             $ref: "#/paths/~1DeregisterResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3454,7 +3315,6 @@ components:
             $ref: "#/paths/~1RegisterResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3476,7 +3336,6 @@ components:
             $ref: "#/paths/~1UpdateResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3489,10 +3348,31 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/resources/methods/register_resource"
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/add_lf_tags_to_resource"
           - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/add_lf_tags_to_resource"
         delete:
           - $ref: "#/components/x-stackQL-resources/resources/methods/deregister_resource"
+    decorated_roles:
+      id: aws.lakeformation.decorated_roles
+      name: decorated_roles
+      title: decorated_roles
+      methods:
+        assume_decorated_role_with_saml:
+          operation:
+            $ref: "#/paths/~1AssumeDecoratedRoleWithSAML/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     permissions:
       id: aws.lakeformation.permissions
       name: permissions
@@ -3525,7 +3405,6 @@ components:
             $ref: "#/paths/~1GrantPermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3547,7 +3426,6 @@ components:
             $ref: "#/paths/~1RevokePermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3565,6 +3443,16 @@ components:
       name: transactions
       title: transactions
       methods:
+        cancel_transaction:
+          operation:
+            $ref: "#/paths/~1CancelTransaction/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         commit_transaction:
           operation:
             $ref: "#/paths/~1CommitTransaction/post"
@@ -3581,7 +3469,6 @@ components:
             $ref: "#/paths/~1DeleteObjectsOnCancel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3599,9 +3486,30 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        extend_transaction:
+          operation:
+            $ref: "#/paths/~1ExtendTransaction/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_transactions:
           operation:
             $ref: "#/paths/~1ListTransactions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_transaction:
+          operation:
+            $ref: "#/paths/~1StartTransaction/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3628,7 +3536,6 @@ components:
             $ref: "#/paths/~1CreateDataCellsFilter/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3639,7 +3546,6 @@ components:
             $ref: "#/paths/~1DeleteDataCellsFilter/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3681,7 +3587,6 @@ components:
             $ref: "#/paths/~1UpdateDataCellsFilter/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3707,7 +3612,6 @@ components:
             $ref: "#/paths/~1CreateLFTag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3718,7 +3622,6 @@ components:
             $ref: "#/paths/~1DeleteLFTag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3759,7 +3662,6 @@ components:
             $ref: "#/paths/~1UpdateLFTag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3785,7 +3687,6 @@ components:
             $ref: "#/paths/~1CreateLFTagExpression/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3796,7 +3697,6 @@ components:
             $ref: "#/paths/~1DeleteLFTagExpression/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3837,7 +3737,6 @@ components:
             $ref: "#/paths/~1UpdateLFTagExpression/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3873,7 +3772,6 @@ components:
             $ref: "#/paths/~1DeleteLakeFormationIdentityCenterConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3895,7 +3793,6 @@ components:
             $ref: "#/paths/~1UpdateLakeFormationIdentityCenterConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3920,7 +3817,6 @@ components:
             $ref: "#/paths/~1CreateLakeFormationOptIn/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3931,7 +3827,6 @@ components:
             $ref: "#/paths/~1DeleteLakeFormationOptIn/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -3995,7 +3890,6 @@ components:
             $ref: "#/paths/~1PutDataLakeSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4009,10 +3903,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/data_lake_settings/methods/put_data_lake_settings"
         delete: []
-    effective_permissions_for_paths:
-      id: aws.lakeformation.effective_permissions_for_paths
-      name: effective_permissions_for_paths
-      title: effective_permissions_for_paths
+    effective_permissions:
+      id: aws.lakeformation.effective_permissions
+      name: effective_permissions
+      title: effective_permissions
       methods:
         get_effective_permissions_for_path:
           operation:
@@ -4027,7 +3921,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/effective_permissions_for_paths/methods/get_effective_permissions_for_path"
+          - $ref: "#/components/x-stackQL-resources/effective_permissions/methods/get_effective_permissions_for_path"
         insert: []
         update: []
         delete: []
@@ -4118,7 +4012,6 @@ components:
             $ref: "#/paths/~1UpdateTableObjects/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4283,10 +4176,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/table_storage_optimizers/methods/update_table_storage_optimizer"
         delete: []
-    databases_by_lf_tags:
-      id: aws.lakeformation.databases_by_lf_tags
-      name: databases_by_lf_tags
-      title: databases_by_lf_tags
+    databases:
+      id: aws.lakeformation.databases
+      name: databases
+      title: databases
       methods:
         search_databases_by_lf_tags:
           operation:
@@ -4309,14 +4202,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/databases_by_lf_tags/methods/search_databases_by_lf_tags"
+          - $ref: "#/components/x-stackQL-resources/databases/methods/search_databases_by_lf_tags"
         insert: []
         update: []
         delete: []
-    tables_by_lf_tags:
-      id: aws.lakeformation.tables_by_lf_tags
-      name: tables_by_lf_tags
-      title: tables_by_lf_tags
+    tables:
+      id: aws.lakeformation.tables
+      name: tables
+      title: tables
       methods:
         search_tables_by_lf_tags:
           operation:
@@ -4339,7 +4232,28 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tables_by_lf_tags/methods/search_tables_by_lf_tags"
+          - $ref: "#/components/x-stackQL-resources/tables/methods/search_tables_by_lf_tags"
+        insert: []
+        update: []
+        delete: []
+    query_plannings:
+      id: aws.lakeformation.query_plannings
+      name: query_plannings
+      title: query_plannings
+      methods:
+        start_query_planning:
+          operation:
+            $ref: "#/paths/~1StartQueryPlanning/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

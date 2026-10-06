@@ -33,7 +33,7 @@ total resources: __11__
 <a href="/services/connectcampaignsv2/instance_communication_limits/">instance_communication_limits</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/connectcampaignsv2/instance_onboarding_job_status/">instance_onboarding_job_status</a><br />
+<a href="/services/connectcampaignsv2/instance_onboarding_job_statuses/">instance_onboarding_job_statuses</a><br />
 <a href="/services/connectcampaignsv2/instance_onboarding_jobs/">instance_onboarding_jobs</a><br />
 <a href="/services/connectcampaignsv2/outbound_request_batches/">outbound_request_batches</a><br />
 <a href="/services/connectcampaignsv2/profile_outbound_request_batches/">profile_outbound_request_batches</a><br />

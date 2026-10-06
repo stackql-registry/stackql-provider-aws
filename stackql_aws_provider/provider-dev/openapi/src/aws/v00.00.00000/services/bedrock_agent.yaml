@@ -172,7 +172,7 @@ paths:
   /agents/:
     put:
       operationId: CreateAgent
-      description: Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers. Specify the following fields for security purposes. agentResourceRoleArn – The Amazon Resource Name (ARN) of the role with permissions to invoke API operations on an agent. (Optional) customerEncryptionKeyArn – The Amazon Resource Name (ARN) of a KMS key to encrypt the creation of the agent. (Optional) idleSessionTTLinSeconds – Specify the number of seconds for which the agent should maintain session information. After this time expires, the subsequent InvokeAgent request begins a new session. To enable your agent to retain conversational context across multiple sessions, include a memoryConfiguration object. For more information, see Configure memory. To override the default prompt behavior for agent orchestration and to use advanced prompts, include a promptOverrideConfiguration object. For more information, see Advanced prompts. If your agent fails to be created, the response returns a list of failureReasons alongside a list of recommendedActions for you to troubleshoot. The agent instructions will not be honored if your agent has only one knowledge base, uses default prompts, has no action group, and user input is disabled.
+      description: Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service as normal. For more information, see Amazon Bedrock Agents Classic availability change. Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers. Specify the following fields for security purposes. agentResourceRoleArn – The Amazon Resource Name (ARN) of the role with permissions to invoke API operations on an agent. (Optional) customerEncryptionKeyArn – The Amazon Resource Name (ARN) of a KMS key to encrypt the creation of the agent. (Optional) idleSessionTTLinSeconds – Specify the number of seconds for which the agent should maintain session information. After this time expires, the subsequent InvokeAgent request begins a new session. To enable your agent to retain conversational context across multiple sessions, include a memoryConfiguration object. For more information, see Configure memory. To override the default prompt behavior for agent orchestration and to use advanced prompts, include a promptOverrideConfiguration object. For more information, see Advanced prompts. If your agent fails to be created, the response returns a list of failureReasons alongside a list of recommendedActions for you to troubleshoot. The agent instructions will not be honored if your agent has only one knowledge base, uses default prompts, has no action group, and user input is disabled.
       parameters: []
       requestBody:
         required: true
@@ -946,10 +946,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentActionGroupResponse"
     get:
       operationId: GetAgentActionGroup
       description: Gets information about an action group for an agent.
@@ -1809,10 +1805,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAgentCollaboratorResponse"
     get:
       operationId: GetAgentCollaborator
       description: Retrieves information about an agent's collaborator.
@@ -1916,10 +1908,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAgentKnowledgeBaseResponse"
     get:
       operationId: GetAgentKnowledgeBase
       description: Gets information about a knowledge base associated with an agent.
@@ -2269,10 +2257,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove tags from a resource.
@@ -2292,10 +2276,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/ingestionjobs/{ingestion_job_id}/stop:
     post:
       operationId: StopIngestionJob
@@ -3216,6 +3196,9 @@ components:
         connectorParameters:
           $ref: "#/components/schemas/Document"
           description: Connector-specific parameters. For more information, see Connect a data source.
+        syncSchedule:
+          $ref: "#/components/schemas/SyncSchedule"
+          description: The recurring schedule on which the connector automatically syncs this data source. If not specified, the data source is not synced automatically and you start each sync yourself. Not supported for the Custom connector.
     DeletionProtectionConfiguration:
       description: Configuration for deletion protection.
       type: object
@@ -3277,6 +3260,69 @@ components:
           description: Whether video extraction is enabled or disabled.
       required:
         - videoExtractionStatus
+    SyncSchedule:
+      description: The recurring schedule on which a managed knowledge base connector automatically syncs its data source. Specify exactly one of daily, weekly, or monthly.
+      type: object
+      properties:
+        daily:
+          $ref: "#/components/schemas/DailySchedule"
+          description: A daily sync that runs once a day at a system-chosen off-peak time. The run time is not configurable.
+        weekly:
+          $ref: "#/components/schemas/WeeklySchedule"
+          description: A weekly sync that runs once a week on the specified day of the week.
+        monthly:
+          $ref: "#/components/schemas/MonthlySchedule"
+          description: A monthly sync that runs once a month on the specified day of the month.
+    DailySchedule:
+      description: A daily sync. The run time is system-chosen (off-peak) and not configurable.
+      type: object
+    WeeklySchedule:
+      description: A weekly sync on a specified day of the week.
+      type: object
+      properties:
+        dayOfWeek:
+          $ref: "#/components/schemas/DayOfWeek"
+          description: The day of the week on which the weekly sync runs.
+      required:
+        - dayOfWeek
+    DayOfWeek:
+      description: The day of the week on which a weekly sync runs. Valid values are the standard English day names, for example, MONDAY or TUESDAY.
+      type: string
+      enum:
+        - SUNDAY
+        - MONDAY
+        - TUESDAY
+        - WEDNESDAY
+        - THURSDAY
+        - FRIDAY
+        - SATURDAY
+    MonthlySchedule:
+      description: A monthly sync on a specified day of the month.
+      type: object
+      properties:
+        dayOfMonth:
+          $ref: "#/components/schemas/DayOfMonth"
+          description: The day of the month on which the monthly sync runs.
+      required:
+        - dayOfMonth
+    DayOfMonth:
+      description: The day of the month on which a monthly sync runs. Specify exactly one of dayNumber or lastDayOfMonth.
+      type: object
+      properties:
+        dayNumber:
+          $ref: "#/components/schemas/DayOfMonthNumber"
+          description: A specific day of the month, from 1 to 28. Values are capped at 28, so a monthly sync runs in every month, including February.
+        lastDayOfMonth:
+          $ref: "#/components/schemas/LastDayOfMonth"
+          description: Set this option to run the monthly sync on the last calendar day of each month.
+    DayOfMonthNumber:
+      description: A specific day of the month, from 1 to 28.
+      type: integer
+      minimum: 1
+      maximum: 28
+    LastDayOfMonth:
+      description: The option to run the monthly sync on the last calendar day of each month.
+      type: object
     S3DataSourceConfiguration:
       description: The configuration information to connect to Amazon S3 as your data source for self-managed knowledge bases. To configure this data source for managed knowledge bases, use managedKnowledgeBaseConnectorConfiguration.
       type: object
@@ -3841,7 +3887,7 @@ components:
       properties:
         parsingStrategy:
           $ref: "#/components/schemas/ParsingStrategy"
-          description: The parsing strategy for the data source. Only SMART_PARSING can be selected for managed knowledge bases. For more information, see Customize ingestion for managed knowledge bases.
+          description: "The parsing strategy for the data source. For managed knowledge bases, the strategy that you can select depends on the embedding model that your knowledge base uses: If your knowledge base uses a native multimodal embedding model, specify MULTI_MODAL_EMBEDDINGS. With this strategy, files are sent directly to the embedding model instead of being parsed into text. This is the only strategy that is supported for these knowledge bases. Otherwise, specify SMART_PARSING. For more information, see Customize ingestion for managed knowledge bases."
         bedrockFoundationModelConfiguration:
           $ref: "#/components/schemas/BedrockFoundationModelConfiguration"
           description: If you specify BEDROCK_FOUNDATION_MODEL as the parsing strategy for ingesting your data source, use this object to modify configurations for using a foundation model to parse documents.
@@ -3856,6 +3902,7 @@ components:
         - BEDROCK_FOUNDATION_MODEL
         - BEDROCK_DATA_AUTOMATION
         - SMART_PARSING
+        - MULTI_MODAL_EMBEDDINGS
     BedrockFoundationModelConfiguration:
       description: Settings for a foundation model used to parse documents for a data source.
       type: object
@@ -4622,7 +4669,7 @@ components:
           description: The input schema for the tool.
         strict:
           $ref: "#/components/schemas/Boolean"
-          description: Whether to enforce strict JSON schema adherence for the tool input
+          description: Whether the tool schema is strictly enforced.
       required:
         - name
         - inputSchema
@@ -5142,6 +5189,7 @@ components:
           description: Contains details about the model that's used to convert the data source into vector embeddings.
         managedKnowledgeBaseConfiguration:
           $ref: "#/components/schemas/ManagedKnowledgeBaseConfiguration"
+          description: Contains configuration details for a knowledge base that uses a vector store fully managed by Amazon Bedrock. Specify this object when the knowledge base type is MANAGED.
         kendraKnowledgeBaseConfiguration:
           $ref: "#/components/schemas/KendraKnowledgeBaseConfiguration"
           description: Settings for an Amazon Kendra knowledge base.
@@ -5197,10 +5245,13 @@ components:
           description: The data type for the vectors when using a model to convert text into vector embeddings. The model must support the specified data type for vector embeddings. Floating-point (float32) is the default data type, and is supported by most models for vector embeddings. See Supported embeddings models for information on the available models and their vector data types.
         audio:
           $ref: "#/components/schemas/AudioConfigurations"
-          description: Configuration settings for processing audio content in multimodal knowledge bases.
+          description: Configuration settings for processing audio content in multimodal knowledge bases. This field is deprecated. Use modelConfiguration instead.
         video:
           $ref: "#/components/schemas/VideoConfigurations"
-          description: Configuration settings for processing video content in multimodal knowledge bases.
+          description: Configuration settings for processing video content in multimodal knowledge bases. This field is deprecated. Use modelConfiguration instead.
+        modelConfiguration:
+          $ref: "#/components/schemas/Document"
+          description: Model-specific configuration for the embedding model, provided as a JSON object. Use this field to specify settings that apply to the embedding model that you selected, such as how audio and video files are divided into segments. The fields that this object accepts depend on the embedding model. For the settings that each model accepts, see the documentation for that model.
     Dimensions:
       type: integer
       minimum: 0
@@ -5298,13 +5349,19 @@ components:
       properties:
         embeddingModelType:
           $ref: "#/components/schemas/EmbeddingModelType"
+          description: Choose CUSTOM to provide your own Bedrock embedding model ARN. Choose MANAGED to use a service-managed embedding model.
         embeddingModelArn:
           $ref: "#/components/schemas/BedrockEmbeddingModelArn"
           description: The ARN for the embeddings model.
         embeddingModelConfiguration:
           $ref: "#/components/schemas/EmbeddingModelConfiguration"
+          description: The configuration details for the embeddings model. Not required when choosing the MANAGED embeddingModelType.
         serverSideEncryptionConfiguration:
           $ref: "#/components/schemas/ServerSideEncryptionConfiguration"
+          description: Contains the configuration for server-side encryption for your managed knowledge base.
+        supplementalDataStorageConfiguration:
+          $ref: "#/components/schemas/SupplementalDataStorageConfiguration"
+          description: Use this object to specify the Amazon S3 location that the knowledge base uses to process and ingest multimodal content. This field is required when you use a native multimodal embedding model.
     EmbeddingModelType:
       description: Choose CUSTOM to provide your own Bedrock embedding model ARN. Choose MANAGED to use a service-managed embedding model. For more information, see Embedding model options.
       type: string
@@ -6304,8 +6361,6 @@ components:
       required:
         - agentId
         - agentStatus
-    DeleteAgentActionGroupResponse:
-      type: object
     DeleteAgentAliasResponse:
       type: object
       properties:
@@ -6521,10 +6576,6 @@ components:
           description: The revision identifier after the resource policy was deleted.
       required:
         - resourceArn
-    DisassociateAgentCollaboratorResponse:
-      type: object
-    DisassociateAgentKnowledgeBaseResponse:
-      type: object
     GetAgentResponse:
       type: object
       properties:
@@ -8493,8 +8544,6 @@ components:
           description: Contains information about the stopped data ingestion job.
       required:
         - ingestionJob
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -8504,8 +8553,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[a-zA-Z0-9\\s._:/=+@-]*"
-    UntagResourceResponse:
-      type: object
     UpdateAgentResponse:
       type: object
       properties:
@@ -8734,7 +8781,6 @@ components:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1agentcollaborators~1{collaborator_id}~1/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_agent_collaborator:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1agentcollaborators~1{collaborator_id}~1/get"
@@ -8803,7 +8849,6 @@ components:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1knowledgebases~1{knowledge_base_id}~1/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_agent_knowledge_base:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1knowledgebases~1{knowledge_base_id}~1/get"
@@ -8948,7 +8993,6 @@ components:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1actiongroups~1{action_group_id}~1/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_agent_action_group:
@@ -8979,10 +9023,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/agent_action_groups/methods/update_agent_action_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/agent_action_groups/methods/delete_agent_action_group"
-    agent_alias:
-      id: aws.bedrock_agent.agent_alias
-      name: agent_alias
-      title: agent_alias
+    agent_aliases:
+      id: aws.bedrock_agent.agent_aliases
+      name: agent_aliases
+      title: agent_aliases
       methods:
         create_agent_alias:
           operation:
@@ -8993,6 +9037,25 @@ components:
           request:
             nativeCasing: pascal
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_agent_aliases:
+          operation:
+            $ref: "#/paths/~1agents~1{agent_id}~1agentaliases~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.agentAliasSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_agent_alias:
@@ -9021,43 +9084,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/agent_alias/methods/get_agent_alias"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/agent_alias/methods/create_agent_alias"
-        update:
-          - $ref: "#/components/x-stackQL-resources/agent_alias/methods/update_agent_alias"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/agent_alias/methods/delete_agent_alias"
-    agent_aliases:
-      id: aws.bedrock_agent.agent_aliases
-      name: agent_aliases
-      title: agent_aliases
-      methods:
-        list_agent_aliases:
-          operation:
-            $ref: "#/paths/~1agents~1{agent_id}~1agentaliases~1/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.agentAliasSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
+          - $ref: "#/components/x-stackQL-resources/agent_aliases/methods/get_agent_alias"
           - $ref: "#/components/x-stackQL-resources/agent_aliases/methods/list_agent_aliases"
-        insert: []
-        update: []
-        delete: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/agent_aliases/methods/create_agent_alias"
+        update:
+          - $ref: "#/components/x-stackQL-resources/agent_aliases/methods/update_agent_alias"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/agent_aliases/methods/delete_agent_alias"
     data_sources:
       id: aws.bedrock_agent.data_sources
       name: data_sources
@@ -9214,10 +9248,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/flows/methods/update_flow"
         delete:
           - $ref: "#/components/x-stackQL-resources/flows/methods/delete_flow"
-    flow_alias:
-      id: aws.bedrock_agent.flow_alias
-      name: flow_alias
-      title: flow_alias
+    flow_aliases:
+      id: aws.bedrock_agent.flow_aliases
+      name: flow_aliases
+      title: flow_aliases
       methods:
         create_flow_alias:
           operation:
@@ -9230,6 +9264,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_flow_aliases:
+          operation:
+            $ref: "#/paths/~1flows~1{flow_identifier}~1aliases/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.flowAliasSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_flow_alias:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1aliases~1{alias_identifier}/delete"
@@ -9255,41 +9306,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/flow_alias/methods/get_flow_alias"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/flow_alias/methods/create_flow_alias"
-        update:
-          - $ref: "#/components/x-stackQL-resources/flow_alias/methods/update_flow_alias"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/flow_alias/methods/delete_flow_alias"
-    flow_aliases:
-      id: aws.bedrock_agent.flow_aliases
-      name: flow_aliases
-      title: flow_aliases
-      methods:
-        list_flow_aliases:
-          operation:
-            $ref: "#/paths/~1flows~1{flow_identifier}~1aliases/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.flowAliasSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
+          - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/get_flow_alias"
           - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/list_flow_aliases"
-        insert: []
-        update: []
-        delete: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/create_flow_alias"
+        update:
+          - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/update_flow_alias"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/delete_flow_alias"
     flow_versions:
       id: aws.bedrock_agent.flow_versions
       name: flow_versions
@@ -9721,7 +9745,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -9732,7 +9755,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists an <code>aggregate_resource_configs</co
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_aggregate_resource_config"
+    defaultValue="get_aggregate_resource_config"
     values={[
-        { label: 'batch_get_aggregate_resource_config', value: 'batch_get_aggregate_resource_config' },
-        { label: 'get_aggregate_resource_config', value: 'get_aggregate_resource_config' }
+        { label: 'get_aggregate_resource_config', value: 'get_aggregate_resource_config' },
+        { label: 'batch_get_aggregate_resource_config', value: 'batch_get_aggregate_resource_config' }
     ]}
 >
-<TabItem value="batch_get_aggregate_resource_config">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="base_configuration_items" /></td>
-    <td><code>array</code></td>
-    <td>A list that contains the current configuration of one or more resources.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="unprocessed_resource_identifiers" /></td>
-    <td><code>array</code></td>
-    <td>A list of resource identifiers that were not processed with current scope. The list is empty if all the resources are processed.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_aggregate_resource_config">
 
 <table>
@@ -177,6 +153,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_aggregate_resource_config">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="base_configuration_items" /></td>
+    <td><code>array</code></td>
+    <td>A list that contains the current configuration of one or more resources.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unprocessed_resource_identifiers" /></td>
+    <td><code>array</code></td>
+    <td>A list of resource identifiers that were not processed with current scope. The list is empty if all the resources are processed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -195,18 +195,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_aggregate_resource_config"><CopyableCode code="batch_get_aggregate_resource_config" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceIdentifiers list. The API does not return results for deleted resources. The API does not return tags and relationships.</td>
-</tr>
-<tr>
     <td><a href="#get_aggregate_resource_config"><CopyableCode code="get_aggregate_resource_config" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns configuration item that is aggregated for your specific resource in a specific source account and region. The API does not return results for deleted resources.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_aggregate_resource_config"><CopyableCode code="batch_get_aggregate_resource_config" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceIdentifiers list. The API does not return results for deleted resources. The API does not return tags and relationships.</td>
 </tr>
 </tbody>
 </table>
@@ -235,25 +235,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_aggregate_resource_config"
+    defaultValue="get_aggregate_resource_config"
     values={[
-        { label: 'batch_get_aggregate_resource_config', value: 'batch_get_aggregate_resource_config' },
-        { label: 'get_aggregate_resource_config', value: 'get_aggregate_resource_config' }
+        { label: 'get_aggregate_resource_config', value: 'get_aggregate_resource_config' },
+        { label: 'batch_get_aggregate_resource_config', value: 'batch_get_aggregate_resource_config' }
     ]}
 >
-<TabItem value="batch_get_aggregate_resource_config">
-
-Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceIdentifiers list. The API does not return results for deleted resources. The API does not return tags and relationships.
-
-```sql
-SELECT
-base_configuration_items,
-unprocessed_resource_identifiers
-FROM aws.config.aggregate_resource_configs
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_aggregate_resource_config">
 
 Returns configuration item that is aggregated for your specific resource in a specific source account and region. The API does not return results for deleted resources.
@@ -280,6 +267,19 @@ resource_type,
 supplementary_configuration,
 tags,
 version
+FROM aws.config.aggregate_resource_configs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_aggregate_resource_config">
+
+Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceIdentifiers list. The API does not return results for deleted resources. The API does not return tags and relationships.
+
+```sql
+SELECT
+base_configuration_items,
+unprocessed_resource_identifiers
 FROM aws.config.aggregate_resource_configs
 WHERE region = '{{ region }}' -- required
 ;

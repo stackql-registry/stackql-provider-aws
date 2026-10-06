@@ -1026,10 +1026,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateUserResponse"
   /applications/{application_id}/experiences:
     post:
       operationId: CreateWebExperience
@@ -1120,10 +1116,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: GetApplication
       description: Gets information about an existing Amazon Q Business application.
@@ -1177,10 +1169,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateApplicationResponse"
   /applications/{application_id}/conversations/{conversation_id}/attachments/{attachment_id}:
     delete:
       operationId: DeleteAttachment
@@ -1213,10 +1201,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAttachmentResponse"
   /applications/{application_id}/chatcontrols:
     delete:
       operationId: DeleteChatControlsConfiguration
@@ -1231,10 +1215,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteChatControlsConfigurationResponse"
     get:
       operationId: GetChatControlsConfiguration
       description: Gets information about chat controls configured for an existing Amazon Q Business application.
@@ -1300,10 +1280,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateChatControlsConfigurationResponse"
   /applications/{application_id}/chatresponseconfigurations/{chat_response_configuration_id}:
     delete:
       operationId: DeleteChatResponseConfiguration
@@ -1324,10 +1300,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteChatResponseConfigurationResponse"
     get:
       operationId: GetChatResponseConfiguration
       description: Retrieves detailed information about a specific chat response configuration from an Amazon Q Business application. This operation returns the complete configuration settings and metadata.
@@ -1385,10 +1357,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateChatResponseConfigurationResponse"
   /applications/{application_id}/conversations/{conversation_id}:
     delete:
       operationId: DeleteConversation
@@ -1415,10 +1383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConversationResponse"
     get:
       operationId: ListMessages
       description: Gets a list of messages associated with an Amazon Q Business web experience.
@@ -1480,10 +1444,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataAccessorResponse"
     get:
       operationId: GetDataAccessor
       description: Retrieves information about a specified data accessor. This operation returns details about the data accessor, including its display name, unique identifier, Amazon Resource Name (ARN), the associated Amazon Q Business application and IAM Identity Center application, the IAM role for the ISV, the action configurations, and the timestamps for when the data accessor was created and last updated.
@@ -1541,10 +1501,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataAccessorResponse"
   /applications/{application_id}/indices/{index_id}/datasources/{data_source_id}:
     delete:
       operationId: DeleteDataSource
@@ -1571,10 +1527,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataSourceResponse"
     get:
       operationId: GetDataSource
       description: Gets information about an existing Amazon Q Business data source connector.
@@ -1652,10 +1604,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataSourceResponse"
   /applications/{application_id}/indices/{index_id}/groups/{group_name}:
     delete:
       operationId: DeleteGroup
@@ -1688,10 +1636,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupResponse"
     get:
       operationId: GetGroup
       description: Describes a group by group name.
@@ -1747,10 +1691,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIndexResponse"
     get:
       operationId: GetIndex
       description: Gets information about an existing Amazon Q Business index.
@@ -1808,10 +1748,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateIndexResponse"
   /applications/{application_id}/plugins/{plugin_id}:
     delete:
       operationId: DeletePlugin
@@ -1832,10 +1768,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePluginResponse"
     get:
       operationId: GetPlugin
       description: Gets information about an existing Amazon Q Business plugin.
@@ -1895,10 +1827,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePluginResponse"
   /applications/{application_id}/retrievers/{retriever_id}:
     delete:
       operationId: DeleteRetriever
@@ -1919,10 +1847,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRetrieverResponse"
     get:
       operationId: GetRetriever
       description: Gets information about an existing retriever used by an Amazon Q Business application.
@@ -1978,10 +1902,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRetrieverResponse"
   /applications/{application_id}/users/{user_id}:
     delete:
       operationId: DeleteUser
@@ -2002,10 +1922,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResponse"
     get:
       operationId: GetUser
       description: Describes the universally unique identifier (UUID) associated with a local user in a data source.
@@ -2083,10 +1999,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWebExperienceResponse"
     get:
       operationId: GetWebExperience
       description: Gets information about an existing Amazon Q Business web experience.
@@ -2156,10 +2068,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWebExperienceResponse"
   /applications/{application_id}/policy/{statement_id}:
     delete:
       operationId: DisassociatePermission
@@ -2180,10 +2088,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociatePermissionResponse"
   /applications/{application_id}/index/{index_id}/documents/{document_id}/content:
     get:
       operationId: GetDocumentContent
@@ -2494,10 +2398,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutGroupResponse"
   /applications/{application_id}/plugins/{plugin_id}/actions:
     get:
       operationId: ListPluginActions
@@ -2630,10 +2530,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from an Amazon Q Business application or a data source.
@@ -2653,10 +2549,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /applications/{application_id}/conversations/{conversation_id}/messages/{message_id}/feedback:
     post:
       operationId: PutFeedback
@@ -2794,10 +2686,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopDataSourceSyncJobResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -4802,8 +4690,6 @@ components:
           description: The identifier of the user id associated with the user aliases.
       required:
         - userId
-    CreateUserResponse:
-      type: object
     WebExperienceTitle:
       type: string
       minLength: 0
@@ -4935,34 +4821,6 @@ components:
       minLength: 0
       maxLength: 1284
       pattern: arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[^/].{0,1023}
-    DeleteApplicationResponse:
-      type: object
-    DeleteAttachmentResponse:
-      type: object
-    DeleteChatControlsConfigurationResponse:
-      type: object
-    DeleteChatResponseConfigurationResponse:
-      type: object
-    DeleteConversationResponse:
-      type: object
-    DeleteDataAccessorResponse:
-      type: object
-    DeleteDataSourceResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteIndexResponse:
-      type: object
-    DeletePluginResponse:
-      type: object
-    DeleteRetrieverResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
-    DeleteWebExperienceResponse:
-      type: object
-    DisassociatePermissionResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -6626,8 +6484,6 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: \P{C}*
-    PutGroupResponse:
-      type: object
     QueryText:
       type: string
     ContentSource:
@@ -6706,18 +6562,10 @@ components:
         executionId:
           $ref: "#/components/schemas/ExecutionId"
           description: The identifier for a particular synchronization job.
-    StopDataSourceSyncJobResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateApplicationResponse:
-      type: object
     OrchestrationConfiguration:
       description: Configuration information required to enable chat orchestration for your Amazon Q Business application. Chat orchestration is optimized to work for English language content. For more details on language support in Amazon Q Business, see Supported languages.
       type: object
@@ -6749,20 +6597,6 @@ components:
           description: Status information about whether CREATOR_MODE has been enabled or disabled. The default status is DISABLED.
       required:
         - creatorModeControl
-    UpdateChatControlsConfigurationResponse:
-      type: object
-    UpdateChatResponseConfigurationResponse:
-      type: object
-    UpdateDataAccessorResponse:
-      type: object
-    UpdateDataSourceResponse:
-      type: object
-    UpdateIndexResponse:
-      type: object
-    UpdatePluginResponse:
-      type: object
-    UpdateRetrieverResponse:
-      type: object
     UpdateSubscriptionResponse:
       type: object
       properties:
@@ -6787,8 +6621,6 @@ components:
         userAliasesDeleted:
           $ref: "#/components/schemas/UserAliases"
           description: The user aliases that have been deleted from a user id.
-    UpdateWebExperienceResponse:
-      type: object
   x-stackQL-resources:
     applications:
       id: aws.qbusiness.applications
@@ -6889,7 +6721,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/get"
@@ -6901,7 +6732,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6912,7 +6742,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1policy~1{statement_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
@@ -7027,7 +6856,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1conversations~1{conversation_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         put_feedback:
@@ -7098,7 +6926,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_web_experience:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/get"
@@ -7110,7 +6937,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7165,7 +6991,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1chatresponseconfigurations~1{chat_response_configuration_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_chat_response_configuration:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1chatresponseconfigurations~1{chat_response_configuration_id}/get"
@@ -7177,7 +7002,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1chatresponseconfigurations~1{chat_response_configuration_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7231,7 +7055,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1dataaccessors~1{data_accessor_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_accessor:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1dataaccessors~1{data_accessor_id}/get"
@@ -7243,7 +7066,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1dataaccessors~1{data_accessor_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7297,7 +7119,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_source:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}/get"
@@ -7309,7 +7130,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7326,7 +7146,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}~1stopsync/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/get_data_source"
@@ -7358,7 +7177,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_index:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}/get"
@@ -7370,7 +7188,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7451,7 +7268,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1plugins~1{plugin_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_plugin:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1plugins~1{plugin_id}/get"
@@ -7463,7 +7279,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1plugins~1{plugin_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7517,7 +7332,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1retrievers~1{retriever_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_retriever:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1retrievers~1{retriever_id}/get"
@@ -7529,7 +7343,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1retrievers~1{retriever_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7555,7 +7368,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1users/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7566,7 +7378,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1users~1{user_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_user:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1users~1{user_id}/get"
@@ -7603,7 +7414,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1conversations~1{conversation_id}~1attachments~1{attachment_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_attachments:
@@ -7640,7 +7450,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1chatcontrols/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_chat_controls_configuration:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1chatcontrols/get"
@@ -7663,7 +7472,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1chatcontrols/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7715,7 +7523,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1groups~1{group_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_group:
@@ -7748,7 +7555,6 @@ components:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1groups/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7764,10 +7570,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/groups/methods/put_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
-    document_contents:
-      id: aws.qbusiness.document_contents
-      name: document_contents
-      title: document_contents
+    document_content:
+      id: aws.qbusiness.document_content
+      name: document_content
+      title: document_content
       methods:
         get_document_content:
           operation:
@@ -7779,7 +7585,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/document_contents/methods/get_document_content"
+          - $ref: "#/components/x-stackQL-resources/document_content/methods/get_document_content"
         insert: []
         update: []
         delete: []
@@ -7912,10 +7718,10 @@ components:
         insert: []
         update: []
         delete: []
-    plugin_type_metadatas:
-      id: aws.qbusiness.plugin_type_metadatas
-      name: plugin_type_metadatas
-      title: plugin_type_metadatas
+    plugin_type_metadata:
+      id: aws.qbusiness.plugin_type_metadata
+      name: plugin_type_metadata
+      title: plugin_type_metadata
       methods:
         list_plugin_type_metadata:
           operation:
@@ -7936,7 +7742,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/plugin_type_metadatas/methods/list_plugin_type_metadata"
+          - $ref: "#/components/x-stackQL-resources/plugin_type_metadata/methods/list_plugin_type_metadata"
         insert: []
         update: []
         delete: []
@@ -7956,7 +7762,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7967,7 +7772,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -7978,10 +7782,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    relevant_contents:
-      id: aws.qbusiness.relevant_contents
-      name: relevant_contents
-      title: relevant_contents
+    relevant_content:
+      id: aws.qbusiness.relevant_content
+      name: relevant_content
+      title: relevant_content
       methods:
         search_relevant_content:
           operation:
@@ -8004,7 +7808,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/relevant_contents/methods/search_relevant_content"
+          - $ref: "#/components/x-stackQL-resources/relevant_content/methods/search_relevant_content"
         insert: []
         update: []
         delete: []

@@ -178,6 +178,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all engagements that have happened in an incident.</td>
 </tr>
+<tr>
+    <td><a href="#start_engagement"><CopyableCode code="start_engagement" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContactId"><code>ContactId</code></a></td>
+    <td></td>
+    <td>Starts an engagement to a contact or escalation plan. The engagement engages each contact specified in the incident.</td>
+</tr>
+<tr>
+    <td><a href="#stop_engagement"><CopyableCode code="stop_engagement" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-EngagementId"><code>EngagementId</code></a></td>
+    <td></td>
+    <td>Stops an engagement before it finishes the final stage of the escalation plan or engagement plan. Further contacts aren't engaged.</td>
+</tr>
 </tbody>
 </table>
 
@@ -246,6 +260,54 @@ start_time,
 stop_time
 FROM aws.ssm_contacts.engagements
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_engagement"
+    values={[
+        { label: 'start_engagement', value: 'start_engagement' },
+        { label: 'stop_engagement', value: 'stop_engagement' }
+    ]}
+>
+<TabItem value="start_engagement">
+
+Starts an engagement to a contact or escalation plan. The engagement engages each contact specified in the incident.
+
+```sql
+EXEC aws.ssm_contacts.engagements.start_engagement 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ContactId": "{{ ContactId }}", 
+"Sender": "{{ Sender }}", 
+"Subject": "{{ Subject }}", 
+"Content": "{{ Content }}", 
+"PublicSubject": "{{ PublicSubject }}", 
+"PublicContent": "{{ PublicContent }}", 
+"IncidentId": "{{ IncidentId }}", 
+"IdempotencyToken": "{{ IdempotencyToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_engagement">
+
+Stops an engagement before it finishes the final stage of the escalation plan or engagement plan. Further contacts aren't engaged.
+
+```sql
+EXEC aws.ssm_contacts.engagements.stop_engagement 
+@region='{{ region }}' --required 
+@@json=
+'{
+"EngagementId": "{{ EngagementId }}", 
+"Reason": "{{ Reason }}"
+}'
 ;
 ```
 </TabItem>

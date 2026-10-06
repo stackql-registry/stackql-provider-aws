@@ -383,7 +383,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInstanceOnboardingJobStatusResponse'
-      x-stackql-resource: instance_onboarding_job_status
+      x-stackql-resource: instance_onboarding_job_statuses
       x-stackql-method: get_instance_onboarding_job_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.connectInstanceOnboardingJobStatus
@@ -414,7 +414,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInstanceOnboardingJobResponse'
-      x-stackql-resource: instance_onboarding_job
+      x-stackql-resource: instance_onboarding_jobs
       x-stackql-method: start_instance_onboarding_job
       x-stackql-verb: EXEC
   /v2/campaigns/{id}/state:
@@ -681,7 +681,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign
+      x-stackql-resource: campaigns
       x-stackql-method: pause_campaign
       x-stackql-verb: EXEC
   /v2/campaigns/{id}/outbound-requests:
@@ -760,7 +760,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign
+      x-stackql-resource: campaigns
       x-stackql-method: resume_campaign
       x-stackql-verb: EXEC
   /v2/campaigns/{id}/start:
@@ -776,7 +776,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign
+      x-stackql-resource: campaigns
       x-stackql-method: start_campaign
       x-stackql-verb: EXEC
   /v2/campaigns/{id}/stop:
@@ -792,7 +792,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign
+      x-stackql-resource: campaigns
       x-stackql-method: stop_campaign
       x-stackql-verb: EXEC
   /v2/campaigns/{id}/flow:

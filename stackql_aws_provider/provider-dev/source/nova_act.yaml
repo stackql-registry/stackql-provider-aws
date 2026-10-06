@@ -430,10 +430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkflowRunResponse'
       x-stackql-resource: workflow_runs
       x-stackql-method: update_workflow_run
       x-stackql-verb: UPDATE
@@ -614,10 +610,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateActResponse'
       x-stackql-resource: acts
       x-stackql-method: update_act
       x-stackql-verb: UPDATE
@@ -1281,7 +1273,3 @@ components:
       type: string
       minLength: 1
       maxLength: 100
-    UpdateActResponse:
-      type: object
-    UpdateWorkflowRunResponse:
-      type: object

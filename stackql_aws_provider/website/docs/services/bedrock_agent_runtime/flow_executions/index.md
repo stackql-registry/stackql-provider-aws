@@ -173,6 +173,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-flowAliasIdentifier"><code>flowAliasIdentifier</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Lists all executions of a flow. Results can be paginated and include summary information about each execution, such as status, start and end times, and the execution's Amazon Resource Name (ARN). Flow executions is in preview release for Amazon Bedrock and is subject to change.</td>
 </tr>
+<tr>
+    <td><a href="#start_flow_execution"><CopyableCode code="start_flow_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-flow_alias_identifier"><code>flow_alias_identifier</code></a>, <a href="#parameter-flow_identifier"><code>flow_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-inputs"><code>inputs</code></a></td>
+    <td></td>
+    <td>Starts an execution of an Amazon Bedrock flow. Unlike flows that run until completion or time out after five minutes, flow executions let you run flows asynchronously for longer durations. Flow executions also yield control so that your application can perform other tasks. This operation returns an Amazon Resource Name (ARN) that you can use to track and manage your flow execution. Flow executions is in preview release for Amazon Bedrock and is subject to change.</td>
+</tr>
+<tr>
+    <td><a href="#stop_flow_execution"><CopyableCode code="stop_flow_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-execution_identifier"><code>execution_identifier</code></a>, <a href="#parameter-flow_alias_identifier"><code>flow_alias_identifier</code></a>, <a href="#parameter-flow_identifier"><code>flow_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops an Amazon Bedrock flow's execution. This operation prevents further processing of the flow and changes the execution status to Aborted.</td>
+</tr>
 </tbody>
 </table>
 
@@ -192,7 +206,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-execution_identifier">
     <td><CopyableCode code="execution_identifier" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the flow execution to retrieve.</td>
+    <td>The unique identifier of the flow execution to stop.</td>
 </tr>
 <tr id="parameter-flow_alias_identifier">
     <td><CopyableCode code="flow_alias_identifier" /></td>
@@ -202,7 +216,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-flow_identifier">
     <td><CopyableCode code="flow_identifier" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the flow to list executions for.</td>
+    <td>The unique identifier of the flow.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -277,6 +291,49 @@ AND region = '{{ region }}' -- required
 AND flowAliasIdentifier = '{{ flowAliasIdentifier }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_flow_execution"
+    values={[
+        { label: 'start_flow_execution', value: 'start_flow_execution' },
+        { label: 'stop_flow_execution', value: 'stop_flow_execution' }
+    ]}
+>
+<TabItem value="start_flow_execution">
+
+Starts an execution of an Amazon Bedrock flow. Unlike flows that run until completion or time out after five minutes, flow executions let you run flows asynchronously for longer durations. Flow executions also yield control so that your application can perform other tasks. This operation returns an Amazon Resource Name (ARN) that you can use to track and manage your flow execution. Flow executions is in preview release for Amazon Bedrock and is subject to change.
+
+```sql
+EXEC aws.bedrock_agent_runtime.flow_executions.start_flow_execution 
+@flow_alias_identifier='{{ flow_alias_identifier }}' --required, 
+@flow_identifier='{{ flow_identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"flowExecutionName": "{{ flowExecutionName }}", 
+"inputs": "{{ inputs }}", 
+"modelPerformanceConfiguration": "{{ modelPerformanceConfiguration }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_flow_execution">
+
+Stops an Amazon Bedrock flow's execution. This operation prevents further processing of the flow and changes the execution status to Aborted.
+
+```sql
+EXEC aws.bedrock_agent_runtime.flow_executions.stop_flow_execution 
+@execution_identifier='{{ execution_identifier }}' --required, 
+@flow_alias_identifier='{{ flow_alias_identifier }}' --required, 
+@flow_identifier='{{ flow_identifier }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

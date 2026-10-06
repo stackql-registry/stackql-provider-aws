@@ -87,7 +87,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeDecoratedRoleWithSAMLResponse'
-      x-stackql-resource: assume_decorated_role_with_saml
+      x-stackql-resource: decorated_roles
       x-stackql-method: assume_decorated_role_with_saml
       x-stackql-verb: EXEC
   /BatchGrantPermissions:
@@ -165,11 +165,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelTransactionResponse'
-      x-stackql-resource: transaction
+      x-stackql-resource: transactions
       x-stackql-method: cancel_transaction
       x-stackql-verb: EXEC
   /CommitTransaction:
@@ -218,10 +214,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDataCellsFilterResponse'
       x-stackql-resource: data_cells_filters
       x-stackql-method: create_data_cells_filter
       x-stackql-verb: INSERT
@@ -249,10 +241,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateLFTagResponse'
       x-stackql-resource: lf_tags
       x-stackql-method: create_lf_tag
       x-stackql-verb: INSERT
@@ -286,10 +274,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateLFTagExpressionResponse'
       x-stackql-resource: lf_tag_expressions
       x-stackql-method: create_lf_tag_expression
       x-stackql-verb: INSERT
@@ -350,10 +334,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateLakeFormationOptInResponse'
       x-stackql-resource: lake_formation_opt_ins
       x-stackql-method: create_lake_formation_opt_in
       x-stackql-verb: INSERT
@@ -380,10 +360,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataCellsFilterResponse'
       x-stackql-resource: data_cells_filters
       x-stackql-method: delete_data_cells_filter
       x-stackql-verb: DELETE
@@ -410,10 +386,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLFTagResponse'
       x-stackql-resource: lf_tags
       x-stackql-method: delete_lf_tag
       x-stackql-verb: DELETE
@@ -439,10 +411,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLFTagExpressionResponse'
       x-stackql-resource: lf_tag_expressions
       x-stackql-method: delete_lf_tag_expression
       x-stackql-verb: DELETE
@@ -463,10 +431,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLakeFormationIdentityCenterConfigurationResponse'
       x-stackql-resource: lake_formation_identity_center_configurations
       x-stackql-method: delete_lake_formation_identity_center_configuration
       x-stackql-verb: DELETE
@@ -494,10 +458,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLakeFormationOptInResponse'
       x-stackql-resource: lake_formation_opt_ins
       x-stackql-method: delete_lake_formation_opt_in
       x-stackql-verb: DELETE
@@ -535,10 +495,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteObjectsOnCancelResponse'
       x-stackql-resource: transactions
       x-stackql-method: delete_objects_on_cancel
       x-stackql-verb: DELETE
@@ -562,10 +518,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: deregister_resource
       x-stackql-verb: DELETE
@@ -665,11 +617,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExtendTransactionResponse'
-      x-stackql-resource: extend_transaction
+      x-stackql-resource: transactions
       x-stackql-method: extend_transaction
       x-stackql-verb: EXEC
   /GetDataCellsFilter:
@@ -778,7 +726,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEffectivePermissionsForPathResponse'
-      x-stackql-resource: effective_permissions_for_paths
+      x-stackql-resource: effective_permissions
       x-stackql-method: get_effective_permissions_for_path
       x-stackql-verb: SELECT
   /GetLFTag:
@@ -1183,10 +1131,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GrantPermissionsResponse'
       x-stackql-resource: permissions
       x-stackql-method: grant_permissions
       x-stackql-verb: EXEC
@@ -1481,10 +1425,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDataLakeSettingsResponse'
       x-stackql-resource: data_lake_settings
       x-stackql-method: put_data_lake_settings
       x-stackql-verb: REPLACE
@@ -1526,10 +1466,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RegisterResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: register_resource
       x-stackql-verb: INSERT
@@ -1597,10 +1533,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokePermissionsResponse'
       x-stackql-resource: permissions
       x-stackql-method: revoke_permissions
       x-stackql-verb: UPDATE
@@ -1635,7 +1567,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchDatabasesByLFTagsResponse'
-      x-stackql-resource: databases_by_lf_tags
+      x-stackql-resource: databases
       x-stackql-method: search_databases_by_lf_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatabaseList
@@ -1673,7 +1605,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchTablesByLFTagsResponse'
-      x-stackql-resource: tables_by_lf_tags
+      x-stackql-resource: tables
       x-stackql-method: search_tables_by_lf_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableList
@@ -1707,7 +1639,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryPlanningResponse'
-      x-stackql-resource: query_planning
+      x-stackql-resource: query_plannings
       x-stackql-method: start_query_planning
       x-stackql-verb: EXEC
   /StartTransaction:
@@ -1732,7 +1664,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTransactionResponse'
-      x-stackql-resource: transaction
+      x-stackql-resource: transactions
       x-stackql-method: start_transaction
       x-stackql-verb: EXEC
   /UpdateDataCellsFilter:
@@ -1754,10 +1686,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataCellsFilterResponse'
       x-stackql-resource: data_cells_filters
       x-stackql-method: update_data_cells_filter
       x-stackql-verb: UPDATE
@@ -1789,10 +1717,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLFTagResponse'
       x-stackql-resource: lf_tags
       x-stackql-method: update_lf_tag
       x-stackql-verb: UPDATE
@@ -1824,10 +1748,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLFTagExpressionResponse'
       x-stackql-resource: lf_tag_expressions
       x-stackql-method: update_lf_tag_expression
       x-stackql-verb: UPDATE
@@ -1856,10 +1776,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateLakeFormationIdentityCenterConfigurationResponse'
       x-stackql-resource: lake_formation_identity_center_configurations
       x-stackql-method: update_lake_formation_identity_center_configuration
       x-stackql-verb: UPDATE
@@ -1891,10 +1807,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateResourceResponse'
       x-stackql-resource: resources
       x-stackql-method: update_resource
       x-stackql-verb: UPDATE
@@ -1927,10 +1839,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTableObjectsResponse'
       x-stackql-resource: table_objects
       x-stackql-method: update_table_objects
       x-stackql-verb: UPDATE
@@ -2463,8 +2371,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: '[\p{L}\p{N}\p{P}]*'
-    CancelTransactionResponse:
-      type: object
     CommitTransactionResponse:
       type: object
       properties:
@@ -2536,12 +2442,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\t]*'
-    CreateDataCellsFilterResponse:
-      type: object
-    CreateLFTagResponse:
-      type: object
-    CreateLFTagExpressionResponse:
-      type: object
     IdentityCenterInstanceArn:
       type: string
     ExternalFilteringConfiguration:
@@ -2621,18 +2521,6 @@ components:
           description: The Amazon Resource Name (ARN) of the Lake Formation application integrated with IAM Identity Center.
     ApplicationArn:
       type: string
-    CreateLakeFormationOptInResponse:
-      type: object
-    DeleteDataCellsFilterResponse:
-      type: object
-    DeleteLFTagResponse:
-      type: object
-    DeleteLFTagExpressionResponse:
-      type: object
-    DeleteLakeFormationIdentityCenterConfigurationResponse:
-      type: object
-    DeleteLakeFormationOptInResponse:
-      type: object
     VirtualObjectList:
       type: array
       items:
@@ -2660,10 +2548,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: '[\p{L}\p{N}\p{P}]*'
-    DeleteObjectsOnCancelResponse:
-      type: object
-    DeregisterResourceResponse:
-      type: object
     DescribeLakeFormationIdentityCenterConfigurationResponse:
       type: object
       properties:
@@ -2775,8 +2659,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    ExtendTransactionResponse:
-      type: object
     GetDataCellsFilterResponse:
       type: object
       properties:
@@ -3360,8 +3242,6 @@ components:
       format: int64
     WorkUnitTokenString:
       type: string
-    GrantPermissionsResponse:
-      type: object
     ListDataCellsFilterResponse:
       type: object
       properties:
@@ -3597,20 +3477,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TransactionDescription'
-    PutDataLakeSettingsResponse:
-      type: object
     Boolean:
       type: boolean
-    RegisterResourceResponse:
-      type: object
     RemoveLFTagsFromResourceResponse:
       type: object
       properties:
         Failures:
           $ref: '#/components/schemas/LFTagErrors'
           description: A list of failures to untag a resource.
-    RevokePermissionsResponse:
-      type: object
     SearchPageSize:
       type: integer
       minimum: 1
@@ -3723,21 +3597,11 @@ components:
         TransactionId:
           $ref: '#/components/schemas/TransactionIdString'
           description: An opaque identifier for the transaction.
-    UpdateDataCellsFilterResponse:
-      type: object
-    UpdateLFTagResponse:
-      type: object
-    UpdateLFTagExpressionResponse:
-      type: object
     ApplicationStatus:
       type: string
       enum:
       - ENABLED
       - DISABLED
-    UpdateLakeFormationIdentityCenterConfigurationResponse:
-      type: object
-    UpdateResourceResponse:
-      type: object
     WriteOperationList:
       type: array
       items:
@@ -3792,8 +3656,6 @@ components:
             with the governed table.
       required:
       - Uri
-    UpdateTableObjectsResponse:
-      type: object
     StorageOptimizerConfigMap:
       type: object
       properties: {}

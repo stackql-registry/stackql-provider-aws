@@ -221,10 +221,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProfilingGroupResponse"
     get:
       operationId: DescribeProfilingGroup
       description: Returns a ProfilingGroupDescription object that contains information about the requested profiling group.
@@ -546,10 +542,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Use to remove one or more tags from a resource.
@@ -569,10 +561,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /profilingGroups/{profiling_group_name}/agentProfile:
     post:
       operationId: PostAgentProfile
@@ -610,10 +598,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PostAgentProfileResponse"
   /profilingGroups/{profiling_group_name}/policy/{action_group}:
     put:
       operationId: PutPermission
@@ -737,10 +721,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SubmitFeedbackResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1071,9 +1051,6 @@ components:
         start:
           $ref: "#/components/schemas/Timestamp"
           description: The time that aggregation of posted agent profiles for a profiling group starts. The aggregation profile contains profiles posted by the agent starting at this time for an aggregation period specified by the period property of the AggregatedProfileTime object. Specify start using the ISO 8601 format. For example, 2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020 1:15:02 PM UTC.
-    DeleteProfilingGroupResponse:
-      description: The structure representing the deleteProfilingGroupResponse.
-      type: object
     DescribeProfilingGroupResponse:
       description: The structure representing the describeProfilingGroupResponse.
       type: object
@@ -1449,9 +1426,6 @@ components:
     AgentProfile:
       type: string
       format: byte
-    PostAgentProfileResponse:
-      description: The structure representing the postAgentProfileResponse.
-      type: object
     ActionGroup:
       type: string
       enum:
@@ -1498,17 +1472,10 @@ components:
     AnomalyInstanceId:
       type: string
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
-    SubmitFeedbackResponse:
-      description: The structure representing the SubmitFeedbackResponse.
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateProfilingGroupResponse:
       description: The structure representing the updateProfilingGroupResponse.
       type: object
@@ -1570,7 +1537,6 @@ components:
             $ref: "#/paths/~1profilingGroups~1{profiling_group_name}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         describe_profiling_group:
           operation:
             $ref: "#/paths/~1profilingGroups~1{profiling_group_name}/get"
@@ -1594,7 +1560,6 @@ components:
             $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1agentProfile/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1630,7 +1595,6 @@ components:
             $ref: "#/paths/~1internal~1profilingGroups~1{profiling_group_name}~1anomalies~1{anomaly_instance_id}~1feedback/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1643,9 +1607,9 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/create_profiling_group"
         update:
+          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/update_profiling_group"
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/remove_permission"
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/add_notification_channels"
-          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/update_profiling_group"
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/remove_notification_channel"
         replace:
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/put_permission"
@@ -1669,10 +1633,10 @@ components:
         insert: []
         update: []
         delete: []
-    frame_metric_datas:
-      id: aws.codeguruprofiler.frame_metric_datas
-      name: frame_metric_datas
-      title: frame_metric_datas
+    frame_metric_data:
+      id: aws.codeguruprofiler.frame_metric_data
+      name: frame_metric_data
+      title: frame_metric_data
       methods:
         batch_get_frame_metric_data:
           operation:
@@ -1687,7 +1651,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/frame_metric_datas/methods/batch_get_frame_metric_data"
+          - $ref: "#/components/x-stackQL-resources/frame_metric_data/methods/batch_get_frame_metric_data"
         insert: []
         update: []
         delete: []
@@ -1828,7 +1792,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1839,7 +1802,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

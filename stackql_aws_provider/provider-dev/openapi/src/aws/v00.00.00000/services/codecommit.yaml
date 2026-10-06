@@ -5813,6 +5813,26 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_repositories_for_approval_rule_template:
+          operation:
+            $ref: "#/paths/~1ListRepositoriesForApprovalRuleTemplate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "repositoryNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"repository_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         merge_branches_by_fast_forward:
           operation:
             $ref: "#/paths/~1MergeBranchesByFastForward/post"
@@ -5904,8 +5924,9 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/repositories/methods/batch_get_repositories"
           - $ref: "#/components/x-stackQL-resources/repositories/methods/get_repository"
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/batch_get_repositories"
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/list_repositories_for_approval_rule_template"
           - $ref: "#/components/x-stackQL-resources/repositories/methods/list_repositories"
         insert:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/create_repository"
@@ -6014,8 +6035,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/commits/methods/batch_get_commits"
           - $ref: "#/components/x-stackQL-resources/commits/methods/get_commit"
+          - $ref: "#/components/x-stackQL-resources/commits/methods/batch_get_commits"
         insert:
           - $ref: "#/components/x-stackQL-resources/commits/methods/create_commit"
         update: []
@@ -6448,8 +6469,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/pull_requests/methods/get_pull_request"
           - $ref: "#/components/x-stackQL-resources/pull_requests/methods/list_pull_requests"
         insert:
-          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request_approval_rule"
           - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request_approval_rule"
         update:
           - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_approval_rule_content"
           - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_description"
@@ -6527,6 +6548,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_comments_for_compared_commit:
+          operation:
+            $ref: "#/paths/~1GetCommentsForComparedCommit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.commentsForComparedCommitData
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        get_comments_for_pull_request:
+          operation:
+            $ref: "#/paths/~1GetCommentsForPullRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.commentsForPullRequestData
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_comment:
           operation:
             $ref: "#/paths/~1UpdateComment/post"
@@ -6543,6 +6606,8 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/comments/methods/get_comment"
+          - $ref: "#/components/x-stackQL-resources/comments/methods/get_comments_for_compared_commit"
+          - $ref: "#/components/x-stackQL-resources/comments/methods/get_comments_for_pull_request"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/comments/methods/update_comment"
@@ -6726,70 +6791,6 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/comment_reactions/methods/put_comment_reaction"
-        delete: []
-    comments_for_compared_commits:
-      id: aws.codecommit.comments_for_compared_commits
-      name: comments_for_compared_commits
-      title: comments_for_compared_commits
-      methods:
-        get_comments_for_compared_commit:
-          operation:
-            $ref: "#/paths/~1GetCommentsForComparedCommit/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.commentsForComparedCommitData
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/comments_for_compared_commits/methods/get_comments_for_compared_commit"
-        insert: []
-        update: []
-        delete: []
-    comments_for_pull_requests:
-      id: aws.codecommit.comments_for_pull_requests
-      name: comments_for_pull_requests
-      title: comments_for_pull_requests
-      methods:
-        get_comments_for_pull_request:
-          operation:
-            $ref: "#/paths/~1GetCommentsForPullRequest/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.commentsForPullRequestData
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/comments_for_pull_requests/methods/get_comments_for_pull_request"
-        insert: []
-        update: []
         delete: []
     differences:
       id: aws.codecommit.differences
@@ -6984,10 +6985,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/repository_triggers/methods/put_repository_triggers"
         delete: []
-    associated_approval_rule_templates_for_repositories:
-      id: aws.codecommit.associated_approval_rule_templates_for_repositories
-      name: associated_approval_rule_templates_for_repositories
-      title: associated_approval_rule_templates_for_repositories
+    associated_approval_rule_templates:
+      id: aws.codecommit.associated_approval_rule_templates
+      name: associated_approval_rule_templates
+      title: associated_approval_rule_templates
       methods:
         list_associated_approval_rule_templates_for_repository:
           operation:
@@ -7011,7 +7012,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/associated_approval_rule_templates_for_repositories/methods/list_associated_approval_rule_templates_for_repository"
+          - $ref: "#/components/x-stackQL-resources/associated_approval_rule_templates/methods/list_associated_approval_rule_templates_for_repository"
         insert: []
         update: []
         delete: []
@@ -7036,37 +7037,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/file_commit_histories/methods/list_file_commit_history"
-        insert: []
-        update: []
-        delete: []
-    repositories_for_approval_rule_templates:
-      id: aws.codecommit.repositories_for_approval_rule_templates
-      name: repositories_for_approval_rule_templates
-      title: repositories_for_approval_rule_templates
-      methods:
-        list_repositories_for_approval_rule_template:
-          operation:
-            $ref: "#/paths/~1ListRepositoriesForApprovalRuleTemplate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "repositoryNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"repository_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/repositories_for_approval_rule_templates/methods/list_repositories_for_approval_rule_template"
         insert: []
         update: []
         delete: []
@@ -7119,4 +7089,27 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    comment_replies:
+      id: aws.codecommit.comment_replies
+      name: comment_replies
+      title: comment_replies
+      methods:
+        post_comment_reply:
+          operation:
+            $ref: "#/paths/~1PostCommentReply/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

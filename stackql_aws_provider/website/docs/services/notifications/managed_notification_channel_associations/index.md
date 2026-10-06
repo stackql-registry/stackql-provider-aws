@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>The type of notification channel used for message delivery. Values: ACCOUNT_CONTACT Delivers notifications to Account Managed contacts through the User Notification Service. MOBILE Delivers notifications through the Amazon Web Services Console Mobile Application to mobile devices. CHATBOT Delivers notifications through Amazon Q Developer in chat applications to collaboration platforms (Slack, Chime). EMAIL Delivers notifications to email addresses. (MOBILE, CHATBOT, EMAIL, ACCOUNT_CONTACT)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="is_sensitive_events_subscribed" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether this channel association is subscribed to sensitive events. Defaults to false for associations created without the flag.</td>
+</tr>
+<tr>
     <td><CopyableCode code="override_option" /></td>
     <td><code>string</code></td>
     <td>Controls whether users can modify channel associations for a notification configuration. Values: ENABLED Users can associate or disassociate channels with the notification configuration. DISABLED Users cannot associate or disassociate channels with the notification configuration. (ENABLED, DISABLED)</td>
@@ -90,6 +95,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-managedNotificationConfigurationArn"><code>managedNotificationConfigurationArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Returns a list of Account contacts and Channels associated with a ManagedNotificationConfiguration, in paginated format.</td>
+</tr>
+<tr>
+    <td><a href="#update_managed_notification_channel_association"><CopyableCode code="update_managed_notification_channel_association" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-managedNotificationConfigurationArn"><code>managedNotificationConfigurationArn</code></a>, <a href="#parameter-channelIdentifier"><code>channelIdentifier</code></a></td>
+    <td></td>
+    <td>Updates the isSensitiveEventsSubscribed property of a particular ManagedNotification channel association.</td>
 </tr>
 </tbody>
 </table>
@@ -146,6 +158,7 @@ Returns a list of Account contacts and Channels associated with a ManagedNotific
 SELECT
 channel_identifier,
 channel_type,
+is_sensitive_events_subscribed,
 override_option
 FROM aws.notifications.managed_notification_channel_associations
 WHERE managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}' -- required
@@ -153,6 +166,33 @@ AND region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
 ;
+```
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_managed_notification_channel_association"
+    values={[
+        { label: 'update_managed_notification_channel_association', value: 'update_managed_notification_channel_association' }
+    ]}
+>
+<TabItem value="update_managed_notification_channel_association">
+
+Updates the isSensitiveEventsSubscribed property of a particular ManagedNotification channel association.
+
+```sql
+UPDATE aws.notifications.managed_notification_channel_associations
+SET 
+managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}',
+channelIdentifier = '{{ channelIdentifier }}',
+isSensitiveEventsSubscribed = {{ isSensitiveEventsSubscribed }}
+WHERE 
+region = '{{ region }}' --required
+AND managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}' --required
+AND channelIdentifier = '{{ channelIdentifier }}' --required;
 ```
 </TabItem>
 </Tabs>

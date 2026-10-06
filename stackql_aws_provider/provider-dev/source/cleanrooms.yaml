@@ -1151,10 +1151,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAnalysisTemplateOutput'
       x-stackql-resource: analysis_templates
       x-stackql-method: delete_analysis_template
       x-stackql-verb: DELETE
@@ -1234,10 +1230,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCollaborationOutput'
       x-stackql-resource: collaborations
       x-stackql-method: delete_collaboration
       x-stackql-verb: DELETE
@@ -1315,10 +1307,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfiguredAudienceModelAssociationOutput'
       x-stackql-resource: configured_audience_model_associations
       x-stackql-method: delete_configured_audience_model_association
       x-stackql-verb: DELETE
@@ -1402,10 +1390,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfiguredTableOutput'
       x-stackql-resource: configured_tables
       x-stackql-method: delete_configured_table
       x-stackql-verb: DELETE
@@ -1491,10 +1475,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfiguredTableAnalysisRuleOutput'
       x-stackql-resource: configured_table_analysis_rules
       x-stackql-method: delete_configured_table_analysis_rule
       x-stackql-verb: DELETE
@@ -1587,10 +1567,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfiguredTableAssociationOutput'
       x-stackql-resource: configured_table_associations
       x-stackql-method: delete_configured_table_association
       x-stackql-verb: DELETE
@@ -1689,10 +1665,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConfiguredTableAssociationAnalysisRuleOutput'
       x-stackql-resource: configured_table_association_analysis_rules
       x-stackql-method: delete_configured_table_association_analysis_rule
       x-stackql-verb: DELETE
@@ -1794,10 +1766,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdMappingTableOutput'
       x-stackql-resource: id_mapping_tables
       x-stackql-method: delete_id_mapping_table
       x-stackql-verb: DELETE
@@ -1885,10 +1853,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdNamespaceAssociationOutput'
       x-stackql-resource: id_namespace_associations
       x-stackql-method: delete_id_namespace_association
       x-stackql-verb: DELETE
@@ -1979,10 +1943,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntermediateTableOutput'
       x-stackql-resource: intermediate_tables
       x-stackql-method: delete_intermediate_table
       x-stackql-verb: DELETE
@@ -2082,10 +2042,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntermediateTableAnalysisRuleOutput'
       x-stackql-resource: intermediate_table_analysis_rules
       x-stackql-method: delete_intermediate_table_analysis_rule
       x-stackql-verb: DELETE
@@ -2187,10 +2143,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMemberOutput'
       x-stackql-resource: members
       x-stackql-method: delete_member
       x-stackql-verb: DELETE
@@ -2208,10 +2160,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMembershipOutput'
       x-stackql-resource: memberships
       x-stackql-method: delete_membership
       x-stackql-verb: DELETE
@@ -2294,10 +2242,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePrivacyBudgetTemplateOutput'
       x-stackql-resource: privacy_budget_templates
       x-stackql-method: delete_privacy_budget_template
       x-stackql-verb: DELETE
@@ -2398,10 +2342,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisallowIntermediateTableOutput'
       x-stackql-resource: intermediate_tables
       x-stackql-method: disallow_intermediate_table
       x-stackql-verb: EXEC
@@ -2911,7 +2851,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAnalysisLogExportOutput'
-      x-stackql-resource: memberships
+      x-stackql-resource: analysis_log_exports
       x-stackql-method: start_analysis_log_export
       x-stackql-verb: EXEC
   /collaborations/{collaboration_identifier}/analysistemplates:
@@ -3343,7 +3283,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProtectedJobOutput'
-      x-stackql-resource: memberships
+      x-stackql-resource: protected_jobs
       x-stackql-method: start_protected_job
       x-stackql-verb: EXEC
   /memberships/{membership_identifier}/protectedQueries:
@@ -3428,7 +3368,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProtectedQueryOutput'
-      x-stackql-resource: memberships
+      x-stackql-resource: protected_queries
       x-stackql-method: start_protected_query
       x-stackql-verb: EXEC
   /collaborations/{collaboration_identifier}/schemas:
@@ -3522,10 +3462,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3548,10 +3484,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -7714,38 +7646,6 @@ components:
       required:
       - budgetParameters
       - resourceArn
-    DeleteAnalysisTemplateOutput:
-      type: object
-    DeleteCollaborationOutput:
-      type: object
-    DeleteConfiguredAudienceModelAssociationOutput:
-      type: object
-    DeleteConfiguredTableOutput:
-      description: The empty output for a successful deletion.
-      type: object
-    DeleteConfiguredTableAnalysisRuleOutput:
-      description: An empty response that indicates a successful delete.
-      type: object
-    DeleteConfiguredTableAssociationOutput:
-      type: object
-    DeleteConfiguredTableAssociationAnalysisRuleOutput:
-      type: object
-    DeleteIdMappingTableOutput:
-      type: object
-    DeleteIdNamespaceAssociationOutput:
-      type: object
-    DeleteIntermediateTableOutput:
-      type: object
-    DeleteIntermediateTableAnalysisRuleOutput:
-      type: object
-    DeleteMemberOutput:
-      type: object
-    DeleteMembershipOutput:
-      type: object
-    DeletePrivacyBudgetTemplateOutput:
-      type: object
-    DisallowIntermediateTableOutput:
-      type: object
     AnalysisLogExportIdentifier:
       type: string
       minLength: 36
@@ -10527,8 +10427,6 @@ components:
           description: The protected query.
       required:
       - protectedQuery
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -10537,8 +10435,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateAnalysisTemplateOutput:
       type: object
       properties:

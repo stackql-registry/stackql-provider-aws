@@ -668,10 +668,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLoggingConfigurationResponse"
   /DeletePermissionPolicy:
     post:
       operationId: DeletePermissionPolicy
@@ -701,10 +697,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePermissionPolicyResponse"
   /DeleteRateBasedRule:
     post:
       operationId: DeleteRateBasedRule
@@ -2255,10 +2247,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutPermissionPolicyResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -2290,10 +2278,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2325,10 +2309,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateByteMatchSet:
     post:
       operationId: UpdateByteMatchSet
@@ -3876,10 +3856,6 @@ components:
         ChangeToken:
           $ref: "#/components/schemas/ChangeToken"
           description: The ChangeToken that you used to submit the DeleteIPSet request. You can also use this value to query the status of the request. For more information, see GetChangeTokenStatus.
-    DeleteLoggingConfigurationResponse:
-      type: object
-    DeletePermissionPolicyResponse:
-      type: object
     DeleteRateBasedRuleResponse:
       type: object
       properties:
@@ -4579,16 +4555,10 @@ components:
         LoggingConfiguration:
           $ref: "#/components/schemas/LoggingConfiguration"
           description: The LoggingConfiguration that you submitted in the request.
-    PutPermissionPolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     ByteMatchSetUpdates:
       type: array
       items:
@@ -5926,7 +5896,6 @@ components:
             $ref: "#/paths/~1DeleteLoggingConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6002,7 +5971,6 @@ components:
             $ref: "#/paths/~1DeletePermissionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6028,7 +5996,6 @@ components:
             $ref: "#/paths/~1PutPermissionPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6069,10 +6036,10 @@ components:
         insert: []
         update: []
         delete: []
-    change_token_status:
-      id: aws.waf.change_token_status
-      name: change_token_status
-      title: change_token_status
+    change_token_statuses:
+      id: aws.waf.change_token_statuses
+      name: change_token_statuses
+      title: change_token_statuses
       methods:
         get_change_token_status:
           operation:
@@ -6089,7 +6056,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/change_token_status/methods/get_change_token_status"
+          - $ref: "#/components/x-stackQL-resources/change_token_statuses/methods/get_change_token_status"
         insert: []
         update: []
         delete: []
@@ -6243,7 +6210,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6256,7 +6222,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

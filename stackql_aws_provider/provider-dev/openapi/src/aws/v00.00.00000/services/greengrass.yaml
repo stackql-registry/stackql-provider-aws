@@ -1233,10 +1233,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectorDefinitionResponse"
     get:
       operationId: GetConnectorDefinition
       description: Retrieves information about a connector definition.
@@ -1276,10 +1272,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConnectorDefinitionResponse"
   /greengrass/definition/cores/{core_definition_id}:
     delete:
       operationId: DeleteCoreDefinition
@@ -1294,10 +1286,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCoreDefinitionResponse"
     get:
       operationId: GetCoreDefinition
       description: Retrieves information about a core definition version.
@@ -1337,10 +1325,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCoreDefinitionResponse"
   /greengrass/definition/devices/{device_definition_id}:
     delete:
       operationId: DeleteDeviceDefinition
@@ -1355,10 +1339,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDeviceDefinitionResponse"
     get:
       operationId: GetDeviceDefinition
       description: Retrieves information about a device definition.
@@ -1398,10 +1378,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDeviceDefinitionResponse"
   /greengrass/definition/functions/{function_definition_id}:
     delete:
       operationId: DeleteFunctionDefinition
@@ -1416,10 +1392,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFunctionDefinitionResponse"
     get:
       operationId: GetFunctionDefinition
       description: Retrieves information about a Lambda function definition, including its creation time and latest version.
@@ -1459,10 +1431,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFunctionDefinitionResponse"
   /greengrass/groups/{group_id}:
     delete:
       operationId: DeleteGroup
@@ -1477,10 +1445,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGroupResponse"
     get:
       operationId: GetGroup
       description: Retrieves information about a group.
@@ -1520,10 +1484,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateGroupResponse"
   /greengrass/definition/loggers/{logger_definition_id}:
     delete:
       operationId: DeleteLoggerDefinition
@@ -1538,10 +1498,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLoggerDefinitionResponse"
     get:
       operationId: GetLoggerDefinition
       description: Retrieves information about a logger definition.
@@ -1581,10 +1537,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLoggerDefinitionResponse"
   /greengrass/definition/resources/{resource_definition_id}:
     delete:
       operationId: DeleteResourceDefinition
@@ -1599,10 +1551,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourceDefinitionResponse"
     get:
       operationId: GetResourceDefinition
       description: Retrieves information about a resource definition, including its creation time and latest version.
@@ -1642,10 +1590,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceDefinitionResponse"
   /greengrass/definition/subscriptions/{subscription_definition_id}:
     delete:
       operationId: DeleteSubscriptionDefinition
@@ -1660,10 +1604,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSubscriptionDefinitionResponse"
     get:
       operationId: GetSubscriptionDefinition
       description: Retrieves information about a subscription definition.
@@ -1703,10 +1643,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSubscriptionDefinitionResponse"
   /greengrass/bulk/deployments/{bulk_deployment_id}/status:
     get:
       operationId: GetBulkDeploymentStatus
@@ -2123,10 +2059,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateThingRuntimeConfigurationResponse"
   /greengrass/bulk/deployments/{bulk_deployment_id}/detailed-reports:
     get:
       operationId: ListBulkDeploymentDetailedReports
@@ -2320,10 +2252,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopBulkDeploymentResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3250,22 +3178,6 @@ components:
         Version:
           $ref: "#/components/schemas/__string"
           description: The ID of the version.
-    DeleteConnectorDefinitionResponse:
-      type: object
-    DeleteCoreDefinitionResponse:
-      type: object
-    DeleteDeviceDefinitionResponse:
-      type: object
-    DeleteFunctionDefinitionResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteLoggerDefinitionResponse:
-      type: object
-    DeleteResourceDefinitionResponse:
-      type: object
-    DeleteSubscriptionDefinitionResponse:
-      type: object
     DisassociateRoleFromGroupResponse:
       type: object
       properties:
@@ -4214,8 +4126,6 @@ components:
         BulkDeploymentId:
           $ref: "#/components/schemas/__string"
           description: The ID of the bulk deployment.
-    StopBulkDeploymentResponse:
-      type: object
     UpdateConnectivityInfoResponse:
       type: object
       properties:
@@ -4225,16 +4135,6 @@ components:
         Version:
           $ref: "#/components/schemas/__string"
           description: The new version of the connectivity info.
-    UpdateConnectorDefinitionResponse:
-      type: object
-    UpdateCoreDefinitionResponse:
-      type: object
-    UpdateDeviceDefinitionResponse:
-      type: object
-    UpdateFunctionDefinitionResponse:
-      type: object
-    UpdateGroupResponse:
-      type: object
     UpdateGroupCertificateConfigurationResponse:
       type: object
       properties:
@@ -4247,12 +4147,6 @@ components:
         GroupId:
           $ref: "#/components/schemas/__string"
           description: The ID of the group certificate configuration.
-    UpdateLoggerDefinitionResponse:
-      type: object
-    UpdateResourceDefinitionResponse:
-      type: object
-    UpdateSubscriptionDefinitionResponse:
-      type: object
     TelemetryConfigurationUpdate:
       description: Configuration settings for running telemetry.
       type: object
@@ -4262,8 +4156,6 @@ components:
           description: Configure telemetry to be on or off.
       required:
         - Telemetry
-    UpdateThingRuntimeConfigurationResponse:
-      type: object
   x-stackQL-resources:
     groups:
       id: aws.greengrass.groups
@@ -4320,7 +4212,6 @@ components:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_group:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}/get"
@@ -4332,7 +4223,6 @@ components:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4405,10 +4295,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/service_role_from_accounts/methods/disassociate_service_role_from_account"
         delete: []
-    service_role_for_accounts:
-      id: aws.greengrass.service_role_for_accounts
-      name: service_role_for_accounts
-      title: service_role_for_accounts
+    service_roles:
+      id: aws.greengrass.service_roles
+      name: service_roles
+      title: service_roles
       methods:
         get_service_role_for_account:
           operation:
@@ -4418,7 +4308,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/service_role_for_accounts/methods/get_service_role_for_account"
+          - $ref: "#/components/x-stackQL-resources/service_roles/methods/get_service_role_for_account"
         insert: []
         update: []
         delete: []
@@ -4460,7 +4350,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_connector_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}/get"
@@ -4472,7 +4361,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4575,7 +4463,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_core_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}/get"
@@ -4587,7 +4474,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4739,7 +4625,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_device_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}/get"
@@ -4751,7 +4636,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4854,7 +4738,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_function_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}/get"
@@ -4866,7 +4749,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5047,7 +4929,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_logger_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}/get"
@@ -5059,7 +4940,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5162,7 +5042,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resource_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}/get"
@@ -5174,7 +5053,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5297,7 +5175,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_subscription_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}/get"
@@ -5309,7 +5186,6 @@ components:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5374,10 +5250,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/subscription_definition_versions/methods/create_subscription_definition_version"
         update: []
         delete: []
-    bulk_deployment_status:
-      id: aws.greengrass.bulk_deployment_status
-      name: bulk_deployment_status
-      title: bulk_deployment_status
+    bulk_deployment_statuses:
+      id: aws.greengrass.bulk_deployment_statuses
+      name: bulk_deployment_statuses
+      title: bulk_deployment_statuses
       methods:
         get_bulk_deployment_status:
           operation:
@@ -5387,14 +5263,14 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/bulk_deployment_status/methods/get_bulk_deployment_status"
+          - $ref: "#/components/x-stackQL-resources/bulk_deployment_statuses/methods/get_bulk_deployment_status"
         insert: []
         update: []
         delete: []
-    connectivity_infos:
-      id: aws.greengrass.connectivity_infos
-      name: connectivity_infos
-      title: connectivity_infos
+    connectivity_info:
+      id: aws.greengrass.connectivity_info
+      name: connectivity_info
+      title: connectivity_info
       methods:
         get_connectivity_info:
           operation:
@@ -5415,15 +5291,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/connectivity_infos/methods/get_connectivity_info"
+          - $ref: "#/components/x-stackQL-resources/connectivity_info/methods/get_connectivity_info"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/connectivity_infos/methods/update_connectivity_info"
+          - $ref: "#/components/x-stackQL-resources/connectivity_info/methods/update_connectivity_info"
         delete: []
-    deployment_status:
-      id: aws.greengrass.deployment_status
-      name: deployment_status
-      title: deployment_status
+    deployment_statuses:
+      id: aws.greengrass.deployment_statuses
+      name: deployment_statuses
+      title: deployment_statuses
       methods:
         get_deployment_status:
           operation:
@@ -5433,7 +5309,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/deployment_status/methods/get_deployment_status"
+          - $ref: "#/components/x-stackQL-resources/deployment_statuses/methods/get_deployment_status"
         insert: []
         update: []
         delete: []
@@ -5483,7 +5359,6 @@ components:
             $ref: "#/paths/~1greengrass~1things~1{thing_name}~1runtimeconfig/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5546,6 +5421,22 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        start_bulk_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1bulk~1deployments/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_bulk_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1bulk~1deployments~1{bulk_deployment_id}~1$stop/put"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bulk_deployments/methods/list_bulk_deployments"

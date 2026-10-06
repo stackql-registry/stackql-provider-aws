@@ -18,7 +18,7 @@ stepfunctions service documentation.
 
 :::info[Service Summary]
 
-total resources: __11__  
+total resources: __13__  
 
 :::
 
@@ -30,13 +30,15 @@ total resources: __11__
 <a href="/services/stepfunctions/execution_histories/">execution_histories</a><br />
 <a href="/services/stepfunctions/executions/">executions</a><br />
 <a href="/services/stepfunctions/map_runs/">map_runs</a><br />
-<a href="/services/stepfunctions/state_machine_alias/">state_machine_alias</a>
+<a href="/services/stepfunctions/state_machine_aliases/">state_machine_aliases</a><br />
+<a href="/services/stepfunctions/state_machine_versions/">state_machine_versions</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/stepfunctions/state_machine_aliases/">state_machine_aliases</a><br />
-<a href="/services/stepfunctions/state_machine_for_executions/">state_machine_for_executions</a><br />
-<a href="/services/stepfunctions/state_machine_versions/">state_machine_versions</a><br />
 <a href="/services/stepfunctions/state_machines/">state_machines</a><br />
-<a href="/services/stepfunctions/tags/">tags</a>
+<a href="/services/stepfunctions/states/">states</a><br />
+<a href="/services/stepfunctions/tags/">tags</a><br />
+<a href="/services/stepfunctions/task_failures/">task_failures</a><br />
+<a href="/services/stepfunctions/task_heartbeats/">task_heartbeats</a><br />
+<a href="/services/stepfunctions/task_successes/">task_successes</a>
 </div>
 </div>

@@ -33,11 +33,31 @@ Creates, updates, deletes, gets or lists a <code>log_groups</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_log_groups"
+    defaultValue="list_log_groups_for_query"
     values={[
+        { label: 'list_log_groups_for_query', value: 'list_log_groups_for_query' },
         { label: 'describe_log_groups', value: 'describe_log_groups' }
     ]}
 >
+<TabItem value="list_log_groups_for_query">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="log_group_identifier" /></td>
+    <td><code>string</code></td>
+    <td>An array of the names and ARNs of the log groups that were processed in the query.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_log_groups">
 
 <table>
@@ -135,6 +155,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#list_log_groups_for_query"><CopyableCode code="list_log_groups_for_query" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of the log groups that were analyzed during a single CloudWatch Logs Insights query. This can be useful for queries that use log group name prefixes or the filterIndex command, because the log groups are dynamically selected in these cases. For more information about field indexes, see Create field indexes to improve query performance and reduce costs.</td>
+</tr>
+<tr>
     <td><a href="#describe_log_groups"><CopyableCode code="describe_log_groups" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -217,11 +244,24 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_log_groups"
+    defaultValue="list_log_groups_for_query"
     values={[
+        { label: 'list_log_groups_for_query', value: 'list_log_groups_for_query' },
         { label: 'describe_log_groups', value: 'describe_log_groups' }
     ]}
 >
+<TabItem value="list_log_groups_for_query">
+
+Returns a list of the log groups that were analyzed during a single CloudWatch Logs Insights query. This can be useful for queries that use log group name prefixes or the filterIndex command, because the log groups are dynamically selected in these cases. For more information about field indexes, see Create field indexes to improve query performance and reduce costs.
+
+```sql
+SELECT
+log_group_identifier
+FROM aws.logs.log_groups
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_log_groups">
 
 Returns information about log groups, including data sources that ingest into each log group. You can return all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name. CloudWatch Logs doesn't support IAM policies that control access to the DescribeLogGroups action by using the aws:ResourceTag/key-name condition key. Other CloudWatch Logs actions do support the use of the aws:ResourceTag/key-name condition key to control access. For more information about using tags to control access, see Controlling access to Amazon Web Services resources using tags. If you are using CloudWatch cross-account observability, you can use this operation in a monitoring account and view data from the linked source accounts. For more information, see CloudWatch cross-account observability.

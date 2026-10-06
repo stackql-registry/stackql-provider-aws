@@ -119,10 +119,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIndexOutput'
       x-stackql-resource: indexes
       x-stackql-method: delete_index
       x-stackql-verb: DELETE
@@ -147,10 +143,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVectorBucketOutput'
       x-stackql-resource: vector_buckets
       x-stackql-method: delete_vector_bucket
       x-stackql-verb: DELETE
@@ -175,10 +167,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVectorBucketPolicyOutput'
       x-stackql-resource: vector_bucket_policies
       x-stackql-method: delete_vector_bucket_policy
       x-stackql-verb: DELETE
@@ -209,10 +197,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVectorsOutput'
       x-stackql-resource: vectors
       x-stackql-method: delete_vectors
       x-stackql-verb: DELETE
@@ -434,10 +418,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -464,10 +444,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -581,10 +557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutVectorBucketPolicyOutput'
       x-stackql-resource: vector_bucket_policies
       x-stackql-method: put_vector_bucket_policy
       x-stackql-verb: REPLACE
@@ -621,10 +593,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutVectorsOutput'
       x-stackql-resource: vectors
       x-stackql-method: put_vectors
       x-stackql-verb: REPLACE
@@ -824,12 +792,6 @@ components:
           description: The Amazon Resource Name (ARN) of the newly created vector bucket.
       required:
       - vectorBucketArn
-    DeleteIndexOutput:
-      type: object
-    DeleteVectorBucketOutput:
-      type: object
-    DeleteVectorBucketPolicyOutput:
-      type: object
     DeleteVectorsInputList:
       type: array
       items:
@@ -838,8 +800,6 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    DeleteVectorsOutput:
-      type: object
     GetIndexOutput:
       type: object
       properties:
@@ -1130,8 +1090,6 @@ components:
           description: Metadata about the vector.
       required:
       - key
-    PutVectorBucketPolicyOutput:
-      type: object
     PutVectorsInputList:
       type: array
       items:
@@ -1156,8 +1114,6 @@ components:
       required:
       - key
       - data
-    PutVectorsOutput:
-      type: object
     TopK:
       type: integer
       minimum: 1
@@ -1203,8 +1159,6 @@ components:
           description: The metadata associated with the vector, if requested.
       required:
       - key
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1214,5 +1168,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceOutput:
-      type: object

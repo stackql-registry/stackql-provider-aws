@@ -164,11 +164,39 @@ The following methods are available for this resource:
     <td>Assigns the specified IPv6 addresses to the specified network interface. You can specify specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies by instance type. You must specify either the IPv6 addresses or the IPv6 address count in the request. You can optionally use Prefix Delegation on the network interface. You must specify either the IPV6 Prefix Delegation prefixes, or the IPv6 Prefix Delegation count. For information, see Assigning prefixes to network interfaces in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#allocate_address"><CopyableCode code="allocate_address" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Domain"><code>Domain</code></a>, <a href="#parameter-Address"><code>Address</code></a>, <a href="#parameter-PublicIpv4Pool"><code>PublicIpv4Pool</code></a>, <a href="#parameter-NetworkBorderGroup"><code>NetworkBorderGroup</code></a>, <a href="#parameter-CustomerOwnedIpv4Pool"><code>CustomerOwnedIpv4Pool</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-IpamPoolId"><code>IpamPoolId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different Amazon Web Services account. You can allocate an Elastic IP address from one of the following address pools: Amazon's pool of IPv4 addresses Public IPv4 address range that you own and bring to your Amazon Web Services account using Bring Your Own IP Addresses (BYOIP) An IPv4 IPAM pool with an Amazon-provided or BYOIP public IPv4 address range IPv4 addresses from your on-premises network made available for use with an Outpost using a customer-owned IP address pool (CoIP pool) For more information, see Elastic IP Addresses in the Amazon EC2 User Guide. If you release an Elastic IP address, you might be able to recover it. You cannot recover an Elastic IP address that you released after it is allocated to another Amazon Web Services account. To attempt to recover an Elastic IP address that you released, specify it in this operation. You can allocate a carrier IP address which is a public IP address from a telecommunication carrier, to a network interface which resides in a subnet in a Wavelength Zone (for example an EC2 instance).</td>
+</tr>
+<tr>
     <td><a href="#assign_private_ip_addresses"><CopyableCode code="assign_private_ip_addresses" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Ipv4Prefix"><code>Ipv4Prefix</code></a>, <a href="#parameter-Ipv4PrefixCount"><code>Ipv4PrefixCount</code></a>, <a href="#parameter-PrivateIpAddress"><code>PrivateIpAddress</code></a>, <a href="#parameter-SecondaryPrivateIpAddressCount"><code>SecondaryPrivateIpAddressCount</code></a>, <a href="#parameter-AllowReassignment"><code>AllowReassignment</code></a></td>
     <td>Assigns the specified secondary private IP addresses to the specified network interface. You can specify specific secondary IP addresses, or you can specify the number of secondary IP addresses to be automatically assigned from the subnet's CIDR block range. The number of secondary IP addresses that you can assign to an instance varies by instance type. For more information about Elastic IP addresses, see Elastic IP Addresses in the Amazon EC2 User Guide. When you move a secondary private IP address to another network interface, any Elastic IP address that is associated with the IP address is also moved. Remapping an IP address is an asynchronous operation. When you move an IP address from one network interface to another, check network/interfaces/macs/mac/local-ipv4s in the instance metadata to confirm that the remapping is complete. You must specify either the IP addresses or the IP address count in the request. You can optionally use Prefix Delegation on the network interface. You must specify either the IPv4 Prefix Delegation prefixes, or the IPv4 Prefix Delegation count. For information, see Assigning prefixes to network interfaces in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#associate_address"><CopyableCode code="associate_address" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-PublicIp"><code>PublicIp</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-PrivateIpAddress"><code>PrivateIpAddress</code></a>, <a href="#parameter-AllowReassociation"><code>AllowReassociation</code></a></td>
+    <td>Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account. If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. If you associate an Elastic IP address with an instance that has an existing Elastic IP address, the existing address is disassociated from the instance, but remains allocated to your account. &#91;Subnets in Wavelength Zones&#93; You can associate an IP address from the telecommunication carrier to the instance or network interface. You cannot associate an Elastic IP address with an interface in a different network border group. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the Elastic IP Addresses section of Amazon EC2 Pricing.</td>
+</tr>
+<tr>
+    <td><a href="#disassociate_address"><CopyableCode code="disassociate_address" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AssociationId"><code>AssociationId</code></a>, <a href="#parameter-PublicIp"><code>PublicIp</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Disassociates an Elastic IP address from the instance or network interface it's associated with. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error. An address cannot be disassociated if the all of the following conditions are met: Network interface has a publicDualStackDnsName publicDnsName Public IPv4 address is the primary public IPv4 address Network interface only has one remaining public IPv4 address</td>
+</tr>
+<tr>
+    <td><a href="#release_address"><CopyableCode code="release_address" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-PublicIp"><code>PublicIp</code></a>, <a href="#parameter-NetworkBorderGroup"><code>NetworkBorderGroup</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Releases the specified Elastic IP address. &#91;Default VPC&#93; Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. Alternatively, you can disassociate an Elastic IP address without releasing it. &#91;Nondefault VPC&#93; You must disassociate the Elastic IP address before you can release it. Otherwise, Amazon EC2 returns an error (InvalidIPAddress.InUse). After releasing an Elastic IP address, it is released to the IP address pool. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an AuthFailure error if the address is already allocated to another Amazon Web Services account. After you release an Elastic IP address, you might be able to recover it. For more information, see Release an Elastic IP address.</td>
 </tr>
 <tr>
     <td><a href="#unassign_ipv6_addresses"><CopyableCode code="unassign_ipv6_addresses" /></a></td>
@@ -210,15 +238,40 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-Address">
+    <td><CopyableCode code="Address" /></td>
+    <td><code>string</code></td>
+    <td>The Elastic IP address to recover or an IPv4 address from an address pool.</td>
+</tr>
 <tr id="parameter-AllocationId">
     <td><CopyableCode code="AllocationId" /></td>
-    <td><code>array</code></td>
-    <td>Information about the allocation IDs.</td>
+    <td><code>string</code></td>
+    <td>The allocation ID. This parameter is required.</td>
 </tr>
 <tr id="parameter-AllowReassignment">
     <td><CopyableCode code="AllowReassignment" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether to allow an IP address that is already assigned to another network interface or instance to be reassigned to the specified network interface.</td>
+</tr>
+<tr id="parameter-AllowReassociation">
+    <td><CopyableCode code="AllowReassociation" /></td>
+    <td><code>boolean</code></td>
+    <td>Reassociation is automatic, but you can specify false to ensure the operation fails if the Elastic IP address is already associated with another resource.</td>
+</tr>
+<tr id="parameter-AssociationId">
+    <td><CopyableCode code="AssociationId" /></td>
+    <td><code>string</code></td>
+    <td>The association ID. This parameter is required.</td>
+</tr>
+<tr id="parameter-CustomerOwnedIpv4Pool">
+    <td><CopyableCode code="CustomerOwnedIpv4Pool" /></td>
+    <td><code>string</code></td>
+    <td>The ID of a customer-owned address pool. Use this parameter to let Amazon EC2 select an address from the address pool. Alternatively, specify a specific address from the address pool.</td>
+</tr>
+<tr id="parameter-Domain">
+    <td><CopyableCode code="Domain" /></td>
+    <td><code>string</code></td>
+    <td>The network (vpc).</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
@@ -229,6 +282,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
     <td>One or more filters. Filter names and values are case-sensitive. allocation-id - The allocation ID for the address. association-id - The association ID for the address. instance-id - The ID of the instance the address is associated with, if any. network-border-group - A unique set of Availability Zones, Local Zones, or Wavelength Zones from where Amazon Web Services advertises IP addresses. network-interface-id - The ID of the network interface that the address is associated with, if any. network-interface-owner-id - The Amazon Web Services account ID of the owner. private-ip-address - The private IP address associated with the Elastic IP address. public-ip - The Elastic IP address, or the carrier IP address. tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.</td>
+</tr>
+<tr id="parameter-InstanceId">
+    <td><CopyableCode code="InstanceId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the instance. The instance must have exactly one attached network interface. You can specify either the instance ID or the network interface ID, but not both.</td>
+</tr>
+<tr id="parameter-IpamPoolId">
+    <td><CopyableCode code="IpamPoolId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it. For more information, see Allocate sequential Elastic IP addresses from an IPAM pool in the Amazon VPC IPAM User Guide.</td>
 </tr>
 <tr id="parameter-Ipv4Prefix">
     <td><CopyableCode code="Ipv4Prefix" /></td>
@@ -260,6 +323,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>integer</code></td>
     <td>The number of IPv6 prefixes that Amazon Web Services automatically assigns to the network interface. You cannot use this option if you use the Ipv6Prefixes option.</td>
 </tr>
+<tr id="parameter-NetworkBorderGroup">
+    <td><CopyableCode code="NetworkBorderGroup" /></td>
+    <td><code>string</code></td>
+    <td>The set of Availability Zones, Local Zones, or Wavelength Zones from which Amazon Web Services advertises IP addresses. If you provide an incorrect network border group, you receive an InvalidAddress.NotFound error.</td>
+</tr>
+<tr id="parameter-NetworkInterfaceId">
+    <td><CopyableCode code="NetworkInterfaceId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the network interface. If the instance has more than one network interface, you must specify a network interface ID. You can specify either the instance ID or the network interface ID, but not both.</td>
+</tr>
 <tr id="parameter-PrivateIpAddress">
     <td><CopyableCode code="PrivateIpAddress" /></td>
     <td><code>array</code></td>
@@ -267,13 +340,23 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 <tr id="parameter-PublicIp">
     <td><CopyableCode code="PublicIp" /></td>
-    <td><code>array</code></td>
-    <td>One or more Elastic IP addresses. Default: Describes all your Elastic IP addresses.</td>
+    <td><code>string</code></td>
+    <td>Deprecated.</td>
+</tr>
+<tr id="parameter-PublicIpv4Pool">
+    <td><CopyableCode code="PublicIpv4Pool" /></td>
+    <td><code>string</code></td>
+    <td>The ID of an address pool that you own. Use this parameter to let Amazon EC2 select an address from the address pool. To specify a specific address from the address pool, use the Address parameter instead.</td>
 </tr>
 <tr id="parameter-SecondaryPrivateIpAddressCount">
     <td><CopyableCode code="SecondaryPrivateIpAddressCount" /></td>
     <td><code>integer</code></td>
     <td>The number of secondary IP addresses to assign to the network interface. You can't specify this parameter when also specifying private IP addresses.</td>
+</tr>
+<tr id="parameter-TagSpecification">
+    <td><CopyableCode code="TagSpecification" /></td>
+    <td><code>array</code></td>
+    <td>The tags to assign to the Elastic IP address.</td>
 </tr>
 </tbody>
 </table>
@@ -325,7 +408,8 @@ AND AllocationId = '{{ AllocationId }}'
 <Tabs
     defaultValue="assign_ipv6_addresses"
     values={[
-        { label: 'assign_ipv6_addresses', value: 'assign_ipv6_addresses' }
+        { label: 'assign_ipv6_addresses', value: 'assign_ipv6_addresses' },
+        { label: 'allocate_address', value: 'allocate_address' }
     ]}
 >
 <TabItem value="assign_ipv6_addresses">
@@ -349,6 +433,35 @@ assigned_ipv_6_prefixes,
 network_interface_id;
 ```
 </TabItem>
+<TabItem value="allocate_address">
+
+Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different Amazon Web Services account. You can allocate an Elastic IP address from one of the following address pools: Amazon's pool of IPv4 addresses Public IPv4 address range that you own and bring to your Amazon Web Services account using Bring Your Own IP Addresses (BYOIP) An IPv4 IPAM pool with an Amazon-provided or BYOIP public IPv4 address range IPv4 addresses from your on-premises network made available for use with an Outpost using a customer-owned IP address pool (CoIP pool) For more information, see Elastic IP Addresses in the Amazon EC2 User Guide. If you release an Elastic IP address, you might be able to recover it. You cannot recover an Elastic IP address that you released after it is allocated to another Amazon Web Services account. To attempt to recover an Elastic IP address that you released, specify it in this operation. You can allocate a carrier IP address which is a public IP address from a telecommunication carrier, to a network interface which resides in a subnet in a Wavelength Zone (for example an EC2 instance).
+
+```sql
+UPDATE aws.ec2.addresses
+SET 
+-- No updatable properties
+WHERE 
+region = '{{ region }}' --required
+AND Domain = '{{ Domain}}'
+AND Address = '{{ Address}}'
+AND PublicIpv4Pool = '{{ PublicIpv4Pool}}'
+AND NetworkBorderGroup = '{{ NetworkBorderGroup}}'
+AND CustomerOwnedIpv4Pool = '{{ CustomerOwnedIpv4Pool}}'
+AND TagSpecification = '{{ TagSpecification}}'
+AND IpamPoolId = '{{ IpamPoolId}}'
+AND DryRun = {{ DryRun}}
+RETURNING
+allocation_id,
+carrier_ip,
+customer_owned_ip,
+customer_owned_ipv_4_pool,
+domain,
+network_border_group,
+public_ip,
+public_ipv_4_pool;
+```
+</TabItem>
 </Tabs>
 
 
@@ -358,6 +471,9 @@ network_interface_id;
     defaultValue="assign_private_ip_addresses"
     values={[
         { label: 'assign_private_ip_addresses', value: 'assign_private_ip_addresses' },
+        { label: 'associate_address', value: 'associate_address' },
+        { label: 'disassociate_address', value: 'disassociate_address' },
+        { label: 'release_address', value: 'release_address' },
         { label: 'unassign_ipv6_addresses', value: 'unassign_ipv6_addresses' },
         { label: 'unassign_private_ip_addresses', value: 'unassign_private_ip_addresses' }
     ]}
@@ -375,6 +491,50 @@ EXEC aws.ec2.addresses.assign_private_ip_addresses
 @PrivateIpAddress='{{ PrivateIpAddress }}', 
 @SecondaryPrivateIpAddressCount='{{ SecondaryPrivateIpAddressCount }}', 
 @AllowReassignment={{ AllowReassignment }}
+;
+```
+</TabItem>
+<TabItem value="associate_address">
+
+Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account. If the Elastic IP address is already associated with a different instance, it is disassociated from that instance and associated with the specified instance. If you associate an Elastic IP address with an instance that has an existing Elastic IP address, the existing address is disassociated from the instance, but remains allocated to your account. [Subnets in Wavelength Zones] You can associate an IP address from the telecommunication carrier to the instance or network interface. You cannot associate an Elastic IP address with an interface in a different network border group. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error, and you may be charged for each time the Elastic IP address is remapped to the same instance. For more information, see the Elastic IP Addresses section of Amazon EC2 Pricing.
+
+```sql
+EXEC aws.ec2.addresses.associate_address 
+@region='{{ region }}' --required, 
+@AllocationId='{{ AllocationId }}', 
+@InstanceId='{{ InstanceId }}', 
+@PublicIp='{{ PublicIp }}', 
+@DryRun={{ DryRun }}, 
+@NetworkInterfaceId='{{ NetworkInterfaceId }}', 
+@PrivateIpAddress='{{ PrivateIpAddress }}', 
+@AllowReassociation={{ AllowReassociation }}
+;
+```
+</TabItem>
+<TabItem value="disassociate_address">
+
+Disassociates an Elastic IP address from the instance or network interface it's associated with. This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error. An address cannot be disassociated if the all of the following conditions are met: Network interface has a publicDualStackDnsName publicDnsName Public IPv4 address is the primary public IPv4 address Network interface only has one remaining public IPv4 address
+
+```sql
+EXEC aws.ec2.addresses.disassociate_address 
+@region='{{ region }}' --required, 
+@AssociationId='{{ AssociationId }}', 
+@PublicIp='{{ PublicIp }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="release_address">
+
+Releases the specified Elastic IP address. [Default VPC] Releasing an Elastic IP address automatically disassociates it from any instance that it's associated with. Alternatively, you can disassociate an Elastic IP address without releasing it. [Nondefault VPC] You must disassociate the Elastic IP address before you can release it. Otherwise, Amazon EC2 returns an error (InvalidIPAddress.InUse). After releasing an Elastic IP address, it is released to the IP address pool. Be sure to update your DNS records and any servers or devices that communicate with the address. If you attempt to release an Elastic IP address that you already released, you'll get an AuthFailure error if the address is already allocated to another Amazon Web Services account. After you release an Elastic IP address, you might be able to recover it. For more information, see Release an Elastic IP address.
+
+```sql
+EXEC aws.ec2.addresses.release_address 
+@region='{{ region }}' --required, 
+@AllocationId='{{ AllocationId }}', 
+@PublicIp='{{ PublicIp }}', 
+@NetworkBorderGroup='{{ NetworkBorderGroup }}', 
+@DryRun={{ DryRun }}
 ;
 ```
 </TabItem>

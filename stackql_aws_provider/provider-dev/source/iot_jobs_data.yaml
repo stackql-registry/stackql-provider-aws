@@ -160,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCommandExecutionResponse'
-      x-stackql-resource: command_execution
+      x-stackql-resource: command_executions
       x-stackql-method: start_command_execution
       x-stackql-verb: EXEC
   /things/{thing_name}/jobs/$next:
@@ -193,7 +193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNextPendingJobExecutionResponse'
-      x-stackql-resource: next_pending_job_execution
+      x-stackql-resource: pending_job_executions
       x-stackql-method: start_next_pending_job_execution
       x-stackql-verb: EXEC
 components:

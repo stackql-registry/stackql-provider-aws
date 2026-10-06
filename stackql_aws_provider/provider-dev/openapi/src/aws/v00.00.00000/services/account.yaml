@@ -878,10 +878,10 @@ components:
         insert: []
         update: []
         delete: []
-    account_informations:
-      id: aws.account.account_informations
-      name: account_informations
-      title: account_informations
+    account_information:
+      id: aws.account.account_information
+      name: account_information
+      title: account_information
       methods:
         get_account_information:
           operation:
@@ -896,14 +896,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_informations/methods/get_account_information"
+          - $ref: "#/components/x-stackQL-resources/account_information/methods/get_account_information"
         insert: []
         update: []
         delete: []
-    contact_informations:
-      id: aws.account.contact_informations
-      name: contact_informations
-      title: contact_informations
+    contact_information:
+      id: aws.account.contact_information
+      name: contact_information
+      title: contact_information
       methods:
         get_contact_information:
           operation:
@@ -929,16 +929,16 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/contact_informations/methods/get_contact_information"
+          - $ref: "#/components/x-stackQL-resources/contact_information/methods/get_contact_information"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/contact_informations/methods/put_contact_information"
+          - $ref: "#/components/x-stackQL-resources/contact_information/methods/put_contact_information"
         delete: []
-    gov_cloud_account_informations:
-      id: aws.account.gov_cloud_account_informations
-      name: gov_cloud_account_informations
-      title: gov_cloud_account_informations
+    gov_cloud_account_information:
+      id: aws.account.gov_cloud_account_information
+      name: gov_cloud_account_information
+      title: gov_cloud_account_information
       methods:
         get_gov_cloud_account_information:
           operation:
@@ -953,14 +953,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/gov_cloud_account_informations/methods/get_gov_cloud_account_information"
+          - $ref: "#/components/x-stackQL-resources/gov_cloud_account_information/methods/get_gov_cloud_account_information"
         insert: []
         update: []
         delete: []
-    primary_email_update_status:
-      id: aws.account.primary_email_update_status
-      name: primary_email_update_status
-      title: primary_email_update_status
+    primary_email_update_statuses:
+      id: aws.account.primary_email_update_statuses
+      name: primary_email_update_statuses
+      title: primary_email_update_statuses
       methods:
         get_primary_email_update_status:
           operation:
@@ -975,14 +975,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/primary_email_update_status/methods/get_primary_email_update_status"
+          - $ref: "#/components/x-stackQL-resources/primary_email_update_statuses/methods/get_primary_email_update_status"
         insert: []
         update: []
         delete: []
-    region_opt_status:
-      id: aws.account.region_opt_status
-      name: region_opt_status
-      title: region_opt_status
+    region_opt_statuses:
+      id: aws.account.region_opt_statuses
+      name: region_opt_statuses
+      title: region_opt_statuses
       methods:
         get_region_opt_status:
           operation:
@@ -997,7 +997,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/region_opt_status/methods/get_region_opt_status"
+          - $ref: "#/components/x-stackQL-resources/region_opt_statuses/methods/get_region_opt_status"
         insert: []
         update: []
         delete: []

@@ -172,6 +172,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Terminates an active session. A TerminateSession call on a session that is already inactive (for example, in a FAILED, TERMINATED or TERMINATING state) succeeds but has no effect. Calculations running in the session when TerminateSession is called are forcefully stopped, but may display as FAILED instead of STOPPED.</td>
 </tr>
+<tr>
+    <td><a href="#start_session"><CopyableCode code="start_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WorkGroup"><code>WorkGroup</code></a>, <a href="#parameter-EngineConfiguration"><code>EngineConfiguration</code></a></td>
+    <td></td>
+    <td>Creates a session for running calculations within a workgroup. The session is ready when it reaches an IDLE state.</td>
+</tr>
 </tbody>
 </table>
 
@@ -303,6 +310,40 @@ Terminates an active session. A TerminateSession call on a session that is alrea
 ```sql
 DELETE FROM aws.athena.sessions
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_session"
+    values={[
+        { label: 'start_session', value: 'start_session' }
+    ]}
+>
+<TabItem value="start_session">
+
+Creates a session for running calculations within a workgroup. The session is ready when it reaches an IDLE state.
+
+```sql
+EXEC aws.athena.sessions.start_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Description": "{{ Description }}", 
+"WorkGroup": "{{ WorkGroup }}", 
+"EngineConfiguration": "{{ EngineConfiguration }}", 
+"ExecutionRole": "{{ ExecutionRole }}", 
+"MonitoringConfiguration": "{{ MonitoringConfiguration }}", 
+"NotebookVersion": "{{ NotebookVersion }}", 
+"SessionIdleTimeoutInMinutes": {{ SessionIdleTimeoutInMinutes }}, 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"Tags": "{{ Tags }}", 
+"CopyWorkGroupTags": {{ CopyWorkGroupTags }}
+}'
 ;
 ```
 </TabItem>

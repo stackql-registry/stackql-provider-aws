@@ -300,10 +300,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateUserResponse'
       x-stackql-resource: users
       x-stackql-method: create_user
       x-stackql-verb: INSERT
@@ -327,10 +323,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -396,10 +388,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserResponse'
       x-stackql-resource: users
       x-stackql-method: update_user
       x-stackql-verb: UPDATE
@@ -816,7 +804,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PromoteResponse'
-      x-stackql-resource: promote
+      x-stackql-resource: es
       x-stackql-method: promote
       x-stackql-verb: EXEC
   /v1/brokers/{broker-id}/reboot:
@@ -833,11 +821,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RebootBrokerResponse'
-      x-stackql-resource: broker
+      x-stackql-resource: brokers
       x-stackql-method: reboot_broker
       x-stackql-verb: EXEC
 components:
@@ -1143,8 +1127,6 @@ components:
       required:
       - Revision
       - Created
-    CreateUserResponse:
-      type: object
     DeleteBrokerResponse:
       type: object
       properties:
@@ -1157,8 +1139,6 @@ components:
         ConfigurationId:
           $ref: '#/components/schemas/__string'
           description: The unique ID that Amazon MQ generates for the configuration.
-    DeleteUserResponse:
-      type: object
     DescribeBrokerResponse:
       type: object
       properties:
@@ -1921,8 +1901,6 @@ components:
         BrokerId:
           $ref: '#/components/schemas/__string'
           description: The unique ID that Amazon MQ generates for the broker.
-    RebootBrokerResponse:
-      type: object
     UpdateBrokerResponse:
       type: object
       properties:
@@ -2028,5 +2006,3 @@ components:
       - DISALLOWED_ELEMENT_REMOVED
       - DISALLOWED_ATTRIBUTE_REMOVED
       - INVALID_ATTRIBUTE_VALUE_REMOVED
-    UpdateUserResponse:
-      type: object

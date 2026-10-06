@@ -86,6 +86,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.</td>
 </tr>
+<tr>
+    <td><a href="#disable_organization_admin_account"><CopyableCode code="disable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-adminAccountId"><code>adminAccountId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disables an account as the delegated Amazon Macie administrator account for an organization in Organizations.</td>
+</tr>
+<tr>
+    <td><a href="#enable_organization_admin_account"><CopyableCode code="enable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-adminAccountId"><code>adminAccountId</code></a></td>
+    <td></td>
+    <td>Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.</td>
+</tr>
 </tbody>
 </table>
 
@@ -102,6 +116,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-adminAccountId">
+    <td><CopyableCode code="adminAccountId" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services account ID of the delegated Amazon Macie administrator account.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -140,6 +159,44 @@ FROM aws.macie2.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_organization_admin_account"
+    values={[
+        { label: 'disable_organization_admin_account', value: 'disable_organization_admin_account' },
+        { label: 'enable_organization_admin_account', value: 'enable_organization_admin_account' }
+    ]}
+>
+<TabItem value="disable_organization_admin_account">
+
+Disables an account as the delegated Amazon Macie administrator account for an organization in Organizations.
+
+```sql
+EXEC aws.macie2.organization_admin_accounts.disable_organization_admin_account 
+@adminAccountId='{{ adminAccountId }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="enable_organization_admin_account">
+
+Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.
+
+```sql
+EXEC aws.macie2.organization_admin_accounts.enable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"adminAccountId": "{{ adminAccountId }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

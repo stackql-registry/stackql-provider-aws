@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_service"
     values={[
         { label: 'describe_service', value: 'describe_service' },
+        { label: 'list_services_for_auto_scaling_configuration', value: 'list_services_for_auto_scaling_configuration' },
         { label: 'list_services', value: 'list_services' }
     ]}
 >
@@ -128,6 +129,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_services_for_auto_scaling_configuration">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="service_arn" /></td>
+    <td><code>string</code></td>
+    <td>A list of service ARN records. In a paginated request, the request returns up to MaxResults records for each call.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_services">
 
 <table>
@@ -175,6 +195,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Return a full description of an App Runner service.</td>
+</tr>
+<tr>
+    <td><a href="#list_services_for_auto_scaling_configuration"><CopyableCode code="list_services_for_auto_scaling_configuration" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of the associated App Runner services using an auto scaling configuration.</td>
 </tr>
 <tr>
     <td><a href="#list_services"><CopyableCode code="list_services" /></a></td>
@@ -255,6 +282,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_service"
     values={[
         { label: 'describe_service', value: 'describe_service' },
+        { label: 'list_services_for_auto_scaling_configuration', value: 'list_services_for_auto_scaling_configuration' },
         { label: 'list_services', value: 'list_services' }
     ]}
 >
@@ -279,6 +307,18 @@ service_url,
 source_configuration,
 status,
 updated_at
+FROM aws.apprunner.services
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_services_for_auto_scaling_configuration">
+
+Returns a list of the associated App Runner services using an auto scaling configuration.
+
+```sql
+SELECT
+service_arn
 FROM aws.apprunner.services
 WHERE region = '{{ region }}' -- required
 ;

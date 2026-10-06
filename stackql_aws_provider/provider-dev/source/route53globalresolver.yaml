@@ -82,7 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateFirewallRuleOutput'
-      x-stackql-resource: batch_create_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_create_firewall_rule
       x-stackql-verb: EXEC
   /firewall-rules/batch-delete:
@@ -111,7 +111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteFirewallRuleOutput'
-      x-stackql-resource: batch_delete_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_delete_firewall_rule
       x-stackql-verb: EXEC
   /firewall-rules/batch-update:
@@ -140,7 +140,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateFirewallRuleOutput'
-      x-stackql-resource: batch_update_firewall_rule
+      x-stackql-resource: firewall_rules
       x-stackql-method: batch_update_firewall_rule
       x-stackql-verb: EXEC
   /access-sources:
@@ -1603,10 +1603,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1635,10 +1631,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3914,8 +3906,6 @@ components:
           type: object
           properties: {}
           description: An array of user-defined keys and optional values. These tags can be used for categorization and organization.
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -3925,8 +3915,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceResponse:
-      type: object
     UpdateAccessSourceOutput:
       type: object
       properties:

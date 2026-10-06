@@ -18,7 +18,7 @@ iotthingsgraph service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __14__  
 
 :::
 
@@ -26,19 +26,20 @@ total resources: __13__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/iotthingsgraph/entities/">entities</a><br />
+<a href="/services/iotthingsgraph/entity_definitions/">entity_definitions</a><br />
 <a href="/services/iotthingsgraph/flow_execution_messages/">flow_execution_messages</a><br />
 <a href="/services/iotthingsgraph/flow_executions/">flow_executions</a><br />
 <a href="/services/iotthingsgraph/flow_template_revisions/">flow_template_revisions</a><br />
 <a href="/services/iotthingsgraph/flow_templates/">flow_templates</a><br />
-<a href="/services/iotthingsgraph/namespace_deletion_status/">namespace_deletion_status</a><br />
-<a href="/services/iotthingsgraph/namespaces/">namespaces</a>
+<a href="/services/iotthingsgraph/namespace_deletion_statuses/">namespace_deletion_statuses</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/iotthingsgraph/namespaces/">namespaces</a><br />
 <a href="/services/iotthingsgraph/system_instances/">system_instances</a><br />
 <a href="/services/iotthingsgraph/system_template_revisions/">system_template_revisions</a><br />
 <a href="/services/iotthingsgraph/system_templates/">system_templates</a><br />
 <a href="/services/iotthingsgraph/tags/">tags</a><br />
 <a href="/services/iotthingsgraph/things/">things</a><br />
-<a href="/services/iotthingsgraph/upload_status/">upload_status</a>
+<a href="/services/iotthingsgraph/upload_statuses/">upload_statuses</a>
 </div>
 </div>

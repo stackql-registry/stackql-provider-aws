@@ -140,7 +140,7 @@ The following methods are available for this resource:
 </tr>
 <tr>
     <td><a href="#add_direct_query_data_source"><CopyableCode code="add_direct_query_data_source" /></a></td>
-    <td><CopyableCode code="update" /></td>
+    <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSourceName"><code>DataSourceName</code></a>, <a href="#parameter-DataSourceType"><code>DataSourceType</code></a></td>
     <td></td>
     <td>Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on external data.</td>
@@ -237,13 +237,13 @@ AND nexttoken = '{{ nexttoken }}'
 </Tabs>
 
 
-## `UPDATE` examples
+## `INSERT` examples
 
 <Tabs
     defaultValue="add_direct_query_data_source"
     values={[
         { label: 'add_direct_query_data_source', value: 'add_direct_query_data_source' },
-        { label: 'update_direct_query_data_source', value: 'update_direct_query_data_source' }
+        { label: 'Manifest', value: 'manifest' }
     ]}
 >
 <TabItem value="add_direct_query_data_source">
@@ -251,22 +251,78 @@ AND nexttoken = '{{ nexttoken }}'
 Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on external data.
 
 ```sql
-UPDATE aws.opensearch.direct_query_data_sources
-SET 
-DataSourceName = '{{ DataSourceName }}',
-DataSourceType = '{{ DataSourceType }}',
-Description = '{{ Description }}',
-OpenSearchArns = '{{ OpenSearchArns }}',
-DataSourceAccessPolicy = '{{ DataSourceAccessPolicy }}',
-TagList = '{{ TagList }}'
-WHERE 
-region = '{{ region }}' --required
-AND DataSourceName = '{{ DataSourceName }}' --required
-AND DataSourceType = '{{ DataSourceType }}' --required
+INSERT INTO aws.opensearch.direct_query_data_sources (
+DataSourceName,
+DataSourceType,
+Description,
+OpenSearchArns,
+DataSourceAccessPolicy,
+TagList,
+region
+)
+SELECT 
+'{{ DataSourceName }}' /* required */,
+'{{ DataSourceType }}' /* required */,
+'{{ Description }}',
+'{{ OpenSearchArns }}',
+'{{ DataSourceAccessPolicy }}',
+'{{ TagList }}',
+'{{ region }}'
 RETURNING
-data_source_arn;
+data_source_arn
+;
 ```
 </TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: direct_query_data_sources
+  props:
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the direct_query_data_sources resource.
+    - name: DataSourceName
+      value: "{{ DataSourceName }}"
+    - name: DataSourceType
+      description: |
+        The type of data source that is used for direct queries. This is a supported Amazon Web Services service, such as CloudWatch Logs or Security Lake.
+      value:
+        CloudWatchLog:
+          RoleArn: "{{ RoleArn }}"
+        SecurityLake:
+          RoleArn: "{{ RoleArn }}"
+        Prometheus:
+          RoleArn: "{{ RoleArn }}"
+          WorkspaceArn: "{{ WorkspaceArn }}"
+    - name: Description
+      value: "{{ Description }}"
+    - name: OpenSearchArns
+      value:
+        - "{{ OpenSearchArns }}"
+    - name: DataSourceAccessPolicy
+      value: "{{ DataSourceAccessPolicy }}"
+      description: |
+        Access policy rules for an Amazon OpenSearch Service domain endpoint. For more information, see Configuring access policies. The maximum size of a policy document is 100 KB.
+    - name: TagList
+      description: |
+        A list of tags attached to a domain.
+      value:
+        - Key: "{{ Key }}"
+          Value: "{{ Value }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `UPDATE` examples
+
+<Tabs
+    defaultValue="update_direct_query_data_source"
+    values={[
+        { label: 'update_direct_query_data_source', value: 'update_direct_query_data_source' }
+    ]}
+>
 <TabItem value="update_direct_query_data_source">
 
 Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service.

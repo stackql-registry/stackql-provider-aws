@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the network migration definition.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="cidr_mappings" /></td>
+    <td><code>array</code></td>
+    <td>A list of CIDR mappings that map original source CIDR ranges to updated target CIDR ranges. CIDR mappings apply only when vpcProvisioningStrategy is set to USE_EXISTING.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the network migration definition was created.</td>
@@ -109,6 +114,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="updated_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the network migration definition was last updated.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vpc_provisioning_strategy" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether the migration creates new target VPCs or uses existing ones. CREATE_NEW provisions new target VPCs; USE_EXISTING migrates into existing VPCs in the target account. (CREATE_NEW, USE_EXISTING)</td>
 </tr>
 </tbody>
 </table>
@@ -278,6 +288,7 @@ Retrieves the details of a network migration definition including source and tar
 SELECT
 name,
 arn,
+cidr_mappings,
 created_at,
 description,
 network_migration_definition_id,
@@ -287,7 +298,8 @@ tags,
 target_deployment,
 target_network,
 target_s3_configuration,
-updated_at
+updated_at,
+vpc_provisioning_strategy
 FROM aws.mgn.network_migration_definitions
 WHERE region = '{{ region }}' -- required
 ;
@@ -334,6 +346,8 @@ sourceConfigurations,
 targetS3Configuration,
 targetNetwork,
 targetDeployment,
+vpcProvisioningStrategy,
+cidrMappings,
 tags,
 scopeTags,
 region
@@ -345,12 +359,15 @@ SELECT
 '{{ targetS3Configuration }}' /* required */,
 '{{ targetNetwork }}' /* required */,
 '{{ targetDeployment }}',
+'{{ vpcProvisioningStrategy }}',
+'{{ cidrMappings }}',
 '{{ tags }}',
 '{{ scopeTags }}',
 '{{ region }}'
 RETURNING
 name,
 arn,
+cidr_mappings,
 created_at,
 description,
 network_migration_definition_id,
@@ -360,7 +377,8 @@ tags,
 target_deployment,
 target_network,
 target_s3_configuration,
-updated_at
+updated_at,
+vpc_provisioning_strategy
 ;
 ```
 </TabItem>
@@ -400,6 +418,13 @@ updated_at
     - name: targetDeployment
       value: "{{ targetDeployment }}"
       valid_values: ['SINGLE_ACCOUNT', 'MULTI_ACCOUNT']
+    - name: vpcProvisioningStrategy
+      value: "{{ vpcProvisioningStrategy }}"
+      valid_values: ['CREATE_NEW', 'USE_EXISTING']
+    - name: cidrMappings
+      value:
+        - originalCidr: "{{ originalCidr }}"
+          updatedCidr: "{{ updatedCidr }}"
     - name: tags
       value: "{{ tags }}"
     - name: scopeTags
@@ -432,6 +457,8 @@ sourceConfigurations = '{{ sourceConfigurations }}',
 targetS3Configuration = '{{ targetS3Configuration }}',
 targetNetwork = '{{ targetNetwork }}',
 targetDeployment = '{{ targetDeployment }}',
+vpcProvisioningStrategy = '{{ vpcProvisioningStrategy }}',
+cidrMappings = '{{ cidrMappings }}',
 scopeTags = '{{ scopeTags }}'
 WHERE 
 region = '{{ region }}' --required
@@ -439,6 +466,7 @@ AND networkMigrationDefinitionID = '{{ networkMigrationDefinitionID }}' --requir
 RETURNING
 name,
 arn,
+cidr_mappings,
 created_at,
 description,
 network_migration_definition_id,
@@ -448,7 +476,8 @@ tags,
 target_deployment,
 target_network,
 target_s3_configuration,
-updated_at;
+updated_at,
+vpc_provisioning_strategy;
 ```
 </TabItem>
 </Tabs>

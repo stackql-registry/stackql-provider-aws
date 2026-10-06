@@ -36,10 +36,70 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_terms"
     values={[
         { label: 'describe_terms', value: 'describe_terms' },
+        { label: 'describe_terms_by_client', value: 'describe_terms_by_client' },
         { label: 'list_terms', value: 'list_terms' }
     ]}
 >
 <TabItem value="describe_terms">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="client_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the app client that the terms documents are assigned to. (pattern: &lt;code&gt;&#91;\w+&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="creation_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time when the item was created. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="enforcement" /></td>
+    <td><code>string</code></td>
+    <td>This parameter is reserved for future use and currently accepts one value. (NONE)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time when the item was modified. Amazon Cognito returns this timestamp in UNIX epoch time format. Your SDK might render the output in a human-readable format like ISO 8601 or a Java Date object.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="links" /></td>
+    <td><code>object</code></td>
+    <td>A map of URLs to languages. For each localized language that will view the requested TermsName, assign a URL. A selection of cognito:default displays for all languages that don't have a language-specific URL. For example, "cognito:default": "https:​//terms.example.com", "cognito:spanish": "https:​//terms.example.com/es".</td>
+</tr>
+<tr>
+    <td><CopyableCode code="terms_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the terms documents. (pattern: &lt;code&gt;^&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;4&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;89abAB&#93;&#91;0-9a-fA-F&#93;&#123;3&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="terms_name" /></td>
+    <td><code>string</code></td>
+    <td>The type and friendly name of the terms documents. (pattern: &lt;code&gt;^(terms-of-use|privacy-policy)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="terms_source" /></td>
+    <td><code>string</code></td>
+    <td>This parameter is reserved for future use and currently accepts one value. (LINK)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_pool_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the user pool that contains the terms documents. (pattern: &lt;code&gt;&#91;\w-&#93;+_&#91;0-9a-zA-Z&#93;+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="describe_terms_by_client">
 
 <table>
 <thead>
@@ -147,6 +207,13 @@ The following methods are available for this resource:
     <td>Returns details for the requested terms documents ID. For more information, see Terms documents. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
 </tr>
 <tr>
+    <td><a href="#describe_terms_by_client"><CopyableCode code="describe_terms_by_client" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns details for the terms documents that are associated with an app client, identified by the app client ID, user pool ID, and terms name. For more information, see Terms documents. To call DescribeTermsByClient, you must have the cognito-idp:DescribeTermsByClient Identity and Access Management (IAM) permission. This operation additionally validates your permission for cognito-idp:DescribeTerms, the action for . As a result, an IAM policy that denies cognito-idp:DescribeTerms also denies requests to DescribeTermsByClient. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
+</tr>
+<tr>
     <td><a href="#list_terms"><CopyableCode code="list_terms" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -204,12 +271,33 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_terms"
     values={[
         { label: 'describe_terms', value: 'describe_terms' },
+        { label: 'describe_terms_by_client', value: 'describe_terms_by_client' },
         { label: 'list_terms', value: 'list_terms' }
     ]}
 >
 <TabItem value="describe_terms">
 
 Returns details for the requested terms documents ID. For more information, see Terms documents. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+
+```sql
+SELECT
+client_id,
+creation_date,
+enforcement,
+last_modified_date,
+links,
+terms_id,
+terms_name,
+terms_source,
+user_pool_id
+FROM aws.cognito_idp.terms
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="describe_terms_by_client">
+
+Returns details for the terms documents that are associated with an app client, identified by the app client ID, user pool ID, and terms name. For more information, see Terms documents. To call DescribeTermsByClient, you must have the cognito-idp:DescribeTermsByClient Identity and Access Management (IAM) permission. This operation additionally validates your permission for cognito-idp:DescribeTerms, the action for . As a result, an IAM policy that denies cognito-idp:DescribeTerms also denies requests to DescribeTermsByClient. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
 
 ```sql
 SELECT

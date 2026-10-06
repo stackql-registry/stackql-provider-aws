@@ -323,6 +323,11 @@ updated_at
           - integrationId: "{{ integrationId }}"
             providerResourceId: "{{ providerResourceId }}"
             branch: "{{ branch }}"
+        trustedCaCertificates:
+          - source:
+              inlinePem: "{{ inlinePem }}"
+              artifactId: "{{ artifactId }}"
+              s3Location: "{{ s3Location }}"
     - name: scopeDocs
       value:
         - s3Location: "{{ s3Location }}"

@@ -46,10 +46,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CopyBlueprintStageResponse'
       x-stackql-resource: blueprints
       x-stackql-method: copy_blueprint_stage
       x-stackql-verb: EXEC
@@ -329,10 +325,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBlueprintResponse'
       x-stackql-resource: blueprints
       x-stackql-method: delete_blueprint
       x-stackql-verb: DELETE
@@ -588,7 +580,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetBlueprintOptimizationStatusResponse'
-      x-stackql-resource: blueprint_optimization_status
+      x-stackql-resource: blueprint_optimization_statuses
       x-stackql-method: get_blueprint_optimization_status
       x-stackql-verb: SELECT
   /data-automation-libraries/{library_arn}/entityType/{entity_type}/entities/{entity_id}:
@@ -736,7 +728,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeDataAutomationLibraryIngestionJobResponse'
-      x-stackql-resource: data_automation_libraries
+      x-stackql-resource: data_automation_library_ingestion_jobs
       x-stackql-method: invoke_data_automation_library_ingestion_job
       x-stackql-verb: EXEC
     post:
@@ -864,10 +856,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -893,10 +881,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -963,9 +947,6 @@ components:
       minLength: 33
       maxLength: 256
       pattern: '[a-zA-Z0-9](-*[a-zA-Z0-9]){0,256}'
-    CopyBlueprintStageResponse:
-      description: CopyBlueprintStage Response
-      type: object
     BlueprintName:
       description: Name of the Blueprint
       type: string
@@ -1815,9 +1796,6 @@ components:
       - COMPLETED
       - IN_PROGRESS
       - FAILED
-    DeleteBlueprintResponse:
-      description: Delete Blueprint Response
-      type: object
     DeleteDataAutomationLibraryResponse:
       description: Delete DataAutomationLibrary Response
       type: object
@@ -2477,15 +2455,11 @@ components:
       properties:
         tags:
           $ref: '#/components/schemas/TagList'
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of tag keys
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateBlueprintResponse:
       description: Update Blueprint Response
       type: object

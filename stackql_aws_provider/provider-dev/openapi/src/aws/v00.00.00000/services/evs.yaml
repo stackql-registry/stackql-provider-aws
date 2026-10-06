@@ -488,6 +488,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DisassociateEipFromVlanResponse"
+  /GetAccountSettings:
+    post:
+      operationId: GetAccountSettings
+      description: Returns the configured EVS settings for your Amazon Web Services account in the specified Amazon Web Services Region. If no settings have been set, an empty list is returned.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AmazonElasticVMwareService.GetAccountSettings
+            default: AmazonElasticVMwareService.GetAccountSettings
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAccountSettingsResponse"
   /GetDepotUrl:
     post:
       operationId: GetDepotUrl
@@ -818,6 +845,39 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListVmEntitlementsResponse"
+  /PutAccountSettings:
+    post:
+      operationId: PutAccountSettings
+      description: Creates or updates account-level EVS settings for your Amazon Web Services account in the specified Amazon Web Services Region. EVS settings included in the request are created or overwritten. Settings omitted from the request retain their current values.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AmazonElasticVMwareService.PutAccountSettings
+            default: AmazonElasticVMwareService.PutAccountSettings
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                settings:
+                  $ref: "#/components/schemas/AccountSettingList"
+                  description: A list of regional account-level EVS settings to create or update. Only the settings included in this list are modified.
+              required:
+                - settings
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PutAccountSettingsResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -851,10 +911,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -888,10 +944,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateEnvironmentConnector:
     post:
       operationId: UpdateEnvironmentConnector
@@ -1363,6 +1415,7 @@ components:
       enum:
         - i4i.metal
         - i7i.metal-24xl
+        - i7i.metal-48xl
     PlacementGroupId:
       type: string
       minLength: 1
@@ -1784,6 +1837,43 @@ components:
       properties:
         vlan:
           $ref: "#/components/schemas/Vlan"
+    GetAccountSettingsResponse:
+      description: The response for the GetAccountSettings operation.
+      type: object
+      properties:
+        settings:
+          $ref: "#/components/schemas/AccountSettingList"
+          description: A list of regional account-level EVS settings for the account. EVS settings that have never been explicitly set are omitted from the response.
+    AccountSettingList:
+      description: A list of regional account-level EVS settings.
+      type: array
+      items:
+        $ref: "#/components/schemas/AccountSetting"
+    AccountSetting:
+      description: A regional account-level EVS setting, represented as a name and value pair.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/SettingName"
+          description: "The name of the EVS setting. Valid values are: vcfPortedCoreCount (type: numeric string) - The total number of VCF license cores ported to Amazon EVS for the account in that Region. The maximum value is 1,000,000 cores. This setting value is shared with Broadcom for record-keeping."
+        value:
+          $ref: "#/components/schemas/SettingValue"
+          description: The value of the EVS setting.
+      required:
+        - name
+        - value
+    SettingName:
+      description: The name of a regional account-level EVS setting, such as vcfPortedCoreCount.
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: "[a-zA-Z0-9]+"
+    SettingValue:
+      description: The value of a regional account-level EVS setting, represented as a string.
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: "[a-zA-Z0-9]+"
     GetDepotUrlResponse:
       type: object
       properties:
@@ -1942,8 +2032,13 @@ components:
         entitlements:
           $ref: "#/components/schemas/VmEntitlementList"
           description: A list of entitlements for virtual machines in the environment.
-    TagResourceResponse:
+    PutAccountSettingsResponse:
+      description: The response for the PutAccountSettings operation.
       type: object
+      properties:
+        settings:
+          $ref: "#/components/schemas/AccountSettingList"
+          description: A list of regional account-level EVS settings, and their values, that were modified in this request.
     TagKeys:
       type: array
       items:
@@ -1953,8 +2048,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[\\w.:/=+-@]+"
-    UntagResourceResponse:
-      type: object
     UpdateEnvironmentConnectorResponse:
       type: object
       properties:
@@ -2227,6 +2320,45 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/environment_hosts/methods/delete_environment_host"
+    account_settings:
+      id: aws.evs.account_settings
+      name: account_settings
+      title: account_settings
+      methods:
+        get_account_settings:
+          operation:
+            $ref: "#/paths/~1GetAccountSettings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_account_settings:
+          operation:
+            $ref: "#/paths/~1PutAccountSettings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/account_settings/methods/get_account_settings"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/account_settings/methods/put_account_settings"
+        delete: []
     depot_urls:
       id: aws.evs.depot_urls
       name: depot_urls
@@ -2330,7 +2462,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2343,7 +2474,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

@@ -128,10 +128,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePermissionStatementOutput'
       x-stackql-resource: resource_permission_statements
       x-stackql-method: delete_resource_permission_statement
       x-stackql-verb: DELETE
@@ -204,7 +200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IntrospectOAuth2TokenWithIAMResponse'
-      x-stackql-resource: introspect_o_auth2_token_with_iam
+      x-stackql-resource: o_auth2_tokens
       x-stackql-method: introspect_o_auth2_token_with_iam
       x-stackql-verb: EXEC
   /list-resource-permission-statements:
@@ -321,10 +317,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokeOAuth2TokenWithIAMResponse'
       x-stackql-resource: o_auth2_token_with_iams
       x-stackql-method: revoke_o_auth2_token_with_iam
       x-stackql-verb: UPDATE
@@ -591,9 +583,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[!-~]+'
-    DeleteResourcePermissionStatementOutput:
-      description: Output for DeleteResourcePermissionStatement operation
-      type: object
     GetConsoleAuthorizationConfigurationOutput:
       description: Output for GetConsoleAuthorizationConfiguration operation
       type: object
@@ -833,7 +822,3 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: ASOR[A-Za-z0-9+/=_\-]+
-    RevokeOAuth2TokenWithIAMResponse:
-      description: Output structure for RevokeOAuth2TokenWithIAM operation RFC 7009 §2.2 revocation response. The endpoint
-        returns 200 OK with an empty body on success; there are no response fields.
-      type: object

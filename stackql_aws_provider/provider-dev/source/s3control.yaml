@@ -64,7 +64,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: dissociate_access_grants_identity_center
+      x-stackql-resource: access_grants
       x-stackql-method: dissociate_access_grants_identity_center
       x-stackql-verb: EXEC
   /v20180820/accessgrantsinstance/grant:
@@ -417,7 +417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAccessPointForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_point_for_object_lambdas
+      x-stackql-resource: access_points
       x-stackql-method: create_access_point_for_object_lambda
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAccessPointForObjectLambdaOutputDisplay
@@ -443,7 +443,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access_point_for_object_lambdas
+      x-stackql-resource: access_points
       x-stackql-method: delete_access_point_for_object_lambda
       x-stackql-verb: DELETE
     get:
@@ -471,7 +471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessPointForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_point_for_object_lambdas
+      x-stackql-resource: access_points
       x-stackql-method: get_access_point_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointForObjectLambdaOutputDisplay
@@ -1234,7 +1234,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access_point_policy_for_object_lambdas
+      x-stackql-resource: access_point_policies
       x-stackql-method: delete_access_point_policy_for_object_lambda
       x-stackql-verb: DELETE
     get:
@@ -1262,7 +1262,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessPointPolicyForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_point_policy_for_object_lambdas
+      x-stackql-resource: access_point_policies
       x-stackql-method: get_access_point_policy_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyForObjectLambdaOutputDisplay
@@ -1297,7 +1297,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access_point_policy_for_object_lambdas
+      x-stackql-resource: access_point_policies
       x-stackql-method: put_access_point_policy_for_object_lambda
       x-stackql-verb: REPLACE
   /v20180820/accesspoint/{name}/scope:
@@ -1988,15 +1988,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteJobTaggingOutputDisplay'
       x-stackql-resource: job_taggings
       x-stackql-method: delete_job_tagging
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteJobTaggingOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetJobTagging
       description: 'Returns the tags on an S3 Batch Operations job. Permissions To use the GetJobTagging operation, you must
@@ -2069,15 +2063,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutJobTaggingOutputDisplay'
       x-stackql-resource: job_taggings
       x-stackql-method: put_job_tagging
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutJobTaggingOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/delete:
     post:
       operationId: DeleteMultiRegionAccessPoint
@@ -2324,15 +2312,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStorageLensConfigurationTaggingOutputDisplay'
       x-stackql-resource: storage_lens_configuration_taggings
       x-stackql-method: delete_storage_lens_configuration_tagging
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteStorageLensConfigurationTaggingOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetStorageLensConfigurationTagging
       description: This operation is not supported by directory buckets. Gets the tags of Amazon S3 Storage Lens configuration.
@@ -2395,15 +2377,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutStorageLensConfigurationTaggingOutputDisplay'
       x-stackql-resource: storage_lens_configuration_taggings
       x-stackql-method: put_storage_lens_configuration_tagging
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutStorageLensConfigurationTaggingOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /v20180820/storagelensgroup/{name}:
     delete:
       operationId: DeleteStorageLensGroup
@@ -2590,7 +2566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessGrantsInstanceForPrefixOutputDisplay'
-      x-stackql-resource: access_grants_instance_for_prefixes
+      x-stackql-resource: access_grants_instances
       x-stackql-method: get_access_grants_instance_for_prefix
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessGrantsInstanceForPrefixOutputDisplay
@@ -2620,7 +2596,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessPointConfigurationForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_point_configuration_for_object_lambdas
+      x-stackql-resource: access_point_configurations
       x-stackql-method: get_access_point_configuration_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointConfigurationForObjectLambdaOutputDisplay
@@ -2656,7 +2632,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access_point_configuration_for_object_lambdas
+      x-stackql-resource: access_point_configurations
       x-stackql-method: put_access_point_configuration_for_object_lambda
       x-stackql-verb: REPLACE
   /v20180820/accesspoint/{name}/policyStatus:
@@ -2685,7 +2661,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessPointPolicyStatusOutputDisplay'
-      x-stackql-resource: access_point_policy_status
+      x-stackql-resource: access_point_policy_statuses
       x-stackql-method: get_access_point_policy_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyStatusOutputDisplay
@@ -2715,7 +2691,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccessPointPolicyStatusForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_point_policy_status_for_object_lambdas
+      x-stackql-resource: access_point_policy_statuses
       x-stackql-method: get_access_point_policy_status_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessPointPolicyStatusForObjectLambdaOutputDisplay
@@ -2886,7 +2862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDataAccessOutputDisplay'
-      x-stackql-resource: data_access
+      x-stackql-resource: data_accesses
       x-stackql-method: get_data_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetDataAccessOutputDisplay
@@ -2992,7 +2968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetMultiRegionAccessPointPolicyStatusOutputDisplay'
-      x-stackql-resource: multi_region_access_point_policy_status
+      x-stackql-resource: multi_region_access_point_policy_statuses
       x-stackql-method: get_multi_region_access_point_policy_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetMultiRegionAccessPointPolicyStatusOutputDisplay
@@ -3068,15 +3044,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubmitMultiRegionAccessPointRoutesOutputDisplay'
       x-stackql-resource: multi_region_access_point_routes
       x-stackql-method: submit_multi_region_access_point_routes
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: SubmitMultiRegionAccessPointRoutesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /v20180820/accessgrantsinstance/grants:
     get:
       operationId: ListAccessGrants
@@ -3362,7 +3332,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccessPointsForDirectoryBucketsOutputDisplay'
-      x-stackql-resource: access_points_for_directory_buckets
+      x-stackql-resource: access_points
       x-stackql-method: list_access_points_for_directory_buckets
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessPointsForDirectoryBucketsOutputDisplay
@@ -3404,7 +3374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccessPointsForObjectLambdaOutputDisplay'
-      x-stackql-resource: access_points_for_object_lambdas
+      x-stackql-resource: access_points
       x-stackql-method: list_access_points_for_object_lambda
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccessPointsForObjectLambdaOutputDisplay
@@ -3664,15 +3634,9 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: TagResourceOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     delete:
       operationId: UntagResource
       description: 'This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag
@@ -3708,15 +3672,9 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutputDisplay'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UntagResourceOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /v20180820/async-requests/mrap/put-policy:
     post:
       operationId: PutMultiRegionAccessPointPolicy
@@ -4504,6 +4462,11 @@ components:
           description: This functionality is not supported by directory buckets.
         MetadataDirective:
           $ref: '#/components/schemas/S3MetadataDirective'
+        AnnotationDirective:
+          $ref: '#/components/schemas/S3AnnotationDirective'
+          description: 'Specifies whether the Batch Operations copy job copies object annotations from the source object or
+            skips them. If this property isn''t specified, COPY is the default behavior. Valid Values: COPY | EXCLUDE This
+            functionality is not supported by directory buckets.'
         ModifiedSinceConstraint:
           $ref: '#/components/schemas/TimeStamp'
         NewObjectMetadata:
@@ -4575,6 +4538,15 @@ components:
           $ref: '#/components/schemas/S3ChecksumAlgorithm'
           description: Indicates the algorithm that you want Amazon S3 to use to create the checksum. For more information,
             see Checking object integrity in the Amazon S3 User Guide.
+        ObjectLockEventHold:
+          $ref: '#/components/schemas/S3ObjectLockEventHold'
+          description: The event hold status to be applied to all objects in the Batch Operations copy job. Set to ON to enable
+            an event hold or OFF to disable it. This functionality is not supported by directory buckets.
+        ObjectLockEventHoldDuration:
+          $ref: '#/components/schemas/S3ObjectLockEventHoldDuration'
+          description: The event hold duration to be applied to all objects in the Batch Operations copy job. The duration
+            specifies how long the object remains protected after the event hold is released. This functionality is not supported
+            by directory buckets.
     S3RegionalOrS3ExpressBucketArnString:
       type: string
       minLength: 1
@@ -4633,6 +4605,11 @@ components:
       enum:
       - COPY
       - REPLACE
+    S3AnnotationDirective:
+      type: string
+      enum:
+      - COPY
+      - EXCLUDE
     TimeStamp:
       type: string
       format: date-time
@@ -4737,6 +4714,29 @@ components:
       - XXHASH64
       - XXHASH3
       - XXHASH128
+    S3ObjectLockEventHold:
+      type: string
+      enum:
+      - 'ON'
+      - 'OFF'
+    S3ObjectLockEventHoldDuration:
+      description: Contains the duration configuration for an event hold, specified in either days or years.
+      type: object
+      properties:
+        Days:
+          $ref: '#/components/schemas/S3ObjectLockEventHoldDurationDays'
+          description: The number of days for the event hold duration. The minimum value is 1 and the maximum value is 36,500.
+        Years:
+          $ref: '#/components/schemas/S3ObjectLockEventHoldDurationYears'
+          description: The number of years for the event hold duration. The minimum value is 1 and the maximum value is 100.
+    S3ObjectLockEventHoldDurationDays:
+      type: integer
+      minimum: 1
+      maximum: 36500
+    S3ObjectLockEventHoldDurationYears:
+      type: integer
+      minimum: 1
+      maximum: 100
     S3SetObjectAclOperation:
       description: Contains the configuration parameters for a PUT Object ACL operation. S3 Batch Operations passes every
         object to the underlying PutObjectAcl API operation. For more information about the parameters for this operation,
@@ -4858,11 +4858,42 @@ components:
         Mode:
           $ref: '#/components/schemas/S3ObjectLockRetentionMode'
           description: The Object Lock retention mode to be applied to all objects in the Batch Operations job.
+        EventHold:
+          $ref: '#/components/schemas/S3ObjectLockRetentionEventHold'
+          description: The event hold status to be applied to all objects in the Batch Operations job. Set to ON to enable
+            an event hold or OFF to disable it.
+        EventHoldDuration:
+          $ref: '#/components/schemas/S3ObjectLockRetentionEventHoldDuration'
+          description: The event hold duration to be applied to all objects in the Batch Operations job. The duration specifies
+            how long the object remains protected after the event hold is released.
     S3ObjectLockRetentionMode:
       type: string
       enum:
       - COMPLIANCE
       - GOVERNANCE
+    S3ObjectLockRetentionEventHold:
+      type: string
+      enum:
+      - 'ON'
+      - 'OFF'
+    S3ObjectLockRetentionEventHoldDuration:
+      description: Contains the duration configuration for an event hold, specified in either days or years.
+      type: object
+      properties:
+        Days:
+          $ref: '#/components/schemas/S3ObjectLockRetentionEventHoldDurationDays'
+          description: The number of days for the event hold duration. The minimum value is 1 and the maximum value is 36,500.
+        Years:
+          $ref: '#/components/schemas/S3ObjectLockRetentionEventHoldDurationYears'
+          description: The number of years for the event hold duration. The minimum value is 1 and the maximum value is 100.
+    S3ObjectLockRetentionEventHoldDurationDays:
+      type: integer
+      minimum: 1
+      maximum: 36500
+    S3ObjectLockRetentionEventHoldDurationYears:
+      type: integer
+      minimum: 1
+      maximum: 100
     S3ReplicateObjectOperation:
       description: Directs the specified job to invoke ReplicateObject on every object in the job's manifest.
       type: object
@@ -5077,8 +5108,8 @@ components:
       properties:
         ExpectedBucketOwner:
           $ref: '#/components/schemas/AccountId'
-          description: The Amazon Web Services account ID that owns the bucket the generated manifest is written to. If provided
-            the generated manifest bucket's owner Amazon Web Services account ID must match this value, else the job fails.
+          description: The Amazon Web Services account ID that owns the source bucket specified in SourceBucket. If provided,
+            the manifest source bucket owner's Amazon Web Services account ID must match this value, else the job fails.
         SourceBucket:
           $ref: '#/components/schemas/S3BucketArnString'
           description: The ARN of the source bucket used by the ManifestGenerator. Directory buckets - Directory buckets aren't
@@ -5526,16 +5557,6 @@ components:
       minLength: 5
       maxLength: 36
       pattern: '[a-zA-Z0-9\-\_]+'
-    DeleteJobTaggingResultDisplay:
-      type: object
-      properties: {}
-    DeleteJobTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteJobTaggingResultDisplay'
     DeleteMultiRegionAccessPointInput:
       description: A container for the information associated with a DeleteMultiRegionAccessPoint request.
       type: object
@@ -5564,16 +5585,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z0-9\-\_\.]+'
-    DeleteStorageLensConfigurationTaggingResultDisplay:
-      type: object
-      properties: {}
-    DeleteStorageLensConfigurationTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteStorageLensConfigurationTaggingResultDisplay'
     JobDescriptorDisplay:
       type: object
       properties:
@@ -7298,16 +7309,6 @@ components:
       enum:
       - Enabled
       - Suspended
-    PutJobTaggingResultDisplay:
-      type: object
-      properties: {}
-    PutJobTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutJobTaggingResultDisplay'
     PutMultiRegionAccessPointPolicyInput:
       description: A container for the information associated with a PutMultiRegionAccessPoint request.
       type: object
@@ -7477,8 +7478,7 @@ components:
           description: The max depth of the selection criteria
         MinStorageBytesPercentage:
           $ref: '#/components/schemas/MinStorageBytesPercentage'
-          description: The minimum number of storage bytes percentage whose metrics will be selected. You must choose a value
-            greater than or equal to 1.0.
+          description: The minimum percentage of total bucket storage that a prefix must hold for its metrics to be included.
     StorageLensPrefixLevelDelimiter:
       type: string
       maxLength: 1
@@ -7743,16 +7743,6 @@ components:
       required:
       - Key
       - Value
-    PutStorageLensConfigurationTaggingResultDisplay:
-      type: object
-      properties: {}
-    PutStorageLensConfigurationTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutStorageLensConfigurationTaggingResultDisplay'
     RouteList:
       type: array
       items:
@@ -7792,40 +7782,10 @@ components:
       type: integer
       minimum: 0
       maximum: 100
-    SubmitMultiRegionAccessPointRoutesResultDisplay:
-      type: object
-      properties: {}
-    SubmitMultiRegionAccessPointRoutesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubmitMultiRegionAccessPointRoutesResultDisplay'
-    TagResourceResultDisplay:
-      type: object
-      properties: {}
-    TagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TagResourceResultDisplay'
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKeyString'
-    UntagResourceResultDisplay:
-      type: object
-      properties: {}
-    UntagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UntagResourceResultDisplay'
     UpdateAccessGrantsLocationResultDisplay:
       type: object
       properties:

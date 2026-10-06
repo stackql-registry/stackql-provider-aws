@@ -808,10 +808,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -845,10 +841,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UploadLayerPart:
     post:
       operationId: UploadLayerPart
@@ -1610,14 +1602,10 @@ components:
         policyText:
           $ref: "#/components/schemas/RepositoryPolicyText"
           description: The JSON repository policy text that's applied to the repository.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     LayerPartBlob:
       type: string
       format: byte
@@ -1952,10 +1940,10 @@ components:
         insert: []
         update: []
         delete: []
-    registry_catalog_datas:
-      id: aws.ecr_public.registry_catalog_datas
-      name: registry_catalog_datas
-      title: registry_catalog_datas
+    registry_catalog_data:
+      id: aws.ecr_public.registry_catalog_data
+      name: registry_catalog_data
+      title: registry_catalog_data
       methods:
         get_registry_catalog_data:
           operation:
@@ -1986,16 +1974,16 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/registry_catalog_datas/methods/get_registry_catalog_data"
+          - $ref: "#/components/x-stackQL-resources/registry_catalog_data/methods/get_registry_catalog_data"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/registry_catalog_datas/methods/put_registry_catalog_data"
+          - $ref: "#/components/x-stackQL-resources/registry_catalog_data/methods/put_registry_catalog_data"
         delete: []
-    repository_catalog_datas:
-      id: aws.ecr_public.repository_catalog_datas
-      name: repository_catalog_datas
-      title: repository_catalog_datas
+    repository_catalog_data:
+      id: aws.ecr_public.repository_catalog_data
+      name: repository_catalog_data
+      title: repository_catalog_data
       methods:
         get_repository_catalog_data:
           operation:
@@ -2026,11 +2014,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/repository_catalog_datas/methods/get_repository_catalog_data"
+          - $ref: "#/components/x-stackQL-resources/repository_catalog_data/methods/get_repository_catalog_data"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/repository_catalog_datas/methods/put_repository_catalog_data"
+          - $ref: "#/components/x-stackQL-resources/repository_catalog_data/methods/put_repository_catalog_data"
         delete: []
     tags:
       id: aws.ecr_public.tags
@@ -2055,7 +2043,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2068,7 +2055,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

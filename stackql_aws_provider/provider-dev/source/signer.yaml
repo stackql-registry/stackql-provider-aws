@@ -101,7 +101,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: signing_profile
+      x-stackql-resource: signing_profiles
       x-stackql-method: cancel_signing_profile
       x-stackql-verb: EXEC
     get:
@@ -242,7 +242,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRevocationStatusOutputDisplay'
-      x-stackql-resource: revocation_status
+      x-stackql-resource: revocation_statuses
       x-stackql-method: get_revocation_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetRevocationStatusOutputDisplay
@@ -392,7 +392,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSigningJobResponse'
-      x-stackql-resource: signing_job
+      x-stackql-resource: signing_jobs
       x-stackql-method: start_signing_job
       x-stackql-verb: EXEC
   /signing-platforms:
@@ -551,10 +551,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -577,10 +573,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -715,7 +707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignPayloadResponse'
-      x-stackql-resource: sign_payload
+      x-stackql-resource: payloads
       x-stackql-method: sign_payload
       x-stackql-verb: EXEC
 components:
@@ -1481,8 +1473,6 @@ components:
         jobOwner:
           $ref: '#/components/schemas/AccountId'
           description: The AWS account ID of the signing job owner.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1492,5 +1482,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object

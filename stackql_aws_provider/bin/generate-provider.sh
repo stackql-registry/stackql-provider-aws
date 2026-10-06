@@ -8,6 +8,7 @@ PROVIDER_NAME="aws"
 SOURCE_DIR="${BASE_DIR}/provider-dev/source"
 OUTPUT_DIR="${BASE_DIR}/provider-dev/openapi/src"
 VERSION="v00.00.00000"
+EXTRA=()
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -15,11 +16,16 @@ while [[ $# -gt 0 ]]; do
     --source-dir)    SOURCE_DIR="$2";    shift 2 ;;
     --output-dir)    OUTPUT_DIR="$2";    shift 2 ;;
     --version)       VERSION="$2";       shift 2 ;;
+    --strict)            EXTRA+=("--strict");            shift ;;
+    --update-benchmarks) EXTRA+=("--update-benchmarks"); shift ;;
     --help)
-      echo "Usage: generate-provider.sh [--provider-name aws] [--source-dir DIR] [--output-dir DIR] [--version v00.00.00000]"
+      echo "Usage: generate-provider.sh [--provider-name aws] [--source-dir DIR] [--output-dir DIR] [--version v00.00.00000] [--strict] [--update-benchmarks]"
       echo ""
       echo "Reads per-service OpenAPI specs from --source-dir and emits a fully-formed"
       echo "stackql provider tree under --output-dir/<provider>/<version>/."
+      echo ""
+      echo "  --strict             fail if any operation lacks a row in provider-dev/config/all_services.csv (CI)"
+      echo "  --update-benchmarks  re-baseline provider-dev/config/benchmarks.json after a conscious surface change"
       exit 0
       ;;
     *) echo "Unknown option: $1"; exit 1 ;;
@@ -32,4 +38,5 @@ node provider-dev/scripts/generate-provider.mjs \
   --source-dir "$SOURCE_DIR" \
   --output-dir "$OUTPUT_DIR" \
   --version "$VERSION" \
-  --overwrite
+  --overwrite \
+  ${EXTRA[@]+"${EXTRA[@]}"}

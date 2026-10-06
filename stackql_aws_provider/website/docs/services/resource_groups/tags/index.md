@@ -94,6 +94,13 @@ The following methods are available for this resource:
     <td>Cancels the specified tag-sync task. Minimum permissions To run this command, you must have the following permissions: resource-groups:CancelTagSyncTask on the application group resource-groups:DeleteGroup</td>
 </tr>
 <tr>
+    <td><a href="#tag"><CopyableCode code="tag" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Adds tags to a resource group with the specified Amazon resource name (ARN). Existing tags on a resource group are not changed if they are not specified in the request parameters. Do not store personally identifiable information (PII) or other confidential or sensitive information in tags. We use tags to provide you with billing and administration services. Tags are not intended to be used for private or sensitive data. Minimum permissions To run this command, you must have the following permissions: resource-groups:Tag</td>
+</tr>
+<tr>
     <td><a href="#start_tag_sync_task"><CopyableCode code="start_tag_sync_task" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Group"><code>Group</code></a>, <a href="#parameter-RoleArn"><code>RoleArn</code></a></td>
@@ -119,7 +126,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-arn">
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon resource name (ARN) of the resource group whose tags you want to retrieve.</td>
+    <td>The Amazon resource name (ARN) of the resource group to which to add tags.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -160,6 +167,7 @@ AND region = '{{ region }}' -- required
     defaultValue="cancel_tag_sync_task"
     values={[
         { label: 'cancel_tag_sync_task', value: 'cancel_tag_sync_task' },
+        { label: 'tag', value: 'tag' },
         { label: 'start_tag_sync_task', value: 'start_tag_sync_task' }
     ]}
 >
@@ -173,6 +181,21 @@ EXEC aws.resource_groups.tags.cancel_tag_sync_task
 @@json=
 '{
 "TaskArn": "{{ TaskArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="tag">
+
+Adds tags to a resource group with the specified Amazon resource name (ARN). Existing tags on a resource group are not changed if they are not specified in the request parameters. Do not store personally identifiable information (PII) or other confidential or sensitive information in tags. We use tags to provide you with billing and administration services. Tags are not intended to be used for private or sensitive data. Minimum permissions To run this command, you must have the following permissions: resource-groups:Tag
+
+```sql
+EXEC aws.resource_groups.tags.tag 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Tags": "{{ Tags }}"
 }'
 ;
 ```

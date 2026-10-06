@@ -53,6 +53,8 @@ paths:
         required: true
         schema:
           $ref: '#/components/schemas/RegistryIdentifier'
+        description: The identifier of the registry whose discoverable records are listed. You can provide either the full
+          Amazon Resource Name (ARN) or the registry ID.
       requestBody:
         required: false
         content:
@@ -169,6 +171,8 @@ components:
       properties:
         registryId:
           $ref: '#/components/schemas/RegistryIdentifier'
+          description: The identifier of the registry to retrieve the records from. You can provide either the full Amazon
+            Resource Name (ARN) or the registry ID.
         recordIds:
           $ref: '#/components/schemas/RegistryRecordsEntryRecordIdsList'
           description: The record IDs to retrieve from the registry. You can specify 1 through 100 record IDs.
@@ -214,29 +218,45 @@ components:
       properties:
         registryArn:
           $ref: '#/components/schemas/RegistryArn'
+          description: The Amazon Resource Name (ARN) of the parent registry that owns the record.
         recordArn:
           $ref: '#/components/schemas/RegistryRecordArn'
+          description: The Amazon Resource Name (ARN) of the registry record.
         recordId:
           $ref: '#/components/schemas/RegistryRecordId'
+          description: The unique identifier of the registry record.
         name:
           $ref: '#/components/schemas/RegistryRecordName'
+          description: The name of the registry record. Names are unique within a registry.
         description:
           $ref: '#/components/schemas/Description'
+          description: A human-readable description of the registry record. Use this field to explain the record's purpose
+            or content to consumers discovering it in the registry.
         displayName:
           $ref: '#/components/schemas/RegistryRecordDisplayName'
+          description: The human-readable display name of the registry record.
         recordType:
           $ref: '#/components/schemas/RecordType'
+          description: The type of the registry record. MCP is a Model Context Protocol server record, AGENT is an Agent-to-Agent
+            (A2A) agent card record, SKILL is an agent skills definition record, and CUSTOM is a record with a custom descriptor.
         descriptors:
           $ref: '#/components/schemas/Descriptors'
           description: The protocol-specific descriptors that describe how to connect to and use the record.
         recordVersion:
           $ref: '#/components/schemas/RegistryRecordVersion'
+          description: The version identifier of the registry record.
         status:
           $ref: '#/components/schemas/RegistryRecordStatus'
+          description: The lifecycle status of the registry record. A record is DRAFT before it is submitted, PENDING_APPROVAL
+            while awaiting curator review, and APPROVED once it is approved and discoverable. REJECTED and DEPRECATED records
+            are not discoverable. The CREATING, UPDATING, CREATE_FAILED, and UPDATE_FAILED values reflect the state of an
+            in-progress or failed asynchronous change.
         createdAt:
           $ref: '#/components/schemas/DateTimestamp'
+          description: The timestamp when the registry record was created.
         updatedAt:
           $ref: '#/components/schemas/DateTimestamp'
+          description: The timestamp when the registry record was last updated.
       required:
       - registryArn
       - recordArn
@@ -290,28 +310,43 @@ components:
       - AGENT
       - CUSTOM
       - SKILL
+      - GATEWAY
     Descriptors:
       description: The protocol-specific descriptors that describe how to connect to and use the registry record.
       type: object
       properties:
         mcpServer:
           $ref: '#/components/schemas/McpServerDescriptor'
+          description: The MCP server descriptor, populated when the record type is MCP.
         a2aAgentCard:
           $ref: '#/components/schemas/A2aAgentCardDescriptor'
+          description: The A2A agent card descriptor, populated when the record type is AGENT.
         agentSkillsDefinition:
           $ref: '#/components/schemas/AgentSkillsDefinitionDescriptor'
+          description: The agent skills definition descriptor, populated when the record type is SKILL.
         custom:
           $ref: '#/components/schemas/CustomDescriptor'
+          description: The custom descriptor, populated when the record type is CUSTOM.
+        http:
+          $ref: '#/components/schemas/HttpDescriptor'
+          description: The HTTP descriptor, populated when the record exposes an HTTP endpoint.
+        agui:
+          $ref: '#/components/schemas/AgUiDescriptor'
+          description: The AG-UI descriptor, populated when the record exposes an AG-UI protocol endpoint.
     McpServerDescriptor:
-      description: Base mixin for MCP server descriptor content
+      description: Descriptor that defines the content of an MCP (Model Context Protocol) server registry record, including
+        the server definition and its tool definitions. The content is validated against the MCP protocol schema.
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The MCP server descriptor content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
         additionalData:
           $ref: '#/components/schemas/McpServerAdditionalData'
+          description: Additional data associated with the MCP server descriptor, such as tool definitions.
         source:
           $ref: '#/components/schemas/DescriptorSource'
           description: The source location from which the MCP (Model Context Protocol) server descriptor content was retrieved.
@@ -331,26 +366,31 @@ components:
       properties:
         tools:
           $ref: '#/components/schemas/McpToolsDescriptor'
+          description: The MCP tools descriptor that defines the tools exposed by the MCP server.
     McpToolsDescriptor:
       description: MCP tools descriptor containing tool definitions
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The MCP tools descriptor content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
     DescriptorSource:
       description: The source location from which a descriptor's content was retrieved.
       type: object
       properties:
         fromUrl:
           $ref: '#/components/schemas/DescriptorSourceFromUrl'
+          description: The URL-based descriptor source, populated when descriptor content is synchronized from a URL.
     DescriptorSourceFromUrl:
-      description: Base mixin for descriptor source from URL
+      description: A URL-based descriptor source that identifies where descriptor content is retrieved from.
       type: object
       properties:
         url:
           $ref: '#/components/schemas/DescriptorSourceUrl'
+          description: The URL from which the descriptor content is retrieved.
       required:
       - url
     DescriptorSourceUrl:
@@ -360,24 +400,29 @@ components:
       maxLength: 2048
       pattern: https://.*
     A2aAgentCardDescriptor:
-      description: Base mixin for A2A agent card descriptor content
+      description: Descriptor that defines the content of an A2A (Agent-to-Agent) agent card registry record. The content
+        is validated against the A2A protocol schema.
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The A2A agent card content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
         source:
           $ref: '#/components/schemas/DescriptorSource'
           description: The source location from which the A2A (Agent-to-Agent) agent card descriptor content was retrieved.
     AgentSkillsDefinitionDescriptor:
-      description: Base mixin for agent skills definition descriptor content
+      description: Descriptor that defines an agent skills registry record and its associated content.
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The agent skills definition content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
         additionalData:
           $ref: '#/components/schemas/AgentSkillsAdditionalData'
           description: Additional data for the agent skills definition, such as the skills markdown descriptor.
@@ -387,14 +432,17 @@ components:
       properties:
         skillMd:
           $ref: '#/components/schemas/AgentSkillsMdDescriptor'
+          description: The agent skills markdown descriptor associated with the agent skills definition.
     AgentSkillsMdDescriptor:
-      description: Base mixin for agent skills markdown descriptor content
+      description: Markdown-format descriptor containing an agent skills document.
       type: object
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The agent skills markdown content, serialized as descriptor payload data.
         dataSchemaVersion:
           $ref: '#/components/schemas/DataSchemaVersion'
+          description: The schema version of the descriptor payload.
         source:
           $ref: '#/components/schemas/DescriptorSource'
           description: The source location from which the agent skills markdown content was retrieved.
@@ -404,6 +452,23 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/DescriptorData'
+          description: The custom descriptor content, serialized as descriptor payload data.
+    HttpDescriptor:
+      description: 'A descriptor for a registry record that exposes an HTTP endpoint. This descriptor is source-only: it identifies
+        where the endpoint is located and carries no descriptor payload data or schema version.'
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/DescriptorSource'
+          description: The source location of the HTTP endpoint.
+    AgUiDescriptor:
+      description: 'A descriptor for a registry record that exposes an AG-UI protocol endpoint. This descriptor is source-only:
+        it identifies where the endpoint is located and carries no descriptor payload data or schema version.'
+      type: object
+      properties:
+        source:
+          $ref: '#/components/schemas/DescriptorSource'
+          description: The source location of the AG-UI protocol endpoint.
     RegistryRecordVersion:
       description: Version of the registry record
       type: string
@@ -437,8 +502,11 @@ components:
       properties:
         registryId:
           $ref: '#/components/schemas/RegistryIdentifier'
+          description: The identifier of the registry the record was requested from, echoed from the request.
         recordId:
           $ref: '#/components/schemas/RecordIdentifier'
+          description: The identifier of the record that could not be retrieved, echoed from the request in the same format
+            that you supplied (ARN or record ID).
         errorCode:
           $ref: '#/components/schemas/BatchGetDiscoverableRegistryRecordErrorCode'
           description: The machine-readable reason that the record could not be retrieved.
@@ -522,26 +590,46 @@ components:
       properties:
         registryArn:
           $ref: '#/components/schemas/RegistryArn'
+          description: The Amazon Resource Name (ARN) of the parent registry that owns the record.
         recordArn:
           $ref: '#/components/schemas/RegistryRecordArn'
+          description: The Amazon Resource Name (ARN) of the registry record.
         recordId:
           $ref: '#/components/schemas/RegistryRecordId'
+          description: The unique identifier of the registry record.
         name:
           $ref: '#/components/schemas/RegistryRecordName'
+          description: The name of the registry record. Names are unique within a registry.
         description:
           $ref: '#/components/schemas/Description'
+          description: A human-readable description of the registry record. Use this field to explain the record's purpose
+            or content to consumers discovering it in the registry.
         displayName:
           $ref: '#/components/schemas/RegistryRecordDisplayName'
+          description: The human-readable display name of the registry record.
         recordType:
           $ref: '#/components/schemas/RecordType'
+          description: The type of the registry record. MCP is a Model Context Protocol server record, AGENT is an Agent-to-Agent
+            (A2A) agent card record, SKILL is an agent skills definition record, and CUSTOM is a record with a custom descriptor.
         recordVersion:
           $ref: '#/components/schemas/RegistryRecordVersion'
+          description: The version identifier of the registry record.
         status:
           $ref: '#/components/schemas/RegistryRecordStatus'
+          description: The lifecycle status of the registry record. A record is DRAFT before it is submitted, PENDING_APPROVAL
+            while awaiting curator review, and APPROVED once it is approved and discoverable. REJECTED and DEPRECATED records
+            are not discoverable. The CREATING, UPDATING, CREATE_FAILED, and UPDATE_FAILED values reflect the state of an
+            in-progress or failed asynchronous change.
         createdAt:
           $ref: '#/components/schemas/DateTimestamp'
+          description: The timestamp when the registry record was created.
         updatedAt:
           $ref: '#/components/schemas/DateTimestamp'
+          description: The timestamp when the registry record was last updated.
+        descriptorTypes:
+          $ref: '#/components/schemas/DescriptorTypeList'
+          description: The descriptor types that are present on this registry record. Each value corresponds to a descriptor
+            entry key on the approved record.
       required:
       - registryArn
       - recordArn
@@ -552,6 +640,10 @@ components:
       - status
       - createdAt
       - updatedAt
+    DescriptorTypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     SearchQuery:
       type: string
       minLength: 0

@@ -49,10 +49,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddGroupMemberResult'
       x-stackql-resource: group_members
       x-stackql-method: add_group_member
       x-stackql-verb: UPDATE
@@ -165,10 +161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResult'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -199,10 +191,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResult'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -306,11 +294,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisableUserResult'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: disable_user
       x-stackql-verb: EXEC
   /GroupMemberships/ListGroupMembers:
@@ -441,7 +425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListGroupsForMemberResult'
-      x-stackql-resource: groups_for_members
+      x-stackql-resource: groups
       x-stackql-method: list_groups_for_member
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
@@ -521,10 +505,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveGroupMemberResult'
       x-stackql-resource: group_members
       x-stackql-method: remove_group_member
       x-stackql-verb: UPDATE
@@ -661,10 +641,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateGroupResult'
       x-stackql-resource: groups
       x-stackql-method: update_group
       x-stackql-verb: UPDATE
@@ -705,10 +681,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserResult'
       x-stackql-resource: users
       x-stackql-method: update_user
       x-stackql-verb: UPDATE
@@ -780,8 +752,6 @@ components:
       minLength: 1
       maxLength: 255
       pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+[.]?$
-    AddGroupMemberResult:
-      type: object
     GroupScope:
       type: string
       enum:
@@ -842,10 +812,6 @@ components:
         SID:
           $ref: '#/components/schemas/SID'
           description: The unique security identifier (SID) of the user.
-    DeleteGroupResult:
-      type: object
-    DeleteUserResult:
-      type: object
     LdapDisplayNameList:
       type: array
       items:
@@ -932,8 +898,6 @@ components:
       type: string
       minLength: 1
       maxLength: 256
-    DisableUserResult:
-      type: object
     MaxResults:
       type: integer
       minimum: 1
@@ -1087,8 +1051,6 @@ components:
       - Enabled
       - SAMAccountName
       - SID
-    RemoveGroupMemberResult:
-      type: object
     SearchString:
       type: string
       minLength: 1
@@ -1197,7 +1159,3 @@ components:
       - ADD
       - REPLACE
       - REMOVE
-    UpdateGroupResult:
-      type: object
-    UpdateUserResult:
-      type: object

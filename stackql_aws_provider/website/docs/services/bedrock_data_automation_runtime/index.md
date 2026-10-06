@@ -18,16 +18,18 @@ bedrock_data_automation_runtime service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __4__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/bedrock_data_automation_runtime/data_automation_status/">data_automation_status</a>
+<a href="/services/bedrock_data_automation_runtime/data_automation_asyncs/">data_automation_asyncs</a><br />
+<a href="/services/bedrock_data_automation_runtime/data_automation_statuses/">data_automation_statuses</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/bedrock_data_automation_runtime/data_automations/">data_automations</a><br />
 <a href="/services/bedrock_data_automation_runtime/tags/">tags</a>
 </div>
 </div>

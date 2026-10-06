@@ -214,9 +214,7 @@ SET
 WHERE 
 TrustStoreArn = '{{ TrustStoreArn }}' --required
 AND RevocationIds = '{{ RevocationIds }}' --required
-AND region = '{{ region }}' --required
-RETURNING
-line_items;
+AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="add_trust_store_revocations">

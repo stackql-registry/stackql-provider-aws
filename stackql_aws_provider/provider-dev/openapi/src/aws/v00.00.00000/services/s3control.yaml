@@ -1340,10 +1340,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteJobTaggingOutputDisplay"
     get:
       operationId: GetJobTagging
       description: "Returns the tags on an S3 Batch Operations job. Permissions To use the GetJobTagging operation, you must have permission to perform the s3:GetJobTagging action. For more information, see Controlling access and labeling jobs using tags in the Amazon S3 User Guide. Related actions include: CreateJob PutJobTagging DeleteJobTagging"
@@ -1395,10 +1391,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutJobTaggingOutputDisplay"
   /v20180820/async-requests/mrap/delete:
     post:
       operationId: DeleteMultiRegionAccessPoint
@@ -1581,10 +1573,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStorageLensConfigurationTaggingOutputDisplay"
     get:
       operationId: GetStorageLensConfigurationTagging
       description: This operation is not supported by directory buckets. Gets the tags of Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see Assessing your storage activity and usage with Amazon S3 Storage Lens in the Amazon S3 User Guide. To use this action, you must have permission to perform the s3:GetStorageLensConfigurationTagging action. For more information, see Setting permissions to use Amazon S3 Storage Lens in the Amazon S3 User Guide.
@@ -1636,10 +1624,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutStorageLensConfigurationTaggingOutputDisplay"
   /v20180820/storagelensgroup/{name}:
     delete:
       operationId: DeleteStorageLensGroup
@@ -2127,10 +2111,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SubmitMultiRegionAccessPointRoutesOutputDisplay"
   /v20180820/accessgrantsinstance/grants:
     get:
       operationId: ListAccessGrants
@@ -2553,10 +2533,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutputDisplay"
     delete:
       operationId: UntagResource
       description: "This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag keys. This operation is only supported for the following Amazon S3 resources: General purpose buckets Access Points for directory buckets Access Points for general purpose buckets Directory buckets S3 Storage Lens groups S3 Access Grants instances, registered locations, and grants. Permissions For general purpose buckets, access points for general purpose buckets, Storage Lens groups, and S3 Access Grants, you must have the s3:UntagResource permission to use this operation. Directory bucket permissions For directory buckets, you must have the s3express:UntagResource permission to use this operation. For more information about directory buckets policies and permissions, see Identity and Access Management (IAM) for S3 Express One Zone in the Amazon S3 User Guide. HTTP Host header syntax Directory buckets - The HTTP Host header syntax is s3express-control.region.amazonaws.com. For information about S3 Tagging errors, see List of Amazon S3 Tagging error codes."
@@ -2582,10 +2558,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutputDisplay"
   /v20180820/async-requests/mrap/put-policy:
     post:
       operationId: PutMultiRegionAccessPointPolicy
@@ -3234,6 +3206,9 @@ components:
           description: This functionality is not supported by directory buckets.
         MetadataDirective:
           $ref: "#/components/schemas/S3MetadataDirective"
+        AnnotationDirective:
+          $ref: "#/components/schemas/S3AnnotationDirective"
+          description: "Specifies whether the Batch Operations copy job copies object annotations from the source object or skips them. If this property isn't specified, COPY is the default behavior. Valid Values: COPY | EXCLUDE This functionality is not supported by directory buckets."
         ModifiedSinceConstraint:
           $ref: "#/components/schemas/TimeStamp"
         NewObjectMetadata:
@@ -3274,6 +3249,12 @@ components:
         ChecksumAlgorithm:
           $ref: "#/components/schemas/S3ChecksumAlgorithm"
           description: Indicates the algorithm that you want Amazon S3 to use to create the checksum. For more information, see Checking object integrity in the Amazon S3 User Guide.
+        ObjectLockEventHold:
+          $ref: "#/components/schemas/S3ObjectLockEventHold"
+          description: The event hold status to be applied to all objects in the Batch Operations copy job. Set to ON to enable an event hold or OFF to disable it. This functionality is not supported by directory buckets.
+        ObjectLockEventHoldDuration:
+          $ref: "#/components/schemas/S3ObjectLockEventHoldDuration"
+          description: The event hold duration to be applied to all objects in the Batch Operations copy job. The duration specifies how long the object remains protected after the event hold is released. This functionality is not supported by directory buckets.
     S3RegionalOrS3ExpressBucketArnString:
       type: string
       minLength: 1
@@ -3332,6 +3313,11 @@ components:
       enum:
         - COPY
         - REPLACE
+    S3AnnotationDirective:
+      type: string
+      enum:
+        - COPY
+        - EXCLUDE
     TimeStamp:
       type: string
       format: date-time
@@ -3432,6 +3418,29 @@ components:
         - XXHASH64
         - XXHASH3
         - XXHASH128
+    S3ObjectLockEventHold:
+      type: string
+      enum:
+        - "ON"
+        - "OFF"
+    S3ObjectLockEventHoldDuration:
+      description: Contains the duration configuration for an event hold, specified in either days or years.
+      type: object
+      properties:
+        Days:
+          $ref: "#/components/schemas/S3ObjectLockEventHoldDurationDays"
+          description: The number of days for the event hold duration. The minimum value is 1 and the maximum value is 36,500.
+        Years:
+          $ref: "#/components/schemas/S3ObjectLockEventHoldDurationYears"
+          description: The number of years for the event hold duration. The minimum value is 1 and the maximum value is 100.
+    S3ObjectLockEventHoldDurationDays:
+      type: integer
+      minimum: 1
+      maximum: 36500
+    S3ObjectLockEventHoldDurationYears:
+      type: integer
+      minimum: 1
+      maximum: 100
     S3SetObjectAclOperation:
       description: Contains the configuration parameters for a PUT Object ACL operation. S3 Batch Operations passes every object to the underlying PutObjectAcl API operation. For more information about the parameters for this operation, see PutObjectAcl.
       type: object
@@ -3528,11 +3537,40 @@ components:
         Mode:
           $ref: "#/components/schemas/S3ObjectLockRetentionMode"
           description: The Object Lock retention mode to be applied to all objects in the Batch Operations job.
+        EventHold:
+          $ref: "#/components/schemas/S3ObjectLockRetentionEventHold"
+          description: The event hold status to be applied to all objects in the Batch Operations job. Set to ON to enable an event hold or OFF to disable it.
+        EventHoldDuration:
+          $ref: "#/components/schemas/S3ObjectLockRetentionEventHoldDuration"
+          description: The event hold duration to be applied to all objects in the Batch Operations job. The duration specifies how long the object remains protected after the event hold is released.
     S3ObjectLockRetentionMode:
       type: string
       enum:
         - COMPLIANCE
         - GOVERNANCE
+    S3ObjectLockRetentionEventHold:
+      type: string
+      enum:
+        - "ON"
+        - "OFF"
+    S3ObjectLockRetentionEventHoldDuration:
+      description: Contains the duration configuration for an event hold, specified in either days or years.
+      type: object
+      properties:
+        Days:
+          $ref: "#/components/schemas/S3ObjectLockRetentionEventHoldDurationDays"
+          description: The number of days for the event hold duration. The minimum value is 1 and the maximum value is 36,500.
+        Years:
+          $ref: "#/components/schemas/S3ObjectLockRetentionEventHoldDurationYears"
+          description: The number of years for the event hold duration. The minimum value is 1 and the maximum value is 100.
+    S3ObjectLockRetentionEventHoldDurationDays:
+      type: integer
+      minimum: 1
+      maximum: 36500
+    S3ObjectLockRetentionEventHoldDurationYears:
+      type: integer
+      minimum: 1
+      maximum: 100
     S3ReplicateObjectOperation:
       description: Directs the specified job to invoke ReplicateObject on every object in the job's manifest.
       type: object
@@ -3724,7 +3762,7 @@ components:
       properties:
         ExpectedBucketOwner:
           $ref: "#/components/schemas/AccountId"
-          description: The Amazon Web Services account ID that owns the bucket the generated manifest is written to. If provided the generated manifest bucket's owner Amazon Web Services account ID must match this value, else the job fails.
+          description: The Amazon Web Services account ID that owns the source bucket specified in SourceBucket. If provided, the manifest source bucket owner's Amazon Web Services account ID must match this value, else the job fails.
         SourceBucket:
           $ref: "#/components/schemas/S3BucketArnString"
           description: The ARN of the source bucket used by the ManifestGenerator. Directory buckets - Directory buckets aren't supported as the source buckets used by S3JobManifestGenerator to generate the job manifest.
@@ -4116,16 +4154,6 @@ components:
       minLength: 5
       maxLength: 36
       pattern: "[a-zA-Z0-9\\-\\_]+"
-    DeleteJobTaggingResultDisplay:
-      type: object
-      properties: {}
-    DeleteJobTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteJobTaggingResultDisplay"
     DeleteMultiRegionAccessPointInput:
       description: A container for the information associated with a DeleteMultiRegionAccessPoint request.
       type: object
@@ -4153,16 +4181,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: "[a-zA-Z0-9\\-\\_\\.]+"
-    DeleteStorageLensConfigurationTaggingResultDisplay:
-      type: object
-      properties: {}
-    DeleteStorageLensConfigurationTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteStorageLensConfigurationTaggingResultDisplay"
     JobDescriptorDisplay:
       type: object
       properties:
@@ -5659,16 +5677,6 @@ components:
       enum:
         - Enabled
         - Suspended
-    PutJobTaggingResultDisplay:
-      type: object
-      properties: {}
-    PutJobTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutJobTaggingResultDisplay"
     PutMultiRegionAccessPointPolicyInput:
       description: A container for the information associated with a PutMultiRegionAccessPoint request.
       type: object
@@ -5820,7 +5828,7 @@ components:
           description: The max depth of the selection criteria
         MinStorageBytesPercentage:
           $ref: "#/components/schemas/MinStorageBytesPercentage"
-          description: The minimum number of storage bytes percentage whose metrics will be selected. You must choose a value greater than or equal to 1.0.
+          description: The minimum percentage of total bucket storage that a prefix must hold for its metrics to be included.
     StorageLensPrefixLevelDelimiter:
       type: string
       maxLength: 1
@@ -6049,16 +6057,6 @@ components:
       required:
         - Key
         - Value
-    PutStorageLensConfigurationTaggingResultDisplay:
-      type: object
-      properties: {}
-    PutStorageLensConfigurationTaggingOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/PutStorageLensConfigurationTaggingResultDisplay"
     RouteList:
       type: array
       items:
@@ -6086,40 +6084,10 @@ components:
       type: integer
       minimum: 0
       maximum: 100
-    SubmitMultiRegionAccessPointRoutesResultDisplay:
-      type: object
-      properties: {}
-    SubmitMultiRegionAccessPointRoutesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SubmitMultiRegionAccessPointRoutesResultDisplay"
-    TagResourceResultDisplay:
-      type: object
-      properties: {}
-    TagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/TagResourceResultDisplay"
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKeyString"
-    UntagResourceResultDisplay:
-      type: object
-      properties: {}
-    UntagResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/UntagResourceResultDisplay"
     UpdateAccessGrantsLocationResultDisplay:
       type: object
       properties:
@@ -6265,6 +6233,21 @@ components:
           - $ref: "#/components/x-stackQL-resources/access_grants/methods/associate_access_grants_identity_center"
         delete:
           - $ref: "#/components/x-stackQL-resources/access_grants/methods/delete_access_grant"
+    access_grants_identity_centers:
+      id: aws.s3control.access_grants_identity_centers
+      name: access_grants_identity_centers
+      title: access_grants_identity_centers
+      methods:
+        dissociate_access_grants_identity_center:
+          operation:
+            $ref: "#/paths/~1v20180820~1accessgrantsinstance~1identitycenter/delete"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     access_grants_instances:
       id: aws.s3control.access_grants_instances
       name: access_grants_instances
@@ -6305,6 +6288,20 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        get_access_grants_instance_for_prefix:
+          operation:
+            $ref: "#/paths/~1v20180820~1accessgrantsinstance~1prefix/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetAccessGrantsInstanceForPrefixOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         list_access_grants_instances:
           operation:
             $ref: "#/paths/~1v20180820~1accessgrantsinstances/get"
@@ -6319,6 +6316,7 @@ components:
             objectKey: $.line_items
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/access_grants_instances/methods/get_access_grants_instance_for_prefix"
           - $ref: "#/components/x-stackQL-resources/access_grants_instances/methods/get_access_grants_instance"
         insert:
           - $ref: "#/components/x-stackQL-resources/access_grants_instances/methods/create_access_grants_instance"
@@ -7150,13 +7148,6 @@ components:
             $ref: "#/paths/~1v20180820~1jobs~1{id}~1tagging/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteJobTaggingOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_job_tagging:
           operation:
             $ref: "#/paths/~1v20180820~1jobs~1{id}~1tagging/get"
@@ -7174,13 +7165,6 @@ components:
             $ref: "#/paths/~1v20180820~1jobs~1{id}~1tagging/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutJobTaggingOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -7305,13 +7289,6 @@ components:
             $ref: "#/paths/~1v20180820~1storagelens~1{storagelensid}~1tagging/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteStorageLensConfigurationTaggingOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_storage_lens_configuration_tagging:
           operation:
             $ref: "#/paths/~1v20180820~1storagelens~1{storagelensid}~1tagging/get"
@@ -7329,13 +7306,6 @@ components:
             $ref: "#/paths/~1v20180820~1storagelens~1{storagelensid}~1tagging/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutStorageLensConfigurationTaggingOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -7374,35 +7344,10 @@ components:
         insert: []
         update: []
         delete: []
-    access_grants_instance_for_prefixes:
-      id: aws.s3control.access_grants_instance_for_prefixes
-      name: access_grants_instance_for_prefixes
-      title: access_grants_instance_for_prefixes
-      methods:
-        get_access_grants_instance_for_prefix:
-          operation:
-            $ref: "#/paths/~1v20180820~1accessgrantsinstance~1prefix/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetAccessGrantsInstanceForPrefixOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/access_grants_instance_for_prefixes/methods/get_access_grants_instance_for_prefix"
-        insert: []
-        update: []
-        delete: []
-    access_point_configuration_for_object_lambdas:
-      id: aws.s3control.access_point_configuration_for_object_lambdas
-      name: access_point_configuration_for_object_lambdas
-      title: access_point_configuration_for_object_lambdas
+    access_point_configurations:
+      id: aws.s3control.access_point_configurations
+      name: access_point_configurations
+      title: access_point_configurations
       methods:
         get_access_point_configuration_for_object_lambda:
           operation:
@@ -7429,11 +7374,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/access_point_configuration_for_object_lambdas/methods/get_access_point_configuration_for_object_lambda"
+          - $ref: "#/components/x-stackQL-resources/access_point_configurations/methods/get_access_point_configuration_for_object_lambda"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/access_point_configuration_for_object_lambdas/methods/put_access_point_configuration_for_object_lambda"
+          - $ref: "#/components/x-stackQL-resources/access_point_configurations/methods/put_access_point_configuration_for_object_lambda"
         delete: []
     access_point_policy_status:
       id: aws.s3control.access_point_policy_status
@@ -7458,10 +7403,10 @@ components:
         insert: []
         update: []
         delete: []
-    access_point_policy_status_for_object_lambdas:
-      id: aws.s3control.access_point_policy_status_for_object_lambdas
-      name: access_point_policy_status_for_object_lambdas
-      title: access_point_policy_status_for_object_lambdas
+    access_point_policy_statuses:
+      id: aws.s3control.access_point_policy_statuses
+      name: access_point_policy_statuses
+      title: access_point_policy_statuses
       methods:
         get_access_point_policy_status_for_object_lambda:
           operation:
@@ -7477,7 +7422,7 @@ components:
             objectKey: $.line_items
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/access_point_policy_status_for_object_lambdas/methods/get_access_point_policy_status_for_object_lambda"
+          - $ref: "#/components/x-stackQL-resources/access_point_policy_statuses/methods/get_access_point_policy_status_for_object_lambda"
         insert: []
         update: []
         delete: []
@@ -7517,10 +7462,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/bucket_versionings/methods/put_bucket_versioning"
         delete: []
-    data_access:
-      id: aws.s3control.data_access
-      name: data_access
-      title: data_access
+    data_accesses:
+      id: aws.s3control.data_accesses
+      name: data_accesses
+      title: data_accesses
       methods:
         get_data_access:
           operation:
@@ -7538,7 +7483,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/data_access/methods/get_data_access"
+          - $ref: "#/components/x-stackQL-resources/data_accesses/methods/get_data_access"
         insert: []
         update: []
         delete: []
@@ -7585,10 +7530,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/multi_region_access_point_policies/methods/put_multi_region_access_point_policy"
         delete: []
-    multi_region_access_point_policy_status:
-      id: aws.s3control.multi_region_access_point_policy_status
-      name: multi_region_access_point_policy_status
-      title: multi_region_access_point_policy_status
+    multi_region_access_point_policy_statuses:
+      id: aws.s3control.multi_region_access_point_policy_statuses
+      name: multi_region_access_point_policy_statuses
+      title: multi_region_access_point_policy_statuses
       methods:
         get_multi_region_access_point_policy_status:
           operation:
@@ -7604,7 +7549,7 @@ components:
             objectKey: $.line_items
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/multi_region_access_point_policy_status/methods/get_multi_region_access_point_policy_status"
+          - $ref: "#/components/x-stackQL-resources/multi_region_access_point_policy_statuses/methods/get_multi_region_access_point_policy_status"
         insert: []
         update: []
         delete: []
@@ -7630,13 +7575,6 @@ components:
             $ref: "#/paths/~1v20180820~1mrap~1instances~1{mrap}~1routes/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SubmitMultiRegionAccessPointRoutesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -7771,13 +7709,6 @@ components:
             $ref: "#/paths/~1v20180820~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/TagResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/xml
@@ -7789,13 +7720,6 @@ components:
             $ref: "#/paths/~1v20180820~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UntagResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:

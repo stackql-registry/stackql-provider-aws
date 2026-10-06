@@ -884,10 +884,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TestHypervisorConfigurationOutput'
       x-stackql-resource: hypervisors
       x-stackql-method: test_hypervisor_configuration
       x-stackql-verb: EXEC
@@ -1695,8 +1691,6 @@ components:
         ResourceARN:
           $ref: '#/components/schemas/ResourceArn'
           description: The Amazon Resource Name (ARN) of the resource you tagged.
-    TestHypervisorConfigurationOutput:
-      type: object
     TagKeys:
       type: array
       items:

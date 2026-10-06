@@ -33,7 +33,7 @@ total resources: __9__
 </div>
 <div class="providerDocColumn">
 <a href="/services/pi/performance_analysis_reports/">performance_analysis_reports</a><br />
-<a href="/services/pi/resource_metadatas/">resource_metadatas</a><br />
+<a href="/services/pi/resource_metadata/">resource_metadata</a><br />
 <a href="/services/pi/resource_metrics/">resource_metrics</a><br />
 <a href="/services/pi/tags/">tags</a>
 </div>

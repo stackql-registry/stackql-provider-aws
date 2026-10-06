@@ -557,6 +557,33 @@ components:
         - sse-kms
         - none
   x-stackQL-resources:
+    snapshots:
+      id: aws.ebs.snapshots
+      name: snapshots
+      title: snapshots
+      methods:
+        complete_snapshot:
+          operation:
+            $ref: "#/paths/~1snapshots~1completion~1{snapshot_id}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        start_snapshot:
+          operation:
+            $ref: "#/paths/~1snapshots/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     snapshot_blocks:
       id: aws.ebs.snapshot_blocks
       name: snapshot_blocks

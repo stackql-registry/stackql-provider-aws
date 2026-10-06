@@ -57,6 +57,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes up to ten messages from the specified queue. This is a batch version of DeleteMessage. The result of the action on each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200.</td>
 </tr>
+<tr>
+    <td><a href="#send_message_batch"><CopyableCode code="send_message_batch" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QueueUrl"><code>QueueUrl</code></a>, <a href="#parameter-Entries"><code>Entries</code></a></td>
+    <td></td>
+    <td>You can use SendMessageBatch to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all). This is a batch version of SendMessage. For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent. The result of sending each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 1 MiB 1,048,576 bytes. A message can include only XML, JSON, and unformatted text. The following Unicode characters are allowed. For more information, see the W3C specification for characters. #x9 | #xA | #xD | #x20 to #xD7FF | #xE000 to #xFFFD | #x10000 to #x10FFFF If a message contains characters outside the allowed set, Amazon SQS rejects the message and returns an InvalidMessageContents error. Ensure that your message body includes only valid characters to avoid this exception. If you don't specify the DelaySeconds parameter for an entry, Amazon SQS uses the default value for the queue.</td>
+</tr>
 </tbody>
 </table>
 
@@ -96,6 +103,32 @@ Deletes up to ten messages from the specified queue. This is a batch version of 
 ```sql
 DELETE FROM aws.sqs.message_batches
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="send_message_batch"
+    values={[
+        { label: 'send_message_batch', value: 'send_message_batch' }
+    ]}
+>
+<TabItem value="send_message_batch">
+
+You can use SendMessageBatch to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all). This is a batch version of SendMessage. For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent. The result of sending each message is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200. The maximum allowed individual message size and the maximum total payload size (the sum of the individual lengths of all of the batched messages) are both 1 MiB 1,048,576 bytes. A message can include only XML, JSON, and unformatted text. The following Unicode characters are allowed. For more information, see the W3C specification for characters. #x9 | #xA | #xD | #x20 to #xD7FF | #xE000 to #xFFFD | #x10000 to #x10FFFF If a message contains characters outside the allowed set, Amazon SQS rejects the message and returns an InvalidMessageContents error. Ensure that your message body includes only valid characters to avoid this exception. If you don't specify the DelaySeconds parameter for an entry, Amazon SQS uses the default value for the queue.
+
+```sql
+EXEC aws.sqs.message_batches.send_message_batch 
+@region='{{ region }}' --required 
+@@json=
+'{
+"QueueUrl": "{{ QueueUrl }}", 
+"Entries": "{{ Entries }}"
+}'
 ;
 ```
 </TabItem>

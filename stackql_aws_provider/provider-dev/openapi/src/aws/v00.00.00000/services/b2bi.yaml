@@ -3550,6 +3550,42 @@ components:
           - $ref: "#/components/x-stackQL-resources/transformers/methods/update_transformer"
         delete:
           - $ref: "#/components/x-stackQL-resources/transformers/methods/delete_transformer"
+    mappings:
+      id: aws.b2bi.mappings
+      name: mappings
+      title: mappings
+      methods:
+        generate_mapping:
+          operation:
+            $ref: "#/paths/~1GenerateMapping/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_mapping:
+          operation:
+            $ref: "#/paths/~1TestMapping/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     transformer_jobs:
       id: aws.b2bi.transformer_jobs
       name: transformer_jobs
@@ -3623,4 +3659,50 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    conversions:
+      id: aws.b2bi.conversions
+      name: conversions
+      title: conversions
+      methods:
+        test_conversion:
+          operation:
+            $ref: "#/paths/~1TestConversion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    parsings:
+      id: aws.b2bi.parsings
+      name: parsings
+      title: parsings
+      methods:
+        test_parsing:
+          operation:
+            $ref: "#/paths/~1TestParsing/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

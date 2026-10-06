@@ -57,6 +57,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-DomainName"><code>DomainName</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Modifies an attribute of the specified Elastic IP address. For requirements, see Using reverse DNS for email applications.</td>
 </tr>
+<tr>
+    <td><a href="#reset_address_attribute"><CopyableCode code="reset_address_attribute" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-AllocationId"><code>AllocationId</code></a>, <a href="#parameter-Attribute"><code>Attribute</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Resets the attribute of the specified IP address. For requirements, see Using reverse DNS for email applications.</td>
+</tr>
 </tbody>
 </table>
 
@@ -77,6 +84,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="AllocationId" /></td>
     <td><code>string</code></td>
     <td>&#91;EC2-VPC&#93; The allocation ID.</td>
+</tr>
+<tr id="parameter-Attribute">
+    <td><CopyableCode code="Attribute" /></td>
+    <td><code>string</code></td>
+    <td>The attribute of the IP address.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -122,6 +134,30 @@ allocation_id,
 ptr_record,
 ptr_record_update,
 public_ip;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reset_address_attribute"
+    values={[
+        { label: 'reset_address_attribute', value: 'reset_address_attribute' }
+    ]}
+>
+<TabItem value="reset_address_attribute">
+
+Resets the attribute of the specified IP address. For requirements, see Using reverse DNS for email applications.
+
+```sql
+EXEC aws.ec2.address_attributes.reset_address_attribute 
+@AllocationId='{{ AllocationId }}' --required, 
+@Attribute='{{ Attribute }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
+;
 ```
 </TabItem>
 </Tabs>

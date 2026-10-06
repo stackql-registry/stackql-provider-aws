@@ -430,10 +430,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateChannelOutput"
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -476,10 +472,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the association of the tag with the AWS re:Post Private resource.
@@ -499,10 +491,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /spaces/{space_id}/invite:
     post:
       operationId: SendInvites
@@ -1094,8 +1082,6 @@ components:
       type: string
       minLength: 1
       maxLength: 600
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1105,10 +1091,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
-    UpdateChannelOutput:
-      type: object
   x-stackQL-resources:
     channels:
       id: aws.repostspace.channels
@@ -1176,7 +1158,6 @@ components:
             $ref: "#/paths/~1spaces~1{space_id}~1channels~1{channel_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1315,7 +1296,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1326,7 +1306,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

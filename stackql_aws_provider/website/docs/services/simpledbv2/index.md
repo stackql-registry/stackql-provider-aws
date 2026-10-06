@@ -18,16 +18,16 @@ simpledbv2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/simpledbv2/exports/">exports</a>
+<a href="/services/simpledbv2/domain_exports/">domain_exports</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/simpledbv2/exports/">exports</a>
 </div>
 </div>

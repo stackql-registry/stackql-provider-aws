@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_operation"
     values={[
         { label: 'get_operation', value: 'get_operation' },
+        { label: 'get_operations_for_resource', value: 'get_operations_for_resource' },
         { label: 'get_operations', value: 'get_operations' }
     ]}
 >
@@ -88,7 +89,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
-    <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps)</td>
+    <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps, GetProfile)</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_name" /></td>
@@ -109,6 +110,35 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="status_changed_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The timestamp when the status was changed (1479816991.349).</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_operations_for_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="next_page_count" /></td>
+    <td><code>string</code></td>
+    <td>(Discontinued) Returns the number of pages of results that remain. In releases prior to June 12, 2017, this parameter returned null by the API. It is now discontinued, and the API returns the next page token parameter instead.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_page_token" /></td>
+    <td><code>string</code></td>
+    <td>The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetOperationsForResource request and specify the next page token using the pageToken parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="operations" /></td>
+    <td><code>array</code></td>
+    <td>An array of objects that describe the result of the action, such as the status of the request, the timestamp of the request, and the resources affected by the request.</td>
 </tr>
 </tbody>
 </table>
@@ -162,7 +192,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="operation_type" /></td>
     <td><code>string</code></td>
-    <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps)</td>
+    <td>The type of operation. (DeleteKnownHostKeys, DeleteInstance, CreateInstance, StopInstance, StartInstance, RebootInstance, OpenInstancePublicPorts, PutInstancePublicPorts, CloseInstancePublicPorts, AllocateStaticIp, ReleaseStaticIp, AttachStaticIp, DetachStaticIp, UpdateDomainEntry, DeleteDomainEntry, CreateDomain, DeleteDomain, CreateInstanceSnapshot, DeleteInstanceSnapshot, CreateInstancesFromSnapshot, CreateLoadBalancer, DeleteLoadBalancer, AttachInstancesToLoadBalancer, DetachInstancesFromLoadBalancer, UpdateLoadBalancerAttribute, CreateLoadBalancerTlsCertificate, DeleteLoadBalancerTlsCertificate, AttachLoadBalancerTlsCertificate, CreateDisk, DeleteDisk, AttachDisk, DetachDisk, CreateDiskSnapshot, DeleteDiskSnapshot, CreateDiskFromSnapshot, CreateRelationalDatabase, UpdateRelationalDatabase, DeleteRelationalDatabase, CreateRelationalDatabaseFromSnapshot, CreateRelationalDatabaseSnapshot, DeleteRelationalDatabaseSnapshot, UpdateRelationalDatabaseParameters, StartRelationalDatabase, RebootRelationalDatabase, StopRelationalDatabase, EnableAddOn, DisableAddOn, PutAlarm, GetAlarms, DeleteAlarm, TestAlarm, CreateContactMethod, GetContactMethods, SendContactMethodVerification, DeleteContactMethod, CreateDistribution, UpdateDistribution, DeleteDistribution, ResetDistributionCache, AttachCertificateToDistribution, DetachCertificateFromDistribution, UpdateDistributionBundle, SetIpAddressType, CreateCertificate, DeleteCertificate, CreateContainerService, UpdateContainerService, DeleteContainerService, CreateContainerServiceDeployment, CreateContainerServiceRegistryLogin, RegisterContainerImage, DeleteContainerImage, CreateBucket, DeleteBucket, CreateBucketAccessKey, DeleteBucketAccessKey, UpdateBucketBundle, UpdateBucket, SetResourceAccessForBucket, UpdateInstanceMetadataOptions, StartGUISession, StopGUISession, SetupInstanceHttps, GetProfile)</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_name" /></td>
@@ -212,6 +242,13 @@ The following methods are available for this resource:
     <td>Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.</td>
 </tr>
 <tr>
+    <td><a href="#get_operations_for_resource"><CopyableCode code="get_operations_for_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets operations for a specific resource (an instance or a static IP).</td>
+</tr>
+<tr>
     <td><a href="#get_operations"><CopyableCode code="get_operations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -248,6 +285,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_operation"
     values={[
         { label: 'get_operation', value: 'get_operation' },
+        { label: 'get_operations_for_resource', value: 'get_operations_for_resource' },
         { label: 'get_operations', value: 'get_operations' }
     ]}
 >
@@ -269,6 +307,20 @@ resource_name,
 resource_type,
 status,
 status_changed_at
+FROM aws.lightsail.operations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_operations_for_resource">
+
+Gets operations for a specific resource (an instance or a static IP).
+
+```sql
+SELECT
+next_page_count,
+next_page_token,
+operations
 FROM aws.lightsail.operations
 WHERE region = '{{ region }}' -- required
 ;

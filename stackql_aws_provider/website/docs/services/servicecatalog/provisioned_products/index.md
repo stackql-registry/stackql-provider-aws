@@ -87,18 +87,18 @@ The following methods are available for this resource:
     <td>Gets information about the specified provisioned product.</td>
 </tr>
 <tr>
-    <td><a href="#update_provisioned_product_properties"><CopyableCode code="update_provisioned_product_properties" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProvisionedProductId"><code>ProvisionedProductId</code></a>, <a href="#parameter-ProvisionedProductProperties"><code>ProvisionedProductProperties</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
-    <td></td>
-    <td>Requests updates to the properties of the specified provisioned product.</td>
-</tr>
-<tr>
     <td><a href="#update_provisioned_product"><CopyableCode code="update_provisioned_product" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UpdateToken"><code>UpdateToken</code></a></td>
     <td></td>
     <td>Requests updates to the configuration of the specified provisioned product. If there are tags associated with the object, they cannot be updated or added. Depending on the specific updates requested, this operation can update with no interruption, with some interruption, or replace the provisioned product entirely. You can check the status of this request using DescribeRecord.</td>
+</tr>
+<tr>
+    <td><a href="#update_provisioned_product_properties"><CopyableCode code="update_provisioned_product_properties" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProvisionedProductId"><code>ProvisionedProductId</code></a>, <a href="#parameter-ProvisionedProductProperties"><code>ProvisionedProductProperties</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
+    <td></td>
+    <td>Requests updates to the properties of the specified provisioned product.</td>
 </tr>
 <tr>
     <td><a href="#terminate_provisioned_product"><CopyableCode code="terminate_provisioned_product" /></a></td>
@@ -179,35 +179,12 @@ WHERE region = '{{ region }}' -- required
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_provisioned_product_properties"
+    defaultValue="update_provisioned_product"
     values={[
-        { label: 'update_provisioned_product_properties', value: 'update_provisioned_product_properties' },
-        { label: 'update_provisioned_product', value: 'update_provisioned_product' }
+        { label: 'update_provisioned_product', value: 'update_provisioned_product' },
+        { label: 'update_provisioned_product_properties', value: 'update_provisioned_product_properties' }
     ]}
 >
-<TabItem value="update_provisioned_product_properties">
-
-Requests updates to the properties of the specified provisioned product.
-
-```sql
-UPDATE aws.servicecatalog.provisioned_products
-SET 
-AcceptLanguage = '{{ AcceptLanguage }}',
-ProvisionedProductId = '{{ ProvisionedProductId }}',
-ProvisionedProductProperties = '{{ ProvisionedProductProperties }}',
-IdempotencyToken = '{{ IdempotencyToken }}'
-WHERE 
-region = '{{ region }}' --required
-AND ProvisionedProductId = '{{ ProvisionedProductId }}' --required
-AND ProvisionedProductProperties = '{{ ProvisionedProductProperties }}' --required
-AND IdempotencyToken = '{{ IdempotencyToken }}' --required
-RETURNING
-provisioned_product_id,
-provisioned_product_properties,
-record_id,
-status;
-```
-</TabItem>
 <TabItem value="update_provisioned_product">
 
 Requests updates to the configuration of the specified provisioned product. If there are tags associated with the object, they cannot be updated or added. Depending on the specific updates requested, this operation can update with no interruption, with some interruption, or replace the provisioned product entirely. You can check the status of this request using DescribeRecord.
@@ -233,6 +210,29 @@ region = '{{ region }}' --required
 AND UpdateToken = '{{ UpdateToken }}' --required
 RETURNING
 record_detail;
+```
+</TabItem>
+<TabItem value="update_provisioned_product_properties">
+
+Requests updates to the properties of the specified provisioned product.
+
+```sql
+UPDATE aws.servicecatalog.provisioned_products
+SET 
+AcceptLanguage = '{{ AcceptLanguage }}',
+ProvisionedProductId = '{{ ProvisionedProductId }}',
+ProvisionedProductProperties = '{{ ProvisionedProductProperties }}',
+IdempotencyToken = '{{ IdempotencyToken }}'
+WHERE 
+region = '{{ region }}' --required
+AND ProvisionedProductId = '{{ ProvisionedProductId }}' --required
+AND ProvisionedProductProperties = '{{ ProvisionedProductProperties }}' --required
+AND IdempotencyToken = '{{ IdempotencyToken }}' --required
+RETURNING
+provisioned_product_id,
+provisioned_product_properties,
+record_id,
+status;
 ```
 </TabItem>
 </Tabs>

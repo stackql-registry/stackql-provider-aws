@@ -179,6 +179,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Evaluates device positions against the geofence geometries from a given geofence collection. This operation always returns an empty response because geofences are asynchronously evaluated. The evaluation determines if the device has entered or exited a geofenced area, and then publishes one of the following events to Amazon EventBridge: ENTER if Amazon Location determines that the tracked device has entered a geofenced area. EXIT if Amazon Location determines that the tracked device has exited a geofenced area. The last geofence that a device was observed within is tracked for 30 days after the most recent device position update. Geofence evaluation uses the given device position. It does not account for the optional Accuracy of a DevicePositionUpdate. The DeviceID is used as a string to represent the device. You do not need to have a Tracker associated with the DeviceID.</td>
 </tr>
+<tr>
+    <td><a href="#batch_put_geofence"><CopyableCode code="batch_put_geofence" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-collection_name"><code>collection_name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Entries"><code>Entries</code></a></td>
+    <td></td>
+    <td>A batch request for storing geofence geometries into a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.</td>
+</tr>
 </tbody>
 </table>
 
@@ -198,7 +205,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-collection_name">
     <td><CopyableCode code="collection_name" /></td>
     <td><code>string</code></td>
-    <td>The geofence collection used in evaluating the position of devices against its geofences.</td>
+    <td>The geofence collection storing the geofences.</td>
 </tr>
 <tr id="parameter-geofence_id">
     <td><CopyableCode code="geofence_id" /></td>
@@ -298,7 +305,8 @@ update_time;
     defaultValue="batch_delete_geofence"
     values={[
         { label: 'batch_delete_geofence', value: 'batch_delete_geofence' },
-        { label: 'batch_evaluate_geofences', value: 'batch_evaluate_geofences' }
+        { label: 'batch_evaluate_geofences', value: 'batch_evaluate_geofences' },
+        { label: 'batch_put_geofence', value: 'batch_put_geofence' }
     ]}
 >
 <TabItem value="batch_delete_geofence">
@@ -327,6 +335,21 @@ EXEC aws.location.geofences.batch_evaluate_geofences
 @@json=
 '{
 "DevicePositionUpdates": "{{ DevicePositionUpdates }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_put_geofence">
+
+A batch request for storing geofence geometries into a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.
+
+```sql
+EXEC aws.location.geofences.batch_put_geofence 
+@collection_name='{{ collection_name }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Entries": "{{ Entries }}"
 }'
 ;
 ```

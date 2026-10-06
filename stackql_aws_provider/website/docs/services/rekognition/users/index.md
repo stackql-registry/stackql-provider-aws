@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="search_users"
     values={[
         { label: 'search_users', value: 'search_users' },
+        { label: 'search_users_by_image', value: 'search_users_by_image' },
         { label: 'list_users', value: 'list_users' }
     ]}
 >
@@ -69,6 +70,40 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="user_matches" /></td>
     <td><code>array</code></td>
     <td>An array of UserMatch objects that matched the input face along with the confidence in the match. Array will be empty if there are no matches.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search_users_by_image">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="face_model_version" /></td>
+    <td><code>string</code></td>
+    <td>Version number of the face detection model associated with the input collection CollectionId.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="searched_face" /></td>
+    <td><code>object</code></td>
+    <td>A list of FaceDetail objects containing the BoundingBox for the largest face in image, as well as the confidence in the bounding box, that was searched for matches. If no valid face is detected in the image the response will contain no SearchedFace object.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="unsearched_faces" /></td>
+    <td><code>array</code></td>
+    <td>List of UnsearchedFace objects. Contains the face details infered from the specified image but not used for search. Contains reasons that describe why a face wasn't used for Search.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="user_matches" /></td>
+    <td><code>array</code></td>
+    <td>An array of UserID objects that matched the input face, along with the confidence in the match. The returned structure will be empty if there are no matches. Returned if the SearchUsersByImageResponse action is successful.</td>
 </tr>
 </tbody>
 </table>
@@ -122,6 +157,13 @@ The following methods are available for this resource:
     <td>Searches for UserIDs within a collection based on a FaceId or UserId. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either FaceId or UserId. The operation returns an array of UserID that match the FaceId or UserId, ordered by similarity score with the highest similarity first.</td>
 </tr>
 <tr>
+    <td><a href="#search_users_by_image"><CopyableCode code="search_users_by_image" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Searches for UserIDs using a supplied image. It first detects the largest face in the image, and then searches a specified collection for matching UserIDs. The operation returns an array of UserIDs that match the face in the supplied image, ordered by similarity score with the highest similarity first. It also returns a bounding box for the face found in the input image. Information about faces detected in the supplied image, but not used for the search, is returned in an array of UnsearchedFace objects. If no valid face is detected in the image, the response will contain an empty UserMatches list and no SearchedFace object.</td>
+</tr>
+<tr>
     <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -172,6 +214,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="search_users"
     values={[
         { label: 'search_users', value: 'search_users' },
+        { label: 'search_users_by_image', value: 'search_users_by_image' },
         { label: 'list_users', value: 'list_users' }
     ]}
 >
@@ -184,6 +227,21 @@ SELECT
 face_model_version,
 searched_face,
 searched_user,
+user_matches
+FROM aws.rekognition.users
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="search_users_by_image">
+
+Searches for UserIDs using a supplied image. It first detects the largest face in the image, and then searches a specified collection for matching UserIDs. The operation returns an array of UserIDs that match the face in the supplied image, ordered by similarity score with the highest similarity first. It also returns a bounding box for the face found in the input image. Information about faces detected in the supplied image, but not used for the search, is returned in an array of UnsearchedFace objects. If no valid face is detected in the image, the response will contain an empty UserMatches list and no SearchedFace object.
+
+```sql
+SELECT
+face_model_version,
+searched_face,
+unsearched_faces,
 user_matches
 FROM aws.rekognition.users
 WHERE region = '{{ region }}' -- required

@@ -25,16 +25,16 @@ total resources: __9__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/account/account_informations/">account_informations</a><br />
+<a href="/services/account/account_information/">account_information</a><br />
 <a href="/services/account/account_names/">account_names</a><br />
 <a href="/services/account/alternate_contacts/">alternate_contacts</a><br />
-<a href="/services/account/contact_informations/">contact_informations</a><br />
-<a href="/services/account/gov_cloud_account_informations/">gov_cloud_account_informations</a>
+<a href="/services/account/contact_information/">contact_information</a><br />
+<a href="/services/account/gov_cloud_account_information/">gov_cloud_account_information</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/account/primary_email_update_status/">primary_email_update_status</a><br />
+<a href="/services/account/primary_email_update_statuses/">primary_email_update_statuses</a><br />
 <a href="/services/account/primary_emails/">primary_emails</a><br />
-<a href="/services/account/region_opt_status/">region_opt_status</a><br />
+<a href="/services/account/region_opt_statuses/">region_opt_statuses</a><br />
 <a href="/services/account/regions/">regions</a>
 </div>
 </div>

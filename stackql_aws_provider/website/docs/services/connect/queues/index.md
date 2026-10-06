@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_queue"
     values={[
         { label: 'describe_queue', value: 'describe_queue' },
-        { label: 'list_queues', value: 'list_queues' },
-        { label: 'search_queues', value: 'search_queues' }
+        { label: 'list_queues', value: 'list_queues' }
     ]}
 >
 <TabItem value="describe_queue">
@@ -158,80 +157,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_queues">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the queue.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="hours_of_operation_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier for the hours of operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="max_contacts" /></td>
-    <td><code>integer</code></td>
-    <td>The maximum number of contacts that can be in the queue before it is considered full.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the queue.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="outbound_caller_config" /></td>
-    <td><code>object</code></td>
-    <td>The outbound caller ID name, number, and outbound whisper flow.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="outbound_email_config" /></td>
-    <td><code>object</code></td>
-    <td>The outbound email address ID.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="queue_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) for the queue.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="queue_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier for the queue.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The status of the queue. (ENABLED, DISABLED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -262,13 +187,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-queueTypes"><code>queueTypes</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Provides information about the queues for the specified Connect Customer instance. If you do not specify a QueueTypes parameter, both standard and agent queues are returned. This might cause an unexpected truncation of results if you have more than 1000 agents and you limit the number of results of the API call in code. For more information about queues, see Queues: Standard and Agent in the Connect Customer Administrator Guide.</td>
-</tr>
-<tr>
-    <td><a href="#search_queues"><CopyableCode code="search_queues" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches queues in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_queue"><CopyableCode code="create_queue" /></a></td>
@@ -311,6 +229,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-queue_id"><code>queue_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a queue.</td>
+</tr>
+<tr>
+    <td><a href="#search_queues"><CopyableCode code="search_queues" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches queues in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#update_queue_status"><CopyableCode code="update_queue_status" /></a></td>
@@ -379,8 +304,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_queue"
     values={[
         { label: 'describe_queue', value: 'describe_queue' },
-        { label: 'list_queues', value: 'list_queues' },
-        { label: 'search_queues', value: 'search_queues' }
+        { label: 'list_queues', value: 'list_queues' }
     ]}
 >
 <TabItem value="describe_queue">
@@ -426,29 +350,6 @@ AND region = '{{ region }}' -- required
 AND queueTypes = '{{ queueTypes }}'
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_queues">
-
-Searches queues in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-description,
-hours_of_operation_id,
-last_modified_region,
-last_modified_time,
-max_contacts,
-name,
-outbound_caller_config,
-outbound_email_config,
-queue_arn,
-queue_id,
-status,
-tags
-FROM aws.connect.queues
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -645,11 +546,30 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="update_queue_status"
+    defaultValue="search_queues"
     values={[
+        { label: 'search_queues', value: 'search_queues' },
         { label: 'update_queue_status', value: 'update_queue_status' }
     ]}
 >
+<TabItem value="search_queues">
+
+Searches queues in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.queues.search_queues 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="update_queue_status">
 
 Updates the status of the queue.

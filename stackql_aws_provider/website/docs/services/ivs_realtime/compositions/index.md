@@ -148,6 +148,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets summary information about all Compositions in your account, in the AWS region where the API request is processed.</td>
 </tr>
+<tr>
+    <td><a href="#start_composition"><CopyableCode code="start_composition" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-stageArn"><code>stageArn</code></a>, <a href="#parameter-destinations"><code>destinations</code></a></td>
+    <td></td>
+    <td>Starts a Composition from a stage based on the configuration provided in the request. A Composition is an ephemeral resource that exists after this operation returns successfully. Composition stops and the resource is deleted: When StopComposition is called. After a 1-minute timeout, when all participants are disconnected from the stage. After a 1-minute timeout, if there are no participants in the stage when StartComposition is called. When broadcasting to the IVS channel fails and all retries are exhausted. When broadcasting is disconnected and all attempts to reconnect are exhausted.</td>
+</tr>
+<tr>
+    <td><a href="#stop_composition"><CopyableCode code="stop_composition" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Stops and deletes a Composition resource. Any broadcast from the Composition resource is stopped.</td>
+</tr>
 </tbody>
 </table>
 
@@ -210,6 +224,50 @@ compositions,
 next_token
 FROM aws.ivs_realtime.compositions
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_composition"
+    values={[
+        { label: 'start_composition', value: 'start_composition' },
+        { label: 'stop_composition', value: 'stop_composition' }
+    ]}
+>
+<TabItem value="start_composition">
+
+Starts a Composition from a stage based on the configuration provided in the request. A Composition is an ephemeral resource that exists after this operation returns successfully. Composition stops and the resource is deleted: When StopComposition is called. After a 1-minute timeout, when all participants are disconnected from the stage. After a 1-minute timeout, if there are no participants in the stage when StartComposition is called. When broadcasting to the IVS channel fails and all retries are exhausted. When broadcasting is disconnected and all attempts to reconnect are exhausted.
+
+```sql
+EXEC aws.ivs_realtime.compositions.start_composition 
+@region='{{ region }}' --required 
+@@json=
+'{
+"stageArn": "{{ stageArn }}", 
+"idempotencyToken": "{{ idempotencyToken }}", 
+"layout": "{{ layout }}", 
+"destinations": "{{ destinations }}", 
+"tags": "{{ tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_composition">
+
+Stops and deletes a Composition resource. Any broadcast from the Composition resource is stopped.
+
+```sql
+EXEC aws.ivs_realtime.compositions.stop_composition 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}"
+}'
 ;
 ```
 </TabItem>

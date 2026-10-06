@@ -294,6 +294,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-X-Amz-Client-Token"><code>X-Amz-Client-Token</code></a></td>
     <td>Updates a task.</td>
 </tr>
+<tr>
+    <td><a href="#batch_update_task"><CopyableCode code="batch_update_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-tasks"><code>tasks</code></a></td>
+    <td><a href="#parameter-X-Amz-Client-Token"><code>X-Amz-Client-Token</code></a></td>
+    <td>Updates multiple tasks in a single request. This is a batch version of the UpdateTask API. The result of updating each task is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200.</td>
+</tr>
 </tbody>
 </table>
 
@@ -482,6 +489,32 @@ AND task_id = '{{ task_id }}' --required
 AND region = '{{ region }}' --required
 AND targetRunStatus = '{{ targetRunStatus }}' --required
 AND `X-Amz-Client-Token` = '{{ X-Amz-Client-Token}}';
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_update_task"
+    values={[
+        { label: 'batch_update_task', value: 'batch_update_task' }
+    ]}
+>
+<TabItem value="batch_update_task">
+
+Updates multiple tasks in a single request. This is a batch version of the UpdateTask API. The result of updating each task is reported individually in the response. Because the batch request can result in a combination of successful and unsuccessful actions, you should check for batch errors even when the call returns an HTTP status code of 200.
+
+```sql
+EXEC aws.deadline.tasks.batch_update_task 
+@region='{{ region }}' --required, 
+@X-Amz-Client-Token='{{ X-Amz-Client-Token }}' 
+@@json=
+'{
+"tasks": "{{ tasks }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

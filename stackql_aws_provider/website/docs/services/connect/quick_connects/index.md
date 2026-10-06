@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_quick_connect"
     values={[
         { label: 'describe_quick_connect', value: 'describe_quick_connect' },
-        { label: 'list_quick_connects', value: 'list_quick_connects' },
-        { label: 'search_quick_connects', value: 'search_quick_connects' }
+        { label: 'list_quick_connects', value: 'list_quick_connects' }
     ]}
 >
 <TabItem value="describe_quick_connect">
@@ -138,60 +137,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_quick_connects">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the quick connect.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="quick_connect_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the quick connect.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="quick_connect_config" /></td>
-    <td><code>object</code></td>
-    <td>Contains configuration settings for a quick connect.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="quick_connect_id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier for the quick connect.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -224,13 +169,6 @@ The following methods are available for this resource:
     <td>Provides information about the quick connects for the specified Connect Customer instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_quick_connects"><CopyableCode code="search_quick_connects" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches quick connects in an Connect Customer instance, with optional filtering.</td>
-</tr>
-<tr>
     <td><a href="#create_quick_connect"><CopyableCode code="create_quick_connect" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-QuickConnectConfig"><code>QuickConnectConfig</code></a></td>
@@ -257,6 +195,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-quick_connect_id"><code>quick_connect_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a quick connect. After calling DeleteUser, it's important to call DeleteQuickConnect to delete any records related to the deleted users. This will help you: Avoid dangling resources that impact your service quotas. Remove deleted users so they don't appear to agents as transfer options. Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if you're using Connect Customer Global Resiliency.</td>
+</tr>
+<tr>
+    <td><a href="#search_quick_connects"><CopyableCode code="search_quick_connects" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches quick connects in an Connect Customer instance, with optional filtering.</td>
 </tr>
 </tbody>
 </table>
@@ -313,8 +258,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_quick_connect"
     values={[
         { label: 'describe_quick_connect', value: 'describe_quick_connect' },
-        { label: 'list_quick_connects', value: 'list_quick_connects' },
-        { label: 'search_quick_connects', value: 'search_quick_connects' }
+        { label: 'list_quick_connects', value: 'list_quick_connects' }
     ]}
 >
 <TabItem value="describe_quick_connect">
@@ -356,25 +300,6 @@ AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
 AND QuickConnectTypes = '{{ QuickConnectTypes }}'
-;
-```
-</TabItem>
-<TabItem value="search_quick_connects">
-
-Searches quick connects in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-description,
-last_modified_region,
-last_modified_time,
-name,
-quick_connect_arn,
-quick_connect_config,
-quick_connect_id,
-tags
-FROM aws.connect.quick_connects
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -513,6 +438,35 @@ DELETE FROM aws.connect.quick_connects
 WHERE instance_id = '{{ instance_id }}' --required
 AND quick_connect_id = '{{ quick_connect_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_quick_connects"
+    values={[
+        { label: 'search_quick_connects', value: 'search_quick_connects' }
+    ]}
+>
+<TabItem value="search_quick_connects">
+
+Searches quick connects in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.quick_connects.search_quick_connects 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

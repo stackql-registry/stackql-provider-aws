@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_contact_flow"
     values={[
         { label: 'describe_contact_flow', value: 'describe_contact_flow' },
-        { label: 'list_contact_flows', value: 'list_contact_flows' },
-        { label: 'search_contact_flows', value: 'search_contact_flows' }
+        { label: 'list_contact_flows', value: 'list_contact_flows' }
     ]}
 >
 <TabItem value="describe_contact_flow">
@@ -168,90 +167,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_contact_flows">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the flow.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="content" /></td>
-    <td><code>string</code></td>
-    <td>The JSON string that represents the content of the flow. For an example, see Example flow in Connect Customer Flow language. Length Constraints: Minimum length of 1. Maximum length of 256000.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the flow.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="flow_content_sha_256" /></td>
-    <td><code>string</code></td>
-    <td>Indicates the checksum value of the flow content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the flow.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The region in which the flow was last modified (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The time at which the flow was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the flow.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="state" /></td>
-    <td><code>string</code></td>
-    <td>The type of flow. (ACTIVE, ARCHIVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The status of the flow. (PUBLISHED, SAVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="type" /></td>
-    <td><code>string</code></td>
-    <td>The type of the flow. For descriptions of the available types, see Choose a flow type in the Connect Customer Administrator Guide. (CONTACT_FLOW, CUSTOMER_QUEUE, CUSTOMER_HOLD, CUSTOMER_WHISPER, AGENT_HOLD, AGENT_WHISPER, OUTBOUND_WHISPER, AGENT_TRANSFER, QUEUE_TRANSFER, CAMPAIGN)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The identifier of the flow version.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="version_description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the flow version.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -282,13 +197,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-contactFlowTypes"><code>contactFlowTypes</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Provides information about the flows for the specified Connect Customer instance. You can also create and update flows using the Connect Customer Flow language. For more information about flows, see Flows in the Connect Customer Administrator Guide.</td>
-</tr>
-<tr>
-    <td><a href="#search_contact_flows"><CopyableCode code="search_contact_flows" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches the flows in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#create_contact_flow"><CopyableCode code="create_contact_flow" /></a></td>
@@ -324,6 +232,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-contact_flow_id"><code>contact_flow_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a flow for the specified Connect Customer instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_contact_flows"><CopyableCode code="search_contact_flows" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches the flows in an Connect Customer instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#start_chat_contact"><CopyableCode code="start_chat_contact" /></a></td>
@@ -439,8 +354,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_contact_flow"
     values={[
         { label: 'describe_contact_flow', value: 'describe_contact_flow' },
-        { label: 'list_contact_flows', value: 'list_contact_flows' },
-        { label: 'search_contact_flows', value: 'search_contact_flows' }
+        { label: 'list_contact_flows', value: 'list_contact_flows' }
     ]}
 >
 <TabItem value="describe_contact_flow">
@@ -488,31 +402,6 @@ AND region = '{{ region }}' -- required
 AND contactFlowTypes = '{{ contactFlowTypes }}'
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_contact_flows">
-
-Searches the flows in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-arn,
-content,
-description,
-flow_content_sha_256,
-id,
-last_modified_region,
-last_modified_time,
-name,
-state,
-status,
-tags,
-type,
-version,
-version_description
-FROM aws.connect.contact_flows
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -673,8 +562,9 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_chat_contact"
+    defaultValue="search_contact_flows"
     values={[
+        { label: 'search_contact_flows', value: 'search_contact_flows' },
         { label: 'start_chat_contact', value: 'start_chat_contact' },
         { label: 'start_outbound_chat_contact', value: 'start_outbound_chat_contact' },
         { label: 'start_outbound_voice_contact', value: 'start_outbound_voice_contact' },
@@ -684,6 +574,24 @@ AND region = '{{ region }}' --required
         { label: 'update_contact_flow_name', value: 'update_contact_flow_name' }
     ]}
 >
+<TabItem value="search_contact_flows">
+
+Searches the flows in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.contact_flows.search_contact_flows 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_chat_contact">
 
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the CreateParticipantConnection API in the Connect Customer Participant Service. When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS. A 429 error occurs in the following situations: API rate limit is exceeded. API TPS throttling returns a TooManyRequests exception. The quota for concurrent active chats is exceeded. Active chat throttling returns a LimitExceededException. If you use the ChatDurationInMinutes parameter and receive a 400 error, your account may not support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support. For more information about chat, see the following topics in the Connect Customer Administrator Guide: Concepts: Web and mobile messaging capabilities in Connect Customer Connect Customer Chat security best practices

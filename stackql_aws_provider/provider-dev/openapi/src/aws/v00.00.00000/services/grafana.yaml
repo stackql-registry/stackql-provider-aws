@@ -581,10 +581,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceConfigurationResponse"
   /workspaces/{workspace_id}/permissions:
     get:
       operationId: ListPermissions
@@ -703,10 +699,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: The UntagResource operation removes the association of the tag with the Amazon Managed Grafana resource.
@@ -726,10 +718,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /versions:
     get:
       operationId: ListVersions
@@ -1681,8 +1669,6 @@ components:
         - modified
         - status
         - authentication
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1691,8 +1677,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateInstructionBatch:
       type: array
       items:
@@ -1772,8 +1756,6 @@ components:
           description: A structure that describes the user authentication for this workspace after the update is made.
       required:
         - authentication
-    UpdateWorkspaceConfigurationResponse:
-      type: object
   x-stackQL-resources:
     workspaces:
       id: aws.grafana.workspaces
@@ -1866,8 +1848,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspace"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/list_workspaces"
         insert:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace_api_key"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace_api_key"
         update:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/associate_license"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/update_workspace"
@@ -2014,7 +1996,6 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1configuration/put"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2083,7 +2064,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2094,7 +2074,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

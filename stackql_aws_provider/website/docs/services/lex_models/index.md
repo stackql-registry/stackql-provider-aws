@@ -18,24 +18,23 @@ lex_models service documentation.
 
 :::info[Service Summary]
 
-total resources: __16__  
+total resources: __15__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/lex_models/bot_alias/">bot_alias</a><br />
 <a href="/services/lex_models/bot_aliases/">bot_aliases</a><br />
 <a href="/services/lex_models/bot_channel_associations/">bot_channel_associations</a><br />
 <a href="/services/lex_models/bot_versions/">bot_versions</a><br />
 <a href="/services/lex_models/bots/">bots</a><br />
 <a href="/services/lex_models/builtin_intents/">builtin_intents</a><br />
 <a href="/services/lex_models/builtin_slot_types/">builtin_slot_types</a><br />
-<a href="/services/lex_models/exports/">exports</a>
+<a href="/services/lex_models/exports/">exports</a><br />
+<a href="/services/lex_models/imports/">imports</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/lex_models/imports/">imports</a><br />
 <a href="/services/lex_models/intent_versions/">intent_versions</a><br />
 <a href="/services/lex_models/intents/">intents</a><br />
 <a href="/services/lex_models/migrations/">migrations</a><br />

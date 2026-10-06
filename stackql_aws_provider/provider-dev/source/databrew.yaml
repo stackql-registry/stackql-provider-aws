@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteRecipeVersionResponse'
-      x-stackql-resource: batch_delete_recipe_version
+      x-stackql-resource: recipe_versions
       x-stackql-method: batch_delete_recipe_version
       x-stackql-verb: EXEC
   /datasets:
@@ -1136,10 +1136,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1163,10 +1159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1197,7 +1189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishRecipeResponse'
-      x-stackql-resource: recipe
+      x-stackql-resource: recipes
       x-stackql-method: publish_recipe
       x-stackql-verb: EXEC
   /projects/{name}/sendProjectSessionAction:
@@ -1256,7 +1248,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: jobs
+      x-stackql-resource: job_runs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /projects/{name}/startProjectSession:
@@ -1313,7 +1305,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopJobRunResponse'
-      x-stackql-resource: jobs
+      x-stackql-resource: job_runs
       x-stackql-method: stop_job_run
       x-stackql-verb: EXEC
   /profileJobs/{name}:
@@ -3517,8 +3509,6 @@ components:
           description: The ID of the job run that you stopped.
       required:
       - RunId
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3527,8 +3517,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateDatasetResponse:
       type: object
       properties:

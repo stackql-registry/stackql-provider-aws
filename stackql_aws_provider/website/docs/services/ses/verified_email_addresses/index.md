@@ -81,6 +81,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deprecated. Use the ListIdentities operation to list the email addresses and domains associated with your account.</td>
 </tr>
+<tr>
+    <td><a href="#delete_verified_email_address"><CopyableCode code="delete_verified_email_address" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-EmailAddress"><code>EmailAddress</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deprecated. Use the DeleteIdentity operation to delete email addresses and domains.</td>
+</tr>
 </tbody>
 </table>
 
@@ -97,6 +104,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-EmailAddress">
+    <td><CopyableCode code="EmailAddress" /></td>
+    <td><code>string</code></td>
+    <td>An email address to be removed from the list of verified addresses.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -122,6 +134,28 @@ SELECT
 verified_email_address
 FROM aws.ses.verified_email_addresses
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_verified_email_address"
+    values={[
+        { label: 'delete_verified_email_address', value: 'delete_verified_email_address' }
+    ]}
+>
+<TabItem value="delete_verified_email_address">
+
+Deprecated. Use the DeleteIdentity operation to delete email addresses and domains.
+
+```sql
+DELETE FROM aws.ses.verified_email_addresses
+WHERE EmailAddress = '{{ EmailAddress }}' --required
+AND region = '{{ region }}' --required
 ;
 ```
 </TabItem>

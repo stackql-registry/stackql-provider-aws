@@ -161,6 +161,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-NetworkInsightsAnalysisId"><code>NetworkInsightsAnalysisId</code></a>, <a href="#parameter-NetworkInsightsPathId"><code>NetworkInsightsPathId</code></a>, <a href="#parameter-AnalysisStartTime"><code>AnalysisStartTime</code></a>, <a href="#parameter-AnalysisEndTime"><code>AnalysisEndTime</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Describes one or more of your network insights analyses.</td>
 </tr>
+<tr>
+    <td><a href="#delete_network_insights_analysis"><CopyableCode code="delete_network_insights_analysis" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-NetworkInsightsAnalysisId"><code>NetworkInsightsAnalysisId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Deletes the specified network insights analysis.</td>
+</tr>
+<tr>
+    <td><a href="#start_network_insights_analysis"><CopyableCode code="start_network_insights_analysis" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-NetworkInsightsPathId"><code>NetworkInsightsPathId</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-AdditionalAccount"><code>AdditionalAccount</code></a>, <a href="#parameter-FilterInArn"><code>FilterInArn</code></a>, <a href="#parameter-FilterOutArn"><code>FilterOutArn</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
+    <td>Starts analyzing the specified path. If the path is reachable, the operation returns the shortest feasible path.</td>
+</tr>
 </tbody>
 </table>
 
@@ -177,10 +191,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-ClientToken">
+    <td><CopyableCode code="ClientToken" /></td>
+    <td><code>string</code></td>
+    <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see How to ensure idempotency.</td>
+</tr>
+<tr id="parameter-NetworkInsightsAnalysisId">
+    <td><CopyableCode code="NetworkInsightsAnalysisId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the network insights analysis.</td>
+</tr>
+<tr id="parameter-NetworkInsightsPathId">
+    <td><CopyableCode code="NetworkInsightsPathId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the path.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-AdditionalAccount">
+    <td><CopyableCode code="AdditionalAccount" /></td>
+    <td><code>array</code></td>
+    <td>The member accounts that contain resources that the path can traverse.</td>
 </tr>
 <tr id="parameter-AnalysisEndTime">
     <td><CopyableCode code="AnalysisEndTime" /></td>
@@ -202,6 +236,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>The filters. The following are the possible values: path-found - A Boolean value that indicates whether a feasible path is found. status - The status of the analysis (running | succeeded | failed).</td>
 </tr>
+<tr id="parameter-FilterInArn">
+    <td><CopyableCode code="FilterInArn" /></td>
+    <td><code>array</code></td>
+    <td>The Amazon Resource Names (ARN) of the resources that the path must traverse.</td>
+</tr>
+<tr id="parameter-FilterOutArn">
+    <td><CopyableCode code="FilterOutArn" /></td>
+    <td><code>array</code></td>
+    <td>The Amazon Resource Names (ARN) of the resources that the path will ignore.</td>
+</tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
@@ -221,6 +265,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>The token for the next page of results.</td>
+</tr>
+<tr id="parameter-TagSpecification">
+    <td><CopyableCode code="TagSpecification" /></td>
+    <td><code>array</code></td>
+    <td>The tags to apply.</td>
 </tr>
 </tbody>
 </table>
@@ -266,6 +315,57 @@ AND Filter = '{{ Filter }}'
 AND MaxResults = '{{ MaxResults }}'
 AND DryRun = '{{ DryRun }}'
 AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_network_insights_analysis"
+    values={[
+        { label: 'delete_network_insights_analysis', value: 'delete_network_insights_analysis' }
+    ]}
+>
+<TabItem value="delete_network_insights_analysis">
+
+Deletes the specified network insights analysis.
+
+```sql
+DELETE FROM aws.ec2.network_insights_analyses
+WHERE NetworkInsightsAnalysisId = '{{ NetworkInsightsAnalysisId }}' --required
+AND region = '{{ region }}' --required
+AND DryRun = '{{ DryRun }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_network_insights_analysis"
+    values={[
+        { label: 'start_network_insights_analysis', value: 'start_network_insights_analysis' }
+    ]}
+>
+<TabItem value="start_network_insights_analysis">
+
+Starts analyzing the specified path. If the path is reachable, the operation returns the shortest feasible path.
+
+```sql
+EXEC aws.ec2.network_insights_analyses.start_network_insights_analysis 
+@NetworkInsightsPathId='{{ NetworkInsightsPathId }}' --required, 
+@ClientToken='{{ ClientToken }}' --required, 
+@region='{{ region }}' --required, 
+@AdditionalAccount='{{ AdditionalAccount }}', 
+@FilterInArn='{{ FilterInArn }}', 
+@FilterOutArn='{{ FilterOutArn }}', 
+@DryRun={{ DryRun }}, 
+@TagSpecification='{{ TagSpecification }}'
 ;
 ```
 </TabItem>

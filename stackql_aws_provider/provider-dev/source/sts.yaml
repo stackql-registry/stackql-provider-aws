@@ -235,6 +235,11 @@ paths:
           assertion was generated. [{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]
         schema:
           $ref: '#/components/schemas/ProvidedContextsListType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -242,7 +247,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AssumeRoleOutputDisplay'
-      x-stackql-resource: assume_role
+      x-stackql-resource: roles
       x-stackql-method: assume_role
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleOutputDisplay
@@ -303,7 +308,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssumeRoleRequest'
-      x-stackql-resource: assume_role
+      x-stackql-resource: roles
       x-stackql-method: assume_role
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleOutputDisplay
@@ -447,6 +452,11 @@ paths:
           User Guide.
         schema:
           $ref: '#/components/schemas/roleDurationSecondsType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -454,7 +464,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AssumeRoleWithSAMLOutputDisplay'
-      x-stackql-resource: assume_role_with_saml
+      x-stackql-resource: roles
       x-stackql-method: assume_role_with_saml
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleWithSAMLOutputDisplay
@@ -529,7 +539,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssumeRoleWithSAMLRequest'
-      x-stackql-resource: assume_role_with_saml
+      x-stackql-resource: roles
       x-stackql-method: assume_role_with_saml
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleWithSAMLOutputDisplay
@@ -697,6 +707,11 @@ paths:
           Console in the IAM User Guide.
         schema:
           $ref: '#/components/schemas/roleDurationSecondsType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -704,7 +719,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AssumeRoleWithWebIdentityOutputDisplay'
-      x-stackql-resource: assume_role_with_web_identity
+      x-stackql-resource: roles
       x-stackql-method: assume_role_with_web_identity
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleWithWebIdentityOutputDisplay
@@ -780,7 +795,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssumeRoleWithWebIdentityRequest'
-      x-stackql-resource: assume_role_with_web_identity
+      x-stackql-resource: roles
       x-stackql-method: assume_role_with_web_identity
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRoleWithWebIdentityOutputDisplay
@@ -830,6 +845,11 @@ paths:
           By default, the value is set to 900 seconds.
         schema:
           $ref: '#/components/schemas/RootDurationSecondsType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -837,7 +857,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AssumeRootOutputDisplay'
-      x-stackql-resource: assume_root
+      x-stackql-resource: roots
       x-stackql-method: assume_root
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRootOutputDisplay
@@ -868,7 +888,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssumeRootRequest'
-      x-stackql-resource: assume_root
+      x-stackql-resource: roots
       x-stackql-method: assume_root
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AssumeRootOutputDisplay
@@ -911,7 +931,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DecodeAuthorizationMessageOutputDisplay'
-      x-stackql-resource: decode_authorization_message
+      x-stackql-resource: authorization_messages
       x-stackql-method: decode_authorization_message
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecodeAuthorizationMessageOutputDisplay
@@ -944,7 +964,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DecodeAuthorizationMessageRequest'
-      x-stackql-resource: decode_authorization_message
+      x-stackql-resource: authorization_messages
       x-stackql-method: decode_authorization_message
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecodeAuthorizationMessageOutputDisplay
@@ -986,7 +1006,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/GetAccessKeyInfoOutputDisplay'
-      x-stackql-resource: access_key_infos
+      x-stackql-resource: access_key_info
       x-stackql-method: get_access_key_info
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessKeyInfoOutputDisplay
@@ -1017,7 +1037,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/GetAccessKeyInfoRequest'
-      x-stackql-resource: access_key_infos
+      x-stackql-resource: access_key_info
       x-stackql-method: get_access_key_info
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAccessKeyInfoOutputDisplay
@@ -1271,6 +1291,11 @@ paths:
           over the role tag.
         schema:
           $ref: '#/components/schemas/tagListType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -1413,6 +1438,11 @@ paths:
           pattern, is a sequence of six numeric digits.
         schema:
           $ref: '#/components/schemas/tokenCodeType'
+      - name: MinimumSessionTokenSize
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       responses:
         '200':
           description: Success
@@ -1484,6 +1514,7 @@ paths:
       description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned
         JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon
         Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint.
+        The GetWebIdentityToken API is not available on the STS Global endpoint.
       parameters:
       - name: Audience
         in: query
@@ -1533,6 +1564,7 @@ paths:
       description: Returns a signed JSON Web Token (JWT) that represents the calling Amazon Web Services identity. The returned
         JWT can be used to authenticate with external services that support OIDC discovery. The token is signed by Amazon
         Web Services STS and can be publicly verified using the verification keys published at the issuer's JWKS endpoint.
+        The GetWebIdentityToken API is not available on the STS Global endpoint.
       responses:
         '200':
           description: Success
@@ -1704,6 +1736,13 @@ components:
       type: string
       minLength: 4
       maxLength: 2048
+    minimumSessionTokenSizeType:
+      description: The minimum size, in bytes, of the session token that STS issues for the request. STS increases the session
+        token to at least this size, regardless of its actual content. The value must not exceed 4,096 bytes. When set to
+        0 or not specified, the session token size is unchanged.
+      type: integer
+      minimum: 0
+      maximum: 4096
     AssumeRoleResponseDisplay:
       type: object
       properties:
@@ -1733,6 +1772,12 @@ components:
             and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter
             is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can
             also include underscores or any of the following characters: =,.@-'
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleOutputDisplay:
       type: object
       properties:
@@ -1875,6 +1920,8 @@ components:
             context assertion is signed and encrypted by Amazon Web Services STS. The following is an example of a ProvidedContext
             value that includes a single trusted context assertion and the ARN of the context provider from which the trusted
             context assertion was generated. [{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"}]
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       required:
       - RoleArn
       - RoleSessionName
@@ -1937,6 +1984,12 @@ components:
             roles in the IAM User Guide. The regex used to validate this parameter is a string of characters consisting of
             upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following
             characters: =,.@-'
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleWithSAMLOutputDisplay:
       type: object
       properties:
@@ -2002,6 +2055,8 @@ components:
             for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console
             session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services
             Management Console in the IAM User Guide.
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       required:
       - RoleArn
       - PrincipalArn
@@ -2061,6 +2116,12 @@ components:
             and control actions taken with assumed roles in the IAM User Guide. The regex used to validate this parameter
             is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can
             also include underscores or any of the following characters: =,.@-'
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRoleWithWebIdentityOutputDisplay:
       type: object
       properties:
@@ -2146,6 +2207,8 @@ components:
             for a console sign-in token takes a SessionDuration parameter that specifies the maximum length of the console
             session. For more information, see Creating a URL that Enables Federated Users to Access the Amazon Web Services
             Management Console in the IAM User Guide.
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       required:
       - RoleArn
       - RoleSessionName
@@ -2173,6 +2236,12 @@ components:
             about using source identity, see Monitor and control actions taken with assumed roles in the IAM User Guide. The
             regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric
             characters with no spaces. You can also include underscores or any of the following characters: =,.@-'
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     AssumeRootOutputDisplay:
       type: object
       properties:
@@ -2196,6 +2265,8 @@ components:
           description: The duration, in seconds, of the privileged session. The value can range from 0 seconds up to the maximum
             session duration of 900 seconds (15 minutes). If you specify a value higher than this setting, the operation fails.
             By default, the value is set to 900 seconds.
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       required:
       - TargetPrincipal
       - TaskPolicyArn
@@ -2334,6 +2405,12 @@ components:
           description: A percentage value that indicates the packed size of the session policies and session tags combined
             passed in the request. The request fails if the packed size is greater than 100 percent, which means the policies
             and tags exceeded the allowed space.
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     GetFederationTokenOutputDisplay:
       type: object
       properties:
@@ -2414,30 +2491,31 @@ components:
             Department and department tag keys. Assume that the role has the Department=Marketing tag and you pass the department=engineering
             session tag. Department and department are not saved as separate tags, and the session tag passed in the request
             takes precedence over the role tag.
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
       required:
       - Name
-    CredentialsDisplay:
+    GetSessionTokenResponseDisplay:
       type: object
       properties:
-        AccessKeyId:
+        Credentials:
           type: string
-          description: The access key ID that identifies the temporary security credentials.
-        SecretAccessKey:
-          type: string
-          description: The secret access key that can be used to sign requests.
-        SessionToken:
-          type: string
-          description: The token that users must pass to the service API to use the temporary credentials.
-        Expiration:
-          type: string
-          description: The date on which the current credentials expire.
+          description: The temporary security credentials, which include an access key ID, a secret access key, and a security
+            (or session) token. The size of the security token that STS API operations return is not fixed. We strongly recommend
+            that you make no assumptions about the maximum size.
+        SessionTokenUtilization:
+          type: integer
+          description: The percentage (0-100) of the maximum allowed session token size that the returned session token consumes.
+        SessionTokenSize:
+          type: integer
+          description: The size, in bytes, of the session token returned in the Credentials for this response.
     GetSessionTokenOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/CredentialsDisplay'
+            $ref: '#/components/schemas/GetSessionTokenResponseDisplay'
     GetSessionTokenRequest:
       type: object
       properties:
@@ -2464,6 +2542,8 @@ components:
             a set of temporary security credentials. A user who fails to provide the code receives an "access denied" response
             when requesting resources that require MFA authentication. The format for this parameter, as described by its
             regex pattern, is a sequence of six numeric digits.
+        MinimumSessionTokenSize:
+          $ref: '#/components/schemas/minimumSessionTokenSizeType'
     webIdentityTokenAudienceListType:
       type: array
       items:

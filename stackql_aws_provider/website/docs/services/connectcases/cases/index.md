@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_case"
     values={[
         { label: 'get_case', value: 'get_case' },
+        { label: 'list_cases_for_contact', value: 'list_cases_for_contact' },
         { label: 'search_cases', value: 'search_cases' }
     ]}
 >
@@ -69,6 +70,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="template_id" /></td>
     <td><code>string</code></td>
     <td>A unique identifier of a template.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_cases_for_contact">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="cases" /></td>
+    <td><code>array</code></td>
+    <td>A list of Case summary information.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The token for the next set of results. This is null if there are no more results to return.</td>
 </tr>
 </tbody>
 </table>
@@ -130,6 +155,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-case_id"><code>case_id</code></a>, <a href="#parameter-domain_id"><code>domain_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns information about a specific case if it exists.</td>
+</tr>
+<tr>
+    <td><a href="#list_cases_for_contact"><CopyableCode code="list_cases_for_contact" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_id"><code>domain_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists cases for a given contact.</td>
 </tr>
 <tr>
     <td><a href="#search_cases"><CopyableCode code="search_cases" /></a></td>
@@ -199,6 +231,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_case"
     values={[
         { label: 'get_case', value: 'get_case' },
+        { label: 'list_cases_for_contact', value: 'list_cases_for_contact' },
         { label: 'search_cases', value: 'search_cases' }
     ]}
 >
@@ -215,6 +248,20 @@ template_id
 FROM aws.connectcases.cases
 WHERE case_id = '{{ case_id }}' -- required
 AND domain_id = '{{ domain_id }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_cases_for_contact">
+
+Lists cases for a given contact.
+
+```sql
+SELECT
+cases,
+next_token
+FROM aws.connectcases.cases
+WHERE domain_id = '{{ domain_id }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```

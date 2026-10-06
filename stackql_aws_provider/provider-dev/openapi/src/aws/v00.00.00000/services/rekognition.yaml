@@ -475,10 +475,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateUserResponse"
   /DeleteCollection:
     post:
       operationId: DeleteCollection
@@ -541,10 +537,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDatasetResponse"
   /DeleteFaces:
     post:
       operationId: DeleteFaces
@@ -651,10 +643,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectPolicyResponse"
   /DeleteProjectVersion:
     post:
       operationId: DeleteProjectVersion
@@ -715,10 +703,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStreamProcessorResponse"
   /DeleteUser:
     post:
       operationId: DeleteUser
@@ -755,10 +739,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserResponse"
   /DescribeCollection:
     post:
       operationId: DescribeCollection
@@ -1248,10 +1228,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DistributeDatasetEntriesResponse"
   /GetCelebrityInfo:
     post:
       operationId: GetCelebrityInfo
@@ -2371,8 +2347,6 @@ paths:
                 JobTag:
                   $ref: "#/components/schemas/JobTag"
                   description: An identifier you specify that's returned in the completion notification that's published to your Amazon Simple Notification Service topic. For example, you can use JobTag to group related jobs and identify them in the completion notification.
-              required:
-                - Video
       responses:
         "200":
           description: Success
@@ -2416,8 +2390,6 @@ paths:
                 JobTag:
                   $ref: "#/components/schemas/JobTag"
                   description: An identifier you specify that's returned in the completion notification that's published to your Amazon Simple Notification Service topic. For example, you can use JobTag to group related jobs and identify them in the completion notification.
-              required:
-                - Video
       responses:
         "200":
           description: Success
@@ -2561,8 +2533,6 @@ paths:
                 Settings:
                   $ref: "#/components/schemas/LabelDetectionSettings"
                   description: The settings for a StartLabelDetection request.Contains the specified parameters for the label detection request of an asynchronous label analysis operation. Settings can include filters for GENERAL_LABELS.
-              required:
-                - Video
       responses:
         "200":
           description: Success
@@ -2611,7 +2581,6 @@ paths:
                   description: The identifier of customer managed AWS KMS key (name or ARN). The key is used to encrypt images copied into the service. The key is also used to encrypt results and manifest files written to the output Amazon S3 bucket.
               required:
                 - OperationsConfig
-                - Input
                 - OutputConfig
       responses:
         "200":
@@ -2653,8 +2622,6 @@ paths:
                 JobTag:
                   $ref: "#/components/schemas/JobTag"
                   description: An identifier you specify that's returned in the completion notification that's published to your Amazon Simple Notification Service topic. For example, you can use JobTag to group related jobs and identify them in the completion notification.
-              required:
-                - Video
       responses:
         "200":
           description: Success
@@ -2741,7 +2708,6 @@ paths:
                   $ref: "#/components/schemas/SegmentTypes"
                   description: An array of segment types to detect in the video. Valid values are TECHNICAL_CUE and SHOT.
               required:
-                - Video
                 - SegmentTypes
       responses:
         "200":
@@ -2780,8 +2746,6 @@ paths:
                 StopSelector:
                   $ref: "#/components/schemas/StreamProcessingStopSelector"
                   description: Specifies when to stop processing the stream. You can specify a maximum amount of time to process the video. This is a required parameter for label detection stream processors and should not be used to start a face search stream processor.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -2823,8 +2787,6 @@ paths:
                 Filters:
                   $ref: "#/components/schemas/StartTextDetectionFilters"
                   description: Optional parameters that let you set criteria the text must meet to be included in your response.
-              required:
-                - Video
       responses:
         "200":
           description: Success
@@ -2889,15 +2851,9 @@ paths:
                 Name:
                   $ref: "#/components/schemas/StreamProcessorName"
                   description: The name of a stream processor created by CreateStreamProcessor.
-              required:
-                - Name
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopStreamProcessorResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -2930,10 +2886,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -2967,10 +2919,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateDatasetEntries:
     post:
       operationId: UpdateDatasetEntries
@@ -3004,10 +2952,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDatasetEntriesResponse"
   /UpdateStreamProcessor:
     post:
       operationId: UpdateStreamProcessor
@@ -3047,10 +2991,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStreamProcessorResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3840,16 +3780,12 @@ components:
     StreamProcessorArn:
       type: string
       pattern: (^arn:[a-z\d-]+:rekognition:[a-z\d-]+:\d{12}:streamprocessor\/.+$)
-    CreateUserResponse:
-      type: object
     DeleteCollectionResponse:
       type: object
       properties:
         StatusCode:
           $ref: "#/components/schemas/UInteger"
           description: HTTP status code that indicates the result of the operation.
-    DeleteDatasetResponse:
-      type: object
     FaceIdList:
       type: array
       items:
@@ -3910,8 +3846,6 @@ components:
       type: string
       maxLength: 64
       pattern: "[0-9A-Fa-f]+"
-    DeleteProjectPolicyResponse:
-      type: object
     DeleteProjectVersionResponse:
       type: object
       properties:
@@ -3935,10 +3869,6 @@ components:
         - COPYING_FAILED
         - DEPRECATED
         - EXPIRED
-    DeleteStreamProcessorResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
     DescribeCollectionResponse:
       type: object
       properties:
@@ -5125,8 +5055,6 @@ components:
           description: The Amazon Resource Name (ARN) of the dataset that you want to use.
       required:
         - Arn
-    DistributeDatasetEntriesResponse:
-      type: object
     RekognitionUniqueId:
       type: string
       pattern: "[0-9A-Za-z]*"
@@ -6778,10 +6706,6 @@ components:
         Status:
           $ref: "#/components/schemas/ProjectVersionStatus"
           description: The current status of the stop operation.
-    StopStreamProcessorResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -6791,8 +6715,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[\p{L}\p{Z}\p{N}_.:/=+\-@]*$
-    UntagResourceResponse:
-      type: object
     DatasetChanges:
       description: Describes updates or additions to a dataset. A Single update or addition is an entry (JSON Line) that provides information about a single image. To update an existing entry, you match the source-ref field of the update entry with the source-ref filed of the entry that you want to update. If the source-ref field doesn't match an existing entry, the entry is added to dataset as a new entry.
       type: object
@@ -6807,8 +6729,6 @@ components:
       format: byte
       minLength: 1
       maxLength: 5242880
-    UpdateDatasetEntriesResponse:
-      type: object
     StreamProcessorSettingsForUpdate:
       description: The stream processor settings that you want to update. ConnectedHome settings can be updated to detect different labels with a different minimum confidence.
       type: object
@@ -6835,8 +6755,6 @@ components:
       enum:
         - ConnectedHomeMinConfidence
         - RegionsOfInterest
-    UpdateStreamProcessorResponse:
-      type: object
   x-stackQL-resources:
     faces:
       id: aws.rekognition.faces
@@ -6968,6 +6886,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        search_faces_by_image:
+          operation:
+            $ref: "#/paths/~1SearchFacesByImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_face_detection:
           operation:
             $ref: "#/paths/~1StartFaceDetection/post"
@@ -6997,6 +6928,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/faces/methods/search_faces"
+          - $ref: "#/components/x-stackQL-resources/faces/methods/search_faces_by_image"
           - $ref: "#/components/x-stackQL-resources/faces/methods/list_faces"
         insert:
           - $ref: "#/components/x-stackQL-resources/faces/methods/create_face_liveness_session"
@@ -7206,7 +7138,6 @@ components:
             $ref: "#/paths/~1DeleteDataset/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7332,7 +7263,6 @@ components:
             $ref: "#/paths/~1DeleteStreamProcessor/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7374,12 +7304,36 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_stream_processor:
+          operation:
+            $ref: "#/paths/~1StartStreamProcessor/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_stream_processor:
+          operation:
+            $ref: "#/paths/~1StopStreamProcessor/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_stream_processor:
           operation:
             $ref: "#/paths/~1UpdateStreamProcessor/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7406,7 +7360,6 @@ components:
             $ref: "#/paths/~1CreateUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7419,7 +7372,6 @@ components:
             $ref: "#/paths/~1DeleteUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7461,9 +7413,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        search_users_by_image:
+          operation:
+            $ref: "#/paths/~1SearchUsersByImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/users/methods/search_users"
+          - $ref: "#/components/x-stackQL-resources/users/methods/search_users_by_image"
           - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
         insert:
           - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
@@ -7480,7 +7446,6 @@ components:
             $ref: "#/paths/~1DeleteProjectPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7531,6 +7496,98 @@ components:
           - $ref: "#/components/x-stackQL-resources/project_policies/methods/put_project_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/project_policies/methods/delete_project_policy"
+    labels:
+      id: aws.rekognition.labels
+      name: labels
+      title: labels
+      methods:
+        detect_labels:
+          operation:
+            $ref: "#/paths/~1DetectLabels/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    moderation_labels:
+      id: aws.rekognition.moderation_labels
+      name: moderation_labels
+      title: moderation_labels
+      methods:
+        detect_moderation_labels:
+          operation:
+            $ref: "#/paths/~1DetectModerationLabels/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    protective_equipment:
+      id: aws.rekognition.protective_equipment
+      name: protective_equipment
+      title: protective_equipment
+      methods:
+        detect_protective_equipment:
+          operation:
+            $ref: "#/paths/~1DetectProtectiveEquipment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    texts:
+      id: aws.rekognition.texts
+      name: texts
+      title: texts
+      methods:
+        detect_text:
+          operation:
+            $ref: "#/paths/~1DetectText/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     dataset_entries:
       id: aws.rekognition.dataset_entries
       name: dataset_entries
@@ -7541,7 +7598,6 @@ components:
             $ref: "#/paths/~1DistributeDatasetEntries/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7581,7 +7637,6 @@ components:
             $ref: "#/paths/~1UpdateDatasetEntries/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7596,10 +7651,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/dataset_entries/methods/update_dataset_entries"
         delete: []
-    celebrity_infos:
-      id: aws.rekognition.celebrity_infos
-      name: celebrity_infos
-      title: celebrity_infos
+    celebrity_info:
+      id: aws.rekognition.celebrity_info
+      name: celebrity_info
+      title: celebrity_info
       methods:
         get_celebrity_info:
           operation:
@@ -7616,7 +7671,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/celebrity_infos/methods/get_celebrity_info"
+          - $ref: "#/components/x-stackQL-resources/celebrity_info/methods/get_celebrity_info"
         insert: []
         update: []
         delete: []
@@ -7628,6 +7683,19 @@ components:
         get_celebrity_recognition:
           operation:
             $ref: "#/paths/~1GetCelebrityRecognition/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_celebrity_recognition:
+          operation:
+            $ref: "#/paths/~1StartCelebrityRecognition/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7652,6 +7720,19 @@ components:
         get_content_moderation:
           operation:
             $ref: "#/paths/~1GetContentModeration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_content_moderation:
+          operation:
+            $ref: "#/paths/~1StartContentModeration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7758,6 +7839,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_label_detection:
+          operation:
+            $ref: "#/paths/~1StartLabelDetection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/label_detections/methods/get_label_detection"
@@ -7795,6 +7889,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_media_analysis_job:
+          operation:
+            $ref: "#/paths/~1StartMediaAnalysisJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/media_analysis_jobs/methods/get_media_analysis_job"
@@ -7810,6 +7917,19 @@ components:
         get_person_tracking:
           operation:
             $ref: "#/paths/~1GetPersonTracking/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_person_tracking:
+          operation:
+            $ref: "#/paths/~1StartPersonTracking/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7844,6 +7964,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_segment_detection:
+          operation:
+            $ref: "#/paths/~1StartSegmentDetection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/segment_detections/methods/get_segment_detection"
@@ -7858,6 +7991,19 @@ components:
         get_text_detection:
           operation:
             $ref: "#/paths/~1GetTextDetection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_text_detection:
+          operation:
+            $ref: "#/paths/~1StartTextDetection/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7929,7 +8075,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7942,7 +8087,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7958,14 +8102,14 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
-    faces_by_images:
-      id: aws.rekognition.faces_by_images
-      name: faces_by_images
-      title: faces_by_images
+    celebrities:
+      id: aws.rekognition.celebrities
+      name: celebrities
+      title: celebrities
       methods:
-        search_faces_by_image:
+        recognize_celebrities:
           operation:
-            $ref: "#/paths/~1SearchFacesByImage/post"
+            $ref: "#/paths/~1RecognizeCelebrities/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7977,32 +8121,7 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/faces_by_images/methods/search_faces_by_image"
-        insert: []
-        update: []
-        delete: []
-    users_by_images:
-      id: aws.rekognition.users_by_images
-      name: users_by_images
-      title: users_by_images
-      methods:
-        search_users_by_image:
-          operation:
-            $ref: "#/paths/~1SearchUsersByImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/users_by_images/methods/search_users_by_image"
+        select: []
         insert: []
         update: []
         delete: []

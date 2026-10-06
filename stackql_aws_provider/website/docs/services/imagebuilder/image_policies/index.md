@@ -84,14 +84,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-imageArn"><code>imageArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Gets an image policy.</td>
+    <td>Retrieves an image policy.</td>
 </tr>
 <tr>
     <td><a href="#put_image_policy"><CopyableCode code="put_image_policy" /></a></td>
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-imageArn"><code>imageArn</code></a>, <a href="#parameter-policy"><code>policy</code></a></td>
     <td></td>
-    <td>Applies a policy to an image. We recommend that you call the RAM API CreateResourceShare to share resources. If you call the Image Builder API PutImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with whom the resource is shared.</td>
+    <td>Applies a policy to an image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.</td>
 </tr>
 </tbody>
 </table>
@@ -132,7 +132,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_image_policy">
 
-Gets an image policy.
+Retrieves an image policy.
 
 ```sql
 SELECT
@@ -157,7 +157,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="put_image_policy">
 
-Applies a policy to an image. We recommend that you call the RAM API CreateResourceShare to share resources. If you call the Image Builder API PutImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with whom the resource is shared.
+Applies a policy to an image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
 
 ```sql
 REPLACE aws.imagebuilder.image_policies

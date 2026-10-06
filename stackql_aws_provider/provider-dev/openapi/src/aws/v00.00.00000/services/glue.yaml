@@ -849,10 +849,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelDataQualityRuleRecommendationRunResponse"
   /CancelDataQualityRulesetEvaluationRun:
     post:
       operationId: CancelDataQualityRulesetEvaluationRun
@@ -882,10 +878,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelDataQualityRulesetEvaluationRunResponse"
   /CancelMLTaskRun:
     post:
       operationId: CancelMLTaskRun
@@ -958,10 +950,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelStatementResponse"
   /CheckSchemaVersionValidity:
     post:
       operationId: CheckSchemaVersionValidity
@@ -1077,10 +1065,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateCatalogResponse"
   /CreateClassifier:
     post:
       operationId: CreateClassifier
@@ -1117,10 +1101,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateClassifierResponse"
   /CreateColumnStatisticsTaskSettings:
     post:
       operationId: CreateColumnStatisticsTaskSettings
@@ -1176,10 +1156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateColumnStatisticsTaskSettingsResponse"
   /CreateConnection:
     post:
       operationId: CreateConnection
@@ -1288,10 +1264,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateCrawlerResponse"
   /CreateCustomEntityType:
     post:
       operationId: CreateCustomEntityType
@@ -1418,10 +1390,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateDatabaseResponse"
   /CreateDevEndpoint:
     post:
       operationId: CreateDevEndpoint
@@ -1759,10 +1727,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateIntegrationTablePropertiesResponse"
   /CreateJob:
     post:
       operationId: CreateJob
@@ -1975,10 +1939,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreatePartitionResponse"
   /CreatePartitionIndex:
     post:
       operationId: CreatePartitionIndex
@@ -2019,10 +1979,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreatePartitionIndexResponse"
   /CreateRegistry:
     post:
       operationId: CreateRegistry
@@ -2313,10 +2269,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateTableResponse"
   /CreateTableOptimizer:
     post:
       operationId: CreateTableOptimizer
@@ -2362,10 +2314,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateTableOptimizerResponse"
   /CreateTrigger:
     post:
       operationId: CreateTrigger
@@ -2500,10 +2448,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateUserDefinedFunctionResponse"
   /CreateWorkflow:
     post:
       operationId: CreateWorkflow
@@ -2576,10 +2520,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssetResponse"
   /DeleteAssetType:
     post:
       operationId: DeleteAssetType
@@ -2609,10 +2549,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssetTypeResponse"
   /DeleteAttachment:
     post:
       operationId: DeleteAttachment
@@ -2716,10 +2652,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCatalogResponse"
   /DeleteClassifier:
     post:
       operationId: DeleteClassifier
@@ -2749,10 +2681,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteClassifierResponse"
   /DeleteColumnStatisticsForPartition:
     post:
       operationId: DeleteColumnStatisticsForPartition
@@ -2797,10 +2725,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteColumnStatisticsForPartitionResponse"
   /DeleteColumnStatisticsForTable:
     post:
       operationId: DeleteColumnStatisticsForTable
@@ -2841,10 +2765,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteColumnStatisticsForTableResponse"
   /DeleteColumnStatisticsTaskSettings:
     post:
       operationId: DeleteColumnStatisticsTaskSettings
@@ -2878,10 +2798,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteColumnStatisticsTaskSettingsResponse"
   /DeleteConnection:
     post:
       operationId: DeleteConnection
@@ -2914,10 +2830,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectionResponse"
   /DeleteConnectionType:
     post:
       operationId: DeleteConnectionType
@@ -2947,10 +2859,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectionTypeResponse"
   /DeleteCrawler:
     post:
       operationId: DeleteCrawler
@@ -2978,10 +2886,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCrawlerResponse"
   /DeleteCustomEntityType:
     post:
       operationId: DeleteCustomEntityType
@@ -3040,10 +2944,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataQualityRulesetResponse"
   /DeleteDatabase:
     post:
       operationId: DeleteDatabase
@@ -3074,10 +2974,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDatabaseResponse"
   /DeleteDevEndpoint:
     post:
       operationId: DeleteDevEndpoint
@@ -3107,10 +3003,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDevEndpointResponse"
   /DeleteFormType:
     post:
       operationId: DeleteFormType
@@ -3140,10 +3032,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFormTypeResponse"
   /DeleteGlossary:
     post:
       operationId: DeleteGlossary
@@ -3173,10 +3061,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGlossaryResponse"
   /DeleteGlossaryTerm:
     post:
       operationId: DeleteGlossaryTerm
@@ -3206,10 +3090,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGlossaryTermResponse"
   /DeleteGlueIdentityCenterConfiguration:
     post:
       operationId: DeleteGlueIdentityCenterConfiguration
@@ -3233,10 +3113,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGlueIdentityCenterConfigurationResponse"
   /DeleteIntegration:
     post:
       operationId: DeleteIntegration
@@ -3299,10 +3175,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIntegrationResourcePropertyResponse"
   /DeleteIntegrationTableProperties:
     post:
       operationId: DeleteIntegrationTableProperties
@@ -3336,10 +3208,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIntegrationTablePropertiesResponse"
   /DeleteJob:
     post:
       operationId: DeleteJob
@@ -3446,10 +3314,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePartitionResponse"
   /DeletePartitionIndex:
     post:
       operationId: DeletePartitionIndex
@@ -3490,10 +3354,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePartitionIndexResponse"
   /DeleteRegistry:
     post:
       operationId: DeleteRegistry
@@ -3557,10 +3417,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
   /DeleteSchema:
     post:
       operationId: DeleteSchema
@@ -3658,10 +3514,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSecurityConfigurationResponse"
   /DeleteSession:
     post:
       operationId: DeleteSession
@@ -3734,10 +3586,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTableResponse"
   /DeleteTableOptimizer:
     post:
       operationId: DeleteTableOptimizer
@@ -3779,10 +3627,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTableOptimizerResponse"
   /DeleteTableVersion:
     post:
       operationId: DeleteTableVersion
@@ -3823,10 +3667,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTableVersionResponse"
   /DeleteTrigger:
     post:
       operationId: DeleteTrigger
@@ -3885,10 +3725,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUsageProfileResponse"
   /DeleteUserDefinedFunction:
     post:
       operationId: DeleteUserDefinedFunction
@@ -3925,10 +3761,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserDefinedFunctionResponse"
   /DeleteWorkflow:
     post:
       operationId: DeleteWorkflow
@@ -7550,10 +7382,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ImportCatalogToGlueResponse"
   /ListAssetTypes:
     post:
       operationId: ListAssetTypes
@@ -8258,7 +8086,7 @@ paths:
               type: object
               properties:
                 Marker:
-                  $ref: "#/components/schemas/String1024"
+                  $ref: "#/components/schemas/String4096"
                   description: This is the pagination token for next page, initial value is null.
                 Filters:
                   $ref: "#/components/schemas/IntegrationResourcePropertyFilterList"
@@ -8273,6 +8101,43 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ListIntegrationResourcePropertiesResponse"
+  /ListIntegrationTableProperties:
+    post:
+      operationId: ListIntegrationTableProperties
+      description: Lists the integration table properties in your account. This operation supports filtering and pagination.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AWSGlue.ListIntegrationTableProperties
+            default: AWSGlue.ListIntegrationTableProperties
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                Marker:
+                  $ref: "#/components/schemas/String4096"
+                  description: The pagination token for the next page of results. The initial value is null.
+                Filters:
+                  $ref: "#/components/schemas/IntegrationTablePropertiesFilterList"
+                  description: A list of filters. Supported filter keys are SourceArn, TargetArn, SourceTableName, and TargetTableName.
+                MaxRecords:
+                  $ref: "#/components/schemas/IntegrationInteger"
+                  description: The maximum number of records to return in the response.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListIntegrationTablePropertiesResponse"
   /ListIterableForms:
     post:
       operationId: ListIterableForms
@@ -9006,10 +8871,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDataCatalogEncryptionSettingsResponse"
   /PutDataCatalogExportConfiguration:
     post:
       operationId: PutDataCatalogExportConfiguration
@@ -9082,10 +8943,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDataQualityProfileAnnotationResponse"
   /PutFormType:
     post:
       operationId: PutFormType
@@ -9247,10 +9104,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutWorkflowRunPropertiesResponse"
   /QuerySchemaVersionMetadata:
     post:
       operationId: QuerySchemaVersionMetadata
@@ -9768,10 +9621,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartColumnStatisticsTaskRunScheduleResponse"
   /StartCrawler:
     post:
       operationId: StartCrawler
@@ -9796,15 +9645,9 @@ paths:
                 Name:
                   $ref: "#/components/schemas/NameString"
                   description: Name of the crawler to start.
-              required:
-                - Name
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCrawlerResponse"
   /StartCrawlerSchedule:
     post:
       operationId: StartCrawlerSchedule
@@ -9834,10 +9677,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCrawlerScheduleResponse"
   /StartDataQualityRuleRecommendationRun:
     post:
       operationId: StartDataQualityRuleRecommendationRun
@@ -9885,7 +9724,6 @@ paths:
                   description: Additional run options you can specify for a recommendation run.
               required:
                 - DataSource
-                - Role
       responses:
         "200":
           description: Success
@@ -10307,10 +10145,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopColumnStatisticsTaskRunResponse"
   /StopColumnStatisticsTaskRunSchedule:
     post:
       operationId: StopColumnStatisticsTaskRunSchedule
@@ -10344,10 +10178,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopColumnStatisticsTaskRunScheduleResponse"
   /StopCrawler:
     post:
       operationId: StopCrawler
@@ -10372,15 +10202,9 @@ paths:
                 Name:
                   $ref: "#/components/schemas/NameString"
                   description: Name of the crawler to stop.
-              required:
-                - Name
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCrawlerResponse"
   /StopCrawlerSchedule:
     post:
       operationId: StopCrawlerSchedule
@@ -10410,10 +10234,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCrawlerScheduleResponse"
   /StopMaterializedViewRefreshTaskRun:
     post:
       operationId: StopMaterializedViewRefreshTaskRun
@@ -10451,10 +10271,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopMaterializedViewRefreshTaskRunResponse"
   /StopSession:
     post:
       operationId: StopSession
@@ -10552,10 +10368,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopWorkflowRunResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -10589,10 +10401,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /TestConnection:
     post:
       operationId: TestConnection
@@ -10626,10 +10434,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TestConnectionResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -10663,10 +10467,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAsset:
     post:
       operationId: UpdateAsset
@@ -10781,10 +10581,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCatalogResponse"
   /UpdateClassifier:
     post:
       operationId: UpdateClassifier
@@ -10821,10 +10617,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateClassifierResponse"
   /UpdateColumnStatisticsForPartition:
     post:
       operationId: UpdateColumnStatisticsForPartition
@@ -10968,10 +10760,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateColumnStatisticsTaskSettingsResponse"
   /UpdateConnection:
     post:
       operationId: UpdateConnection
@@ -11007,10 +10795,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConnectionResponse"
   /UpdateCrawler:
     post:
       operationId: UpdateCrawler
@@ -11077,10 +10861,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCrawlerResponse"
   /UpdateCrawlerSchedule:
     post:
       operationId: UpdateCrawlerSchedule
@@ -11113,10 +10893,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCrawlerScheduleResponse"
   /UpdateDataQualityRuleset:
     post:
       operationId: UpdateDataQualityRuleset
@@ -11189,10 +10965,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDatabaseResponse"
   /UpdateDevEndpoint:
     post:
       operationId: UpdateDevEndpoint
@@ -11243,10 +11015,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDevEndpointResponse"
   /UpdateGlossary:
     post:
       operationId: UpdateGlossary
@@ -11364,10 +11132,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateGlueIdentityCenterConfigurationResponse"
   /UpdateIntegrationResourceProperty:
     post:
       operationId: UpdateIntegrationResourceProperty
@@ -11446,10 +11210,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateIntegrationTablePropertiesResponse"
   /UpdateJob:
     post:
       operationId: UpdateJob
@@ -11649,10 +11409,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdatePartitionResponse"
   /UpdateRegistry:
     post:
       operationId: UpdateRegistry
@@ -11842,10 +11598,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTableResponse"
   /UpdateTableOptimizer:
     post:
       operationId: UpdateTableOptimizer
@@ -11891,10 +11643,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTableOptimizerResponse"
   /UpdateTrigger:
     post:
       operationId: UpdateTrigger
@@ -12008,10 +11756,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserDefinedFunctionResponse"
   /UpdateWorkflow:
     post:
       operationId: UpdateWorkflow
@@ -15158,10 +14902,6 @@ components:
         ErrorDetail:
           $ref: "#/components/schemas/ErrorDetail"
           description: The details about the batch update partition error.
-    CancelDataQualityRuleRecommendationRunResponse:
-      type: object
-    CancelDataQualityRulesetEvaluationRunResponse:
-      type: object
     CancelMLTaskRunResponse:
       type: object
       properties:
@@ -15174,8 +14914,6 @@ components:
         Status:
           $ref: "#/components/schemas/TaskStatusType"
           description: The status for this run.
-    CancelStatementResponse:
-      type: object
     DataFormat:
       type: string
       enum:
@@ -15385,8 +15123,6 @@ components:
       enum:
         - Accept
         - Deny
-    CreateCatalogResponse:
-      type: object
     CreateGrokClassifierRequest:
       description: Specifies a grok classifier for CreateClassifier to create.
       type: object
@@ -15518,8 +15254,6 @@ components:
         - OpenCSVSerDe
         - LazySimpleSerDe
         - None
-    CreateClassifierResponse:
-      type: object
     ColumnNameList:
       type: array
       items:
@@ -15529,8 +15263,6 @@ components:
       format: double
       minimum: 0
       maximum: 100
-    CreateColumnStatisticsTaskSettingsResponse:
-      type: object
     ConnectionInput:
       description: A structure that is used to specify a connection to create or update.
       type: object
@@ -15873,8 +15605,6 @@ components:
         - READY
         - IN_PROGRESS
         - FAILED
-    CreateCrawlerResponse:
-      type: object
     CreateCustomEntityTypeResponse:
       type: object
       properties:
@@ -15966,8 +15696,6 @@ components:
         ConnectionType:
           $ref: "#/components/schemas/NameString"
           description: The type of connection used to access the federated database, such as JDBC, ODBC, or other supported connection protocols.
-    CreateDatabaseResponse:
-      type: object
     MapValue:
       type: object
       properties: {}
@@ -16317,6 +16045,9 @@ components:
         TargetTableName:
           $ref: "#/components/schemas/String128"
           description: The optional name of a target table.
+        IntegrationArn:
+          $ref: "#/components/schemas/String128"
+          description: The ARN of the integration that owns this target table configuration.
     UnnestSpec:
       type: string
       enum:
@@ -16340,8 +16071,6 @@ components:
         ConversionSpec:
           $ref: "#/components/schemas/String128"
           description: "Specifies the timestamp format of the source data. Valid values are: epoch_sec - Unix epoch timestamp in seconds epoch_milli - Unix epoch timestamp in milliseconds iso - ISO 8601 formatted timestamp Only specify ConversionSpec when using timestamp-based partition functions (year, month, day, or hour). Glue Zero-ETL uses this parameter to correctly transform source data into timestamp format before partitioning. Do not use high-cardinality columns with the identity partition function. High-cardinality columns include: Primary keys Timestamp fields (such as LastModifiedTimestamp, CreatedDate) System-generated timestamps Using high-cardinality columns with identity partitioning creates many small partitions, which can significantly degrade ingestion performance."
-    CreateIntegrationTablePropertiesResponse:
-      type: object
     GenericMap:
       type: object
       properties: {}
@@ -16423,8 +16152,6 @@ components:
         TransformId:
           $ref: "#/components/schemas/HashString"
           description: A unique identifier that is generated for the transform.
-    CreatePartitionResponse:
-      type: object
     PartitionIndex:
       description: A structure for a partition index.
       type: object
@@ -16442,8 +16169,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/NameString"
-    CreatePartitionIndexResponse:
-      type: object
     CreateRegistryResponse:
       type: object
       properties:
@@ -17198,10 +16923,6 @@ components:
       enum:
         - nulls-first
         - nulls-last
-    CreateTableResponse:
-      type: object
-    CreateTableOptimizerResponse:
-      type: object
     BooleanValue:
       type: boolean
     CreateTriggerResponse:
@@ -17282,8 +17003,6 @@ components:
         - JAR
         - FILE
         - ARCHIVE
-    CreateUserDefinedFunctionResponse:
-      type: object
     WorkflowDescriptionString:
       type: string
       maxLength: 120000
@@ -17296,14 +17015,10 @@ components:
         Name:
           $ref: "#/components/schemas/NameString"
           description: The name of the workflow which was provided as part of the request.
-    DeleteAssetResponse:
-      type: object
     AssetTypeId:
       type: string
       minLength: 1
       maxLength: 256
-    DeleteAssetTypeResponse:
-      type: object
     AttachmentName:
       type: string
       minLength: 1
@@ -17327,47 +17042,16 @@ components:
         Name:
           $ref: "#/components/schemas/NameString"
           description: Returns the name of the blueprint that was deleted.
-    DeleteCatalogResponse:
-      type: object
-    DeleteClassifierResponse:
-      type: object
-    DeleteColumnStatisticsForPartitionResponse:
-      type: object
-    DeleteColumnStatisticsForTableResponse:
-      type: object
-    DeleteColumnStatisticsTaskSettingsResponse:
-      type: object
-    DeleteConnectionResponse:
-      type: object
-    DeleteConnectionTypeResponse:
-      type: object
-    DeleteCrawlerResponse:
-      type: object
     DeleteCustomEntityTypeResponse:
       type: object
       properties:
         Name:
           $ref: "#/components/schemas/NameString"
           description: The name of the custom pattern you deleted.
-    DeleteDataQualityRulesetResponse:
-      type: object
-    DeleteDatabaseResponse:
-      type: object
-    DeleteDevEndpointResponse:
-      type: object
     FormTypeId:
       type: string
       minLength: 1
       maxLength: 256
-    DeleteFormTypeResponse:
-      type: object
-    DeleteGlossaryResponse:
-      type: object
-    DeleteGlossaryTermResponse:
-      type: object
-    DeleteGlueIdentityCenterConfigurationResponse:
-      description: Response from deleting the Glue Identity Center configuration.
-      type: object
     DeleteIntegrationResponse:
       type: object
       properties:
@@ -17415,10 +17099,6 @@ components:
         - IntegrationArn
         - Status
         - CreateTime
-    DeleteIntegrationResourcePropertyResponse:
-      type: object
-    DeleteIntegrationTablePropertiesResponse:
-      type: object
     DeleteJobResponse:
       type: object
       properties:
@@ -17431,10 +17111,6 @@ components:
         TransformId:
           $ref: "#/components/schemas/HashString"
           description: The unique identifier of the transform that was deleted.
-    DeletePartitionResponse:
-      type: object
-    DeletePartitionIndexResponse:
-      type: object
     DeleteRegistryResponse:
       type: object
       properties:
@@ -17452,8 +17128,6 @@ components:
       enum:
         - AVAILABLE
         - DELETING
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteSchemaResponse:
       type: object
       properties:
@@ -17505,30 +17179,18 @@ components:
       type: string
     ErrorMessageString:
       type: string
-    DeleteSecurityConfigurationResponse:
-      type: object
     DeleteSessionResponse:
       type: object
       properties:
         Id:
           $ref: "#/components/schemas/NameString"
           description: Returns the ID of the deleted session.
-    DeleteTableResponse:
-      type: object
-    DeleteTableOptimizerResponse:
-      type: object
-    DeleteTableVersionResponse:
-      type: object
     DeleteTriggerResponse:
       type: object
       properties:
         Name:
           $ref: "#/components/schemas/NameString"
           description: The name of the trigger that was deleted.
-    DeleteUsageProfileResponse:
-      type: object
-    DeleteUserDefinedFunctionResponse:
-      type: object
     DeleteWorkflowResponse:
       type: object
       properties:
@@ -21659,8 +21321,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/WorkflowRun"
-    ImportCatalogToGlueResponse:
-      type: object
     ListAssetTypesResponse:
       type: object
       properties:
@@ -22398,10 +22058,10 @@ components:
         ShortDescription:
           $ref: "#/components/schemas/GlossaryShortDescription"
           description: The short description of the glossary term.
-    String1024:
+    String4096:
       type: string
       minLength: 1
-      maxLength: 1024
+      maxLength: 4096
     IntegrationResourcePropertyFilterList:
       type: array
       items:
@@ -22427,7 +22087,7 @@ components:
           $ref: "#/components/schemas/IntegrationResourcePropertyList"
           description: A list of integration resource property meeting the filter criteria.
         Marker:
-          $ref: "#/components/schemas/String1024"
+          $ref: "#/components/schemas/String4096"
           description: This is the pagination token for the next page.
     IntegrationResourcePropertyList:
       type: array
@@ -22451,6 +22111,56 @@ components:
           description: The resource properties associated with the integration target.
       required:
         - ResourceArn
+    IntegrationTablePropertiesFilterList:
+      type: array
+      items:
+        $ref: "#/components/schemas/IntegrationTablePropertiesFilter"
+    IntegrationTablePropertiesFilter:
+      description: A key-value filter used to narrow the list of integration table properties returned by ListIntegrationTableProperties. Specify a filter key and one or more values to match.
+      type: object
+      properties:
+        Name:
+          $ref: "#/components/schemas/String128"
+          description: The name of the filter. Supported filter keys are SourceArn, TargetArn, SourceTableName, and TargetTableName.
+        Values:
+          $ref: "#/components/schemas/IntegrationTablePropertiesFilterValues"
+          description: A list of filter values.
+    IntegrationTablePropertiesFilterValues:
+      type: array
+      items:
+        $ref: "#/components/schemas/String128"
+    ListIntegrationTablePropertiesResponse:
+      type: object
+      properties:
+        IntegrationTablePropertiesList:
+          $ref: "#/components/schemas/IntegrationTablePropertiesList"
+          description: A list of integration table properties meeting the filter criteria.
+        Marker:
+          $ref: "#/components/schemas/String4096"
+          description: The pagination token for the next page. Returns null if there are no more results.
+    IntegrationTablePropertiesList:
+      type: array
+      items:
+        $ref: "#/components/schemas/IntegrationTableProperties"
+    IntegrationTableProperties:
+      description: The properties of a single integration table, including the resource ARN, the table name, and the source or target table configuration.
+      type: object
+      properties:
+        ResourceArn:
+          $ref: "#/components/schemas/String512"
+          description: The connection ARN of the source, or the database ARN of the target.
+        TableName:
+          $ref: "#/components/schemas/String128"
+          description: The name of the source table to be replicated.
+        SourceTableConfig:
+          $ref: "#/components/schemas/SourceTableConfig"
+          description: A structure for the source table configuration.
+        TargetTableConfig:
+          $ref: "#/components/schemas/TargetTableConfig"
+          description: A structure for the target table configuration.
+      required:
+        - ResourceArn
+        - TableName
     ListIterableFormsResponse:
       type: object
       properties:
@@ -22860,8 +22570,6 @@ components:
         FormTypeId:
           $ref: "#/components/schemas/FormTypeId"
           description: The identifier of the form type for this attachment.
-    PutDataCatalogEncryptionSettingsResponse:
-      type: object
     PutDataCatalogExportConfigurationOutput:
       description: The export configuration returned by the PutDataCatalogExportConfiguration operation.
       type: object
@@ -22872,9 +22580,6 @@ components:
         EncryptionConfiguration:
           $ref: "#/components/schemas/ExportEncryptionConfiguration"
           description: The encryption configuration for the exported data.
-    PutDataQualityProfileAnnotationResponse:
-      description: Left blank.
-      type: object
     PutFormTypeResponse:
       type: object
       properties:
@@ -22951,8 +22656,6 @@ components:
         MetadataValue:
           $ref: "#/components/schemas/MetadataValueString"
           description: The value of the metadata key.
-    PutWorkflowRunPropertiesResponse:
-      type: object
     MetadataList:
       type: array
       items:
@@ -23427,12 +23130,6 @@ components:
         ColumnStatisticsTaskRunId:
           $ref: "#/components/schemas/HashString"
           description: The identifier for the column statistics task run.
-    StartColumnStatisticsTaskRunScheduleResponse:
-      type: object
-    StartCrawlerResponse:
-      type: object
-    StartCrawlerScheduleResponse:
-      type: object
     StartDataQualityRuleRecommendationRunResponse:
       type: object
       properties:
@@ -23496,16 +23193,6 @@ components:
         RunId:
           $ref: "#/components/schemas/IdString"
           description: An Id for the new run.
-    StopColumnStatisticsTaskRunResponse:
-      type: object
-    StopColumnStatisticsTaskRunScheduleResponse:
-      type: object
-    StopCrawlerResponse:
-      type: object
-    StopCrawlerScheduleResponse:
-      type: object
-    StopMaterializedViewRefreshTaskRunResponse:
-      type: object
     StopSessionResponse:
       type: object
       properties:
@@ -23518,10 +23205,6 @@ components:
         Name:
           $ref: "#/components/schemas/NameString"
           description: The name of the trigger that was stopped.
-    StopWorkflowRunResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TestConnectionInput:
       description: A structure that is used to specify testing a connection to a service.
       type: object
@@ -23539,14 +23222,10 @@ components:
       required:
         - ConnectionType
         - ConnectionProperties
-    TestConnectionResponse:
-      type: object
     TagKeysList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAssetResponse:
       type: object
       properties:
@@ -23570,8 +23249,6 @@ components:
         Name:
           $ref: "#/components/schemas/NameString"
           description: Returns the name of the blueprint that was updated.
-    UpdateCatalogResponse:
-      type: object
     UpdateGrokClassifierRequest:
       description: Specifies a grok classifier to update when passed to UpdateClassifier.
       type: object
@@ -23653,8 +23330,6 @@ components:
           description: Sets the SerDe for processing CSV in the classifier, which will be applied in the Data Catalog. Valid values are OpenCSVSerDe, LazySimpleSerDe, and None. You can specify the None value when you want the crawler to do the detection.
       required:
         - Name
-    UpdateClassifierResponse:
-      type: object
     UpdateColumnStatisticsList:
       type: array
       items:
@@ -23685,19 +23360,11 @@ components:
         Errors:
           $ref: "#/components/schemas/ColumnStatisticsErrors"
           description: List of ColumnStatisticsErrors.
-    UpdateColumnStatisticsTaskSettingsResponse:
-      type: object
-    UpdateConnectionResponse:
-      type: object
     DescriptionStringRemovable:
       type: string
       minLength: 0
       maxLength: 2048
       pattern: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
-    UpdateCrawlerResponse:
-      type: object
-    UpdateCrawlerScheduleResponse:
-      type: object
     UpdateDataQualityRulesetResponse:
       type: object
       properties:
@@ -23710,8 +23377,6 @@ components:
         Ruleset:
           $ref: "#/components/schemas/DataQualityRulesetString"
           description: A Data Quality Definition Language (DQDL) ruleset. For more information, see the Glue developer guide.
-    UpdateDatabaseResponse:
-      type: object
     DevEndpointCustomLibraries:
       description: Custom libraries to be loaded into a development endpoint.
       type: object
@@ -23722,8 +23387,6 @@ components:
         ExtraJarsS3Path:
           $ref: "#/components/schemas/GenericString"
           description: The path to one or more Java .jar files in an S3 bucket that should be loaded in your DevEndpoint. You can only use pure Java/Scala libraries with a DevEndpoint.
-    UpdateDevEndpointResponse:
-      type: object
     UpdateGlossaryResponse:
       type: object
       properties:
@@ -23754,9 +23417,6 @@ components:
         LongDescription:
           $ref: "#/components/schemas/GlossaryLongDescription"
           description: The long description of the glossary term.
-    UpdateGlueIdentityCenterConfigurationResponse:
-      description: Response from updating an existing Glue Identity Center configuration.
-      type: object
     UpdateIntegrationResourcePropertyResponse:
       type: object
       properties:
@@ -23772,8 +23432,6 @@ components:
         TargetProcessingProperties:
           $ref: "#/components/schemas/TargetProcessingProperties"
           description: The resource properties associated with the integration target.
-    UpdateIntegrationTablePropertiesResponse:
-      type: object
     JobUpdate:
       description: Specifies information used to update an existing job definition. The previous job definition is completely overwritten by this information.
       type: object
@@ -23878,8 +23536,6 @@ components:
         TransformId:
           $ref: "#/components/schemas/HashString"
           description: The unique identifier for the transform that was updated.
-    UpdatePartitionResponse:
-      type: object
     UpdateRegistryResponse:
       type: object
       properties:
@@ -24017,10 +23673,6 @@ components:
       type: string
       maxLength: 2056
       pattern: "[\\u0020-\\uD7FF\\uE000-\\uFFFD\\uD800\\uDC00-\\uDBFF\\uDFFF\\r\\n\\t]*"
-    UpdateTableResponse:
-      type: object
-    UpdateTableOptimizerResponse:
-      type: object
     TriggerUpdate:
       description: A structure used to provide information used to update a trigger. This object updates the previous trigger definition by overwriting it completely.
       type: object
@@ -24055,8 +23707,6 @@ components:
         Name:
           $ref: "#/components/schemas/NameString"
           description: The name of the usage profile that was updated.
-    UpdateUserDefinedFunctionResponse:
-      type: object
     UpdateWorkflowResponse:
       type: object
       properties:
@@ -24100,7 +23750,6 @@ components:
             $ref: "#/paths/~1DeleteGlossaryTerm/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24254,7 +23903,6 @@ components:
             $ref: "#/paths/~1CreateDatabase/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24267,7 +23915,6 @@ components:
             $ref: "#/paths/~1DeleteDatabase/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24341,7 +23988,6 @@ components:
             $ref: "#/paths/~1StopColumnStatisticsTaskRun/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24354,7 +24000,6 @@ components:
             $ref: "#/paths/~1StopMaterializedViewRefreshTaskRun/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24367,7 +24012,6 @@ components:
             $ref: "#/paths/~1UpdateDatabase/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24384,6 +24028,117 @@ components:
           - $ref: "#/components/x-stackQL-resources/databases/methods/update_database"
         delete:
           - $ref: "#/components/x-stackQL-resources/databases/methods/delete_database"
+    connections:
+      id: aws.glue.connections
+      name: connections
+      title: connections
+      methods:
+        batch_delete_connection:
+          operation:
+            $ref: "#/paths/~1BatchDeleteConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_connection:
+          operation:
+            $ref: "#/paths/~1CreateConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_connection:
+          operation:
+            $ref: "#/paths/~1DeleteConnection/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_connection:
+          operation:
+            $ref: "#/paths/~1GetConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Connection
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_connections:
+          operation:
+            $ref: "#/paths/~1GetConnections/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ConnectionList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        test_connection:
+          operation:
+            $ref: "#/paths/~1TestConnection/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_connection:
+          operation:
+            $ref: "#/paths/~1UpdateConnection/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/get_connection"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/create_connection"
+        update:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/update_connection"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/delete_connection"
     blueprints:
       id: aws.glue.blueprints
       name: blueprints
@@ -24528,7 +24283,6 @@ components:
             $ref: "#/paths/~1CreateCrawler/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24541,7 +24295,6 @@ components:
             $ref: "#/paths/~1DeleteCrawler/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24604,12 +24357,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_crawler:
+          operation:
+            $ref: "#/paths/~1StartCrawler/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_crawler_schedule:
           operation:
             $ref: "#/paths/~1StartCrawlerSchedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_crawler:
+          operation:
+            $ref: "#/paths/~1StopCrawler/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24622,7 +24398,6 @@ components:
             $ref: "#/paths/~1StopCrawlerSchedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24635,7 +24410,6 @@ components:
             $ref: "#/paths/~1UpdateCrawler/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24648,7 +24422,6 @@ components:
             $ref: "#/paths/~1UpdateCrawlerSchedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24792,8 +24565,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/data_quality_results/methods/batch_get_data_quality_result"
           - $ref: "#/components/x-stackQL-resources/data_quality_results/methods/get_data_quality_result"
+          - $ref: "#/components/x-stackQL-resources/data_quality_results/methods/batch_get_data_quality_result"
           - $ref: "#/components/x-stackQL-resources/data_quality_results/methods/list_data_quality_results"
         insert: []
         update: []
@@ -24844,8 +24617,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/data_quality_ruleset_evaluation_runs/methods/batch_get_data_quality_ruleset_evaluation_run"
           - $ref: "#/components/x-stackQL-resources/data_quality_ruleset_evaluation_runs/methods/get_data_quality_ruleset_evaluation_run"
+          - $ref: "#/components/x-stackQL-resources/data_quality_ruleset_evaluation_runs/methods/batch_get_data_quality_ruleset_evaluation_run"
           - $ref: "#/components/x-stackQL-resources/data_quality_ruleset_evaluation_runs/methods/list_data_quality_ruleset_evaluation_runs"
         insert: []
         update: []
@@ -24886,7 +24659,6 @@ components:
             $ref: "#/paths/~1DeleteDevEndpoint/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24954,7 +24726,6 @@ components:
             $ref: "#/paths/~1UpdateDevEndpoint/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -24964,8 +24735,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/dev_endpoints/methods/batch_get_dev_endpoints"
           - $ref: "#/components/x-stackQL-resources/dev_endpoints/methods/get_dev_endpoint"
+          - $ref: "#/components/x-stackQL-resources/dev_endpoints/methods/batch_get_dev_endpoints"
           - $ref: "#/components/x-stackQL-resources/dev_endpoints/methods/get_dev_endpoints"
         insert:
           - $ref: "#/components/x-stackQL-resources/dev_endpoints/methods/create_dev_endpoint"
@@ -25192,8 +24963,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/batch_get_jobs"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/batch_get_jobs"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_jobs"
         insert:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
@@ -25225,7 +24996,6 @@ components:
             $ref: "#/paths/~1CreatePartition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25238,7 +25008,6 @@ components:
             $ref: "#/paths/~1DeletePartition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25286,7 +25055,6 @@ components:
             $ref: "#/paths/~1UpdatePartition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25296,8 +25064,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/partitions/methods/batch_get_partition"
           - $ref: "#/components/x-stackQL-resources/partitions/methods/get_partition"
+          - $ref: "#/components/x-stackQL-resources/partitions/methods/batch_get_partition"
           - $ref: "#/components/x-stackQL-resources/partitions/methods/get_partitions"
         insert:
           - $ref: "#/components/x-stackQL-resources/partitions/methods/create_partition"
@@ -25328,7 +25096,6 @@ components:
             $ref: "#/paths/~1CreateTableOptimizer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25341,7 +25108,6 @@ components:
             $ref: "#/paths/~1DeleteTableOptimizer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25367,7 +25133,6 @@ components:
             $ref: "#/paths/~1UpdateTableOptimizer/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25489,6 +25254,32 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_trigger:
+          operation:
+            $ref: "#/paths/~1StartTrigger/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_trigger:
+          operation:
+            $ref: "#/paths/~1StopTrigger/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_trigger:
@@ -25630,7 +25421,6 @@ components:
             $ref: "#/paths/~1StopWorkflowRun/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25661,6 +25451,43 @@ components:
           - $ref: "#/components/x-stackQL-resources/workflows/methods/update_workflow"
         delete:
           - $ref: "#/components/x-stackQL-resources/workflows/methods/delete_workflow"
+    data_quality_statistic_annotations:
+      id: aws.glue.data_quality_statistic_annotations
+      name: data_quality_statistic_annotations
+      title: data_quality_statistic_annotations
+      methods:
+        batch_put_data_quality_statistic_annotation:
+          operation:
+            $ref: "#/paths/~1BatchPutDataQualityStatisticAnnotation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_data_quality_statistic_annotations:
+          operation:
+            $ref: "#/paths/~1ListDataQualityStatisticAnnotations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_quality_statistic_annotations/methods/list_data_quality_statistic_annotations"
+        insert: []
+        update: []
+        delete: []
     job_runs:
       id: aws.glue.job_runs
       name: job_runs
@@ -25721,6 +25548,69 @@ components:
         insert: []
         update: []
         delete: []
+    data_quality_rule_recommendation_runs:
+      id: aws.glue.data_quality_rule_recommendation_runs
+      name: data_quality_rule_recommendation_runs
+      title: data_quality_rule_recommendation_runs
+      methods:
+        cancel_data_quality_rule_recommendation_run:
+          operation:
+            $ref: "#/paths/~1CancelDataQualityRuleRecommendationRun/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_data_quality_rule_recommendation_run:
+          operation:
+            $ref: "#/paths/~1GetDataQualityRuleRecommendationRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_data_quality_rule_recommendation_runs:
+          operation:
+            $ref: "#/paths/~1ListDataQualityRuleRecommendationRuns/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_data_quality_rule_recommendation_run:
+          operation:
+            $ref: "#/paths/~1StartDataQualityRuleRecommendationRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_quality_rule_recommendation_runs/methods/get_data_quality_rule_recommendation_run"
+          - $ref: "#/components/x-stackQL-resources/data_quality_rule_recommendation_runs/methods/list_data_quality_rule_recommendation_runs"
+        insert: []
+        update: []
+        delete: []
     data_quality_rulesets:
       id: aws.glue.data_quality_rulesets
       name: data_quality_rulesets
@@ -25731,7 +25621,6 @@ components:
             $ref: "#/paths/~1CancelDataQualityRulesetEvaluationRun/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25757,7 +25646,6 @@ components:
             $ref: "#/paths/~1DeleteDataQualityRuleset/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25826,6 +25714,57 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_quality_rulesets/methods/update_data_quality_ruleset"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_quality_rulesets/methods/delete_data_quality_ruleset"
+    ml_task_runs:
+      id: aws.glue.ml_task_runs
+      name: ml_task_runs
+      title: ml_task_runs
+      methods:
+        cancel_ml_task_run:
+          operation:
+            $ref: "#/paths/~1CancelMLTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_ml_task_run:
+          operation:
+            $ref: "#/paths/~1GetMLTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_ml_task_runs:
+          operation:
+            $ref: "#/paths/~1GetMLTaskRuns/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/ml_task_runs/methods/get_ml_task_run"
+          - $ref: "#/components/x-stackQL-resources/ml_task_runs/methods/get_ml_task_runs"
+        insert: []
+        update: []
+        delete: []
     sessions:
       id: aws.glue.sessions
       name: sessions
@@ -25836,7 +25775,6 @@ components:
             $ref: "#/paths/~1CancelStatement/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25910,6 +25848,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_session:
+          operation:
+            $ref: "#/paths/~1StopSession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -25918,6 +25869,29 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/delete_session"
+    schema_version_validities:
+      id: aws.glue.schema_version_validities
+      name: schema_version_validities
+      title: schema_version_validities
+      methods:
+        check_schema_version_validity:
+          operation:
+            $ref: "#/paths/~1CheckSchemaVersionValidity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     catalogs:
       id: aws.glue.catalogs
       name: catalogs
@@ -25928,7 +25902,6 @@ components:
             $ref: "#/paths/~1CreateCatalog/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25941,7 +25914,6 @@ components:
             $ref: "#/paths/~1DeleteCatalog/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25981,7 +25953,6 @@ components:
             $ref: "#/paths/~1ImportCatalogToGlue/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -25994,7 +25965,6 @@ components:
             $ref: "#/paths/~1UpdateCatalog/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26022,7 +25992,6 @@ components:
             $ref: "#/paths/~1CreateClassifier/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26035,7 +26004,6 @@ components:
             $ref: "#/paths/~1DeleteClassifier/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26083,7 +26051,6 @@ components:
             $ref: "#/paths/~1UpdateClassifier/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26111,7 +26078,6 @@ components:
             $ref: "#/paths/~1CreateColumnStatisticsTaskSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26124,7 +26090,6 @@ components:
             $ref: "#/paths/~1DeleteColumnStatisticsTaskSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26151,7 +26116,6 @@ components:
             $ref: "#/paths/~1UpdateColumnStatisticsTaskSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26168,94 +26132,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/column_statistics_task_settings/methods/update_column_statistics_task_settings"
         delete:
           - $ref: "#/components/x-stackQL-resources/column_statistics_task_settings/methods/delete_column_statistics_task_settings"
-    connections:
-      id: aws.glue.connections
-      name: connections
-      title: connections
-      methods:
-        create_connection:
-          operation:
-            $ref: "#/paths/~1CreateConnection/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_connection:
-          operation:
-            $ref: "#/paths/~1DeleteConnection/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_connection:
-          operation:
-            $ref: "#/paths/~1GetConnection/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Connection
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_connections:
-          operation:
-            $ref: "#/paths/~1GetConnections/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ConnectionList
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-        update_connection:
-          operation:
-            $ref: "#/paths/~1UpdateConnection/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/connections/methods/get_connection"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/connections/methods/create_connection"
-        update:
-          - $ref: "#/components/x-stackQL-resources/connections/methods/update_connection"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/connections/methods/delete_connection"
     glossaries:
       id: aws.glue.glossaries
       name: glossaries
@@ -26279,7 +26155,6 @@ components:
             $ref: "#/paths/~1DeleteGlossary/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26367,7 +26242,6 @@ components:
             $ref: "#/paths/~1DeleteGlueIdentityCenterConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26393,7 +26267,6 @@ components:
             $ref: "#/paths/~1UpdateGlueIdentityCenterConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26499,7 +26372,6 @@ components:
             $ref: "#/paths/~1DeleteIntegrationResourceProperty/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26566,7 +26438,6 @@ components:
             $ref: "#/paths/~1CreateIntegrationTableProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26579,7 +26450,6 @@ components:
             $ref: "#/paths/~1DeleteIntegrationTableProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26600,9 +26470,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        update_integration_table_properties:
+        list_integration_table_properties:
           operation:
-            $ref: "#/paths/~1UpdateIntegrationTableProperties/post"
+            $ref: "#/paths/~1ListIntegrationTableProperties/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -26613,9 +26483,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_integration_table_properties:
+          operation:
+            $ref: "#/paths/~1UpdateIntegrationTableProperties/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/integration_table_properties/methods/get_integration_table_properties"
+          - $ref: "#/components/x-stackQL-resources/integration_table_properties/methods/list_integration_table_properties"
         insert:
           - $ref: "#/components/x-stackQL-resources/integration_table_properties/methods/create_integration_table_properties"
         update:
@@ -26732,7 +26615,6 @@ components:
             $ref: "#/paths/~1CreatePartitionIndex/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26745,7 +26627,6 @@ components:
             $ref: "#/paths/~1DeletePartitionIndex/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -26914,6 +26795,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_schema_by_definition:
+          operation:
+            $ref: "#/paths/~1GetSchemaByDefinition/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_schemas:
           operation:
             $ref: "#/paths/~1ListSchemas/post"
@@ -26950,6 +26844,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/schemas/methods/get_schema_by_definition"
           - $ref: "#/components/x-stackQL-resources/schemas/methods/get_schema"
           - $ref: "#/components/x-stackQL-resources/schemas/methods/list_schemas"
         insert:
@@ -27005,7 +26900,6 @@ components:
             $ref: "#/paths/~1DeleteSecurityConfiguration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27066,7 +26960,6 @@ components:
             $ref: "#/paths/~1CreateTable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27079,7 +26972,6 @@ components:
             $ref: "#/paths/~1DeleteTable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27140,7 +27032,6 @@ components:
             $ref: "#/paths/~1UpdateTable/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27181,7 +27072,6 @@ components:
             $ref: "#/paths/~1DeleteUsageProfile/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27255,7 +27145,6 @@ components:
             $ref: "#/paths/~1CreateUserDefinedFunction/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27268,7 +27157,6 @@ components:
             $ref: "#/paths/~1DeleteUserDefinedFunction/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27316,7 +27204,6 @@ components:
             $ref: "#/paths/~1UpdateUserDefinedFunction/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27344,7 +27231,6 @@ components:
             $ref: "#/paths/~1DeleteAsset/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27446,11 +27332,11 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/assets/methods/update_asset"
         replace:
-          - $ref: "#/components/x-stackQL-resources/assets/methods/put_attachment"
           - $ref: "#/components/x-stackQL-resources/assets/methods/put_asset"
+          - $ref: "#/components/x-stackQL-resources/assets/methods/put_attachment"
         delete:
-          - $ref: "#/components/x-stackQL-resources/assets/methods/delete_attachment"
           - $ref: "#/components/x-stackQL-resources/assets/methods/delete_asset"
+          - $ref: "#/components/x-stackQL-resources/assets/methods/delete_attachment"
     asset_types:
       id: aws.glue.asset_types
       name: asset_types
@@ -27461,7 +27347,6 @@ components:
             $ref: "#/paths/~1DeleteAssetType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27526,17 +27411,28 @@ components:
           - $ref: "#/components/x-stackQL-resources/asset_types/methods/put_asset_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/asset_types/methods/delete_asset_type"
-    column_statistics_for_partitions:
-      id: aws.glue.column_statistics_for_partitions
-      name: column_statistics_for_partitions
-      title: column_statistics_for_partitions
+    column_statistics:
+      id: aws.glue.column_statistics
+      name: column_statistics
+      title: column_statistics
       methods:
         delete_column_statistics_for_partition:
           operation:
             $ref: "#/paths/~1DeleteColumnStatisticsForPartition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_column_statistics_for_table:
+          operation:
+            $ref: "#/paths/~1DeleteColumnStatisticsForTable/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27557,48 +27453,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        update_column_statistics_for_partition:
-          operation:
-            $ref: "#/paths/~1UpdateColumnStatisticsForPartition/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_partitions/methods/get_column_statistics_for_partition"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_partitions/methods/update_column_statistics_for_partition"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_partitions/methods/delete_column_statistics_for_partition"
-    column_statistics_for_tables:
-      id: aws.glue.column_statistics_for_tables
-      name: column_statistics_for_tables
-      title: column_statistics_for_tables
-      methods:
-        delete_column_statistics_for_table:
-          operation:
-            $ref: "#/paths/~1DeleteColumnStatisticsForTable/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         get_column_statistics_for_table:
           operation:
             $ref: "#/paths/~1GetColumnStatisticsForTable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_column_statistics_for_partition:
+          operation:
+            $ref: "#/paths/~1UpdateColumnStatisticsForPartition/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -27624,12 +27494,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_tables/methods/get_column_statistics_for_table"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/get_column_statistics_for_partition"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/get_column_statistics_for_table"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_tables/methods/update_column_statistics_for_table"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/update_column_statistics_for_partition"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/update_column_statistics_for_table"
         delete:
-          - $ref: "#/components/x-stackQL-resources/column_statistics_for_tables/methods/delete_column_statistics_for_table"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/delete_column_statistics_for_partition"
+          - $ref: "#/components/x-stackQL-resources/column_statistics/methods/delete_column_statistics_for_table"
     connection_types:
       id: aws.glue.connection_types
       name: connection_types
@@ -27640,7 +27513,6 @@ components:
             $ref: "#/paths/~1DeleteConnectionType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27714,7 +27586,6 @@ components:
             $ref: "#/paths/~1DeleteFormType/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27789,7 +27660,6 @@ components:
             $ref: "#/paths/~1DeleteResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -27966,7 +27836,6 @@ components:
             $ref: "#/paths/~1DeleteTableVersion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28133,10 +28002,10 @@ components:
         insert: []
         update: []
         delete: []
-    catalog_import_status:
-      id: aws.glue.catalog_import_status
-      name: catalog_import_status
-      title: catalog_import_status
+    catalog_import_statuses:
+      id: aws.glue.catalog_import_statuses
+      name: catalog_import_statuses
+      title: catalog_import_statuses
       methods:
         get_catalog_import_status:
           operation:
@@ -28154,7 +28023,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/catalog_import_status/methods/get_catalog_import_status"
+          - $ref: "#/components/x-stackQL-resources/catalog_import_statuses/methods/get_catalog_import_status"
         insert: []
         update: []
         delete: []
@@ -28215,7 +28084,6 @@ components:
             $ref: "#/paths/~1StartColumnStatisticsTaskRunSchedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28228,7 +28096,6 @@ components:
             $ref: "#/paths/~1StopColumnStatisticsTaskRunSchedule/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28324,7 +28191,6 @@ components:
             $ref: "#/paths/~1PutDataCatalogEncryptionSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28427,44 +28293,6 @@ components:
         insert: []
         update: []
         delete: []
-    data_quality_rule_recommendation_runs:
-      id: aws.glue.data_quality_rule_recommendation_runs
-      name: data_quality_rule_recommendation_runs
-      title: data_quality_rule_recommendation_runs
-      methods:
-        get_data_quality_rule_recommendation_run:
-          operation:
-            $ref: "#/paths/~1GetDataQualityRuleRecommendationRun/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_data_quality_rule_recommendation_runs:
-          operation:
-            $ref: "#/paths/~1ListDataQualityRuleRecommendationRuns/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_quality_rule_recommendation_runs/methods/get_data_quality_rule_recommendation_run"
-          - $ref: "#/components/x-stackQL-resources/data_quality_rule_recommendation_runs/methods/list_data_quality_rule_recommendation_runs"
-        insert: []
-        update: []
-        delete: []
     dataflow_graphs:
       id: aws.glue.dataflow_graphs
       name: dataflow_graphs
@@ -28542,44 +28370,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_bookmarks/methods/get_job_bookmark"
-        insert: []
-        update: []
-        delete: []
-    ml_task_runs:
-      id: aws.glue.ml_task_runs
-      name: ml_task_runs
-      title: ml_task_runs
-      methods:
-        get_ml_task_run:
-          operation:
-            $ref: "#/paths/~1GetMLTaskRun/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_ml_task_runs:
-          operation:
-            $ref: "#/paths/~1GetMLTaskRuns/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/ml_task_runs/methods/get_ml_task_run"
-          - $ref: "#/components/x-stackQL-resources/ml_task_runs/methods/get_ml_task_runs"
         insert: []
         update: []
         delete: []
@@ -28675,30 +28465,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/plans/methods/get_plan"
-        insert: []
-        update: []
-        delete: []
-    schema_by_definitions:
-      id: aws.glue.schema_by_definitions
-      name: schema_by_definitions
-      title: schema_by_definitions
-      methods:
-        get_schema_by_definition:
-          operation:
-            $ref: "#/paths/~1GetSchemaByDefinition/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/schema_by_definitions/methods/get_schema_by_definition"
         insert: []
         update: []
         delete: []
@@ -28813,7 +28579,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28826,7 +28591,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -28842,10 +28606,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    unfiltered_partition_metadatas:
-      id: aws.glue.unfiltered_partition_metadatas
-      name: unfiltered_partition_metadatas
-      title: unfiltered_partition_metadatas
+    unfiltered_partition_metadata:
+      id: aws.glue.unfiltered_partition_metadata
+      name: unfiltered_partition_metadata
+      title: unfiltered_partition_metadata
       methods:
         get_unfiltered_partition_metadata:
           operation:
@@ -28862,14 +28626,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/unfiltered_partition_metadatas/methods/get_unfiltered_partition_metadata"
+          - $ref: "#/components/x-stackQL-resources/unfiltered_partition_metadata/methods/get_unfiltered_partition_metadata"
         insert: []
         update: []
         delete: []
-    unfiltered_partitions_metadatas:
-      id: aws.glue.unfiltered_partitions_metadatas
-      name: unfiltered_partitions_metadatas
-      title: unfiltered_partitions_metadatas
+    unfiltered_partitions_metadata:
+      id: aws.glue.unfiltered_partitions_metadata
+      name: unfiltered_partitions_metadata
+      title: unfiltered_partitions_metadata
       methods:
         get_unfiltered_partitions_metadata:
           operation:
@@ -28886,14 +28650,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/unfiltered_partitions_metadatas/methods/get_unfiltered_partitions_metadata"
+          - $ref: "#/components/x-stackQL-resources/unfiltered_partitions_metadata/methods/get_unfiltered_partitions_metadata"
         insert: []
         update: []
         delete: []
-    unfiltered_table_metadatas:
-      id: aws.glue.unfiltered_table_metadatas
-      name: unfiltered_table_metadatas
-      title: unfiltered_table_metadatas
+    unfiltered_table_metadata:
+      id: aws.glue.unfiltered_table_metadata
+      name: unfiltered_table_metadata
+      title: unfiltered_table_metadata
       methods:
         get_unfiltered_table_metadata:
           operation:
@@ -28910,7 +28674,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/unfiltered_table_metadatas/methods/get_unfiltered_table_metadata"
+          - $ref: "#/components/x-stackQL-resources/unfiltered_table_metadata/methods/get_unfiltered_table_metadata"
         insert: []
         update: []
         delete: []
@@ -28984,7 +28748,6 @@ components:
             $ref: "#/paths/~1PutWorkflowRunProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -29021,30 +28784,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/crawls/methods/list_crawls"
-        insert: []
-        update: []
-        delete: []
-    data_quality_statistic_annotations:
-      id: aws.glue.data_quality_statistic_annotations
-      name: data_quality_statistic_annotations
-      title: data_quality_statistic_annotations
-      methods:
-        list_data_quality_statistic_annotations:
-          operation:
-            $ref: "#/paths/~1ListDataQualityStatisticAnnotations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_quality_statistic_annotations/methods/list_data_quality_statistic_annotations"
         insert: []
         update: []
         delete: []
@@ -29114,7 +28853,6 @@ components:
             $ref: "#/paths/~1PutDataQualityProfileAnnotation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -29128,4 +28866,119 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/data_quality_profile_annotations/methods/put_data_quality_profile_annotation"
+        delete: []
+    schema_version_metadata:
+      id: aws.glue.schema_version_metadata
+      name: schema_version_metadata
+      title: schema_version_metadata
+      methods:
+        query_schema_version_metadata:
+          operation:
+            $ref: "#/paths/~1QuerySchemaVersionMetadata/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    export_labels_task_runs:
+      id: aws.glue.export_labels_task_runs
+      name: export_labels_task_runs
+      title: export_labels_task_runs
+      methods:
+        start_export_labels_task_run:
+          operation:
+            $ref: "#/paths/~1StartExportLabelsTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    import_labels_task_runs:
+      id: aws.glue.import_labels_task_runs
+      name: import_labels_task_runs
+      title: import_labels_task_runs
+      methods:
+        start_import_labels_task_run:
+          operation:
+            $ref: "#/paths/~1StartImportLabelsTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ml_evaluation_task_runs:
+      id: aws.glue.ml_evaluation_task_runs
+      name: ml_evaluation_task_runs
+      title: ml_evaluation_task_runs
+      methods:
+        start_ml_evaluation_task_run:
+          operation:
+            $ref: "#/paths/~1StartMLEvaluationTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    ml_labeling_set_generation_task_runs:
+      id: aws.glue.ml_labeling_set_generation_task_runs
+      name: ml_labeling_set_generation_task_runs
+      title: ml_labeling_set_generation_task_runs
+      methods:
+        start_ml_labeling_set_generation_task_run:
+          operation:
+            $ref: "#/paths/~1StartMLLabelingSetGenerationTaskRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

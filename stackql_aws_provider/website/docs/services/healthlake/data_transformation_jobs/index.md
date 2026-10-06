@@ -53,12 +53,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants AWS HealthLake access to the specified Amazon S3 locations. AWS HealthLake assumes this role to read input files and write output files. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the Amazon Web Services Identity and Access Management (IAM) role that grants HealthLake access to the specified Amazon S3 locations. HealthLake assumes this role to read input files and write output files. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="drift_detection_enabled" /></td>
     <td><code>boolean</code></td>
-    <td>Specifies whether drift detection is enabled for this job. When enabled, AWS HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.</td>
+    <td>Specifies whether drift detection is enabled for this job. When enabled, HealthLake writes a drift report to the output Amazon S3 location alongside the converted files.</td>
 </tr>
 <tr>
     <td><CopyableCode code="end_time" /></td>
@@ -201,7 +201,14 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists data transformation jobs for your AWS account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.</td>
+    <td>Lists data transformation jobs for your Amazon Web Services account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.</td>
+</tr>
+<tr>
+    <td><a href="#start_data_transformation_job"><CopyableCode code="start_data_transformation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-ProfileId"><code>ProfileId</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake.</td>
 </tr>
 </tbody>
 </table>
@@ -264,7 +271,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_data_transformation_jobs">
 
-Lists data transformation jobs for your AWS account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.
+Lists data transformation jobs for your Amazon Web Services account. Results can be filtered by status, job name, and submit time window. Results are paginated. Use the NextToken parameter to retrieve additional results.
 
 ```sql
 SELECT
@@ -276,6 +283,38 @@ source_format,
 submit_time
 FROM aws.healthlake.data_transformation_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_data_transformation_job"
+    values={[
+        { label: 'start_data_transformation_job', value: 'start_data_transformation_job' }
+    ]}
+>
+<TabItem value="start_data_transformation_job">
+
+Starts an asynchronous data transformation job that converts source files from Amazon Simple Storage Service (Amazon S3) and writes the output to Amazon S3 or HealthLake.
+
+```sql
+EXEC aws.healthlake.data_transformation_jobs.start_data_transformation_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"ClientToken": "{{ ClientToken }}", 
+"JobName": "{{ JobName }}", 
+"ProfileId": "{{ ProfileId }}", 
+"DriftDetectionEnabled": {{ DriftDetectionEnabled }}, 
+"ProvenanceEnabled": {{ ProvenanceEnabled }}
+}'
 ;
 ```
 </TabItem>

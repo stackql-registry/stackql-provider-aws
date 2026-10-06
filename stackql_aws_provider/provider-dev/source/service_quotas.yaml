@@ -43,10 +43,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateServiceQuotaTemplateResponse'
       x-stackql-resource: service_quotas
       x-stackql-method: associate_service_quota_template
       x-stackql-verb: UPDATE
@@ -80,10 +76,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSupportCaseResponse'
       x-stackql-resource: support_cases
       x-stackql-method: create_support_case
       x-stackql-verb: INSERT
@@ -126,10 +118,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteServiceQuotaIncreaseRequestFromTemplateResponse'
       x-stackql-resource: service_quota_increase_request_from_templates
       x-stackql-method: delete_service_quota_increase_request_from_template
       x-stackql-verb: DELETE
@@ -158,10 +146,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateServiceQuotaTemplateResponse'
       x-stackql-resource: service_quotas
       x-stackql-method: disassociate_service_quota_template
       x-stackql-verb: UPDATE
@@ -235,7 +219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAssociationForServiceQuotaTemplateResponse'
-      x-stackql-resource: association_for_service_quota_templates
+      x-stackql-resource: associations
       x-stackql-method: get_association_for_service_quota_template
       x-stackql-verb: SELECT
   /GetAutoManagementConfiguration:
@@ -630,7 +614,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListRequestedServiceQuotaChangeHistoryByQuotaResponse'
-      x-stackql-resource: requested_service_quota_change_history_by_quotas
+      x-stackql-resource: requested_service_quota_change_histories
       x-stackql-method: list_requested_service_quota_change_history_by_quota
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RequestedQuotas
@@ -948,7 +932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RequestServiceQuotaIncreaseResponse'
-      x-stackql-resource: request_service_quota_increase
+      x-stackql-resource: service_quotas
       x-stackql-method: request_service_quota_increase
       x-stackql-verb: EXEC
   /StartAutoManagement:
@@ -995,11 +979,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartAutoManagementResponse'
-      x-stackql-resource: auto_management
+      x-stackql-resource: auto_managements
       x-stackql-method: start_auto_management
       x-stackql-verb: EXEC
   /StartQuotaUtilizationReport:
@@ -1033,7 +1013,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQuotaUtilizationReportResponse'
-      x-stackql-resource: quota_utilization_report
+      x-stackql-resource: quota_utilization_reports
       x-stackql-method: start_quota_utilization_report
       x-stackql-verb: EXEC
   /StopAutoManagement:
@@ -1061,11 +1041,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopAutoManagementResponse'
-      x-stackql-resource: auto_management
+      x-stackql-resource: auto_managements
       x-stackql-method: stop_auto_management
       x-stackql-verb: EXEC
   /TagResource:
@@ -1103,10 +1079,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1145,10 +1117,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1191,10 +1159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateAutoManagementResponse'
       x-stackql-resource: auto_managements
       x-stackql-method: update_auto_management
       x-stackql-verb: UPDATE
@@ -1243,15 +1207,11 @@ components:
       schema:
         type: string
   schemas:
-    AssociateServiceQuotaTemplateResponse:
-      type: object
     RequestId:
       type: string
       minLength: 1
       maxLength: 128
       pattern: '[0-9a-zA-Z][a-zA-Z0-9-]{1,128}'
-    CreateSupportCaseResponse:
-      type: object
     ServiceCode:
       type: string
       minLength: 1
@@ -1267,10 +1227,6 @@ components:
       minLength: 1
       maxLength: 64
       pattern: '[a-zA-Z][a-zA-Z0-9-]{1,128}'
-    DeleteServiceQuotaIncreaseRequestFromTemplateResponse:
-      type: object
-    DisassociateServiceQuotaTemplateResponse:
-      type: object
     GetAWSDefaultServiceQuotaResponse:
       type: object
       properties:
@@ -1447,6 +1403,11 @@ components:
             is *, then the quota value applies to all resources listed in the ContextScopeType field. The quota value applies
             to all resources for which you haven’t previously applied a quota value, and any new resources you create in your
             Amazon Web Services account.
+        AdjustableAtLevel:
+          $ref: '#/components/schemas/AdjustableAtLevelEnum'
+          description: 'Specifies the level at which you can request an increase for this quota: ACCOUNT – You can request
+            an increase only at the account level. PER_RESOURCE – You can request an increase only for an individual resource.
+            ALL – You can request an increase at either the account level or for an individual resource.'
     QuotaContextScope:
       type: string
       enum:
@@ -1456,6 +1417,12 @@ components:
       type: string
     QuotaContextId:
       type: string
+    AdjustableAtLevelEnum:
+      type: string
+      enum:
+      - ACCOUNT
+      - PER_RESOURCE
+      - ALL
     QuotaDescription:
       type: string
       minLength: 0
@@ -1920,8 +1887,6 @@ components:
     ExclusionList:
       type: object
       properties: {}
-    StartAutoManagementResponse:
-      type: object
     StartQuotaUtilizationReportResponse:
       type: object
       properties:
@@ -1941,19 +1906,11 @@ components:
       minLength: 0
       maxLength: 350
       pattern: ^.{0,350}$
-    StopAutoManagementResponse:
-      type: object
     InputTags:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
-    TagResourceResponse:
-      type: object
     InputTagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateAutoManagementResponse:
-      type: object

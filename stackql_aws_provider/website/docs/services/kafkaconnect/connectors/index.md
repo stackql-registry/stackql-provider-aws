@@ -78,7 +78,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connector_state" /></td>
     <td><code>string</code></td>
-    <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
+    <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED, RESTARTING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -177,7 +177,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="connector_state" /></td>
     <td><code>string</code></td>
-    <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED)</td>
+    <td>The state of the connector. (RUNNING, CREATING, UPDATING, DELETING, FAILED, RESTARTING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="creation_time" /></td>
@@ -289,6 +289,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-currentVersion"><code>currentVersion</code></a></td>
     <td>Deletes the specified connector.</td>
 </tr>
+<tr>
+    <td><a href="#restart_connector"><CopyableCode code="restart_connector" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connector_arn"><code>connector_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-onlyFailedTasks"><code>onlyFailedTasks</code></a></td>
+    <td>Restarts the specified connector. By default, this operation restarts the connector and all of its tasks. This operation is asynchronous and returns a connector operation ARN that you can pass to DescribeConnectorOperation to track the state of the restart.</td>
+</tr>
 </tbody>
 </table>
 
@@ -308,7 +315,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-connector_arn">
     <td><CopyableCode code="connector_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the connector that you want to delete.</td>
+    <td>The Amazon Resource Name (ARN) of the connector that you want to restart.</td>
 </tr>
 <tr id="parameter-currentVersion">
     <td><CopyableCode code="currentVersion" /></td>
@@ -339,6 +346,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="nextToken" /></td>
     <td><code>string</code></td>
     <td>If the response of a ListConnectors operation is truncated, it will include a NextToken. Send this NextToken in a subsequent request to continue listing from where the previous operation left off.</td>
+</tr>
+<tr id="parameter-onlyFailedTasks">
+    <td><CopyableCode code="onlyFailedTasks" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to restart only the connector's failed tasks. If true, the operation restarts only the tasks that are currently in a failed state, and healthy tasks continue running. If false or not specified, the operation restarts the connector and all of its tasks.</td>
 </tr>
 </tbody>
 </table>
@@ -610,6 +622,29 @@ DELETE FROM aws.kafkaconnect.connectors
 WHERE connector_arn = '{{ connector_arn }}' --required
 AND region = '{{ region }}' --required
 AND currentVersion = '{{ currentVersion }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="restart_connector"
+    values={[
+        { label: 'restart_connector', value: 'restart_connector' }
+    ]}
+>
+<TabItem value="restart_connector">
+
+Restarts the specified connector. By default, this operation restarts the connector and all of its tasks. This operation is asynchronous and returns a connector operation ARN that you can pass to DescribeConnectorOperation to track the state of the restart.
+
+```sql
+EXEC aws.kafkaconnect.connectors.restart_connector 
+@connector_arn='{{ connector_arn }}' --required, 
+@region='{{ region }}' --required, 
+@onlyFailedTasks={{ onlyFailedTasks }}
 ;
 ```
 </TabItem>

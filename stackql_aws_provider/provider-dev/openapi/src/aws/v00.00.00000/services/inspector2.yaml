@@ -576,10 +576,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectorResponse"
   /filters/delete:
     post:
       operationId: DeleteFilter
@@ -1548,10 +1544,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource.
@@ -1571,10 +1563,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /usage/list:
     post:
       operationId: ListUsageTotals
@@ -1622,10 +1610,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResetEncryptionKeyResponse"
   /vulnerabilities/search:
     post:
       operationId: SearchVulnerabilities
@@ -1673,10 +1657,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendCisSessionHealthResponse"
   /cissession/telemetry/send:
     put:
       operationId: SendCisSessionTelemetry
@@ -1702,10 +1682,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendCisSessionTelemetryResponse"
   /cissession/start:
     put:
       operationId: StartCisSession
@@ -1728,10 +1704,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartCisSessionResponse"
   /codesecurity/scan/start:
     post:
       operationId: StartCodeSecurityScan
@@ -1782,10 +1754,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopCisSessionResponse"
   /cis/scan-configuration/update:
     post:
       operationId: UpdateCisScanConfiguration
@@ -1892,10 +1860,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConfigurationResponse"
   /connector/update:
     post:
       operationId: UpdateConnector
@@ -1945,10 +1909,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConnectorScanConfigurationResponse"
   /ec2deepinspectionconfiguration/update:
     post:
       operationId: UpdateEc2DeepInspectionConfiguration
@@ -1997,10 +1957,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateEncryptionKeyResponse"
   /filters/update:
     post:
       operationId: UpdateFilter
@@ -2053,10 +2009,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateOrgEc2DeepInspectionConfigurationResponse"
   /organizationconfiguration/update:
     post:
       operationId: UpdateOrganizationConfiguration
@@ -3841,8 +3793,6 @@ components:
         scanConfigurationArn:
           $ref: "#/components/schemas/ScanConfigurationArn"
           description: The Amazon Resource Name (ARN) of the deleted scan configuration.
-    DeleteConnectorResponse:
-      type: object
     DeleteFilterResponse:
       type: object
       properties:
@@ -8784,8 +8734,6 @@ components:
       type: string
       enum:
         - USD
-    ResetEncryptionKeyResponse:
-      type: object
     SearchVulnerabilitiesFilterCriteria:
       description: Details on the criteria used to define the filter for a vulnerability search.
       type: object
@@ -8980,8 +8928,6 @@ components:
     UUID:
       type: string
       pattern: "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
-    SendCisSessionHealthResponse:
-      type: object
     CisSessionMessages:
       type: array
       items:
@@ -9022,8 +8968,6 @@ components:
       format: byte
       minLength: 0
       maxLength: 1000
-    SendCisSessionTelemetryResponse:
-      type: object
     StartCisSessionMessage:
       description: The start CIS session message.
       type: object
@@ -9033,8 +8977,6 @@ components:
           description: The unique token that identifies the CIS session.
       required:
         - sessionToken
-    StartCisSessionResponse:
-      type: object
     CodeSecurityClientToken:
       type: string
       minLength: 1
@@ -9150,10 +9092,6 @@ components:
       type: string
       minLength: 0
       maxLength: 128
-    StopCisSessionResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -9163,8 +9101,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateCisTargets:
       description: Updates CIS targets.
       type: object
@@ -9288,8 +9224,6 @@ components:
       type: string
       enum:
         - INHERIT_FROM_ADMIN
-    UpdateConfigurationResponse:
-      type: object
     ProviderDetailUpdate:
       description: The provider-specific configuration details for updating a connector.
       type: object
@@ -9316,8 +9250,6 @@ components:
         connectorArn:
           $ref: "#/components/schemas/ConnectorArn"
           description: The Amazon Resource Name (ARN) of the updated connector.
-    UpdateConnectorScanConfigurationResponse:
-      type: object
     UpdateEc2DeepInspectionConfigurationResponse:
       type: object
       properties:
@@ -9333,8 +9265,6 @@ components:
         errorMessage:
           $ref: "#/components/schemas/NonEmptyString"
           description: An error message explaining why new Amazon Inspector deep inspection custom paths could not be added.
-    UpdateEncryptionKeyResponse:
-      type: object
     UpdateFilterResponse:
       type: object
       properties:
@@ -9343,8 +9273,6 @@ components:
           description: The Amazon Resource Number (ARN) of the successfully updated filter.
       required:
         - arn
-    UpdateOrgEc2DeepInspectionConfigurationResponse:
-      type: object
     UpdateOrganizationConfigurationResponse:
       type: object
       properties:
@@ -9420,10 +9348,99 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/members/methods/associate_member"
         delete: []
-    account_status:
-      id: aws.inspector2.account_status
-      name: account_status
-      title: account_status
+    code_security_scan_configurations:
+      id: aws.inspector2.code_security_scan_configurations
+      name: code_security_scan_configurations
+      title: code_security_scan_configurations
+      methods:
+        batch_associate_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1batch~1associate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1batch~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_code_security_scan_configurations:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        update_code_security_scan_configuration:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan-configuration~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/get_code_security_scan_configuration"
+          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/list_code_security_scan_configurations"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/create_code_security_scan_configuration"
+        update:
+          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/update_code_security_scan_configuration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/delete_code_security_scan_configuration"
+    account_statuses:
+      id: aws.inspector2.account_statuses
+      name: account_statuses
+      title: account_statuses
       methods:
         batch_get_account_status:
           operation:
@@ -9438,7 +9455,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/account_status/methods/batch_get_account_status"
+          - $ref: "#/components/x-stackQL-resources/account_statuses/methods/batch_get_account_status"
         insert: []
         update: []
         delete: []
@@ -9486,10 +9503,10 @@ components:
         insert: []
         update: []
         delete: []
-    free_trial_infos:
-      id: aws.inspector2.free_trial_infos
-      name: free_trial_infos
-      title: free_trial_infos
+    free_trial_info:
+      id: aws.inspector2.free_trial_info
+      name: free_trial_info
+      title: free_trial_info
       methods:
         batch_get_free_trial_info:
           operation:
@@ -9504,14 +9521,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/free_trial_infos/methods/batch_get_free_trial_info"
+          - $ref: "#/components/x-stackQL-resources/free_trial_info/methods/batch_get_free_trial_info"
         insert: []
         update: []
         delete: []
-    member_ec2_deep_inspection_status:
-      id: aws.inspector2.member_ec2_deep_inspection_status
-      name: member_ec2_deep_inspection_status
-      title: member_ec2_deep_inspection_status
+    member_ec2_deep_inspection_statuses:
+      id: aws.inspector2.member_ec2_deep_inspection_statuses
+      name: member_ec2_deep_inspection_statuses
+      title: member_ec2_deep_inspection_statuses
       methods:
         batch_get_member_ec2_deep_inspection_status:
           operation:
@@ -9537,7 +9554,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/member_ec2_deep_inspection_status/methods/batch_get_member_ec2_deep_inspection_status"
+          - $ref: "#/components/x-stackQL-resources/member_ec2_deep_inspection_statuses/methods/batch_get_member_ec2_deep_inspection_status"
         insert: []
         update: []
         delete: []
@@ -9592,6 +9609,51 @@ components:
           - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
         insert:
           - $ref: "#/components/x-stackQL-resources/findings/methods/create_findings_report"
+        update: []
+        delete: []
+    sbom_exports:
+      id: aws.inspector2.sbom_exports
+      name: sbom_exports
+      title: sbom_exports
+      methods:
+        cancel_sbom_export:
+          operation:
+            $ref: "#/paths/~1sbomexport~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_sbom_export:
+          operation:
+            $ref: "#/paths/~1sbomexport~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_sbom_export:
+          operation:
+            $ref: "#/paths/~1sbomexport~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/sbom_exports/methods/get_sbom_export"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/sbom_exports/methods/create_sbom_export"
         update: []
         delete: []
     cis_scan_configurations:
@@ -9727,73 +9789,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/code_security_integrations/methods/update_code_security_integration"
         delete:
           - $ref: "#/components/x-stackQL-resources/code_security_integrations/methods/delete_code_security_integration"
-    code_security_scan_configurations:
-      id: aws.inspector2.code_security_scan_configurations
-      name: code_security_scan_configurations
-      title: code_security_scan_configurations
-      methods:
-        create_code_security_scan_configuration:
-          operation:
-            $ref: "#/paths/~1codesecurity~1scan-configuration~1create/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_code_security_scan_configuration:
-          operation:
-            $ref: "#/paths/~1codesecurity~1scan-configuration~1delete/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_code_security_scan_configuration:
-          operation:
-            $ref: "#/paths/~1codesecurity~1scan-configuration~1get/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_code_security_scan_configurations:
-          operation:
-            $ref: "#/paths/~1codesecurity~1scan-configuration~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_code_security_scan_configuration:
-          operation:
-            $ref: "#/paths/~1codesecurity~1scan-configuration~1update/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/get_code_security_scan_configuration"
-          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/list_code_security_scan_configurations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/create_code_security_scan_configuration"
-        update:
-          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/update_code_security_scan_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/code_security_scan_configurations/methods/delete_code_security_scan_configuration"
     connectors:
       id: aws.inspector2.connectors
       name: connectors
@@ -9815,7 +9810,6 @@ components:
             $ref: "#/paths/~1connector~1delete/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -9926,40 +9920,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/filters/methods/update_filter"
         delete:
           - $ref: "#/components/x-stackQL-resources/filters/methods/delete_filter"
-    sbom_exports:
-      id: aws.inspector2.sbom_exports
-      name: sbom_exports
-      title: sbom_exports
-      methods:
-        create_sbom_export:
-          operation:
-            $ref: "#/paths/~1sbomexport~1create/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_sbom_export:
-          operation:
-            $ref: "#/paths/~1sbomexport~1get/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sbom_exports/methods/get_sbom_export"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/sbom_exports/methods/create_sbom_export"
-        update: []
-        delete: []
     organization_configurations:
       id: aws.inspector2.organization_configurations
       name: organization_configurations
@@ -9988,6 +9948,27 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
+        delete: []
+    disables:
+      id: aws.inspector2.disables
+      name: disables
+      title: disables
+      methods:
+        disable:
+          operation:
+            $ref: "#/paths/~1disable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     delegated_admin_accounts:
       id: aws.inspector2.delegated_admin_accounts
@@ -10048,6 +10029,27 @@ components:
         insert: []
         update: []
         delete: []
+    enables:
+      id: aws.inspector2.enables
+      name: enables
+      title: enables
+      methods:
+        enable:
+          operation:
+            $ref: "#/paths/~1enable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     cis_scan_reports:
       id: aws.inspector2.cis_scan_reports
       name: cis_scan_reports
@@ -10100,10 +10102,10 @@ components:
         insert: []
         update: []
         delete: []
-    clusters_for_images:
-      id: aws.inspector2.clusters_for_images
-      name: clusters_for_images
-      title: clusters_for_images
+    clusters:
+      id: aws.inspector2.clusters
+      name: clusters
+      title: clusters
       methods:
         get_clusters_for_image:
           operation:
@@ -10126,7 +10128,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/clusters_for_images/methods/get_clusters_for_image"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/get_clusters_for_image"
         insert: []
         update: []
         delete: []
@@ -10138,6 +10140,17 @@ components:
         get_code_security_scan:
           operation:
             $ref: "#/paths/~1codesecurity~1scan~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_code_security_scan:
+          operation:
+            $ref: "#/paths/~1codesecurity~1scan~1start/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -10173,7 +10186,6 @@ components:
             $ref: "#/paths/~1configuration~1update/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10213,7 +10225,6 @@ components:
             $ref: "#/paths/~1ec2deepinspectionconfiguration~1org~1update/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10240,12 +10251,21 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        reset_encryption_key:
+          operation:
+            $ref: "#/paths/~1encryptionkey~1reset/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_encryption_key:
           operation:
             $ref: "#/paths/~1encryptionkey~1update/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10258,10 +10278,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/encryption_keys/methods/update_encryption_key"
         delete: []
-    findings_report_status:
-      id: aws.inspector2.findings_report_status
-      name: findings_report_status
-      title: findings_report_status
+    findings_report_statuses:
+      id: aws.inspector2.findings_report_statuses
+      name: findings_report_statuses
+      title: findings_report_statuses
       methods:
         get_findings_report_status:
           operation:
@@ -10276,7 +10296,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/findings_report_status/methods/get_findings_report_status"
+          - $ref: "#/components/x-stackQL-resources/findings_report_statuses/methods/get_findings_report_status"
         insert: []
         update: []
         delete: []
@@ -10310,10 +10330,10 @@ components:
         insert: []
         update: []
         delete: []
-    cis_scan_results_aggregated_by_checks:
-      id: aws.inspector2.cis_scan_results_aggregated_by_checks
-      name: cis_scan_results_aggregated_by_checks
-      title: cis_scan_results_aggregated_by_checks
+    cis_scan_results:
+      id: aws.inspector2.cis_scan_results
+      name: cis_scan_results
+      title: cis_scan_results
       methods:
         list_cis_scan_results_aggregated_by_checks:
           operation:
@@ -10336,7 +10356,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/cis_scan_results_aggregated_by_checks/methods/list_cis_scan_results_aggregated_by_checks"
+          - $ref: "#/components/x-stackQL-resources/cis_scan_results/methods/list_cis_scan_results_aggregated_by_checks"
         insert: []
         update: []
         delete: []
@@ -10451,7 +10471,6 @@ components:
             $ref: "#/paths/~1connectorscanconfiguration~1update/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10570,7 +10589,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10581,7 +10599,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10649,6 +10666,76 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vulnerabilities/methods/search_vulnerabilities"
+        insert: []
+        update: []
+        delete: []
+    cis_session_healths:
+      id: aws.inspector2.cis_session_healths
+      name: cis_session_healths
+      title: cis_session_healths
+      methods:
+        send_cis_session_health:
+          operation:
+            $ref: "#/paths/~1cissession~1health~1send/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    cis_session_telemetries:
+      id: aws.inspector2.cis_session_telemetries
+      name: cis_session_telemetries
+      title: cis_session_telemetries
+      methods:
+        send_cis_session_telemetry:
+          operation:
+            $ref: "#/paths/~1cissession~1telemetry~1send/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    cis_sessions:
+      id: aws.inspector2.cis_sessions
+      name: cis_sessions
+      title: cis_sessions
+      methods:
+        start_cis_session:
+          operation:
+            $ref: "#/paths/~1cissession~1start/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_cis_session:
+          operation:
+            $ref: "#/paths/~1cissession~1stop/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

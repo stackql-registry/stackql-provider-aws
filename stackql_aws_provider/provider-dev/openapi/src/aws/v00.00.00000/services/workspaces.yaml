@@ -124,10 +124,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateIpGroupsResult"
   /AssociateWorkspaceApplication:
     post:
       operationId: AssociateWorkspaceApplication
@@ -198,10 +194,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AuthorizeIpRulesResult"
   /CopyWorkspaceImage:
     post:
       operationId: CopyWorkspaceImage
@@ -474,10 +466,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateTagsResult"
   /CreateUpdatedWorkspaceImage:
     post:
       operationId: CreateUpdatedWorkspaceImage
@@ -777,10 +765,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteClientBrandingResult"
   /DeleteConnectClientAddIn:
     post:
       operationId: DeleteConnectClientAddIn
@@ -814,10 +798,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectClientAddInResult"
   /DeleteConnectionAlias:
     post:
       operationId: DeleteConnectionAlias
@@ -847,10 +827,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConnectionAliasResult"
   /DeleteIpGroup:
     post:
       operationId: DeleteIpGroup
@@ -880,10 +856,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteIpGroupResult"
   /DeleteTags:
     post:
       operationId: DeleteTags
@@ -917,10 +889,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTagsResult"
   /DeleteWorkspaceBundle:
     post:
       operationId: DeleteWorkspaceBundle
@@ -948,10 +916,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkspaceBundleResult"
   /DeleteWorkspaceImage:
     post:
       operationId: DeleteWorkspaceImage
@@ -981,10 +945,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkspaceImageResult"
   /DeployWorkspaceApplications:
     post:
       operationId: DeployWorkspaceApplications
@@ -1050,10 +1010,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterWorkspaceDirectoryResult"
   /DescribeAccount:
     post:
       operationId: DescribeAccount
@@ -1988,10 +1944,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateConnectionAliasResult"
   /DisassociateIpGroups:
     post:
       operationId: DisassociateIpGroups
@@ -2025,10 +1977,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateIpGroupsResult"
   /DisassociateWorkspaceApplication:
     post:
       operationId: DisassociateWorkspaceApplication
@@ -2448,10 +2396,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyCertificateBasedAuthPropertiesResult"
   /ModifyClientProperties:
     post:
       operationId: ModifyClientProperties
@@ -2485,10 +2429,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyClientPropertiesResult"
   /ModifyEndpointEncryptionMode:
     post:
       operationId: ModifyEndpointEncryptionMode
@@ -2522,10 +2462,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyEndpointEncryptionModeResponse"
   /ModifySamlProperties:
     post:
       operationId: ModifySamlProperties
@@ -2561,10 +2497,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifySamlPropertiesResult"
   /ModifySelfservicePermissions:
     post:
       operationId: ModifySelfservicePermissions
@@ -2598,10 +2530,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifySelfservicePermissionsResult"
   /ModifyStreamingProperties:
     post:
       operationId: ModifyStreamingProperties
@@ -2634,10 +2562,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyStreamingPropertiesResult"
   /ModifyWorkspaceAccessProperties:
     post:
       operationId: ModifyWorkspaceAccessProperties
@@ -2671,10 +2595,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyWorkspaceAccessPropertiesResult"
   /ModifyWorkspaceCreationProperties:
     post:
       operationId: ModifyWorkspaceCreationProperties
@@ -2708,10 +2628,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyWorkspaceCreationPropertiesResult"
   /ModifyWorkspaceProperties:
     post:
       operationId: ModifyWorkspaceProperties
@@ -2747,10 +2663,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyWorkspacePropertiesResult"
   /ModifyWorkspaceState:
     post:
       operationId: ModifyWorkspaceState
@@ -2784,10 +2696,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyWorkspaceStateResult"
   /RebootWorkspaces:
     post:
       operationId: RebootWorkspaces
@@ -2983,10 +2891,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RestoreWorkspaceResult"
   /RevokeIpRules:
     post:
       operationId: RevokeIpRules
@@ -3020,10 +2924,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokeIpRulesResult"
   /StartWorkspaces:
     post:
       operationId: StartWorkspaces
@@ -3086,10 +2986,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartWorkspacesPoolResult"
   /StopWorkspaces:
     post:
       operationId: StopWorkspaces
@@ -3152,10 +3048,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopWorkspacesPoolResult"
   /TerminateWorkspaces:
     post:
       operationId: TerminateWorkspaces
@@ -3218,10 +3110,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TerminateWorkspacesPoolResult"
   /TerminateWorkspacesPoolSession:
     post:
       operationId: TerminateWorkspacesPoolSession
@@ -3251,10 +3139,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TerminateWorkspacesPoolSessionResult"
   /UpdateConnectClientAddIn:
     post:
       operationId: UpdateConnectClientAddIn
@@ -3294,10 +3178,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConnectClientAddInResult"
   /UpdateConnectionAliasPermission:
     post:
       operationId: UpdateConnectionAliasPermission
@@ -3331,10 +3211,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConnectionAliasPermissionResult"
   /UpdateRulesOfIpGroup:
     post:
       operationId: UpdateRulesOfIpGroup
@@ -3368,10 +3244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRulesOfIpGroupResult"
   /UpdateWorkspaceBundle:
     post:
       operationId: UpdateWorkspaceBundle
@@ -3402,10 +3274,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceBundleResult"
   /UpdateWorkspaceImagePermission:
     post:
       operationId: UpdateWorkspaceImagePermission
@@ -3443,10 +3311,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateWorkspaceImagePermissionResult"
   /UpdateWorkspacesPool:
     post:
       operationId: UpdateWorkspacesPool
@@ -3616,8 +3480,6 @@ components:
     IpGroupId:
       type: string
       pattern: wsipg-[0-9a-z]{8,63}$
-    AssociateIpGroupsResult:
-      type: object
     WorkspaceId:
       type: string
       pattern: ^ws-[0-9a-z]{8,63}$
@@ -3715,8 +3577,6 @@ components:
       type: string
     IpRuleDesc:
       type: string
-    AuthorizeIpRulesResult:
-      type: object
     WorkspaceImageName:
       type: string
       minLength: 1
@@ -3919,8 +3779,6 @@ components:
         - STOPPING
         - STOPPED
         - ERROR
-    CreateTagsResult:
-      type: object
     CreateUpdatedWorkspaceImageResult:
       type: object
       properties:
@@ -3970,6 +3828,10 @@ components:
         - GRAPHICS_G6F_2XLARGE
         - GRAPHICS_G6F_4XLARGE
         - GRAPHICS_GR6F_4XLARGE
+        - GRAPHICS_G7_2XLARGE
+        - GRAPHICS_G7_4XLARGE
+        - GRAPHICS_G7_8XLARGE
+        - GRAPHICS_G7_12XLARGE
     UserStorage:
       description: Describes the user volume for a WorkSpace bundle.
       type: object
@@ -4164,7 +4026,7 @@ components:
           description: The compute type. For more information, see Amazon WorkSpaces Bundles.
         Protocols:
           $ref: "#/components/schemas/ProtocolList"
-          description: The protocol. For more information, see Protocols for Amazon WorkSpaces. Only available for WorkSpaces created with PCoIP bundles. The Protocols property is case sensitive. Ensure you use PCOIP or DCV (formerly WSP). Unavailable for Windows 7 WorkSpaces and WorkSpaces using GPU-based bundles (Graphics, GraphicsPro, Graphics.g4dn, GraphicsPro.g4dn, and Graphics.g6).
+          description: The protocol. For more information, see Protocols for Amazon WorkSpaces. Only available for WorkSpaces created with PCoIP bundles. The Protocols property is case sensitive. Ensure you use PCOIP or DCV (formerly WSP). Unavailable for Windows 7 WorkSpaces and WorkSpaces using GPU-based bundles (Graphics, GraphicsPro, Graphics.g4dn, GraphicsPro.g4dn, Graphics.g6, and Graphics.g7).
         OperatingSystemName:
           $ref: "#/components/schemas/OperatingSystemName"
           description: The name of the operating system.
@@ -4701,24 +4563,10 @@ components:
         - DeviceTypeIos
         - DeviceTypeLinux
         - DeviceTypeWeb
-    DeleteClientBrandingResult:
-      type: object
-    DeleteConnectClientAddInResult:
-      type: object
-    DeleteConnectionAliasResult:
-      type: object
-    DeleteIpGroupResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/NonEmptyString"
-    DeleteTagsResult:
-      type: object
-    DeleteWorkspaceBundleResult:
-      type: object
-    DeleteWorkspaceImageResult:
-      type: object
     DeployWorkspaceApplicationsResult:
       type: object
       properties:
@@ -4736,8 +4584,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/WorkspaceResourceAssociation"
-    DeregisterWorkspaceDirectoryResult:
-      type: object
     DescribeAccountResult:
       type: object
       properties:
@@ -6338,10 +6184,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/WorkspacesPool"
-    DisassociateConnectionAliasResult:
-      type: object
-    DisassociateIpGroupsResult:
-      type: object
     DisassociateWorkspaceApplicationResult:
       type: object
       properties:
@@ -6447,6 +6289,7 @@ components:
         - BASE
         - GRAPHICS_G4DN
         - GRAPHICS_G6
+        - GRAPHICS_G7
     CustomImageProtocol:
       type: string
       enum:
@@ -6561,12 +6404,6 @@ components:
       type: string
       enum:
         - CERTIFICATE_BASED_AUTH_PROPERTIES_CERTIFICATE_AUTHORITY_ARN
-    ModifyCertificateBasedAuthPropertiesResult:
-      type: object
-    ModifyClientPropertiesResult:
-      type: object
-    ModifyEndpointEncryptionModeResponse:
-      type: object
     DeletableSamlPropertiesList:
       type: array
       items:
@@ -6576,14 +6413,6 @@ components:
       enum:
         - SAML_PROPERTIES_USER_ACCESS_URL
         - SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME
-    ModifySamlPropertiesResult:
-      type: object
-    ModifySelfservicePermissionsResult:
-      type: object
-    ModifyStreamingPropertiesResult:
-      type: object
-    ModifyWorkspaceAccessPropertiesResult:
-      type: object
     WorkspaceCreationProperties:
       description: Describes the default properties that are used for creating WorkSpaces. For more information, see Update Directory Details for Your WorkSpaces.
       type: object
@@ -6606,17 +6435,11 @@ components:
         InstanceIamRoleArn:
           $ref: "#/components/schemas/ARN"
           description: Indicates the IAM role ARN of the instance.
-    ModifyWorkspaceCreationPropertiesResult:
-      type: object
-    ModifyWorkspacePropertiesResult:
-      type: object
     TargetWorkspaceState:
       type: string
       enum:
         - AVAILABLE
         - ADMIN_MAINTENANCE
-    ModifyWorkspaceStateResult:
-      type: object
     RebootWorkspaceRequests:
       type: array
       items:
@@ -6691,14 +6514,10 @@ components:
         AccountLink:
           $ref: "#/components/schemas/AccountLink"
           description: Information about the account link.
-    RestoreWorkspaceResult:
-      type: object
     IpRevokedRuleList:
       type: array
       items:
         $ref: "#/components/schemas/IpRule"
-    RevokeIpRulesResult:
-      type: object
     StartWorkspaceRequests:
       type: array
       items:
@@ -6720,8 +6539,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/FailedWorkspaceChangeRequest"
-    StartWorkspacesPoolResult:
-      type: object
     StopWorkspaceRequests:
       type: array
       items:
@@ -6743,8 +6560,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/FailedWorkspaceChangeRequest"
-    StopWorkspacesPoolResult:
-      type: object
     TerminateWorkspaceRequests:
       type: array
       items:
@@ -6768,20 +6583,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/FailedWorkspaceChangeRequest"
-    TerminateWorkspacesPoolResult:
-      type: object
-    TerminateWorkspacesPoolSessionResult:
-      type: object
-    UpdateConnectClientAddInResult:
-      type: object
-    UpdateConnectionAliasPermissionResult:
-      type: object
-    UpdateRulesOfIpGroupResult:
-      type: object
-    UpdateWorkspaceBundleResult:
-      type: object
-    UpdateWorkspaceImagePermissionResult:
-      type: object
     UpdateWorkspacesPoolResult:
       type: object
       properties:
@@ -6889,10 +6690,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/account_links/methods/delete_account_link_invitation"
-    connection_alias:
-      id: aws.workspaces.connection_alias
-      name: connection_alias
-      title: connection_alias
+    connection_aliases:
+      id: aws.workspaces.connection_aliases
+      name: connection_aliases
+      title: connection_aliases
       methods:
         associate_connection_alias:
           operation:
@@ -6925,6 +6726,18 @@ components:
             $ref: "#/paths/~1DeleteConnectionAlias/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_connection_aliases:
+          operation:
+            $ref: "#/paths/~1DescribeConnectionAliases/post"
+          response:
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -6938,7 +6751,6 @@ components:
             $ref: "#/paths/~1DisassociateConnectionAlias/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6947,14 +6759,15 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/describe_connection_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/connection_alias/methods/create_connection_alias"
+          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/create_connection_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/connection_alias/methods/associate_connection_alias"
-          - $ref: "#/components/x-stackQL-resources/connection_alias/methods/disassociate_connection_alias"
+          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/associate_connection_alias"
+          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/disassociate_connection_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/connection_alias/methods/delete_connection_alias"
+          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/delete_connection_alias"
     ip_groups:
       id: aws.workspaces.ip_groups
       name: ip_groups
@@ -6965,7 +6778,6 @@ components:
             $ref: "#/paths/~1AssociateIpGroups/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6991,7 +6803,6 @@ components:
             $ref: "#/paths/~1DeleteIpGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7025,7 +6836,6 @@ components:
             $ref: "#/paths/~1DisassociateIpGroups/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7038,7 +6848,6 @@ components:
             $ref: "#/paths/~1UpdateRulesOfIpGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7130,7 +6939,6 @@ components:
             $ref: "#/paths/~1AuthorizeIpRules/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7143,7 +6951,6 @@ components:
             $ref: "#/paths/~1RevokeIpRules/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7235,12 +7042,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        migrate_workspace:
+          operation:
+            $ref: "#/paths/~1MigrateWorkspace/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         modify_workspace_access_properties:
           operation:
             $ref: "#/paths/~1ModifyWorkspaceAccessProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7253,7 +7072,6 @@ components:
             $ref: "#/paths/~1ModifyWorkspaceCreationProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7266,7 +7084,6 @@ components:
             $ref: "#/paths/~1ModifyWorkspaceProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7279,7 +7096,6 @@ components:
             $ref: "#/paths/~1ModifyWorkspaceState/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7313,6 +7129,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restore_workspace:
+          operation:
+            $ref: "#/paths/~1RestoreWorkspace/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_workspaces:
           operation:
             $ref: "#/paths/~1StartWorkspaces/post"
@@ -7331,7 +7159,6 @@ components:
             $ref: "#/paths/~1StartWorkspacesPool/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7357,7 +7184,6 @@ components:
             $ref: "#/paths/~1StopWorkspacesPool/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7382,8 +7208,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspaces"
         insert:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_standby_workspaces"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspaces"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_standby_workspaces"
         update:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_access_properties"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_creation_properties"
@@ -7414,7 +7240,6 @@ components:
             $ref: "#/paths/~1DeleteConnectClientAddIn/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7440,7 +7265,6 @@ components:
             $ref: "#/paths/~1UpdateConnectClientAddIn/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7467,7 +7291,6 @@ components:
             $ref: "#/paths/~1CreateTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7480,7 +7303,6 @@ components:
             $ref: "#/paths/~1DeleteTags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7545,7 +7367,6 @@ components:
             $ref: "#/paths/~1DeleteWorkspaceImage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7578,8 +7399,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/workspace_images/methods/describe_workspace_images"
         insert:
-          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_updated_workspace_image"
           - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_workspace_image"
+          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_updated_workspace_image"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/workspace_images/methods/delete_workspace_image"
@@ -7606,7 +7427,6 @@ components:
             $ref: "#/paths/~1DeleteWorkspaceBundle/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7640,7 +7460,6 @@ components:
             $ref: "#/paths/~1UpdateWorkspaceBundle/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7693,7 +7512,6 @@ components:
             $ref: "#/paths/~1TerminateWorkspacesPool/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7733,7 +7551,6 @@ components:
             $ref: "#/paths/~1DeleteClientBranding/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7744,6 +7561,19 @@ components:
         describe_client_branding:
           operation:
             $ref: "#/paths/~1DescribeClientBranding/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_client_branding:
+          operation:
+            $ref: "#/paths/~1ImportClientBranding/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7771,7 +7601,6 @@ components:
             $ref: "#/paths/~1DeregisterWorkspaceDirectory/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7962,7 +7791,6 @@ components:
             $ref: "#/paths/~1ModifyClientProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8000,7 +7828,6 @@ components:
             $ref: "#/paths/~1UpdateConnectionAliasPermission/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8014,30 +7841,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/connection_alias_permissions/methods/update_connection_alias_permission"
-        delete: []
-    connection_aliases:
-      id: aws.workspaces.connection_aliases
-      name: connection_aliases
-      title: connection_aliases
-      methods:
-        describe_connection_aliases:
-          operation:
-            $ref: "#/paths/~1DescribeConnectionAliases/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/connection_aliases/methods/describe_connection_aliases"
-        insert: []
-        update: []
         delete: []
     custom_workspace_image_imports:
       id: aws.workspaces.custom_workspace_image_imports
@@ -8134,7 +7937,6 @@ components:
             $ref: "#/paths/~1UpdateWorkspaceImagePermission/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8173,10 +7975,10 @@ components:
         insert: []
         update: []
         delete: []
-    workspaces_connection_status:
-      id: aws.workspaces.workspaces_connection_status
-      name: workspaces_connection_status
-      title: workspaces_connection_status
+    workspaces_connection_statuses:
+      id: aws.workspaces.workspaces_connection_statuses
+      name: workspaces_connection_statuses
+      title: workspaces_connection_statuses
       methods:
         describe_workspaces_connection_status:
           operation:
@@ -8201,7 +8003,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/workspaces_connection_status/methods/describe_workspaces_connection_status"
+          - $ref: "#/components/x-stackQL-resources/workspaces_connection_statuses/methods/describe_workspaces_connection_status"
         insert: []
         update: []
         delete: []
@@ -8228,7 +8030,6 @@ components:
             $ref: "#/paths/~1TerminateWorkspacesPoolSession/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8243,6 +8044,29 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/workspaces_pool_sessions/methods/terminate_workspaces_pool_session"
+    custom_workspace_images:
+      id: aws.workspaces.custom_workspace_images
+      name: custom_workspace_images
+      title: custom_workspace_images
+      methods:
+        import_custom_workspace_image:
+          operation:
+            $ref: "#/paths/~1ImportCustomWorkspaceImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     available_management_cidr_ranges:
       id: aws.workspaces.available_management_cidr_ranges
       name: available_management_cidr_ranges
@@ -8291,7 +8115,6 @@ components:
             $ref: "#/paths/~1ModifyCertificateBasedAuthProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8315,7 +8138,6 @@ components:
             $ref: "#/paths/~1ModifyEndpointEncryptionMode/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8339,7 +8161,6 @@ components:
             $ref: "#/paths/~1ModifySamlProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8363,7 +8184,6 @@ components:
             $ref: "#/paths/~1ModifySelfservicePermissions/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8387,7 +8207,6 @@ components:
             $ref: "#/paths/~1ModifyStreamingProperties/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

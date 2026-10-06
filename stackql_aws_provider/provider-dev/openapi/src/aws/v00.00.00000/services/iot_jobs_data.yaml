@@ -466,3 +466,45 @@ components:
         insert: []
         update: []
         delete: []
+    command_executions:
+      id: aws.iot_jobs_data.command_executions
+      name: command_executions
+      title: command_executions
+      methods:
+        start_command_execution:
+          operation:
+            $ref: "#/paths/~1command-executions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    next_pending_job_executions:
+      id: aws.iot_jobs_data.next_pending_job_executions
+      name: next_pending_job_executions
+      title: next_pending_job_executions
+      methods:
+        start_next_pending_job_execution:
+          operation:
+            $ref: "#/paths/~1things~1{thing_name}~1jobs~1$next/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

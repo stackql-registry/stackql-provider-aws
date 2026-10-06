@@ -129,18 +129,18 @@ The following methods are available for this resource:
     <td>Lists the attendees for the specified Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide.</td>
 </tr>
 <tr>
-    <td><a href="#create_meeting_with_attendees"><CopyableCode code="create_meeting_with_attendees" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-MediaRegion"><code>MediaRegion</code></a>, <a href="#parameter-ExternalMeetingId"><code>ExternalMeetingId</code></a></td>
-    <td></td>
-    <td>Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees. For more information about specifying media Regions, see Available Regions and Using meeting Regions, both in the Amazon Chime SDK Developer Guide. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime SDK Developer Guide. If you use this API in conjuction with the and APIs, and you don't specify the MeetingFeatures.Content.MaxResolution or MeetingFeatures.Video.MaxResolution parameters, the following defaults are used: Content.MaxResolution: FHD Video.MaxResolution: HD</td>
-</tr>
-<tr>
     <td><a href="#create_attendee"><CopyableCode code="create_attendee" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-meeting_id"><code>meeting_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ExternalUserId"><code>ExternalUserId</code></a></td>
     <td></td>
     <td>Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_meeting_with_attendees"><CopyableCode code="create_meeting_with_attendees" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ClientRequestToken"><code>ClientRequestToken</code></a>, <a href="#parameter-MediaRegion"><code>MediaRegion</code></a>, <a href="#parameter-ExternalMeetingId"><code>ExternalMeetingId</code></a></td>
+    <td></td>
+    <td>Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees. For more information about specifying media Regions, see Available Regions and Using meeting Regions, both in the Amazon Chime SDK Developer Guide. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime SDK Developer Guide. If you use this API in conjuction with the and APIs, and you don't specify the MeetingFeatures.Content.MaxResolution or MeetingFeatures.Video.MaxResolution parameters, the following defaults are used: Content.MaxResolution: FHD Video.MaxResolution: HD</td>
 </tr>
 <tr>
     <td><a href="#update_attendee_capabilities"><CopyableCode code="update_attendee_capabilities" /></a></td>
@@ -248,13 +248,34 @@ AND `max-results` = '{{ max-results }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_meeting_with_attendees"
+    defaultValue="create_attendee"
     values={[
-        { label: 'create_meeting_with_attendees', value: 'create_meeting_with_attendees' },
         { label: 'create_attendee', value: 'create_attendee' },
+        { label: 'create_meeting_with_attendees', value: 'create_meeting_with_attendees' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_attendee">
+
+Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide.
+
+```sql
+INSERT INTO aws.chime_sdk_meetings.attendees (
+ExternalUserId,
+Capabilities,
+meeting_id,
+region
+)
+SELECT 
+'{{ ExternalUserId }}' /* required */,
+'{{ Capabilities }}',
+'{{ meeting_id }}',
+'{{ region }}'
+RETURNING
+attendee
+;
+```
+</TabItem>
 <TabItem value="create_meeting_with_attendees">
 
 Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees. For more information about specifying media Regions, see Available Regions and Using meeting Regions, both in the Amazon Chime SDK Developer Guide. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime SDK Developer Guide. If you use this API in conjuction with the and APIs, and you don't specify the MeetingFeatures.Content.MaxResolution or MeetingFeatures.Video.MaxResolution parameters, the following defaults are used: Content.MaxResolution: FHD Video.MaxResolution: HD
@@ -294,38 +315,26 @@ meeting
 ;
 ```
 </TabItem>
-<TabItem value="create_attendee">
-
-Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime Developer Guide.
-
-```sql
-INSERT INTO aws.chime_sdk_meetings.attendees (
-ExternalUserId,
-Capabilities,
-meeting_id,
-region
-)
-SELECT 
-'{{ ExternalUserId }}' /* required */,
-'{{ Capabilities }}',
-'{{ meeting_id }}',
-'{{ region }}'
-RETURNING
-attendee
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: attendees
   props:
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the attendees resource.
     - name: meeting_id
       value: "{{ meeting_id }}"
       description: Required parameter for the attendees resource.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the attendees resource.
+    - name: ExternalUserId
+      value: "{{ ExternalUserId }}"
+    - name: Capabilities
+      description: |
+        The media capabilities of an attendee: audio, video, or content. You use the capabilities with a set of values that control what the capabilities can do, such as SendReceive data. For more information, refer to and . When using capabilities, be aware of these corner cases: If you specify MeetingFeatures:Video:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Video will be rejected with ValidationError 400. If you specify MeetingFeatures:Content:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Content will be rejected with ValidationError 400. You can't set content capabilities to SendReceive or Receive unless you also set video capabilities to SendReceive or Receive. If you don't set the video capability to receive, the response will contain an HTTP 400 Bad Request status code. However, you can set your video capability to receive and you set your content capability to not receive. If meeting features is defined as Video:MaxResolution:None but Content:MaxResolution is defined as something other than None and attendee capabilities are not defined in the API request, then the default attendee video capability is set to Receive and attendee content capability is set to SendReceive. This is because content SendReceive requires video to be at least Receive. When you change an audio capability from None or Receive to Send or SendReceive , and an attendee unmutes their microphone, audio flows from the attendee to the other meeting participants. When you change a video or content capability from None or Receive to Send or SendReceive , and the attendee turns on their video or content streams, remote attendees can receive those streams, but only after media renegotiation between the client and the Amazon Chime back-end server.
+      value:
+        Audio: "{{ Audio }}"
+        Video: "{{ Video }}"
+        Content: "{{ Content }}"
     - name: ClientRequestToken
       value: "{{ ClientRequestToken }}"
     - name: MediaRegion
@@ -372,15 +381,6 @@ attendee
     - name: MediaPlacementNetworkType
       value: "{{ MediaPlacementNetworkType }}"
       valid_values: ['Ipv4Only', 'DualStack']
-    - name: ExternalUserId
-      value: "{{ ExternalUserId }}"
-    - name: Capabilities
-      description: |
-        The media capabilities of an attendee: audio, video, or content. You use the capabilities with a set of values that control what the capabilities can do, such as SendReceive data. For more information, refer to and . When using capabilities, be aware of these corner cases: If you specify MeetingFeatures:Video:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Video will be rejected with ValidationError 400. If you specify MeetingFeatures:Content:MaxResolution:None when you create a meeting, all API requests that include SendReceive, Send, or Receive for AttendeeCapabilities:Content will be rejected with ValidationError 400. You can't set content capabilities to SendReceive or Receive unless you also set video capabilities to SendReceive or Receive. If you don't set the video capability to receive, the response will contain an HTTP 400 Bad Request status code. However, you can set your video capability to receive and you set your content capability to not receive. If meeting features is defined as Video:MaxResolution:None but Content:MaxResolution is defined as something other than None and attendee capabilities are not defined in the API request, then the default attendee video capability is set to Receive and attendee content capability is set to SendReceive. This is because content SendReceive requires video to be at least Receive. When you change an audio capability from None or Receive to Send or SendReceive , and an attendee unmutes their microphone, audio flows from the attendee to the other meeting participants. When you change a video or content capability from None or Receive to Send or SendReceive , and the attendee turns on their video or content streams, remote attendees can receive those streams, but only after media renegotiation between the client and the Amazon Chime back-end server.
-      value:
-        Audio: "{{ Audio }}"
-        Video: "{{ Video }}"
-        Content: "{{ Content }}"
 `}</CodeBlock>
 
 </TabItem>

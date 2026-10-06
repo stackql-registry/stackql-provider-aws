@@ -153,6 +153,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all FHIR export jobs associated with an account and their statuses.</td>
 </tr>
+<tr>
+    <td><a href="#start_fhir_export_job"><CopyableCode code="start_fhir_export_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DatastoreId"><code>DatastoreId</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a></td>
+    <td></td>
+    <td>Start a FHIR export job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -216,6 +223,35 @@ export_job_properties_list,
 next_token
 FROM aws.healthlake.fhir_export_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_fhir_export_job"
+    values={[
+        { label: 'start_fhir_export_job', value: 'start_fhir_export_job' }
+    ]}
+>
+<TabItem value="start_fhir_export_job">
+
+Start a FHIR export job.
+
+```sql
+EXEC aws.healthlake.fhir_export_jobs.start_fhir_export_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobName": "{{ JobName }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DatastoreId": "{{ DatastoreId }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"ClientToken": "{{ ClientToken }}"
+}'
 ;
 ```
 </TabItem>

@@ -66,10 +66,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateBudgetResponse'
       x-stackql-resource: budgets
       x-stackql-method: create_budget
       x-stackql-verb: INSERT
@@ -183,11 +179,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateNotificationResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: notifications
       x-stackql-method: create_notification
       x-stackql-verb: INSERT
   /CreateSubscriber:
@@ -232,11 +224,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateSubscriberResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: subscribers
       x-stackql-method: create_subscriber
       x-stackql-verb: INSERT
   /DeleteBudget:
@@ -273,10 +261,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBudgetResponse'
       x-stackql-resource: budgets
       x-stackql-method: delete_budget
       x-stackql-verb: DELETE
@@ -360,11 +344,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNotificationResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: notifications
       x-stackql-method: delete_notification
       x-stackql-verb: DELETE
   /DeleteSubscriber:
@@ -408,11 +388,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSubscriberResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: subscribers
       x-stackql-method: delete_subscriber
       x-stackql-verb: DELETE
   /DescribeBudget:
@@ -592,7 +568,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeBudgetActionsForAccountResponse'
-      x-stackql-resource: budget_actions_for_accounts
+      x-stackql-resource: budget_actions
       x-stackql-method: describe_budget_actions_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Actions
@@ -638,7 +614,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeBudgetActionsForBudgetResponse'
-      x-stackql-resource: budget_actions_for_budgets
+      x-stackql-resource: budget_actions
       x-stackql-method: describe_budget_actions_for_budget
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Actions
@@ -682,7 +658,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeBudgetNotificationsForAccountResponse'
-      x-stackql-resource: budget_notifications_for_accounts
+      x-stackql-resource: budget_notifications
       x-stackql-method: describe_budget_notifications_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BudgetNotificationsForAccount
@@ -837,7 +813,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeNotificationsForBudgetResponse'
-      x-stackql-resource: notifications_for_budgets
+      x-stackql-resource: notifications
       x-stackql-method: describe_notifications_for_budget
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Notifications
@@ -892,7 +868,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeSubscribersForNotificationResponse'
-      x-stackql-resource: subscribers_for_notifications
+      x-stackql-resource: subscribers
       x-stackql-method: describe_subscribers_for_notification
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Subscribers
@@ -942,7 +918,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteBudgetActionResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: budget_actions
       x-stackql-method: execute_budget_action
       x-stackql-verb: EXEC
   /ListTagsForResource:
@@ -1014,10 +990,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1054,10 +1026,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1101,10 +1069,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateBudgetResponse'
       x-stackql-resource: budgets
       x-stackql-method: update_budget
       x-stackql-verb: UPDATE
@@ -1205,11 +1169,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotificationResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: notifications
       x-stackql-method: update_notification
       x-stackql-verb: UPDATE
   /UpdateSubscriber:
@@ -1257,11 +1217,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateSubscriberResponse'
-      x-stackql-resource: budgets
+      x-stackql-resource: subscribers
       x-stackql-method: update_subscriber
       x-stackql-verb: UPDATE
 components:
@@ -1914,9 +1870,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    CreateBudgetResponse:
-      description: Response of CreateBudget
-      type: object
     ActionType:
       type: string
       enum:
@@ -2089,15 +2042,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
-    CreateNotificationResponse:
-      description: Response of CreateNotification
-      type: object
-    CreateSubscriberResponse:
-      description: Response of CreateSubscriber
-      type: object
-    DeleteBudgetResponse:
-      description: Response of DeleteBudget
-      type: object
     DeleteBudgetActionResponse:
       type: object
       properties:
@@ -2167,12 +2111,6 @@ components:
       - REVERSE_FAILURE
       - RESET_IN_PROGRESS
       - RESET_FAILURE
-    DeleteNotificationResponse:
-      description: Response of DeleteNotification
-      type: object
-    DeleteSubscriberResponse:
-      description: Response of DeleteSubscriber
-      type: object
     DescribeBudgetResponse:
       description: Response of DescribeBudget
       type: object
@@ -2447,17 +2385,10 @@ components:
         ResourceTags:
           $ref: '#/components/schemas/ResourceTagList'
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/ResourceTagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateBudgetResponse:
-      description: Response of UpdateBudget
-      type: object
     UpdateBudgetActionResponse:
       type: object
       properties:
@@ -2476,9 +2407,3 @@ components:
       - BudgetName
       - OldAction
       - NewAction
-    UpdateNotificationResponse:
-      description: Response of UpdateNotification
-      type: object
-    UpdateSubscriberResponse:
-      description: Response of UpdateSubscriber
-      type: object

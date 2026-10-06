@@ -32,10 +32,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLexiconOutput'
       x-stackql-resource: lexicons
       x-stackql-method: delete_lexicon
       x-stackql-verb: DELETE
@@ -88,10 +84,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutLexiconOutput'
       x-stackql-resource: lexicons
       x-stackql-method: put_lexicon
       x-stackql-verb: REPLACE
@@ -292,7 +284,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeechSynthesisTaskOutput'
-      x-stackql-resource: voices
+      x-stackql-resource: speech_synthesis_tasks
       x-stackql-method: start_speech_synthesis_task
       x-stackql-verb: EXEC
   /v1/synthesisStream:
@@ -359,7 +351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeechSynthesisStreamOutput'
-      x-stackql-resource: speech_synthesis_stream
+      x-stackql-resource: speech_synthesis_streams
       x-stackql-method: start_speech_synthesis_stream
       x-stackql-verb: EXEC
   /v1/speech:
@@ -456,8 +448,6 @@ components:
     LexiconName:
       type: string
       pattern: '[0-9A-Za-z]{1,20}'
-    DeleteLexiconOutput:
-      type: object
     Engine:
       type: string
       enum:
@@ -908,8 +898,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SynthesisTask'
-    PutLexiconOutput:
-      type: object
     StartSpeechSynthesisStreamActionStream:
       description: Inbound event stream for sending input and control events to manage bidirectional speech synthesis.
       type: object

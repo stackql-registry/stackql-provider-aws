@@ -42,7 +42,7 @@ total resources: __50__
 <a href="/services/dms/extension_pack_associations/">extension_pack_associations</a><br />
 <a href="/services/dms/fleet_advisor_collectors/">fleet_advisor_collectors</a><br />
 <a href="/services/dms/fleet_advisor_databases/">fleet_advisor_databases</a><br />
-<a href="/services/dms/fleet_advisor_lsa_analysis/">fleet_advisor_lsa_analysis</a><br />
+<a href="/services/dms/fleet_advisor_lsa_analyses/">fleet_advisor_lsa_analyses</a><br />
 <a href="/services/dms/fleet_advisor_schema_object_summaries/">fleet_advisor_schema_object_summaries</a><br />
 <a href="/services/dms/fleet_advisor_schemas/">fleet_advisor_schemas</a><br />
 <a href="/services/dms/instance_profiles/">instance_profiles</a><br />
@@ -61,7 +61,7 @@ total resources: __50__
 <a href="/services/dms/pending_maintenance_actions/">pending_maintenance_actions</a><br />
 <a href="/services/dms/recommendation_limitations/">recommendation_limitations</a><br />
 <a href="/services/dms/recommendations/">recommendations</a><br />
-<a href="/services/dms/refresh_schemas_status/">refresh_schemas_status</a><br />
+<a href="/services/dms/refresh_schemas_statuses/">refresh_schemas_statuses</a><br />
 <a href="/services/dms/replication_configs/">replication_configs</a><br />
 <a href="/services/dms/replication_instance_task_logs/">replication_instance_task_logs</a><br />
 <a href="/services/dms/replication_instances/">replication_instances</a><br />

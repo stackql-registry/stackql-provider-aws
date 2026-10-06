@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="deployment_config_name" /></td>
     <td><code>string</code></td>
-    <td>The deployment configuration name.</td>
+    <td>The deployment configuration name. (pattern: &lt;code&gt;&#91;A-Za-z0-9+=,.@_-&#93;*&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="minimum_healthy_hosts" /></td>

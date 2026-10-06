@@ -46,10 +46,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddFacetToObjectResponse"
   /amazonclouddirectory/2017-01-11/schema/apply:
     put:
       operationId: ApplySchema
@@ -142,10 +138,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AttachPolicyResponse"
   /amazonclouddirectory/2017-01-11/index/attach:
     put:
       operationId: AttachToIndex
@@ -338,10 +330,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateFacetResponse"
   /amazonclouddirectory/2017-01-11/index:
     put:
       operationId: CreateIndex
@@ -459,10 +447,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateTypedLinkFacetResponse"
   /amazonclouddirectory/2017-01-11/directory:
     put:
       operationId: DeleteDirectory
@@ -506,10 +490,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFacetResponse"
   /amazonclouddirectory/2017-01-11/object/delete:
     put:
       operationId: DeleteObject
@@ -535,10 +515,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteObjectResponse"
   /amazonclouddirectory/2017-01-11/schema:
     put:
       operationId: DeleteSchema
@@ -582,10 +558,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTypedLinkFacetResponse"
   /amazonclouddirectory/2017-01-11/index/detach:
     put:
       operationId: DetachFromIndex
@@ -678,10 +650,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DetachPolicyResponse"
   /amazonclouddirectory/2017-01-11/typedlink/detach:
     put:
       operationId: DetachTypedLink
@@ -841,10 +809,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFacetResponse"
   /amazonclouddirectory/2017-01-11/typedlink/attributes/get:
     post:
       operationId: GetLinkAttributes
@@ -1788,10 +1752,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveFacetFromObjectResponse"
   /amazonclouddirectory/2017-01-11/tags/add:
     put:
       operationId: TagResource
@@ -1814,10 +1774,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /amazonclouddirectory/2017-01-11/tags/remove:
     put:
       operationId: UntagResource
@@ -1840,10 +1796,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /amazonclouddirectory/2017-01-11/typedlink/attributes/update:
     post:
       operationId: UpdateLinkAttributes
@@ -1872,10 +1824,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLinkAttributesResponse"
   /amazonclouddirectory/2017-01-11/object/update:
     put:
       operationId: UpdateObjectAttributes
@@ -1968,10 +1916,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTypedLinkFacetResponse"
   /amazonclouddirectory/2017-01-11/schema/upgradeapplied:
     put:
       operationId: UpgradeAppliedSchema
@@ -2172,8 +2116,6 @@ components:
           description: "A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see Access Objects. You can identify an object in one of the following ways: $ObjectIdentifier - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier. To identify an object with ObjectIdentifier, the ObjectIdentifier must be wrapped in double quotes. /some/path - Identifies the object based on path #SomeBatchReference - Identifies the object in a batch call"
     SelectorObjectReference:
       type: string
-    AddFacetToObjectResponse:
-      type: object
     ApplySchemaResponse:
       type: object
       properties:
@@ -2196,8 +2138,6 @@ components:
           description: The attached ObjectIdentifier, which is the child ObjectIdentifier.
     ObjectIdentifier:
       type: string
-    AttachPolicyResponse:
-      type: object
     AttachToIndexResponse:
       type: object
       properties:
@@ -3505,8 +3445,6 @@ components:
       enum:
         - STATIC
         - DYNAMIC
-    CreateFacetResponse:
-      type: object
     CreateIndexResponse:
       type: object
       properties:
@@ -3578,8 +3516,6 @@ components:
         - Name
         - Type
         - RequiredBehavior
-    CreateTypedLinkFacetResponse:
-      type: object
     DeleteDirectoryResponse:
       type: object
       properties:
@@ -3588,18 +3524,12 @@ components:
           description: The ARN of the deleted directory.
       required:
         - DirectoryArn
-    DeleteFacetResponse:
-      type: object
-    DeleteObjectResponse:
-      type: object
     DeleteSchemaResponse:
       type: object
       properties:
         SchemaArn:
           $ref: "#/components/schemas/Arn"
           description: The input ARN that is returned as part of the response. For more information, see arns.
-    DeleteTypedLinkFacetResponse:
-      type: object
     DetachFromIndexResponse:
       type: object
       properties:
@@ -3612,8 +3542,6 @@ components:
         DetachedObjectIdentifier:
           $ref: "#/components/schemas/ObjectIdentifier"
           description: The ObjectIdentifier that was detached from the object.
-    DetachPolicyResponse:
-      type: object
     DisableDirectoryResponse:
       type: object
       properties:
@@ -4003,16 +3931,10 @@ components:
         Arn:
           $ref: "#/components/schemas/Arn"
           description: The ARN of the schema to update.
-    RemoveFacetFromObjectResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     FacetAttributeUpdateList:
       type: array
       items:
@@ -4027,10 +3949,6 @@ components:
         Action:
           $ref: "#/components/schemas/UpdateActionType"
           description: The action to perform when updating the attribute.
-    UpdateFacetResponse:
-      type: object
-    UpdateLinkAttributesResponse:
-      type: object
     UpdateObjectAttributesResponse:
       type: object
       properties:
@@ -4060,8 +3978,6 @@ components:
       required:
         - Attribute
         - Action
-    UpdateTypedLinkFacetResponse:
-      type: object
     UpgradeAppliedSchemaResponse:
       type: object
       properties:
@@ -4088,7 +4004,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1object~1facets/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4099,7 +4014,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1create/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4110,7 +4024,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1create/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4121,7 +4034,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1delete/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4132,7 +4044,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1delete/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4155,7 +4066,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4166,7 +4076,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1object~1facets~1delete/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4177,7 +4086,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4191,10 +4099,73 @@ components:
           - $ref: "#/components/x-stackQL-resources/facets/methods/create_typed_link_facet"
         update:
           - $ref: "#/components/x-stackQL-resources/facets/methods/update_typed_link_facet"
-          - $ref: "#/components/x-stackQL-resources/facets/methods/add_facet_to_object"
           - $ref: "#/components/x-stackQL-resources/facets/methods/update_facet"
+          - $ref: "#/components/x-stackQL-resources/facets/methods/add_facet_to_object"
         delete:
           - $ref: "#/components/x-stackQL-resources/facets/methods/delete_facet"
+    schemas:
+      id: aws.clouddirectory.schemas
+      name: schemas
+      title: schemas
+      methods:
+        apply_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1apply/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1create/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        publish_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1publish/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1update/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/schemas/methods/create_schema"
+        update:
+          - $ref: "#/components/x-stackQL-resources/schemas/methods/update_schema"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/schemas/methods/delete_schema"
     objects:
       id: aws.clouddirectory.objects
       name: objects
@@ -4227,7 +4198,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1object~1delete/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4263,7 +4233,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1policy~1attach/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4274,7 +4243,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1policy~1detach/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4404,6 +4372,48 @@ components:
           - $ref: "#/components/x-stackQL-resources/typed_links/methods/attach_typed_link"
           - $ref: "#/components/x-stackQL-resources/typed_links/methods/detach_typed_link"
         delete: []
+    reads:
+      id: aws.clouddirectory.reads
+      name: reads
+      title: reads
+      methods:
+        batch_read:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1batchread/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    writes:
+      id: aws.clouddirectory.writes
+      name: writes
+      title: writes
+      methods:
+        batch_write:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1batchwrite/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     directories:
       id: aws.clouddirectory.directories
       name: directories
@@ -4423,6 +4433,18 @@ components:
         delete_directory:
           operation:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1directory/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        disable_directory:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1directory~1disable/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        enable_directory:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1directory~1enable/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4472,47 +4494,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/directories/methods/delete_directory"
-    schemas:
-      id: aws.clouddirectory.schemas
-      name: schemas
-      title: schemas
-      methods:
-        create_schema:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1create/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_schema:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_schema:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1update/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/schemas/methods/create_schema"
-        update:
-          - $ref: "#/components/x-stackQL-resources/schemas/methods/update_schema"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/schemas/methods/delete_schema"
     applied_schema_versions:
       id: aws.clouddirectory.applied_schema_versions
       name: applied_schema_versions
@@ -4556,7 +4537,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1attributes~1update/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4623,10 +4603,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/object_attributes/methods/update_object_attributes"
         delete: []
-    object_informations:
-      id: aws.clouddirectory.object_informations
-      name: object_informations
-      title: object_informations
+    object_information:
+      id: aws.clouddirectory.object_information
+      name: object_information
+      title: object_information
       methods:
         get_object_information:
           operation:
@@ -4641,7 +4621,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/object_informations/methods/get_object_information"
+          - $ref: "#/components/x-stackQL-resources/object_information/methods/get_object_information"
         insert: []
         update: []
         delete: []
@@ -4685,10 +4665,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/schema_from_jsons/methods/put_schema_from_json"
         delete: []
-    typed_link_facet_informations:
-      id: aws.clouddirectory.typed_link_facet_informations
-      name: typed_link_facet_informations
-      title: typed_link_facet_informations
+    typed_link_facet_information:
+      id: aws.clouddirectory.typed_link_facet_information
+      name: typed_link_facet_information
+      title: typed_link_facet_information
       methods:
         get_typed_link_facet_information:
           operation:
@@ -4710,7 +4690,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facet_informations/methods/get_typed_link_facet_information"
+          - $ref: "#/components/x-stackQL-resources/typed_link_facet_information/methods/get_typed_link_facet_information"
         insert: []
         update: []
         delete: []
@@ -5189,7 +5169,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1tags~1add/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5200,7 +5179,6 @@ components:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1tags~1remove/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5277,6 +5255,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/typed_link_facet_names/methods/list_typed_link_facet_names"
+        insert: []
+        update: []
+        delete: []
+    published_schemas:
+      id: aws.clouddirectory.published_schemas
+      name: published_schemas
+      title: published_schemas
+      methods:
+        upgrade_published_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1upgradepublished/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

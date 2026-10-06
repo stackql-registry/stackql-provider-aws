@@ -118,6 +118,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a software bill of materials (SBOM) report.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_sbom_export"><CopyableCode code="cancel_sbom_export" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-reportId"><code>reportId</code></a></td>
+    <td></td>
+    <td>Cancels a software bill of materials (SBOM) report.</td>
+</tr>
 </tbody>
 </table>
 
@@ -286,5 +293,30 @@ report_id
         kmsKeyArn: "{{ kmsKeyArn }}"
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_sbom_export"
+    values={[
+        { label: 'cancel_sbom_export', value: 'cancel_sbom_export' }
+    ]}
+>
+<TabItem value="cancel_sbom_export">
+
+Cancels a software bill of materials (SBOM) report.
+
+```sql
+EXEC aws.inspector2.sbom_exports.cancel_sbom_export 
+@region='{{ region }}' --required 
+@@json=
+'{
+"reportId": "{{ reportId }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

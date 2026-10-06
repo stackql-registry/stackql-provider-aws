@@ -18,14 +18,15 @@ kinesisanalytics service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/kinesisanalytics/applications/">applications</a>
+<a href="/services/kinesisanalytics/applications/">applications</a><br />
+<a href="/services/kinesisanalytics/input_schemas/">input_schemas</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/kinesisanalytics/tags/">tags</a>

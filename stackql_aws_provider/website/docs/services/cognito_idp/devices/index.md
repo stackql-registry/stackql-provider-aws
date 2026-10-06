@@ -147,6 +147,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists a user's registered devices. Remembered devices are used in authentication services where you offer a "Remember me" option for users who you want to permit to sign in without MFA from a trusted device. Users can bypass MFA while your application performs device SRP authentication on the back end. For more information, see Working with devices. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints</td>
 </tr>
+<tr>
+    <td><a href="#confirm_device"><CopyableCode code="confirm_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccessToken"><code>AccessToken</code></a>, <a href="#parameter-DeviceKey"><code>DeviceKey</code></a></td>
+    <td></td>
+    <td>Confirms a device that a user wants to remember. A remembered device is a "Remember me on this device" option for user pools that perform authentication with the device key of a trusted device in the back end, instead of a user-provided MFA code. For more information about device authentication, see Working with user devices in your user pool. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.</td>
+</tr>
+<tr>
+    <td><a href="#forget_device"><CopyableCode code="forget_device" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DeviceKey"><code>DeviceKey</code></a></td>
+    <td></td>
+    <td>Given a device key, deletes a remembered device as the currently signed-in user. For more information about device authentication, see Working with user devices in your user pool. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.</td>
+</tr>
 </tbody>
 </table>
 
@@ -244,7 +258,9 @@ AND DeviceKey = '{{ DeviceKey }}' --required;
 <Tabs
     defaultValue="admin_list_devices"
     values={[
-        { label: 'admin_list_devices', value: 'admin_list_devices' }
+        { label: 'admin_list_devices', value: 'admin_list_devices' },
+        { label: 'confirm_device', value: 'confirm_device' },
+        { label: 'forget_device', value: 'forget_device' }
     ]}
 >
 <TabItem value="admin_list_devices">
@@ -260,6 +276,38 @@ EXEC aws.cognito_idp.devices.admin_list_devices
 "Username": "{{ Username }}", 
 "Limit": {{ Limit }}, 
 "PaginationToken": "{{ PaginationToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="confirm_device">
+
+Confirms a device that a user wants to remember. A remembered device is a "Remember me on this device" option for user pools that perform authentication with the device key of a trusted device in the back end, instead of a user-provided MFA code. For more information about device authentication, see Working with user devices in your user pool. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.
+
+```sql
+EXEC aws.cognito_idp.devices.confirm_device 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AccessToken": "{{ AccessToken }}", 
+"DeviceKey": "{{ DeviceKey }}", 
+"DeviceSecretVerifierConfig": "{{ DeviceSecretVerifierConfig }}", 
+"DeviceName": "{{ DeviceName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="forget_device">
+
+Given a device key, deletes a remembered device as the currently signed-in user. For more information about device authentication, see Working with user devices in your user pool. Authorize this action with a signed-in user's access token. It must include the scope aws.cognito.signin.user.admin. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.
+
+```sql
+EXEC aws.cognito_idp.devices.forget_device 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AccessToken": "{{ AccessToken }}", 
+"DeviceKey": "{{ DeviceKey }}"
 }'
 ;
 ```

@@ -219,6 +219,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a specified scheduled report. This is an irreversible operation.</td>
 </tr>
+<tr>
+    <td><a href="#execute_scheduled_report"><CopyableCode code="execute_scheduled_report" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Triggers an immediate execution of a scheduled report, outside of its regular schedule. The scheduled report must be in ENABLED state. Calling this operation on a DISABLED scheduled report returns a ValidationException. If a clientToken is provided, the service uses it for idempotency. Requests with the same client token will not trigger a new execution within the same minute.</td>
+</tr>
 </tbody>
 </table>
 
@@ -425,6 +432,33 @@ Deletes a specified scheduled report. This is an irreversible operation.
 ```sql
 DELETE FROM aws.bcm_dashboards.scheduled_reports
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="execute_scheduled_report"
+    values={[
+        { label: 'execute_scheduled_report', value: 'execute_scheduled_report' }
+    ]}
+>
+<TabItem value="execute_scheduled_report">
+
+Triggers an immediate execution of a scheduled report, outside of its regular schedule. The scheduled report must be in ENABLED state. Calling this operation on a DISABLED scheduled report returns a ValidationException. If a clientToken is provided, the service uses it for idempotency. Requests with the same client token will not trigger a new execution within the same minute.
+
+```sql
+EXEC aws.bcm_dashboards.scheduled_reports.execute_scheduled_report 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}", 
+"clientToken": "{{ clientToken }}", 
+"dryRun": {{ dryRun }}
+}'
 ;
 ```
 </TabItem>

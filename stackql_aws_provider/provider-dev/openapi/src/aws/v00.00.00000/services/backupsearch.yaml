@@ -281,10 +281,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: This operation removes tags from the specified resource.
@@ -304,10 +300,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /search-jobs/{search_job_identifier}/actions/cancel:
     put:
       operationId: StopSearchJob
@@ -322,10 +314,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopSearchJobOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -965,16 +953,10 @@ components:
           description: This is the unique identifier that specifies the new export job.
       required:
         - ExportJobIdentifier
-    StopSearchJobOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     search_jobs:
       id: aws.backupsearch.search_jobs
@@ -1004,6 +986,17 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+        start_search_job:
+          operation:
+            $ref: "#/paths/~1search-jobs/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_search_result_export_job:
           operation:
             $ref: "#/paths/~1export-search-jobs/put"
@@ -1015,6 +1008,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_search_job:
+          operation:
+            $ref: "#/paths/~1search-jobs~1{search_job_identifier}~1actions~1cancel/put"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_jobs/methods/get_search_job"
@@ -1129,7 +1127,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1140,7 +1137,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

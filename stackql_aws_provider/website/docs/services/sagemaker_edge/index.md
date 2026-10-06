@@ -18,16 +18,17 @@ sagemaker_edge service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/sagemaker_edge/deployments/">deployments</a>
+<a href="/services/sagemaker_edge/deployments/">deployments</a><br />
+<a href="/services/sagemaker_edge/device_registrations/">device_registrations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sagemaker_edge/device_registrations/">device_registrations</a>
+<a href="/services/sagemaker_edge/heartbeats/">heartbeats</a>
 </div>
 </div>

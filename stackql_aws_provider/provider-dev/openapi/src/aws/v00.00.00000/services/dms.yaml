@@ -51,10 +51,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddTagsToResourceResponse"
   /ApplyPendingMaintenanceAction:
     post:
       operationId: ApplyPendingMaintenanceAction
@@ -1377,10 +1373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReplicationSubnetGroupResponse"
   /DeleteReplicationTask:
     post:
       operationId: DeleteReplicationTask
@@ -4308,10 +4300,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsFromResourceResponse"
   /RunFleetAdvisorLsaAnalysis:
     post:
       operationId: RunFleetAdvisorLsaAnalysis
@@ -5105,8 +5093,6 @@ components:
         ResourceArn:
           $ref: "#/components/schemas/String"
           description: The Amazon Resource Name (ARN) string that uniquely identifies the resource for which the tag is created.
-    AddTagsToResourceResponse:
-      type: object
     ApplyPendingMaintenanceActionResponse:
       type: object
       properties:
@@ -7912,8 +7898,6 @@ components:
         ReplicationInstance:
           $ref: "#/components/schemas/ReplicationInstance"
           description: The replication instance that was deleted.
-    DeleteReplicationSubnetGroupResponse:
-      type: object
     DeleteReplicationTaskResponse:
       type: object
       properties:
@@ -9610,8 +9594,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    RemoveTagsFromResourceResponse:
-      type: object
     RunFleetAdvisorLsaAnalysisResponse:
       type: object
       properties:
@@ -9770,7 +9752,6 @@ components:
             $ref: "#/paths/~1AddTagsToResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9796,7 +9777,6 @@ components:
             $ref: "#/paths/~1RemoveTagsFromResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10866,7 +10846,6 @@ components:
             $ref: "#/paths/~1DeleteReplicationSubnetGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11351,10 +11330,10 @@ components:
         insert: []
         update: []
         delete: []
-    fleet_advisor_lsa_analysis:
-      id: aws.dms.fleet_advisor_lsa_analysis
-      name: fleet_advisor_lsa_analysis
-      title: fleet_advisor_lsa_analysis
+    fleet_advisor_lsa_analyses:
+      id: aws.dms.fleet_advisor_lsa_analyses
+      name: fleet_advisor_lsa_analyses
+      title: fleet_advisor_lsa_analyses
       methods:
         describe_fleet_advisor_lsa_analysis:
           operation:
@@ -11380,7 +11359,7 @@ components:
             base: "{}"
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/fleet_advisor_lsa_analysis/methods/describe_fleet_advisor_lsa_analysis"
+          - $ref: "#/components/x-stackQL-resources/fleet_advisor_lsa_analyses/methods/describe_fleet_advisor_lsa_analysis"
         insert: []
         update: []
         delete: []
@@ -11696,10 +11675,10 @@ components:
         insert: []
         update: []
         delete: []
-    refresh_schemas_status:
-      id: aws.dms.refresh_schemas_status
-      name: refresh_schemas_status
-      title: refresh_schemas_status
+    refresh_schemas_statuses:
+      id: aws.dms.refresh_schemas_statuses
+      name: refresh_schemas_statuses
+      title: refresh_schemas_statuses
       methods:
         describe_refresh_schemas_status:
           operation:
@@ -11717,7 +11696,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/refresh_schemas_status/methods/describe_refresh_schemas_status"
+          - $ref: "#/components/x-stackQL-resources/refresh_schemas_statuses/methods/describe_refresh_schemas_status"
         insert: []
         update: []
         delete: []

@@ -112,18 +112,18 @@ The following methods are available for this resource:
     <td>Describes your route tables. The default is to describe all your route tables. Alternatively, you can specify specific route table IDs or filter the results to include only the route tables that match specific criteria. Each subnet in your VPC must be associated with a route table. If a subnet is not explicitly associated with any route table, it is implicitly associated with the main route table. This command does not return the subnet ID for implicit associations. For more information, see Route tables in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
-    <td><a href="#create_route"><CopyableCode code="create_route" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-RouteTableId"><code>RouteTableId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-DestinationPrefixListId"><code>DestinationPrefixListId</code></a>, <a href="#parameter-VpcEndpointId"><code>VpcEndpointId</code></a>, <a href="#parameter-TransitGatewayId"><code>TransitGatewayId</code></a>, <a href="#parameter-LocalGatewayId"><code>LocalGatewayId</code></a>, <a href="#parameter-CarrierGatewayId"><code>CarrierGatewayId</code></a>, <a href="#parameter-CoreNetworkArn"><code>CoreNetworkArn</code></a>, <a href="#parameter-OdbNetworkArn"><code>OdbNetworkArn</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-DestinationCidrBlock"><code>DestinationCidrBlock</code></a>, <a href="#parameter-GatewayId"><code>GatewayId</code></a>, <a href="#parameter-DestinationIpv6CidrBlock"><code>DestinationIpv6CidrBlock</code></a>, <a href="#parameter-EgressOnlyInternetGatewayId"><code>EgressOnlyInternetGatewayId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-VpcPeeringConnectionId"><code>VpcPeeringConnectionId</code></a>, <a href="#parameter-NatGatewayId"><code>NatGatewayId</code></a></td>
-    <td>Creates a route in a route table within a VPC. You must specify either a destination CIDR block or a prefix list ID. You must also specify exactly one of the resources from the parameter list. When determining how to route traffic, we use the route with the most specific match. For example, traffic is destined for the IPv4 address 192.0.2.3, and the route table includes the following two IPv4 routes: 192.0.2.0/24 (goes to some target A) 192.0.2.0/28 (goes to some target B) Both routes apply to the traffic destined for 192.0.2.3. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic. For more information about route tables, see Route tables in the Amazon VPC User Guide.</td>
-</tr>
-<tr>
     <td><a href="#create_route_table"><CopyableCode code="create_route_table" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-VpcId"><code>VpcId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet. For more information, see Route tables in the Amazon VPC User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#create_route"><CopyableCode code="create_route" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-RouteTableId"><code>RouteTableId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DestinationPrefixListId"><code>DestinationPrefixListId</code></a>, <a href="#parameter-VpcEndpointId"><code>VpcEndpointId</code></a>, <a href="#parameter-TransitGatewayId"><code>TransitGatewayId</code></a>, <a href="#parameter-LocalGatewayId"><code>LocalGatewayId</code></a>, <a href="#parameter-CarrierGatewayId"><code>CarrierGatewayId</code></a>, <a href="#parameter-CoreNetworkArn"><code>CoreNetworkArn</code></a>, <a href="#parameter-OdbNetworkArn"><code>OdbNetworkArn</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-DestinationCidrBlock"><code>DestinationCidrBlock</code></a>, <a href="#parameter-GatewayId"><code>GatewayId</code></a>, <a href="#parameter-DestinationIpv6CidrBlock"><code>DestinationIpv6CidrBlock</code></a>, <a href="#parameter-EgressOnlyInternetGatewayId"><code>EgressOnlyInternetGatewayId</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-NetworkInterfaceId"><code>NetworkInterfaceId</code></a>, <a href="#parameter-VpcPeeringConnectionId"><code>VpcPeeringConnectionId</code></a>, <a href="#parameter-NatGatewayId"><code>NatGatewayId</code></a></td>
+    <td>Creates a route in a route table within a VPC. You must specify either a destination CIDR block or a prefix list ID. You must also specify exactly one of the resources from the parameter list. When determining how to route traffic, we use the route with the most specific match. For example, traffic is destined for the IPv4 address 192.0.2.3, and the route table includes the following two IPv4 routes: 192.0.2.0/24 (goes to some target A) 192.0.2.0/28 (goes to some target B) Both routes apply to the traffic destined for 192.0.2.3. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic. For more information about route tables, see Route tables in the Amazon VPC User Guide.</td>
 </tr>
 <tr>
     <td><a href="#associate_route_table"><CopyableCode code="associate_route_table" /></a></td>
@@ -387,13 +387,42 @@ AND Filter = '{{ Filter }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_route"
+    defaultValue="create_route_table"
     values={[
-        { label: 'create_route', value: 'create_route' },
         { label: 'create_route_table', value: 'create_route_table' },
+        { label: 'create_route', value: 'create_route' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
+<TabItem value="create_route_table">
+
+Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet. For more information, see Route tables in the Amazon VPC User Guide.
+
+```sql
+INSERT INTO aws.ec2.route_tables (
+VpcId,
+region,
+TagSpecification,
+ClientToken,
+DryRun
+)
+SELECT 
+'{{ VpcId }}',
+'{{ region }}',
+'{{ TagSpecification }}',
+'{{ ClientToken }}',
+'{{ DryRun }}'
+RETURNING
+associations,
+owner_id,
+propagating_vgws,
+route_table_id,
+routes,
+tags,
+vpc_id
+;
+```
+</TabItem>
 <TabItem value="create_route">
 
 Creates a route in a route table within a VPC. You must specify either a destination CIDR block or a prefix list ID. You must also specify exactly one of the resources from the parameter list. When determining how to route traffic, we use the route with the most specific match. For example, traffic is destined for the IPv4 address 192.0.2.3, and the route table includes the following two IPv4 routes: 192.0.2.0/24 (goes to some target A) 192.0.2.0/28 (goes to some target B) Both routes apply to the traffic destined for 192.0.2.3. However, the second route in the list covers a smaller number of IP addresses and is therefore more specific, so we use that route to determine where to target the traffic. For more information about route tables, see Route tables in the Amazon VPC User Guide.
@@ -443,49 +472,32 @@ return
 ;
 ```
 </TabItem>
-<TabItem value="create_route_table">
-
-Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet. For more information, see Route tables in the Amazon VPC User Guide.
-
-```sql
-INSERT INTO aws.ec2.route_tables (
-VpcId,
-region,
-TagSpecification,
-ClientToken,
-DryRun
-)
-SELECT 
-'{{ VpcId }}',
-'{{ region }}',
-'{{ TagSpecification }}',
-'{{ ClientToken }}',
-'{{ DryRun }}'
-RETURNING
-associations,
-owner_id,
-propagating_vgws,
-route_table_id,
-routes,
-tags,
-vpc_id
-;
-```
-</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: route_tables
   props:
-    - name: RouteTableId
-      value: "{{ RouteTableId }}"
+    - name: VpcId
+      value: "{{ VpcId }}"
       description: Required parameter for the route_tables resource.
     - name: region
       value: "{{ region }}"
       description: Required parameter for the route_tables resource.
-    - name: VpcId
-      value: "{{ VpcId }}"
+    - name: RouteTableId
+      value: "{{ RouteTableId }}"
       description: Required parameter for the route_tables resource.
+    - name: TagSpecification
+      value: "{{ TagSpecification }}"
+      description: The tags to assign to the route table.
+      description: The tags to assign to the route table.
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+    - name: DryRun
+      value: {{ DryRun }}
+      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
     - name: DestinationPrefixListId
       value: "{{ DestinationPrefixListId }}"
       description: The ID of a prefix list used for the destination match.
@@ -514,10 +526,6 @@ vpc_id
       value: "{{ OdbNetworkArn }}"
       description: The Amazon Resource Name (ARN) of the ODB network.
       description: The Amazon Resource Name (ARN) of the ODB network.
-    - name: DryRun
-      value: {{ DryRun }}
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
     - name: DestinationCidrBlock
       value: "{{ DestinationCidrBlock }}"
       description: The IPv4 CIDR address block used for the destination match. Routing decisions are based on the most specific match. We modify the specified CIDR block to its canonical form; for example, if you specify 100.68.0.18/18, we modify it to 100.68.0.0/18.
@@ -550,14 +558,6 @@ vpc_id
       value: "{{ NatGatewayId }}"
       description: [IPv4 traffic only] The ID of a NAT gateway.
       description: [IPv4 traffic only] The ID of a NAT gateway.
-    - name: TagSpecification
-      value: "{{ TagSpecification }}"
-      description: The tags to assign to the route table.
-      description: The tags to assign to the route table.
-    - name: ClientToken
-      value: "{{ ClientToken }}"
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
 `}</CodeBlock>
 
 </TabItem>

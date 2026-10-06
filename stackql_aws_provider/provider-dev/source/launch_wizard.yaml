@@ -351,10 +351,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -377,10 +373,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -697,6 +689,12 @@ components:
         status:
           $ref: '#/components/schemas/WorkloadStatus'
           description: The status of a workload. You can list deployments in the DISABLED status.
+        accountConstraints:
+          $ref: '#/components/schemas/AccountConstraintsList'
+          description: 'Optional list of constraints describing what kind of AWS account is allowed to deploy this workload
+            or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies
+            any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list
+            at this level means no constraint at this level.'
         description:
           $ref: '#/components/schemas/String'
           description: The description of a workload.
@@ -716,6 +714,36 @@ components:
       - INACTIVE
       - DISABLED
       - DELETED
+    AccountConstraintsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccountConstraint'
+    AccountConstraint:
+      description: A constraint on which AWS account a deployment can be initiated from. Specify one of the supported constraint
+        types.
+      type: object
+      properties:
+        managementAccount:
+          $ref: '#/components/schemas/ManagementAccountConstraint'
+        delegatedAdmin:
+          $ref: '#/components/schemas/DelegatedAdminConstraint'
+    ManagementAccountConstraint:
+      description: The deployment must be initiated from the AWS Organizations management account.
+      type: object
+    DelegatedAdminConstraint:
+      description: The deployment must be initiated from a delegated administrator account for the specified service principal.
+      type: object
+      properties:
+        servicePrincipal:
+          $ref: '#/components/schemas/ServicePrincipalType'
+          description: The service principal for which the account must be a delegated administrator. For example, stacksets.cloudformation.amazonaws.com.
+      required:
+      - servicePrincipal
+    ServicePrincipalType:
+      type: string
+      minLength: 1
+      maxLength: 128
+      pattern: '[a-z0-9.-]+\.amazonaws\.com(\.cn)?'
     GetWorkloadDeploymentPatternOutput:
       type: object
       properties:
@@ -750,6 +778,12 @@ components:
         statusMessage:
           $ref: '#/components/schemas/String'
           description: The status message of the deployment pattern.
+        accountConstraints:
+          $ref: '#/components/schemas/AccountConstraintsList'
+          description: 'Optional list of constraints describing what kind of AWS account is allowed to deploy this workload
+            or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies
+            any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list
+            at this level means no constraint at this level.'
         specifications:
           $ref: '#/components/schemas/DeploymentSpecificationsData'
           description: The settings specified for the deployment. These settings define how to deploy and configure your resources
@@ -857,6 +891,9 @@ components:
         timestamp:
           $ref: '#/components/schemas/Timestamp'
           description: The timestamp of the deployment event.
+        metadata:
+          type: object
+          properties: {}
     EventStatus:
       type: string
       enum:
@@ -1044,6 +1081,12 @@ components:
         statusMessage:
           $ref: '#/components/schemas/String'
           description: A message about a workload deployment pattern's status.
+        accountConstraints:
+          $ref: '#/components/schemas/AccountConstraintsList'
+          description: 'Optional list of constraints describing what kind of AWS account is allowed to deploy this workload
+            or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies
+            any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list
+            at this level means no constraint at this level.'
     ListWorkloadsOutput:
       type: object
       properties:
@@ -1071,8 +1114,12 @@ components:
         status:
           $ref: '#/components/schemas/WorkloadStatus'
           description: The status of the workload.
-    TagResourceOutput:
-      type: object
+        accountConstraints:
+          $ref: '#/components/schemas/AccountConstraintsList'
+          description: 'Optional list of constraints describing what kind of AWS account is allowed to deploy this workload
+            or deployment pattern. Within a single list the semantics are OR: an account satisfies the list if it satisfies
+            any entry. Workload-level and pattern-level lists combine with AND at deployment time. An absent or empty list
+            at this level means no constraint at this level.'
     TagKeyList:
       type: array
       items:
@@ -1081,9 +1128,7 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-      pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceOutput:
-      type: object
+      pattern: '[a-zA-Z0-9 _.:/=+@-]+'
     UpdateDeploymentOutput:
       type: object
       properties:

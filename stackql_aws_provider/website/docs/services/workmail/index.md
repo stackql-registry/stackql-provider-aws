@@ -18,7 +18,7 @@ workmail service documentation.
 
 :::info[Service Summary]
 
-total resources: __29__  
+total resources: __28__  
 
 :::
 
@@ -34,7 +34,6 @@ total resources: __29__
 <a href="/services/workmail/entities/">entities</a><br />
 <a href="/services/workmail/group_members/">group_members</a><br />
 <a href="/services/workmail/groups/">groups</a><br />
-<a href="/services/workmail/groups_for_entities/">groups_for_entities</a><br />
 <a href="/services/workmail/identity_center_applications/">identity_center_applications</a><br />
 <a href="/services/workmail/identity_provider_configurations/">identity_provider_configurations</a><br />
 <a href="/services/workmail/impersonation_role_effects/">impersonation_role_effects</a><br />
@@ -50,7 +49,7 @@ total resources: __29__
 <a href="/services/workmail/mobile_device_access_overrides/">mobile_device_access_overrides</a><br />
 <a href="/services/workmail/mobile_device_access_rules/">mobile_device_access_rules</a><br />
 <a href="/services/workmail/organizations/">organizations</a><br />
-<a href="/services/workmail/personal_access_token_metadatas/">personal_access_token_metadatas</a><br />
+<a href="/services/workmail/personal_access_token_metadata/">personal_access_token_metadata</a><br />
 <a href="/services/workmail/personal_access_tokens/">personal_access_tokens</a><br />
 <a href="/services/workmail/resource_delegates/">resource_delegates</a><br />
 <a href="/services/workmail/resources/">resources</a><br />

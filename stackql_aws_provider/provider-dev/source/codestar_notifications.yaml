@@ -110,10 +110,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTargetResult'
       x-stackql-resource: targets
       x-stackql-method: delete_target
       x-stackql-verb: DELETE
@@ -295,7 +291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubscribeResult'
-      x-stackql-resource: subscribe
+      x-stackql-resource: es
       x-stackql-method: subscribe
       x-stackql-verb: EXEC
   /tagResource:
@@ -354,7 +350,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnsubscribeResult'
-      x-stackql-resource: unsubscribe
+      x-stackql-resource: es
       x-stackql-method: unsubscribe
       x-stackql-verb: EXEC
   /untagResource/{resource_arn}:
@@ -377,10 +373,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -415,10 +407,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateNotificationRuleResult'
       x-stackql-resource: notification_rules
       x-stackql-method: update_notification_rule
       x-stackql-verb: UPDATE
@@ -543,8 +531,6 @@ components:
           description: The Amazon Resource Name (ARN) of the deleted notification rule.
     ForceUnsubscribeAll:
       type: boolean
-    DeleteTargetResult:
-      type: object
     DescribeNotificationRuleResult:
       type: object
       properties:
@@ -829,7 +815,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    UntagResourceResult:
-      type: object
-    UpdateNotificationRuleResult:
-      type: object

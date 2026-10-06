@@ -58,19 +58,13 @@ paths:
                   $ref: "#/components/schemas/AmendmentList"
                   description: A list of specific field amendments to apply to the benefit application.
               required:
-                - Catalog
                 - ClientToken
-                - Revision
                 - Identifier
                 - AmendmentReason
                 - Amendments
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AmendBenefitApplicationOutput"
   /AssociateBenefitApplicationResource:
     post:
       operationId: AssociateBenefitApplicationResource
@@ -150,10 +144,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelBenefitApplicationOutput"
   /CreateBenefitApplication:
     post:
       operationId: CreateBenefitApplication
@@ -586,16 +576,11 @@ paths:
                   $ref: "#/components/schemas/String"
                   description: A descriptive reason explaining why the benefit application is being recalled.
               required:
-                - Catalog
                 - Identifier
                 - Reason
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RecallBenefitApplicationOutput"
   /SubmitBenefitApplication:
     post:
       operationId: SubmitBenefitApplication
@@ -628,10 +613,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SubmitBenefitApplicationOutput"
   /TagResource:
     post:
       operationId: TagResource
@@ -665,10 +646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -702,10 +679,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateBenefitApplication:
     post:
       operationId: UpdateBenefitApplication
@@ -843,8 +816,6 @@ components:
       required:
         - FieldPath
         - NewValue
-    AmendBenefitApplicationOutput:
-      type: object
     AssociateBenefitApplicationResourceInputResourceArnString:
       type: string
       minLength: 0
@@ -875,8 +846,6 @@ components:
       minLength: 0
       maxLength: 1000
       pattern: "[\\s\\S]{1,1000}"
-    CancelBenefitApplicationOutput:
-      type: object
     CreateBenefitApplicationInputClientTokenString:
       type: string
       minLength: 1
@@ -1839,18 +1808,10 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Tag"
-    RecallBenefitApplicationOutput:
-      type: object
-    SubmitBenefitApplicationOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateBenefitApplicationInputClientTokenString:
       type: string
       minLength: 1
@@ -1882,6 +1843,18 @@ components:
       name: benefit_applications
       title: benefit_applications
       methods:
+        amend_benefit_application:
+          operation:
+            $ref: "#/paths/~1AmendBenefitApplication/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         associate_benefit_application_resource:
           operation:
             $ref: "#/paths/~1AssociateBenefitApplicationResource/post"
@@ -1955,6 +1928,18 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        recall_benefit_application:
+          operation:
+            $ref: "#/paths/~1RecallBenefitApplication/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_benefit_application:
           operation:
             $ref: "#/paths/~1UpdateBenefitApplication/post"
@@ -1975,8 +1960,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/create_benefit_application"
         update:
-          - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/associate_benefit_application_resource"
           - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/update_benefit_application"
+          - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/associate_benefit_application_resource"
         delete: []
     benefits:
       id: aws.partnercentral_benefits.benefits
@@ -1988,7 +1973,6 @@ components:
             $ref: "#/paths/~1CancelBenefitApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2035,7 +2019,6 @@ components:
             $ref: "#/paths/~1SubmitBenefitApplication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2119,7 +2102,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2132,7 +2114,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

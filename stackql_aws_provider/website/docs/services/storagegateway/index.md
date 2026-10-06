@@ -36,7 +36,7 @@ total resources: __31__
 <a href="/services/storagegateway/file_shares/">file_shares</a><br />
 <a href="/services/storagegateway/file_system_associations/">file_system_associations</a><br />
 <a href="/services/storagegateway/file_systems/">file_systems</a><br />
-<a href="/services/storagegateway/gateway_informations/">gateway_informations</a><br />
+<a href="/services/storagegateway/gateway_information/">gateway_information</a><br />
 <a href="/services/storagegateway/gateways/">gateways</a><br />
 <a href="/services/storagegateway/local_disks/">local_disks</a><br />
 <a href="/services/storagegateway/maintenance_start_times/">maintenance_start_times</a><br />
@@ -57,6 +57,6 @@ total resources: __31__
 <a href="/services/storagegateway/volume_recovery_points/">volume_recovery_points</a><br />
 <a href="/services/storagegateway/volumes/">volumes</a><br />
 <a href="/services/storagegateway/vtl_devices/">vtl_devices</a><br />
-<a href="/services/storagegateway/working_storages/">working_storages</a>
+<a href="/services/storagegateway/working_storage/">working_storage</a>
 </div>
 </div>

@@ -70,10 +70,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelTraceRetrievalResult'
       x-stackql-resource: traces
       x-stackql-method: cancel_trace_retrieval
       x-stackql-verb: EXEC
@@ -160,10 +156,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResult'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -188,10 +180,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResult'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -939,10 +927,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutTelemetryRecordsResult'
       x-stackql-resource: telemetry_records
       x-stackql-method: put_telemetry_records
       x-stackql-verb: REPLACE
@@ -1051,10 +1035,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1081,10 +1061,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1323,8 +1299,6 @@ components:
       type: string
       minLength: 0
       maxLength: 1020
-    CancelTraceRetrievalResult:
-      type: object
     GroupName:
       type: string
       minLength: 1
@@ -1547,8 +1521,6 @@ components:
       type: string
       minLength: 1
       maxLength: 400
-    DeleteGroupResult:
-      type: object
     PolicyName:
       type: string
       minLength: 1
@@ -1556,8 +1528,6 @@ components:
       pattern: '[\w+=,.@-]+'
     PolicyRevisionId:
       type: string
-    DeleteResourcePolicyResult:
-      type: object
     DeleteSamplingRuleResult:
       type: object
       properties:
@@ -3061,8 +3031,6 @@ components:
     Hostname:
       type: string
       maxLength: 255
-    PutTelemetryRecordsResult:
-      type: object
     TraceSegmentDocumentList:
       type: array
       items:
@@ -3102,14 +3070,10 @@ components:
         RetrievalToken:
           $ref: '#/components/schemas/RetrievalToken'
           description: Retrieval token.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateGroupResult:
       type: object
       properties:

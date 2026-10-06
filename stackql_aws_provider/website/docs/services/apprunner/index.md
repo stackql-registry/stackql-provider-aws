@@ -18,7 +18,7 @@ apprunner service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __9__  
 
 :::
 
@@ -33,7 +33,6 @@ total resources: __10__
 </div>
 <div class="providerDocColumn">
 <a href="/services/apprunner/services/">services</a><br />
-<a href="/services/apprunner/services_for_auto_scaling_configurations/">services_for_auto_scaling_configurations</a><br />
 <a href="/services/apprunner/tags/">tags</a><br />
 <a href="/services/apprunner/vpc_connectors/">vpc_connectors</a><br />
 <a href="/services/apprunner/vpc_ingress_connections/">vpc_ingress_connections</a>

@@ -607,7 +607,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportCertificateResponse'
-      x-stackql-resource: certificate
+      x-stackql-resource: certificates
       x-stackql-method: export_certificate
       x-stackql-verb: EXEC
   /GetAccountConfiguration:
@@ -779,7 +779,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportCertificateResponse'
-      x-stackql-resource: certificate
+      x-stackql-resource: certificates
       x-stackql-method: import_certificate
       x-stackql-verb: EXEC
   /ListAcmeAccounts:
@@ -1275,7 +1275,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate
+      x-stackql-resource: certificates
       x-stackql-method: renew_certificate
       x-stackql-verb: EXEC
   /RequestCertificate:
@@ -1385,7 +1385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RequestCertificateResponse'
-      x-stackql-resource: request_certificate
+      x-stackql-resource: certificates
       x-stackql-method: request_certificate
       x-stackql-verb: EXEC
   /ResendValidationEmail:

@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteImageResponse'
-      x-stackql-resource: repositories
+      x-stackql-resource: images
       x-stackql-method: batch_delete_image
       x-stackql-verb: EXEC
   /BatchGetImage:
@@ -810,7 +810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeImageReplicationStatusResponse'
-      x-stackql-resource: image_replication_status
+      x-stackql-resource: image_replication_statuses
       x-stackql-method: describe_image_replication_status
       x-stackql-verb: SELECT
   /DescribeImageScanFindings:
@@ -917,7 +917,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeImageSigningStatusResponse'
-      x-stackql-resource: image_signing_status
+      x-stackql-resource: image_signing_statuses
       x-stackql-method: describe_image_signing_status
       x-stackql-verb: SELECT
   /DescribeImages:
@@ -1313,7 +1313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDownloadUrlForLayerResponse'
-      x-stackql-resource: download_url_for_layers
+      x-stackql-resource: download_urls
       x-stackql-method: get_download_url_for_layer
       x-stackql-verb: SELECT
   /GetLifecyclePolicy:
@@ -2400,7 +2400,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLifecyclePolicyPreviewResponse'
-      x-stackql-resource: lifecycle_policies
+      x-stackql-resource: lifecycle_policy_previews
       x-stackql-method: start_lifecycle_policy_preview
       x-stackql-verb: EXEC
   /TagResource:
@@ -2439,10 +2439,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2480,10 +2476,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2760,7 +2752,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePullThroughCacheRuleResponse'
-      x-stackql-resource: pull_through_cache_rule
+      x-stackql-resource: pull_through_cache_rules
       x-stackql-method: validate_pull_through_cache_rule
       x-stackql-verb: EXEC
 components:
@@ -5055,14 +5047,10 @@ components:
         status:
           $ref: '#/components/schemas/LifecyclePolicyPreviewStatus'
           description: The status of the lifecycle policy preview request.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     TargetStorageClass:
       type: string
       enum:

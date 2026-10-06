@@ -839,10 +839,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Untags a resource with a specified Amazon Resource Name (ARN).
@@ -862,10 +858,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /app/{app_id}/environment/{environment_name}/metadata/features/{feature_name}:
     put:
       operationId: PutMetadataFlag
@@ -2056,8 +2048,6 @@ components:
     Tags:
       type: object
       properties: {}
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2067,8 +2057,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateComponentData:
       description: Updates and saves all of the information about a component, based on component ID.
       type: object
@@ -2424,6 +2412,38 @@ components:
           - $ref: "#/components/x-stackQL-resources/themes/methods/update_theme"
         delete:
           - $ref: "#/components/x-stackQL-resources/themes/methods/delete_theme"
+    tokens:
+      id: aws.amplifyuibuilder.tokens
+      name: tokens
+      title: tokens
+      methods:
+        exchange_code_for_token:
+          operation:
+            $ref: "#/paths/~1tokens~1{provider}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        refresh_token:
+          operation:
+            $ref: "#/paths/~1tokens~1{provider}~1refresh/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     codegen_jobs:
       id: aws.amplifyuibuilder.codegen_jobs
       name: codegen_jobs
@@ -2453,6 +2473,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_codegen_job:
+          operation:
+            $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1codegen-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/codegen_jobs/methods/get_codegen_job"
@@ -2460,10 +2491,10 @@ components:
         insert: []
         update: []
         delete: []
-    metadatas:
-      id: aws.amplifyuibuilder.metadatas
-      name: metadatas
-      title: metadatas
+    metadata:
+      id: aws.amplifyuibuilder.metadata
+      name: metadata
+      title: metadata
       methods:
         get_metadata:
           operation:
@@ -2483,11 +2514,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/metadatas/methods/get_metadata"
+          - $ref: "#/components/x-stackQL-resources/metadata/methods/get_metadata"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/metadatas/methods/put_metadata_flag"
+          - $ref: "#/components/x-stackQL-resources/metadata/methods/put_metadata_flag"
         delete: []
     tags:
       id: aws.amplifyuibuilder.tags
@@ -2505,7 +2536,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2516,7 +2546,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

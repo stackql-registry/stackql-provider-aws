@@ -31,10 +31,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteObjectResponse'
       x-stackql-resource: objects
       x-stackql-method: delete_object
       x-stackql-verb: DELETE
@@ -262,8 +258,6 @@ components:
       minLength: 1
       maxLength: 900
       pattern: (?:[A-Za-z0-9_\.\-\~]+/){0,10}[A-Za-z0-9_\.\-\~]+
-    DeleteObjectResponse:
-      type: object
     DescribeObjectResponse:
       type: object
       properties:

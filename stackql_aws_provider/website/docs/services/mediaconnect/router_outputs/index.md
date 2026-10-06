@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>router_outputs</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_router_output"
+    defaultValue="get_router_output"
     values={[
-        { label: 'batch_get_router_output', value: 'batch_get_router_output' },
         { label: 'get_router_output', value: 'get_router_output' },
+        { label: 'batch_get_router_output', value: 'batch_get_router_output' },
         { label: 'list_router_outputs', value: 'list_router_outputs' }
     ]}
 >
-<TabItem value="batch_get_router_output">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>An array of errors that occurred when retrieving the requested router outputs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="router_outputs" /></td>
-    <td><code>array</code></td>
-    <td>An array of router outputs that were successfully retrieved.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_router_output">
 
 <table>
@@ -198,6 +174,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_router_output">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>An array of errors that occurred when retrieving the requested router outputs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="router_outputs" /></td>
+    <td><code>array</code></td>
+    <td>An array of router outputs that were successfully retrieved.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_router_outputs">
 
 <table>
@@ -315,18 +315,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_router_output"><CopyableCode code="batch_get_router_output" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about multiple router outputs in AWS Elemental MediaConnect.</td>
-</tr>
-<tr>
     <td><a href="#get_router_output"><CopyableCode code="get_router_output" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves information about a specific router output in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_router_output"><CopyableCode code="batch_get_router_output" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-arns"><code>arns</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about multiple router outputs in AWS Elemental MediaConnect.</td>
 </tr>
 <tr>
     <td><a href="#list_router_outputs"><CopyableCode code="list_router_outputs" /></a></td>
@@ -357,6 +357,27 @@ The following methods are available for this resource:
     <td>Deletes a router output from AWS Elemental MediaConnect.</td>
 </tr>
 <tr>
+    <td><a href="#restart_router_output"><CopyableCode code="restart_router_output" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Restarts a router output. This operation can be used to recover from errors or refresh the output state.</td>
+</tr>
+<tr>
+    <td><a href="#start_router_output"><CopyableCode code="start_router_output" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a router output in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
+    <td><a href="#stop_router_output"><CopyableCode code="stop_router_output" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a router output in AWS Elemental MediaConnect.</td>
+</tr>
+<tr>
     <td><a href="#take_router_input"><CopyableCode code="take_router_input" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-router_output_arn"><code>router_output_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -382,7 +403,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-arn">
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the router output that you want to delete.</td>
+    <td>The Amazon Resource Name (ARN) of the router output that you want to stop.</td>
 </tr>
 <tr id="parameter-arns">
     <td><CopyableCode code="arns" /></td>
@@ -415,27 +436,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_router_output"
+    defaultValue="get_router_output"
     values={[
-        { label: 'batch_get_router_output', value: 'batch_get_router_output' },
         { label: 'get_router_output', value: 'get_router_output' },
+        { label: 'batch_get_router_output', value: 'batch_get_router_output' },
         { label: 'list_router_outputs', value: 'list_router_outputs' }
     ]}
 >
-<TabItem value="batch_get_router_output">
-
-Retrieves information about multiple router outputs in AWS Elemental MediaConnect.
-
-```sql
-SELECT
-errors,
-router_outputs
-FROM aws.mediaconnect.router_outputs
-WHERE arns = '{{ arns }}' -- required
-AND region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_router_output">
 
 Retrieves information about a specific router output in AWS Elemental MediaConnect.
@@ -468,6 +475,20 @@ tier,
 updated_at
 FROM aws.mediaconnect.router_outputs
 WHERE arn = '{{ arn }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_router_output">
+
+Retrieves information about multiple router outputs in AWS Elemental MediaConnect.
+
+```sql
+SELECT
+errors,
+router_outputs
+FROM aws.mediaconnect.router_outputs
+WHERE arns = '{{ arns }}' -- required
 AND region = '{{ region }}' -- required
 ;
 ```
@@ -700,11 +721,47 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="take_router_input"
+    defaultValue="restart_router_output"
     values={[
+        { label: 'restart_router_output', value: 'restart_router_output' },
+        { label: 'start_router_output', value: 'start_router_output' },
+        { label: 'stop_router_output', value: 'stop_router_output' },
         { label: 'take_router_input', value: 'take_router_input' }
     ]}
 >
+<TabItem value="restart_router_output">
+
+Restarts a router output. This operation can be used to recover from errors or refresh the output state.
+
+```sql
+EXEC aws.mediaconnect.router_outputs.restart_router_output 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_router_output">
+
+Starts a router output in AWS Elemental MediaConnect.
+
+```sql
+EXEC aws.mediaconnect.router_outputs.start_router_output 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="stop_router_output">
+
+Stops a router output in AWS Elemental MediaConnect.
+
+```sql
+EXEC aws.mediaconnect.router_outputs.stop_router_output 
+@arn='{{ arn }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="take_router_input">
 
 Associates a router input with a router output in AWS Elemental MediaConnect.

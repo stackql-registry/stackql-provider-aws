@@ -32,20 +32,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ActivateOrganizationsAccessOutputDisplay"
     post:
       operationId: POST_ActivateOrganizationsAccess
       description: Activate trusted access with Organizations. With trusted access between StackSets and Organizations activated, the management account has permissions to create and manage StackSets for your organization.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ActivateOrganizationsAccessOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -270,20 +262,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ContinueUpdateRollbackOutputDisplay"
     post:
       operationId: POST_ContinueUpdateRollback
       description: Continues rolling back a stack from UPDATE_ROLLBACK_FAILED to UPDATE_ROLLBACK_COMPLETE state. Depending on the cause of the failure, you can manually fix the error and continue the rollback. By continuing the rollback, you can return your stack to a working state (the UPDATE_ROLLBACK_COMPLETE state) and then try to update the stack again. A stack enters the UPDATE_ROLLBACK_FAILED state when CloudFormation can't roll back all changes after a failed stack update. For example, this might occur when a stack attempts to roll back to an old database that was deleted outside of CloudFormation. Because CloudFormation doesn't know the instance was deleted, it assumes the instance still exists and attempts to roll back to it, causing the update rollback to fail. For more information, see Continue rolling back an update in the CloudFormation User Guide. For information for troubleshooting a failed update rollback, see Update rollback failed.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ContinueUpdateRollbackOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -960,20 +944,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeactivateOrganizationsAccessOutputDisplay"
     post:
       operationId: POST_DeactivateOrganizationsAccess
       description: Deactivates trusted access with Organizations. If trusted access is deactivated, the management account does not have permissions to create and manage service-managed StackSets for your organization.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeactivateOrganizationsAccessOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1014,20 +990,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeactivateTypeOutputDisplay"
     post:
       operationId: POST_DeactivateType
       description: Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it. Deactivating an extension deletes the configuration details that are associated with it. To temporarily disable a CloudFormation Hook instead, you can use SetTypeConfiguration. Once deactivated, an extension can't be used in any CloudFormation operation. This includes stack update operations where the stack template includes the extension, even if no updates are being made to the extension. In addition, deactivated extensions aren't automatically updated if a new version of the extension is released. To see which extensions are currently activated, use ListTypes.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeactivateTypeOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1062,20 +1030,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteChangeSetOutputDisplay"
     post:
       operationId: POST_DeleteChangeSet
       description: Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set. If the call successfully completes, CloudFormation successfully deleted the change set. If IncludeNestedStacks specifies True during the creation of the nested change set, then DeleteChangeSet will delete all change sets that belong to the stacks hierarchy and will also delete all change sets for nested stacks with the status of REVIEW_IN_PROGRESS.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteChangeSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1292,20 +1252,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteStackSetOutputDisplay"
     post:
       operationId: POST_DeleteStackSet
       description: Deletes a StackSet. Before you can delete a StackSet, all its member stack instances must be deleted. For more information about how to complete this, see DeleteStackInstances.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeleteStackSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -1352,20 +1304,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeregisterTypeOutputDisplay"
     post:
       operationId: POST_DeregisterType
       description: Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations. To deregister an entire extension, you must individually deregister all active versions of that extension. If an extension has only a single active version, deregistering that version results in the extension itself being deregistered and marked as deprecated in the registry. You can't deregister the default version of an extension if there are other active version of that extension. If you do deregister the default version of an extension, the extension type itself is deregistered as well and marked as deprecated. To view the deprecation status of an extension or extension version, use DescribeType. For more information, see Remove third-party private extensions from your account in the CloudFormation User Guide.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/DeregisterTypeOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -2642,20 +2586,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ExecuteChangeSetOutputDisplay"
     post:
       operationId: POST_ExecuteChangeSet
       description: Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the DescribeStacks action to view the status of the update. When you execute a change set, CloudFormation deletes all other change sets associated with the stack because they aren't valid for the updated stack. If a stack policy is associated with the stack, CloudFormation enforces the policy during the update. You can't specify a temporary stack policy that overrides the current policy. To create a change set for the entire stack hierarchy, IncludeNestedStacks must have been set to True.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/ExecuteChangeSetOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -4440,20 +4376,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RecordHandlerProgressOutputDisplay"
     post:
       operationId: POST_RecordHandlerProgress
       description: Reports progress of a resource handler to CloudFormation. Reserved for use by the CloudFormation CLI. Don't use this API in your code.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/RecordHandlerProgressOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -4798,20 +4726,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
     post:
       operationId: POST_SetTypeDefaultVersion
       description: Specify the default version of an extension. The default version of an extension will be used in CloudFormation operations.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -4952,20 +4872,12 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/StopStackSetOperationOutputDisplay"
     post:
       operationId: POST_StopStackSetOperation
       description: Stops an in-progress operation on a StackSet and its associated stack instances. StackSets will cancel all the unstarted stack instance deployments and wait for those are in-progress to complete.
       responses:
         "200":
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: "#/components/schemas/StopStackSetOperationOutputDisplay"
       parameters: []
       requestBody:
         content:
@@ -5641,13 +5553,6 @@ components:
       schema:
         type: string
   schemas:
-    ActivateOrganizationsAccessOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/ActivateOrganizationsAccessOutputDisplay"
     ActivateOrganizationsAccessInput:
       type: object
     ThirdPartyType:
@@ -5830,13 +5735,6 @@ components:
     ResourceToSkip:
       type: string
       pattern: "[a-zA-Z0-9]+|[a-zA-Z][-a-zA-Z0-9]*\\.[a-zA-Z0-9]+"
-    ContinueUpdateRollbackOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/ContinueUpdateRollbackOutputDisplay"
     ContinueUpdateRollbackInput:
       description: The input for the ContinueUpdateRollback action.
       type: object
@@ -6610,26 +6508,12 @@ components:
           description: Describes whether CloudFormation performs non-conflicting operations concurrently and queues conflicting operations.
       required:
         - StackSetName
-    DeactivateOrganizationsAccessOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeactivateOrganizationsAccessOutputDisplay"
     DeactivateOrganizationsAccessInput:
       type: object
     PrivateTypeArn:
       type: string
       maxLength: 1024
       pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
-    DeactivateTypeOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeactivateTypeOutputDisplay"
     DeactivateTypeInput:
       type: object
       properties:
@@ -6647,13 +6531,6 @@ components:
       minLength: 1
       maxLength: 1600
       pattern: "[a-zA-Z][-a-zA-Z0-9]*|arn:[-a-zA-Z0-9:/]*"
-    DeleteChangeSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteChangeSetOutputDisplay"
     DeleteChangeSetInput:
       description: The input for the DeleteChangeSet action.
       type: object
@@ -6747,13 +6624,6 @@ components:
         - StackSetName
         - Regions
         - RetainStacks
-    DeleteStackSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteStackSetOutputDisplay"
     DeleteStackSetInput:
       type: object
       properties:
@@ -6776,13 +6646,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: "[A-Za-z0-9-]+"
-    DeregisterTypeOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeregisterTypeOutputDisplay"
     DeregisterTypeInput:
       type: object
       properties:
@@ -7913,13 +7776,6 @@ components:
         Parameters:
           $ref: "#/components/schemas/Parameters"
           description: A list of Parameter structures that specify input parameters.
-    ExecuteChangeSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/ExecuteChangeSetOutputDisplay"
     ExecuteChangeSetInput:
       description: The input for the ExecuteChangeSet action.
       type: object
@@ -9393,13 +9249,6 @@ components:
       type: string
       minLength: 1
       maxLength: 16384
-    RecordHandlerProgressOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/RecordHandlerProgressOutputDisplay"
     RecordHandlerProgressInput:
       type: object
       properties:
@@ -9564,13 +9413,6 @@ components:
           description: "The type of extension. Conditional: You must specify ConfigurationArn, or Type and TypeName."
       required:
         - Configuration
-    SetTypeDefaultVersionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
     SetTypeDefaultVersionInput:
       type: object
       properties:
@@ -9651,13 +9493,6 @@ components:
         ScanFilters:
           $ref: "#/components/schemas/ScanFilters"
           description: The scan filters to use.
-    StopStackSetOperationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/StopStackSetOperationOutputDisplay"
     StopStackSetOperationInput:
       type: object
       properties:
@@ -9963,23 +9798,16 @@ components:
           $ref: "#/components/schemas/TemplateURL"
           description: "The URL of a file that contains the template body. The URL must point to a template (max size: 1 MB) that is located in an Amazon S3 bucket or a Systems Manager document. The location for an Amazon S3 bucket must start with https://. Conditional: You must pass TemplateURL or TemplateBody. If both are passed, only TemplateBody is used."
   x-stackQL-resources:
-    organizations_access:
-      id: aws.cloudformation.organizations_access
-      name: organizations_access
-      title: organizations_access
+    organizations_accesses:
+      id: aws.cloudformation.organizations_accesses
+      name: organizations_accesses
+      title: organizations_accesses
       methods:
         activate_organizations_access:
           operation:
             $ref: "#/paths/~1?Action=ActivateOrganizationsAccess&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ActivateOrganizationsAccessOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -9990,13 +9818,6 @@ components:
             $ref: "#/paths/~1?Action=DeactivateOrganizationsAccess&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeactivateOrganizationsAccessOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10023,7 +9844,211 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/organizations_access/methods/describe_organizations_access"
+          - $ref: "#/components/x-stackQL-resources/organizations_accesses/methods/describe_organizations_access"
+        insert: []
+        update: []
+        delete: []
+    types:
+      id: aws.cloudformation.types
+      name: types
+      title: types
+      methods:
+        activate_type:
+          operation:
+            $ref: "#/paths/~1?Action=ActivateType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ActivateTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        deactivate_type:
+          operation:
+            $ref: "#/paths/~1?Action=DeactivateType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        deregister_type:
+          operation:
+            $ref: "#/paths/~1?Action=DeregisterType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_type:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        list_types:
+          operation:
+            $ref: "#/paths/~1?Action=ListTypes&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTypesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        publish_type:
+          operation:
+            $ref: "#/paths/~1?Action=PublishType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PublishTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        register_type:
+          operation:
+            $ref: "#/paths/~1?Action=RegisterType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RegisterTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_type_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=SetTypeConfiguration&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetTypeConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_type_default_version:
+          operation:
+            $ref: "#/paths/~1?Action=SetTypeDefaultVersion&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        test_type:
+          operation:
+            $ref: "#/paths/~1?Action=TestType&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/types/methods/describe_type"
+          - $ref: "#/components/x-stackQL-resources/types/methods/list_types"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/types/methods/register_type"
+        update:
+          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_configuration"
+          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_default_version"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/types/methods/deregister_type"
+    type_configurations:
+      id: aws.cloudformation.type_configurations
+      name: type_configurations
+      title: type_configurations
+      methods:
+        batch_describe_type_configurations:
+          operation:
+            $ref: "#/paths/~1?Action=BatchDescribeTypeConfigurations&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchDescribeTypeConfigurationsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -10047,13 +10072,6 @@ components:
             $ref: "#/paths/~1?Action=ContinueUpdateRollback&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ContinueUpdateRollbackOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10284,13 +10302,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteChangeSet&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteChangeSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -10322,13 +10333,6 @@ components:
             $ref: "#/paths/~1?Action=ExecuteChangeSet&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ExecuteChangeSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10702,13 +10706,6 @@ components:
             $ref: "#/paths/~1?Action=DeleteStackSet&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteStackSetOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -10776,13 +10773,6 @@ components:
             $ref: "#/paths/~1?Action=StopStackSetOperation&Version=2010-05-15/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/StopStackSetOperationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10817,136 +10807,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/stack_sets/methods/update_stack_set"
         delete:
           - $ref: "#/components/x-stackQL-resources/stack_sets/methods/delete_stack_set"
-    types:
-      id: aws.cloudformation.types
-      name: types
-      title: types
-      methods:
-        deregister_type:
-          operation:
-            $ref: "#/paths/~1?Action=DeregisterType&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeregisterTypeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_type:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeType&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeTypeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        list_types:
-          operation:
-            $ref: "#/paths/~1?Action=ListTypes&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTypesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        register_type:
-          operation:
-            $ref: "#/paths/~1?Action=RegisterType&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RegisterTypeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        set_type_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=SetTypeConfiguration&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetTypeConfigurationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        set_type_default_version:
-          operation:
-            $ref: "#/paths/~1?Action=SetTypeDefaultVersion&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/types/methods/describe_type"
-          - $ref: "#/components/x-stackQL-resources/types/methods/list_types"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/types/methods/register_type"
-        update:
-          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_configuration"
-          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_default_version"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/types/methods/deregister_type"
     account_limits:
       id: aws.cloudformation.account_limits
       name: account_limits
@@ -11130,6 +10990,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        start_resource_scan:
+          operation:
+            $ref: "#/paths/~1?Action=StartResourceScan&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartResourceScanOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_scans/methods/describe_resource_scan"
@@ -11137,10 +11014,10 @@ components:
         insert: []
         update: []
         delete: []
-    stack_drift_detection_status:
-      id: aws.cloudformation.stack_drift_detection_status
-      name: stack_drift_detection_status
-      title: stack_drift_detection_status
+    stack_drift_detection_statuses:
+      id: aws.cloudformation.stack_drift_detection_statuses
+      name: stack_drift_detection_statuses
+      title: stack_drift_detection_statuses
       methods:
         describe_stack_drift_detection_status:
           operation:
@@ -11163,7 +11040,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/stack_drift_detection_status/methods/describe_stack_drift_detection_status"
+          - $ref: "#/components/x-stackQL-resources/stack_drift_detection_statuses/methods/describe_stack_drift_detection_status"
         insert: []
         update: []
         delete: []
@@ -11398,6 +11275,33 @@ components:
         insert: []
         update: []
         delete: []
+    template_costs:
+      id: aws.cloudformation.template_costs
+      name: template_costs
+      title: template_costs
+      methods:
+        estimate_template_cost:
+          operation:
+            $ref: "#/paths/~1?Action=EstimateTemplateCost&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EstimateTemplateCostOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     hook_results:
       id: aws.cloudformation.hook_results
       name: hook_results
@@ -11510,6 +11414,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        validate_template:
+          operation:
+            $ref: "#/paths/~1?Action=ValidateTemplate&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ValidateTemplateOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -11819,6 +11740,26 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/type_versions/methods/list_type_versions"
+        insert: []
+        update: []
+        delete: []
+    handler_progresses:
+      id: aws.cloudformation.handler_progresses
+      name: handler_progresses
+      title: handler_progresses
+      methods:
+        record_handler_progress:
+          operation:
+            $ref: "#/paths/~1?Action=RecordHandlerProgress&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

@@ -20,7 +20,7 @@ paths:
   /CancelImageCreation:
     put:
       operationId: CancelImageCreation
-      description: CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.
+      description: Cancels the creation of an image. This operation can only be used on images in a non-terminal state.
       parameters: []
       requestBody:
         required: true
@@ -46,7 +46,7 @@ paths:
   /CancelLifecycleExecution:
     put:
       operationId: CancelLifecycleExecution
-      description: Cancel a specific image lifecycle policy runtime instance.
+      description: Cancels a specific image lifecycle policy runtime instance.
       parameters: []
       requestBody:
         required: true
@@ -161,6 +161,8 @@ paths:
                   $ref: "#/components/schemas/NonEmptyString"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - containerType
                 - name
@@ -197,6 +199,8 @@ paths:
                   $ref: "#/components/schemas/TagMap"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - name
                 - distributions
@@ -211,7 +215,7 @@ paths:
   /CreateImage:
     put:
       operationId: CreateImage
-      description: Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+      description: Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
       parameters: []
       requestBody:
         required: true
@@ -257,7 +261,7 @@ paths:
   /CreateImagePipeline:
     put:
       operationId: CreateImagePipeline
-      description: Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
+      description: Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.
       parameters: []
       requestBody:
         required: true
@@ -300,6 +304,8 @@ paths:
                   $ref: "#/components/schemas/RoleNameOrArn"
                 loggingConfiguration:
                   $ref: "#/components/schemas/PipelineLoggingConfiguration"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - name
                 - infrastructureConfigurationArn
@@ -347,6 +353,8 @@ paths:
                   $ref: "#/components/schemas/AmiWatermarksList"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - name
                 - semanticVersion
@@ -401,6 +409,8 @@ paths:
                   $ref: "#/components/schemas/Placement"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - name
                 - instanceProfileName
@@ -415,7 +425,7 @@ paths:
   /CreateLifecyclePolicy:
     put:
       operationId: CreateLifecyclePolicy
-      description: Create a lifecycle policy resource.
+      description: Creates a lifecycle policy resource.
       parameters: []
       requestBody:
         required: true
@@ -442,6 +452,8 @@ paths:
                   $ref: "#/components/schemas/TagMap"
                 clientToken:
                   $ref: "#/components/schemas/ClientToken"
+                dryRun:
+                  $ref: "#/components/schemas/Boolean"
               required:
                 - name
                 - executionRole
@@ -459,7 +471,7 @@ paths:
   /CreateWorkflow:
     put:
       operationId: CreateWorkflow
-      description: Create a new workflow or a new version of an existing workflow.
+      description: Creates a new workflow or a new version of an existing workflow.
       parameters: []
       requestBody:
         required: true
@@ -631,7 +643,7 @@ paths:
   /DeleteLifecyclePolicy:
     delete:
       operationId: DeleteLifecyclePolicy
-      description: Delete the specified lifecycle policy resource.
+      description: Deletes the specified lifecycle policy resource.
       parameters:
         - name: lifecyclePolicyArn
           in: query
@@ -703,7 +715,7 @@ paths:
   /GetComponent:
     get:
       operationId: GetComponent
-      description: Gets a component object.
+      description: Retrieves a component object.
       parameters:
         - name: componentBuildVersionArn
           in: query
@@ -721,7 +733,7 @@ paths:
   /GetComponentPolicy:
     get:
       operationId: GetComponentPolicy
-      description: Gets a component policy.
+      description: Retrieves a component policy.
       parameters:
         - name: componentArn
           in: query
@@ -775,7 +787,7 @@ paths:
   /GetDistributionConfiguration:
     get:
       operationId: GetDistributionConfiguration
-      description: Gets a distribution configuration.
+      description: Retrieves a distribution configuration.
       parameters:
         - name: distributionConfigurationArn
           in: query
@@ -793,7 +805,7 @@ paths:
   /GetImage:
     get:
       operationId: GetImage
-      description: Gets an image.
+      description: Retrieves an image.
       parameters:
         - name: imageBuildVersionArn
           in: query
@@ -811,7 +823,7 @@ paths:
   /GetImagePipeline:
     get:
       operationId: GetImagePipeline
-      description: Gets an image pipeline.
+      description: Retrieves an image pipeline.
       parameters:
         - name: imagePipelineArn
           in: query
@@ -829,7 +841,7 @@ paths:
   /GetImagePolicy:
     get:
       operationId: GetImagePolicy
-      description: Gets an image policy.
+      description: Retrieves an image policy.
       parameters:
         - name: imageArn
           in: query
@@ -847,7 +859,7 @@ paths:
   /GetImageRecipe:
     get:
       operationId: GetImageRecipe
-      description: Gets an image recipe.
+      description: Retrieves an image recipe.
       parameters:
         - name: imageRecipeArn
           in: query
@@ -865,7 +877,7 @@ paths:
   /GetImageRecipePolicy:
     get:
       operationId: GetImageRecipePolicy
-      description: Gets an image recipe policy.
+      description: Retrieves an image recipe policy.
       parameters:
         - name: imageRecipeArn
           in: query
@@ -883,7 +895,7 @@ paths:
   /GetInfrastructureConfiguration:
     get:
       operationId: GetInfrastructureConfiguration
-      description: Gets an infrastructure configuration.
+      description: Retrieves an infrastructure configuration.
       parameters:
         - name: infrastructureConfigurationArn
           in: query
@@ -901,14 +913,14 @@ paths:
   /GetLifecycleExecution:
     get:
       operationId: GetLifecycleExecution
-      description: Get the runtime information that was logged for a specific runtime instance of the lifecycle policy.
+      description: Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
       parameters:
         - name: lifecycleExecutionId
           in: query
           required: true
           schema:
             $ref: "#/components/schemas/LifecycleExecutionId"
-          description: Use the unique identifier for a runtime instance of the lifecycle policy to get runtime details.
+          description: The unique identifier for a runtime instance of the lifecycle policy.
       responses:
         "200":
           description: Success
@@ -919,7 +931,7 @@ paths:
   /GetLifecyclePolicy:
     get:
       operationId: GetLifecyclePolicy
-      description: Get details for the specified image lifecycle policy.
+      description: Retrieves details for the specified image lifecycle policy.
       parameters:
         - name: lifecyclePolicyArn
           in: query
@@ -937,7 +949,7 @@ paths:
   /GetMarketplaceResource:
     post:
       operationId: GetMarketplaceResource
-      description: Verify the subscription and perform resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
+      description: Verifies the subscription and performs resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
       parameters: []
       requestBody:
         required: true
@@ -965,7 +977,7 @@ paths:
   /GetWorkflow:
     get:
       operationId: GetWorkflow
-      description: Get a workflow resource object.
+      description: Retrieves a workflow resource object.
       parameters:
         - name: workflowBuildVersionArn
           in: query
@@ -983,7 +995,7 @@ paths:
   /GetWorkflowExecution:
     get:
       operationId: GetWorkflowExecution
-      description: Get the runtime information that was logged for a specific runtime instance of the workflow.
+      description: Retrieves runtime information for a specific runtime instance of the workflow.
       parameters:
         - name: workflowExecutionId
           in: query
@@ -1001,7 +1013,7 @@ paths:
   /GetWorkflowStepExecution:
     get:
       operationId: GetWorkflowStepExecution
-      description: Get the runtime information that was logged for a specific runtime instance of the workflow step.
+      description: Retrieves runtime information for a specific runtime instance of the workflow step.
       parameters:
         - name: stepExecutionId
           in: query
@@ -1069,7 +1081,7 @@ paths:
   /ImportDiskImage:
     put:
       operationId: ImportDiskImage
-      description: "Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise"
+      description: "Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported: Windows 11 Enterprise"
       parameters: []
       requestBody:
         required: true
@@ -1190,7 +1202,7 @@ paths:
   /ListComponents:
     post:
       operationId: ListComponents
-      description: "Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+      description: "Returns the list of components that can be filtered by name, or by using the listed filters to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
       parameters: []
       requestBody:
         required: false
@@ -1298,7 +1310,7 @@ paths:
   /ListImagePackages:
     post:
       operationId: ListImagePackages
-      description: List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.
+      description: Lists the packages that are associated with an image build version, as determined by Amazon Web Services Systems Manager Inventory at build time.
       parameters: []
       requestBody:
         required: true
@@ -1510,7 +1522,7 @@ paths:
   /ListLifecycleExecutionResources:
     post:
       operationId: ListLifecycleExecutionResources
-      description: List resources that the runtime instance of the image lifecycle identified for lifecycle actions.
+      description: Lists resources that the runtime instance of the image lifecycle identified for lifecycle actions.
       parameters: []
       requestBody:
         required: true
@@ -1539,7 +1551,7 @@ paths:
   /ListLifecycleExecutions:
     post:
       operationId: ListLifecycleExecutions
-      description: Get the lifecycle runtime history for the specified resource.
+      description: Retrieves the lifecycle runtime history for the specified resource.
       parameters: []
       requestBody:
         required: true
@@ -1566,7 +1578,7 @@ paths:
   /ListLifecyclePolicies:
     post:
       operationId: ListLifecyclePolicies
-      description: Get a list of lifecycle policies in your Amazon Web Services account.
+      description: Retrieves a list of lifecycle policies in your Amazon Web Services account.
       parameters: []
       requestBody:
         required: false
@@ -1630,10 +1642,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource.
@@ -1653,14 +1661,10 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /ListWaitingWorkflowSteps:
     post:
       operationId: ListWaitingWorkflowSteps
-      description: Get a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
+      description: Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
       parameters: []
       requestBody:
         required: false
@@ -1791,7 +1795,7 @@ paths:
   /PutComponentPolicy:
     put:
       operationId: PutComponentPolicy
-      description: Applies a policy to a component. We recommend that you call the RAM API CreateResourceShare to share resources. If you call the Image Builder API PutComponentPolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with whom the resource is shared.
+      description: Applies a policy to a component. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
       parameters: []
       requestBody:
         required: true
@@ -1817,7 +1821,7 @@ paths:
   /PutContainerRecipePolicy:
     put:
       operationId: PutContainerRecipePolicy
-      description: Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API PutContainerImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
+      description: Applies a policy to a container image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
       parameters: []
       requestBody:
         required: true
@@ -1843,7 +1847,7 @@ paths:
   /PutImagePolicy:
     put:
       operationId: PutImagePolicy
-      description: Applies a policy to an image. We recommend that you call the RAM API CreateResourceShare to share resources. If you call the Image Builder API PutImagePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with whom the resource is shared.
+      description: Applies a policy to an image. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
       parameters: []
       requestBody:
         required: true
@@ -1869,7 +1873,7 @@ paths:
   /PutImageRecipePolicy:
     put:
       operationId: PutImageRecipePolicy
-      description: Applies a policy to an image recipe. We recommend that you call the RAM API CreateResourceShare to share resources. If you call the Image Builder API PutImageRecipePolicy, you must also call the RAM API PromoteResourceShareCreatedFromPolicy in order for the resource to be visible to all principals with whom the resource is shared.
+      description: Applies a policy to an image recipe. To share resources, call the RAM API CreateResourceShare. If you call this API, you must also call the RAM API PromoteResourceShareCreatedFromPolicy so that the resource is visible to all principals with whom the resource is shared.
       parameters: []
       requestBody:
         required: true
@@ -1895,7 +1899,7 @@ paths:
   /RetryImage:
     put:
       operationId: RetryImage
-      description: RetryImage retries an image distribution without rebuilding the image.
+      description: Retries an image distribution or test without rebuilding the image.
       parameters: []
       requestBody:
         required: true
@@ -1983,7 +1987,7 @@ paths:
   /StartResourceStateUpdate:
     put:
       operationId: StartResourceStateUpdate
-      description: Begin asynchronous resource state update for lifecycle changes to the specified image resources.
+      description: Begins an asynchronous resource state update for lifecycle changes to the specified image resources.
       parameters: []
       requestBody:
         required: true
@@ -2020,7 +2024,7 @@ paths:
   /UpdateDistributionConfiguration:
     put:
       operationId: UpdateDistributionConfiguration
-      description: Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+      description: Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
       parameters: []
       requestBody:
         required: true
@@ -2051,7 +2055,7 @@ paths:
   /UpdateImagePipeline:
     put:
       operationId: UpdateImagePipeline
-      description: Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.
+      description: Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a containerRecipeArn or an imageRecipeArn. UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.
       parameters: []
       requestBody:
         required: true
@@ -2106,7 +2110,7 @@ paths:
   /UpdateInfrastructureConfiguration:
     put:
       operationId: UpdateInfrastructureConfiguration
-      description: Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
+      description: Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.
       parameters: []
       requestBody:
         required: true
@@ -2157,7 +2161,7 @@ paths:
   /UpdateLifecyclePolicy:
     put:
       operationId: UpdateLifecyclePolicy
-      description: Update the specified lifecycle policy.
+      description: Updates the specified lifecycle policy.
       parameters: []
       requestBody:
         required: true
@@ -2420,26 +2424,26 @@ components:
           description: The device to which these mappings apply.
         ebs:
           $ref: "#/components/schemas/EbsInstanceBlockDeviceSpecification"
-          description: Use to manage Amazon EBS-specific configuration for this mapping.
+          description: The Amazon EBS-specific configuration for this mapping.
         virtualName:
           $ref: "#/components/schemas/NonEmptyString"
-          description: Use to manage instance ephemeral devices.
+          description: The virtual device name for instance ephemeral devices.
         noDevice:
           $ref: "#/components/schemas/EmptyString"
-          description: Use to remove a mapping from the base image.
+          description: Specifies a mapping to remove from the base image.
     EbsInstanceBlockDeviceSpecification:
       description: Amazon EBS-specific block device mapping specifications.
       type: object
       properties:
         encrypted:
           $ref: "#/components/schemas/NullableBoolean"
-          description: Use to configure device encryption.
+          description: Specifies whether to encrypt the device.
         deleteOnTermination:
           $ref: "#/components/schemas/NullableBoolean"
-          description: Use to configure delete on termination of the associated device.
+          description: Specifies whether to delete the associated device on termination.
         iops:
           $ref: "#/components/schemas/EbsIopsInteger"
-          description: Use to configure device IOPS.
+          description: The IOPS value for the device. Required only when volumeType is io1 or io2.
         kmsKeyId:
           $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Resource Name (ARN) that uniquely identifies the KMS key to use when encrypting the device. This can be either the Key ARN or the Alias ARN. For more information, see Key identifiers (KeyId) in the Key Management Service Developer Guide.
@@ -2448,10 +2452,10 @@ components:
           description: The snapshot that defines the device contents.
         volumeSize:
           $ref: "#/components/schemas/EbsVolumeSizeInteger"
-          description: Use to override the device's volume size.
+          description: Overrides the volume size for the device.
         volumeType:
           $ref: "#/components/schemas/EbsVolumeType"
-          description: Use to override the device's volume type.
+          description: Overrides the volume type for the device.
         throughput:
           $ref: "#/components/schemas/EbsVolumeThroughput"
           description: For GP3 volumes only – The throughput in MiB/s that the volume supports.
@@ -2764,7 +2768,7 @@ components:
           description: This is the name of the Parameter in the target Region or account. The image distribution creates the Parameter if it doesn't already exist. Otherwise, it updates the parameter.
         dataType:
           $ref: "#/components/schemas/SsmParameterDataType"
-          description: The data type specifies what type of value the Parameter contains. We recommend that you use data type aws:ec2:image.
+          description: The type of value the parameter contains. We recommend the aws:ec2:image data type.
       required:
         - parameterName
     SsmParameterName:
@@ -2804,7 +2808,7 @@ components:
       properties:
         imageTestsEnabled:
           $ref: "#/components/schemas/NullableBoolean"
-          description: Determines if tests should run after building the image. Image Builder defaults to enable tests to run following the image build, before image distribution.
+          description: Specifies whether tests run after building the image. When enabled, tests run after the image build and before image distribution. Defaults to true.
         timeoutMinutes:
           $ref: "#/components/schemas/ImageTestsTimeoutMinutes"
           description: The maximum time in minutes that tests are permitted to run. The timeout property is not currently active. This value is ignored.
@@ -3640,7 +3644,7 @@ components:
           description: The owner of the container recipe.
         version:
           $ref: "#/components/schemas/VersionNumber"
-          description: "The semantic version of the container recipe. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+          description: "The semantic version of the container recipe. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
         components:
           $ref: "#/components/schemas/ComponentConfigurationList"
           description: Build and test components that are included in the container recipe. Recipes require a minimum of one build component, and can have a maximum of 20 build and test components in any combination.
@@ -3757,7 +3761,7 @@ components:
           description: The name of the image.
         version:
           $ref: "#/components/schemas/VersionNumber"
-          description: "The semantic version of the image. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+          description: "The semantic version of the image. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
         platform:
           $ref: "#/components/schemas/Platform"
           description: The image operating system platform, such as Linux or Windows.
@@ -3843,6 +3847,9 @@ components:
         reason:
           $ref: "#/components/schemas/NonEmptyString"
           description: The reason for the status of the image.
+        failureContext:
+          $ref: "#/components/schemas/ImageFailureContext"
+          description: The details about the failure, for images that failed to complete. Image Builder only sets this property when the image status is FAILED.
     ImageStatus:
       type: string
       enum:
@@ -3858,6 +3865,110 @@ components:
         - DEPRECATED
         - DELETED
         - DISABLED
+    ImageFailureContext:
+      description: Contains details about the failure when the image creation process fails. Properties appear in the failure context when the related information is available for the failure.
+      type: object
+      properties:
+        imageStatus:
+          $ref: "#/components/schemas/ImageStatus"
+          description: The status that the image had when the failure occurred. This indicates the stage of the image creation process where the image failed, for example BUILDING or DISTRIBUTING.
+        workflowExecutionId:
+          $ref: "#/components/schemas/WorkflowExecutionId"
+          description: The unique identifier of the workflow execution that was running when the image failed.
+        workflowArn:
+          $ref: "#/components/schemas/WorkflowBuildVersionArn"
+          description: The Amazon Resource Name (ARN) of the workflow build version that was running when the image failed.
+        stepExecutionId:
+          $ref: "#/components/schemas/WorkflowStepExecutionId"
+          description: The unique identifier of the workflow step execution that failed.
+        failedStep:
+          $ref: "#/components/schemas/WorkflowStepName"
+          description: The name of the workflow step that failed, as it appears in the workflow document.
+        componentFailure:
+          $ref: "#/components/schemas/ComponentFailureContext"
+          description: The details about the component that failed, if the failure occurred while a component was running.
+        distributionFailure:
+          $ref: "#/components/schemas/DistributionFailureContext"
+          description: The details about the distribution failure, if the failure occurred while Image Builder distributed or configured the image.
+    WorkflowExecutionId:
+      type: string
+      pattern: ^wf-[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+    WorkflowStepExecutionId:
+      type: string
+      pattern: ^step-[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+    WorkflowStepName:
+      type: string
+      pattern: ^[A-Za-z][A-Za-z0-9-_]{1,99}$
+    ComponentFailureContext:
+      description: Contains details about the component that caused the image creation process to fail. The details identify the first step that failed when the component ran.
+      type: object
+      properties:
+        componentArn:
+          $ref: "#/components/schemas/ComponentBuildVersionArn"
+          description: The Amazon Resource Name (ARN) of the component build version that failed.
+        phaseName:
+          $ref: "#/components/schemas/NonEmptyString"
+          description: The name of the phase in the component document where the failure occurred, such as build, validate, or test.
+        stepName:
+          $ref: "#/components/schemas/NonEmptyString"
+          description: The name of the step in the component document that failed.
+        action:
+          $ref: "#/components/schemas/NonEmptyString"
+          description: The action that the failed step runs, for example ExecuteBash.
+        errorMessage:
+          $ref: "#/components/schemas/NonEmptyMaxLengthString"
+          description: The error message from the step that failed. Image Builder truncates messages that are longer than 1024 characters. The component log in Amazon CloudWatch Logs contains the full output.
+    NonEmptyMaxLengthString:
+      type: string
+      minLength: 1
+      maxLength: 384000
+    DistributionFailureContext:
+      description: Contains details about a failure that occurred while Image Builder distributed the image or applied configuration to the distributed image.
+      type: object
+      properties:
+        errorMessage:
+          $ref: "#/components/schemas/NonEmptyMaxLengthString"
+          description: The error message for the distribution failure.
+        regionFailures:
+          $ref: "#/components/schemas/RegionFailureList"
+          description: The details about the failure for each Region where the image didn't finish distribution or configuration.
+    RegionFailureList:
+      type: array
+      items:
+        $ref: "#/components/schemas/RegionFailure"
+    RegionFailure:
+      description: Contains details about a distribution or image configuration failure for a single Region.
+      type: object
+      properties:
+        region:
+          $ref: "#/components/schemas/NonEmptyString"
+          description: The Region where the failure occurred.
+        status:
+          $ref: "#/components/schemas/RegionFailureStatus"
+          description: The failure status for the Region. Indicates whether the process failed, was canceled, or timed out.
+        imageConfigurationStep:
+          $ref: "#/components/schemas/ImageConfigurationStep"
+          description: The image configuration step where the failure occurred. Image Builder sets this property when the failure happened during post-distribution configuration, such as launch template updates or virtual machine (VM) export. This property doesn't appear for failures that occurred while Image Builder copied the image to the Region.
+        errorMessage:
+          $ref: "#/components/schemas/NonEmptyMaxLengthString"
+          description: The error message for the failure in the Region.
+        targetAccountId:
+          $ref: "#/components/schemas/AccountId"
+          description: The account ID of the account that the image was distributed to in the Region.
+    RegionFailureStatus:
+      type: string
+      enum:
+        - FAILED
+        - CANCELLED
+        - TIMED_OUT
+    ImageConfigurationStep:
+      type: string
+      enum:
+        - ASSOCIATE_LICENSES
+        - UPDATE_LAUNCH_TEMPLATES
+        - PUT_SSM_PARAMETERS
+        - UPDATE_FAST_LAUNCH_CONFIGURATIONS
+        - EXPORT_AMI
     ImageRecipe:
       description: An image recipe.
       type: object
@@ -3950,7 +4061,7 @@ components:
           description: The terminate instance on failure configuration of the infrastructure configuration.
         snsTopicArn:
           $ref: "#/components/schemas/NonEmptyString"
-          description: The Amazon Resource Name (ARN) for the SNS topic to which we send image build event notifications. EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
+          description: The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications. EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
         dateCreated:
           $ref: "#/components/schemas/DateTime"
           description: The date on which the infrastructure configuration was created.
@@ -3970,7 +4081,7 @@ components:
           description: The tags of the infrastructure configuration.
         placement:
           $ref: "#/components/schemas/Placement"
-          description: The instance placement settings that define where the instances that are launched from your image will run.
+          description: The instance placement settings that define where the instances that are launched from your image run.
     OutputResources:
       description: The resources produced by this image.
       type: object
@@ -4084,7 +4195,7 @@ components:
           description: The platform of the image pipeline.
         enhancedImageMetadataEnabled:
           $ref: "#/components/schemas/NullableBoolean"
-          description: Collects additional information about the image being created, including the operating system (OS) version and package list. This information is used to enhance the overall experience of using EC2 Image Builder. Enabled by default.
+          description: Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to true.
         imageRecipeArn:
           $ref: "#/components/schemas/Arn"
           description: The Amazon Resource Name (ARN) of the image recipe associated with this image pipeline.
@@ -4411,9 +4522,6 @@ components:
       minLength: 0
       maxLength: 1024
       pattern: "[^\\x00]+"
-    WorkflowExecutionId:
-      type: string
-      pattern: ^wf-[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
     GetWorkflowExecutionResponse:
       type: object
       properties:
@@ -4476,9 +4584,6 @@ components:
       maxLength: 500
     WorkflowStepCount:
       type: integer
-    WorkflowStepExecutionId:
-      type: string
-      pattern: ^step-[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
     GetWorkflowStepExecutionResponse:
       type: object
       properties:
@@ -4533,9 +4638,12 @@ components:
         timeoutSeconds:
           $ref: "#/components/schemas/WorkflowStepTimeoutSecondsInteger"
           description: The maximum duration in seconds for this step to complete its action.
-    WorkflowStepName:
-      type: string
-      pattern: ^[A-Za-z][A-Za-z0-9-_]{1,99}$
+        attemptNumber:
+          $ref: "#/components/schemas/WorkflowStepAttemptCount"
+          description: The current attempt number for the specified runtime instance of the workflow step. The first run is attempt one. The number increases by one for each retry.
+        maxAttempts:
+          $ref: "#/components/schemas/WorkflowStepAttemptCount"
+          description: The maximum number of attempts allowed for the specified runtime instance of the workflow step, based on the retry configuration in the workflow document. If the step doesn't configure retries, the maximum is one attempt.
     WorkflowStepDescription:
       type: string
       minLength: 0
@@ -4571,6 +4679,9 @@ components:
       type: integer
       minimum: 0
       maximum: 43200
+    WorkflowStepAttemptCount:
+      type: integer
+      minimum: 1
     ComponentFormat:
       type: string
       enum:
@@ -4770,7 +4881,7 @@ components:
           description: The name of the component.
         version:
           $ref: "#/components/schemas/VersionNumber"
-          description: "The semantic version of the component. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+          description: "The semantic version of the component. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
         description:
           $ref: "#/components/schemas/NonEmptyString"
           description: The description of the component.
@@ -4779,7 +4890,7 @@ components:
           description: The platform of the component.
         supportedOsVersions:
           $ref: "#/components/schemas/OsVersionList"
-          description: he operating system (OS) version supported by the component. If the OS information is available, a prefix match is performed against the base image OS version during image recipe creation.
+          description: The operating system (OS) version supported by the component. If OS information is available, Image Builder performs a prefix match against the base image OS version during image recipe creation.
         type_:
           $ref: "#/components/schemas/ComponentType"
           description: The type of the component denotes whether the component is used to build the image or only to test it.
@@ -5413,7 +5524,7 @@ components:
           description: The request ID that uniquely identifies this request.
         imageVersionList:
           $ref: "#/components/schemas/ImageVersionList"
-          description: "The list of image semantic versions. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+          description: "The list of image semantic versions. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
         nextToken:
           $ref: "#/components/schemas/PaginationToken"
           description: The next token used for paginated responses. When this field isn't empty, there are additional elements that the service hasn't included in this request. Use this token with the next request to retrieve additional objects.
@@ -5436,7 +5547,7 @@ components:
           description: Specifies whether this image produces an AMI or a container image.
         version:
           $ref: "#/components/schemas/VersionNumber"
-          description: "Details for a specific version of an Image Builder image. This version follows the semantic version syntax. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes you can assign any positive integer value, including zero, with an upper limit of 2^30-1, or 1073741823 for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: With semantic versioning, you have the flexibility to use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
+          description: "Details for a specific version of an Image Builder image. This version follows the semantic version syntax. The semantic version has four nodes: `<major>`.`<minor>`.`<patch>`/`<build>`. You can assign values for the first three, and can filter on all of them. Assignment: For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node. Patterns: You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01. Filtering: You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards."
         platform:
           $ref: "#/components/schemas/Platform"
           description: The operating system platform of the image version, for example "Windows" or "Linux".
@@ -5506,7 +5617,7 @@ components:
           description: The instance profile of the infrastructure configuration.
         placement:
           $ref: "#/components/schemas/Placement"
-          description: The instance placement settings that define where the instances that are launched from your image will run.
+          description: The instance placement settings that define where the instances that are launched from your image run.
     ListLifecycleExecutionResourcesResponse:
       type: object
       properties:
@@ -5899,6 +6010,12 @@ components:
         endTime:
           $ref: "#/components/schemas/DateTime"
           description: The timestamp when the workflow step finished.
+        attemptNumber:
+          $ref: "#/components/schemas/WorkflowStepAttemptCount"
+          description: The current attempt number for the workflow step. The first run is attempt one. The number increases by one for each retry.
+        maxAttempts:
+          $ref: "#/components/schemas/WorkflowStepAttemptCount"
+          description: The maximum number of attempts allowed for the workflow step, based on the retry configuration in the workflow document. If the step doesn't configure retries, the maximum is one attempt.
     ListWorkflowsResponse:
       type: object
       properties:
@@ -6056,8 +6173,6 @@ components:
         resourceArn:
           $ref: "#/components/schemas/ImageBuildVersionArn"
           description: The requested Amazon Resource Name (ARN) of the Image Builder resource for the asynchronous update.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -6067,8 +6182,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z0-9\s_.:/=+\-@]*$
-    UntagResourceResponse:
-      type: object
     UpdateDistributionConfigurationResponse:
       type: object
       properties:
@@ -6266,6 +6379,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        import_component:
+          operation:
+            $ref: "#/paths/~1ImportComponent/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_components:
           operation:
             $ref: "#/paths/~1ListComponents/post"
@@ -7035,6 +7159,27 @@ components:
         insert: []
         update: []
         delete: []
+    vm_images:
+      id: aws.imagebuilder.vm_images
+      name: vm_images
+      title: vm_images
+      methods:
+        import_vm_image:
+          operation:
+            $ref: "#/paths/~1ImportVmImage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     component_build_versions:
       id: aws.imagebuilder.component_build_versions
       name: component_build_versions
@@ -7272,7 +7417,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7283,7 +7427,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -7351,6 +7494,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workflow_build_versions/methods/list_workflow_build_versions"
+        insert: []
+        update: []
+        delete: []
+    resource_state_updates:
+      id: aws.imagebuilder.resource_state_updates
+      name: resource_state_updates
+      title: resource_state_updates
+      methods:
+        start_resource_state_update:
+          operation:
+            $ref: "#/paths/~1StartResourceStateUpdate/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

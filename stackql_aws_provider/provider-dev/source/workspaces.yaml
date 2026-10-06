@@ -97,7 +97,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateConnectionAliasResult'
-      x-stackql-resource: connection_alias
+      x-stackql-resource: connection_aliases
       x-stackql-method: associate_connection_alias
       x-stackql-verb: UPDATE
   /AssociateIpGroups:
@@ -133,10 +133,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateIpGroupsResult'
       x-stackql-resource: ip_groups
       x-stackql-method: associate_ip_groups
       x-stackql-verb: UPDATE
@@ -214,10 +210,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthorizeIpRulesResult'
       x-stackql-resource: ip_rules
       x-stackql-method: authorize_ip_rules
       x-stackql-verb: UPDATE
@@ -273,7 +265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyWorkspaceImageResult'
-      x-stackql-resource: workspaces
+      x-stackql-resource: workspace_images
       x-stackql-method: copy_workspace_image
       x-stackql-verb: EXEC
   /CreateAccountLinkInvitation:
@@ -400,7 +392,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateConnectionAliasResult'
-      x-stackql-resource: connection_alias
+      x-stackql-resource: connection_aliases
       x-stackql-method: create_connection_alias
       x-stackql-verb: INSERT
   /CreateIpGroup:
@@ -528,10 +520,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTagsResult'
       x-stackql-resource: tags
       x-stackql-method: create_tags
       x-stackql-verb: INSERT
@@ -877,10 +865,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteClientBrandingResult'
       x-stackql-resource: client_brandings
       x-stackql-method: delete_client_branding
       x-stackql-verb: DELETE
@@ -917,10 +901,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectClientAddInResult'
       x-stackql-resource: connect_client_add_ins
       x-stackql-method: delete_connect_client_add_in
       x-stackql-verb: DELETE
@@ -959,11 +939,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectionAliasResult'
-      x-stackql-resource: connection_alias
+      x-stackql-resource: connection_aliases
       x-stackql-method: delete_connection_alias
       x-stackql-verb: DELETE
   /DeleteIpGroup:
@@ -996,10 +972,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIpGroupResult'
       x-stackql-resource: ip_groups
       x-stackql-method: delete_ip_group
       x-stackql-verb: DELETE
@@ -1037,10 +1009,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTagsResult'
       x-stackql-resource: tags
       x-stackql-method: delete_tags
       x-stackql-verb: DELETE
@@ -1072,10 +1040,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkspaceBundleResult'
       x-stackql-resource: workspace_bundles
       x-stackql-method: delete_workspace_bundle
       x-stackql-verb: DELETE
@@ -1109,10 +1073,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkspaceImageResult'
       x-stackql-resource: workspace_images
       x-stackql-method: delete_workspace_image
       x-stackql-verb: DELETE
@@ -1194,10 +1154,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterWorkspaceDirectoryResult'
       x-stackql-resource: workspace_directories
       x-stackql-method: deregister_workspace_directory
       x-stackql-verb: DELETE
@@ -2141,7 +2097,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeWorkspacesConnectionStatusResult'
-      x-stackql-resource: workspaces_connection_status
+      x-stackql-resource: workspaces_connection_statuses
       x-stackql-method: describe_workspaces_connection_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkspacesConnectionStatus
@@ -2277,11 +2233,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateConnectionAliasResult'
-      x-stackql-resource: connection_alias
+      x-stackql-resource: connection_aliases
       x-stackql-method: disassociate_connection_alias
       x-stackql-verb: UPDATE
   /DisassociateIpGroups:
@@ -2317,10 +2269,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateIpGroupsResult'
       x-stackql-resource: ip_groups
       x-stackql-method: disassociate_ip_groups
       x-stackql-verb: UPDATE
@@ -2460,7 +2408,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportClientBrandingResult'
-      x-stackql-resource: client_branding
+      x-stackql-resource: client_brandings
       x-stackql-method: import_client_branding
       x-stackql-verb: EXEC
   /ImportCustomWorkspaceImage:
@@ -2529,7 +2477,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportCustomWorkspaceImageResult'
-      x-stackql-resource: custom_workspace_image
+      x-stackql-resource: workspace_images
       x-stackql-method: import_custom_workspace_image
       x-stackql-verb: EXEC
   /ImportWorkspaceImage:
@@ -2596,7 +2544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportWorkspaceImageResult'
-      x-stackql-resource: workspaces
+      x-stackql-resource: workspace_images
       x-stackql-method: import_workspace_image
       x-stackql-verb: EXEC
   /ListAccountLinks:
@@ -2746,7 +2694,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MigrateWorkspaceResult'
-      x-stackql-resource: workspace
+      x-stackql-resource: workspaces
       x-stackql-method: migrate_workspace
       x-stackql-verb: EXEC
   /ModifyAccount:
@@ -2824,10 +2772,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyCertificateBasedAuthPropertiesResult'
       x-stackql-resource: certificate_based_auth_properties
       x-stackql-method: modify_certificate_based_auth_properties
       x-stackql-verb: UPDATE
@@ -2864,10 +2808,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyClientPropertiesResult'
       x-stackql-resource: client_properties
       x-stackql-method: modify_client_properties
       x-stackql-verb: UPDATE
@@ -2906,10 +2846,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyEndpointEncryptionModeResponse'
       x-stackql-resource: endpoint_encryption_modes
       x-stackql-method: modify_endpoint_encryption_mode
       x-stackql-verb: UPDATE
@@ -2951,10 +2887,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifySamlPropertiesResult'
       x-stackql-resource: saml_properties
       x-stackql-method: modify_saml_properties
       x-stackql-verb: UPDATE
@@ -2992,10 +2924,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifySelfservicePermissionsResult'
       x-stackql-resource: selfservice_permissions
       x-stackql-method: modify_selfservice_permissions
       x-stackql-verb: UPDATE
@@ -3031,10 +2959,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyStreamingPropertiesResult'
       x-stackql-resource: streaming_properties
       x-stackql-method: modify_streaming_properties
       x-stackql-verb: UPDATE
@@ -3072,10 +2996,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyWorkspaceAccessPropertiesResult'
       x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_access_properties
       x-stackql-verb: UPDATE
@@ -3112,10 +3032,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyWorkspaceCreationPropertiesResult'
       x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_creation_properties
       x-stackql-verb: UPDATE
@@ -3157,10 +3073,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyWorkspacePropertiesResult'
       x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_properties
       x-stackql-verb: UPDATE
@@ -3200,10 +3112,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModifyWorkspaceStateResult'
       x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_state
       x-stackql-verb: UPDATE
@@ -3433,11 +3341,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestoreWorkspaceResult'
-      x-stackql-resource: workspace
+      x-stackql-resource: workspaces
       x-stackql-method: restore_workspace
       x-stackql-verb: EXEC
   /RevokeIpRules:
@@ -3473,10 +3377,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokeIpRulesResult'
       x-stackql-resource: ip_rules
       x-stackql-method: revoke_ip_rules
       x-stackql-verb: UPDATE
@@ -3549,11 +3449,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartWorkspacesPoolResult'
-      x-stackql-resource: workspaces
+      x-stackql-resource: workspaces_pools
       x-stackql-method: start_workspaces_pool
       x-stackql-verb: EXEC
   /StopWorkspaces:
@@ -3626,11 +3522,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopWorkspacesPoolResult'
-      x-stackql-resource: workspaces
+      x-stackql-resource: workspaces_pools
       x-stackql-method: stop_workspaces_pool
       x-stackql-verb: EXEC
   /TerminateWorkspaces:
@@ -3712,10 +3604,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TerminateWorkspacesPoolResult'
       x-stackql-resource: workspaces_pools
       x-stackql-method: terminate_workspaces_pool
       x-stackql-verb: DELETE
@@ -3751,10 +3639,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TerminateWorkspacesPoolSessionResult'
       x-stackql-resource: workspaces_pool_sessions
       x-stackql-method: terminate_workspaces_pool_session
       x-stackql-verb: DELETE
@@ -3798,10 +3682,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConnectClientAddInResult'
       x-stackql-resource: connect_client_add_ins
       x-stackql-method: update_connect_client_add_in
       x-stackql-verb: UPDATE
@@ -3846,10 +3726,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConnectionAliasPermissionResult'
       x-stackql-resource: connection_alias_permissions
       x-stackql-method: update_connection_alias_permission
       x-stackql-verb: UPDATE
@@ -3886,10 +3762,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRulesOfIpGroupResult'
       x-stackql-resource: ip_groups
       x-stackql-method: update_rules_of_ip_group
       x-stackql-verb: UPDATE
@@ -3926,10 +3798,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkspaceBundleResult'
       x-stackql-resource: workspace_bundles
       x-stackql-method: update_workspace_bundle
       x-stackql-verb: UPDATE
@@ -3981,10 +3849,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWorkspaceImagePermissionResult'
       x-stackql-resource: workspace_image_permissions
       x-stackql-method: update_workspace_image_permission
       x-stackql-verb: UPDATE
@@ -4165,8 +4029,6 @@ components:
     IpGroupId:
       type: string
       pattern: wsipg-[0-9a-z]{8,63}$
-    AssociateIpGroupsResult:
-      type: object
     WorkspaceId:
       type: string
       pattern: ^ws-[0-9a-z]{8,63}$
@@ -4264,8 +4126,6 @@ components:
       type: string
     IpRuleDesc:
       type: string
-    AuthorizeIpRulesResult:
-      type: object
     WorkspaceImageName:
       type: string
       minLength: 1
@@ -4470,8 +4330,6 @@ components:
       - STOPPING
       - STOPPED
       - ERROR
-    CreateTagsResult:
-      type: object
     CreateUpdatedWorkspaceImageResult:
       type: object
       properties:
@@ -4521,6 +4379,10 @@ components:
       - GRAPHICS_G6F_2XLARGE
       - GRAPHICS_G6F_4XLARGE
       - GRAPHICS_GR6F_4XLARGE
+      - GRAPHICS_G7_2XLARGE
+      - GRAPHICS_G7_4XLARGE
+      - GRAPHICS_G7_8XLARGE
+      - GRAPHICS_G7_12XLARGE
     UserStorage:
       description: Describes the user volume for a WorkSpace bundle.
       type: object
@@ -4733,7 +4595,7 @@ components:
           description: The protocol. For more information, see Protocols for Amazon WorkSpaces. Only available for WorkSpaces
             created with PCoIP bundles. The Protocols property is case sensitive. Ensure you use PCOIP or DCV (formerly WSP).
             Unavailable for Windows 7 WorkSpaces and WorkSpaces using GPU-based bundles (Graphics, GraphicsPro, Graphics.g4dn,
-            GraphicsPro.g4dn, and Graphics.g6).
+            GraphicsPro.g4dn, Graphics.g6, and Graphics.g7).
         OperatingSystemName:
           $ref: '#/components/schemas/OperatingSystemName'
           description: The name of the operating system.
@@ -5306,24 +5168,10 @@ components:
       - DeviceTypeIos
       - DeviceTypeLinux
       - DeviceTypeWeb
-    DeleteClientBrandingResult:
-      type: object
-    DeleteConnectClientAddInResult:
-      type: object
-    DeleteConnectionAliasResult:
-      type: object
-    DeleteIpGroupResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/NonEmptyString'
-    DeleteTagsResult:
-      type: object
-    DeleteWorkspaceBundleResult:
-      type: object
-    DeleteWorkspaceImageResult:
-      type: object
     DeployWorkspaceApplicationsResult:
       type: object
       properties:
@@ -5341,8 +5189,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/WorkspaceResourceAssociation'
-    DeregisterWorkspaceDirectoryResult:
-      type: object
     DescribeAccountResult:
       type: object
       properties:
@@ -7043,10 +6889,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/WorkspacesPool'
-    DisassociateConnectionAliasResult:
-      type: object
-    DisassociateIpGroupsResult:
-      type: object
     DisassociateWorkspaceApplicationResult:
       type: object
       properties:
@@ -7176,6 +7018,7 @@ components:
       - BASE
       - GRAPHICS_G4DN
       - GRAPHICS_G6
+      - GRAPHICS_G7
     CustomImageProtocol:
       type: string
       enum:
@@ -7292,12 +7135,6 @@ components:
       type: string
       enum:
       - CERTIFICATE_BASED_AUTH_PROPERTIES_CERTIFICATE_AUTHORITY_ARN
-    ModifyCertificateBasedAuthPropertiesResult:
-      type: object
-    ModifyClientPropertiesResult:
-      type: object
-    ModifyEndpointEncryptionModeResponse:
-      type: object
     DeletableSamlPropertiesList:
       type: array
       items:
@@ -7307,14 +7144,6 @@ components:
       enum:
       - SAML_PROPERTIES_USER_ACCESS_URL
       - SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME
-    ModifySamlPropertiesResult:
-      type: object
-    ModifySelfservicePermissionsResult:
-      type: object
-    ModifyStreamingPropertiesResult:
-      type: object
-    ModifyWorkspaceAccessPropertiesResult:
-      type: object
     WorkspaceCreationProperties:
       description: Describes the default properties that are used for creating WorkSpaces. For more information, see Update
         Directory Details for Your WorkSpaces.
@@ -7344,17 +7173,11 @@ components:
         InstanceIamRoleArn:
           $ref: '#/components/schemas/ARN'
           description: Indicates the IAM role ARN of the instance.
-    ModifyWorkspaceCreationPropertiesResult:
-      type: object
-    ModifyWorkspacePropertiesResult:
-      type: object
     TargetWorkspaceState:
       type: string
       enum:
       - AVAILABLE
       - ADMIN_MAINTENANCE
-    ModifyWorkspaceStateResult:
-      type: object
     RebootWorkspaceRequests:
       type: array
       items:
@@ -7430,14 +7253,10 @@ components:
         AccountLink:
           $ref: '#/components/schemas/AccountLink'
           description: Information about the account link.
-    RestoreWorkspaceResult:
-      type: object
     IpRevokedRuleList:
       type: array
       items:
         $ref: '#/components/schemas/IpRule'
-    RevokeIpRulesResult:
-      type: object
     StartWorkspaceRequests:
       type: array
       items:
@@ -7459,8 +7278,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FailedWorkspaceChangeRequest'
-    StartWorkspacesPoolResult:
-      type: object
     StopWorkspaceRequests:
       type: array
       items:
@@ -7482,8 +7299,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FailedWorkspaceChangeRequest'
-    StopWorkspacesPoolResult:
-      type: object
     TerminateWorkspaceRequests:
       type: array
       items:
@@ -7507,20 +7322,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FailedWorkspaceChangeRequest'
-    TerminateWorkspacesPoolResult:
-      type: object
-    TerminateWorkspacesPoolSessionResult:
-      type: object
-    UpdateConnectClientAddInResult:
-      type: object
-    UpdateConnectionAliasPermissionResult:
-      type: object
-    UpdateRulesOfIpGroupResult:
-      type: object
-    UpdateWorkspaceBundleResult:
-      type: object
-    UpdateWorkspaceImagePermissionResult:
-      type: object
     UpdateWorkspacesPoolResult:
       type: object
       properties:

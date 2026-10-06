@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectDominantLanguageResponse'
-      x-stackql-resource: batch_detect_dominant_language
+      x-stackql-resource: dominant_languages
       x-stackql-method: batch_detect_dominant_language
       x-stackql-verb: EXEC
   /BatchDetectEntities:
@@ -97,7 +97,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectEntitiesResponse'
-      x-stackql-resource: batch_detect_entities
+      x-stackql-resource: entities
       x-stackql-method: batch_detect_entities
       x-stackql-verb: EXEC
   /BatchDetectKeyPhrases:
@@ -139,7 +139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectKeyPhrasesResponse'
-      x-stackql-resource: batch_detect_key_phrases
+      x-stackql-resource: key_phrases
       x-stackql-method: batch_detect_key_phrases
       x-stackql-verb: EXEC
   /BatchDetectSentiment:
@@ -182,7 +182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectSentimentResponse'
-      x-stackql-resource: batch_detect_sentiment
+      x-stackql-resource: sentiments
       x-stackql-method: batch_detect_sentiment
       x-stackql-verb: EXEC
   /BatchDetectSyntax:
@@ -226,7 +226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectSyntaxResponse'
-      x-stackql-resource: batch_detect_syntax
+      x-stackql-resource: syntaxes
       x-stackql-method: batch_detect_syntax
       x-stackql-verb: EXEC
   /BatchDetectTargetedSentiment:
@@ -268,7 +268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDetectTargetedSentimentResponse'
-      x-stackql-resource: batch_detect_targeted_sentiment
+      x-stackql-resource: targeted_sentiments
       x-stackql-method: batch_detect_targeted_sentiment
       x-stackql-verb: EXEC
   /ClassifyDocument:
@@ -376,7 +376,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContainsPiiEntitiesResponse'
-      x-stackql-resource: contains_pii_entities
+      x-stackql-resource: pii_entities
       x-stackql-method: contains_pii_entities
       x-stackql-verb: EXEC
   /CreateDataset:
@@ -802,10 +802,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDocumentClassifierResponse'
       x-stackql-resource: document_classifiers
       x-stackql-method: delete_document_classifier
       x-stackql-verb: DELETE
@@ -839,10 +835,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEndpointResponse'
       x-stackql-resource: endpoints
       x-stackql-method: delete_endpoint
       x-stackql-verb: DELETE
@@ -878,10 +870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEntityRecognizerResponse'
       x-stackql-resource: entity_recognizers
       x-stackql-method: delete_entity_recognizer
       x-stackql-verb: DELETE
@@ -916,10 +904,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFlywheelResponse'
       x-stackql-resource: flywheels
       x-stackql-method: delete_flywheel
       x-stackql-verb: DELETE
@@ -955,10 +939,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -1612,7 +1592,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectDominantLanguageResponse'
-      x-stackql-resource: detect_dominant_language
+      x-stackql-resource: dominant_languages
       x-stackql-method: detect_dominant_language
       x-stackql-verb: EXEC
   /DetectEntities:
@@ -1682,7 +1662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectEntitiesResponse'
-      x-stackql-resource: detect_entities
+      x-stackql-resource: entities
       x-stackql-method: detect_entities
       x-stackql-verb: EXEC
   /DetectKeyPhrases:
@@ -1723,7 +1703,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectKeyPhrasesResponse'
-      x-stackql-resource: detect_key_phrases
+      x-stackql-resource: key_phrases
       x-stackql-method: detect_key_phrases
       x-stackql-verb: EXEC
   /DetectPiiEntities:
@@ -1764,7 +1744,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectPiiEntitiesResponse'
-      x-stackql-resource: detect_pii_entities
+      x-stackql-resource: pii_entities
       x-stackql-method: detect_pii_entities
       x-stackql-verb: EXEC
   /DetectSentiment:
@@ -1805,7 +1785,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectSentimentResponse'
-      x-stackql-resource: detect_sentiment
+      x-stackql-resource: sentiments
       x-stackql-method: detect_sentiment
       x-stackql-verb: EXEC
   /DetectSyntax:
@@ -1848,7 +1828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectSyntaxResponse'
-      x-stackql-resource: detect_syntax
+      x-stackql-resource: syntaxes
       x-stackql-method: detect_syntax
       x-stackql-verb: EXEC
   /DetectTargetedSentiment:
@@ -1889,7 +1869,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectTargetedSentimentResponse'
-      x-stackql-resource: detect_targeted_sentiment
+      x-stackql-resource: targeted_sentiments
       x-stackql-method: detect_targeted_sentiment
       x-stackql-verb: EXEC
   /DetectToxicContent:
@@ -1932,7 +1912,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectToxicContentResponse'
-      x-stackql-resource: detect_toxic_content
+      x-stackql-resource: toxic_content
       x-stackql-method: detect_toxic_content
       x-stackql-verb: EXEC
   /ImportModel:
@@ -1993,7 +1973,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportModelResponse'
-      x-stackql-resource: model
+      x-stackql-resource: models
       x-stackql-method: import_model
       x-stackql-verb: EXEC
   /ListDatasets:
@@ -2895,7 +2875,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDocumentClassificationJobResponse'
-      x-stackql-resource: document_classification_job
+      x-stackql-resource: document_classification_jobs
       x-stackql-method: start_document_classification_job
       x-stackql-verb: EXEC
   /StartDominantLanguageDetectionJob:
@@ -2963,7 +2943,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDominantLanguageDetectionJobResponse'
-      x-stackql-resource: dominant_language_detection_job
+      x-stackql-resource: dominant_language_detection_jobs
       x-stackql-method: start_dominant_language_detection_job
       x-stackql-verb: EXEC
   /StartEntitiesDetectionJob:
@@ -3046,7 +3026,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEntitiesDetectionJobResponse'
-      x-stackql-resource: entities_detection_job
+      x-stackql-resource: entities_detection_jobs
       x-stackql-method: start_entities_detection_job
       x-stackql-verb: EXEC
   /StartEventsDetectionJob:
@@ -3111,7 +3091,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEventsDetectionJobResponse'
-      x-stackql-resource: events_detection_job
+      x-stackql-resource: events_detection_jobs
       x-stackql-method: start_events_detection_job
       x-stackql-verb: EXEC
   /StartFlywheelIteration:
@@ -3152,7 +3132,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlywheelIterationResponse'
-      x-stackql-resource: flywheels
+      x-stackql-resource: flywheel_iterations
       x-stackql-method: start_flywheel_iteration
       x-stackql-verb: EXEC
   /StartKeyPhrasesDetectionJob:
@@ -3225,7 +3205,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartKeyPhrasesDetectionJobResponse'
-      x-stackql-resource: key_phrases_detection_job
+      x-stackql-resource: key_phrases_detection_jobs
       x-stackql-method: start_key_phrases_detection_job
       x-stackql-verb: EXEC
   /StartPiiEntitiesDetectionJob:
@@ -3296,7 +3276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPiiEntitiesDetectionJobResponse'
-      x-stackql-resource: pii_entities_detection_job
+      x-stackql-resource: pii_entities_detection_jobs
       x-stackql-method: start_pii_entities_detection_job
       x-stackql-verb: EXEC
   /StartSentimentDetectionJob:
@@ -3369,7 +3349,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSentimentDetectionJobResponse'
-      x-stackql-resource: sentiment_detection_job
+      x-stackql-resource: sentiment_detection_jobs
       x-stackql-method: start_sentiment_detection_job
       x-stackql-verb: EXEC
   /StartTargetedSentimentDetectionJob:
@@ -3437,7 +3417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTargetedSentimentDetectionJobResponse'
-      x-stackql-resource: targeted_sentiment_detection_job
+      x-stackql-resource: targeted_sentiment_detection_jobs
       x-stackql-method: start_targeted_sentiment_detection_job
       x-stackql-verb: EXEC
   /StartTopicsDetectionJob:
@@ -3510,7 +3490,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTopicsDetectionJobResponse'
-      x-stackql-resource: topics_detection_job
+      x-stackql-resource: topics_detection_jobs
       x-stackql-method: start_topics_detection_job
       x-stackql-verb: EXEC
   /StopDominantLanguageDetectionJob:
@@ -3550,7 +3530,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDominantLanguageDetectionJobResponse'
-      x-stackql-resource: dominant_language_detection_job
+      x-stackql-resource: dominant_language_detection_jobs
       x-stackql-method: stop_dominant_language_detection_job
       x-stackql-verb: EXEC
   /StopEntitiesDetectionJob:
@@ -3590,7 +3570,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopEntitiesDetectionJobResponse'
-      x-stackql-resource: entities_detection_job
+      x-stackql-resource: entities_detection_jobs
       x-stackql-method: stop_entities_detection_job
       x-stackql-verb: EXEC
   /StopEventsDetectionJob:
@@ -3626,7 +3606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopEventsDetectionJobResponse'
-      x-stackql-resource: events_detection_job
+      x-stackql-resource: events_detection_jobs
       x-stackql-method: stop_events_detection_job
       x-stackql-verb: EXEC
   /StopKeyPhrasesDetectionJob:
@@ -3666,7 +3646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopKeyPhrasesDetectionJobResponse'
-      x-stackql-resource: key_phrases_detection_job
+      x-stackql-resource: key_phrases_detection_jobs
       x-stackql-method: stop_key_phrases_detection_job
       x-stackql-verb: EXEC
   /StopPiiEntitiesDetectionJob:
@@ -3702,7 +3682,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPiiEntitiesDetectionJobResponse'
-      x-stackql-resource: pii_entities_detection_job
+      x-stackql-resource: pii_entities_detection_jobs
       x-stackql-method: stop_pii_entities_detection_job
       x-stackql-verb: EXEC
   /StopSentimentDetectionJob:
@@ -3742,7 +3722,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopSentimentDetectionJobResponse'
-      x-stackql-resource: sentiment_detection_job
+      x-stackql-resource: sentiment_detection_jobs
       x-stackql-method: stop_sentiment_detection_job
       x-stackql-verb: EXEC
   /StopTargetedSentimentDetectionJob:
@@ -3782,7 +3762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTargetedSentimentDetectionJobResponse'
-      x-stackql-resource: targeted_sentiment_detection_job
+      x-stackql-resource: targeted_sentiment_detection_jobs
       x-stackql-method: stop_targeted_sentiment_detection_job
       x-stackql-verb: EXEC
   /StopTrainingDocumentClassifier:
@@ -3817,10 +3797,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopTrainingDocumentClassifierResponse'
       x-stackql-resource: document_classifiers
       x-stackql-method: stop_training_document_classifier
       x-stackql-verb: EXEC
@@ -3856,10 +3832,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopTrainingEntityRecognizerResponse'
       x-stackql-resource: entity_recognizers
       x-stackql-method: stop_training_entity_recognizer
       x-stackql-verb: EXEC
@@ -3900,10 +3872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3943,10 +3911,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -5556,20 +5520,10 @@ components:
         ActiveModelArn:
           $ref: '#/components/schemas/ComprehendModelArn'
           description: The Amazon Resource Number (ARN) of the active model version.
-    DeleteDocumentClassifierResponse:
-      type: object
-    DeleteEndpointResponse:
-      type: object
-    DeleteEntityRecognizerResponse:
-      type: object
-    DeleteFlywheelResponse:
-      type: object
     PolicyRevisionId:
       type: string
       maxLength: 64
       pattern: '[0-9A-Fa-f]+'
-    DeleteResourcePolicyResponse:
-      type: object
     DescribeDatasetResponse:
       type: object
       properties:
@@ -7854,18 +7808,10 @@ components:
           $ref: '#/components/schemas/JobStatus'
           description: Either STOP_REQUESTED if the job is currently running, or STOPPED if the job was previously stopped
             with the StopSentimentDetectionJob operation.
-    StopTrainingDocumentClassifierResponse:
-      type: object
-    StopTrainingEntityRecognizerResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateEndpointResponse:
       type: object
       properties:

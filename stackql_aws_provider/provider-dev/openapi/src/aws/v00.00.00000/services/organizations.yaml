@@ -299,7 +299,6 @@ paths:
                   description: A list of tags that you want to attach to the newly created OU. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging Organizations resources in the Organizations User Guide. If any one of the tags is not valid or if you exceed the allowed number of tags for an OU, then the entire request fails and the OU is not created.
               required:
                 - ParentId
-                - Name
       responses:
         "200":
           description: Success
@@ -3508,9 +3507,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_handshakes_for_account:
+          operation:
+            $ref: "#/paths/~1ListHandshakesForAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Handshakes
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/handshakes/methods/describe_handshake"
+          - $ref: "#/components/x-stackQL-resources/handshakes/methods/list_handshakes_for_account"
         insert: []
         update: []
         delete: []
@@ -3629,6 +3650,27 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_policies_for_target:
+          operation:
+            $ref: "#/paths/~1ListPoliciesForTarget/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Policies
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_policy:
           operation:
             $ref: "#/paths/~1UpdatePolicy/post"
@@ -3645,6 +3687,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policies/methods/describe_policy"
+          - $ref: "#/components/x-stackQL-resources/policies/methods/list_policies_for_target"
           - $ref: "#/components/x-stackQL-resources/policies/methods/list_policies"
         insert:
           - $ref: "#/components/x-stackQL-resources/policies/methods/create_policy"
@@ -3731,6 +3774,27 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_accounts_for_parent:
+          operation:
+            $ref: "#/paths/~1ListAccountsForParent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Accounts
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         move_account:
           operation:
             $ref: "#/paths/~1MoveAccount/post"
@@ -3746,6 +3810,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/describe_account"
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts_for_parent"
           - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts"
         insert:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/create_account"
@@ -3784,6 +3849,27 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Organization
+          request:
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+        invite_account_to_organization:
+          operation:
+            $ref: "#/paths/~1InviteAccountToOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        leave_organization:
+          operation:
+            $ref: "#/paths/~1LeaveOrganization/post"
+          response:
+            openAPIDocKey: "200"
           request:
             mediaType: application/x-amz-json-1.1
             base: "{}"
@@ -3852,6 +3938,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_organizational_units_for_parent:
+          operation:
+            $ref: "#/paths/~1ListOrganizationalUnitsForParent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.OrganizationalUnits
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_organizational_unit:
           operation:
             $ref: "#/paths/~1UpdateOrganizationalUnit/post"
@@ -3868,6 +3975,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organizational_units/methods/describe_organizational_unit"
+          - $ref: "#/components/x-stackQL-resources/organizational_units/methods/list_organizational_units_for_parent"
         insert:
           - $ref: "#/components/x-stackQL-resources/organizational_units/methods/create_organizational_unit"
         update:
@@ -3977,10 +4085,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/delegated_administrators/methods/deregister_delegated_administrator"
-    create_account_status:
-      id: aws.organizations.create_account_status
-      name: create_account_status
-      title: create_account_status
+    create_account_statuses:
+      id: aws.organizations.create_account_statuses
+      name: create_account_statuses
+      title: create_account_statuses
       methods:
         describe_create_account_status:
           operation:
@@ -4019,8 +4127,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/create_account_status/methods/describe_create_account_status"
-          - $ref: "#/components/x-stackQL-resources/create_account_status/methods/list_create_account_status"
+          - $ref: "#/components/x-stackQL-resources/create_account_statuses/methods/describe_create_account_status"
+          - $ref: "#/components/x-stackQL-resources/create_account_statuses/methods/list_create_account_status"
         insert: []
         update: []
         delete: []
@@ -4102,11 +4210,35 @@ components:
           - $ref: "#/components/x-stackQL-resources/responsibility_transfers/methods/update_responsibility_transfer"
         delete:
           - $ref: "#/components/x-stackQL-resources/responsibility_transfers/methods/terminate_responsibility_transfer"
-    aws_service_access_for_organizations:
-      id: aws.organizations.aws_service_access_for_organizations
-      name: aws_service_access_for_organizations
-      title: aws_service_access_for_organizations
+    aws_service_accesses:
+      id: aws.organizations.aws_service_accesses
+      name: aws_service_accesses
+      title: aws_service_accesses
       methods:
+        disable_aws_service_access:
+          operation:
+            $ref: "#/paths/~1DisableAWSServiceAccess/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_aws_service_access:
+          operation:
+            $ref: "#/paths/~1EnableAWSServiceAccess/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_aws_service_access_for_organization:
           operation:
             $ref: "#/paths/~1ListAWSServiceAccessForOrganization/post"
@@ -4130,39 +4262,53 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/aws_service_access_for_organizations/methods/list_aws_service_access_for_organization"
+          - $ref: "#/components/x-stackQL-resources/aws_service_accesses/methods/list_aws_service_access_for_organization"
         insert: []
         update: []
         delete: []
-    accounts_for_parents:
-      id: aws.organizations.accounts_for_parents
-      name: accounts_for_parents
-      title: accounts_for_parents
+    all_features:
+      id: aws.organizations.all_features
+      name: all_features
+      title: all_features
       methods:
-        list_accounts_for_parent:
+        enable_all_features:
           operation:
-            $ref: "#/paths/~1ListAccountsForParent/post"
+            $ref: "#/paths/~1EnableAllFeatures/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Accounts
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/accounts_for_parents/methods/list_accounts_for_parent"
+        select: []
+        insert: []
+        update: []
+        delete: []
+    transfer_responsibilities:
+      id: aws.organizations.transfer_responsibilities
+      name: transfer_responsibilities
+      title: transfer_responsibilities
+      methods:
+        invite_organization_to_transfer_responsibility:
+          operation:
+            $ref: "#/paths/~1InviteOrganizationToTransferResponsibility/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -4230,10 +4376,10 @@ components:
         insert: []
         update: []
         delete: []
-    delegated_services_for_accounts:
-      id: aws.organizations.delegated_services_for_accounts
-      name: delegated_services_for_accounts
-      title: delegated_services_for_accounts
+    delegated_services:
+      id: aws.organizations.delegated_services
+      name: delegated_services
+      title: delegated_services
       methods:
         list_delegated_services_for_account:
           operation:
@@ -4258,7 +4404,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/delegated_services_for_accounts/methods/list_delegated_services_for_account"
+          - $ref: "#/components/x-stackQL-resources/delegated_services/methods/list_delegated_services_for_account"
         insert: []
         update: []
         delete: []
@@ -4291,38 +4437,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/effective_policy_validation_errors/methods/list_effective_policy_validation_errors"
-        insert: []
-        update: []
-        delete: []
-    handshakes_for_accounts:
-      id: aws.organizations.handshakes_for_accounts
-      name: handshakes_for_accounts
-      title: handshakes_for_accounts
-      methods:
-        list_handshakes_for_account:
-          operation:
-            $ref: "#/paths/~1ListHandshakesForAccount/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Handshakes
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/handshakes_for_accounts/methods/list_handshakes_for_account"
         insert: []
         update: []
         delete: []
@@ -4382,38 +4496,6 @@ components:
         insert: []
         update: []
         delete: []
-    organizational_units_for_parents:
-      id: aws.organizations.organizational_units_for_parents
-      name: organizational_units_for_parents
-      title: organizational_units_for_parents
-      methods:
-        list_organizational_units_for_parent:
-          operation:
-            $ref: "#/paths/~1ListOrganizationalUnitsForParent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.OrganizationalUnits
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/organizational_units_for_parents/methods/list_organizational_units_for_parent"
-        insert: []
-        update: []
-        delete: []
     outbound_responsibility_transfers:
       id: aws.organizations.outbound_responsibility_transfers
       name: outbound_responsibility_transfers
@@ -4467,38 +4549,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/parents/methods/list_parents"
-        insert: []
-        update: []
-        delete: []
-    policies_for_targets:
-      id: aws.organizations.policies_for_targets
-      name: policies_for_targets
-      title: policies_for_targets
-      methods:
-        list_policies_for_target:
-          operation:
-            $ref: "#/paths/~1ListPoliciesForTarget/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Policies
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/policies_for_targets/methods/list_policies_for_target"
         insert: []
         update: []
         delete: []
@@ -4592,10 +4642,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    targets_for_policies:
-      id: aws.organizations.targets_for_policies
-      name: targets_for_policies
-      title: targets_for_policies
+    targets:
+      id: aws.organizations.targets
+      name: targets
+      title: targets
       methods:
         list_targets_for_policy:
           operation:
@@ -4620,7 +4670,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/targets_for_policies/methods/list_targets_for_policy"
+          - $ref: "#/components/x-stackQL-resources/targets/methods/list_targets_for_policy"
         insert: []
         update: []
         delete: []

@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptConnectionProposalResponse'
-      x-stackql-resource: connections
+      x-stackql-resource: connection_proposals
       x-stackql-method: accept_connection_proposal
       x-stackql-verb: EXEC
   /CreateConnection:
@@ -505,10 +505,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -545,10 +541,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1082,8 +1074,6 @@ components:
           type: object
           properties: {}
           description: The tags on the specified ARN.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1092,8 +1082,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateConnectionResponse:
       type: object
       properties:

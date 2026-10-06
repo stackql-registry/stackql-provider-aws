@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfigureLogsResponse'
-      x-stackql-resource: configure_logs
+      x-stackql-resource: logs
       x-stackql-method: configure_logs
       x-stackql-verb: EXEC
   /assets:
@@ -273,10 +273,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssetResponse'
       x-stackql-resource: assets
       x-stackql-method: delete_asset
       x-stackql-verb: DELETE
@@ -314,10 +310,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePackagingConfigurationResponse'
       x-stackql-resource: packaging_configurations
       x-stackql-method: delete_packaging_configuration
       x-stackql-verb: DELETE
@@ -355,10 +347,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePackagingGroupResponse'
       x-stackql-resource: packaging_groups
       x-stackql-method: delete_packaging_group
       x-stackql-verb: DELETE
@@ -1013,12 +1001,6 @@ components:
         Tags:
           type: object
           properties: {}
-    DeleteAssetResponse:
-      type: object
-    DeletePackagingConfigurationResponse:
-      type: object
-    DeletePackagingGroupResponse:
-      type: object
     DescribeAssetResponse:
       type: object
       properties:

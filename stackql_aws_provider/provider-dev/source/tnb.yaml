@@ -32,7 +32,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: sol_network_operation
+      x-stackql-resource: sol_network_operations
       x-stackql-method: cancel_sol_network_operation
       x-stackql-verb: EXEC
   /sol/vnfpkgm/v1/vnf_packages:
@@ -467,7 +467,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSolFunctionPackageContentOutput'
-      x-stackql-resource: sol_function_package_contents
+      x-stackql-resource: sol_function_package_content
       x-stackql-method: get_sol_function_package_content
       x-stackql-verb: SELECT
     put:
@@ -506,7 +506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutSolFunctionPackageContentOutput'
-      x-stackql-resource: sol_function_package_contents
+      x-stackql-resource: sol_function_package_content
       x-stackql-method: put_sol_function_package_content
       x-stackql-verb: REPLACE
   /sol/vnfpkgm/v1/vnf_packages/{vnf_pkg_id}/vnfd:
@@ -589,7 +589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSolNetworkPackageContentOutput'
-      x-stackql-resource: sol_network_package_contents
+      x-stackql-resource: sol_network_package_content
       x-stackql-method: get_sol_network_package_content
       x-stackql-verb: SELECT
     put:
@@ -628,7 +628,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutSolNetworkPackageContentOutput'
-      x-stackql-resource: sol_network_package_contents
+      x-stackql-resource: sol_network_package_content
       x-stackql-method: put_sol_network_package_content
       x-stackql-verb: REPLACE
   /sol/nsd/v1/ns_descriptors/{nsd_info_id}/nsd:
@@ -693,7 +693,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InstantiateSolNetworkInstanceOutput'
-      x-stackql-resource: instantiate_sol_network_instance
+      x-stackql-resource: sol_network_instances
       x-stackql-method: instantiate_sol_network_instance
       x-stackql-verb: EXEC
   /sol/vnflcm/v1/vnf_instances:
@@ -812,10 +812,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -840,10 +836,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -957,7 +949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateSolFunctionPackageContentOutput'
-      x-stackql-resource: sol_function_packages
+      x-stackql-resource: sol_function_package_content
       x-stackql-method: validate_sol_function_package_content
       x-stackql-verb: EXEC
   /sol/nsd/v1/ns_descriptors/{nsd_info_id}/nsd_content/validate:
@@ -997,7 +989,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateSolNetworkPackageContentOutput'
-      x-stackql-resource: sol_network_packages
+      x-stackql-resource: sol_network_package_content
       x-stackql-method: validate_sol_network_package_content
       x-stackql-verb: EXEC
 components:
@@ -2292,8 +2284,6 @@ components:
       properties:
         nsd:
           $ref: '#/components/schemas/NetworkArtifactMeta'
-    TagResourceOutput:
-      type: object
     TerminateSolNetworkInstanceOutput:
       type: object
       properties:
@@ -2314,8 +2304,6 @@ components:
     TagKey:
       type: string
       pattern: ^(?!aws:).{1,128}$
-    UntagResourceOutput:
-      type: object
     UpdateSolFunctionPackageOutput:
       type: object
       properties:

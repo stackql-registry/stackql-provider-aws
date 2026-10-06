@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_notification"
     values={[
         { label: 'describe_notification', value: 'describe_notification' },
-        { label: 'list_notifications', value: 'list_notifications' },
-        { label: 'search_notifications', value: 'search_notifications' }
+        { label: 'list_notifications', value: 'list_notifications' }
     ]}
 >
 <TabItem value="describe_notification">
@@ -128,35 +127,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_notifications">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="approximate_total_count" /></td>
-    <td><code>integer (int64)</code></td>
-    <td>The approximate total number of notifications matching the search criteria.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="next_token" /></td>
-    <td><code>string</code></td>
-    <td>The token for the next set of results. If present, there are more results available.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="notifications" /></td>
-    <td><code>array</code></td>
-    <td>A list of notifications matching the search criteria.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -189,13 +159,6 @@ The following methods are available for this resource:
     <td>Retrieves a paginated list of all notifications in the Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_notifications"><CopyableCode code="search_notifications" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches for notifications based on specified criteria and filters. Returns a paginated list of notifications matching the search parameters, ordered by descending creation time. Supports filtering by content and tags.</td>
-</tr>
-<tr>
     <td><a href="#create_notification"><CopyableCode code="create_notification" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Recipients"><code>Recipients</code></a>, <a href="#parameter-Content"><code>Content</code></a></td>
@@ -215,6 +178,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-notification_id"><code>notification_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a notification. Once deleted, the notification is no longer visible to all users and cannot be managed through the Admin Website or APIs.</td>
+</tr>
+<tr>
+    <td><a href="#search_notifications"><CopyableCode code="search_notifications" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches for notifications based on specified criteria and filters. Returns a paginated list of notifications matching the search parameters, ordered by descending creation time. Supports filtering by content and tags.</td>
 </tr>
 </tbody>
 </table>
@@ -266,8 +236,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_notification"
     values={[
         { label: 'describe_notification', value: 'describe_notification' },
-        { label: 'list_notifications', value: 'list_notifications' },
-        { label: 'search_notifications', value: 'search_notifications' }
+        { label: 'list_notifications', value: 'list_notifications' }
     ]}
 >
 <TabItem value="describe_notification">
@@ -306,20 +275,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_notifications">
-
-Searches for notifications based on specified criteria and filters. Returns a paginated list of notifications matching the search parameters, ordered by descending creation time. Supports filtering by content and tags.
-
-```sql
-SELECT
-approximate_total_count,
-next_token,
-notifications
-FROM aws.connect.notifications
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -451,6 +406,35 @@ DELETE FROM aws.connect.notifications
 WHERE instance_id = '{{ instance_id }}' --required
 AND notification_id = '{{ notification_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_notifications"
+    values={[
+        { label: 'search_notifications', value: 'search_notifications' }
+    ]}
+>
+<TabItem value="search_notifications">
+
+Searches for notifications based on specified criteria and filters. Returns a paginated list of notifications matching the search parameters, ordered by descending creation time. Supports filtering by content and tags.
+
+```sql
+EXEC aws.connect.notifications.search_notifications 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

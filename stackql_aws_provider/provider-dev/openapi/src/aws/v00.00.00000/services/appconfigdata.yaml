@@ -173,3 +173,24 @@ components:
         insert: []
         update: []
         delete: []
+    configuration_sessions:
+      id: aws.appconfigdata.configuration_sessions
+      name: configuration_sessions
+      title: configuration_sessions
+      methods:
+        start_configuration_session:
+          operation:
+            $ref: "#/paths/~1configurationsessions/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []

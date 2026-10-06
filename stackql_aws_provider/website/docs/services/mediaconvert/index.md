@@ -18,7 +18,7 @@ mediaconvert service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __11__  
 
 :::
 
@@ -29,11 +29,12 @@ total resources: __10__
 <a href="/services/mediaconvert/endpoints/">endpoints</a><br />
 <a href="/services/mediaconvert/job_templates/">job_templates</a><br />
 <a href="/services/mediaconvert/jobs/">jobs</a><br />
-<a href="/services/mediaconvert/jobs_query_results/">jobs_query_results</a>
+<a href="/services/mediaconvert/jobs_query_results/">jobs_query_results</a><br />
+<a href="/services/mediaconvert/policies/">policies</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/mediaconvert/policies/">policies</a><br />
 <a href="/services/mediaconvert/presets/">presets</a><br />
+<a href="/services/mediaconvert/probes/">probes</a><br />
 <a href="/services/mediaconvert/queues/">queues</a><br />
 <a href="/services/mediaconvert/tags/">tags</a><br />
 <a href="/services/mediaconvert/versions/">versions</a>

@@ -248,7 +248,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectEntitiesResponse'
-      x-stackql-resource: detect_entities
+      x-stackql-resource: entities
       x-stackql-method: detect_entities
       x-stackql-verb: EXEC
   /DetectEntitiesV2:
@@ -289,7 +289,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectEntitiesV2Response'
-      x-stackql-resource: detect_entities_v2
+      x-stackql-resource: entities_v2
       x-stackql-method: detect_entities_v2
       x-stackql-verb: EXEC
   /DetectPHI:
@@ -327,7 +327,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectPHIResponse'
-      x-stackql-resource: detect_phi
+      x-stackql-resource: phis
       x-stackql-method: detect_phi
       x-stackql-verb: EXEC
   /InferICD10CM:
@@ -365,7 +365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InferICD10CMResponse'
-      x-stackql-resource: infer_icd10_cm
+      x-stackql-resource: icd10_cms
       x-stackql-method: infer_icd10_cm
       x-stackql-verb: EXEC
   /InferRxNorm:
@@ -403,7 +403,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InferRxNormResponse'
-      x-stackql-resource: infer_rx_norm
+      x-stackql-resource: rx_norms
       x-stackql-method: infer_rx_norm
       x-stackql-verb: EXEC
   /InferSNOMEDCT:
@@ -440,7 +440,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InferSNOMEDCTResponse'
-      x-stackql-resource: infer_snomedct
+      x-stackql-resource: snomedcts
       x-stackql-method: infer_snomedct
       x-stackql-verb: EXEC
   /ListEntitiesDetectionV2Jobs:
@@ -706,7 +706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEntitiesDetectionV2JobResponse'
-      x-stackql-resource: entities_detection_v2_job
+      x-stackql-resource: entities_detection_v2_jobs
       x-stackql-method: start_entities_detection_v2_job
       x-stackql-verb: EXEC
   /StartICD10CMInferenceJob:
@@ -768,7 +768,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartICD10CMInferenceJobResponse'
-      x-stackql-resource: icd10_cm_inference_job
+      x-stackql-resource: icd10_cm_inference_jobs
       x-stackql-method: start_icd10_cm_inference_job
       x-stackql-verb: EXEC
   /StartPHIDetectionJob:
@@ -830,7 +830,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPHIDetectionJobResponse'
-      x-stackql-resource: phi_detection_job
+      x-stackql-resource: phi_detection_jobs
       x-stackql-method: start_phi_detection_job
       x-stackql-verb: EXEC
   /StartRxNormInferenceJob:
@@ -892,7 +892,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRxNormInferenceJobResponse'
-      x-stackql-resource: rx_norm_inference_job
+      x-stackql-resource: rx_norm_inference_jobs
       x-stackql-method: start_rx_norm_inference_job
       x-stackql-verb: EXEC
   /StartSNOMEDCTInferenceJob:
@@ -951,7 +951,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSNOMEDCTInferenceJobResponse'
-      x-stackql-resource: snomedct_inference_job
+      x-stackql-resource: snomedct_inference_jobs
       x-stackql-method: start_snomedct_inference_job
       x-stackql-verb: EXEC
   /StopEntitiesDetectionV2Job:
@@ -987,7 +987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopEntitiesDetectionV2JobResponse'
-      x-stackql-resource: entities_detection_v2_job
+      x-stackql-resource: entities_detection_v2_jobs
       x-stackql-method: stop_entities_detection_v2_job
       x-stackql-verb: EXEC
   /StopICD10CMInferenceJob:
@@ -1023,7 +1023,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopICD10CMInferenceJobResponse'
-      x-stackql-resource: icd10_cm_inference_job
+      x-stackql-resource: icd10_cm_inference_jobs
       x-stackql-method: stop_icd10_cm_inference_job
       x-stackql-verb: EXEC
   /StopPHIDetectionJob:
@@ -1059,7 +1059,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPHIDetectionJobResponse'
-      x-stackql-resource: phi_detection_job
+      x-stackql-resource: phi_detection_jobs
       x-stackql-method: stop_phi_detection_job
       x-stackql-verb: EXEC
   /StopRxNormInferenceJob:
@@ -1095,7 +1095,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRxNormInferenceJobResponse'
-      x-stackql-resource: rx_norm_inference_job
+      x-stackql-resource: rx_norm_inference_jobs
       x-stackql-method: stop_rx_norm_inference_job
       x-stackql-verb: EXEC
   /StopSNOMEDCTInferenceJob:
@@ -1131,7 +1131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopSNOMEDCTInferenceJobResponse'
-      x-stackql-resource: snomedct_inference_job
+      x-stackql-resource: snomedct_inference_jobs
       x-stackql-method: stop_snomedct_inference_job
       x-stackql-verb: EXEC
 components:

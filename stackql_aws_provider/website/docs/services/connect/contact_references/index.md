@@ -55,6 +55,11 @@ The following fields are returned by `SELECT` queries:
     <td>Information about the reference when the referenceType is ATTACHMENT. Otherwise, null.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="contact_analysis" /></td>
+    <td><code>object</code></td>
+    <td>Information about a reference when the referenceType is CONTACT_ANALYSIS. Otherwise, null.</td>
+</tr>
+<tr>
     <td><CopyableCode code="date" /></td>
     <td><code>object</code></td>
     <td>Information about a reference when the referenceType is DATE. Otherwise, null.</td>
@@ -185,6 +190,7 @@ This API is in preview release for Connect Customer and is subject to change. Fo
 ```sql
 SELECT
 attachment,
+contact_analysis,
 date,
 email,
 email_message,

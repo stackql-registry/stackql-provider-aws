@@ -135,6 +135,11 @@ The following fields are returned by `SELECT` queries:
     <td>If v2.0, it indicates that IMDSv2 is specified in the AMI. Instances launched from this AMI will have HttpTokens automatically set to required so that, by default, the instance requires that IMDSv2 is used when requesting instance metadata. In addition, HttpPutResponseHopLimit is set to 2. For more information, see Configure the AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="instance_type_specification" /></td>
+    <td><code>string</code></td>
+    <td>The instance type specification for the AMI, which defines which instance types are compatible with this image.</td>
+</tr>
+<tr>
     <td><CopyableCode code="kernel_id" /></td>
     <td><code>string</code></td>
     <td>The kernel associated with the image, if any. Only applicable for machine images.</td>
@@ -275,7 +280,7 @@ The following methods are available for this resource:
     <td><a href="#create_image"><CopyableCode code="create_image" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SnapshotLocation"><code>SnapshotLocation</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-NoReboot"><code>NoReboot</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a></td>
+    <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SnapshotLocation"><code>SnapshotLocation</code></a>, <a href="#parameter-BootModeOverride"><code>BootModeOverride</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-NoReboot"><code>NoReboot</code></a>, <a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a></td>
     <td>Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped. If you customized your instance with instance store volumes or Amazon EBS volumes in addition to the root device volume, the new AMI contains block device mapping information for those volumes. When you launch an instance from this new AMI, the instance automatically launches with those additional volumes. The location of the source instance determines where you can create the snapshots of the AMI: If the source instance is in a Region, you must create the snapshots in the same Region as the instance. If the source instance is in a Local Zone, you can create the snapshots in the same Local Zone or in its parent Region. If the source instance is on an Outpost that supports local snapshots, you can create the snapshots on the same Outpost or in the parent Region of that Outpost. In this case, you must use the SnapshotLocation parameter to specify where to create the snapshots. For more information, see Create an Amazon EBS-backed AMI in the Amazon Elastic Compute Cloud User Guide.</td>
 </tr>
 <tr>
@@ -300,6 +305,13 @@ The following methods are available for this resource:
     <td>Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds even if the watermark does not exist on the image. Removing a watermark from an image does not affect derivative images that already carry the watermark. Only the AMI owner can detach watermarks.</td>
 </tr>
 <tr>
+    <td><a href="#replace_image_instance_type_specification"><CopyableCode code="replace_image_instance_type_specification" /></a></td>
+    <td><CopyableCode code="replace" /></td>
+    <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-InstanceTypeSpecification"><code>InstanceTypeSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Replaces or removes the instance type specification for an AMI. The instance type specification defines which instance types are compatible with the AMI. When you launch an instance using RunInstances, Amazon EC2 validates the requested instance type against the AMI's instance type specification. If the instance type is not compatible, the request fails with an InvalidParameterCombination error. You can specify supported instance types, unsupported instance types, or both. The evaluation logic is as follows: No specification set – all instance types are allowed. Only UnsupportedInstanceTypes set – All instance types are allowed except those that match the unsupported list. SupportedInstanceTypes set – The instance type must match the supported list and must not match the unsupported list. Instance type entries support wildcard patterns using * (for example, t3.* matches all t3 sizes). To remove an existing instance type specification, omit the InstanceTypeSpecification parameter or set it to null. To set the instance type specification, you must be the AMI owner. You cannot set an instance type specification on an AMI that is listed in Amazon Web Services Marketplace, and you cannot list an AMI in Amazon Web Services Marketplace if it has an instance type specification set.</td>
+</tr>
+<tr>
     <td><a href="#deregister_image"><CopyableCode code="deregister_image" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -314,11 +326,25 @@ The following methods are available for this resource:
     <td>Removes your Amazon Web Services account from the launch permissions for the specified AMI. For more information, see Cancel having an AMI shared with your Amazon Web Services account in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#copy_image"><CopyableCode code="copy_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SourceImageId"><code>SourceImageId</code></a>, <a href="#parameter-SourceRegion"><code>SourceRegion</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-Encrypted"><code>Encrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-DestinationOutpostArn"><code>DestinationOutpostArn</code></a>, <a href="#parameter-CopyImageTags"><code>CopyImageTags</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-SnapshotCopyCompletionDurationMinutes"><code>SnapshotCopyCompletionDurationMinutes</code></a>, <a href="#parameter-DestinationAvailabilityZone"><code>DestinationAvailabilityZone</code></a>, <a href="#parameter-DestinationAvailabilityZoneId"><code>DestinationAvailabilityZoneId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Initiates an AMI copy operation. You must specify the source AMI ID and both the source and destination locations. The copy operation must be initiated in the destination Region. CopyImage supports the following source to destination copies: Region to Region Region to Outpost Parent Region to Local Zone Local Zone to parent Region Between Local Zones with the same parent Region (only supported for certain Local Zones) CopyImage does not support the following source to destination copies: Local Zone to non-parent Regions Between Local Zones with different parent Regions Local Zone to Outpost Outpost to Local Zone Outpost to Region Between Outposts Within same Outpost Cross-partition copies (use CreateStoreImageTask instead) Destination specification Region to Region: The destination Region is the Region in which you initiate the copy operation. Region to Outpost: Specify the destination using the DestinationOutpostArn parameter (the ARN of the Outpost) Region to Local Zone, and Local Zone to Local Zone copies: Specify the destination using the DestinationAvailabilityZone parameter (the name of the destination Local Zone) or DestinationAvailabilityZoneId parameter (the ID of the destination Local Zone). Snapshot encryption Region to Outpost: Backing snapshots copied to an Outpost are encrypted by default using the default encryption key for the Region or the key that you specify. Outposts do not support unencrypted snapshots. Region to Local Zone, and Local Zone to Local Zone: Not all Local Zones require encrypted snapshots. In Local Zones that require encrypted snapshots, backing snapshots are automatically encrypted during copy. In Local Zones where encryption is not required, snapshots retain their original encryption state (encrypted or unencrypted) by default. For more information, including the required permissions for copying an AMI, see Copy an Amazon EC2 AMI in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
     <td><a href="#disable_fast_launch"><CopyableCode code="disable_fast_launch" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Force"><code>Force</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots. After you disable Windows fast launch, the AMI uses the standard launch process for each new instance. Amazon EC2 must remove all pre-provisioned snapshots before you can enable Windows fast launch again. You can only change these settings for Windows AMIs that you own or that have been shared with you.</td>
+</tr>
+<tr>
+    <td><a href="#disable_image"><CopyableCode code="disable_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Sets the AMI state to disabled and removes all launch permissions from the AMI. A disabled AMI can't be used for instance launches. A disabled AMI can't be shared. If an AMI was public or previously shared, it is made private. If an AMI was shared with an Amazon Web Services account, organization, or Organizational Unit, they lose access to the disabled AMI. A disabled AMI does not appear in DescribeImages API calls by default. Only the AMI owner can disable an AMI. You can re-enable a disabled AMI using EnableImage. For more information, see Disable an AMI in the Amazon EC2 User Guide.</td>
 </tr>
 <tr>
     <td><a href="#disable_image_block_public_access"><CopyableCode code="disable_image_block_public_access" /></a></td>
@@ -349,6 +375,13 @@ The following methods are available for this resource:
     <td>When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster. To create the optimized Windows image, Amazon EC2 launches an instance and runs through Sysprep steps, rebooting as required. Then it creates a set of reserved snapshots that are used for subsequent launches. The reserved snapshots are automatically replenished as they are used, depending on your settings for launch frequency. You can only change these settings for Windows AMIs that you own or that have been shared with you.</td>
 </tr>
 <tr>
+    <td><a href="#enable_image"><CopyableCode code="enable_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Re-enables a disabled AMI. The re-enabled AMI is marked as available and can be used for instance launches, appears in describe operations, and can be shared. Amazon Web Services accounts, organizations, and Organizational Units that lost access to the AMI when it was disabled do not regain access automatically. Once the AMI is available, it can be shared with them again. Only the AMI owner can re-enable a disabled AMI. For more information, see Disable an Amazon EC2 AMI in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
     <td><a href="#enable_image_block_public_access"><CopyableCode code="enable_image_block_public_access" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-ImageBlockPublicAccessState"><code>ImageBlockPublicAccessState</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -368,6 +401,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-WithCooldown"><code>WithCooldown</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Enables deregistration protection for an AMI. When deregistration protection is enabled, the AMI can't be deregistered. To allow the AMI to be deregistered, you must first disable deregistration protection. For more information, see Protect an Amazon EC2 AMI from deregistration in the Amazon EC2 User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#export_image"><CopyableCode code="export_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-DiskImageFormat"><code>DiskImageFormat</code></a>, <a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-S3ExportLocation"><code>S3ExportLocation</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-RoleName"><code>RoleName</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
+    <td>Exports an Amazon Machine Image (AMI) to a VM file. For more information, see Exporting a VM directly from an Amazon Machine Image (AMI) in the VM Import/Export User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#import_image"><CopyableCode code="import_image" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Architecture"><code>Architecture</code></a>, <a href="#parameter-ClientData"><code>ClientData</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-DiskContainer"><code>DiskContainer</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Encrypted"><code>Encrypted</code></a>, <a href="#parameter-Hypervisor"><code>Hypervisor</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-LicenseType"><code>LicenseType</code></a>, <a href="#parameter-Platform"><code>Platform</code></a>, <a href="#parameter-RoleName"><code>RoleName</code></a>, <a href="#parameter-LicenseSpecifications"><code>LicenseSpecifications</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-UsageOperation"><code>UsageOperation</code></a>, <a href="#parameter-BootMode"><code>BootMode</code></a></td>
+    <td>To import your virtual machines (VMs) with a console-based experience, you can use the Import virtual machine images to Amazon Web Services template in the Migration Hub Orchestrator console. For more information, see the Migration Hub Orchestrator User Guide . Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). Amazon Web Services VM Import/Export strongly recommends specifying a value for either the --license-type or --usage-operation parameter when you create a new VM Import task. This ensures your operating system is licensed appropriately and your billing is optimized. For more information, see Importing a VM as an image using VM Import/Export in the VM Import/Export User Guide.</td>
 </tr>
 <tr>
     <td><a href="#reset_image_attribute"><CopyableCode code="reset_image_attribute" /></a></td>
@@ -409,6 +456,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string (date-time)</code></td>
     <td>The date and time to deprecate the AMI, in UTC, in the following format: YYYY-MM-DDTHH:MM:SSZ. If you specify a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. You can’t specify a date in the past. The upper limit for DeprecateAt is 10 years from now, except for public AMIs, where the upper limit is 2 years from the creation date.</td>
 </tr>
+<tr id="parameter-DiskImageFormat">
+    <td><CopyableCode code="DiskImageFormat" /></td>
+    <td><code>string</code></td>
+    <td>The disk image format.</td>
+</tr>
 <tr id="parameter-ImageBlockPublicAccessState">
     <td><CopyableCode code="ImageBlockPublicAccessState" /></td>
     <td><code>string</code></td>
@@ -423,6 +475,21 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="InstanceId" /></td>
     <td><code>string</code></td>
     <td>The ID of the instance.</td>
+</tr>
+<tr id="parameter-S3ExportLocation">
+    <td><CopyableCode code="S3ExportLocation" /></td>
+    <td><code>object</code></td>
+    <td>The Amazon S3 bucket for the destination image. The destination bucket must exist.</td>
+</tr>
+<tr id="parameter-SourceImageId">
+    <td><CopyableCode code="SourceImageId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the AMI to copy.</td>
+</tr>
+<tr id="parameter-SourceRegion">
+    <td><CopyableCode code="SourceRegion" /></td>
+    <td><code>string</code></td>
+    <td>The name of the Region that contains the AMI to copy.</td>
 </tr>
 <tr id="parameter-WatermarkKey">
     <td><CopyableCode code="WatermarkKey" /></td>
@@ -442,7 +509,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Architecture">
     <td><CopyableCode code="Architecture" /></td>
     <td><code>string</code></td>
-    <td>The architecture of the AMI. Default: For Amazon EBS-backed AMIs, i386. For instance store-backed AMIs, the architecture specified in the manifest file.</td>
+    <td>The architecture of the virtual machine. Valid values: i386 | x86_64</td>
 </tr>
 <tr id="parameter-BillingProduct">
     <td><CopyableCode code="BillingProduct" /></td>
@@ -457,7 +524,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-BootMode">
     <td><CopyableCode code="BootMode" /></td>
     <td><code>string</code></td>
-    <td>The boot mode of the AMI. A value of uefi-preferred indicates that the AMI supports both UEFI and Legacy BIOS. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.</td>
+    <td>The boot mode of the virtual machine. The uefi-preferred boot mode isn't supported for importing images. For more information, see Boot modes in the VM Import/Export User Guide.</td>
+</tr>
+<tr id="parameter-BootModeOverride">
+    <td><CopyableCode code="BootModeOverride" /></td>
+    <td><code>string</code></td>
+    <td>The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the boot-mode from the source instance. A value of uefi indicates that the image only supports UEFI boot mode. You can specify this parameter only if the current-instance-boot-mode of the source instance is uefi. To find the boot-mode or current-instance-boot-mode of an instance, see DescribeInstances. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.</td>
+</tr>
+<tr id="parameter-ClientData">
+    <td><CopyableCode code="ClientData" /></td>
+    <td><code>object</code></td>
+    <td>The client-specific data.</td>
+</tr>
+<tr id="parameter-ClientToken">
+    <td><CopyableCode code="ClientToken" /></td>
+    <td><code>string</code></td>
+    <td>The token to enable idempotency for VM import requests.</td>
+</tr>
+<tr id="parameter-CopyImageTags">
+    <td><CopyableCode code="CopyImageTags" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether to copy your user-defined AMI tags to the new AMI. The following tags are not be copied: System tags (prefixed with aws:) For public and shared AMIs, user-defined tags that are attached by other Amazon Web Services accounts Default: Your user-defined AMI tags are not copied.</td>
 </tr>
 <tr id="parameter-DeleteAssociatedSnapshots">
     <td><CopyableCode code="DeleteAssociatedSnapshots" /></td>
@@ -467,7 +554,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
-    <td>A description for your AMI.</td>
+    <td>A description string for the import image task.</td>
+</tr>
+<tr id="parameter-DestinationAvailabilityZone">
+    <td><CopyableCode code="DestinationAvailabilityZone" /></td>
+    <td><code>string</code></td>
+    <td>The Local Zone for the new AMI (for example, cn-north-1-pkx-1a). Only one of DestinationAvailabilityZone, DestinationAvailabilityZoneId, or DestinationOutpostArn can be specified.</td>
+</tr>
+<tr id="parameter-DestinationAvailabilityZoneId">
+    <td><CopyableCode code="DestinationAvailabilityZoneId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Local Zone for the new AMI (for example, cnn1-pkx1-az1). Only one of DestinationAvailabilityZone, DestinationAvailabilityZoneId, or DestinationOutpostArn can be specified.</td>
+</tr>
+<tr id="parameter-DestinationOutpostArn">
+    <td><CopyableCode code="DestinationOutpostArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the Outpost for the new AMI. Only specify this parameter when copying an AMI from an Amazon Web Services Region to an Outpost. The AMI must be in the Region of the destination Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. For more information, see Copy AMIs from an Amazon Web Services Region to an Outpost in the Amazon EBS User Guide. Only one of DestinationAvailabilityZone, DestinationAvailabilityZoneId, or DestinationOutpostArn can be specified.</td>
+</tr>
+<tr id="parameter-DiskContainer">
+    <td><CopyableCode code="DiskContainer" /></td>
+    <td><code>array</code></td>
+    <td>Information about the disk containers.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
@@ -479,6 +586,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>boolean</code></td>
     <td>Set to true to enable enhanced networking with ENA for the AMI and any instances that you launch from the AMI. This option is supported only for HVM AMIs. Specifying this option with a PV AMI can make instances launched from the AMI unreachable.</td>
 </tr>
+<tr id="parameter-Encrypted">
+    <td><CopyableCode code="Encrypted" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the destination AMI of the imported image should be encrypted. The default KMS key for EBS is used unless you specify a non-default KMS key using KmsKeyId. For more information, see Amazon EBS Encryption in the Amazon Elastic Compute Cloud User Guide.</td>
+</tr>
 <tr id="parameter-ExecutableBy">
     <td><CopyableCode code="ExecutableBy" /></td>
     <td><code>array</code></td>
@@ -487,12 +599,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
-    <td>The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).</td>
+    <td>The filters. architecture - The image architecture (i386 | x86_64 | arm64 | x86_64_mac | arm64_mac). block-device-mapping.delete-on-termination - A Boolean value that indicates whether the Amazon EBS volume is deleted on instance termination. block-device-mapping.device-name - The device name specified in the block device mapping (for example, /dev/sdh or xvdh). block-device-mapping.snapshot-id - The ID of the snapshot used for the Amazon EBS volume. block-device-mapping.volume-size - The volume size of the Amazon EBS volume, in GiB. block-device-mapping.volume-type - The volume type of the Amazon EBS volume (io1 | io2 | gp2 | gp3 | sc1 | st1 | standard). block-device-mapping.encrypted - A Boolean that indicates whether the Amazon EBS volume is encrypted. boot-mode – The boot mode of the image (legacy-bios | uefi | uefi-preferred). creation-date - The time when the image was created, in the ISO 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example, 2021-09-29T11:04:43.305Z. You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. description - The description of the image (provided during image creation). ena-support - A Boolean that indicates whether enhanced networking with ENA is enabled. free-tier-eligible - A Boolean that indicates whether this image can be used under the Amazon Web Services Free Tier (true | false). hypervisor - The hypervisor type (ovm | xen). image-allowed - A Boolean that indicates whether the image meets the criteria specified for Allowed AMIs. image-id - The ID of the image. image-watermark.source-image-creation-time - The creation date of the source AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.source-image-id - The ID of the AMI to which the watermark was originally attached. image-watermark.source-image-region - The Region where the watermark was originally attached. image-watermark.watermark-creation-time - The date and time the watermark was attached to the AMI, in the ISO 8601 format in the UTC time zone ( YYYY-MM-DDTHH:MM:SS.ssssss+HH:MM ). You can use a wildcard (*), for example, 2021-09-29T*, which matches an entire day. image-watermark.watermark-key - The watermark identifier, in accountId:watermarkName format (for example, 123456789012:approvedAmi). image-type - The image type (machine | kernel | ramdisk). instance-type-specification.supported-instance-type – The instance types that are compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). instance-type-specification.unsupported-instance-type – The instance types that are not compatible with the AMI, as specified by the AMI owner. Values can be individual instance types (for example, t3.micro) or wildcard patterns that match multiple instance types (for example, t3.*). is-public - A Boolean that indicates whether the image is public. kernel-id - The kernel ID. manifest-location - The location of the image manifest. name - The name of the AMI (provided during image creation). owner-alias - The owner alias (amazon | aws-backup-vault | aws-marketplace). The valid aliases are defined in an Amazon-maintained list. This is not the Amazon Web Services account alias that can be set using the IAM console. We recommend that you use the Owner request parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the Owner request parameter instead of this filter. platform - The platform. The only supported value is windows. product-code - The product code. product-code.type - The type of the product code (marketplace). public-ssm-parameter-name - The name of a public Systems Manager parameter associated with the AMI. The parameter must be in a trusted Amazon Web Services namespace under aws/service/. Returns all AMIs that have ever been associated with the parameter, including previous versions. ramdisk-id - The RAM disk ID. root-device-name - The device name of the root device volume (for example, /dev/sda1). root-device-type - The type of the root device volume (ebs | instance-store). source-image-id - The ID of the source AMI from which the AMI was created. source-image-region - The Region of the source AMI. source-instance-id - The ID of the instance that the AMI was created from if the AMI was created using CreateImage. This filter is applicable only if the AMI was created using CreateImage. state - The state of the image (available | pending | failed). state-reason-code - The reason code for the state change. state-reason-message - The message for the state change. sriov-net-support - A value of simple indicates that enhanced networking with the Intel 82599 VF interface is enabled. tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. virtualization-type - The virtualization type (paravirtual | hvm).</td>
 </tr>
 <tr id="parameter-Force">
     <td><CopyableCode code="Force" /></td>
     <td><code>boolean</code></td>
     <td>Forces the image settings to turn off Windows fast launch for your Windows AMI. This parameter overrides any errors that are encountered while cleaning up resources in your account.</td>
+</tr>
+<tr id="parameter-Hypervisor">
+    <td><CopyableCode code="Hypervisor" /></td>
+    <td><code>string</code></td>
+    <td>The target hypervisor platform. Valid values: xen</td>
 </tr>
 <tr id="parameter-ImageId">
     <td><CopyableCode code="ImageId" /></td>
@@ -519,15 +636,35 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>boolean</code></td>
     <td>Specifies whether to include disabled AMIs. Default: No disabled AMIs are included in the response.</td>
 </tr>
+<tr id="parameter-InstanceTypeSpecification">
+    <td><CopyableCode code="InstanceTypeSpecification" /></td>
+    <td><code>object</code></td>
+    <td>The instance type specification to set on the AMI. Omit this parameter to remove the existing instance type specification.</td>
+</tr>
 <tr id="parameter-KernelId">
     <td><CopyableCode code="KernelId" /></td>
     <td><code>string</code></td>
     <td>The ID of the kernel.</td>
 </tr>
+<tr id="parameter-KmsKeyId">
+    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>An identifier for the symmetric KMS key to use when creating the encrypted AMI. This parameter is only required if you want to use a non-default KMS key; if this parameter is not specified, the default KMS key for EBS is used. If a KmsKeyId is specified, the Encrypted flag must also be set. The KMS key identifier may be provided in any of the following formats: Key ID Key alias ARN using key ID. The ID ARN contains the arn:aws:kms namespace, followed by the Region of the key, the Amazon Web Services account ID of the key owner, the key namespace, and then the key ID. For example, arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef. ARN using key alias. The alias ARN contains the arn:aws:kms namespace, followed by the Region of the key, the Amazon Web Services account ID of the key owner, the alias namespace, and then the key alias. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias. Amazon Web Services parses KmsKeyId asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure. The specified KMS key must exist in the Region that the AMI is being copied to. Amazon EBS does not support asymmetric KMS keys.</td>
+</tr>
 <tr id="parameter-LaunchTemplate">
     <td><CopyableCode code="LaunchTemplate" /></td>
     <td><code>object</code></td>
     <td>The launch template to use when launching Windows instances from pre-provisioned snapshots. Launch template parameters can include either the name or ID of the launch template, but not both.</td>
+</tr>
+<tr id="parameter-LicenseSpecifications">
+    <td><CopyableCode code="LicenseSpecifications" /></td>
+    <td><code>array</code></td>
+    <td>The ARNs of the license configurations.</td>
+</tr>
+<tr id="parameter-LicenseType">
+    <td><CopyableCode code="LicenseType" /></td>
+    <td><code>string</code></td>
+    <td>The license type to be used for the Amazon Machine Image (AMI) after importing. Specify AWS to replace the source-system license with an Amazon Web Services license or BYOL to retain the source-system license. Leaving this parameter undefined is the same as choosing AWS when importing a Windows Server operating system, and the same as choosing BYOL when importing a Windows client operating system (such as Windows 10) or a Linux operating system. To use BYOL, you must have existing licenses with rights to use these licenses in a third party cloud, such as Amazon Web Services. For more information, see Prerequisites in the VM Import/Export User Guide.</td>
 </tr>
 <tr id="parameter-MaxParallelLaunches">
     <td><CopyableCode code="MaxParallelLaunches" /></td>
@@ -542,7 +679,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Name">
     <td><CopyableCode code="Name" /></td>
     <td><code>string</code></td>
-    <td>A name for your AMI. Constraints: 3-128 alphanumeric characters, parentheses (()), square brackets (&#91;&#93;), spaces ( ), periods (.), slashes (/), dashes (-), single quotes ('), at-signs (@), or underscores(_)</td>
+    <td>The name of the new AMI.</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
@@ -559,6 +696,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>Scopes the results to images with the specified owners. You can specify a combination of Amazon Web Services account IDs, self, amazon, aws-backup-vault, and aws-marketplace. If you omit this parameter, the results include all images for which you have launch permissions, regardless of ownership.</td>
 </tr>
+<tr id="parameter-Platform">
+    <td><CopyableCode code="Platform" /></td>
+    <td><code>string</code></td>
+    <td>The operating system of the virtual machine. If you import a VM that is compatible with Unified Extensible Firmware Interface (UEFI) using an EBS snapshot, you must specify a value for the platform. Valid values: Windows | Linux</td>
+</tr>
 <tr id="parameter-RamdiskId">
     <td><CopyableCode code="RamdiskId" /></td>
     <td><code>string</code></td>
@@ -569,6 +711,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The type of resource to use for pre-provisioning the AMI for Windows fast launch. Supported values include: snapshot, which is the default value.</td>
 </tr>
+<tr id="parameter-RoleName">
+    <td><CopyableCode code="RoleName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the role to use when not using the default role, 'vmimport'.</td>
+</tr>
 <tr id="parameter-RootDeviceName">
     <td><CopyableCode code="RootDeviceName" /></td>
     <td><code>string</code></td>
@@ -578,6 +725,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="SnapshotConfiguration" /></td>
     <td><code>object</code></td>
     <td>Configuration settings for creating and managing the snapshots that are used for pre-provisioning the AMI for Windows fast launch. The associated ResourceType must be snapshot.</td>
+</tr>
+<tr id="parameter-SnapshotCopyCompletionDurationMinutes">
+    <td><CopyableCode code="SnapshotCopyCompletionDurationMinutes" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>Specify a completion duration, in 15 minute increments, to initiate a time-based AMI copy. The specified completion duration applies to each of the snapshots associated with the AMI. Each snapshot associated with the AMI will be completed within the specified completion duration, with copy throughput automatically adjusted for each snapshot based on its size to meet the timing target. If you do not specify a value, the AMI copy operation is completed on a best-effort basis. This parameter is not supported when copying an AMI to or from a Local Zone, or to an Outpost. For more information, see Time-based copies for Amazon EBS snapshots and EBS-backed AMIs.</td>
 </tr>
 <tr id="parameter-SnapshotLocation">
     <td><CopyableCode code="SnapshotLocation" /></td>
@@ -592,7 +744,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
-    <td>The tags to apply to the AMI. To tag the AMI, the value for ResourceType must be image. If you specify another value for ResourceType, the request fails. To tag an AMI after it has been registered, see CreateTags.</td>
+    <td>The tags to apply to the import image task during creation.</td>
 </tr>
 <tr id="parameter-TpmSupport">
     <td><CopyableCode code="TpmSupport" /></td>
@@ -603,6 +755,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="UefiData" /></td>
     <td><code>string</code></td>
     <td>Base64 representation of the non-volatile UEFI variable store. To retrieve the UEFI data, use the GetInstanceUefiData command. You can inspect and modify the UEFI data by using the python-uefivars tool on GitHub. For more information, see UEFI Secure Boot for Amazon EC2 instances in the Amazon EC2 User Guide.</td>
+</tr>
+<tr id="parameter-UsageOperation">
+    <td><CopyableCode code="UsageOperation" /></td>
+    <td><code>string</code></td>
+    <td>The usage operation value. For more information, see Licensing options in the VM Import/Export User Guide.</td>
 </tr>
 <tr id="parameter-VirtualizationType">
     <td><CopyableCode code="VirtualizationType" /></td>
@@ -648,6 +805,7 @@ image_owner_alias,
 image_type,
 image_watermarks,
 imds_support,
+instance_type_specification,
 kernel_id,
 last_launched_time,
 name,
@@ -707,6 +865,7 @@ InstanceId,
 region,
 TagSpecification,
 SnapshotLocation,
+BootModeOverride,
 DryRun,
 Name,
 Description,
@@ -718,6 +877,7 @@ SELECT
 '{{ region }}',
 '{{ TagSpecification }}',
 '{{ SnapshotLocation }}',
+'{{ BootModeOverride }}',
 '{{ DryRun }}',
 '{{ Name }}',
 '{{ Description }}',
@@ -798,6 +958,10 @@ image_id
       value: "{{ SnapshotLocation }}"
       description: Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)
       description: Only supported for instances in Local Zones and for instances on Outposts that support local snapshots. If the source instance is not in one of these locations, omit this parameter. The Amazon S3 location where the snapshots will be stored. To create local snapshots in the same Local Zone or on the same Outpost as the source instance, specify local. To create regional snapshots in the parent Region of the Local Zone or Outpost, specify regional. If the source instance is in a Local Zone and you omit this parameter, regional snapshots are created in the parent Region of the Local Zone. If the source instance is on an Outpost that supports local snapshots, this parameter is required. If you omit it, the request fails with an InvalidParameterValue error. Default: regional (for instances in Local Zones only)
+    - name: BootModeOverride
+      value: "{{ BootModeOverride }}"
+      description: The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the boot-mode from the source instance. A value of uefi indicates that the image only supports UEFI boot mode. You can specify this parameter only if the current-instance-boot-mode of the source instance is uefi. To find the boot-mode or current-instance-boot-mode of an instance, see DescribeInstances. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.
+      description: The boot mode of the new image, which overrides the default boot mode. By default, if you do not specify this parameter, the new image inherits the boot-mode from the source instance. A value of uefi indicates that the image only supports UEFI boot mode. You can specify this parameter only if the current-instance-boot-mode of the source instance is uefi. To find the boot-mode or current-instance-boot-mode of an instance, see DescribeInstances. The operating system contained in the AMI must be configured to support the specified boot mode. For more information, see Instance launch behavior with Amazon EC2 boot modes in the Amazon EC2 User Guide.
     - name: DryRun
       value: {{ DryRun }}
       description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -922,6 +1086,34 @@ return;
 </Tabs>
 
 
+## `REPLACE` examples
+
+<Tabs
+    defaultValue="replace_image_instance_type_specification"
+    values={[
+        { label: 'replace_image_instance_type_specification', value: 'replace_image_instance_type_specification' }
+    ]}
+>
+<TabItem value="replace_image_instance_type_specification">
+
+Replaces or removes the instance type specification for an AMI. The instance type specification defines which instance types are compatible with the AMI. When you launch an instance using RunInstances, Amazon EC2 validates the requested instance type against the AMI's instance type specification. If the instance type is not compatible, the request fails with an InvalidParameterCombination error. You can specify supported instance types, unsupported instance types, or both. The evaluation logic is as follows: No specification set – all instance types are allowed. Only UnsupportedInstanceTypes set – All instance types are allowed except those that match the unsupported list. SupportedInstanceTypes set – The instance type must match the supported list and must not match the unsupported list. Instance type entries support wildcard patterns using * (for example, t3.* matches all t3 sizes). To remove an existing instance type specification, omit the InstanceTypeSpecification parameter or set it to null. To set the instance type specification, you must be the AMI owner. You cannot set an instance type specification on an AMI that is listed in Amazon Web Services Marketplace, and you cannot list an AMI in Amazon Web Services Marketplace if it has an instance type specification set.
+
+```sql
+REPLACE aws.ec2.images
+SET 
+-- No updatable properties
+WHERE 
+ImageId = '{{ ImageId }}' --required
+AND region = '{{ region }}' --required
+AND InstanceTypeSpecification = '{{ InstanceTypeSpecification}}'
+AND DryRun = {{ DryRun}}
+RETURNING
+return_value;
+```
+</TabItem>
+</Tabs>
+
+
 ## `DELETE` examples
 
 <Tabs
@@ -952,14 +1144,19 @@ AND DryRun = '{{ DryRun }}'
     defaultValue="cancel_image_launch_permission"
     values={[
         { label: 'cancel_image_launch_permission', value: 'cancel_image_launch_permission' },
+        { label: 'copy_image', value: 'copy_image' },
         { label: 'disable_fast_launch', value: 'disable_fast_launch' },
+        { label: 'disable_image', value: 'disable_image' },
         { label: 'disable_image_block_public_access', value: 'disable_image_block_public_access' },
         { label: 'disable_image_deprecation', value: 'disable_image_deprecation' },
         { label: 'disable_image_deregistration_protection', value: 'disable_image_deregistration_protection' },
         { label: 'enable_fast_launch', value: 'enable_fast_launch' },
+        { label: 'enable_image', value: 'enable_image' },
         { label: 'enable_image_block_public_access', value: 'enable_image_block_public_access' },
         { label: 'enable_image_deprecation', value: 'enable_image_deprecation' },
         { label: 'enable_image_deregistration_protection', value: 'enable_image_deregistration_protection' },
+        { label: 'export_image', value: 'export_image' },
+        { label: 'import_image', value: 'import_image' },
         { label: 'reset_image_attribute', value: 'reset_image_attribute' },
         { label: 'restore_image_from_recycle_bin', value: 'restore_image_from_recycle_bin' }
     ]}
@@ -976,6 +1173,30 @@ EXEC aws.ec2.images.cancel_image_launch_permission
 ;
 ```
 </TabItem>
+<TabItem value="copy_image">
+
+Initiates an AMI copy operation. You must specify the source AMI ID and both the source and destination locations. The copy operation must be initiated in the destination Region. CopyImage supports the following source to destination copies: Region to Region Region to Outpost Parent Region to Local Zone Local Zone to parent Region Between Local Zones with the same parent Region (only supported for certain Local Zones) CopyImage does not support the following source to destination copies: Local Zone to non-parent Regions Between Local Zones with different parent Regions Local Zone to Outpost Outpost to Local Zone Outpost to Region Between Outposts Within same Outpost Cross-partition copies (use CreateStoreImageTask instead) Destination specification Region to Region: The destination Region is the Region in which you initiate the copy operation. Region to Outpost: Specify the destination using the DestinationOutpostArn parameter (the ARN of the Outpost) Region to Local Zone, and Local Zone to Local Zone copies: Specify the destination using the DestinationAvailabilityZone parameter (the name of the destination Local Zone) or DestinationAvailabilityZoneId parameter (the ID of the destination Local Zone). Snapshot encryption Region to Outpost: Backing snapshots copied to an Outpost are encrypted by default using the default encryption key for the Region or the key that you specify. Outposts do not support unencrypted snapshots. Region to Local Zone, and Local Zone to Local Zone: Not all Local Zones require encrypted snapshots. In Local Zones that require encrypted snapshots, backing snapshots are automatically encrypted during copy. In Local Zones where encryption is not required, snapshots retain their original encryption state (encrypted or unencrypted) by default. For more information, including the required permissions for copying an AMI, see Copy an Amazon EC2 AMI in the Amazon EC2 User Guide.
+
+```sql
+EXEC aws.ec2.images.copy_image 
+@SourceImageId='{{ SourceImageId }}' --required, 
+@SourceRegion='{{ SourceRegion }}' --required, 
+@region='{{ region }}' --required, 
+@ClientToken='{{ ClientToken }}', 
+@Description='{{ Description }}', 
+@Encrypted={{ Encrypted }}, 
+@KmsKeyId='{{ KmsKeyId }}', 
+@Name='{{ Name }}', 
+@DestinationOutpostArn='{{ DestinationOutpostArn }}', 
+@CopyImageTags={{ CopyImageTags }}, 
+@TagSpecification='{{ TagSpecification }}', 
+@SnapshotCopyCompletionDurationMinutes='{{ SnapshotCopyCompletionDurationMinutes }}', 
+@DestinationAvailabilityZone='{{ DestinationAvailabilityZone }}', 
+@DestinationAvailabilityZoneId='{{ DestinationAvailabilityZoneId }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
 <TabItem value="disable_fast_launch">
 
 Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots. After you disable Windows fast launch, the AMI uses the standard launch process for each new instance. Amazon EC2 must remove all pre-provisioned snapshots before you can enable Windows fast launch again. You can only change these settings for Windows AMIs that you own or that have been shared with you.
@@ -985,6 +1206,18 @@ EXEC aws.ec2.images.disable_fast_launch
 @ImageId='{{ ImageId }}' --required, 
 @region='{{ region }}' --required, 
 @Force={{ Force }}, 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="disable_image">
+
+Sets the AMI state to disabled and removes all launch permissions from the AMI. A disabled AMI can't be used for instance launches. A disabled AMI can't be shared. If an AMI was public or previously shared, it is made private. If an AMI was shared with an Amazon Web Services account, organization, or Organizational Unit, they lose access to the disabled AMI. A disabled AMI does not appear in DescribeImages API calls by default. Only the AMI owner can disable an AMI. You can re-enable a disabled AMI using EnableImage. For more information, see Disable an AMI in the Amazon EC2 User Guide.
+
+```sql
+EXEC aws.ec2.images.disable_image 
+@ImageId='{{ ImageId }}' --required, 
+@region='{{ region }}' --required, 
 @DryRun={{ DryRun }}
 ;
 ```
@@ -1040,6 +1273,18 @@ EXEC aws.ec2.images.enable_fast_launch
 ;
 ```
 </TabItem>
+<TabItem value="enable_image">
+
+Re-enables a disabled AMI. The re-enabled AMI is marked as available and can be used for instance launches, appears in describe operations, and can be shared. Amazon Web Services accounts, organizations, and Organizational Units that lost access to the AMI when it was disabled do not regain access automatically. Once the AMI is available, it can be shared with them again. Only the AMI owner can re-enable a disabled AMI. For more information, see Disable an Amazon EC2 AMI in the Amazon EC2 User Guide.
+
+```sql
+EXEC aws.ec2.images.enable_image 
+@ImageId='{{ ImageId }}' --required, 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
 <TabItem value="enable_image_block_public_access">
 
 Enables block public access for AMIs at the account level in the specified Amazon Web Services Region. This prevents the public sharing of your AMIs. However, if you already have public AMIs, they will remain publicly available. The API can take up to 10 minutes to configure this setting. During this time, if you run GetImageBlockPublicAccessState, the response will be unblocked. When the API has completed the configuration, the response will be block-new-sharing. For more information, see Block public access to your AMIs in the Amazon EC2 User Guide.
@@ -1075,6 +1320,50 @@ EXEC aws.ec2.images.enable_image_deregistration_protection
 @region='{{ region }}' --required, 
 @WithCooldown={{ WithCooldown }}, 
 @DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="export_image">
+
+Exports an Amazon Machine Image (AMI) to a VM file. For more information, see Exporting a VM directly from an Amazon Machine Image (AMI) in the VM Import/Export User Guide.
+
+```sql
+EXEC aws.ec2.images.export_image 
+@DiskImageFormat='{{ DiskImageFormat }}' --required, 
+@ImageId='{{ ImageId }}' --required, 
+@S3ExportLocation='{{ S3ExportLocation }}' --required, 
+@region='{{ region }}' --required, 
+@ClientToken='{{ ClientToken }}', 
+@Description='{{ Description }}', 
+@DryRun={{ DryRun }}, 
+@RoleName='{{ RoleName }}', 
+@TagSpecification='{{ TagSpecification }}'
+;
+```
+</TabItem>
+<TabItem value="import_image">
+
+To import your virtual machines (VMs) with a console-based experience, you can use the Import virtual machine images to Amazon Web Services template in the Migration Hub Orchestrator console. For more information, see the Migration Hub Orchestrator User Guide . Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). Amazon Web Services VM Import/Export strongly recommends specifying a value for either the --license-type or --usage-operation parameter when you create a new VM Import task. This ensures your operating system is licensed appropriately and your billing is optimized. For more information, see Importing a VM as an image using VM Import/Export in the VM Import/Export User Guide.
+
+```sql
+EXEC aws.ec2.images.import_image 
+@region='{{ region }}' --required, 
+@Architecture='{{ Architecture }}', 
+@ClientData='{{ ClientData }}', 
+@ClientToken='{{ ClientToken }}', 
+@Description='{{ Description }}', 
+@DiskContainer='{{ DiskContainer }}', 
+@DryRun={{ DryRun }}, 
+@Encrypted={{ Encrypted }}, 
+@Hypervisor='{{ Hypervisor }}', 
+@KmsKeyId='{{ KmsKeyId }}', 
+@LicenseType='{{ LicenseType }}', 
+@Platform='{{ Platform }}', 
+@RoleName='{{ RoleName }}', 
+@LicenseSpecifications='{{ LicenseSpecifications }}', 
+@TagSpecification='{{ TagSpecification }}', 
+@UsageOperation='{{ UsageOperation }}', 
+@BootMode='{{ BootMode }}'
 ;
 ```
 </TabItem>

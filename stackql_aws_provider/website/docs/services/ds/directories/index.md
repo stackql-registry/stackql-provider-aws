@@ -229,18 +229,18 @@ The following methods are available for this resource:
     <td>Creates an Active Directory computer object in the specified directory.</td>
 </tr>
 <tr>
-    <td><a href="#create_alias"><CopyableCode code="create_alias" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DirectoryId"><code>DirectoryId</code></a></td>
-    <td></td>
-    <td>Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as http:​//<code>&lt;alias&gt;</code>.awsapps.com. After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.</td>
-</tr>
-<tr>
     <td><a href="#create_directory"><CopyableCode code="create_directory" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Password"><code>Password</code></a></td>
     <td></td>
     <td>Creates a Simple AD directory. For more information, see Simple Active Directory in the Directory Service Admin Guide. Before you call CreateDirectory, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the CreateDirectory operation, see Directory Service API Permissions: Actions, Resources, and Conditions Reference.</td>
+</tr>
+<tr>
+    <td><a href="#create_alias"><CopyableCode code="create_alias" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DirectoryId"><code>DirectoryId</code></a></td>
+    <td></td>
+    <td>Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as http:​//<code>&lt;alias&gt;</code>.awsapps.com. After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.</td>
 </tr>
 <tr>
     <td><a href="#update_directory_setup"><CopyableCode code="update_directory_setup" /></a></td>
@@ -269,6 +269,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DirectoryId"><code>DirectoryId</code></a>, <a href="#parameter-SchemaExtensionId"><code>SchemaExtensionId</code></a></td>
     <td></td>
     <td>Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled during any of the following states; Initializing, CreatingSnapshot, and UpdatingSchema.</td>
+</tr>
+<tr>
+    <td><a href="#connect_directory"><CopyableCode code="connect_directory" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Password"><code>Password</code></a>, <a href="#parameter-ConnectSettings"><code>ConnectSettings</code></a></td>
+    <td></td>
+    <td>Creates an AD Connector to connect to a self-managed directory. Before you call ConnectDirectory, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the ConnectDirectory operation, see Directory Service API Permissions: Actions, Resources, and Conditions Reference.</td>
 </tr>
 <tr>
     <td><a href="#disable_ca_enrollment_policy"><CopyableCode code="disable_ca_enrollment_policy" /></a></td>
@@ -449,8 +456,8 @@ WHERE region = '{{ region }}' -- required
     defaultValue="create_computer"
     values={[
         { label: 'create_computer', value: 'create_computer' },
-        { label: 'create_alias', value: 'create_alias' },
         { label: 'create_directory', value: 'create_directory' },
+        { label: 'create_alias', value: 'create_alias' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
@@ -476,26 +483,6 @@ SELECT
 '{{ region }}'
 RETURNING
 computer
-;
-```
-</TabItem>
-<TabItem value="create_alias">
-
-Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as http:​//<code>&lt;alias&gt;</code>.awsapps.com. After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.
-
-```sql
-INSERT INTO aws.ds.directories (
-DirectoryId,
-Alias,
-region
-)
-SELECT 
-'{{ DirectoryId }}' /* required */,
-'{{ Alias }}',
-'{{ region }}'
-RETURNING
-alias,
-directory_id
 ;
 ```
 </TabItem>
@@ -530,6 +517,26 @@ directory_id
 ;
 ```
 </TabItem>
+<TabItem value="create_alias">
+
+Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as http:​//<code>&lt;alias&gt;</code>.awsapps.com. After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.
+
+```sql
+INSERT INTO aws.ds.directories (
+DirectoryId,
+Alias,
+region
+)
+SELECT 
+'{{ DirectoryId }}' /* required */,
+'{{ Alias }}',
+'{{ region }}'
+RETURNING
+alias,
+directory_id
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -560,10 +567,6 @@ directory_id
       value:
         - Name: "{{ Name }}"
           Value: "{{ Value }}"
-    - name: Alias
-      value: "{{ Alias }}"
-      description: |
-        The requested alias. The alias must be unique amongst all aliases in Amazon Web Services. This operation throws an EntityAlreadyExistsException error if the alias already exists.
     - name: Name
       value: "{{ Name }}"
       description: |
@@ -599,6 +602,10 @@ directory_id
       description: |
         The network type for your directory. Simple AD supports IPv4 and Dual-stack only.
       valid_values: ['Dual-stack', 'IPv4', 'IPv6']
+    - name: Alias
+      value: "{{ Alias }}"
+      description: |
+        The requested alias. The alias must be unique amongst all aliases in Amazon Web Services. This operation throws an EntityAlreadyExistsException error if the alias already exists.
 `}</CodeBlock>
 
 </TabItem>
@@ -678,6 +685,7 @@ WHERE region = '{{ region }}' --required
     defaultValue="cancel_schema_extension"
     values={[
         { label: 'cancel_schema_extension', value: 'cancel_schema_extension' },
+        { label: 'connect_directory', value: 'connect_directory' },
         { label: 'disable_ca_enrollment_policy', value: 'disable_ca_enrollment_policy' },
         { label: 'disable_client_authentication', value: 'disable_client_authentication' },
         { label: 'disable_ldaps', value: 'disable_ldaps' },
@@ -705,6 +713,27 @@ EXEC aws.ds.directories.cancel_schema_extension
 '{
 "DirectoryId": "{{ DirectoryId }}", 
 "SchemaExtensionId": "{{ SchemaExtensionId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="connect_directory">
+
+Creates an AD Connector to connect to a self-managed directory. Before you call ConnectDirectory, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the ConnectDirectory operation, see Directory Service API Permissions: Actions, Resources, and Conditions Reference.
+
+```sql
+EXEC aws.ds.directories.connect_directory 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}", 
+"ShortName": "{{ ShortName }}", 
+"Password": "{{ Password }}", 
+"Description": "{{ Description }}", 
+"Size": "{{ Size }}", 
+"ConnectSettings": "{{ ConnectSettings }}", 
+"Tags": "{{ Tags }}", 
+"NetworkType": "{{ NetworkType }}"
 }'
 ;
 ```

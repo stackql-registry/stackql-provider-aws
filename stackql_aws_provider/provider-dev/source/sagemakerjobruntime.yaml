@@ -46,11 +46,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CompleteRolloutResponse'
-      x-stackql-resource: complete_rollout
+      x-stackql-resource: rollouts
       x-stackql-method: complete_rollout
       x-stackql-verb: EXEC
   /sample:
@@ -90,7 +86,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SampleResponse'
-      x-stackql-resource: sample
+      x-stackql-resource: es
       x-stackql-method: sample
       x-stackql-verb: EXEC
   /sample-with-response-stream:
@@ -129,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SampleWithResponseStreamResponse'
-      x-stackql-resource: sample_with_response_stream
+      x-stackql-resource: response_streams
       x-stackql-method: sample_with_response_stream
       x-stackql-verb: EXEC
   /update-reward:
@@ -163,10 +159,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRewardResponse'
       x-stackql-resource: rewards
       x-stackql-method: update_reward
       x-stackql-verb: UPDATE
@@ -232,8 +224,6 @@ components:
       - failed
     String:
       type: string
-    CompleteRolloutResponse:
-      type: object
     InferenceRequestBody:
       description: Sensitive binary payload containing customer inference data.
       type: string
@@ -275,5 +265,3 @@ components:
     Double:
       type: number
       format: double
-    UpdateRewardResponse:
-      type: object

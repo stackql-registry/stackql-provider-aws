@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_function"
     values={[
         { label: 'get_function', value: 'get_function' },
+        { label: 'list_functions_by_code_signing_config', value: 'list_functions_by_code_signing_config' },
         { label: 'list_functions', value: 'list_functions' }
     ]}
 >
@@ -74,6 +75,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags_error" /></td>
     <td><code>object</code></td>
     <td>An object that contains details about an error related to retrieving tags.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_functions_by_code_signing_config">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="function_arn" /></td>
+    <td><code>string</code></td>
+    <td>The function ARNs.</td>
 </tr>
 </tbody>
 </table>
@@ -142,7 +162,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="file_system_configs" /></td>
     <td><code>array</code></td>
-    <td>Connection settings for an Amazon EFS file system or an Amazon S3 Files file system.</td>
+    <td>Connection settings for an Amazon EFS file system or an Amazon S3 file system.</td>
 </tr>
 <tr>
     <td><CopyableCode code="function_arn" /></td>
@@ -152,7 +172,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:(eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:\d&#123;12&#125;:|(((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?))(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
+    <td>The name of the function. (pattern: &lt;code&gt;(arn:(aws&#91;a-zA-Z-&#93;*)?:lambda:)?((eusc-)?&#91;a-z&#93;&#123;2&#125;((-gov)|(-iso(&#91;a-z&#93;?)))?-&#91;a-z&#93;+-\d&#123;1&#125;:)?(\d&#123;12&#125;:)?(function:)?(&#91;a-zA-Z0-9-_\.&#93;+)(:(\$LATEST(\.PUBLISHED)?|&#91;a-zA-Z0-9-_&#93;+))?&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="handler" /></td>
@@ -317,6 +337,13 @@ The following methods are available for this resource:
     <td>Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes. If you specify a function version, only details that are specific to that version are returned.</td>
 </tr>
 <tr>
+    <td><a href="#list_functions_by_code_signing_config"><CopyableCode code="list_functions_by_code_signing_config" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-code_signing_config_arn"><code>code_signing_config_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.</td>
+</tr>
+<tr>
     <td><a href="#list_functions"><CopyableCode code="list_functions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -402,6 +429,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-code_signing_config_arn">
+    <td><CopyableCode code="code_signing_config_arn" /></td>
+    <td><code>string</code></td>
+    <td>The The Amazon Resource Name (ARN) of the code signing configuration.</td>
+</tr>
 <tr id="parameter-function_name">
     <td><CopyableCode code="function_name" /></td>
     <td><code>string</code></td>
@@ -481,6 +513,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_function"
     values={[
         { label: 'get_function', value: 'get_function' },
+        { label: 'list_functions_by_code_signing_config', value: 'list_functions_by_code_signing_config' },
         { label: 'list_functions', value: 'list_functions' }
     ]}
 >
@@ -499,6 +532,21 @@ FROM aws.lambda.functions
 WHERE function_name = '{{ function_name }}' -- required
 AND region = '{{ region }}' -- required
 AND Qualifier = '{{ Qualifier }}'
+;
+```
+</TabItem>
+<TabItem value="list_functions_by_code_signing_config">
+
+List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
+
+```sql
+SELECT
+function_arn
+FROM aws.lambda.functions
+WHERE code_signing_config_arn = '{{ code_signing_config_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
 ;
 ```
 </TabItem>
@@ -756,6 +804,8 @@ vpc_config
       value:
         - Arn: "{{ Arn }}"
           LocalMountPath: "{{ LocalMountPath }}"
+          S3FilesConfig:
+            DirectS3Read: "{{ DirectS3Read }}"
     - name: CodeSigningConfigArn
       value: "{{ CodeSigningConfigArn }}"
     - name: ImageConfig

@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The ARN of the resource. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;/child-event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The ARN of the resource. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;/child-event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="content" /></td>
@@ -68,7 +68,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration associated with the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration associated with the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -87,12 +87,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="aggregate_managed_notification_event_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the ManagedNotificationEvent that is associated with this ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the ManagedNotificationEvent that is associated with this ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the ManagedNotificationChildEvent. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/event/&#91;a-z0-9&#93;&#123;27&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="child_event" /></td>
@@ -107,7 +107,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="managed_notification_configuration_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;-.a-z0-9&#93;&#123;1,63&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the ManagedNotificationConfiguration. (pattern: &lt;code&gt;arn:&#91;a-z-&#93;&#123;3,10&#125;:notifications::&#91;0-9&#93;&#123;12&#125;:managed-notification-configuration/category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;/sub-category/&#91;a-zA-Z0-9\-&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="organizational_unit_id" /></td>

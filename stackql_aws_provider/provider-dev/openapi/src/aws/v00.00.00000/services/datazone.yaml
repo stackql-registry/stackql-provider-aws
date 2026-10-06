@@ -135,10 +135,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddEntityOwnerOutput"
   /v2/domains/{domain_identifier}/policies/managed/{entity_type}/{entity_identifier}/addGrant:
     post:
       operationId: AddPolicyGrant
@@ -214,10 +210,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateEnvironmentRoleOutput"
     delete:
       operationId: DisassociateEnvironmentRole
       description: Disassociates the environment role in Amazon DataZone.
@@ -243,10 +235,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateEnvironmentRoleOutput"
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/associate-governed-terms:
     patch:
       operationId: AssociateGovernedTerms
@@ -284,10 +272,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateGovernedTermsOutput"
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/attributes-metadata:
     get:
       operationId: BatchGetAttributesMetadata
@@ -392,10 +376,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelMetadataGenerationRunOutput"
   /v2/domains/{domain_identifier}/subscriptions/{identifier}/cancel:
     put:
       operationId: CancelSubscription
@@ -2052,10 +2032,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateProjectMembershipOutput"
   /v2/domains/{domain_identifier}/project-profiles:
     post:
       operationId: CreateProjectProfile
@@ -2602,10 +2578,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccountPoolOutput"
     get:
       operationId: GetAccountPool
       description: Gets the details of the account pool.
@@ -2687,10 +2659,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssetOutput"
     get:
       operationId: GetAsset
       description: "Gets an Amazon DataZone asset. An asset is the fundamental building block in Amazon DataZone, representing any data resource that needs to be cataloged and managed. It can take many forms, from Amazon S3 buckets and database tables to dashboards and machine learning models. Each asset contains comprehensive metadata about the resource, including its location, schema, ownership, and lineage information. Assets are essential for organizing and managing data resources across an organization, making them discoverable and usable while maintaining proper governance. Before using the Amazon DataZone GetAsset command, ensure the following prerequisites are met: Domain identifier must exist and be valid Asset identifier must exist User must have the required permissions to perform the action"
@@ -2837,10 +2805,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAssetTypeOutput"
     get:
       operationId: GetAssetType
       description: "Gets an Amazon DataZone asset type. Asset types define the categories and characteristics of different kinds of data assets within Amazon DataZone.. They determine what metadata fields are required, what operations are possible, and how the asset integrates with other Amazon Web Services services. Asset types can range from built-in types like Amazon S3 buckets and Amazon Web Services Glue tables to custom types defined for specific organizational needs. Understanding asset types is crucial for properly organizing and managing different kinds of data resources. Prerequisites: The asset type with identifier must exist in the domain. ResourceNotFoundException. You must have the GetAssetType permission. Ensure the domain-identifier value is correct and accessible."
@@ -2975,10 +2939,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataExportConfigurationOutput"
     get:
       operationId: GetDataExportConfiguration
       description: Gets data export configuration details.
@@ -3024,10 +2984,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutDataExportConfigurationOutput"
   /v2/domains/{domain_identifier}/data-products/{identifier}:
     delete:
       operationId: DeleteDataProduct
@@ -3048,10 +3004,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataProductOutput"
     get:
       operationId: GetDataProduct
       description: "Gets the data product. Prerequisites: The data product ID must exist. The domain must be valid and accessible. User must have read or discovery permissions for the data product."
@@ -3210,7 +3162,13 @@ paths:
           required: false
           schema:
             $ref: "#/components/schemas/Boolean"
-          description: Specifies the optional flag to delete all child entities within the domain.
+          description: Specifies whether to skip the check that prevents deletion of a domain that still contains resources. When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use cascadeDelete instead. You can't use this parameter together with cascadeDelete.
+        - name: cascadeDelete
+          in: query
+          required: false
+          schema:
+            $ref: "#/components/schemas/Boolean"
+          description: Specifies whether to delete the domain along with all of its associated resources. When you use this parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned resources behind. Amazon DataZone reports deletion progress in the deleteProgress field. Amazon DataZone reports any resources that it can't delete in the failureReasons field of the GetDomain response. You can't use this parameter together with skipDeletionCheck. If you don't specify a value, the default is false.
       responses:
         "202":
           description: Success
@@ -3295,10 +3253,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDomainUnitOutput"
     get:
       operationId: GetDomainUnit
       description: Gets the details of the specified domain unit.
@@ -3637,10 +3591,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEnvironmentBlueprintConfigurationOutput"
     get:
       operationId: GetEnvironmentBlueprintConfiguration
       description: Gets the blueprint configuration in Amazon DataZone.
@@ -3817,10 +3767,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFormTypeOutput"
     get:
       operationId: GetFormType
       description: Gets a metadata form type in Amazon DataZone. Form types define the structure and validation rules for collecting metadata about assets in Amazon DataZone. They act as templates that ensure consistent metadata capture across similar types of assets, while allowing for customization to meet specific organizational needs. Form types can include required fields, validation rules, and dependencies, helping maintain high-quality metadata that makes data assets more discoverable and usable. The form type with the specified identifier must exist in the given domain. The domain must be valid and active. User must have permission on the form type. The form type should not be deleted or in an invalid state. One use case for this API is to determine whether a form field is indexed for search. A searchable field will be annotated with @amazon.datazone#searchable. By default, searchable fields are indexed for semantic search, where related query terms will match the attribute value even if they are not stemmed or keyword matches. If a field is indexed technical identifier search, it will be annotated with @amazon.datazone#searchable(modes:["TECHNICAL"]). If a field is indexed for lexical search (supports stemmed and prefix matches but not semantic matches), it will be annotated with @amazon.datazone#searchable(modes:["LEXICAL"]). A field storing glossary term IDs (which is filterable) will be annotated with @amazon.datazone#glossaryterm("${glossaryId}").
@@ -3870,10 +3816,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGlossaryOutput"
     get:
       operationId: GetGlossary
       description: "Gets a business glossary in Amazon DataZone. Prerequisites: The specified glossary ID must exist and be associated with the given domain. The caller must have the datazone:GetGlossary permission on the domain."
@@ -3955,10 +3897,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteGlossaryTermOutput"
     get:
       operationId: GetGlossaryTerm
       description: "Gets a business glossary term in Amazon DataZone. Prerequisites: Glossary term with identifier must exist in the domain. User must have permission on the glossary term. Domain must be accessible and active."
@@ -4091,10 +4029,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteListingOutput"
     get:
       operationId: GetListing
       description: Gets a listing (a record of an asset at a given time). If you specify a listing version, only details that are specific to that version are returned.
@@ -4144,10 +4078,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNotebookOutput"
     get:
       operationId: GetNotebook
       description: Gets the details of a notebook in Amazon SageMaker Unified Studio.
@@ -4243,10 +4173,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectOutput"
     get:
       operationId: GetProject
       description: Gets a project in Amazon DataZone.
@@ -4347,10 +4273,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectMembershipOutput"
   /v2/domains/{domain_identifier}/project-profiles/{identifier}:
     delete:
       operationId: DeleteProjectProfile
@@ -4371,10 +4293,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectProfileOutput"
     get:
       operationId: GetProjectProfile
       description: The details of the project profile.
@@ -4464,10 +4382,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleOutput"
     get:
       operationId: GetRule
       description: Gets the details of a rule in Amazon DataZone. A rule is a formal agreement that enforces specific requirements across user workflows (e.g., publishing assets to the catalog, requesting subscriptions, creating projects) within the Amazon DataZone data portal. These rules help maintain consistency, ensure compliance, and uphold governance standards in data management processes. For instance, a metadata enforcement rule can specify the required information for creating a subscription request or publishing a data asset to the catalog, ensuring alignment with organizational standards.
@@ -4804,10 +4718,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTimeSeriesDataPointsOutput"
     get:
       operationId: ListTimeSeriesDataPoints
       description: Lists time series data points.
@@ -4946,10 +4856,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateGovernedTermsOutput"
   /v2/domains/{domain_identifier}/data-source-runs/{identifier}:
     get:
       operationId: GetDataSourceRun
@@ -6324,10 +6230,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Untags a resource in Amazon DataZone.
@@ -6347,10 +6249,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /v2/domains/{domain_identifier}/graph/query:
     post:
       operationId: QueryGraph
@@ -6509,10 +6407,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveEntityOwnerOutput"
   /v2/domains/{domain_identifier}/policies/managed/{entity_type}/{entity_identifier}/removeGrant:
     post:
       operationId: RemovePolicyGrant
@@ -6557,10 +6451,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemovePolicyGrantOutput"
   /v2/domains/{domain_identifier}/subscriptions/{identifier}/revoke:
     put:
       operationId: RevokeSubscription
@@ -6975,10 +6865,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRootDomainUnitOwnerOutput"
   /v2/domains/{domain_identifier}/subscription-grants/{identifier}/status/{asset_identifier}:
     patch:
       operationId: UpdateSubscriptionGrantStatus
@@ -7662,8 +7548,6 @@ components:
     GroupIdentifier:
       type: string
       pattern: .*(^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$|[\p{L}\p{M}\p{S}\p{N}\p{P}\t\n\r  ]+).*
-    AddEntityOwnerOutput:
-      type: object
     TargetEntityType:
       type: string
       enum:
@@ -7944,8 +7828,6 @@ components:
     EnvironmentId:
       type: string
       pattern: "[a-zA-Z0-9_-]{1,36}"
-    AssociateEnvironmentRoleOutput:
-      type: object
     EntityIdentifier:
       type: string
       pattern: "[a-zA-Z0-9_-]{1,36}"
@@ -7960,8 +7842,6 @@ components:
     GlossaryTermId:
       type: string
       pattern: "[a-zA-Z0-9_-]{1,36}"
-    AssociateGovernedTermsOutput:
-      type: object
     AttributeEntityType:
       type: string
       enum:
@@ -8108,8 +7988,6 @@ components:
     MetadataGenerationRunIdentifier:
       type: string
       pattern: "[a-zA-Z0-9_-]{1,36}"
-    CancelMetadataGenerationRunOutput:
-      type: object
     CancelSubscriptionOutput:
       type: object
       properties:
@@ -12315,8 +12193,6 @@ components:
         - SUCCESSFUL
         - FAILED_VALIDATION
         - FAILED_DEPLOYMENT
-    CreateProjectMembershipOutput:
-      type: object
     ProjectProfileName:
       type: string
       minLength: 1
@@ -13144,22 +13020,12 @@ components:
         - NOT_ASSIGNED
         - ACTIVATED
         - DEACTIVATED
-    DeleteAccountPoolOutput:
-      type: object
-    DeleteAssetOutput:
-      type: object
-    DeleteAssetTypeOutput:
-      type: object
     DeleteConnectionOutput:
       type: object
       properties:
         status:
           $ref: "#/components/schemas/String"
           description: The status of the action.
-    DeleteDataExportConfigurationOutput:
-      type: object
-    DeleteDataProductOutput:
-      type: object
     DeleteDataSourceOutput:
       type: object
       properties:
@@ -13311,16 +13177,6 @@ components:
           description: The status of the domain.
       required:
         - status
-    DeleteDomainUnitOutput:
-      type: object
-    DeleteEnvironmentBlueprintConfigurationOutput:
-      type: object
-    DeleteFormTypeOutput:
-      type: object
-    DeleteGlossaryOutput:
-      type: object
-    DeleteGlossaryTermOutput:
-      type: object
     LineageEventIdentifier:
       type: string
       pattern: "[a-z0-9]{14}"
@@ -13343,18 +13199,6 @@ components:
         - PROCESSING
         - SUCCESS
         - FAILED
-    DeleteListingOutput:
-      type: object
-    DeleteNotebookOutput:
-      type: object
-    DeleteProjectOutput:
-      type: object
-    DeleteProjectMembershipOutput:
-      type: object
-    DeleteProjectProfileOutput:
-      type: object
-    DeleteRuleOutput:
-      type: object
     DeleteSubscriptionGrantOutput:
       type: object
       properties:
@@ -13408,16 +13252,10 @@ components:
       enum:
         - ASSET
         - LISTING
-    DeleteTimeSeriesDataPointsOutput:
-      type: object
-    DisassociateEnvironmentRoleOutput:
-      type: object
     DisassociateGovernedTermsInputGovernedGlossaryTermsList:
       type: array
       items:
         $ref: "#/components/schemas/GlossaryTermId"
-    DisassociateGovernedTermsOutput:
-      type: object
     GetAccountPoolOutput:
       type: object
       properties:
@@ -13995,10 +13833,38 @@ components:
         serviceRole:
           $ref: "#/components/schemas/RoleArn"
           description: The service role of the domain.
+        failureReasons:
+          $ref: "#/components/schemas/FailureReasonsList"
+          description: The list of failure reasons for resources that Amazon DataZone could not delete during a cascade deletion of the domain.
+        deleteProgress:
+          $ref: "#/components/schemas/DeleteProgress"
+          description: The progress of the current domain deletion, including the number of projects that Amazon DataZone successfully deleted.
       required:
         - id
         - domainExecutionRole
         - status
+    FailureReasonsList:
+      description: A list of FailureReason objects that describe the resources that Amazon DataZone could not delete during a cascade deletion. Amazon DataZone returns this list in the failureReasons field of the GetDomain response.
+      type: array
+      items:
+        $ref: "#/components/schemas/FailureReason"
+    FailureReason:
+      description: The details of a resource deletion failure during a cascade deletion of the domain.
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/String"
+          description: The identifier of the resource that failed to delete.
+        message:
+          $ref: "#/components/schemas/String"
+          description: The error message associated with the resource that failed to delete.
+    DeleteProgress:
+      description: The progress of a domain deletion, including the number of projects that Amazon DataZone successfully deleted. Amazon DataZone returns this structure in the response to a GetDomain request while a cascade deletion is in progress.
+      type: object
+      properties:
+        successfullyDeletedProjectCount:
+          $ref: "#/components/schemas/Integer"
+          description: The number of projects that Amazon DataZone successfully deleted during the domain deletion.
     GetDomainUnitOutput:
       type: object
       properties:
@@ -17786,8 +17652,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TimeSeriesDataPointFormOutput"
-    PutDataExportConfigurationOutput:
-      type: object
     RegionalParameterMap:
       type: object
       properties: {}
@@ -18189,10 +18053,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/SubscribedListing"
-    RemoveEntityOwnerOutput:
-      type: object
-    RemovePolicyGrantOutput:
-      type: object
     RevokeSubscriptionOutput:
       type: object
       properties:
@@ -19356,14 +19216,10 @@ components:
         - domainId
         - owningProjectId
         - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateAccountPoolOutput:
       type: object
       properties:
@@ -20391,8 +20247,6 @@ components:
         - id
         - name
         - createdBy
-    UpdateRootDomainUnitOwnerOutput:
-      type: object
     UpdateRuleOutput:
       type: object
       properties:
@@ -20667,7 +20521,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1associate-governed-terms/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20689,7 +20542,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1metadata-generation-runs~1{identifier}~1cancel/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         cancel_subscription:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}~1cancel/put"
@@ -20754,7 +20606,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1disassociate-governed-terms/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20834,7 +20685,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1root-domain-unit-owner/patch"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20842,15 +20692,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/search"
           - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/search"
           - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
         insert:
           - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
         update:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain"
           - $ref: "#/components/x-stackQL-resources/domains/methods/associate_governed_terms"
           - $ref: "#/components/x-stackQL-resources/domains/methods/update_root_domain_unit_owner"
-          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain"
         delete:
           - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     subscriptions:
@@ -20932,7 +20782,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1addOwner/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -20960,7 +20809,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1removeOwner/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -21011,7 +20859,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1policies~1managed~1{entity_type}~1{entity_identifier}~1removeGrant/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -21035,13 +20882,11 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{environment_identifier}~1roles~1{environment_role_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         disassociate_environment_role:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{environment_identifier}~1roles~1{environment_role_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_environment:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments/post"
@@ -21099,14 +20944,14 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
         update:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/associate_environment_role"
           - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/associate_environment_role"
         delete:
           - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
-    attributes_metadatas:
-      id: aws.datazone.attributes_metadatas
-      name: attributes_metadatas
-      title: attributes_metadatas
+    attributes_metadata:
+      id: aws.datazone.attributes_metadata
+      name: attributes_metadata
+      title: attributes_metadata
       methods:
         batch_get_attributes_metadata:
           operation:
@@ -21118,7 +20963,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/attributes_metadatas/methods/batch_get_attributes_metadata"
+          - $ref: "#/components/x-stackQL-resources/attributes_metadata/methods/batch_get_attributes_metadata"
         insert: []
         update: []
         delete: []
@@ -21160,7 +21005,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1account-pools~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_account_pool:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1account-pools~1{identifier}/get"
@@ -21209,7 +21053,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1assets~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_asset:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1assets~1{identifier}/get"
@@ -21352,7 +21195,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1asset-types~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_asset_type:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1asset-types~1{identifier}/get"
@@ -21458,7 +21300,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-products~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_data_product:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-products~1{identifier}/get"
@@ -21610,12 +21451,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_domain_units_for_parent:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1domain-units/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_domain_unit:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1domain-units~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_domain_unit:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1domain-units~1{identifier}/get"
@@ -21636,40 +21493,13 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_units/methods/get_domain_unit"
+          - $ref: "#/components/x-stackQL-resources/domain_units/methods/list_domain_units_for_parent"
         insert:
           - $ref: "#/components/x-stackQL-resources/domain_units/methods/create_domain_unit"
         update:
           - $ref: "#/components/x-stackQL-resources/domain_units/methods/update_domain_unit"
         delete:
           - $ref: "#/components/x-stackQL-resources/domain_units/methods/delete_domain_unit"
-    domain_units_for_parents:
-      id: aws.datazone.domain_units_for_parents
-      name: domain_units_for_parents
-      title: domain_units_for_parents
-      methods:
-        list_domain_units_for_parent:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1domain-units/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domain_units_for_parents/methods/list_domain_units_for_parent"
-        insert: []
-        update: []
-        delete: []
     environment_actions:
       id: aws.datazone.environment_actions
       name: environment_actions
@@ -21886,7 +21716,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1form-types~1{form_type_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_form_type:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1form-types~1{form_type_identifier}/get"
@@ -21924,7 +21753,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1glossaries~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_glossary:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1glossaries~1{identifier}/get"
@@ -21972,7 +21800,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1glossary-terms~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_glossary_term:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1glossary-terms~1{identifier}/get"
@@ -22081,7 +21908,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_listing:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/get"
@@ -22156,7 +21982,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebooks~1{identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_notebook:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebooks~1{identifier}/get"
@@ -22277,7 +22102,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1projects~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_project:
@@ -22317,7 +22141,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1projects~1{project_identifier}~1createMembership/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -22328,7 +22151,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1projects~1{project_identifier}~1deleteMembership/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -22397,7 +22219,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1project-profiles~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_project_profile:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1project-profiles~1{identifier}/get"
@@ -22446,7 +22267,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1rules~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_rule:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1rules~1{identifier}/get"
@@ -22755,7 +22575,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-export-configuration/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_data_export_configuration:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-export-configuration/get"
@@ -22767,7 +22586,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-export-configuration/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -22792,7 +22610,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environment-blueprint-configurations~1{environment_blueprint_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_environment_blueprint_configuration:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environment-blueprint-configurations~1{environment_blueprint_identifier}/get"
@@ -22906,7 +22723,6 @@ components:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1time-series-data-points/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_time_series_data_points:
@@ -23293,7 +23109,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -23304,7 +23119,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

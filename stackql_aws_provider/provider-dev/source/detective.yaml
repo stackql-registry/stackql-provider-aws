@@ -38,7 +38,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: graphs
+      x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
   /graph/datasources/get:
@@ -271,7 +271,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: disable_organization_admin_account
       x-stackql-verb: EXEC
   /membership/removal:
@@ -325,7 +325,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: organization_admin_account
+      x-stackql-resource: organization_admin_accounts
       x-stackql-method: enable_organization_admin_account
       x-stackql-verb: EXEC
   /investigations/getInvestigation:
@@ -653,10 +653,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -679,10 +675,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -707,7 +699,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: graphs
+      x-stackql-resource: invitations
       x-stackql-method: reject_invitation
       x-stackql-verb: EXEC
   /investigations/startInvestigation:
@@ -745,7 +737,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInvestigationResponse'
-      x-stackql-resource: graphs
+      x-stackql-resource: investigations
       x-stackql-method: start_investigation
       x-stackql-verb: EXEC
   /graph/member/monitoringstate:
@@ -772,7 +764,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: graphs
+      x-stackql-resource: members
       x-stackql-method: start_monitoring_member
       x-stackql-verb: EXEC
   /graph/datasources/update:
@@ -1696,8 +1688,6 @@ components:
         InvestigationId:
           $ref: '#/components/schemas/InvestigationId'
           description: The investigation ID of the investigation report.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1707,8 +1697,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     DatasourcePackageList:
       type: array
       items:

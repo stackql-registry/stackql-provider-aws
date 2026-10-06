@@ -62,7 +62,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="auth_type" /></td>
     <td><code>string</code></td>
-    <td>The authorization type that users use to access the SageMaker Partner AI App. (IAM)</td>
+    <td>The authorization type that users use to access the SageMaker Partner AI App. Valid values: IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. (IAM, IDC)</td>
 </tr>
 <tr>
     <td><CopyableCode code="available_upgrade" /></td>
@@ -103,6 +103,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="execution_role_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the IAM role associated with the SageMaker Partner AI App. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::\d&#123;12&#125;:role/?&#91;a-zA-Z_0-9+=,.@\-_/&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="idc_config" /></td>
+    <td><code>object</code></td>
+    <td>Contains the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App, including the Identity Center instance and the Identity Center application that SageMaker creates for the app. The service returns this field for apps that use IDC authorization.</td>
 </tr>
 <tr>
     <td><CopyableCode code="kms_key_id" /></td>
@@ -255,6 +260,7 @@ enable_auto_minor_version_upgrade,
 enable_iam_session_based_identity,
 error,
 execution_role_arn,
+idc_config,
 kms_key_id,
 last_modified_time,
 maintenance_config,
@@ -294,6 +300,7 @@ KmsKeyId,
 MaintenanceConfig,
 Tier,
 ApplicationConfig,
+IdcConfig,
 AuthType,
 EnableIamSessionBasedIdentity,
 EnableAutoMinorVersionUpgrade,
@@ -309,6 +316,7 @@ SELECT
 '{{ MaintenanceConfig }}',
 '{{ Tier }}',
 '{{ ApplicationConfig }}',
+'{{ IdcConfig }}',
 '{{ AuthType }}' /* required */,
 {{ EnableIamSessionBasedIdentity }},
 {{ EnableAutoMinorVersionUpgrade }},
@@ -387,11 +395,16 @@ url
         RoleGroupAssignments:
           - RoleName: "{{ RoleName }}"
             GroupPatterns: "{{ GroupPatterns }}"
+    - name: IdcConfig
+      description: |
+        Specifies the Amazon Web Services IAM Identity Center configuration for the SageMaker Partner AI App. Specify this parameter when AuthType is IDC. Apps that use IAM authorization don't use this parameter.
+      value:
+        InstanceArn: "{{ InstanceArn }}"
     - name: AuthType
       value: "{{ AuthType }}"
       description: |
-        The authorization type that users use to access the SageMaker Partner AI App.
-      valid_values: ['IAM']
+        The authorization type that users use to access the SageMaker Partner AI App. Valid values: IAM: Users access the SageMaker Partner AI App with their Amazon Web Services IAM identity. IDC: Users access the SageMaker Partner AI App with their Amazon Web Services IAM Identity Center identity. Specify the Identity Center instance to use in IdcConfig.
+      valid_values: ['IAM', 'IDC']
     - name: EnableIamSessionBasedIdentity
       value: {{ EnableIamSessionBasedIdentity }}
       description: |
@@ -447,6 +460,8 @@ Arn = '{{ Arn }}',
 MaintenanceConfig = '{{ MaintenanceConfig }}',
 Tier = '{{ Tier }}',
 ApplicationConfig = '{{ ApplicationConfig }}',
+IdcConfig = '{{ IdcConfig }}',
+AuthType = '{{ AuthType }}',
 EnableIamSessionBasedIdentity = {{ EnableIamSessionBasedIdentity }},
 EnableAutoMinorVersionUpgrade = {{ EnableAutoMinorVersionUpgrade }},
 AppVersion = '{{ AppVersion }}',

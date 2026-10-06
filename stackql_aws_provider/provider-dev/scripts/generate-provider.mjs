@@ -20,6 +20,8 @@ const args = parseArgs({
     version: { type: 'string', default: 'v00.00.00000' },
     overwrite: { type: 'boolean', default: false },
     'update-benchmarks': { type: 'boolean', default: false },
+    strict: { type: 'boolean', default: false },
+    'botocore-dir': { type: 'string' },
   },
 }).values;
 
@@ -140,18 +142,28 @@ function bindableBodyContentKey(op, requestBlock) {
  * SHOW METHODS / SHOW EXTENDED METHODS. The signature has to match what
  * the user sees so the dedupe pass collides the right ops.
  */
+// Names are compared the way the RUNTIME renders them: under
+// snake_case_aliases SHOW METHODS reports RequiredParams in snake form, so
+// a required body field `branchName` and a path param `branch_name` are the
+// SAME parameter to the router (amplify create_branch vs create_deployment
+// passed a wire-name comparison and collided at runtime - 29 such cases).
+// The router's view of a parameter name: snake alias with hyphens folded
+// (`package-group` and `packageGroup` are both `package_group` at runtime -
+// codeartifact update_package_group vs update_package_group_origin_configuration).
+const runtimeParamName = (name) => toSnakeAlias(String(name)).replace(/-/g, '_');
+
 function requiredParamsOf(op, spec, requestBlock) {
   const names = new Set();
   for (const p of op.parameters || []) {
     if (p && p.required && !SIGNATURE_IGNORE.has(p.name)) {
-      names.add(p.name);
+      names.add(runtimeParamName(p.name));
     }
   }
   const boundKey = bindableBodyContentKey(op, requestBlock);
   if (boundKey) {
     const schema = derefSchema(spec, op.requestBody.content[boundKey].schema || {});
     if (schema && Array.isArray(schema.required)) {
-      for (const r of schema.required) names.add(r);
+      for (const r of schema.required) names.add(runtimeParamName(r));
     }
   }
   return [...names].sort();
@@ -161,13 +173,24 @@ function requiredParamsOf(op, spec, requestBlock) {
 // method (create_vpc on `vpcs`) so signature-clash dedupe never lets a
 // merged-in variant (create_default_vpc) steal its sqlVerbs slot on
 // lexical accident.
+const UNCOUNTABLE_RE = /(data|metadata|information|info|feedback|storage|traffic|software|equipment|analytics|content|guidance|inventory)$/;
+const ES_WORDS = new Set(['status', 'bus', 'campus', 'virus', 'bonus', 'radius', 'focus', 'corpus', 'census', 'nexus', 'alias', 'canvas', 'atlas', 'bias', 'gas', 'lens']);
+const IS_WORDS = new Set(['analysis', 'axis', 'basis', 'diagnosis', 'hypothesis', 'synopsis', 'thesis', 'crisis']);
+function pluraliseWord(w) {
+  if (!w || UNCOUNTABLE_RE.test(w)) return w;
+  if (ES_WORDS.has(w) || w.endsWith('ss')) return w + 'es';
+  if (IS_WORDS.has(w)) return w.slice(0, -2) + 'es';
+  if (w.endsWith('s')) return w;
+  if (w.endsWith('y') && w.length > 1 && !'aeiou'.includes(w[w.length - 2])) return w.slice(0, -1) + 'ies';
+  if (/(ch|sh|x|z)$/.test(w)) return w + 'es';
+  return w + 's';
+}
 function pluralise(noun) {
-  if (noun.endsWith('s')) return noun;
-  if (noun.endsWith('y') && noun.length > 1 && !'aeiou'.includes(noun[noun.length - 2])) {
-    return noun.slice(0, -1) + 'ies';
-  }
-  if (/(ch|sh|x|z)$/.test(noun)) return noun + 'es';
-  return noun + 's';
+  const m = noun.match(/^(.*?)(_v\d+)$/);
+  const head = m ? m[1] : noun;
+  const toks = head.split('_');
+  toks[toks.length - 1] = pluraliseWord(toks[toks.length - 1]);
+  return toks.join('_') + (m ? m[2] : '');
 }
 
 function isPrimaryMethod(method, resource) {
@@ -585,17 +608,76 @@ function parseCsv(text) {
     .map((r) => Object.fromEntries(header.map((h, idx) => [h, r[idx] ?? ''])));
 }
 
+const CSV_VERBS = new Set(['select', 'insert', 'update', 'replace', 'delete', 'exec', 'skip']);
+const TWIN_PREFIX_RE = /^(GET|POST|PUT|PATCH|DELETE|HEAD)_/;
+
+// Load + lint. The CSV is the routing source of truth, so it must be
+// internally consistent before anything is built:
+//   - one row per `filename::operationId` (a duplicate would let "last
+//     wins" silently decide routing),
+//   - every row either fully populated (resource + method + verb) or
+//     `skip` (op catalogued but deliberately not routed),
+//   - verbs from the known set,
+//   - query/ec2 GET_/POST_ twins agree (they register ONE method),
+//   - no two distinct ops claim the same (resource, method) in a file
+//     (the second would silently overwrite the first's methods entry).
+// Any violation fails the build listing every offending row.
 function loadMappingsCsv(csvPath) {
   const mappings = new Map();
   if (!fs.existsSync(csvPath)) return mappings;
+  const problems = [];
+  const byBase = new Map();
+  const byMethod = new Map();
   for (const row of parseCsv(fs.readFileSync(csvPath, 'utf8'))) {
     if (!row.operationId) continue;
-    mappings.set(`${row.filename}::${row.operationId}`, {
+    const key = `${row.filename}::${row.operationId}`;
+    if (mappings.has(key)) {
+      problems.push(`duplicate row for ${key}`);
+      continue;
+    }
+    const sqlVerb = (row.stackql_verb || '').toLowerCase();
+    const pin = {
       resourceName: row.stackql_resource_name || '',
       methodName: row.stackql_method_name || '',
-      sqlVerb: row.stackql_verb || '',
+      sqlVerb,
       objectKey: row.stackql_object_key || '',
-    });
+      skip: sqlVerb === 'skip',
+    };
+    if (!CSV_VERBS.has(sqlVerb)) {
+      problems.push(`${key}: unknown stackql_verb '${row.stackql_verb}'`);
+    } else if (!pin.skip && !(pin.resourceName && pin.methodName)) {
+      problems.push(`${key}: resource/method empty - populate the row or set stackql_verb=skip`);
+    }
+    mappings.set(key, pin);
+    const baseKey = `${row.filename}::${row.operationId.replace(TWIN_PREFIX_RE, '')}`;
+    const prior = byBase.get(baseKey);
+    if (prior) {
+      if (
+        prior.resourceName !== pin.resourceName || prior.methodName !== pin.methodName ||
+        prior.sqlVerb !== pin.sqlVerb || prior.objectKey !== pin.objectKey
+      ) {
+        problems.push(
+          `${key}: GET_/POST_ twins disagree (${prior.resourceName}.${prior.methodName}/${prior.sqlVerb} ` +
+          `vs ${pin.resourceName}.${pin.methodName}/${pin.sqlVerb})`,
+        );
+      }
+    } else {
+      byBase.set(baseKey, pin);
+      if (!pin.skip) {
+        const mKey = `${row.filename}::${pin.resourceName}::${pin.methodName}`;
+        if (byMethod.has(mKey)) {
+          problems.push(`${key}: method ${pin.resourceName}.${pin.methodName} already claimed by ${byMethod.get(mKey)}`);
+        } else {
+          byMethod.set(mKey, baseKey);
+        }
+      }
+    }
+  }
+  if (problems.length) {
+    console.error(`\n  FAIL  mappings CSV lint (${problems.length} problems) in ${csvPath}:`);
+    for (const p of problems.slice(0, 100)) console.error(`        ${p}`);
+    if (problems.length > 100) console.error(`        ... and ${problems.length - 100} more`);
+    process.exit(1);
   }
   return mappings;
 }
@@ -656,6 +738,93 @@ function applyParamPromotions(spec, fileName, paramPromotions) {
 }
 
 /**
+ * Resolve the durable-mappings CSV onto the breadcrumbs, in place, BEFORE
+ * any resource-scoped pass runs (NOCASE demotion, identifier promotion,
+ * signature dedupe all group by x-stackql-resource - they must see the
+ * pinned grouping, not the derived one, or an op the CSV moved elsewhere
+ * still feeds its response columns / required params into the derived
+ * resource's collision sets: glue RunStatement's `Id` column vs
+ * GetStatement's required `Id`).
+ *   - pinned op: resource/method/verb/objectKey := CSV values (divergence
+ *     from the derived values logged as `pin` lines),
+ *   - skipped op (stackql_verb=skip): routing breadcrumbs removed, so the
+ *     op is catalogued but emits no method,
+ *   - unpinned op: pin inheritance - if every pinned op in this file that
+ *     derived to the same breadcrumb resource was pinned to ONE CSV
+ *     resource, the new op follows it (a conscious rename/collapse in the
+ *     CSV propagates to later botocore additions).
+ */
+function applyPinsToBreadcrumbs(spec, fileName, mappings) {
+  const skippedOps = [];
+  const inherited = [];
+  const pinDivergences = [];
+  const ops = [];
+  for (const pathItem of Object.values(spec.paths || {})) {
+    if (!pathItem || typeof pathItem !== 'object') continue;
+    for (const [hm, op] of Object.entries(pathItem)) {
+      if (!HTTP_METHODS.has(hm) || !op || typeof op !== 'object' || !op.operationId) continue;
+      ops.push(op);
+    }
+  }
+  // Only non-EXEC pinned siblings anchor inheritance: EXEC ops are the ones
+  // most often placed by stage 1's co-location heuristics rather than by
+  // entity identity (invoicing Send/VerifyProcurementPortalValidation sat in
+  // procurement_portal_preferences; a new ListProcurementPortals must not
+  // follow them and lose its SELECT slot to the preferences lister).
+  const derivedToPinned = new Map();
+  for (const op of ops) {
+    const p = mappings.get(`${fileName}::${op.operationId}`);
+    const d = op['x-stackql-resource'];
+    if (!p || p.skip || !p.resourceName || !d || p.sqlVerb === 'exec') continue;
+    if (!derivedToPinned.has(d)) derivedToPinned.set(d, new Set());
+    derivedToPinned.get(d).add(p.resourceName);
+  }
+  for (const op of ops) {
+    const key = `${fileName}::${op.operationId}`;
+    const pin = mappings.get(key);
+    const resource = op['x-stackql-resource'];
+    if (!resource) continue;
+    if (pin && pin.skip) {
+      skippedOps.push(key);
+      delete op['x-stackql-resource'];
+      delete op['x-stackql-method'];
+      delete op['x-stackql-verb'];
+      delete op['x-stackql-objectKey'];
+      continue;
+    }
+    if (pin && pin.resourceName && pin.methodName && pin.sqlVerb) {
+      const verb = pin.sqlVerb.toUpperCase();
+      if (
+        pin.resourceName !== resource ||
+        pin.methodName !== op['x-stackql-method'] ||
+        verb !== op['x-stackql-verb'] ||
+        (pin.objectKey || '') !== (op['x-stackql-objectKey'] || '')
+      ) {
+        pinDivergences.push(
+          `${key}: csv ${pin.resourceName}.${pin.methodName}/${pin.sqlVerb} ` +
+          `overrides derived ${resource}.${op['x-stackql-method']}/${String(op['x-stackql-verb'] || '').toLowerCase()}`,
+        );
+      }
+      op['x-stackql-resource'] = pin.resourceName;
+      op['x-stackql-method'] = pin.methodName;
+      op['x-stackql-verb'] = verb;
+      if (pin.objectKey) op['x-stackql-objectKey'] = pin.objectKey;
+      else delete op['x-stackql-objectKey'];
+      continue;
+    }
+    const targets = derivedToPinned.get(resource);
+    if (targets && targets.size === 1) {
+      const target = [...targets][0];
+      if (target !== resource) {
+        inherited.push(`${key}: derived ${resource} -> ${target} (pinned siblings)`);
+        op['x-stackql-resource'] = target;
+      }
+    }
+  }
+  return { skippedOps, inherited, pinDivergences };
+}
+
+/**
  * Build x-stackQL-resources for a single service spec, in place.
  * `fileName` + `mappings` implement the durable-mappings contract: an op
  * whose `filename::operationId` key exists in the CSV takes its
@@ -671,7 +840,9 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
   // One CSV row per operationId (query/ec2 register GET+POST for the same
   // op - first wins). Also track pin-vs-derived divergences for the log.
   const rowsByKey = new Map();
-  const pinDivergences = [];
+  // The CSV is resolved onto the breadcrumbs FIRST so every resource-scoped
+  // pass below sees the pinned grouping (see applyPinsToBreadcrumbs).
+  const { skippedOps, inherited, pinDivergences } = applyPinsToBreadcrumbs(spec, fileName, mappings);
 
   const forcedPromotions = applyParamPromotions(spec, fileName, paramPromotions);
 
@@ -730,19 +901,10 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
       const operationId = op.operationId || '';
       const mappingKey = `${fileName}::${operationId}`;
       const pin = operationId ? mappings.get(mappingKey) : undefined;
-      const pinned = !!(pin && pin.resourceName && pin.methodName && pin.sqlVerb);
+      // Skipped ops lost their breadcrumbs in applyPinsToBreadcrumbs and
+      // never reach this point; pinned ops already carry the CSV values.
+      const pinned = !!(pin && !pin.skip && pin.resourceName && pin.methodName && pin.sqlVerb);
       if (pinned) {
-        if (
-          pin.resourceName !== resource ||
-          pin.methodName !== method ||
-          pin.sqlVerb.toUpperCase() !== verb ||
-          (pin.objectKey || '') !== (objectKey || '')
-        ) {
-          pinDivergences.push(
-            `${mappingKey}: csv ${pin.resourceName}.${pin.methodName}/${pin.sqlVerb} ` +
-            `overrides derived ${resource}.${method}/${verb.toLowerCase()}`,
-          );
-        }
         resource = pin.resourceName;
         method = pin.methodName;
         verb = pin.sqlVerb.toUpperCase();
@@ -1111,7 +1273,8 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
         // create_default_vpc purely because it sorts earlier.
         const winner = verbKey === 'select'
           ? pickSelectAnchor(group)
-          : group.find((c) => c.pinned) ||
+          : group.find((c) => c.pinned && isPrimaryMethod(c.method, resource)) ||
+            group.find((c) => c.pinned) ||
             group.find((c) => isPrimaryMethod(c.method, resource)) ||
             group[0];
         winners.add(winner);
@@ -1124,7 +1287,7 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
             // winner enters sqlVerbs).
             console.warn(
               `  WARN  [${serviceAlias}] csv-pinned method ${resource}.${cand.method} ` +
-              `(${verbKey}) demoted to EXEC: signature clash with ${winner.method}`,
+              `(${verbKey}) clashes with ${winner.method} - the CSV -> output check will fail this build`,
             );
           }
           demotions.push({
@@ -1137,7 +1300,37 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
         }
       }
       const survivors = list.filter((c) => winners.has(c));
-      survivors.sort((a, b) => b.requiredParams.length - a.requiredParams.length);
+      // Router order. The router takes the FIRST method whose required
+      // params are satisfiable, so a method must precede every method whose
+      // signature is a STRICT SUBSET of its own (get [id] before list []).
+      // Unrelated signatures are free to order - and DESCRIBE resolves a
+      // resource's columns from the first select method, so among the free
+      // choices the resource's PRIMARY methods go first: a folded-in
+      // qualifier lister (route53 list_hosted_zones_by_vpc [vpc_id,
+      // vpc_region]) must not displace get_hosted_zone as the describe
+      // anchor just because it has more required params.
+      {
+        const sets = survivors.map((c) => new Set(c.requiredParams));
+        const supersetOf = (i, j) =>
+          sets[i].size > sets[j].size && [...sets[j]].every((x) => sets[i].has(x));
+        const remaining = new Set(survivors.map((_, i) => i));
+        const ordered = [];
+        while (remaining.size) {
+          const ready = [...remaining].filter(
+            (j) => ![...remaining].some((i) => i !== j && supersetOf(i, j)),
+          );
+          ready.sort(
+            (a, b) =>
+              (isPrimaryMethod(survivors[b].method, resource) ? 1 : 0) -
+                (isPrimaryMethod(survivors[a].method, resource) ? 1 : 0) ||
+              sets[b].size - sets[a].size ||
+              a - b,
+          );
+          ordered.push(survivors[ready[0]]);
+          remaining.delete(ready[0]);
+        }
+        survivors.splice(0, survivors.length, ...ordered);
+      }
       bucket.sqlVerbs[verbKey] = survivors.map((c) => ({
         $ref: `#/components/x-stackQL-resources/${resource}/methods/${c.method}`,
       }));
@@ -1181,28 +1374,48 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
     }
   }
 
-  // Drop resources whose every sqlVerb array is empty. A resource with no
-  // SELECT/INSERT/UPDATE/REPLACE/DELETE entries has no SQL surface - stackql
-  // can't address it via any SQL verb, and `SHOW EXTENDED METHODS` returns
-  // empty, which fails test-meta-routes' "every resource has methods"
-  // invariant. Such resources arise when a verb-prefix lands only on EXEC
-  // ops (e.g. ivs.StopStream maps to the `stream` resource but Stop is
-  // EXEC, leaving the resource with one method and zero CRUD verbs).
-  // Their methods are still callable from other resources if reachable,
-  // or could be re-mapped later by adjusting the verb-prefix table.
-  const prunedEmpty = [];
+  // Exec-only resources (every sqlVerb array empty) are KEPT. Verified on
+  // stackql v0.11.669: SHOW RESOURCES lists them, SHOW EXTENDED METHODS
+  // lists their methods with SQLVerb EXEC, DESCRIBE answers "SELECT not
+  // supported for this resource", and EXEC routes. Pruning them silently
+  // dropped ~1000 CSV-catalogued operations and broke the CSV -> output
+  // guarantee. Counted for the build summary / benchmarks only.
+  const execOnly = [];
   for (const [rName, bucket] of Object.entries(stackqlResources)) {
     const hasAnyVerb = Object.values(bucket.sqlVerbs || {}).some(
       (arr) => Array.isArray(arr) && arr.length > 0,
     );
-    if (!hasAnyVerb) {
-      prunedEmpty.push(rName);
-      delete stackqlResources[rName];
-    }
+    if (!hasAnyVerb) execOnly.push(rName);
   }
 
   spec.components = spec.components || {};
   spec.components['x-stackQL-resources'] = stackqlResources;
+
+  // CSV -> output equivalence: the durable-mappings guarantee. Every
+  // pinned row must come out as exactly that resource.method with that
+  // effective verb (a method absent from every sqlVerbs array is EXEC).
+  // A pinned method demoted by the signature dedupe or the zero-column
+  // pass lands here as a hard failure - the CSV (or
+  // param_promotions.json) is where the clash gets resolved.
+  const equivalenceErrors = [];
+  for (const [key, row] of rowsByKey.entries()) {
+    if (!row.pinned) continue;
+    const bucket = stackqlResources[row.resourceName];
+    const mEntry = bucket && bucket.methods[row.methodName];
+    if (!mEntry) {
+      equivalenceErrors.push(`${key}: csv ${row.resourceName}.${row.methodName}/${row.sqlVerb} missing from output`);
+      continue;
+    }
+    const routed = Object.entries(bucket.sqlVerbs)
+      .filter(([, arr]) => (arr || []).some((r) => r.$ref.split('/').pop() === row.methodName))
+      .map(([vk]) => vk);
+    const ok = routed.length ? routed.includes(row.sqlVerb) : row.sqlVerb === 'exec';
+    if (!ok) {
+      equivalenceErrors.push(
+        `${key}: csv verb ${row.sqlVerb} but output routes ${row.resourceName}.${row.methodName} as ${routed.join('+') || 'exec'}`,
+      );
+    }
+  }
 
   // New CSV rows: ops the mapping table has never seen. Record the
   // EFFECTIVE verb - a method demoted by the signature dedupe or the
@@ -1226,7 +1439,10 @@ function rewriteService(spec, serviceAlias, fileName, mappings, paramPromotions)
     promotions,
     forcedPromotions,
     zeroColumnDemotions,
-    prunedEmpty,
+    execOnly,
+    skippedOps,
+    inherited,
+    equivalenceErrors,
     nocaseCols,
     csvNewRows,
     pinDivergences,
@@ -1365,9 +1581,14 @@ const providerServices = {};
 const skippedServices = [];
 const allNewRows = [];
 const allPinDivergences = [];
+const allInherited = [];
+const allEquivalenceErrors = [];
 // Per-run record of every promotion/demotion, written next to the CSV -
 // drives CSV verb reconciliation after intentional remapping passes.
-const buildReport = { promotions: [], forcedPromotions: [], demotions: [], zeroColumnDemotions: [] };
+const buildReport = {
+  promotions: [], forcedPromotions: [], demotions: [], zeroColumnDemotions: [],
+  execOnlyResources: [], inherited: [], catalogSkips: [], staleRows: [],
+};
 // Regression-guard counters (compared against the committed benchmarks).
 const stats = {
   services: 0,
@@ -1375,6 +1596,8 @@ const stats = {
   methods: 0,
   selectableResources: 0,
   nonSelectableResources: 0,
+  execOnlyResources: 0,
+  skippedOps: 0,
 };
 
 for (const file of sourceFiles) {
@@ -1391,10 +1614,18 @@ for (const file of sourceFiles) {
   const title = (spec.info && spec.info.title) || alias;
   const description = (spec.info && spec.info.description) || `${alias} API`;
 
-  const { demotions, promotions, forcedPromotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
-    rewriteService(spec, alias, file, mappings, paramPromotions);
+  const {
+    demotions, promotions, forcedPromotions, zeroColumnDemotions, execOnly, skippedOps,
+    inherited, equivalenceErrors, nocaseCols, csvNewRows, pinDivergences,
+  } = rewriteService(spec, alias, file, mappings, paramPromotions);
+  // Collected across ALL services so one run reports every mismatch.
+  for (const e of equivalenceErrors) allEquivalenceErrors.push(`[${alias}] ${e}`);
   allNewRows.push(...csvNewRows);
   allPinDivergences.push(...pinDivergences);
+  allInherited.push(...inherited);
+  stats.skippedOps += skippedOps.length;
+  stats.execOnlyResources += execOnly.length;
+  for (const r of execOnly) buildReport.execOnlyResources.push(`${alias}.${r}`);
   for (const p of promotions) buildReport.promotions.push({ service: alias, file, ...p });
   for (const p of forcedPromotions) buildReport.forcedPromotions.push({ service: alias, file, ...p });
   for (const d of demotions) buildReport.demotions.push({ service: alias, file, ...d });
@@ -1422,15 +1653,13 @@ for (const file of sourceFiles) {
     (spec.components && spec.components['x-stackQL-resources']) || {}
   ).length;
 
-  // A service with zero surviving resources contributes nothing to the
-  // SQL surface. Skip writing the service yaml AND don't register it in
-  // `providerServices` - otherwise `SHOW RESOURCES IN aws.<svc>` returns
-  // empty and test-meta-routes fails on the "service has resources" check.
-  // Typically happens for ops-only services (cloudsearchdomain has just
-  // Search/Suggest/UploadDocuments which all map to EXEC -> empty sqlVerbs
-  // -> all resources pruned by the empty-sqlVerbs rule above).
+  // A service with no resources at all (every op skipped in the CSV, or
+  // an empty spec) contributes nothing to the SQL surface. Skip writing
+  // the service yaml AND don't register it in `providerServices` -
+  // otherwise `SHOW RESOURCES IN aws.<svc>` returns empty and
+  // test-meta-routes fails on the "service has resources" check.
   if (resourceCount === 0) {
-    console.log(`  skip  ${alias}  (no resources after pruning)`);
+    console.log(`  skip  ${alias}  (no resources)`);
     skippedServices.push(alias);
     continue;
   }
@@ -1457,7 +1686,9 @@ for (const file of sourceFiles) {
   if (zeroColumnDemotions.length) {
     notes.push(`${zeroColumnDemotions.length} zero-column selects -> EXEC`);
   }
-  if (prunedEmpty.length) notes.push(`${prunedEmpty.length} pruned (no SQL verbs)`);
+  if (execOnly.length) notes.push(`${execOnly.length} exec-only`);
+  if (skippedOps.length) notes.push(`${skippedOps.length} ops skipped (csv)`);
+  if (inherited.length) notes.push(`${inherited.length} new ops inherited pinned resources`);
   const tail = notes.length ? ` [${notes.join(', ')}]` : '';
   console.log(`  ok    ${alias}  (${resourceCount} resources)${tail}`);
 
@@ -1470,6 +1701,14 @@ for (const file of sourceFiles) {
     version,
     description,
   };
+}
+
+if (allEquivalenceErrors.length) {
+  console.error(`\n  FAIL  CSV -> output mismatch (${allEquivalenceErrors.length}):`);
+  for (const e of allEquivalenceErrors.slice(0, 200)) console.error(`        ${e}`);
+  if (allEquivalenceErrors.length > 200) console.error(`        ... and ${allEquivalenceErrors.length - 200} more`);
+  console.error('        Resolve in provider-dev/config/all_services.csv (or param_promotions.json).');
+  process.exit(1);
 }
 
 const providerYaml = {
@@ -1492,8 +1731,100 @@ const providerYaml = {
 
 dumpYaml(path.join(providerRoot, 'provider.yaml'), providerYaml);
 
+// ----- catalog pass: every botocore operation gets a row -----------------
+// The CSV is the complete operation catalog for the provider, not just the
+// ops stage 1 happened to emit. Anything botocore declares that has no row
+// (a cbor-only service, an op stage 1 cannot marshal) is appended as
+// `stackql_verb=skip` with the reason in op_description, so the skip is a
+// visible, editable fact rather than an absence. Rows whose op botocore no
+// longer declares are reported as stale (kept - append-only).
+const botocoreDir = args['botocore-dir']
+  ? path.resolve(args['botocore-dir'])
+  : path.resolve(sourceDir, '..', '..', '..', 'botocore', 'data');
+const catalogRows = [];
+const staleRows = [];
+if (fs.existsSync(botocoreDir)) {
+  const baseOf = (key) => key.replace(/::(GET|POST|PUT|PATCH|DELETE|HEAD)_/, '::');
+  const seenBase = new Set();
+  for (const key of mappings.keys()) seenBase.add(baseOf(key));
+  for (const r of allNewRows) seenBase.add(baseOf(`${r.filename}::${r.operationId}`));
+  const declared = new Set();
+  const knownFiles = new Set();
+  for (const dir of fs.readdirSync(botocoreDir).sort()) {
+    const svcDir = path.join(botocoreDir, dir);
+    if (!fs.statSync(svcDir).isDirectory()) continue;
+    const versions = fs
+      .readdirSync(svcDir)
+      .filter((v) => fs.existsSync(path.join(svcDir, v, 'service-2.json')))
+      .sort();
+    if (!versions.length) continue;
+    const model = JSON.parse(
+      fs.readFileSync(path.join(svcDir, versions[versions.length - 1], 'service-2.json'), 'utf8'),
+    );
+    const fname = `${dir.replace(/-/g, '_')}.yaml`;
+    knownFiles.add(fname);
+    const hasSource = fs.existsSync(path.join(sourceDir, fname));
+    const md = model.metadata || {};
+    const protocols = md.protocols || (md.protocol ? [md.protocol] : []);
+    for (const [opName, op] of Object.entries(model.operations || {})) {
+      declared.add(`${fname}::${opName}`);
+      if (seenBase.has(`${fname}::${opName}`)) continue;
+      const reason = hasSource
+        ? 'operation not emitted by stage 1'
+        : `service not emitted by stage 1 (protocols: ${protocols.join('/') || 'unknown'})`;
+      catalogRows.push({
+        filename: fname,
+        path: (op.http && op.http.requestUri) || '',
+        operationId: opName,
+        formattedOpId: toSnakeAlias(opName),
+        verb: ((op.http && op.http.method) || '').toLowerCase(),
+        responseObject: '',
+        tags: '',
+        formattedTags: '',
+        resourceName: '',
+        methodName: toSnakeAlias(opName),
+        sqlVerb: 'skip',
+        objectKey: '',
+        opDescription: `skip: ${reason}`,
+      });
+    }
+  }
+  for (const key of mappings.keys()) {
+    const base = baseOf(key);
+    if (!knownFiles.has(base.split('::')[0]) || !declared.has(base)) staleRows.push(key);
+  }
+  if (catalogRows.length) {
+    console.log(`Catalog: ${catalogRows.length} botocore operations without a row -> appended as skip`);
+  }
+  if (staleRows.length) {
+    console.log(`Catalog: ${staleRows.length} rows reference operations botocore no longer declares (kept, stale):`);
+    for (const k of staleRows.slice(0, 10)) console.log(`  stale ${k}`);
+    if (staleRows.length > 10) console.log(`  ... and ${staleRows.length - 10} more`);
+  }
+} else {
+  console.log(`Catalog: botocore dir ${botocoreDir} not found - skipping catalog pass`);
+}
+buildReport.catalogSkips = catalogRows.map((r) => `${r.filename}::${r.operationId}`);
+buildReport.staleRows = staleRows;
+buildReport.inherited = allInherited;
+if (allInherited.length) {
+  console.log(`\n${allInherited.length} new ops inherited a pinned resource:`);
+  for (const d of allInherited.slice(0, 20)) console.log(`  inherit ${d}`);
+  if (allInherited.length > 20) console.log(`  ... and ${allInherited.length - 20} more`);
+}
+
+// --strict (CI): the committed CSV must already catalogue every operation.
+if (args.strict && (allNewRows.length || catalogRows.length)) {
+  console.error(
+    `\n  FAIL  --strict: ${allNewRows.length + catalogRows.length} operations have no CSV row ` +
+    `(${allNewRows.length} derived, ${catalogRows.length} catalog skips). ` +
+    `Run without --strict to append them, review the diff, commit.`,
+  );
+  process.exit(1);
+}
+
 // Persist durable mappings: append-only, existing rows never rewritten.
-appendMappingsCsv(mappingsCsvPath, allNewRows);
+appendMappingsCsv(mappingsCsvPath, [...allNewRows, ...catalogRows]);
 
 const buildReportPath = path.join(path.dirname(mappingsCsvPath), 'build-report.json');
 fs.writeFileSync(buildReportPath, JSON.stringify(buildReport, null, 2) + '\n');
@@ -1502,9 +1833,10 @@ console.log(
   `${buildReport.demotions.length} demotions, ` +
   `${buildReport.zeroColumnDemotions.length} zero-column demotions -> ${buildReportPath}`,
 );
-if (allNewRows.length) {
+if (allNewRows.length || catalogRows.length) {
   console.log(
-    `${mappings.size ? 'Appended' : 'Bootstrapped'} ${allNewRows.length} mapping rows in ${mappingsCsvPath}`,
+    `${mappings.size ? 'Appended' : 'Bootstrapped'} ${allNewRows.length + catalogRows.length} mapping rows ` +
+    `(${allNewRows.length} derived, ${catalogRows.length} catalog skips) in ${mappingsCsvPath}`,
   );
 }
 if (allPinDivergences.length) {
@@ -1530,12 +1862,14 @@ const current = {
   selectableResources: stats.selectableResources,
   nonSelectableResources: stats.nonSelectableResources,
   nonSelectableRatioPct: Math.round(ratioPct * 100) / 100,
+  execOnlyResources: stats.execOnlyResources,
 };
 
 console.log(
   `\nSurface: ${current.services} services, ${current.resources} resources, ` +
   `${current.methods} methods, ${current.nonSelectableResources} non-selectable ` +
-  `(${current.nonSelectableRatioPct}%)`,
+  `(${current.nonSelectableRatioPct}%), ${current.execOnlyResources} exec-only, ` +
+  `${stats.skippedOps} ops skipped by csv`,
 );
 
 if (fs.existsSync(benchmarksPath) && !args['update-benchmarks']) {

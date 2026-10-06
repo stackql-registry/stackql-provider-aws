@@ -898,7 +898,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeCreateAccountStatusResponse'
-      x-stackql-resource: create_account_status
+      x-stackql-resource: create_account_statuses
       x-stackql-method: describe_create_account_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CreateAccountStatus
@@ -1270,7 +1270,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: aws_service_access
+      x-stackql-resource: aws_service_accesses
       x-stackql-method: disable_aws_service_access
       x-stackql-verb: EXEC
   /DisablePolicyType:
@@ -1365,7 +1365,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: aws_service_access
+      x-stackql-resource: aws_service_accesses
       x-stackql-method: enable_aws_service_access
       x-stackql-verb: EXEC
   /EnableAllFeatures:
@@ -1522,7 +1522,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteAccountToOrganizationResponse'
-      x-stackql-resource: invite_account_to_organization
+      x-stackql-resource: organizations
       x-stackql-method: invite_account_to_organization
       x-stackql-verb: EXEC
   /InviteOrganizationToTransferResponsibility:
@@ -1589,7 +1589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteOrganizationToTransferResponsibilityResponse'
-      x-stackql-resource: invite_organization_to_transfer_responsibility
+      x-stackql-resource: transfer_responsibilities
       x-stackql-method: invite_organization_to_transfer_responsibility
       x-stackql-verb: EXEC
   /LeaveOrganization:
@@ -1631,7 +1631,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: leave_organization
+      x-stackql-resource: organizations
       x-stackql-method: leave_organization
       x-stackql-verb: EXEC
   /ListAWSServiceAccessForOrganization:
@@ -1676,7 +1676,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAWSServiceAccessForOrganizationResponse'
-      x-stackql-resource: aws_service_access_for_organizations
+      x-stackql-resource: aws_service_accesses
       x-stackql-method: list_aws_service_access_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EnabledServicePrincipals
@@ -1782,7 +1782,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccountsForParentResponse'
-      x-stackql-resource: accounts_for_parents
+      x-stackql-resource: accounts
       x-stackql-method: list_accounts_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accounts
@@ -1951,7 +1951,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCreateAccountStatusResponse'
-      x-stackql-resource: create_account_status
+      x-stackql-resource: create_account_statuses
       x-stackql-method: list_create_account_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CreateAccountStatuses
@@ -2051,7 +2051,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDelegatedServicesForAccountResponse'
-      x-stackql-resource: delegated_services_for_accounts
+      x-stackql-resource: delegated_services
       x-stackql-method: list_delegated_services_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DelegatedServices
@@ -2160,7 +2160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListHandshakesForAccountResponse'
-      x-stackql-resource: handshakes_for_accounts
+      x-stackql-resource: handshakes
       x-stackql-method: list_handshakes_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Handshakes
@@ -2212,7 +2212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListHandshakesForOrganizationResponse'
-      x-stackql-resource: handshakes_for_organizations
+      x-stackql-resource: handshakes
       x-stackql-method: list_handshakes_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Handshakes
@@ -2321,7 +2321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOrganizationalUnitsForParentResponse'
-      x-stackql-resource: organizational_units_for_parents
+      x-stackql-resource: organizational_units
       x-stackql-method: list_organizational_units_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationalUnits
@@ -2551,7 +2551,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPoliciesForTargetResponse'
-      x-stackql-resource: policies_for_targets
+      x-stackql-resource: policies
       x-stackql-method: list_policies_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Policies
@@ -2708,7 +2708,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTargetsForPolicyResponse'
-      x-stackql-resource: targets_for_policies
+      x-stackql-resource: targets
       x-stackql-method: list_targets_for_policy
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets

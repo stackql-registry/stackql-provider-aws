@@ -786,7 +786,10 @@ channel
                 StyleControl: "{{ StyleControl }}"
                 DefaultFontSize: {{ DefaultFontSize }}
                 DefaultLineHeight: {{ DefaultLineHeight }}
-              EmbeddedDestinationSettings: "{{ EmbeddedDestinationSettings }}"
+              EmbeddedDestinationSettings:
+                Position:
+                  YPositionLine: {{ YPositionLine }}
+                StyleControl: "{{ StyleControl }}"
               EmbeddedPlusScte20DestinationSettings: "{{ EmbeddedPlusScte20DestinationSettings }}"
               RtmpCaptionInfoDestinationSettings: "{{ RtmpCaptionInfoDestinationSettings }}"
               Scte20PlusEmbeddedDestinationSettings: "{{ Scte20PlusEmbeddedDestinationSettings }}"
@@ -795,8 +798,12 @@ channel
               TeletextDestinationSettings: "{{ TeletextDestinationSettings }}"
               TtmlDestinationSettings:
                 StyleControl: "{{ StyleControl }}"
+                Position:
+                  YPositionPercentage: {{ YPositionPercentage }}
               WebvttDestinationSettings:
                 StyleControl: "{{ StyleControl }}"
+                Position:
+                  YPositionPercentage: {{ YPositionPercentage }}
             LanguageCode: "{{ LanguageCode }}"
             LanguageDescription: "{{ LanguageDescription }}"
             Name: "{{ Name }}"
@@ -920,6 +927,7 @@ channel
                   TimedMetadataId3Period: {{ TimedMetadataId3Period }}
                   TimedMetadataPassthrough: "{{ TimedMetadataPassthrough }}"
                   AdditionalDestinations: "{{ AdditionalDestinations }}"
+                  WatermarkingSettings: "{{ WatermarkingSettings }}"
               MsSmoothGroupSettings:
                 AcquisitionPointId: "{{ AcquisitionPointId }}"
                 AudioOnlyTimecodeControl: "{{ AudioOnlyTimecodeControl }}"
@@ -979,6 +987,8 @@ channel
                 AdditionalDestinations:
                   - Destination:
                       DestinationRefId: "{{ DestinationRefId }}"
+                WatermarkingSettings:
+                  CmafIngestAbWatermarkerIrdetoSettings: "{{ CmafIngestAbWatermarkerIrdetoSettings }}"
               SrtGroupSettings:
                 InputLossAction: "{{ InputLossAction }}"
               MediaConnectRouterGroupSettings:
@@ -1175,6 +1185,7 @@ channel
               Width: {{ Width }}
               X: {{ X }}
               Y: {{ Y }}
+            Border: {{ Border }}
         ThumbnailConfiguration:
           State: "{{ State }}"
         ColorCorrectionSettings:
@@ -1360,6 +1371,8 @@ channel
         AudioFeedInputs:
           - AudioSelectorName: "{{ AudioSelectorName }}"
             FeedInput: "{{ FeedInput }}"
+        EnrichmentMethods:
+          - "{{ EnrichmentMethods }}"
 `}</CodeBlock>
 
 </TabItem>

@@ -1511,6 +1511,27 @@ components:
         - dismissed
         - resolved
   x-stackQL-resources:
+    recommendation_resource_exclusions:
+      id: aws.trustedadvisor.recommendation_resource_exclusions
+      name: recommendation_resource_exclusions
+      title: recommendation_resource_exclusions
+      methods:
+        batch_update_recommendation_resource_exclusion:
+          operation:
+            $ref: "#/paths/~1v1~1batch-update-recommendation-resource-exclusion/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     organization_recommendations:
       id: aws.trustedadvisor.organization_recommendations
       name: organization_recommendations
@@ -1589,6 +1610,23 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        list_recommendations_for_resource:
+          operation:
+            $ref: "#/paths/~1v1~1recommendations-for-resource~1{aws_resource_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.recommendationForResourceSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_recommendation_lifecycle:
           operation:
             $ref: "#/paths/~1v1~1recommendations~1{recommendation_identifier}~1lifecycle/put"
@@ -1602,6 +1640,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
+          - $ref: "#/components/x-stackQL-resources/recommendations/methods/list_recommendations_for_resource"
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/list_recommendations"
         insert: []
         update:
@@ -1716,34 +1755,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendation_resources/methods/list_recommendation_resources"
-        insert: []
-        update: []
-        delete: []
-    recommendations_for_resources:
-      id: aws.trustedadvisor.recommendations_for_resources
-      name: recommendations_for_resources
-      title: recommendations_for_resources
-      methods:
-        list_recommendations_for_resource:
-          operation:
-            $ref: "#/paths/~1v1~1recommendations-for-resource~1{aws_resource_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.recommendationForResourceSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/recommendations_for_resources/methods/list_recommendations_for_resource"
         insert: []
         update: []
         delete: []

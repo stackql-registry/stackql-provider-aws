@@ -522,10 +522,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDevicePoolResult'
       x-stackql-resource: device_pools
       x-stackql-method: delete_device_pool
       x-stackql-verb: DELETE
@@ -558,10 +554,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInstanceProfileResult'
       x-stackql-resource: instance_profiles
       x-stackql-method: delete_instance_profile
       x-stackql-verb: DELETE
@@ -594,10 +586,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNetworkProfileResult'
       x-stackql-resource: network_profiles
       x-stackql-method: delete_network_profile
       x-stackql-verb: DELETE
@@ -631,10 +619,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectResult'
       x-stackql-resource: projects
       x-stackql-method: delete_project
       x-stackql-verb: DELETE
@@ -668,10 +652,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRemoteAccessSessionResult'
       x-stackql-resource: remote_access_sessions
       x-stackql-method: delete_remote_access_session
       x-stackql-verb: DELETE
@@ -705,10 +685,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRunResult'
       x-stackql-resource: runs
       x-stackql-method: delete_run
       x-stackql-verb: DELETE
@@ -742,10 +718,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTestGridProjectResult'
       x-stackql-resource: test_grid_projects
       x-stackql-method: delete_test_grid_project
       x-stackql-verb: DELETE
@@ -778,10 +750,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUploadResult'
       x-stackql-resource: uploads
       x-stackql-method: delete_upload
       x-stackql-verb: DELETE
@@ -814,10 +782,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVPCEConfigurationResult'
       x-stackql-resource: vpce_configurations
       x-stackql-method: delete_vpce_configuration
       x-stackql-verb: DELETE
@@ -1163,7 +1127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOfferingStatusResult'
-      x-stackql-resource: offering_status
+      x-stackql-resource: offering_statuses
       x-stackql-method: get_offering_status
       x-stackql-verb: SELECT
       x-stackql-pagination-request-token-key: nextToken
@@ -1395,9 +1359,8 @@ paths:
   /GetTestGridSession:
     post:
       operationId: GetTestGridSession
-      description: 'A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult$url.
-        You can use the following to look up sessions: The session ARN (GetTestGridSessionRequest$sessionArn). The project
-        ARN and a session ID (GetTestGridSessionRequest$projectArn and GetTestGridSessionRequest$sessionId).'
+      description: 'A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult.
+        You can use the following to look up sessions: The session ARN. The project ARN and a session ID.'
       parameters:
       - name: X-Amz-Target
         in: header
@@ -2144,7 +2107,8 @@ paths:
   /ListSamples:
     post:
       operationId: ListSamples
-      description: Gets information about samples, given an AWS Device Farm job ARN.
+      description: Gets information about samples, given an AWS Device Farm job ARN. Device Farm does not support performance
+        data samples during test executions.
       parameters:
       - name: X-Amz-Target
         in: header
@@ -2778,7 +2742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleRunResult'
-      x-stackql-resource: projects
+      x-stackql-resource: runs
       x-stackql-method: schedule_run
       x-stackql-verb: EXEC
   /StopJob:
@@ -2817,7 +2781,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopJobResult'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: stop_job
       x-stackql-verb: EXEC
   /StopRemoteAccessSession:
@@ -2853,7 +2817,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRemoteAccessSessionResult'
-      x-stackql-resource: remote_access_session
+      x-stackql-resource: remote_access_sessions
       x-stackql-method: stop_remote_access_session
       x-stackql-verb: EXEC
   /StopRun:
@@ -2892,7 +2856,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRunResult'
-      x-stackql-resource: run
+      x-stackql-resource: runs
       x-stackql-method: stop_run
       x-stackql-verb: EXEC
   /TagResource:
@@ -2933,10 +2897,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2975,10 +2935,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3785,6 +3741,12 @@ components:
         deviceProxy:
           $ref: '#/components/schemas/DeviceProxy'
           description: The device proxy to be configured on the device for the remote access session.
+        parameters:
+          type: object
+          properties: {}
+          description: 'The name-value string pairs that specify additional settings for the remote access session. appium:version:
+            The major version of the Appium server to use for the session (for example, 2 or 3). The service may reject the
+            selected version if it is not available for the selected device.'
     AuxiliaryAppArnList:
       type: array
       items:
@@ -4185,10 +4147,10 @@ components:
       properties:
         url:
           $ref: '#/components/schemas/SensitiveString'
-          description: A signed URL, expiring in CreateTestGridUrlRequest$expiresInSeconds seconds, to be passed to a RemoteWebDriver.
+          description: A signed URL, expiring in the time specified by the CreateTestGridUrlRequest, to be passed to a RemoteWebDriver.
         expires:
           $ref: '#/components/schemas/DateTime'
-          description: The number of seconds the URL from CreateTestGridUrlResult$url stays active.
+          description: The number of seconds the URL stays active from creation.
     SensitiveString:
       type: string
     UploadType:
@@ -4336,29 +4298,6 @@ components:
         vpceConfigurationDescription:
           $ref: '#/components/schemas/VPCEConfigurationDescription'
           description: An optional description that provides details about your VPC endpoint configuration.
-    DeleteDevicePoolResult:
-      description: Represents the result of a delete device pool request.
-      type: object
-    DeleteInstanceProfileResult:
-      type: object
-    DeleteNetworkProfileResult:
-      type: object
-    DeleteProjectResult:
-      description: Represents the result of a delete project request.
-      type: object
-    DeleteRemoteAccessSessionResult:
-      description: The response from the server when a request is made to delete the remote access session.
-      type: object
-    DeleteRunResult:
-      description: Represents the result of a delete run request.
-      type: object
-    DeleteTestGridProjectResult:
-      type: object
-    DeleteUploadResult:
-      description: Represents the result of a delete upload request.
-      type: object
-    DeleteVPCEConfigurationResult:
-      type: object
     GetAccountSettingsResult:
       description: Represents the account settings return values from the GetAccountSettings request.
       type: object
@@ -4475,19 +4414,14 @@ components:
           type: object
           properties: {}
           description: 'The test''s parameters, such as test framework parameters and fixture settings. Parameters are represented
-            by name-value pairs of strings. For all tests: app_performance_monitoring: Performance monitoring is enabled by
-            default. Set this parameter to false to disable it. For Appium tests (all types): appium_version: The Appium version.
-            Currently supported values are 1.6.5 (and later), latest, and default. latest runs the latest Appium version supported
-            by Device Farm (1.9.1). For default, Device Farm selects a compatible version of Appium for the device. The current
-            behavior is to run 1.7.2 on Android devices and iOS 9 and earlier and 1.7.2 for iOS 10 and later. This behavior
-            is subject to change. For fuzz tests (Android only): event_count: The number of events, between 1 and 10000, that
-            the UI fuzz test should perform. throttle: The time, in ms, between 0 and 1000, that the UI fuzz test should wait
-            between events. seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between tests
-            ensures identical event sequences. For Instrumentation: filter: A test filter string. Examples: Running a single
-            test case: com.android.abc.Test1 Running a single test: com.android.abc.Test1#smoke Running multiple tests: com.android.abc.Test1,com.android.abc.Test2
-            For XCTest and XCTestUI: filter: A test filter string. Examples: Running a single test class: LoginTests Running
-            a multiple test classes: LoginTests,SmokeTests Running a single test: LoginTests/testValid Running multiple tests:
-            LoginTests/testValid,LoginTests/testInvalid'
+            by name-value pairs of strings. For fuzz tests (Android only): event_count: The number of events, between 1 and
+            10000, that the UI fuzz test should perform. throttle: The time, in ms, between 0 and 1000, that the UI fuzz test
+            should wait between events. seed: A seed to use for randomizing the UI fuzz test. Using the same seed value between
+            tests ensures identical event sequences. For Instrumentation: filter: A test filter string. Examples: Running
+            a single test case: com.android.abc.Test1 Running a single test: com.android.abc.Test1#smoke Running multiple
+            tests: com.android.abc.Test1,com.android.abc.Test2 For XCTest and XCTestUI: filter: A test filter string. Examples:
+            Running a single test class: LoginTests Running a multiple test classes: LoginTests,SmokeTests Running a single
+            test: LoginTests/testValid Running multiple tests: LoginTests/testValid,LoginTests/testInvalid'
       required:
       - type_
     Filter:
@@ -5678,7 +5612,8 @@ components:
       items:
         $ref: '#/components/schemas/Sample'
     Sample:
-      description: Represents a sample of performance data.
+      description: Represents a sample of performance data. Device Farm does not support performance data samples during test
+        executions.
       type: object
       properties:
         arn:
@@ -6024,14 +5959,10 @@ components:
         run:
           $ref: '#/components/schemas/Run'
           description: The run that was stopped.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDeviceInstanceResult:
       type: object
       properties:

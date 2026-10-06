@@ -45,10 +45,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CompleteRolloutResponse"
   /sample:
     post:
       operationId: Sample
@@ -145,10 +141,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRewardResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -211,8 +203,6 @@ components:
         - failed
     String:
       type: string
-    CompleteRolloutResponse:
-      type: object
     InferenceRequestBody:
       description: Sensitive binary payload containing customer inference data.
       type: string
@@ -254,9 +244,69 @@ components:
     Double:
       type: number
       format: double
-    UpdateRewardResponse:
-      type: object
   x-stackQL-resources:
+    rollouts:
+      id: aws.sagemakerjobruntime.rollouts
+      name: rollouts
+      title: rollouts
+      methods:
+        complete_rollout:
+          operation:
+            $ref: "#/paths/~1complete-rollout/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    samples:
+      id: aws.sagemakerjobruntime.samples
+      name: samples
+      title: samples
+      methods:
+        sample:
+          operation:
+            $ref: "#/paths/~1sample/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    response_streams:
+      id: aws.sagemakerjobruntime.response_streams
+      name: response_streams
+      title: response_streams
+      methods:
+        sample_with_response_stream:
+          operation:
+            $ref: "#/paths/~1sample-with-response-stream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     rewards:
       id: aws.sagemakerjobruntime.rewards
       name: rewards
@@ -267,7 +317,6 @@ components:
             $ref: "#/paths/~1update-reward/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

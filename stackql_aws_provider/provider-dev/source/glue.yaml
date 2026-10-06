@@ -113,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreatePartitionResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: partitions
       x-stackql-method: batch_create_partition
       x-stackql-verb: EXEC
   /BatchDeleteConnection:
@@ -153,7 +153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteConnectionResponse'
-      x-stackql-resource: batch_delete_connection
+      x-stackql-resource: connections
       x-stackql-method: batch_delete_connection
       x-stackql-verb: EXEC
   /BatchDeletePartition:
@@ -201,7 +201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeletePartitionResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: partitions
       x-stackql-method: batch_delete_partition
       x-stackql-verb: EXEC
   /BatchDeleteTable:
@@ -253,7 +253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTableResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: tables
       x-stackql-method: batch_delete_table
       x-stackql-verb: EXEC
   /BatchDeleteTableVersion:
@@ -303,7 +303,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTableVersionResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: table_versions
       x-stackql-method: batch_delete_table_version
       x-stackql-verb: EXEC
   /BatchGetBlueprints:
@@ -822,7 +822,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutDataQualityStatisticAnnotationResponse'
-      x-stackql-resource: batch_put_data_quality_statistic_annotation
+      x-stackql-resource: data_quality_statistic_annotations
       x-stackql-method: batch_put_data_quality_statistic_annotation
       x-stackql-verb: EXEC
   /BatchStopJobRun:
@@ -910,7 +910,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdatePartitionResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: partitions
       x-stackql-method: batch_update_partition
       x-stackql-verb: EXEC
   /CancelDataQualityRuleRecommendationRun:
@@ -942,11 +942,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelDataQualityRuleRecommendationRunResponse'
-      x-stackql-resource: data_quality_rule_recommendation_run
+      x-stackql-resource: data_quality_rule_recommendation_runs
       x-stackql-method: cancel_data_quality_rule_recommendation_run
       x-stackql-verb: EXEC
   /CancelDataQualityRulesetEvaluationRun:
@@ -978,11 +974,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelDataQualityRulesetEvaluationRunResponse'
-      x-stackql-resource: data_quality_rulesets
+      x-stackql-resource: data_quality_ruleset_evaluation_runs
       x-stackql-method: cancel_data_quality_ruleset_evaluation_run
       x-stackql-verb: EXEC
   /CancelMLTaskRun:
@@ -1024,7 +1016,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMLTaskRunResponse'
-      x-stackql-resource: ml_task_run
+      x-stackql-resource: ml_task_runs
       x-stackql-method: cancel_ml_task_run
       x-stackql-verb: EXEC
   /CancelStatement:
@@ -1063,11 +1055,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelStatementResponse'
-      x-stackql-resource: sessions
+      x-stackql-resource: statements
       x-stackql-method: cancel_statement
       x-stackql-verb: EXEC
   /CheckSchemaVersionValidity:
@@ -1108,7 +1096,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckSchemaVersionValidityResponse'
-      x-stackql-resource: check_schema_version_validity
+      x-stackql-resource: schema_versions
       x-stackql-method: check_schema_version_validity
       x-stackql-verb: EXEC
   /CreateBlueprint:
@@ -1195,10 +1183,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCatalogResponse'
       x-stackql-resource: catalogs
       x-stackql-method: create_catalog
       x-stackql-verb: INSERT
@@ -1239,10 +1223,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateClassifierResponse'
       x-stackql-resource: classifiers
       x-stackql-method: create_classifier
       x-stackql-verb: INSERT
@@ -1301,10 +1281,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateColumnStatisticsTaskSettingsResponse'
       x-stackql-resource: column_statistics_task_settings
       x-stackql-method: create_column_statistics_task_settings
       x-stackql-verb: INSERT
@@ -1433,10 +1409,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCrawlerResponse'
       x-stackql-resource: crawlers
       x-stackql-method: create_crawler
       x-stackql-verb: INSERT
@@ -1585,10 +1557,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateDatabaseResponse'
       x-stackql-resource: databases
       x-stackql-method: create_database
       x-stackql-verb: INSERT
@@ -1991,10 +1959,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateIntegrationTablePropertiesResponse'
       x-stackql-resource: integration_table_properties
       x-stackql-method: create_integration_table_properties
       x-stackql-verb: INSERT
@@ -2331,10 +2295,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePartitionResponse'
       x-stackql-resource: partitions
       x-stackql-method: create_partition
       x-stackql-verb: INSERT
@@ -2378,10 +2338,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePartitionIndexResponse'
       x-stackql-resource: partition_indexes
       x-stackql-method: create_partition_index
       x-stackql-verb: INSERT
@@ -2753,10 +2709,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTableResponse'
       x-stackql-resource: tables
       x-stackql-method: create_table
       x-stackql-verb: INSERT
@@ -2805,10 +2757,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateTableOptimizerResponse'
       x-stackql-resource: table_optimizers
       x-stackql-method: create_table_optimizer
       x-stackql-verb: INSERT
@@ -2968,10 +2916,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateUserDefinedFunctionResponse'
       x-stackql-resource: user_defined_functions
       x-stackql-method: create_user_defined_function
       x-stackql-verb: INSERT
@@ -3057,10 +3001,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssetResponse'
       x-stackql-resource: assets
       x-stackql-method: delete_asset
       x-stackql-verb: DELETE
@@ -3093,10 +3033,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssetTypeResponse'
       x-stackql-resource: asset_types
       x-stackql-method: delete_asset_type
       x-stackql-verb: DELETE
@@ -3218,10 +3154,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCatalogResponse'
       x-stackql-resource: catalogs
       x-stackql-method: delete_catalog
       x-stackql-verb: DELETE
@@ -3254,10 +3186,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteClassifierResponse'
       x-stackql-resource: classifiers
       x-stackql-method: delete_classifier
       x-stackql-verb: DELETE
@@ -3307,11 +3235,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteColumnStatisticsForPartitionResponse'
-      x-stackql-resource: column_statistics_for_partitions
+      x-stackql-resource: column_statistics
       x-stackql-method: delete_column_statistics_for_partition
       x-stackql-verb: DELETE
   /DeleteColumnStatisticsForTable:
@@ -3356,11 +3280,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteColumnStatisticsForTableResponse'
-      x-stackql-resource: column_statistics_for_tables
+      x-stackql-resource: column_statistics
       x-stackql-method: delete_column_statistics_for_table
       x-stackql-verb: DELETE
   /DeleteColumnStatisticsTaskSettings:
@@ -3396,10 +3316,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteColumnStatisticsTaskSettingsResponse'
       x-stackql-resource: column_statistics_task_settings
       x-stackql-method: delete_column_statistics_task_settings
       x-stackql-verb: DELETE
@@ -3436,10 +3352,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectionResponse'
       x-stackql-resource: connections
       x-stackql-method: delete_connection
       x-stackql-verb: DELETE
@@ -3475,10 +3387,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConnectionTypeResponse'
       x-stackql-resource: connection_types
       x-stackql-method: delete_connection_type
       x-stackql-verb: DELETE
@@ -3511,10 +3419,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCrawlerResponse'
       x-stackql-resource: crawlers
       x-stackql-method: delete_crawler
       x-stackql-verb: DELETE
@@ -3583,10 +3487,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataQualityRulesetResponse'
       x-stackql-resource: data_quality_rulesets
       x-stackql-method: delete_data_quality_ruleset
       x-stackql-verb: DELETE
@@ -3628,10 +3528,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDatabaseResponse'
       x-stackql-resource: databases
       x-stackql-method: delete_database
       x-stackql-verb: DELETE
@@ -3664,10 +3560,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDevEndpointResponse'
       x-stackql-resource: dev_endpoints
       x-stackql-method: delete_dev_endpoint
       x-stackql-verb: DELETE
@@ -3701,10 +3593,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFormTypeResponse'
       x-stackql-resource: form_types
       x-stackql-method: delete_form_type
       x-stackql-verb: DELETE
@@ -3738,10 +3626,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGlossaryResponse'
       x-stackql-resource: glossaries
       x-stackql-method: delete_glossary
       x-stackql-verb: DELETE
@@ -3774,10 +3658,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGlossaryTermResponse'
       x-stackql-resource: glossary_terms
       x-stackql-method: delete_glossary_term
       x-stackql-verb: DELETE
@@ -3805,10 +3685,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGlueIdentityCenterConfigurationResponse'
       x-stackql-resource: glue_identity_center_configurations
       x-stackql-method: delete_glue_identity_center_configuration
       x-stackql-verb: DELETE
@@ -3878,10 +3754,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntegrationResourcePropertyResponse'
       x-stackql-resource: integration_resource_properties
       x-stackql-method: delete_integration_resource_property
       x-stackql-verb: DELETE
@@ -3918,10 +3790,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIntegrationTablePropertiesResponse'
       x-stackql-resource: integration_table_properties
       x-stackql-method: delete_integration_table_properties
       x-stackql-verb: DELETE
@@ -4041,10 +3909,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePartitionResponse'
       x-stackql-resource: partitions
       x-stackql-method: delete_partition
       x-stackql-verb: DELETE
@@ -4088,10 +3952,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePartitionIndexResponse'
       x-stackql-resource: partition_indexes
       x-stackql-method: delete_partition_index
       x-stackql-verb: DELETE
@@ -4163,10 +4023,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteResourcePolicyResponse'
       x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy
       x-stackql-verb: DELETE
@@ -4286,10 +4142,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityConfigurationResponse'
       x-stackql-resource: security_configurations
       x-stackql-method: delete_security_configuration
       x-stackql-verb: DELETE
@@ -4377,10 +4229,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTableResponse'
       x-stackql-resource: tables
       x-stackql-method: delete_table
       x-stackql-verb: DELETE
@@ -4426,10 +4274,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTableOptimizerResponse'
       x-stackql-resource: table_optimizers
       x-stackql-method: delete_table_optimizer
       x-stackql-verb: DELETE
@@ -4476,10 +4320,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTableVersionResponse'
       x-stackql-resource: table_versions
       x-stackql-method: delete_table_version
       x-stackql-verb: DELETE
@@ -4548,10 +4388,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUsageProfileResponse'
       x-stackql-resource: usage_profiles
       x-stackql-method: delete_usage_profile
       x-stackql-verb: DELETE
@@ -4592,10 +4428,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserDefinedFunctionResponse'
       x-stackql-resource: user_defined_functions
       x-stackql-method: delete_user_defined_function
       x-stackql-verb: DELETE
@@ -5137,7 +4969,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCatalogImportStatusResponse'
-      x-stackql-resource: catalog_import_status
+      x-stackql-resource: catalog_import_statuses
       x-stackql-method: get_catalog_import_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ImportStatus
@@ -5328,7 +5160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetColumnStatisticsForPartitionResponse'
-      x-stackql-resource: column_statistics_for_partitions
+      x-stackql-resource: column_statistics
       x-stackql-method: get_column_statistics_for_partition
       x-stackql-verb: SELECT
   /GetColumnStatisticsForTable:
@@ -5377,7 +5209,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetColumnStatisticsForTableResponse'
-      x-stackql-resource: column_statistics_for_tables
+      x-stackql-resource: column_statistics
       x-stackql-method: get_column_statistics_for_table
       x-stackql-verb: SELECT
   /GetColumnStatisticsTaskRun:
@@ -7523,7 +7355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetSchemaByDefinitionResponse'
-      x-stackql-resource: schema_by_definitions
+      x-stackql-resource: schemas
       x-stackql-method: get_schema_by_definition
       x-stackql-verb: SELECT
   /GetSchemaVersion:
@@ -8299,7 +8131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUnfilteredPartitionMetadataResponse'
-      x-stackql-resource: unfiltered_partition_metadatas
+      x-stackql-resource: unfiltered_partition_metadata
       x-stackql-method: get_unfiltered_partition_metadata
       x-stackql-verb: SELECT
   /GetUnfilteredPartitionsMetadata:
@@ -8385,7 +8217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUnfilteredPartitionsMetadataResponse'
-      x-stackql-resource: unfiltered_partitions_metadatas
+      x-stackql-resource: unfiltered_partitions_metadata
       x-stackql-method: get_unfiltered_partitions_metadata
       x-stackql-verb: SELECT
   /GetUnfilteredTableMetadata:
@@ -8472,7 +8304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUnfilteredTableMetadataResponse'
-      x-stackql-resource: unfiltered_table_metadatas
+      x-stackql-resource: unfiltered_table_metadata
       x-stackql-method: get_unfiltered_table_metadata
       x-stackql-verb: SELECT
   /GetUsageProfile:
@@ -8817,10 +8649,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImportCatalogToGlueResponse'
       x-stackql-resource: catalogs
       x-stackql-method: import_catalog_to_glue
       x-stackql-verb: EXEC
@@ -9647,7 +9475,7 @@ paths:
               type: object
               properties:
                 Marker:
-                  $ref: '#/components/schemas/String1024'
+                  $ref: '#/components/schemas/String4096'
                   description: This is the pagination token for next page, initial value is null.
                 Filters:
                   $ref: '#/components/schemas/IntegrationResourcePropertyFilterList'
@@ -9664,6 +9492,46 @@ paths:
                 $ref: '#/components/schemas/ListIntegrationResourcePropertiesResponse'
       x-stackql-resource: integration_resource_properties
       x-stackql-method: list_integration_resource_properties
+      x-stackql-verb: SELECT
+  /ListIntegrationTableProperties:
+    post:
+      operationId: ListIntegrationTableProperties
+      description: Lists the integration table properties in your account. This operation supports filtering and pagination.
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWSGlue.ListIntegrationTableProperties
+          default: AWSGlue.ListIntegrationTableProperties
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                Marker:
+                  $ref: '#/components/schemas/String4096'
+                  description: The pagination token for the next page of results. The initial value is null.
+                Filters:
+                  $ref: '#/components/schemas/IntegrationTablePropertiesFilterList'
+                  description: A list of filters. Supported filter keys are SourceArn, TargetArn, SourceTableName, and TargetTableName.
+                MaxRecords:
+                  $ref: '#/components/schemas/IntegrationInteger'
+                  description: The maximum number of records to return in the response.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListIntegrationTablePropertiesResponse'
+      x-stackql-resource: integration_table_properties
+      x-stackql-method: list_integration_table_properties
       x-stackql-verb: SELECT
   /ListIterableForms:
     post:
@@ -10546,10 +10414,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDataCatalogEncryptionSettingsResponse'
       x-stackql-resource: data_catalog_encryption_settings
       x-stackql-method: put_data_catalog_encryption_settings
       x-stackql-verb: REPLACE
@@ -10631,10 +10495,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDataQualityProfileAnnotationResponse'
       x-stackql-resource: data_quality_profile_annotations
       x-stackql-method: put_data_quality_profile_annotation
       x-stackql-verb: REPLACE
@@ -10823,10 +10683,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutWorkflowRunPropertiesResponse'
       x-stackql-resource: workflow_run_properties
       x-stackql-method: put_workflow_run_properties
       x-stackql-verb: REPLACE
@@ -10878,7 +10734,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QuerySchemaVersionMetadataResponse'
-      x-stackql-resource: query_schema_version_metadata
+      x-stackql-resource: schema_versions
       x-stackql-method: query_schema_version_metadata
       x-stackql-verb: EXEC
   /RegisterConnectionType:
@@ -11081,7 +10937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetJobBookmarkResponse'
-      x-stackql-resource: jobs
+      x-stackql-resource: job_bookmarks
       x-stackql-method: reset_job_bookmark
       x-stackql-verb: EXEC
   /ResumeWorkflowRun:
@@ -11127,7 +10983,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: resume_workflow_run
       x-stackql-verb: EXEC
   /RunStatement:
@@ -11170,7 +11026,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RunStatementResponse'
-      x-stackql-resource: sessions
+      x-stackql-resource: statements
       x-stackql-method: run_statement
       x-stackql-verb: EXEC
   /SearchAssets:
@@ -11335,7 +11191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBlueprintRunResponse'
-      x-stackql-resource: blueprints
+      x-stackql-resource: blueprint_runs
       x-stackql-method: start_blueprint_run
       x-stackql-verb: EXEC
   /StartColumnStatisticsTaskRun:
@@ -11395,7 +11251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartColumnStatisticsTaskRunResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: column_statistics_task_runs
       x-stackql-method: start_column_statistics_task_run
       x-stackql-verb: EXEC
   /StartColumnStatisticsTaskRunSchedule:
@@ -11431,10 +11287,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartColumnStatisticsTaskRunScheduleResponse'
       x-stackql-resource: column_statistics_task_runs
       x-stackql-method: start_column_statistics_task_run_schedule
       x-stackql-verb: EXEC
@@ -11468,11 +11320,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCrawlerResponse'
-      x-stackql-resource: crawler
+      x-stackql-resource: crawlers
       x-stackql-method: start_crawler
       x-stackql-verb: EXEC
   /StartCrawlerSchedule:
@@ -11505,10 +11353,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartCrawlerScheduleResponse'
       x-stackql-resource: crawlers
       x-stackql-method: start_crawler_schedule
       x-stackql-verb: EXEC
@@ -11571,7 +11415,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataQualityRuleRecommendationRunResponse'
-      x-stackql-resource: data_quality_rule_recommendation_run
+      x-stackql-resource: data_quality_rule_recommendation_runs
       x-stackql-method: start_data_quality_rule_recommendation_run
       x-stackql-verb: EXEC
   /StartDataQualityRulesetEvaluationRun:
@@ -11634,7 +11478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataQualityRulesetEvaluationRunResponse'
-      x-stackql-resource: data_quality_rulesets
+      x-stackql-resource: data_quality_ruleset_evaluation_runs
       x-stackql-method: start_data_quality_ruleset_evaluation_run
       x-stackql-verb: EXEC
   /StartExportLabelsTaskRun:
@@ -11679,7 +11523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExportLabelsTaskRunResponse'
-      x-stackql-resource: export_labels_task_run
+      x-stackql-resource: export_labels_task_runs
       x-stackql-method: start_export_labels_task_run
       x-stackql-verb: EXEC
   /StartImportLabelsTaskRun:
@@ -11735,7 +11579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportLabelsTaskRunResponse'
-      x-stackql-resource: import_labels_task_run
+      x-stackql-resource: import_labels_task_runs
       x-stackql-method: start_import_labels_task_run
       x-stackql-verb: EXEC
   /StartJobRun:
@@ -11862,7 +11706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: jobs
+      x-stackql-resource: job_runs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /StartMLEvaluationTaskRun:
@@ -11901,7 +11745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMLEvaluationTaskRunResponse'
-      x-stackql-resource: ml_evaluation_task_run
+      x-stackql-resource: ml_evaluation_task_runs
       x-stackql-method: start_ml_evaluation_task_run
       x-stackql-verb: EXEC
   /StartMLLabelingSetGenerationTaskRun:
@@ -11948,7 +11792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMLLabelingSetGenerationTaskRunResponse'
-      x-stackql-resource: ml_labeling_set_generation_task_run
+      x-stackql-resource: ml_labeling_set_generation_task_runs
       x-stackql-method: start_ml_labeling_set_generation_task_run
       x-stackql-verb: EXEC
   /StartMaterializedViewRefreshTaskRun:
@@ -11996,7 +11840,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMaterializedViewRefreshTaskRunResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: materialized_view_refresh_task_runs
       x-stackql-method: start_materialized_view_refresh_task_run
       x-stackql-verb: EXEC
   /StartTrigger:
@@ -12033,7 +11877,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTriggerResponse'
-      x-stackql-resource: trigger
+      x-stackql-resource: triggers
       x-stackql-method: start_trigger
       x-stackql-verb: EXEC
   /StartWorkflowRun:
@@ -12074,7 +11918,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /StopColumnStatisticsTaskRun:
@@ -12110,11 +11954,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopColumnStatisticsTaskRunResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: column_statistics_task_runs
       x-stackql-method: stop_column_statistics_task_run
       x-stackql-verb: EXEC
   /StopColumnStatisticsTaskRunSchedule:
@@ -12150,10 +11990,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopColumnStatisticsTaskRunScheduleResponse'
       x-stackql-resource: column_statistics_task_runs
       x-stackql-method: stop_column_statistics_task_run_schedule
       x-stackql-verb: EXEC
@@ -12186,11 +12022,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCrawlerResponse'
-      x-stackql-resource: crawler
+      x-stackql-resource: crawlers
       x-stackql-method: stop_crawler
       x-stackql-verb: EXEC
   /StopCrawlerSchedule:
@@ -12223,10 +12055,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopCrawlerScheduleResponse'
       x-stackql-resource: crawlers
       x-stackql-method: stop_crawler_schedule
       x-stackql-verb: EXEC
@@ -12268,11 +12096,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopMaterializedViewRefreshTaskRunResponse'
-      x-stackql-resource: databases
+      x-stackql-resource: materialized_view_refresh_task_runs
       x-stackql-method: stop_materialized_view_refresh_task_run
       x-stackql-verb: EXEC
   /StopSession:
@@ -12311,7 +12135,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: stop_session
       x-stackql-verb: EXEC
   /StopTrigger:
@@ -12347,7 +12171,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTriggerResponse'
-      x-stackql-resource: trigger
+      x-stackql-resource: triggers
       x-stackql-method: stop_trigger
       x-stackql-verb: EXEC
   /StopWorkflowRun:
@@ -12383,11 +12207,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopWorkflowRunResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_runs
       x-stackql-method: stop_workflow_run
       x-stackql-verb: EXEC
   /TagResource:
@@ -12426,10 +12246,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -12469,11 +12285,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TestConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: connections
       x-stackql-method: test_connection
       x-stackql-verb: EXEC
   /UntagResource:
@@ -12509,10 +12321,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -12638,10 +12446,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCatalogResponse'
       x-stackql-resource: catalogs
       x-stackql-method: update_catalog
       x-stackql-verb: UPDATE
@@ -12682,10 +12486,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateClassifierResponse'
       x-stackql-resource: classifiers
       x-stackql-method: update_classifier
       x-stackql-verb: UPDATE
@@ -12739,7 +12539,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateColumnStatisticsForPartitionResponse'
-      x-stackql-resource: column_statistics_for_partitions
+      x-stackql-resource: column_statistics
       x-stackql-method: update_column_statistics_for_partition
       x-stackql-verb: UPDATE
   /UpdateColumnStatisticsForTable:
@@ -12788,7 +12588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateColumnStatisticsForTableResponse'
-      x-stackql-resource: column_statistics_for_tables
+      x-stackql-resource: column_statistics
       x-stackql-method: update_column_statistics_for_table
       x-stackql-verb: UPDATE
   /UpdateColumnStatisticsTaskSettings:
@@ -12842,10 +12642,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateColumnStatisticsTaskSettingsResponse'
       x-stackql-resource: column_statistics_task_settings
       x-stackql-method: update_column_statistics_task_settings
       x-stackql-verb: UPDATE
@@ -12886,10 +12682,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateConnectionResponse'
       x-stackql-resource: connections
       x-stackql-method: update_connection
       x-stackql-verb: UPDATE
@@ -12967,10 +12759,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCrawlerResponse'
       x-stackql-resource: crawlers
       x-stackql-method: update_crawler
       x-stackql-verb: UPDATE
@@ -13008,10 +12796,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateCrawlerScheduleResponse'
       x-stackql-resource: crawlers
       x-stackql-method: update_crawler_schedule
       x-stackql-verb: UPDATE
@@ -13096,10 +12880,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDatabaseResponse'
       x-stackql-resource: databases
       x-stackql-method: update_database
       x-stackql-verb: UPDATE
@@ -13157,10 +12937,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDevEndpointResponse'
       x-stackql-resource: dev_endpoints
       x-stackql-method: update_dev_endpoint
       x-stackql-verb: UPDATE
@@ -13290,10 +13066,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateGlueIdentityCenterConfigurationResponse'
       x-stackql-resource: glue_identity_center_configurations
       x-stackql-method: update_glue_identity_center_configuration
       x-stackql-verb: UPDATE
@@ -13385,10 +13157,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIntegrationTablePropertiesResponse'
       x-stackql-resource: integration_table_properties
       x-stackql-method: update_integration_table_properties
       x-stackql-verb: UPDATE
@@ -13624,10 +13392,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePartitionResponse'
       x-stackql-resource: partitions
       x-stackql-method: update_partition
       x-stackql-verb: UPDATE
@@ -13850,10 +13614,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTableResponse'
       x-stackql-resource: tables
       x-stackql-method: update_table
       x-stackql-verb: UPDATE
@@ -13902,10 +13662,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTableOptimizerResponse'
       x-stackql-resource: table_optimizers
       x-stackql-method: update_table_optimizer
       x-stackql-verb: UPDATE
@@ -14035,10 +13791,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateUserDefinedFunctionResponse'
       x-stackql-resource: user_defined_functions
       x-stackql-method: update_user_defined_function
       x-stackql-verb: UPDATE
@@ -17500,10 +17252,6 @@ components:
         ErrorDetail:
           $ref: '#/components/schemas/ErrorDetail'
           description: The details about the batch update partition error.
-    CancelDataQualityRuleRecommendationRunResponse:
-      type: object
-    CancelDataQualityRulesetEvaluationRunResponse:
-      type: object
     CancelMLTaskRunResponse:
       type: object
       properties:
@@ -17516,8 +17264,6 @@ components:
         Status:
           $ref: '#/components/schemas/TaskStatusType'
           description: The status for this run.
-    CancelStatementResponse:
-      type: object
     DataFormat:
       type: string
       enum:
@@ -17742,8 +17488,6 @@ components:
       enum:
       - Accept
       - Deny
-    CreateCatalogResponse:
-      type: object
     CreateGrokClassifierRequest:
       description: Specifies a grok classifier for CreateClassifier to create.
       type: object
@@ -17883,8 +17627,6 @@ components:
       - OpenCSVSerDe
       - LazySimpleSerDe
       - None
-    CreateClassifierResponse:
-      type: object
     ColumnNameList:
       type: array
       items:
@@ -17894,8 +17636,6 @@ components:
       format: double
       minimum: 0
       maximum: 100
-    CreateColumnStatisticsTaskSettingsResponse:
-      type: object
     ConnectionInput:
       description: A structure that is used to specify a connection to create or update.
       type: object
@@ -18272,8 +18012,6 @@ components:
       - READY
       - IN_PROGRESS
       - FAILED
-    CreateCrawlerResponse:
-      type: object
     CreateCustomEntityTypeResponse:
       type: object
       properties:
@@ -18368,8 +18106,6 @@ components:
           $ref: '#/components/schemas/NameString'
           description: The type of connection used to access the federated database, such as JDBC, ODBC, or other supported
             connection protocols.
-    CreateDatabaseResponse:
-      type: object
     MapValue:
       type: object
       properties: {}
@@ -18739,6 +18475,9 @@ components:
         TargetTableName:
           $ref: '#/components/schemas/String128'
           description: The optional name of a target table.
+        IntegrationArn:
+          $ref: '#/components/schemas/String128'
+          description: The ARN of the integration that owns this target table configuration.
     UnnestSpec:
       type: string
       enum:
@@ -18774,8 +18513,6 @@ components:
             columns with the identity partition function. High-cardinality columns include: Primary keys Timestamp fields
             (such as LastModifiedTimestamp, CreatedDate) System-generated timestamps Using high-cardinality columns with identity
             partitioning creates many small partitions, which can significantly degrade ingestion performance.'
-    CreateIntegrationTablePropertiesResponse:
-      type: object
     GenericMap:
       type: object
       properties: {}
@@ -18876,8 +18613,6 @@ components:
         TransformId:
           $ref: '#/components/schemas/HashString'
           description: A unique identifier that is generated for the transform.
-    CreatePartitionResponse:
-      type: object
     PartitionIndex:
       description: A structure for a partition index.
       type: object
@@ -18895,8 +18630,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/NameString'
-    CreatePartitionIndexResponse:
-      type: object
     CreateRegistryResponse:
       type: object
       properties:
@@ -19687,10 +19420,6 @@ components:
       enum:
       - nulls-first
       - nulls-last
-    CreateTableResponse:
-      type: object
-    CreateTableOptimizerResponse:
-      type: object
     BooleanValue:
       type: boolean
     CreateTriggerResponse:
@@ -19771,8 +19500,6 @@ components:
       - JAR
       - FILE
       - ARCHIVE
-    CreateUserDefinedFunctionResponse:
-      type: object
     WorkflowDescriptionString:
       type: string
       maxLength: 120000
@@ -19785,14 +19512,10 @@ components:
         Name:
           $ref: '#/components/schemas/NameString'
           description: The name of the workflow which was provided as part of the request.
-    DeleteAssetResponse:
-      type: object
     AssetTypeId:
       type: string
       minLength: 1
       maxLength: 256
-    DeleteAssetTypeResponse:
-      type: object
     AttachmentName:
       type: string
       minLength: 1
@@ -19816,47 +19539,16 @@ components:
         Name:
           $ref: '#/components/schemas/NameString'
           description: Returns the name of the blueprint that was deleted.
-    DeleteCatalogResponse:
-      type: object
-    DeleteClassifierResponse:
-      type: object
-    DeleteColumnStatisticsForPartitionResponse:
-      type: object
-    DeleteColumnStatisticsForTableResponse:
-      type: object
-    DeleteColumnStatisticsTaskSettingsResponse:
-      type: object
-    DeleteConnectionResponse:
-      type: object
-    DeleteConnectionTypeResponse:
-      type: object
-    DeleteCrawlerResponse:
-      type: object
     DeleteCustomEntityTypeResponse:
       type: object
       properties:
         Name:
           $ref: '#/components/schemas/NameString'
           description: The name of the custom pattern you deleted.
-    DeleteDataQualityRulesetResponse:
-      type: object
-    DeleteDatabaseResponse:
-      type: object
-    DeleteDevEndpointResponse:
-      type: object
     FormTypeId:
       type: string
       minLength: 1
       maxLength: 256
-    DeleteFormTypeResponse:
-      type: object
-    DeleteGlossaryResponse:
-      type: object
-    DeleteGlossaryTermResponse:
-      type: object
-    DeleteGlueIdentityCenterConfigurationResponse:
-      description: Response from deleting the Glue Identity Center configuration.
-      type: object
     DeleteIntegrationResponse:
       type: object
       properties:
@@ -19907,10 +19599,6 @@ components:
       - IntegrationArn
       - Status
       - CreateTime
-    DeleteIntegrationResourcePropertyResponse:
-      type: object
-    DeleteIntegrationTablePropertiesResponse:
-      type: object
     DeleteJobResponse:
       type: object
       properties:
@@ -19923,10 +19611,6 @@ components:
         TransformId:
           $ref: '#/components/schemas/HashString'
           description: The unique identifier of the transform that was deleted.
-    DeletePartitionResponse:
-      type: object
-    DeletePartitionIndexResponse:
-      type: object
     DeleteRegistryResponse:
       type: object
       properties:
@@ -19944,8 +19628,6 @@ components:
       enum:
       - AVAILABLE
       - DELETING
-    DeleteResourcePolicyResponse:
-      type: object
     DeleteSchemaResponse:
       type: object
       properties:
@@ -19997,30 +19679,18 @@ components:
       type: string
     ErrorMessageString:
       type: string
-    DeleteSecurityConfigurationResponse:
-      type: object
     DeleteSessionResponse:
       type: object
       properties:
         Id:
           $ref: '#/components/schemas/NameString'
           description: Returns the ID of the deleted session.
-    DeleteTableResponse:
-      type: object
-    DeleteTableOptimizerResponse:
-      type: object
-    DeleteTableVersionResponse:
-      type: object
     DeleteTriggerResponse:
       type: object
       properties:
         Name:
           $ref: '#/components/schemas/NameString'
           description: The name of the trigger that was deleted.
-    DeleteUsageProfileResponse:
-      type: object
-    DeleteUserDefinedFunctionResponse:
-      type: object
     DeleteWorkflowResponse:
       type: object
       properties:
@@ -24450,8 +24120,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/WorkflowRun'
-    ImportCatalogToGlueResponse:
-      type: object
     ListAssetTypesResponse:
       type: object
       properties:
@@ -25202,10 +24870,10 @@ components:
         ShortDescription:
           $ref: '#/components/schemas/GlossaryShortDescription'
           description: The short description of the glossary term.
-    String1024:
+    String4096:
       type: string
       minLength: 1
-      maxLength: 1024
+      maxLength: 4096
     IntegrationResourcePropertyFilterList:
       type: array
       items:
@@ -25231,7 +24899,7 @@ components:
           $ref: '#/components/schemas/IntegrationResourcePropertyList'
           description: A list of integration resource property meeting the filter criteria.
         Marker:
-          $ref: '#/components/schemas/String1024'
+          $ref: '#/components/schemas/String4096'
           description: This is the pagination token for the next page.
     IntegrationResourcePropertyList:
       type: array
@@ -25255,6 +24923,58 @@ components:
           description: The resource properties associated with the integration target.
       required:
       - ResourceArn
+    IntegrationTablePropertiesFilterList:
+      type: array
+      items:
+        $ref: '#/components/schemas/IntegrationTablePropertiesFilter'
+    IntegrationTablePropertiesFilter:
+      description: A key-value filter used to narrow the list of integration table properties returned by ListIntegrationTableProperties.
+        Specify a filter key and one or more values to match.
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/String128'
+          description: The name of the filter. Supported filter keys are SourceArn, TargetArn, SourceTableName, and TargetTableName.
+        Values:
+          $ref: '#/components/schemas/IntegrationTablePropertiesFilterValues'
+          description: A list of filter values.
+    IntegrationTablePropertiesFilterValues:
+      type: array
+      items:
+        $ref: '#/components/schemas/String128'
+    ListIntegrationTablePropertiesResponse:
+      type: object
+      properties:
+        IntegrationTablePropertiesList:
+          $ref: '#/components/schemas/IntegrationTablePropertiesList'
+          description: A list of integration table properties meeting the filter criteria.
+        Marker:
+          $ref: '#/components/schemas/String4096'
+          description: The pagination token for the next page. Returns null if there are no more results.
+    IntegrationTablePropertiesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/IntegrationTableProperties'
+    IntegrationTableProperties:
+      description: The properties of a single integration table, including the resource ARN, the table name, and the source
+        or target table configuration.
+      type: object
+      properties:
+        ResourceArn:
+          $ref: '#/components/schemas/String512'
+          description: The connection ARN of the source, or the database ARN of the target.
+        TableName:
+          $ref: '#/components/schemas/String128'
+          description: The name of the source table to be replicated.
+        SourceTableConfig:
+          $ref: '#/components/schemas/SourceTableConfig'
+          description: A structure for the source table configuration.
+        TargetTableConfig:
+          $ref: '#/components/schemas/TargetTableConfig'
+          description: A structure for the target table configuration.
+      required:
+      - ResourceArn
+      - TableName
     ListIterableFormsResponse:
       type: object
       properties:
@@ -25672,8 +25392,6 @@ components:
         FormTypeId:
           $ref: '#/components/schemas/FormTypeId'
           description: The identifier of the form type for this attachment.
-    PutDataCatalogEncryptionSettingsResponse:
-      type: object
     PutDataCatalogExportConfigurationOutput:
       description: The export configuration returned by the PutDataCatalogExportConfiguration operation.
       type: object
@@ -25684,9 +25402,6 @@ components:
         EncryptionConfiguration:
           $ref: '#/components/schemas/ExportEncryptionConfiguration'
           description: The encryption configuration for the exported data.
-    PutDataQualityProfileAnnotationResponse:
-      description: Left blank.
-      type: object
     PutFormTypeResponse:
       type: object
       properties:
@@ -25764,8 +25479,6 @@ components:
         MetadataValue:
           $ref: '#/components/schemas/MetadataValueString'
           description: The value of the metadata key.
-    PutWorkflowRunPropertiesResponse:
-      type: object
     MetadataList:
       type: array
       items:
@@ -26255,12 +25968,6 @@ components:
         ColumnStatisticsTaskRunId:
           $ref: '#/components/schemas/HashString'
           description: The identifier for the column statistics task run.
-    StartColumnStatisticsTaskRunScheduleResponse:
-      type: object
-    StartCrawlerResponse:
-      type: object
-    StartCrawlerScheduleResponse:
-      type: object
     StartDataQualityRuleRecommendationRunResponse:
       type: object
       properties:
@@ -26324,16 +26031,6 @@ components:
         RunId:
           $ref: '#/components/schemas/IdString'
           description: An Id for the new run.
-    StopColumnStatisticsTaskRunResponse:
-      type: object
-    StopColumnStatisticsTaskRunScheduleResponse:
-      type: object
-    StopCrawlerResponse:
-      type: object
-    StopCrawlerScheduleResponse:
-      type: object
-    StopMaterializedViewRefreshTaskRunResponse:
-      type: object
     StopSessionResponse:
       type: object
       properties:
@@ -26346,10 +26043,6 @@ components:
         Name:
           $ref: '#/components/schemas/NameString'
           description: The name of the trigger that was stopped.
-    StopWorkflowRunResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TestConnectionInput:
       description: A structure that is used to specify testing a connection to a service.
       type: object
@@ -26373,14 +26066,10 @@ components:
       required:
       - ConnectionType
       - ConnectionProperties
-    TestConnectionResponse:
-      type: object
     TagKeysList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAssetResponse:
       type: object
       properties:
@@ -26404,8 +26093,6 @@ components:
         Name:
           $ref: '#/components/schemas/NameString'
           description: Returns the name of the blueprint that was updated.
-    UpdateCatalogResponse:
-      type: object
     UpdateGrokClassifierRequest:
       description: Specifies a grok classifier to update when passed to UpdateClassifier.
       type: object
@@ -26495,8 +26182,6 @@ components:
             do the detection.
       required:
       - Name
-    UpdateClassifierResponse:
-      type: object
     UpdateColumnStatisticsList:
       type: array
       items:
@@ -26527,19 +26212,11 @@ components:
         Errors:
           $ref: '#/components/schemas/ColumnStatisticsErrors'
           description: List of ColumnStatisticsErrors.
-    UpdateColumnStatisticsTaskSettingsResponse:
-      type: object
-    UpdateConnectionResponse:
-      type: object
     DescriptionStringRemovable:
       type: string
       minLength: 0
       maxLength: 2048
       pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
-    UpdateCrawlerResponse:
-      type: object
-    UpdateCrawlerScheduleResponse:
-      type: object
     UpdateDataQualityRulesetResponse:
       type: object
       properties:
@@ -26552,8 +26229,6 @@ components:
         Ruleset:
           $ref: '#/components/schemas/DataQualityRulesetString'
           description: A Data Quality Definition Language (DQDL) ruleset. For more information, see the Glue developer guide.
-    UpdateDatabaseResponse:
-      type: object
     DevEndpointCustomLibraries:
       description: Custom libraries to be loaded into a development endpoint.
       type: object
@@ -26568,8 +26243,6 @@ components:
           $ref: '#/components/schemas/GenericString'
           description: The path to one or more Java .jar files in an S3 bucket that should be loaded in your DevEndpoint.
             You can only use pure Java/Scala libraries with a DevEndpoint.
-    UpdateDevEndpointResponse:
-      type: object
     UpdateGlossaryResponse:
       type: object
       properties:
@@ -26600,9 +26273,6 @@ components:
         LongDescription:
           $ref: '#/components/schemas/GlossaryLongDescription'
           description: The long description of the glossary term.
-    UpdateGlueIdentityCenterConfigurationResponse:
-      description: Response from updating an existing Glue Identity Center configuration.
-      type: object
     UpdateIntegrationResourcePropertyResponse:
       type: object
       properties:
@@ -26618,8 +26288,6 @@ components:
         TargetProcessingProperties:
           $ref: '#/components/schemas/TargetProcessingProperties'
           description: The resource properties associated with the integration target.
-    UpdateIntegrationTablePropertiesResponse:
-      type: object
     JobUpdate:
       description: Specifies information used to update an existing job definition. The previous job definition is completely
         overwritten by this information.
@@ -26772,8 +26440,6 @@ components:
         TransformId:
           $ref: '#/components/schemas/HashString'
           description: The unique identifier for the transform that was updated.
-    UpdatePartitionResponse:
-      type: object
     UpdateRegistryResponse:
       type: object
       properties:
@@ -26928,10 +26594,6 @@ components:
       type: string
       maxLength: 2056
       pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
-    UpdateTableResponse:
-      type: object
-    UpdateTableOptimizerResponse:
-      type: object
     TriggerUpdate:
       description: A structure used to provide information used to update a trigger. This object updates the previous trigger
         definition by overwriting it completely.
@@ -26969,8 +26631,6 @@ components:
         Name:
           $ref: '#/components/schemas/NameString'
           description: The name of the usage profile that was updated.
-    UpdateUserDefinedFunctionResponse:
-      type: object
     UpdateWorkflowResponse:
       type: object
       properties:

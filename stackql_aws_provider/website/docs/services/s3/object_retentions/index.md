@@ -50,6 +50,16 @@ The following fields are returned by `SELECT` queries:
 </thead>
 <tbody>
 <tr>
+    <td><CopyableCode code="event_hold" /></td>
+    <td><code>string</code></td>
+    <td>The event hold status for the object. Set to ON to enable an event hold or OFF to disable it.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="event_hold_duration" /></td>
+    <td><code>string</code></td>
+    <td>The event hold duration for the object. Specifies how long the object remains protected after the event hold is released.</td>
+</tr>
+<tr>
     <td><CopyableCode code="mode" /></td>
     <td><code>string</code></td>
     <td>Indicates the Retention mode for the specified object.</td>
@@ -171,6 +181,8 @@ This operation is not supported for directory buckets. Retrieves an object's ret
 
 ```sql
 SELECT
+event_hold,
+event_hold_duration,
 mode,
 retain_until_date
 FROM aws.s3.object_retentions

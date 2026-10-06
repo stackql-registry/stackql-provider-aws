@@ -222,10 +222,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -257,10 +253,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -642,20 +634,16 @@ components:
       properties:
         tags:
           $ref: "#/components/schemas/TagList"
-    TagResourceResponse:
-      type: object
     TagKeyList:
       description: List of tag keys
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
-    data_automation_status:
-      id: aws.bedrock_data_automation_runtime.data_automation_status
-      name: data_automation_status
-      title: data_automation_status
+    data_automation_statuses:
+      id: aws.bedrock_data_automation_runtime.data_automation_statuses
+      name: data_automation_statuses
+      title: data_automation_statuses
       methods:
         get_data_automation_status:
           operation:
@@ -672,7 +660,53 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/data_automation_status/methods/get_data_automation_status"
+          - $ref: "#/components/x-stackQL-resources/data_automation_statuses/methods/get_data_automation_status"
+        insert: []
+        update: []
+        delete: []
+    data_automations:
+      id: aws.bedrock_data_automation_runtime.data_automations
+      name: data_automations
+      title: data_automations
+      methods:
+        invoke_data_automation:
+          operation:
+            $ref: "#/paths/~1InvokeDataAutomation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    data_automation_asyncs:
+      id: aws.bedrock_data_automation_runtime.data_automation_asyncs
+      name: data_automation_asyncs
+      title: data_automation_asyncs
+      methods:
+        invoke_data_automation_async:
+          operation:
+            $ref: "#/paths/~1InvokeDataAutomationAsync/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -699,7 +733,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -712,7 +745,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

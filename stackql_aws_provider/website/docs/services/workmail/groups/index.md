@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_group"
     values={[
         { label: 'describe_group', value: 'describe_group' },
+        { label: 'list_groups_for_entity', value: 'list_groups_for_entity' },
         { label: 'list_groups', value: 'list_groups' }
     ]}
 >
@@ -84,6 +85,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="state" /></td>
     <td><code>string</code></td>
     <td>The state of the user: enabled (registered to WorkMail) or disabled (deregistered or never registered to WorkMail). (ENABLED, DISABLED, DELETED)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_groups_for_entity">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="groups" /></td>
+    <td><code>array</code></td>
+    <td>The overview of groups in an organization.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The token to use to retrieve the next page of results. This value is `null` when there are no more results to return. (pattern: &lt;code&gt;&#91;\S\s&#93;*|&#91;a-zA-Z0-9/+=&#93;&#123;1,1024&#125;&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -157,6 +182,13 @@ The following methods are available for this resource:
     <td>Returns the data available for the group.</td>
 </tr>
 <tr>
+    <td><a href="#list_groups_for_entity"><CopyableCode code="list_groups_for_entity" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns all the groups to which an entity belongs.</td>
+</tr>
+<tr>
     <td><a href="#list_groups"><CopyableCode code="list_groups" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -228,6 +260,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_group"
     values={[
         { label: 'describe_group', value: 'describe_group' },
+        { label: 'list_groups_for_entity', value: 'list_groups_for_entity' },
         { label: 'list_groups', value: 'list_groups' }
     ]}
 >
@@ -244,6 +277,19 @@ group_id,
 hidden_from_global_address_list,
 name,
 state
+FROM aws.workmail.groups
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_groups_for_entity">
+
+Returns all the groups to which an entity belongs.
+
+```sql
+SELECT
+groups,
+next_token
 FROM aws.workmail.groups
 WHERE region = '{{ region }}' -- required
 ;

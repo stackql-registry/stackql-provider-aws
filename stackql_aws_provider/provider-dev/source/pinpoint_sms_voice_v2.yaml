@@ -152,7 +152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CarrierLookupResult'
-      x-stackql-resource: carrier_lookup
+      x-stackql-resource: lookups
       x-stackql-method: carrier_lookup
       x-stackql-verb: EXEC
   /CreateConfigurationSet:
@@ -627,7 +627,7 @@ paths:
     post:
       operationId: CreateRegistrationAttachment
       description: Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size
-        is 500KB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed
+        is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed
         “letter of authorization” (LOA) to be submitted. Use either AttachmentUrl or AttachmentBody to upload your attachment.
         If both are specified then an exception is returned.
       parameters:
@@ -649,7 +649,7 @@ paths:
               properties:
                 AttachmentBody:
                   $ref: '#/components/schemas/AttachmentBody'
-                  description: The registration file to upload. The maximum file size is 500KB and valid file extensions are
+                  description: The registration file to upload. The maximum file size is 5MB and valid file extensions are
                     PDF, JPEG and PNG.
                 AttachmentUrl:
                   $ref: '#/components/schemas/AttachmentUrl'
@@ -2255,7 +2255,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeRcsAgentCountryLaunchStatusResult'
-      x-stackql-resource: rcs_agent_country_launch_status
+      x-stackql-resource: rcs_agent_country_launch_statuses
       x-stackql-method: describe_rcs_agent_country_launch_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CountryLaunchStatus
@@ -2963,7 +2963,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscardRegistrationVersionResult'
-      x-stackql-resource: registrations
+      x-stackql-resource: registration_versions
       x-stackql-method: discard_registration_version
       x-stackql-verb: EXEC
   /GetProtectConfigurationCountryRuleSet:
@@ -3044,6 +3044,78 @@ paths:
       x-stackql-resource: resource_policies
       x-stackql-method: get_resource_policy
       x-stackql-verb: SELECT
+  /ListAvailablePhoneNumbers:
+    post:
+      operationId: ListAvailablePhoneNumbers
+      description: Search available phone numbers from aggregator inventory, optionally filtered by pattern. If NumberPreference
+        is omitted, returns unfiltered available numbers. Returns empty list (not an exception) when no numbers match. ResourceNotFoundException
+        is thrown only for invalid RegistrationId (campaign not found).
+      parameters:
+      - name: X-Amz-Target
+        in: header
+        description: Action Header
+        required: false
+        schema:
+          type: string
+          enum:
+          - PinpointSMSVoiceV2.ListAvailablePhoneNumbers
+          default: PinpointSMSVoiceV2.ListAvailablePhoneNumbers
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.0:
+            schema:
+              type: object
+              properties:
+                IsoCountryCode:
+                  $ref: '#/components/schemas/IsoCountryCode'
+                  description: The two-character code, in ISO 3166-1 alpha-2 format, for the country or region in which to
+                    search for available phone numbers. This operation currently supports only US.
+                NumberCapabilities:
+                  $ref: '#/components/schemas/NumberCapabilityList'
+                  description: The capabilities to filter by, such as SMS. Only phone numbers that support all of the specified
+                    capabilities are returned.
+                NumberType:
+                  $ref: '#/components/schemas/SearchableNumberType'
+                  description: The type of phone number to search for.
+                RegistrationId:
+                  $ref: '#/components/schemas/RegistrationIdOrArn'
+                  description: 'The registration associated with the request. A registration is required for regulated number
+                    types. You can specify either: The unique identifier of the registration. The Amazon Resource Name (ARN)
+                    of the registration.'
+                NumberPreference:
+                  $ref: '#/components/schemas/NumberPreferenceList'
+                  description: Optional. If omitted, returns unfiltered available numbers. Max 1 element for List API.
+                NextToken:
+                  $ref: '#/components/schemas/NextToken'
+                  description: The token returned from a previous request to retrieve the next page of results.
+                MaxResults:
+                  $ref: '#/components/schemas/ListAvailablePhoneNumbersMaxResults'
+                  description: The maximum number of results to return per page. If you don't specify a value, the default
+                    is 10.
+              required:
+              - IsoCountryCode
+              - NumberCapabilities
+              - NumberType
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAvailablePhoneNumbersOutputDisplay'
+      x-stackql-resource: available_phone_numbers
+      x-stackql-method: list_available_phone_numbers
+      x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListAvailablePhoneNumbersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "AvailablePhoneNumbers" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"available_phone_number": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNotifyCountries:
     post:
       operationId: ListNotifyCountries
@@ -3379,7 +3451,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutMessageFeedbackResult'
-      x-stackql-resource: message_feedbacks
+      x-stackql-resource: message_feedback
       x-stackql-method: put_message_feedback
       x-stackql-verb: REPLACE
   /PutOptedOutNumber:
@@ -3698,6 +3770,11 @@ paths:
                 RegistrationId:
                   $ref: '#/components/schemas/RegistrationIdOrArn'
                   description: Use this field to attach your phone number for an external registration process.
+                NumberPreference:
+                  $ref: '#/components/schemas/NumberPreferenceList'
+                  description: An optional selection preference used to request a specific phone number, such as a number
+                    that starts with, ends with, or contains a particular digit pattern. You can specify at most one preference.
+                    Number preferences apply only to TEN_DLC requests in the US.
                 InternationalSendingEnabled:
                   $ref: '#/components/schemas/Boolean'
                   description: By default this is set to false. When set to true the international sending of phone number
@@ -3724,7 +3801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RequestPhoneNumberResult'
-      x-stackql-resource: request_phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: request_phone_number
       x-stackql-verb: EXEC
   /RequestSenderId:
@@ -3780,7 +3857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RequestSenderIdResult'
-      x-stackql-resource: request_sender_id
+      x-stackql-resource: sender_ids
       x-stackql-method: request_sender_id
       x-stackql-verb: EXEC
   /SendDestinationNumberVerificationCode:
@@ -3916,7 +3993,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMediaMessageResult'
-      x-stackql-resource: media_message
+      x-stackql-resource: media_messages
       x-stackql-method: send_media_message
       x-stackql-verb: EXEC
   /SendNotifyTextMessage:
@@ -4130,7 +4207,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendRcsMessageResult'
-      x-stackql-resource: rcs_message
+      x-stackql-resource: rcs_messages
       x-stackql-method: send_rcs_message
       x-stackql-verb: EXEC
   /SendTextMessage:
@@ -4223,7 +4300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendTextMessageResult'
-      x-stackql-resource: text_message
+      x-stackql-resource: text_messages
       x-stackql-method: send_text_message
       x-stackql-verb: EXEC
   /SendVoiceMessage:
@@ -4299,7 +4376,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendVoiceMessageResult'
-      x-stackql-resource: voice_message
+      x-stackql-resource: voice_messages
       x-stackql-method: send_voice_message
       x-stackql-verb: EXEC
   /SetAccountDefaultProtectConfiguration:
@@ -4692,7 +4769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitRegistrationVersionResult'
-      x-stackql-resource: registrations
+      x-stackql-resource: registration_versions
       x-stackql-method: submit_registration_version
       x-stackql-verb: EXEC
   /TagResource:
@@ -4730,10 +4807,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -4771,10 +4844,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResult'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -6141,7 +6210,7 @@ components:
       type: string
       format: byte
       minLength: 1
-      maxLength: 1572864
+      maxLength: 6990508
     AttachmentUrl:
       type: string
       minLength: 1
@@ -7621,6 +7690,10 @@ components:
         RegistrationId:
           $ref: '#/components/schemas/String'
           description: The unique identifier for the registration.
+        MessagingLimits:
+          $ref: '#/components/schemas/MessagingLimits'
+          description: The messaging limits that apply to the phone number, including the per-capability send rates and any
+            advisory per-provider daily message caps.
         CreatedTimestamp:
           $ref: '#/components/schemas/Timestamp'
           description: The time when the phone number was created, in UNIX epoch time format.
@@ -7654,6 +7727,22 @@ components:
       - TOLL_FREE
       - TEN_DLC
       - SIMULATOR
+    MessagingLimits:
+      description: The messaging limits that apply to an origination identity, such as a phone number, sender ID, or RCS agent.
+        Includes the per-capability send rates and, for supported origination identities, advisory per-provider daily message
+        caps.
+      type: object
+      properties:
+        RateLimits:
+          type: object
+          properties: {}
+          description: The maximum send rate for each supported capability, in messages per second. The map is keyed by capability,
+            such as SMS, MMS, VOICE, or RCS.
+        DailyMessageCaps:
+          type: object
+          properties: {}
+          description: The advisory maximum number of messages that can be sent per day, keyed by provider (for example, T-MOBILE).
+            Applies to 10DLC phone numbers and is omitted when no daily cap applies.
     PoolIdList:
       type: array
       items:
@@ -8031,6 +8120,9 @@ components:
         TestingAgent:
           $ref: '#/components/schemas/TestingAgentInformation'
           description: The testing agent information associated with the RCS agent.
+        MessagingLimits:
+          $ref: '#/components/schemas/MessagingLimits'
+          description: The messaging limits that apply to the RCS agent, including the per-capability send rates.
       required:
       - RcsAgentArn
       - RcsAgentId
@@ -8190,6 +8282,11 @@ components:
         DisplayHints:
           $ref: '#/components/schemas/RegistrationFieldDisplayHints'
           description: An array of RegistrationFieldDisplayHints objects for the field.
+        ConditionalBehavior:
+          $ref: '#/components/schemas/ConditionalBehavior'
+          description: The conditional behavior rules for this field. Only present when FieldRequirement is CONDITIONAL. Rules
+            are evaluated in order and the first matching rule determines the field's resolved requirement. If no rule matches,
+            the DefaultBehavior applies.
       required:
       - SectionPath
       - FieldPath
@@ -8298,6 +8395,124 @@ components:
           description: A description of the option meaning.
       required:
       - Option
+    ConditionalBehavior:
+      description: The set of conditional rules that determine a field's resolved requirement based on the values of other
+        fields in the same registration form. Attached to fields whose FieldRequirement is CONDITIONAL. Evaluation proceeds
+        top-to-bottom through Rules. The first rule whose conditions all evaluate to true wins and its behavior is returned.
+        If no rule matches, the DefaultBehavior is returned.
+      type: object
+      properties:
+        Rules:
+          $ref: '#/components/schemas/ConditionalRuleList'
+          description: An ordered list of conditional rules. Rules are evaluated top-to-bottom and the first rule whose conditions
+            all evaluate to true determines the field's behavior. Rules whose conditions do not all match are skipped and
+            evaluation continues to the next rule.
+        DefaultBehavior:
+          $ref: '#/components/schemas/ConditionalFieldBehavior'
+          description: The field behavior that applies when no conditional rule in Rules matches. Valid values are REQUIRED,
+            OPTIONAL, and DISALLOWED.
+      required:
+      - Rules
+      - DefaultBehavior
+    ConditionalRuleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConditionalRule'
+    ConditionalRule:
+      description: 'A single conditional rule that resolves to a field behavior when all of its conditions evaluate to true.
+        Conditions within a rule are combined with logical AND: all conditions must match for the rule to fire.'
+      type: object
+      properties:
+        Conditions:
+          $ref: '#/components/schemas/FieldConditionList'
+          description: The conditions that must all evaluate to true for this rule to match. Conditions are combined with
+            logical AND. Use multiple rules with the same RuleBehavior to express logical OR.
+        RuleBehavior:
+          $ref: '#/components/schemas/ConditionalFieldBehavior'
+          description: The field behavior that applies when all conditions in this rule match. Valid values are REQUIRED,
+            OPTIONAL, and DISALLOWED.
+        ConditionalValidation:
+          $ref: '#/components/schemas/ConditionalValidation'
+          description: Optional per-rule validation constraints (minimum length, maximum length, regex pattern, allowed select
+            values) that override the field's default validation when this rule matches.
+      required:
+      - Conditions
+      - RuleBehavior
+    FieldConditionList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FieldCondition'
+    FieldCondition:
+      description: A single condition on a dependency field's value. Conditions are combined into a ConditionalRule and evaluated
+        together with logical AND.
+      type: object
+      properties:
+        DependsOnFieldPath:
+          $ref: '#/components/schemas/FieldPath'
+          description: The path of the field whose value determines this condition, for example companyInfo.businessType.
+        Operator:
+          $ref: '#/components/schemas/ConditionOperator'
+          description: The comparison operator to apply between the dependency field's value and Values. Valid values are
+            EQUALS, NOT_EQUALS, IN, NOT_IN, HAS_VALUE, and NO_VALUE. Operators not in this list are treated as evaluating
+            to false, which causes the containing rule to be skipped. This allows forward-compatible additions of new operators
+            without breaking older SDK clients.
+        Values:
+          $ref: '#/components/schemas/ConditionValueList'
+          description: The values to compare the dependency field's value against. Required for the EQUALS, NOT_EQUALS, IN,
+            and NOT_IN operators. Omitted for HAS_VALUE and NO_VALUE, which test only presence.
+      required:
+      - DependsOnFieldPath
+      - Operator
+    ConditionOperator:
+      description: The operator used to compare a dependency field's value in a FieldCondition. Valid values are EQUALS, NOT_EQUALS,
+        IN, NOT_IN, HAS_VALUE, and NO_VALUE. Unknown operators evaluate to false, which causes the containing rule to be skipped.
+      type: string
+      minLength: 1
+      maxLength: 64
+      pattern: '[A-Za-z0-9_]+'
+    ConditionValueList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ConditionValue'
+    ConditionValue:
+      type: string
+      minLength: 1
+      maxLength: 256
+    ConditionalFieldBehavior:
+      description: 'The resolved requirement for a field when a conditional rule matches. Valid values are: REQUIRED — the
+        field must be present; absence causes a validation error at submission time. OPTIONAL — the field may be present.
+        DISALLOWED — the field must not be present; a submitted value is rejected with a validation error.'
+      type: string
+      minLength: 1
+      maxLength: 64
+      pattern: '[A-Za-z0-9_]+'
+    ConditionalValidation:
+      description: Per-rule validation constraints that override the field's default validation when the containing rule matches.
+        All fields are optional; only the constraints that need to differ from the field's default validation are provided.
+      type: object
+      properties:
+        MinLength:
+          $ref: '#/components/schemas/ConditionalValidationMinLengthInteger'
+          description: The minimum length for the field value when this rule applies.
+        MaxLength:
+          $ref: '#/components/schemas/ConditionalValidationMaxLengthInteger'
+          description: The maximum length for the field value when this rule applies.
+        Pattern:
+          $ref: '#/components/schemas/ConditionalValidationPatternString'
+          description: A regular expression that the field value must match when this rule applies.
+        AllowedValues:
+          $ref: '#/components/schemas/SelectChoiceList'
+          description: The allowed values for a select field when this rule applies. A subset of the field's full option list.
+    ConditionalValidationMinLengthInteger:
+      type: integer
+      minimum: 0
+    ConditionalValidationMaxLengthInteger:
+      type: integer
+      minimum: 0
+    ConditionalValidationPatternString:
+      type: string
+      minLength: 1
+      maxLength: 2048
     DescribeRegistrationFieldValuesResult:
       type: object
       properties:
@@ -8821,6 +9036,9 @@ components:
         RegistrationId:
           $ref: '#/components/schemas/String'
           description: The unique identifier for the registration.
+        MessagingLimits:
+          $ref: '#/components/schemas/MessagingLimits'
+          description: The messaging limits that apply to the sender ID, including the per-capability send rates.
       required:
       - SenderIdArn
       - SenderId
@@ -9062,6 +9280,78 @@ components:
         CreatedTimestamp:
           $ref: '#/components/schemas/Timestamp'
           description: The time when the resource-based policy was created, in UNIX epoch time format.
+    SearchableNumberType:
+      description: The type of phone number to search for with ListAvailablePhoneNumbers. Currently only TEN_DLC is supported;
+        additional number types (for example TOLL_FREE) will be added in future phases. Modeled as a dedicated enum rather
+        than RequestableNumberType so this operation advertises only the values it actually supports. New values may be added
+        over time (backward compatible).
+      type: string
+      enum:
+      - TEN_DLC
+    NumberPreferenceList:
+      description: List of number preference objects. Max 1 element.
+      type: array
+      items:
+        $ref: '#/components/schemas/NumberPreferenceItem'
+    NumberPreferenceItem:
+      description: A single number preference — specifies a pattern type and filter value.
+      type: object
+      properties:
+        PreferenceType:
+          $ref: '#/components/schemas/PreferenceTypeList'
+          description: 'The type of match to apply to the filter values. StartsWith: Returns numbers that begin with the filter
+            value. EndsWith: Returns numbers that end with the filter value. Contains: Returns numbers that contain the filter
+            value. ExactMatch: Returns the number that exactly matches the filter value.'
+        Filter:
+          $ref: '#/components/schemas/NumberFilterList'
+          description: The digit pattern values to match against available phone numbers, using the specified preference type.
+      required:
+      - PreferenceType
+      - Filter
+    PreferenceTypeList:
+      description: List of preference types. Max 1 at launch. Modeled as list for forward compatibility — will support multiple
+        types in future phases.
+      type: array
+      items:
+        $ref: '#/components/schemas/PreferenceType'
+    PreferenceType:
+      description: The type of pattern matching to apply.
+      type: string
+      enum:
+      - StartsWith
+      - EndsWith
+      - Contains
+      - ExactMatch
+    NumberFilterList:
+      description: List of filter values. Max 1 for pattern types (StartsWith/EndsWith/Contains), max 10 for ExactMatch.
+      type: array
+      items:
+        $ref: '#/components/schemas/NumberFilterValue'
+    NumberFilterValue:
+      description: A filter value — either a pattern (e.g., "+1510") or full E.164 number.
+      type: string
+      minLength: 2
+      maxLength: 16
+      pattern: \+?[0-9]{1,15}
+    ListAvailablePhoneNumbersMaxResults:
+      description: Maximum number of results per page for ListAvailablePhoneNumbers. Aligned with AvailablePhoneNumberList
+        max of 10.
+      type: integer
+      minimum: 1
+      maximum: 10
+    ListAvailablePhoneNumbersRowDisplay:
+      type: object
+      properties:
+        available_phone_number:
+          type: string
+          description: An array of phone numbers, in E.164 format, that are available to request based on the specified filters.
+    ListAvailablePhoneNumbersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAvailablePhoneNumbersRowDisplay'
     NotifyUseCaseList:
       type: array
       items:
@@ -10363,14 +10653,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
-    TagResourceResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResult:
-      type: object
     UpdateEventDestinationResult:
       type: object
       properties:

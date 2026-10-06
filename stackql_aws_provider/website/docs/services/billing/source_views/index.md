@@ -32,8 +32,32 @@ Creates, updates, deletes, gets or lists a <code>source_views</code> resource.
 
 The following fields are returned by `SELECT` queries:
 
-`SELECT` not supported for this resource, use `SHOW METHODS` to view available operations for the resource.
+<Tabs
+    defaultValue="list_source_views_for_billing_view"
+    values={[
+        { label: 'list_source_views_for_billing_view', value: 'list_source_views_for_billing_view' }
+    ]}
+>
+<TabItem value="list_source_views_for_billing_view">
 
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="source_view" /></td>
+    <td><code>string</code></td>
+    <td>A list of billing views used as the data source for the custom billing view.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
 
 ## Methods
 
@@ -50,6 +74,13 @@ The following methods are available for this resource:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><a href="#list_source_views_for_billing_view"><CopyableCode code="list_source_views_for_billing_view" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the source views (managed Amazon Web Services billing views) associated with the billing view.</td>
+</tr>
 <tr>
     <td><a href="#associate_source_views"><CopyableCode code="associate_source_views" /></a></td>
     <td><CopyableCode code="update" /></td>
@@ -87,6 +118,29 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 </tr>
 </tbody>
 </table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="list_source_views_for_billing_view"
+    values={[
+        { label: 'list_source_views_for_billing_view', value: 'list_source_views_for_billing_view' }
+    ]}
+>
+<TabItem value="list_source_views_for_billing_view">
+
+Lists the source views (managed Amazon Web Services billing views) associated with the billing view.
+
+```sql
+SELECT
+source_view
+FROM aws.billing.source_views
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
 
 ## `UPDATE` examples
 

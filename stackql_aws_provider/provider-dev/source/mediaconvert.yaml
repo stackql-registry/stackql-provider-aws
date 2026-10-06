@@ -36,10 +36,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateCertificateResponse'
       x-stackql-resource: certificates
       x-stackql-method: associate_certificate
       x-stackql-verb: UPDATE
@@ -57,11 +53,7 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
     get:
@@ -480,10 +472,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateResourceShareResponse'
       x-stackql-resource: jobs
       x-stackql-method: create_resource_share
       x-stackql-verb: INSERT
@@ -501,10 +489,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteJobTemplateResponse'
       x-stackql-resource: job_templates
       x-stackql-method: delete_job_template
       x-stackql-verb: DELETE
@@ -580,10 +564,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePolicyResponse'
       x-stackql-resource: policies
       x-stackql-method: delete_policy
       x-stackql-verb: DELETE
@@ -641,10 +621,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePresetResponse'
       x-stackql-resource: presets
       x-stackql-method: delete_preset
       x-stackql-verb: DELETE
@@ -716,10 +692,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueueResponse'
       x-stackql-resource: queues
       x-stackql-method: delete_queue
       x-stackql-verb: DELETE
@@ -830,10 +802,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateCertificateResponse'
       x-stackql-resource: certificates
       x-stackql-method: disassociate_certificate
       x-stackql-verb: UPDATE
@@ -905,10 +873,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -967,7 +931,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProbeResponse'
-      x-stackql-resource: probe
+      x-stackql-resource: es
       x-stackql-method: probe
       x-stackql-verb: EXEC
   /2017-08-29/search:
@@ -1084,10 +1048,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1138,10 +1098,6 @@ components:
   schemas:
     __string:
       type: string
-    AssociateCertificateResponse:
-      type: object
-    CancelJobResponse:
-      type: object
     AccelerationSettings:
       description: Accelerated transcoding can significantly speed up jobs with long, visually complex content.
       type: object
@@ -4044,9 +4000,10 @@ components:
         PlaybackDeviceCompatibility:
           $ref: '#/components/schemas/DashIsoPlaybackDeviceCompatibility'
           description: This setting can improve the compatibility of your output with video players on obsolete devices. It
-            applies only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI only to correct problems with playback
-            on older devices. Otherwise, keep the default setting CENC v1. If you choose Unencrypted SEI, for that output,
-            the service will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+            applies only to DASH outputs with DRM encryption. Choose Unencrypted SEI only to correct problems with playback
+            on older H.264 devices. Choose CENC v1 unencrypted headers to leave NAL unit headers and slice headers unencrypted
+            for H.265 outputs, improving compatibility with strict HEVC decoders. Otherwise, keep the default setting CENC
+            v1.
         SpekeKeyProvider:
           $ref: '#/components/schemas/SpekeKeyProvider'
           description: If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption
@@ -4054,13 +4011,14 @@ components:
             instead.
     DashIsoPlaybackDeviceCompatibility:
       description: This setting can improve the compatibility of your output with video players on obsolete devices. It applies
-        only to DASH H.264 outputs with DRM encryption. Choose Unencrypted SEI only to correct problems with playback on older
-        devices. Otherwise, keep the default setting CENC v1. If you choose Unencrypted SEI, for that output, the service
-        will exclude the access unit delimiter and will leave the SEI NAL units unencrypted.
+        only to DASH outputs with DRM encryption. Choose Unencrypted SEI only to correct problems with playback on older H.264
+        devices. Choose CENC v1 unencrypted headers to leave NAL unit headers and slice headers unencrypted for H.265 outputs,
+        improving compatibility with strict HEVC decoders. Otherwise, keep the default setting CENC v1.
       type: string
       enum:
       - CENC_V1
       - UNENCRYPTED_SEI
+      - CENC_V1_UNENCRYPTED_HEADERS
     SpekeKeyProvider:
       description: If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption
         with a SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
@@ -5428,9 +5386,9 @@ components:
           description: Required when you set Codec to the value AIFF.
         Codec:
           $ref: '#/components/schemas/AudioCodec'
-          description: 'Choose the audio codec for this output. Note that the option Dolby Digital passthrough applies only
-            to Dolby Digital and Dolby Digital Plus audio inputs. Make sure that you choose a codec that''s supported with
-            your output container: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#reference-codecs-containers-output-audio
+          description: 'Choose the audio codec for this output. Note that the option passthrough applies only to Dolby Digital,
+            Dolby Digital Plus, AAC LC, AAC HEV1, and AAC HEV2 audio inputs. Make sure that you choose a codec that''s supported
+            with your output container: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#reference-codecs-containers-output-audio
             For audio-only outputs, make sure that both your input audio codec and your output audio codec are supported for
             audio-only workflows. For more information, see: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers-input.html#reference-codecs-containers-input-audio-only
             and https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#audio-only-output'
@@ -5501,6 +5459,11 @@ components:
           description: 'Choose the loudness measurement mode for your audio content. For music or advertisements: We recommend
             that you keep the default value, Program. For speech or other content: We recommend that you choose Anchor. When
             you do, MediaConvert optimizes the loudness of your output for clarify by applying speech gates.'
+        PassthroughControl:
+          $ref: '#/components/schemas/AacPassthroughControl'
+          description: When set to WHEN_POSSIBLE, input AAC audio will be passed through if it is present on the input. This
+            detection is dynamic over the life of the transcode. Inputs that alternate between AAC and non-AAC content will
+            have a consistent AAC output as the system alternates between passthrough and encoding.
         RapInterval:
           $ref: '#/components/schemas/__integerMin2000Max30000'
           description: 'Specify the RAP (Random Access Point) interval for your xHE-AAC audio output. A RAP allows a decoder
@@ -5583,6 +5546,14 @@ components:
       enum:
       - PROGRAM
       - ANCHOR
+    AacPassthroughControl:
+      description: When set to WHEN_POSSIBLE, input AAC audio will be passed through if it is present on the input. This detection
+        is dynamic over the life of the transcode. Inputs that alternate between AAC and non-AAC content will have a consistent
+        AAC output as the system alternates between passthrough and encoding.
+      type: string
+      enum:
+      - WHEN_POSSIBLE
+      - NO_PASSTHROUGH
     __integerMin2000Max30000:
       type: integer
       minimum: 2000
@@ -5918,9 +5889,9 @@ components:
       minimum: 8000
       maximum: 192000
     AudioCodec:
-      description: 'Choose the audio codec for this output. Note that the option Dolby Digital passthrough applies only to
-        Dolby Digital and Dolby Digital Plus audio inputs. Make sure that you choose a codec that''s supported with your output
-        container: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#reference-codecs-containers-output-audio
+      description: 'Choose the audio codec for this output. Note that the option passthrough applies only to Dolby Digital,
+        Dolby Digital Plus, AAC LC, AAC HEV1, and AAC HEV2 audio inputs. Make sure that you choose a codec that''s supported
+        with your output container: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#reference-codecs-containers-output-audio
         For audio-only outputs, make sure that both your input audio codec and your output audio codec are supported for audio-only
         workflows. For more information, see: https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers-input.html#reference-codecs-containers-input-audio-only
         and https://docs.aws.amazon.com/mediaconvert/latest/ug/reference-codecs-containers.html#audio-only-output'
@@ -7493,10 +7464,82 @@ components:
         For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
       type: object
       properties:
+        BackgroundColor:
+          $ref: '#/components/schemas/TtmlBackgroundColor'
+          description: Specify the color of the rectangle behind the captions. If Style passthrough is set to enabled, leave
+            blank or set to Auto to pass through the background color from your input captions. If Style passthrough is set
+            to disabled, leave blank or set to Auto to use the default black.
+        BackgroundOpacity:
+          $ref: '#/components/schemas/__integerMin0Max255'
+          description: Specify the opacity of the background rectangle. Enter a value from 0 to 255, where 0 is transparent
+            and 255 is opaque. If Style passthrough is set to enabled, leave blank to pass through the background style information
+            in your input captions to your output captions. If Style passthrough is set to disabled and backgroundColor is
+            set, leave blank to use a value of 255 (opaque).
+        FontColor:
+          $ref: '#/components/schemas/TtmlFontColor'
+          description: Specify the color of the captions text. If Style passthrough is set to enabled, leave blank or set
+            to Auto to pass through the font color from your input captions. If Style passthrough is set to disabled, leave
+            blank or set to Auto to use the default white.
+        FontOpacity:
+          $ref: '#/components/schemas/__integerMin0Max255'
+          description: Specify the opacity of the captions. Enter a value from 0 to 255, where 0 is transparent and 255 is
+            opaque. If Style passthrough is set to enabled, leave blank to pass through the font opacity information in your
+            input captions to your output captions. If Style passthrough is set to disabled and fontColor is set, leave blank
+            to use a value of 255 (opaque).
+        FontSize:
+          $ref: '#/components/schemas/__integerMin0Max96'
+          description: Specify the Font size in pixels. Must be a positive integer. Set to 0, or leave blank, for automatic
+            font size.
+        FontStyle:
+          $ref: '#/components/schemas/TtmlFontStyle'
+          description: Specify the font style of the caption text. If Style passthrough is set to enabled, leave blank to
+            pass through the font style from your input captions. If Style passthrough is set to disabled, leave blank to
+            use the default normal style.
+        FontWeight:
+          $ref: '#/components/schemas/TtmlFontWeight'
+          description: Specify the font weight of the caption text. If Style passthrough is set to enabled, leave blank to
+            pass through the font weight from your input captions. If Style passthrough is set to disabled, leave blank to
+            use the default normal weight.
         StylePassthrough:
           $ref: '#/components/schemas/TtmlStylePassthrough'
           description: Pass through style and position information from a TTML-like input source (TTML, IMSC, SMPTE-TT) to
             the TTML output.
+        TextDecoration:
+          $ref: '#/components/schemas/TtmlTextDecoration'
+          description: Specify the text decoration of the caption text. If Style passthrough is set to enabled, leave blank
+            to pass through the text decoration from your input captions. If Style passthrough is set to disabled, leave blank
+            to use the default of none.
+    TtmlBackgroundColor:
+      description: Specify the background color for TTML captions output.
+      type: string
+      enum:
+      - NONE
+      - BLACK
+      - WHITE
+      - AUTO
+    TtmlFontColor:
+      description: Specify the font color for TTML captions output.
+      type: string
+      enum:
+      - WHITE
+      - BLACK
+      - YELLOW
+      - RED
+      - GREEN
+      - BLUE
+      - AUTO
+    TtmlFontStyle:
+      description: Specify the font style for TTML captions output.
+      type: string
+      enum:
+      - NORMAL
+      - ITALIC
+    TtmlFontWeight:
+      description: Specify the font weight for TTML captions output.
+      type: string
+      enum:
+      - NORMAL
+      - BOLD
     TtmlStylePassthrough:
       description: Pass through style and position information from a TTML-like input source (TTML, IMSC, SMPTE-TT) to the
         TTML output.
@@ -7504,6 +7547,12 @@ components:
       enum:
       - ENABLED
       - DISABLED
+    TtmlTextDecoration:
+      description: Specify the text decoration for TTML captions output.
+      type: string
+      enum:
+      - NONE
+      - UNDERLINE
     WebvttDestinationSettings:
       description: Settings related to WebVTT captions. WebVTT is a sidecar format that holds captions in a file that is separate
         from the video container. Set up sidecar captions in the same output group, but different output from your video.
@@ -7694,7 +7743,9 @@ components:
           $ref: '#/components/schemas/CmfcScte35Source'
           description: Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if
             you want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you don't want
-            those SCTE-35 markers in this output.
+            those SCTE-35 markers in this output. When your input is an HLS manifest, choose Manifest cues to pass through
+            CUE markers in your HLS manifest as segment boundaries and SCTE-35 markers in this output at each EXT-X-CUE-OUT
+            splice point in the input manifest.
         SigningKmsKey:
           $ref: '#/components/schemas/__stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932'
           description: Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your MP4 output. Provide
@@ -7807,11 +7858,14 @@ components:
     CmfcScte35Source:
       description: Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if you
         want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you don't want those
-        SCTE-35 markers in this output.
+        SCTE-35 markers in this output. When your input is an HLS manifest, choose Manifest cues to pass through CUE markers
+        in your HLS manifest as segment boundaries and SCTE-35 markers in this output at each EXT-X-CUE-OUT splice point in
+        the input manifest.
       type: string
       enum:
       - PASSTHROUGH
       - NONE
+      - MANIFEST_CUES
     ? __stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932
     : type: string
       minLength: 1
@@ -8041,8 +8095,10 @@ components:
         Scte35Source:
           $ref: '#/components/schemas/M2tsScte35Source'
           description: For SCTE-35 markers from your input-- Choose Passthrough if you want SCTE-35 markers that appear in
-            your input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. For SCTE-35
-            markers from an ESAM XML document-- Choose None. Also provide the ESAM XML as a string in the setting Signal processing
+            your input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. When your
+            input is an HLS manifest, choose Manifest cues to pass through CUE markers in your HLS manifest as segment boundaries
+            and SCTE-35 markers in this output at each EXT-X-CUE-OUT splice point in the input manifest. For SCTE-35 markers
+            from an ESAM XML document-- Choose None. Also provide the ESAM XML as a string in the setting Signal processing
             notification XML. Also enable ESAM SCTE-35 (include the property scte35Esam).
         SegmentationMarkers:
           $ref: '#/components/schemas/M2tsSegmentationMarkers'
@@ -8291,13 +8347,16 @@ components:
           description: Packet Identifier (PID) of the SCTE-35 stream in the transport stream generated by ESAM.
     M2tsScte35Source:
       description: For SCTE-35 markers from your input-- Choose Passthrough if you want SCTE-35 markers that appear in your
-        input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. For SCTE-35 markers
-        from an ESAM XML document-- Choose None. Also provide the ESAM XML as a string in the setting Signal processing notification
+        input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. When your input
+        is an HLS manifest, choose Manifest cues to pass through CUE markers in your HLS manifest as segment boundaries and
+        SCTE-35 markers in this output at each EXT-X-CUE-OUT splice point in the input manifest. For SCTE-35 markers from
+        an ESAM XML document-- Choose None. Also provide the ESAM XML as a string in the setting Signal processing notification
         XML. Also enable ESAM SCTE-35 (include the property scte35Esam).
       type: string
       enum:
       - PASSTHROUGH
       - NONE
+      - MANIFEST_CUES
     M2tsSegmentationMarkers:
       description: Inserts segmentation markers at each segmentation_time period. rai_segstart sets the Random Access Indicator
         bit in the adaptation field. rai_adapt sets the RAI bit and adds the current timecode in the private data bytes. psi_segstart
@@ -8410,7 +8469,9 @@ components:
             your input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. For SCTE-35
             markers from an ESAM XML document-- Choose None if you don't want manifest conditioning. Choose Passthrough and
             choose Ad markers if you do want manifest conditioning. In both cases, also provide the ESAM XML as a string in
-            the setting Signal processing notification XML.
+            the setting Signal processing notification XML. For SCTE-35 markers from your input HLS manifest-- Choose Manifest
+            cues to pass through CUE markers in your HLS manifest as segment boundaries and SCTE-35 markers in this output
+            at each EXT-X-CUE-OUT splice point in the input manifest.
         TimedMetadata:
           $ref: '#/components/schemas/TimedMetadata'
           description: 'Set ID3 metadata to Passthrough to include ID3 metadata in this output. This includes ID3 metadata
@@ -8467,11 +8528,14 @@ components:
         input to also appear in this output. Choose None if you don't want SCTE-35 markers in this output. For SCTE-35 markers
         from an ESAM XML document-- Choose None if you don't want manifest conditioning. Choose Passthrough and choose Ad
         markers if you do want manifest conditioning. In both cases, also provide the ESAM XML as a string in the setting
-        Signal processing notification XML.
+        Signal processing notification XML. For SCTE-35 markers from your input HLS manifest-- Choose Manifest cues to pass
+        through CUE markers in your HLS manifest as segment boundaries and SCTE-35 markers in this output at each EXT-X-CUE-OUT
+        splice point in the input manifest.
       type: string
       enum:
       - PASSTHROUGH
       - NONE
+      - MANIFEST_CUES
     TimedMetadata:
       description: 'Set ID3 metadata to Passthrough to include ID3 metadata in this output. This includes ID3 metadata from
         the following features: ID3 timestamp period, and Custom ID3 metadata inserter. To exclude this ID3 metadata in this
@@ -8696,7 +8760,9 @@ components:
           $ref: '#/components/schemas/MpdScte35Source'
           description: Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if
             you want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you don't want
-            those SCTE-35 markers in this output.
+            those SCTE-35 markers in this output. When your input is an HLS manifest, choose Manifest cues to pass through
+            CUE markers in your HLS manifest as segment boundaries and SCTE-35 markers in this output at each EXT-X-CUE-OUT
+            splice point in the input manifest.
         SigningKmsKey:
           $ref: '#/components/schemas/__stringMin1PatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932'
           description: Specify the ID or ARN of the AWS KMS key used to sign the C2PA manifest in your MP4 output. Provide
@@ -8790,11 +8856,14 @@ components:
     MpdScte35Source:
       description: Ignore this setting unless you have SCTE-35 markers in your input video file. Choose Passthrough if you
         want SCTE-35 markers that appear in your input to also appear in this output. Choose None if you don't want those
-        SCTE-35 markers in this output.
+        SCTE-35 markers in this output. When your input is an HLS manifest, choose Manifest cues to pass through CUE markers
+        in your HLS manifest as segment boundaries and SCTE-35 markers in this output at each EXT-X-CUE-OUT splice point in
+        the input manifest.
       type: string
       enum:
       - PASSTHROUGH
       - NONE
+      - MANIFEST_CUES
     MpdTimedMetadata:
       description: 'To include ID3 metadata in this output: Set ID3 metadata to Passthrough. Specify this ID3 metadata in
         Custom ID3 metadata inserter. MediaConvert writes each instance of ID3 metadata in a separate Event Message (eMSG)
@@ -12655,10 +12724,35 @@ components:
       description: Required when you set Profile to the value XAVC_HD_INTRA_CBG.
       type: object
       properties:
+        InterlaceMode:
+          $ref: '#/components/schemas/XavcInterlaceMode'
+          description: Choose the scan line type for the output. Keep the default value, Progressive to create a progressive
+            output, regardless of the scan type of your input. Use Top field first or Bottom field first to create an output
+            that's interlaced with the same field polarity throughout. Use Follow, default top or Follow, default bottom to
+            produce outputs with the same field polarity as the source. For jobs that have multiple inputs, the output field
+            polarity might change over the course of the output. Follow behavior depends on the input scan type. If the source
+            is interlaced, the output will be interlaced with the same polarity as the source. If the source is progressive,
+            the output will be interlaced with top field bottom field first, depending on which of the Follow options you
+            choose.
         XavcClass:
           $ref: '#/components/schemas/XavcHdIntraCbgProfileClass'
           description: Specify the XAVC Intra HD (CBG) Class to set the bitrate of your output. Outputs of the same class
             have similar image quality over the operating points that are valid for that class.
+    XavcInterlaceMode:
+      description: Choose the scan line type for the output. Keep the default value, Progressive to create a progressive output,
+        regardless of the scan type of your input. Use Top field first or Bottom field first to create an output that's interlaced
+        with the same field polarity throughout. Use Follow, default top or Follow, default bottom to produce outputs with
+        the same field polarity as the source. For jobs that have multiple inputs, the output field polarity might change
+        over the course of the output. Follow behavior depends on the input scan type. If the source is interlaced, the output
+        will be interlaced with the same polarity as the source. If the source is progressive, the output will be interlaced
+        with top field bottom field first, depending on which of the Follow options you choose.
+      type: string
+      enum:
+      - PROGRESSIVE
+      - TOP_FIELD
+      - BOTTOM_FIELD
+      - FOLLOW_TOP_FIELD
+      - FOLLOW_BOTTOM_FIELD
     XavcHdIntraCbgProfileClass:
       description: Specify the XAVC Intra HD (CBG) Class to set the bitrate of your output. Outputs of the same class have
         similar image quality over the operating points that are valid for that class.
@@ -12732,21 +12826,6 @@ components:
       - BITRATE_CLASS_25
       - BITRATE_CLASS_35
       - BITRATE_CLASS_50
-    XavcInterlaceMode:
-      description: Choose the scan line type for the output. Keep the default value, Progressive to create a progressive output,
-        regardless of the scan type of your input. Use Top field first or Bottom field first to create an output that's interlaced
-        with the same field polarity throughout. Use Follow, default top or Follow, default bottom to produce outputs with
-        the same field polarity as the source. For jobs that have multiple inputs, the output field polarity might change
-        over the course of the output. Follow behavior depends on the input scan type. If the source is interlaced, the output
-        will be interlaced with the same polarity as the source. If the source is progressive, the output will be interlaced
-        with top field bottom field first, depending on which of the Follow options you choose.
-      type: string
-      enum:
-      - PROGRESSIVE
-      - TOP_FIELD
-      - BOTTOM_FIELD
-      - FOLLOW_TOP_FIELD
-      - FOLLOW_BOTTOM_FIELD
     XavcHdProfileQualityTuningLevel:
       description: Optional. Use Quality tuning level to choose how you want to trade off encoding speed for output video
         quality. The default behavior is faster, lower quality, single-pass encoding.
@@ -14385,16 +14464,6 @@ components:
         Value:
           $ref: '#/components/schemas/__string'
           description: The value of the setting that you configured, prior to any overrides that MediaConvert has applied.
-    CreateResourceShareResponse:
-      type: object
-    DeleteJobTemplateResponse:
-      type: object
-    DeletePolicyResponse:
-      type: object
-    DeletePresetResponse:
-      type: object
-    DeleteQueueResponse:
-      type: object
     DescribeEndpointsMode:
       description: Optional field, defaults to DEFAULT. Specify DEFAULT for this operation to return your endpoints if any
         exist, or to create an endpoint for you and return it if one doesn't already exist. Specify GET_ONLY to return your
@@ -14423,8 +14492,6 @@ components:
         Url:
           $ref: '#/components/schemas/__string'
           description: URL of endpoint
-    DisassociateCertificateResponse:
-      type: object
     GetJobResponse:
       type: object
       properties:
@@ -14690,8 +14757,8 @@ components:
         Format:
           $ref: '#/components/schemas/Format'
           description: 'The format of your media file. For example: MP4, QuickTime (MOV), Matroska (MKV), WebM, MXF, Wave,
-            AVI, MPEG-TS, MPEG-PS, or MP3. Note that this will be blank if your media file has a format that the MediaConvert
-            Probe operation does not recognize.'
+            AVI, MPEG-TS, MPEG-PS, MP3, FLAC, ASF (Windows Media / WMA), or OGG. Note that this will be blank if your media
+            file has a format that the MediaConvert Probe operation does not recognize.'
         StartTimecode:
           $ref: '#/components/schemas/__string'
           description: The start timecode of the media file, in HH:MM:SS:FF format (or HH:MM:SS;FF for drop frame timecode).
@@ -14718,6 +14785,9 @@ components:
       - mpegts
       - mpegps
       - mp3
+      - flac
+      - asf
+      - ogg
     __listOfTrack:
       type: array
       items:
@@ -14757,6 +14827,10 @@ components:
         BitRate:
           $ref: '#/components/schemas/__long'
           description: The bit rate of the audio track, in bits per second.
+        ChannelLayout:
+          $ref: '#/components/schemas/__string'
+          description: The audio channel layout of the track, such as "mono", "stereo", "5.1", or "7.1". Object-based or immersive
+            audio is reported as "5.1.4" or "7.1.4".
         Channels:
           $ref: '#/components/schemas/__integer'
           description: The number of audio channels in the audio track.
@@ -14793,6 +14867,7 @@ components:
       - UNKNOWN
       - AAC
       - AC3
+      - AMR
       - EAC3
       - FLAC
       - MP2
@@ -14800,8 +14875,13 @@ components:
       - OPUS
       - PCM
       - VORBIS
+      - WMA
+      - WMA2
+      - WMAPRO
       - AV1
       - AVC
+      - DV
+      - H263
       - HEVC
       - JPEG2000
       - MJPEG
@@ -14812,6 +14892,8 @@ components:
       - QTRLE
       - THEORA
       - UNCOMPRESSED
+      - VC1
+      - VC3
       - VFW
       - VP8
       - VP9
@@ -14852,6 +14934,16 @@ components:
           $ref: '#/components/schemas/ColorPrimaries'
           description: The color space primaries of the video track, defining the red, green, and blue color coordinates used
             for the video. This information helps ensure accurate color reproduction during playback and transcoding.
+        DisplayAspectRatio:
+          $ref: '#/components/schemas/AspectRatio'
+          description: An aspect ratio expressed as a fraction with numerator and denominator values, reduced to lowest terms.
+            Used for the sample (pixel) aspect ratio and the display aspect ratio of a video track. For example, a 720x576
+            anamorphic track has a sample aspect ratio of 64 / 45 and a display aspect ratio of 16 / 9. A video track can
+            declare an aspect ratio in two independent places, and MediaConvert reports each one where it was found rather
+            than choosing between them. The ratio declared by the container appears on the video track itself, and the ratio
+            declared by the video essence appears under codecMetadata. When a file declares an aspect ratio in only one of
+            the two places, the other is null; when it declares both and they disagree, you can compare them and decide which
+            to use.
         FrameRate:
           $ref: '#/components/schemas/FrameRate'
           description: The frame rate of the video or audio track, expressed as a fraction with numerator and denominator
@@ -14873,6 +14965,16 @@ components:
             (e.g. the MP4 tkhd transformation matrix or the Matroska ProjectionPoseRoll element). Common values are 90, 180,
             and 270. This field is null when no rotation metadata is present or when the rotation is 0 degrees. For MP4, non-standard
             transformation matrices also yield null.
+        SampleAspectRatio:
+          $ref: '#/components/schemas/AspectRatio'
+          description: An aspect ratio expressed as a fraction with numerator and denominator values, reduced to lowest terms.
+            Used for the sample (pixel) aspect ratio and the display aspect ratio of a video track. For example, a 720x576
+            anamorphic track has a sample aspect ratio of 64 / 45 and a display aspect ratio of 16 / 9. A video track can
+            declare an aspect ratio in two independent places, and MediaConvert reports each one where it was found rather
+            than choosing between them. The ratio declared by the container appears on the video track itself, and the ratio
+            declared by the video essence appears under codecMetadata. When a file declares an aspect ratio in only one of
+            the two places, the other is null; when it declares both and they disagree, you can compare them and decide which
+            to use.
         TransferCharacteristics:
           $ref: '#/components/schemas/TransferCharacteristics'
           description: The color space transfer characteristics of the video track, defining the relationship between linear
@@ -14907,12 +15009,31 @@ components:
         ContentLightLevel:
           $ref: '#/components/schemas/ContentLightLevel'
           description: Content light level information (CTA-861.3). Describes the light level characteristics of the content.
+        DisplayAspectRatio:
+          $ref: '#/components/schemas/AspectRatio'
+          description: An aspect ratio expressed as a fraction with numerator and denominator values, reduced to lowest terms.
+            Used for the sample (pixel) aspect ratio and the display aspect ratio of a video track. For example, a 720x576
+            anamorphic track has a sample aspect ratio of 64 / 45 and a display aspect ratio of 16 / 9. A video track can
+            declare an aspect ratio in two independent places, and MediaConvert reports each one where it was found rather
+            than choosing between them. The ratio declared by the container appears on the video track itself, and the ratio
+            declared by the video essence appears under codecMetadata. When a file declares an aspect ratio in only one of
+            the two places, the other is null; when it declares both and they disagree, you can compare them and decide which
+            to use.
+        DolbyVision:
+          $ref: '#/components/schemas/DolbyVisionMetadata'
+          description: 'Dolby Vision characteristics of the video track: the profile and level, and whether the RPU (dynamic
+            metadata), base layer, and enhancement layer are present. Use this to distinguish Dolby Vision content from standard
+            HEVC and to choose your encoding or passthrough settings. Omitted when the content is not Dolby Vision.'
         FieldOrder:
           $ref: '#/components/schemas/__string'
           description: The field order of interlaced video, which indicates whether the top or bottom field is displayed first.
             Use this to select the correct deinterlacing behavior. One of "TopFieldFirst" or "BottomFieldFirst". This field
             is present only for interlaced video; it is omitted for progressive video and when the field order is not indicated
             by the source.
+        Hdr10PlusPresence:
+          $ref: '#/components/schemas/Hdr10PlusPresence'
+          description: Indicates that HDR10+ (SMPTE ST 2094-40) dynamic metadata was detected in the HEVC bitstream. Present
+            only when detected.
         Height:
           $ref: '#/components/schemas/__integer'
           description: The height in pixels as coded by the codec. This represents the actual encoded video height as specified
@@ -14935,6 +15056,16 @@ components:
           description: The clockwise rotation angle of the video, in degrees, as specified in the codec bitstream via a Display
             Orientation SEI message (payload type 47 for both H.264 and H.265). This field is null when the video essence
             does not contain a Display Orientation SEI message or when the rotation is 0 degrees.
+        SampleAspectRatio:
+          $ref: '#/components/schemas/AspectRatio'
+          description: An aspect ratio expressed as a fraction with numerator and denominator values, reduced to lowest terms.
+            Used for the sample (pixel) aspect ratio and the display aspect ratio of a video track. For example, a 720x576
+            anamorphic track has a sample aspect ratio of 64 / 45 and a display aspect ratio of 16 / 9. A video track can
+            declare an aspect ratio in two independent places, and MediaConvert reports each one where it was found rather
+            than choosing between them. The ratio declared by the container appears on the video track itself, and the ratio
+            declared by the video essence appears under codecMetadata. When a file declares an aspect ratio in only one of
+            the two places, the other is null; when it declares both and they disagree, you can compare them and decide which
+            to use.
         ScanType:
           $ref: '#/components/schemas/__string'
           description: The scanning method specified in the video essence, indicating whether the video uses progressive or
@@ -14978,6 +15109,58 @@ components:
         MaxFrameAverageLightLevel:
           $ref: '#/components/schemas/__integer'
           description: Maximum frame-average light level (MaxFALL), in cd/m².
+    AspectRatio:
+      description: An aspect ratio expressed as a fraction with numerator and denominator values, reduced to lowest terms.
+        Used for the sample (pixel) aspect ratio and the display aspect ratio of a video track. For example, a 720x576 anamorphic
+        track has a sample aspect ratio of 64 / 45 and a display aspect ratio of 16 / 9. A video track can declare an aspect
+        ratio in two independent places, and MediaConvert reports each one where it was found rather than choosing between
+        them. The ratio declared by the container appears on the video track itself, and the ratio declared by the video essence
+        appears under codecMetadata. When a file declares an aspect ratio in only one of the two places, the other is null;
+        when it declares both and they disagree, you can compare them and decide which to use.
+      type: object
+      properties:
+        Denominator:
+          $ref: '#/components/schemas/__integer'
+          description: The denominator, or bottom number, in the fractional aspect ratio. For example, for a display aspect
+            ratio of 16 / 9, the denominator would be 9.
+        Numerator:
+          $ref: '#/components/schemas/__integer'
+          description: The numerator, or top number, in the fractional aspect ratio. For example, for a display aspect ratio
+            of 16 / 9, the numerator would be 16.
+    DolbyVisionMetadata:
+      description: 'Dolby Vision characteristics of the video track: the profile and level, and whether the RPU (dynamic metadata),
+        base layer, and enhancement layer are present. Use this to distinguish Dolby Vision content from standard HEVC and
+        to choose your encoding or passthrough settings. Omitted when the content is not Dolby Vision.'
+      type: object
+      properties:
+        BaseLayer:
+          $ref: '#/components/schemas/DolbyVisionPresence'
+          description: Whether a Dolby Vision component is present in the track.
+        EnhancementLayer:
+          $ref: '#/components/schemas/DolbyVisionPresence'
+          description: Whether a Dolby Vision component is present in the track.
+        Level:
+          $ref: '#/components/schemas/__integer'
+          description: The Dolby Vision level, which indicates the maximum resolution and frame rate.
+        Profile:
+          $ref: '#/components/schemas/__integer'
+          description: The Dolby Vision profile, for example 5, 7, or 8. The profile determines the layer structure and playback
+            compatibility of the content.
+        Rpu:
+          $ref: '#/components/schemas/DolbyVisionPresence'
+          description: Whether a Dolby Vision component is present in the track.
+    DolbyVisionPresence:
+      description: Whether a Dolby Vision component is present in the track.
+      type: string
+      enum:
+      - PRESENT
+      - ABSENT
+    Hdr10PlusPresence:
+      description: Indicates that HDR10+ (SMPTE ST 2094-40) dynamic metadata was detected in the HEVC bitstream. Present only
+        when detected.
+      type: string
+      enum:
+      - PRESENT
     MatrixCoefficients:
       description: The color space matrix coefficients of the video track, defining how RGB color values are converted to
         and from YUV color space. This affects color accuracy during encoding and decoding processes.
@@ -15145,7 +15328,8 @@ components:
             - The Job engine version that your job used. This may differ from the version that you requested. Valid versions
             are in a YYYY-MM-DD format. * audioCodec - Your output''s audio codec. (AAC | MP2 | MP3 | WAV | AIFF | AC3| EAC3
             | EAC3_ATMOS | VORBIS | OPUS | PASSTHROUGH | FLAC) * videoCodec - Your output''s video codec. (AV1 | AVC_INTRA
-            | FRAME_CAPTURE | H_264 | H_265 | MPEG2 | PASSTHROUGH | PRORES | UNCOMPRESSED | VC3 | VP8 | VP9 | XAVC)'
+            | FRAME_CAPTURE | H_264 | H_265 | MPEG2 | PASSTHROUGH | PRORES | UNCOMPRESSED | VC3 | VP8 | VP9 | XAVC) * errorCode
+            - The error code that your job failed with. For example, 1010. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/mediaconvert_error_codes.html'
         Values:
           $ref: '#/components/schemas/__listOf__stringMax100'
           description: A list of values associated with a JobsQueryFilterKey.
@@ -15158,7 +15342,8 @@ components:
         - The Job engine version that your job used. This may differ from the version that you requested. Valid versions are
         in a YYYY-MM-DD format. * audioCodec - Your output''s audio codec. (AAC | MP2 | MP3 | WAV | AIFF | AC3| EAC3 | EAC3_ATMOS
         | VORBIS | OPUS | PASSTHROUGH | FLAC) * videoCodec - Your output''s video codec. (AV1 | AVC_INTRA | FRAME_CAPTURE
-        | H_264 | H_265 | MPEG2 | PASSTHROUGH | PRORES | UNCOMPRESSED | VC3 | VP8 | VP9 | XAVC)'
+        | H_264 | H_265 | MPEG2 | PASSTHROUGH | PRORES | UNCOMPRESSED | VC3 | VP8 | VP9 | XAVC) * errorCode - The error code
+        that your job failed with. For example, 1010. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/mediaconvert_error_codes.html'
       type: string
       enum:
       - queue
@@ -15168,6 +15353,7 @@ components:
       - jobEngineVersionUsed
       - audioCodec
       - videoCodec
+      - errorCode
     __listOf__stringMax100:
       type: array
       items:
@@ -15181,10 +15367,6 @@ components:
         Id:
           $ref: '#/components/schemas/__string'
           description: The ID of the jobs query.
-    TagResourceResponse:
-      type: object
-    UntagResourceResponse:
-      type: object
     UpdateJobTemplateResponse:
       type: object
       properties:

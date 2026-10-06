@@ -147,10 +147,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ModifyReportDefinitionResponse"
   /PutReportDefinition:
     post:
       operationId: PutReportDefinition
@@ -183,10 +179,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutReportDefinitionResponse"
   /TagResource:
     post:
       operationId: TagResource
@@ -219,10 +211,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -256,10 +244,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -539,19 +523,10 @@ components:
       minLength: 0
       maxLength: 256
       pattern: .*
-    ModifyReportDefinitionResponse:
-      type: object
-    PutReportDefinitionResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     report_definitions:
       id: aws.cur.report_definitions
@@ -597,7 +572,6 @@ components:
             $ref: "#/paths/~1ModifyReportDefinition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -610,7 +584,6 @@ components:
             $ref: "#/paths/~1PutReportDefinition/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -651,7 +624,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -664,7 +636,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -55,10 +55,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMemberToFarmResponse"
     delete:
       operationId: DisassociateMemberFromFarm
       description: Disassociates a member from a farm.
@@ -78,10 +74,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberFromFarmResponse"
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/members/{principal_id}:
     put:
       operationId: AssociateMemberToFleet
@@ -127,10 +119,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMemberToFleetResponse"
     delete:
       operationId: DisassociateMemberFromFleet
       description: Disassociates a member from a fleet.
@@ -156,10 +144,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberFromFleetResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/members/{principal_id}:
     put:
       operationId: AssociateMemberToJob
@@ -211,10 +195,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMemberToJobResponse"
     delete:
       operationId: DisassociateMemberFromJob
       description: Disassociates a member from a job.
@@ -246,10 +226,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberFromJobResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/members/{principal_id}:
     put:
       operationId: AssociateMemberToQueue
@@ -295,10 +271,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateMemberToQueueResponse"
     delete:
       operationId: DisassociateMemberFromQueue
       description: Disassociates a member from a queue.
@@ -324,10 +296,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberFromQueueResponse"
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/read-roles:
     get:
       operationId: AssumeFleetRoleForRead
@@ -1504,10 +1472,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateQueueFleetAssociationResponse"
     get:
       operationId: ListQueueFleetAssociations
       description: Lists queue-fleet associations.
@@ -1577,10 +1541,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateQueueLimitAssociationResponse"
     get:
       operationId: ListQueueLimitAssociations
       description: Gets a list of the associations between queues and limits defined in a farm.
@@ -1787,10 +1747,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBudgetResponse"
     get:
       operationId: GetBudget
       description: Get a budget.
@@ -1860,10 +1816,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateBudgetResponse"
   /2023-10-12/farms/{farm_id}:
     delete:
       operationId: DeleteFarm
@@ -1878,10 +1830,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFarmResponse"
     get:
       operationId: GetFarm
       description: Get a farm.
@@ -1925,10 +1873,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFarmResponse"
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}:
     delete:
       operationId: DeleteFleet
@@ -1955,10 +1899,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFleetResponse"
     get:
       operationId: GetFleet
       description: Get a fleet.
@@ -2028,10 +1968,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateFleetResponse"
   /2023-10-12/license-endpoints/{license_endpoint_id}:
     delete:
       operationId: DeleteLicenseEndpoint
@@ -2046,10 +1982,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLicenseEndpointResponse"
     get:
       operationId: GetLicenseEndpoint
       description: Gets a licence endpoint.
@@ -2087,10 +2019,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLimitResponse"
     get:
       operationId: GetLimit
       description: Gets information about a specific limit.
@@ -2146,10 +2074,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLimitResponse"
   /2023-10-12/license-endpoints/{license_endpoint_id}/metered-products/{product_id}:
     delete:
       operationId: DeleteMeteredProduct
@@ -2170,10 +2094,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMeteredProductResponse"
     put:
       operationId: PutMeteredProduct
       description: Adds a metered product.
@@ -2193,10 +2113,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutMeteredProductResponse"
   /2023-10-12/monitors/{monitor_id}:
     delete:
       operationId: DeleteMonitor
@@ -2211,10 +2127,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMonitorResponse"
     get:
       operationId: GetMonitor
       description: Gets information about the specified monitor.
@@ -2258,10 +2170,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMonitorResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}:
     delete:
       operationId: DeleteQueue
@@ -2282,10 +2190,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueueResponse"
     get:
       operationId: GetQueue
       description: Gets a queue.
@@ -2363,10 +2267,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateQueueResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/environments/{queue_environment_id}:
     delete:
       operationId: DeleteQueueEnvironment
@@ -2393,10 +2293,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueueEnvironmentResponse"
     get:
       operationId: GetQueueEnvironment
       description: Gets a queue environment.
@@ -2470,10 +2366,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateQueueEnvironmentResponse"
   /2023-10-12/farms/{farm_id}/queue-fleet-associations/{queue_id}/{fleet_id}:
     delete:
       operationId: DeleteQueueFleetAssociation
@@ -2500,10 +2392,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueueFleetAssociationResponse"
     get:
       operationId: GetQueueFleetAssociation
       description: Gets a queue-fleet association.
@@ -2569,10 +2457,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateQueueFleetAssociationResponse"
   /2023-10-12/farms/{farm_id}/queue-limit-associations/{queue_id}/{limit_id}:
     delete:
       operationId: DeleteQueueLimitAssociation
@@ -2599,10 +2483,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteQueueLimitAssociationResponse"
     get:
       operationId: GetQueueLimitAssociation
       description: Gets information about a specific association between a queue and a limit.
@@ -2668,10 +2548,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateQueueLimitAssociationResponse"
   /2023-10-12/farms/{farm_id}/storage-profiles/{storage_profile_id}:
     delete:
       operationId: DeleteStorageProfile
@@ -2692,10 +2568,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteStorageProfileResponse"
     get:
       operationId: GetStorageProfile
       description: Gets a storage profile.
@@ -2759,10 +2631,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStorageProfileResponse"
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/volumes/{volume_id}:
     delete:
       operationId: DeleteVolume
@@ -2789,10 +2657,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVolumeResponse"
     get:
       operationId: GetVolume
       description: Gets a persistent volume.
@@ -2848,10 +2712,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWorkerResponse"
     get:
       operationId: GetWorker
       description: Gets a worker.
@@ -3007,10 +2867,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateJobResponse"
   /2023-10-12/monitors/{monitor_id}/settings:
     get:
       operationId: GetMonitorSettings
@@ -3053,10 +2909,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMonitorSettingsResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/sessions/{session_id}:
     get:
       operationId: GetSession
@@ -3141,10 +2993,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSessionResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/session-actions/{session_action_id}:
     get:
       operationId: GetSessionAction
@@ -3345,10 +3193,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateStepResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/storage-profiles/{storage_profile_id}:
     get:
       operationId: GetStorageProfileForQueue
@@ -3475,10 +3319,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTaskResponse"
   /2023-10-12/metered-products:
     get:
       operationId: ListAvailableMeteredProducts
@@ -4071,10 +3911,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource using the resource's ARN and tag to remove.
@@ -4094,10 +3930,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}/tasks:
     get:
       operationId: ListTasks
@@ -4452,23 +4284,15 @@ components:
       minLength: 1
       maxLength: 25
       pattern: "[a-z0-9-]+"
-    AssociateMemberToFarmResponse:
-      type: object
     FleetId:
       type: string
       pattern: fleet-[0-9a-f]{32}
-    AssociateMemberToFleetResponse:
-      type: object
     QueueId:
       type: string
       pattern: queue-[0-9a-f]{32}
     JobId:
       type: string
       pattern: job-[0-9a-f]{32}
-    AssociateMemberToJobResponse:
-      type: object
-    AssociateMemberToQueueResponse:
-      type: object
     AssumeFleetRoleForReadResponse:
       description: Shared response body for AssumeRole operations where credentials are required. AssumeQueueRoleForWorkerResponse is excluded because credentials is optional there because Queue.roleArn is optional, so the mixin's @required trait would be incorrect.
       type: object
@@ -7481,10 +7305,6 @@ components:
     QueueEnvironmentId:
       type: string
       pattern: queueenv-[0-9a-f]{32}
-    CreateQueueFleetAssociationResponse:
-      type: object
-    CreateQueueLimitAssociationResponse:
-      type: object
     StorageProfileOperatingSystemFamily:
       type: string
       enum:
@@ -7548,48 +7368,12 @@ components:
           description: The worker ID.
       required:
         - workerId
-    DeleteBudgetResponse:
-      type: object
-    DeleteFarmResponse:
-      type: object
-    DeleteFleetResponse:
-      type: object
-    DeleteLicenseEndpointResponse:
-      type: object
-    DeleteLimitResponse:
-      type: object
     MeteredProductId:
       type: string
       pattern: "[0-9a-z]{1,32}-[.0-9a-z]{1,32}"
-    DeleteMeteredProductResponse:
-      type: object
-    DeleteMonitorResponse:
-      type: object
-    DeleteQueueResponse:
-      type: object
-    DeleteQueueEnvironmentResponse:
-      type: object
-    DeleteQueueFleetAssociationResponse:
-      type: object
-    DeleteQueueLimitAssociationResponse:
-      type: object
-    DeleteStorageProfileResponse:
-      type: object
     VolumeId:
       type: string
       pattern: volume-[0-9a-f]{32}
-    DeleteVolumeResponse:
-      type: object
-    DeleteWorkerResponse:
-      type: object
-    DisassociateMemberFromFarmResponse:
-      type: object
-    DisassociateMemberFromFleetResponse:
-      type: object
-    DisassociateMemberFromJobResponse:
-      type: object
-    DisassociateMemberFromQueueResponse:
-      type: object
     GetBudgetResponse:
       description: Mixin that adds an optional ARN field to response structures. Apply to SummaryMixins (flows into Get, Summary, and BatchGet) and Create outputs.
       type: object
@@ -10162,8 +9946,6 @@ components:
         - status
         - createdAt
         - createdBy
-    PutMeteredProductResponse:
-      type: object
     SearchGroupedFilterExpressions:
       description: The search terms for a resource.
       type: object
@@ -10773,14 +10555,10 @@ components:
           description: A unique identifier for the aggregated statistics. Use this identifier with the GetAggregatedStatisticsForSessions operation to return the statistics.
       required:
         - aggregationId
-    TagResourceResponse:
-      type: object
     StringList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     BudgetActionsToRemove:
       type: array
       items:
@@ -10798,51 +10576,21 @@ components:
       required:
         - type_
         - thresholdPercentage
-    UpdateBudgetResponse:
-      type: object
-    UpdateFarmResponse:
-      type: object
-    UpdateFleetResponse:
-      type: object
-    UpdateJobResponse:
-      type: object
-    UpdateLimitResponse:
-      type: object
-    UpdateMonitorResponse:
-      type: object
     SettingsMap:
       type: object
       properties: {}
-    UpdateMonitorSettingsResponse:
-      type: object
-    UpdateQueueResponse:
-      type: object
-    UpdateQueueEnvironmentResponse:
-      type: object
     UpdateQueueFleetAssociationStatus:
       type: string
       enum:
         - ACTIVE
         - STOP_SCHEDULING_AND_COMPLETE_TASKS
         - STOP_SCHEDULING_AND_CANCEL_TASKS
-    UpdateQueueFleetAssociationResponse:
-      type: object
     UpdateQueueLimitAssociationStatus:
       type: string
       enum:
         - ACTIVE
         - STOP_LIMIT_USAGE_AND_COMPLETE_TASKS
         - STOP_LIMIT_USAGE_AND_CANCEL_TASKS
-    UpdateQueueLimitAssociationResponse:
-      type: object
-    UpdateSessionResponse:
-      type: object
-    UpdateStepResponse:
-      type: object
-    UpdateStorageProfileResponse:
-      type: object
-    UpdateTaskResponse:
-      type: object
     UpdatedWorkerStatus:
       type: string
       enum:
@@ -10947,7 +10695,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1members~1{principal_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -10958,7 +10705,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         create_farm:
           operation:
             $ref: "#/paths/~12023-10-12~1farms/post"
@@ -10992,7 +10738,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_farm:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/get"
@@ -11004,7 +10749,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11032,7 +10776,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1members~1{principal_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11043,7 +10786,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         assume_fleet_role_for_read:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1read-roles/get"
@@ -11083,7 +10825,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_fleet:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/get"
@@ -11095,7 +10836,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11123,7 +10863,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1members~1{principal_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11134,10 +10873,20 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         batch_get_job:
           operation:
             $ref: "#/paths/~12023-10-12~1batch-get-job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_job:
+          operation:
+            $ref: "#/paths/~12023-10-12~1batch-update-job/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -11196,7 +10945,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11236,7 +10984,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11247,7 +10994,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         assume_queue_role_for_read:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1read-roles/get"
@@ -11293,7 +11039,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_queue:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/get"
@@ -11305,7 +11050,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11384,7 +11128,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_worker:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/get"
@@ -11485,7 +11228,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1sessions~1{session_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11519,10 +11261,28 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        list_sessions_for_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1sessions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.sessions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
           - $ref: "#/components/x-stackQL-resources/sessions/methods/list_sessions"
+          - $ref: "#/components/x-stackQL-resources/sessions/methods/list_sessions_for_worker"
           - $ref: "#/components/x-stackQL-resources/sessions/methods/batch_get_session"
         insert: []
         update:
@@ -11602,7 +11362,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1steps~1{step_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11662,6 +11421,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_update_task:
+          operation:
+            $ref: "#/paths/~12023-10-12~1batch-update-task/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_task:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1steps~1{step_id}~1tasks~1{task_id}/get"
@@ -11673,7 +11443,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1steps~1{step_id}~1tasks~1{task_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11755,7 +11524,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1budgets~1{budget_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_budget:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1budgets~1{budget_id}/get"
@@ -11767,7 +11535,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1budgets~1{budget_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11821,7 +11588,6 @@ components:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_license_endpoint:
           operation:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}/get"
@@ -11875,7 +11641,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1limits~1{limit_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_limit:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1limits~1{limit_id}/get"
@@ -11887,7 +11652,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1limits~1{limit_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -11941,7 +11705,6 @@ components:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_monitor:
           operation:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}/get"
@@ -11953,7 +11716,6 @@ components:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12007,7 +11769,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1environments~1{queue_environment_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_queue_environment:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1environments~1{queue_environment_id}/get"
@@ -12019,7 +11780,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1environments~1{queue_environment_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12045,7 +11805,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12073,7 +11832,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations~1{queue_id}~1{fleet_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_queue_fleet_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations~1{queue_id}~1{fleet_id}/get"
@@ -12085,7 +11843,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations~1{queue_id}~1{fleet_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12111,7 +11868,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12139,7 +11895,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations~1{queue_id}~1{limit_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_queue_limit_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations~1{queue_id}~1{limit_id}/get"
@@ -12151,7 +11906,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations~1{queue_id}~1{limit_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12205,7 +11959,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1storage-profiles~1{storage_profile_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_storage_profile:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1storage-profiles~1{storage_profile_id}/get"
@@ -12217,15 +11970,39 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1storage-profiles~1{storage_profile_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_storage_profile_for_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1storage-profiles~1{storage_profile_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_storage_profiles_for_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1storage-profiles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.storageProfiles
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/storage_profiles/methods/get_storage_profile_for_queue"
           - $ref: "#/components/x-stackQL-resources/storage_profiles/methods/get_storage_profile"
+          - $ref: "#/components/x-stackQL-resources/storage_profiles/methods/list_storage_profiles_for_queue"
           - $ref: "#/components/x-stackQL-resources/storage_profiles/methods/list_storage_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/storage_profiles/methods/create_storage_profile"
@@ -12243,13 +12020,11 @@ components:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}~1metered-products~1{product_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         put_metered_product:
           operation:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}~1metered-products~1{product_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_metered_products:
           operation:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}~1metered-products/get"
@@ -12286,7 +12061,6 @@ components:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1volumes~1{volume_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_volume:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1volumes~1{volume_id}/get"
@@ -12334,7 +12108,6 @@ components:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}~1settings/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12372,23 +12145,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions_statistics_aggregations/methods/get_sessions_statistics_aggregation"
-        insert: []
-        update: []
-        delete: []
-    storage_profile_for_queues:
-      id: aws.deadline.storage_profile_for_queues
-      name: storage_profile_for_queues
-      title: storage_profile_for_queues
-      methods:
-        get_storage_profile_for_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1storage-profiles~1{storage_profile_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/storage_profile_for_queues/methods/get_storage_profile_for_queue"
         insert: []
         update: []
         delete: []
@@ -12566,34 +12322,6 @@ components:
         insert: []
         update: []
         delete: []
-    sessions_for_workers:
-      id: aws.deadline.sessions_for_workers
-      name: sessions_for_workers
-      title: sessions_for_workers
-      methods:
-        list_sessions_for_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1sessions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.sessions
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sessions_for_workers/methods/list_sessions_for_worker"
-        insert: []
-        update: []
-        delete: []
     step_consumers:
       id: aws.deadline.step_consumers
       name: step_consumers
@@ -12650,34 +12378,6 @@ components:
         insert: []
         update: []
         delete: []
-    storage_profiles_for_queues:
-      id: aws.deadline.storage_profiles_for_queues
-      name: storage_profiles_for_queues
-      title: storage_profiles_for_queues
-      methods:
-        list_storage_profiles_for_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1storage-profiles/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.storageProfiles
-          request:
-            nativeCasing: pascal
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: query
-              responseToken:
-                key: $.nextToken
-                location: body
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/storage_profiles_for_queues/methods/list_storage_profiles_for_queue"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.deadline.tags
       name: tags
@@ -12694,7 +12394,6 @@ components:
             $ref: "#/paths/~12023-10-12~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -12705,7 +12404,6 @@ components:
             $ref: "#/paths/~12023-10-12~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

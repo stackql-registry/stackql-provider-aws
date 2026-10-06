@@ -318,10 +318,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteClusterResponse'
       x-stackql-resource: clusters
       x-stackql-method: delete_cluster
       x-stackql-verb: DELETE
@@ -361,10 +357,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteControlPanelResponse'
       x-stackql-resource: control_panels
       x-stackql-method: delete_control_panel
       x-stackql-verb: DELETE
@@ -403,10 +395,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRoutingControlResponse'
       x-stackql-resource: routing_controls
       x-stackql-method: delete_routing_control
       x-stackql-verb: DELETE
@@ -448,10 +436,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSafetyRuleResponse'
       x-stackql-resource: safety_rules
       x-stackql-method: delete_safety_rule
       x-stackql-verb: DELETE
@@ -697,10 +681,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -723,10 +703,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1147,14 +1123,6 @@ components:
       - Name
     __string:
       type: string
-    DeleteClusterResponse:
-      type: object
-    DeleteControlPanelResponse:
-      type: object
-    DeleteRoutingControlResponse:
-      type: object
-    DeleteSafetyRuleResponse:
-      type: object
     DescribeClusterResponse:
       type: object
       properties:
@@ -1292,14 +1260,10 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     __listOf__string:
       type: array
       items:
         $ref: '#/components/schemas/__string'
-    UntagResourceResponse:
-      type: object
     UpdateClusterResponse:
       type: object
       properties:

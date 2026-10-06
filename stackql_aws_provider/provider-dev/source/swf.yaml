@@ -201,7 +201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PendingTaskCount'
-      x-stackql-resource: count_pending_activity_tasks
+      x-stackql-resource: pending_activity_tasks
       x-stackql-method: count_pending_activity_tasks
       x-stackql-verb: EXEC
   /CountPendingDecisionTasks:
@@ -249,7 +249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PendingTaskCount'
-      x-stackql-resource: count_pending_decision_tasks
+      x-stackql-resource: pending_decision_tasks
       x-stackql-method: count_pending_decision_tasks
       x-stackql-verb: EXEC
   /DeleteActivityType:
@@ -384,7 +384,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: deprecate_activity_type
+      x-stackql-resource: activity_types
       x-stackql-method: deprecate_activity_type
       x-stackql-verb: EXEC
   /DeprecateDomain:
@@ -426,7 +426,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: deprecate_domain
+      x-stackql-resource: domains
       x-stackql-method: deprecate_domain
       x-stackql-verb: EXEC
   /DeprecateWorkflowType:
@@ -473,7 +473,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: deprecate_workflow_type
+      x-stackql-resource: workflow_types
       x-stackql-method: deprecate_workflow_type
       x-stackql-verb: EXEC
   /DescribeActivityType:
@@ -1210,7 +1210,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivityTask'
-      x-stackql-resource: poll_for_activity_task
+      x-stackql-resource: activity_tasks
       x-stackql-method: poll_for_activity_task
       x-stackql-verb: EXEC
   /PollForDecisionTask:
@@ -1297,7 +1297,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DecisionTask'
-      x-stackql-resource: poll_for_decision_task
+      x-stackql-resource: decision_tasks
       x-stackql-method: poll_for_decision_task
       x-stackql-verb: EXEC
       x-stackql-pagination-request-token-key: nextPageToken
@@ -1359,7 +1359,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivityTaskStatus'
-      x-stackql-resource: record_activity_task_heartbeat
+      x-stackql-resource: activity_task_heartbeats
       x-stackql-method: record_activity_task_heartbeat
       x-stackql-verb: EXEC
   /RegisterActivityType:
@@ -1663,7 +1663,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: request_cancel_workflow_execution
+      x-stackql-resource: workflow_executions
       x-stackql-method: request_cancel_workflow_execution
       x-stackql-verb: EXEC
   /RespondActivityTaskCanceled:
@@ -1712,7 +1712,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: respond_activity_task_canceled
+      x-stackql-resource: activity_task_canceleds
       x-stackql-method: respond_activity_task_canceled
       x-stackql-verb: EXEC
   /RespondActivityTaskCompleted:
@@ -1762,7 +1762,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: respond_activity_task_completed
+      x-stackql-resource: activity_task_completeds
       x-stackql-method: respond_activity_task_completed
       x-stackql-verb: EXEC
   /RespondActivityTaskFailed:
@@ -1812,7 +1812,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: respond_activity_task_failed
+      x-stackql-resource: activity_task_faileds
       x-stackql-method: respond_activity_task_failed
       x-stackql-verb: EXEC
   /RespondDecisionTaskCompleted:
@@ -1873,7 +1873,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: respond_decision_task_completed
+      x-stackql-resource: decision_task_completeds
       x-stackql-method: respond_decision_task_completed
       x-stackql-verb: EXEC
   /SignalWorkflowExecution:
@@ -1929,7 +1929,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: signal_workflow_execution
+      x-stackql-resource: workflow_executions
       x-stackql-method: signal_workflow_execution
       x-stackql-verb: EXEC
   /StartWorkflowExecution:
@@ -2051,7 +2051,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Run'
-      x-stackql-resource: workflow_execution
+      x-stackql-resource: workflow_executions
       x-stackql-method: start_workflow_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -2201,7 +2201,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: undeprecate_activity_type
+      x-stackql-resource: activity_types
       x-stackql-method: undeprecate_activity_type
       x-stackql-verb: EXEC
   /UndeprecateDomain:
@@ -2241,7 +2241,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: undeprecate_domain
+      x-stackql-resource: domains
       x-stackql-method: undeprecate_domain
       x-stackql-verb: EXEC
   /UndeprecateWorkflowType:
@@ -2286,7 +2286,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: undeprecate_workflow_type
+      x-stackql-resource: workflow_types
       x-stackql-method: undeprecate_workflow_type
       x-stackql-verb: EXEC
   /UntagResource:

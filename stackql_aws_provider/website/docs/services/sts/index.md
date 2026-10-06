@@ -18,19 +18,22 @@ sts service documentation.
 
 :::info[Service Summary]
 
-total resources: __6__  
+total resources: __9__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/sts/access_key_infos/">access_key_infos</a><br />
+<a href="/services/sts/access_key_info/">access_key_info</a><br />
+<a href="/services/sts/authorization_messages/">authorization_messages</a><br />
 <a href="/services/sts/caller_identities/">caller_identities</a><br />
-<a href="/services/sts/delegated_access_tokens/">delegated_access_tokens</a>
+<a href="/services/sts/delegated_access_tokens/">delegated_access_tokens</a><br />
+<a href="/services/sts/federation_tokens/">federation_tokens</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sts/federation_tokens/">federation_tokens</a><br />
+<a href="/services/sts/roles/">roles</a><br />
+<a href="/services/sts/roots/">roots</a><br />
 <a href="/services/sts/session_tokens/">session_tokens</a><br />
 <a href="/services/sts/web_identity_tokens/">web_identity_tokens</a>
 </div>

@@ -291,6 +291,13 @@ The following methods are available for this resource:
     <td>Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can export data from any time within the point in time recovery window.</td>
 </tr>
 <tr>
+    <td><a href="#import_table"><CopyableCode code="import_table" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-S3BucketSource"><code>S3BucketSource</code></a>, <a href="#parameter-InputFormat"><code>InputFormat</code></a>, <a href="#parameter-TableCreationParameters"><code>TableCreationParameters</code></a></td>
+    <td></td>
+    <td>Imports table data from an S3 bucket.</td>
+</tr>
+<tr>
     <td><a href="#query"><CopyableCode code="query" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TableName"><code>TableName</code></a></td>
@@ -673,6 +680,7 @@ WHERE region = '{{ region }}' --required
         { label: 'disable_kinesis_streaming_destination', value: 'disable_kinesis_streaming_destination' },
         { label: 'enable_kinesis_streaming_destination', value: 'enable_kinesis_streaming_destination' },
         { label: 'export_table_to_point_in_time', value: 'export_table_to_point_in_time' },
+        { label: 'import_table', value: 'import_table' },
         { label: 'query', value: 'query' },
         { label: 'restore_table_from_backup', value: 'restore_table_from_backup' },
         { label: 'restore_table_to_point_in_time', value: 'restore_table_to_point_in_time' },
@@ -731,6 +739,25 @@ EXEC aws.dynamodb.tables.export_table_to_point_in_time
 "ExportFormat": "{{ ExportFormat }}", 
 "ExportType": "{{ ExportType }}", 
 "IncrementalExportSpecification": "{{ IncrementalExportSpecification }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="import_table">
+
+Imports table data from an S3 bucket.
+
+```sql
+EXEC aws.dynamodb.tables.import_table 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ClientToken": "{{ ClientToken }}", 
+"S3BucketSource": "{{ S3BucketSource }}", 
+"InputFormat": "{{ InputFormat }}", 
+"InputFormatOptions": "{{ InputFormatOptions }}", 
+"InputCompressionType": "{{ InputCompressionType }}", 
+"TableCreationParameters": "{{ TableCreationParameters }}"
 }'
 ;
 ```

@@ -959,10 +959,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMonitoringSubscriptionOutputDisplay"
     get:
       operationId: GetMonitoringSubscription
       description: Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution.
@@ -5713,7 +5709,7 @@ components:
           description: If the distribution uses Aliases (alternate domain names or CNAMEs) and the SSL/TLS certificate is stored in Certificate Manager (ACM), provide the Amazon Resource Name (ARN) of the ACM certificate. CloudFront only supports ACM certificates in the US East (N. Virginia) Region (us-east-1). If you specify an ACM certificate ARN, you must also specify values for MinimumProtocolVersion and SSLSupportMethod.
         SSLSupportMethod:
           $ref: "#/components/schemas/SSLSupportMethod"
-          description: If the distribution uses Aliases (alternate domain names or CNAMEs), specify which viewers the distribution accepts HTTPS connections from. sni-only – The distribution accepts HTTPS connections from only viewers that support server name indication (SNI). This is recommended. Most browsers and clients support SNI. vip – The distribution accepts HTTPS connections from all viewers including those that don't support SNI. This is not recommended, and results in additional monthly charges from CloudFront. static-ip - Do not specify this value unless your distribution has been enabled for this feature by the CloudFront team. If you have a use case that requires static IP addresses for a distribution, contact CloudFront through the Amazon Web Services Support Center. If the distribution uses the CloudFront domain name such as d111111abcdef8.cloudfront.net, don't set a value for this field.
+          description: If the distribution uses Aliases (alternate domain names or CNAMEs), specify which viewers the distribution accepts HTTPS connections from. sni-only – The distribution accepts HTTPS connections from only viewers that support server name indication (SNI). This is recommended. Most browsers and clients support SNI. vip – The distribution accepts HTTPS connections from all viewers including those that don't support SNI. This is not recommended, and results in additional monthly charges from CloudFront. static-ip - Do not specify this value unless your distribution has been enabled for this feature by the CloudFront team. If you have a use case that requires static IP addresses for a distribution, contact CloudFront through the Amazon Web ServicesSupport Center. If the distribution uses the CloudFront domain name such as d111111abcdef8.cloudfront.net, don't set a value for this field.
         MinimumProtocolVersion:
           $ref: "#/components/schemas/MinimumProtocolVersion"
           description: "If the distribution uses Aliases (alternate domain names or CNAMEs), specify the security policy that you want CloudFront to use for HTTPS connections with viewers. The security policy determines two settings: The minimum SSL/TLS protocol that CloudFront can use to communicate with viewers. The ciphers that CloudFront can use to encrypt the content that it returns to viewers. For more information, see Security Policy and Supported Protocols and Ciphers Between Viewers and CloudFront in the Amazon CloudFront Developer Guide. On the CloudFront console, this setting is called Security Policy. When you're using SNI only (you set SSLSupportMethod to sni-only), you must specify TLSv1 or higher. If the distribution uses the CloudFront domain name such as d111111abcdef8.cloudfront.net (you set CloudFrontDefaultCertificate to true), CloudFront automatically sets the security policy to TLSv1 regardless of the value that you set here."
@@ -6542,7 +6538,7 @@ components:
           description: A description of the origin access control.
         SigningProtocol:
           $ref: "#/components/schemas/OriginAccessControlSigningProtocols"
-          description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid value is sigv4.
+          description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid values are sigv4 and sigv4a.
         SigningBehavior:
           $ref: "#/components/schemas/OriginAccessControlSigningBehaviors"
           description: "Specifies which requests CloudFront signs (adds authentication information to). Specify always for the most common use case. For more information, see origin access control advanced settings in the Amazon CloudFront Developer Guide. This field can have one of the following values: always – CloudFront signs all origin requests, overwriting the Authorization header from the viewer request if one exists. never – CloudFront doesn't sign any origin requests. This value turns off origin access control for all origins in all distributions that use this origin access control. no-override – If the viewer request doesn't contain the Authorization header, then CloudFront signs the origin request. If the viewer request contains the Authorization header, then CloudFront doesn't sign the origin request and instead passes along the Authorization header from the viewer request. WARNING: To pass along the Authorization header from the viewer request, you must add the Authorization header to a cache policy for all cache behaviors that use origins associated with this origin access control."
@@ -6558,6 +6554,7 @@ components:
       type: string
       enum:
         - sigv4
+        - sigv4a
     OriginAccessControlSigningBehaviors:
       type: string
       enum:
@@ -7388,16 +7385,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/VpcOriginDisplay"
-    DeleteMonitoringSubscriptionResultDisplay:
-      type: object
-      properties: {}
-    DeleteMonitoringSubscriptionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: "#/components/schemas/DeleteMonitoringSubscriptionResultDisplay"
     DeleteVpcOriginOutputDisplay:
       type: object
       properties:
@@ -7909,7 +7896,7 @@ components:
           description: A description of the origin access control.
         SigningProtocol:
           type: string
-          description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid value is sigv4.
+          description: The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests. The only valid values are sigv4 and sigv4a.
         SigningBehavior:
           type: string
           description: "Specifies which requests CloudFront signs (adds authentication information to). Specify always for the most common use case. For more information, see origin access control advanced settings in the Amazon CloudFront Developer Guide. This field can have one of the following values: always – CloudFront signs all origin requests, overwriting the Authorization header from the viewer request if one exists. never – CloudFront doesn't sign any origin requests. This value turns off origin access control for all origins in all distributions that use this origin access control. no-override – If the viewer request doesn't contain the Authorization header, then CloudFront signs the origin request. If the viewer request contains the Authorization header, then CloudFront doesn't sign the origin request and instead passes along the Authorization header from the viewer request. WARNING: To pass along the Authorization header from the viewer request, you must add the Authorization header to a cache policy for all cache behaviors that use origins associated with this origin access control."
@@ -9284,10 +9271,10 @@ components:
           items:
             $ref: "#/components/schemas/VerifyDnsConfigurationResultDisplay"
   x-stackQL-resources:
-    alias:
-      id: aws.cloudfront.alias
-      name: alias
-      title: alias
+    aliases:
+      id: aws.cloudfront.aliases
+      name: aliases
+      title: aliases
       methods:
         associate_alias:
           operation:
@@ -9300,7 +9287,7 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/associate_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/associate_alias"
         delete: []
     distribution_tenants:
       id: aws.cloudfront.distribution_tenants
@@ -9343,6 +9330,20 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_distribution_tenant_by_domain:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetDistributionTenantByDomainOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_distribution_tenant:
           operation:
             $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}/delete"
@@ -9411,12 +9412,13 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/get_distribution_tenant"
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/get_distribution_tenant_by_domain"
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/list_distribution_tenants"
         insert:
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/create_distribution_tenant"
         update:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/associate_distribution_tenant_web_acl"
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/update_distribution_tenant"
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/associate_distribution_tenant_web_acl"
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/disassociate_distribution_tenant_web_acl"
         delete:
           - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/delete_distribution_tenant"
@@ -9434,6 +9436,24 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/AssociateDistributionWebACLOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        copy_distribution:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{primary_distribution_id}~1copy/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyDistributionOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -9522,6 +9542,160 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_distributions_by_anycast_ip_list_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByAnycastIpListId~1{anycast_ip_list_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByAnycastIpListIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_cache_policy_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByCachePolicyId~1{cache_policy_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByCachePolicyIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_connection_function:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByConnectionFunction/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByConnectionFunctionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_connection_mode:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByConnectionMode~1{connection_mode}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByConnectionModeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_key_group:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByKeyGroupId~1{key_group_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByKeyGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_origin_request_policy_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByOriginRequestPolicyId~1{origin_request_policy_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByOriginRequestPolicyIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_owned_resource:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByOwnedResource~1{resource_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByOwnedResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_response_headers_policy_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByResponseHeadersPolicyId~1{response_headers_policy_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByResponseHeadersPolicyIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_trust_store:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByTrustStore/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByTrustStoreOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_vpc_origin_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByVpcOriginId~1{vpc_origin_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByVpcOriginIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        list_distributions_by_web_acl_id:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distributionsByWebACLId~1{web_acl_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsByWebACLIdOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         update_distribution_with_staging_config:
           operation:
             $ref: "#/paths/~12020-05-31~1distribution~1{id}~1promote-staging-config/put"
@@ -9537,12 +9711,23 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/distributions/methods/get_distribution"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_anycast_ip_list_id"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_cache_policy_id"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_connection_function"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_connection_mode"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_key_group"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_origin_request_policy_id"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_owned_resource"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_response_headers_policy_id"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_trust_store"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_vpc_origin_id"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions_by_web_acl_id"
           - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions"
         insert:
           - $ref: "#/components/x-stackQL-resources/distributions/methods/create_distribution"
         update:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/associate_distribution_web_acl"
           - $ref: "#/components/x-stackQL-resources/distributions/methods/update_distribution"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/associate_distribution_web_acl"
           - $ref: "#/components/x-stackQL-resources/distributions/methods/disassociate_distribution_web_acl"
         delete:
           - $ref: "#/components/x-stackQL-resources/distributions/methods/delete_distribution"
@@ -9882,6 +10067,36 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        publish_connection_function:
+          operation:
+            $ref: "#/paths/~12020-05-31~1connection-function~1{id}~1publish/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PublishConnectionFunctionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        test_connection_function:
+          operation:
+            $ref: "#/paths/~12020-05-31~1connection-function~1{id}~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestConnectionFunctionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connection_functions/methods/describe_connection_function"
@@ -9915,6 +10130,20 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_connection_group_by_routing_endpoint:
+          operation:
+            $ref: "#/paths/~12020-05-31~1connection-group/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetConnectionGroupByRoutingEndpointOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
         delete_connection_group:
           operation:
             $ref: "#/paths/~12020-05-31~1connection-group~1{id}/delete"
@@ -9971,6 +10200,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connection_groups/methods/get_connection_group"
+          - $ref: "#/components/x-stackQL-resources/connection_groups/methods/get_connection_group_by_routing_endpoint"
           - $ref: "#/components/x-stackQL-resources/connection_groups/methods/list_connection_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/connection_groups/methods/create_connection_group"
@@ -9978,31 +10208,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/connection_groups/methods/update_connection_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/connection_groups/methods/delete_connection_group"
-    connection_group_by_routing_endpoints:
-      id: aws.cloudfront.connection_group_by_routing_endpoints
-      name: connection_group_by_routing_endpoints
-      title: connection_group_by_routing_endpoints
-      methods:
-        get_connection_group_by_routing_endpoint:
-          operation:
-            $ref: "#/paths/~12020-05-31~1connection-group/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetConnectionGroupByRoutingEndpointOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/connection_group_by_routing_endpoints/methods/get_connection_group_by_routing_endpoint"
-        insert: []
-        update: []
-        delete: []
     continuous_deployment_policies:
       id: aws.cloudfront.continuous_deployment_policies
       name: continuous_deployment_policies
@@ -10085,31 +10290,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/continuous_deployment_policies/methods/update_continuous_deployment_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/continuous_deployment_policies/methods/delete_continuous_deployment_policy"
-    distribution_tenant_by_domains:
-      id: aws.cloudfront.distribution_tenant_by_domains
-      name: distribution_tenant_by_domains
-      title: distribution_tenant_by_domains
-      methods:
-        get_distribution_tenant_by_domain:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetDistributionTenantByDomainOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenant_by_domains/methods/get_distribution_tenant_by_domain"
-        insert: []
-        update: []
-        delete: []
     tags:
       id: aws.cloudfront.tags
       name: tags
@@ -10447,6 +10627,36 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        publish_function:
+          operation:
+            $ref: "#/paths/~12020-05-31~1function~1{name}~1publish/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PublishFunctionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        test_function:
+          operation:
+            $ref: "#/paths/~12020-05-31~1function~1{name}~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestFunctionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions/methods/get_function"
@@ -10494,31 +10704,6 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
-        get_invalidation:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution~1{distribution_id}~1invalidation~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetInvalidationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/invalidations/methods/get_invalidation"
-          - $ref: "#/components/x-stackQL-resources/invalidations/methods/list_invalidations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/invalidations/methods/create_invalidation"
-        update: []
-        delete: []
-    invalidation_for_distribution_tenants:
-      id: aws.cloudfront.invalidation_for_distribution_tenants
-      name: invalidation_for_distribution_tenants
-      title: invalidation_for_distribution_tenants
-      methods:
         create_invalidation_for_distribution_tenant:
           operation:
             $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}~1invalidation/post"
@@ -10537,30 +10722,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        get_invalidation_for_distribution_tenant:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{distribution_tenant_id}~1invalidation~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetInvalidationForDistributionTenantOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/invalidation_for_distribution_tenants/methods/get_invalidation_for_distribution_tenant"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/invalidation_for_distribution_tenants/methods/create_invalidation_for_distribution_tenant"
-        update: []
-        delete: []
-    invalidations_for_distribution_tenants:
-      id: aws.cloudfront.invalidations_for_distribution_tenants
-      name: invalidations_for_distribution_tenants
-      title: invalidations_for_distribution_tenants
-      methods:
         list_invalidations_for_distribution_tenant:
           operation:
             $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}~1invalidation/get"
@@ -10575,10 +10736,39 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        get_invalidation:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{distribution_id}~1invalidation~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetInvalidationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        get_invalidation_for_distribution_tenant:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{distribution_tenant_id}~1invalidation~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetInvalidationForDistributionTenantOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/invalidations_for_distribution_tenants/methods/list_invalidations_for_distribution_tenant"
-        insert: []
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/get_invalidation"
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/list_invalidations"
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/get_invalidation_for_distribution_tenant"
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/list_invalidations_for_distribution_tenant"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/create_invalidation"
+          - $ref: "#/components/x-stackQL-resources/invalidations/methods/create_invalidation_for_distribution_tenant"
         update: []
         delete: []
     key_groups:
@@ -10773,13 +10963,6 @@ components:
             $ref: "#/paths/~12020-05-31~1distributions~1{distribution_id}~1monitoring-subscription/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteMonitoringSubscriptionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
         get_monitoring_subscription:
           operation:
             $ref: "#/paths/~12020-05-31~1distributions~1{distribution_id}~1monitoring-subscription/get"
@@ -11892,181 +12075,6 @@ components:
         insert: []
         update: []
         delete: []
-    distributions_by_anycast_ip_list_ids:
-      id: aws.cloudfront.distributions_by_anycast_ip_list_ids
-      name: distributions_by_anycast_ip_list_ids
-      title: distributions_by_anycast_ip_list_ids
-      methods:
-        list_distributions_by_anycast_ip_list_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByAnycastIpListId~1{anycast_ip_list_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByAnycastIpListIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_anycast_ip_list_ids/methods/list_distributions_by_anycast_ip_list_id"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_cache_policy_ids:
-      id: aws.cloudfront.distributions_by_cache_policy_ids
-      name: distributions_by_cache_policy_ids
-      title: distributions_by_cache_policy_ids
-      methods:
-        list_distributions_by_cache_policy_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByCachePolicyId~1{cache_policy_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByCachePolicyIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_cache_policy_ids/methods/list_distributions_by_cache_policy_id"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_connection_functions:
-      id: aws.cloudfront.distributions_by_connection_functions
-      name: distributions_by_connection_functions
-      title: distributions_by_connection_functions
-      methods:
-        list_distributions_by_connection_function:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByConnectionFunction/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByConnectionFunctionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_connection_functions/methods/list_distributions_by_connection_function"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_connection_modes:
-      id: aws.cloudfront.distributions_by_connection_modes
-      name: distributions_by_connection_modes
-      title: distributions_by_connection_modes
-      methods:
-        list_distributions_by_connection_mode:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByConnectionMode~1{connection_mode}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByConnectionModeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_connection_modes/methods/list_distributions_by_connection_mode"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_key_groups:
-      id: aws.cloudfront.distributions_by_key_groups
-      name: distributions_by_key_groups
-      title: distributions_by_key_groups
-      methods:
-        list_distributions_by_key_group:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByKeyGroupId~1{key_group_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByKeyGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_key_groups/methods/list_distributions_by_key_group"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_origin_request_policy_ids:
-      id: aws.cloudfront.distributions_by_origin_request_policy_ids
-      name: distributions_by_origin_request_policy_ids
-      title: distributions_by_origin_request_policy_ids
-      methods:
-        list_distributions_by_origin_request_policy_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByOriginRequestPolicyId~1{origin_request_policy_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByOriginRequestPolicyIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_origin_request_policy_ids/methods/list_distributions_by_origin_request_policy_id"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_owned_resources:
-      id: aws.cloudfront.distributions_by_owned_resources
-      name: distributions_by_owned_resources
-      title: distributions_by_owned_resources
-      methods:
-        list_distributions_by_owned_resource:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByOwnedResource~1{resource_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByOwnedResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_owned_resources/methods/list_distributions_by_owned_resource"
-        insert: []
-        update: []
-        delete: []
     distributions_by_realtime_log_configs:
       id: aws.cloudfront.distributions_by_realtime_log_configs
       name: distributions_by_realtime_log_configs
@@ -12093,106 +12101,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/distributions_by_realtime_log_configs/methods/list_distributions_by_realtime_log_config"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_response_headers_policy_ids:
-      id: aws.cloudfront.distributions_by_response_headers_policy_ids
-      name: distributions_by_response_headers_policy_ids
-      title: distributions_by_response_headers_policy_ids
-      methods:
-        list_distributions_by_response_headers_policy_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByResponseHeadersPolicyId~1{response_headers_policy_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByResponseHeadersPolicyIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_response_headers_policy_ids/methods/list_distributions_by_response_headers_policy_id"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_trust_stores:
-      id: aws.cloudfront.distributions_by_trust_stores
-      name: distributions_by_trust_stores
-      title: distributions_by_trust_stores
-      methods:
-        list_distributions_by_trust_store:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByTrustStore/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByTrustStoreOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_trust_stores/methods/list_distributions_by_trust_store"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_vpc_origin_ids:
-      id: aws.cloudfront.distributions_by_vpc_origin_ids
-      name: distributions_by_vpc_origin_ids
-      title: distributions_by_vpc_origin_ids
-      methods:
-        list_distributions_by_vpc_origin_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByVpcOriginId~1{vpc_origin_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByVpcOriginIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_vpc_origin_ids/methods/list_distributions_by_vpc_origin_id"
-        insert: []
-        update: []
-        delete: []
-    distributions_by_web_acl_ids:
-      id: aws.cloudfront.distributions_by_web_acl_ids
-      name: distributions_by_web_acl_ids
-      title: distributions_by_web_acl_ids
-      methods:
-        list_distributions_by_web_acl_id:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distributionsByWebACLId~1{web_acl_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsByWebACLIdOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions_by_web_acl_ids/methods/list_distributions_by_web_acl_id"
         insert: []
         update: []
         delete: []
@@ -12253,4 +12161,32 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/domain_associations/methods/update_domain_association"
+        delete: []
+    dns_configurations:
+      id: aws.cloudfront.dns_configurations
+      name: dns_configurations
+      title: dns_configurations
+      methods:
+        verify_dns_configuration:
+          operation:
+            $ref: "#/paths/~12020-05-31~1verify-dns-configuration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/VerifyDnsConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

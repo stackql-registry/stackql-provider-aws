@@ -56,10 +56,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateBrowserSettingsResponse'
       x-stackql-resource: browser_settings
       x-stackql-method: disassociate_browser_settings
       x-stackql-verb: UPDATE
@@ -103,10 +99,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateDataProtectionSettingsResponse'
       x-stackql-resource: data_protection_settings
       x-stackql-method: disassociate_data_protection_settings
       x-stackql-verb: UPDATE
@@ -150,10 +142,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateIpAccessSettingsResponse'
       x-stackql-resource: ip_access_settings
       x-stackql-method: disassociate_ip_access_settings
       x-stackql-verb: UPDATE
@@ -197,10 +185,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateNetworkSettingsResponse'
       x-stackql-resource: network_settings
       x-stackql-method: disassociate_network_settings
       x-stackql-verb: UPDATE
@@ -244,10 +228,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateSessionLoggerResponse'
       x-stackql-resource: session_loggers
       x-stackql-method: disassociate_session_logger
       x-stackql-verb: UPDATE
@@ -291,10 +271,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateTrustStoreResponse'
       x-stackql-resource: trust_stores
       x-stackql-method: disassociate_trust_store
       x-stackql-verb: UPDATE
@@ -338,10 +314,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateUserAccessLoggingSettingsResponse'
       x-stackql-resource: user_access_logging_settings
       x-stackql-method: disassociate_user_access_logging_settings
       x-stackql-verb: UPDATE
@@ -385,10 +357,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateUserSettingsResponse'
       x-stackql-resource: user_settings
       x-stackql-method: disassociate_user_settings
       x-stackql-verb: UPDATE
@@ -1036,10 +1004,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBrowserSettingsResponse'
       x-stackql-resource: browser_settings
       x-stackql-method: delete_browser_settings
       x-stackql-verb: DELETE
@@ -1111,10 +1075,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataProtectionSettingsResponse'
       x-stackql-resource: data_protection_settings
       x-stackql-method: delete_data_protection_settings
       x-stackql-verb: DELETE
@@ -1188,10 +1148,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIdentityProviderResponse'
       x-stackql-resource: identity_providers
       x-stackql-method: delete_identity_provider
       x-stackql-verb: DELETE
@@ -1265,10 +1221,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIpAccessSettingsResponse'
       x-stackql-resource: ip_access_settings
       x-stackql-method: delete_ip_access_settings
       x-stackql-verb: DELETE
@@ -1342,10 +1294,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNetworkSettingsResponse'
       x-stackql-resource: network_settings
       x-stackql-method: delete_network_settings
       x-stackql-verb: DELETE
@@ -1419,10 +1367,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePortalResponse'
       x-stackql-resource: portals
       x-stackql-method: delete_portal
       x-stackql-verb: DELETE
@@ -1498,10 +1442,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSessionLoggerResponse'
       x-stackql-resource: session_loggers
       x-stackql-method: delete_session_logger
       x-stackql-verb: DELETE
@@ -1573,10 +1513,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrustStoreResponse'
       x-stackql-resource: trust_stores
       x-stackql-method: delete_trust_store
       x-stackql-verb: DELETE
@@ -1648,10 +1584,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserAccessLoggingSettingsResponse'
       x-stackql-resource: user_access_logging_settings
       x-stackql-method: delete_user_access_logging_settings
       x-stackql-verb: DELETE
@@ -1721,10 +1653,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserSettingsResponse'
       x-stackql-resource: user_settings
       x-stackql-method: delete_user_settings
       x-stackql-verb: DELETE
@@ -1822,10 +1750,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExpireSessionResponse'
       x-stackql-resource: sessions
       x-stackql-method: expire_session
       x-stackql-verb: EXEC
@@ -1874,7 +1798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPortalServiceProviderMetadataResponse'
-      x-stackql-resource: portal_service_provider_metadatas
+      x-stackql-resource: portal_service_provider_metadata
       x-stackql-method: get_portal_service_provider_metadata
       x-stackql-verb: SELECT
   /trustStores/{trust_store_arn}/certificate:
@@ -2045,10 +1969,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2071,10 +1991,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2982,42 +2898,6 @@ components:
           description: The ARN of the user settings.
       required:
       - userSettingsArn
-    DeleteBrowserSettingsResponse:
-      type: object
-    DeleteDataProtectionSettingsResponse:
-      type: object
-    DeleteIdentityProviderResponse:
-      type: object
-    DeleteIpAccessSettingsResponse:
-      type: object
-    DeleteNetworkSettingsResponse:
-      type: object
-    DeletePortalResponse:
-      type: object
-    DeleteSessionLoggerResponse:
-      type: object
-    DeleteTrustStoreResponse:
-      type: object
-    DeleteUserAccessLoggingSettingsResponse:
-      type: object
-    DeleteUserSettingsResponse:
-      type: object
-    DisassociateBrowserSettingsResponse:
-      type: object
-    DisassociateDataProtectionSettingsResponse:
-      type: object
-    DisassociateIpAccessSettingsResponse:
-      type: object
-    DisassociateNetworkSettingsResponse:
-      type: object
-    DisassociateSessionLoggerResponse:
-      type: object
-    DisassociateTrustStoreResponse:
-      type: object
-    DisassociateUserAccessLoggingSettingsResponse:
-      type: object
-    DisassociateUserSettingsResponse:
-      type: object
     PortalId:
       type: string
       minLength: 36
@@ -3028,8 +2908,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: '[a-zA-Z0-9\-]+'
-    ExpireSessionResponse:
-      type: object
     GetBrowserSettingsResponse:
       type: object
       properties:
@@ -4072,14 +3950,10 @@ components:
             streaming session.
       required:
       - userSettingsArn
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateBrowserSettingsResponse:
       type: object
       properties:

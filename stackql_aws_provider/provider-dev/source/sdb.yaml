@@ -664,7 +664,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SelectOutputDisplay'
-      x-stackql-resource: select
+      x-stackql-resource: ts
       x-stackql-method: select
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SelectOutputDisplay
@@ -690,7 +690,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SelectRequest'
-      x-stackql-resource: select
+      x-stackql-resource: ts
       x-stackql-method: select
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SelectOutputDisplay

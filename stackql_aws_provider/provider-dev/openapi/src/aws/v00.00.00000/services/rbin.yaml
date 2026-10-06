@@ -67,10 +67,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleResponse"
     get:
       operationId: GetRule
       description: Gets information about a Recycle Bin retention rule.
@@ -195,10 +191,6 @@ paths:
       responses:
         "201":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Unassigns a tag from a retention rule.
@@ -218,10 +210,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /rules/{identifier}/lock:
     patch:
       operationId: LockRule
@@ -481,8 +469,6 @@ components:
       minLength: 0
       maxLength: 1011
       pattern: ^arn:\S+:rbin:[a-z\-0-9]{0,63}:[0-9]{12}:rule/[0-9a-zA-Z]{11}{0,1011}$
-    DeleteRuleResponse:
-      type: object
     GetRuleResponse:
       type: object
       properties:
@@ -599,8 +585,6 @@ components:
         ExcludeResourceTags:
           $ref: "#/components/schemas/ExcludeResourceTags"
           description: "[Region-level retention rules only] Information about the exclusion tags used to identify resources that are to be excluded, or ignored, by the retention rule."
-    TagResourceResponse:
-      type: object
     UnlockRuleResponse:
       type: object
       properties:
@@ -640,8 +624,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateRuleResponse:
       type: object
       properties:
@@ -696,7 +678,6 @@ components:
             $ref: "#/paths/~1rules~1{identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_rule:
           operation:
             $ref: "#/paths/~1rules~1{identifier}/get"
@@ -733,6 +714,23 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        lock_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{identifier}~1lock/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        unlock_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{identifier}~1unlock/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/get_rule"
@@ -759,7 +757,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "201"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -770,7 +767,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

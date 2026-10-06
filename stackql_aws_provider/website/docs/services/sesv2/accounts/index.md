@@ -133,7 +133,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="replace" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Plan"><code>Plan</code></a></td>
     <td></td>
-    <td>Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages multiple Amazon SES features at a single rate.</td>
+    <td>Set the pricing plan for your Amazon SES account.</td>
 </tr>
 <tr>
     <td><a href="#put_account_vdm_attributes"><CopyableCode code="put_account_vdm_attributes" /></a></td>
@@ -250,7 +250,7 @@ AND WebsiteURL = '{{ WebsiteURL }}' --required;
 </TabItem>
 <TabItem value="put_account_pricing_attributes">
 
-Set the pricing plan for your Amazon SES account. Use this operation to choose a billing plan that packages multiple Amazon SES features at a single rate.
+Set the pricing plan for your Amazon SES account.
 
 ```sql
 REPLACE aws.sesv2.accounts

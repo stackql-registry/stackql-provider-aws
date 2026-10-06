@@ -639,10 +639,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSceneResponse'
       x-stackql-resource: scenes
       x-stackql-method: delete_scene
       x-stackql-verb: DELETE
@@ -1312,10 +1308,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1339,10 +1331,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2080,8 +2068,6 @@ components:
           description: The current state of the deleted entity.
       required:
       - state
-    DeleteSceneResponse:
-      type: object
     DeleteSyncJobResponse:
       type: object
       properties:
@@ -3279,8 +3265,6 @@ components:
       - arn
       - creationDateTime
       - updateDateTime
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -3290,8 +3274,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceResponse:
-      type: object
     UpdateComponentTypeResponse:
       type: object
       properties:

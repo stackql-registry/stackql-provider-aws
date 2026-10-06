@@ -2006,11 +2006,25 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        update_enrollment_status:
+          operation:
+            $ref: "#/paths/~1UpdateEnrollmentStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/enrollment_statuses/methods/list_enrollment_statuses"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/enrollment_statuses/methods/update_enrollment_status"
         delete: []
     recommendation_summaries:
       id: aws.cost_optimization_hub.recommendation_summaries
@@ -2043,28 +2057,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/recommendation_summaries/methods/list_recommendation_summaries"
         insert: []
         update: []
-        delete: []
-    enrollment_status:
-      id: aws.cost_optimization_hub.enrollment_status
-      name: enrollment_status
-      title: enrollment_status
-      methods:
-        update_enrollment_status:
-          operation:
-            $ref: "#/paths/~1UpdateEnrollmentStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/enrollment_status/methods/update_enrollment_status"
         delete: []

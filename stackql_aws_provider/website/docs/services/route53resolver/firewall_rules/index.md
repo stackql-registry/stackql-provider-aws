@@ -197,6 +197,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified firewall rule. Identify the rule using either FirewallDomainListId (for domain-list and DNS Firewall Advanced rules) or FirewallThreatProtectionId (for partner-managed and DNS Firewall Advanced rules) — together with FirewallRuleGroupId. DeleteFirewallRule is the only operation that succeeds against a rule whose Status is CREATION_FAILED.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_firewall_rule"><CopyableCode code="batch_create_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CreateFirewallRuleEntries"><code>CreateFirewallRuleEntries</code></a></td>
+    <td></td>
+    <td>Creates multiple DNS Firewall rules in the specified rule group.</td>
+</tr>
+<tr>
+    <td><a href="#batch_delete_firewall_rule"><CopyableCode code="batch_delete_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DeleteFirewallRuleEntries"><code>DeleteFirewallRuleEntries</code></a></td>
+    <td></td>
+    <td>Deletes multiple DNS Firewall rules from the specified rule group.</td>
+</tr>
+<tr>
+    <td><a href="#batch_update_firewall_rule"><CopyableCode code="batch_update_firewall_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-UpdateFirewallRuleEntries"><code>UpdateFirewallRuleEntries</code></a></td>
+    <td></td>
+    <td>Updates multiple DNS Firewall rules in the specified rule group.</td>
+</tr>
 </tbody>
 </table>
 
@@ -461,6 +482,61 @@ Deletes the specified firewall rule. Identify the rule using either FirewallDoma
 ```sql
 DELETE FROM aws.route53resolver.firewall_rules
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_firewall_rule"
+    values={[
+        { label: 'batch_create_firewall_rule', value: 'batch_create_firewall_rule' },
+        { label: 'batch_delete_firewall_rule', value: 'batch_delete_firewall_rule' },
+        { label: 'batch_update_firewall_rule', value: 'batch_update_firewall_rule' }
+    ]}
+>
+<TabItem value="batch_create_firewall_rule">
+
+Creates multiple DNS Firewall rules in the specified rule group.
+
+```sql
+EXEC aws.route53resolver.firewall_rules.batch_create_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CreateFirewallRuleEntries": "{{ CreateFirewallRuleEntries }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_delete_firewall_rule">
+
+Deletes multiple DNS Firewall rules from the specified rule group.
+
+```sql
+EXEC aws.route53resolver.firewall_rules.batch_delete_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DeleteFirewallRuleEntries": "{{ DeleteFirewallRuleEntries }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_update_firewall_rule">
+
+Updates multiple DNS Firewall rules in the specified rule group.
+
+```sql
+EXEC aws.route53resolver.firewall_rules.batch_update_firewall_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"UpdateFirewallRuleEntries": "{{ UpdateFirewallRuleEntries }}"
+}'
 ;
 ```
 </TabItem>

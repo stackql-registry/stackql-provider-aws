@@ -27,11 +27,11 @@ total resources: __22__
 <div class="providerDocColumn">
 <a href="/services/frauddetector/batch_import_jobs/">batch_import_jobs</a><br />
 <a href="/services/frauddetector/batch_prediction_jobs/">batch_prediction_jobs</a><br />
-<a href="/services/frauddetector/delete_events_by_event_type_status/">delete_events_by_event_type_status</a><br />
+<a href="/services/frauddetector/delete_events/">delete_events</a><br />
 <a href="/services/frauddetector/detector_versions/">detector_versions</a><br />
 <a href="/services/frauddetector/detectors/">detectors</a><br />
 <a href="/services/frauddetector/entity_types/">entity_types</a><br />
-<a href="/services/frauddetector/event_prediction_metadatas/">event_prediction_metadatas</a><br />
+<a href="/services/frauddetector/event_prediction_metadata/">event_prediction_metadata</a><br />
 <a href="/services/frauddetector/event_predictions/">event_predictions</a><br />
 <a href="/services/frauddetector/event_types/">event_types</a><br />
 <a href="/services/frauddetector/events/">events</a><br />
@@ -42,7 +42,7 @@ total resources: __22__
 <a href="/services/frauddetector/labels/">labels</a><br />
 <a href="/services/frauddetector/list_elements/">list_elements</a><br />
 <a href="/services/frauddetector/lists/">lists</a><br />
-<a href="/services/frauddetector/lists_metadatas/">lists_metadatas</a><br />
+<a href="/services/frauddetector/lists_metadata/">lists_metadata</a><br />
 <a href="/services/frauddetector/model_versions/">model_versions</a><br />
 <a href="/services/frauddetector/models/">models</a><br />
 <a href="/services/frauddetector/outcomes/">outcomes</a><br />

@@ -102,6 +102,8 @@ paths:
                   $ref: '#/components/schemas/MultiRegionTargets'
                 dataRecovery:
                   $ref: '#/components/schemas/DataRecoveryTargets'
+                sharingEnabled:
+                  $ref: '#/components/schemas/Boolean'
                 kmsKeyId:
                   $ref: '#/components/schemas/KmsKeyId'
                 tags:
@@ -324,7 +326,7 @@ paths:
                 stopConditions:
                   $ref: '#/components/schemas/StopConditionList'
                 roleName:
-                  $ref: '#/components/schemas/EntityName'
+                  $ref: '#/components/schemas/IamRoleName'
                 parameters:
                   $ref: '#/components/schemas/TestParameters'
               required:
@@ -627,10 +629,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTestSourcesResponse'
       x-stackql-resource: test_sources
       x-stackql-method: delete_test_sources
       x-stackql-verb: DELETE
@@ -663,6 +661,29 @@ paths:
       x-stackql-resource: user_journeys
       x-stackql-method: delete_user_journey
       x-stackql-verb: DELETE
+  /v2/get-dependency-insights:
+    get:
+      operationId: GetDependencyInsights
+      description: Retrieves the dependency insights generated for a service. The response reports the current generation
+        status; insights are populated once generation has completed. If generation failed, the response includes an error
+        code, whose possible values are listed under the response's errorCode field, and a message describing the cause. To
+        use this operation, you must have the resiliencehub:GetDependencyInsights permission on the service.
+      parameters:
+      - name: serviceArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Arn'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDependencyInsightsResponse'
+      x-stackql-resource: dependency_insights
+      x-stackql-method: get_dependency_insights
+      x-stackql-verb: SELECT
   /v2/get-failure-mode-finding:
     get:
       operationId: GetFailureModeFinding
@@ -895,7 +916,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportAppResponse'
-      x-stackql-resource: app
+      x-stackql-resource: apps
       x-stackql-method: import_app
       x-stackql-verb: EXEC
   /v2/import-policy:
@@ -933,7 +954,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportPolicyResponse'
-      x-stackql-resource: policy
+      x-stackql-resource: policies
       x-stackql-method: import_policy
       x-stackql-verb: EXEC
   /v2/list-assertions:
@@ -1189,6 +1210,12 @@ paths:
       operationId: ListPolicies
       description: Lists resilience policies.
       parameters:
+      - name: accountId
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/AccountId'
+        description: The identifier of the account that owns the policies to include in the results.
       - name: maxResults
         in: query
         required: false
@@ -1210,6 +1237,59 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
+  /v2/list-policy-events:
+    get:
+      operationId: ListPolicyEvents
+      description: Lists events for a resilience policy, including services that started or stopped using it, changes to cross-account
+        sharing, and deletion of the policy.
+      parameters:
+      - name: policyArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Arn'
+      - name: eventTypes
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/PolicyEventTypeList'
+        description: The type of events to include in the results.
+      - name: startTime
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Timestamp'
+        description: The start time for filtering events.
+      - name: endTime
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Timestamp'
+        description: The end time for filtering events.
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/MaxResults'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NextToken'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPolicyEventsResponse'
+      x-stackql-resource: policy_events
+      x-stackql-method: list_policy_events
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.events
       x-stackql-pagination-request-token-key: nextToken
       x-stackql-pagination-request-token-location: query
       x-stackql-pagination-response-token-key: $.nextToken
@@ -1374,7 +1454,7 @@ paths:
         required: false
         schema:
           $ref: '#/components/schemas/ServiceEventTypeList'
-        description: Filter events by type.
+        description: The type of events to include in the results.
       - name: startTime
         in: query
         required: false
@@ -1557,7 +1637,7 @@ paths:
         required: false
         schema:
           $ref: '#/components/schemas/SystemEventTypeList'
-        description: Filter events by type.
+        description: The type of events to include in the results.
       - name: startTime
         in: query
         required: false
@@ -1672,10 +1752,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1697,13 +1773,51 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
+  /v2/test-runs/{test_run_id}/dependencies:
+    get:
+      operationId: ListTestRunDependencies
+      description: Lists the dependencies that a test run blocked. Each dependency reflects the discovered classification
+        captured when the run started, so results do not change if a dependency is reclassified after the run.
+      parameters:
+      - name: test_run_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/TestRunId'
+        description: The identifier of the test run to list dependencies for.
+      - name: serviceArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Arn'
+        description: The ARN of the service the test run belongs to.
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/MaxResults'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NextToken'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTestRunDependenciesResponse'
+      x-stackql-resource: test_run_dependencies
+      x-stackql-method: list_test_run_dependencies
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dependencies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/test-runs/{test_run_id}/events:
     get:
       operationId: ListTestRunEvents
@@ -1754,6 +1868,55 @@ paths:
       x-stackql-method: list_test_run_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
+  /v2/test-runs/{test_run_id}/source-events:
+    get:
+      operationId: ListTestRunSourceEvents
+      description: Lists the state-change events observed for a test run monitoring source. Events are returned for one source
+        per call, in chronological order.
+      parameters:
+      - name: test_run_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/TestRunId'
+        description: The identifier of the test run to list source events for.
+      - name: serviceArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Arn'
+        description: The ARN of the service the test run belongs to.
+      - name: sourceArn
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/TestRunSourceArn'
+        description: The ARN of the monitoring source to list events for, such as the ARN of a CloudWatch alarm. If the source
+          was not monitored during the test run, the response is an empty list.
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/MaxResults'
+      - name: nextToken
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/NextToken'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTestRunSourceEventsResponse'
+      x-stackql-resource: test_run_source_events
+      x-stackql-method: list_test_run_source_events
+      x-stackql-verb: SELECT
+      x-stackql-objectKey: $.testRunSourceEvents
       x-stackql-pagination-request-token-key: nextToken
       x-stackql-pagination-request-token-location: query
       x-stackql-pagination-response-token-key: $.nextToken
@@ -2003,13 +2166,39 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutTestSourcesResponse'
       x-stackql-resource: test_sources
       x-stackql-method: put_test_sources
       x-stackql-verb: REPLACE
+  /v2/start-dependency-insights:
+    post:
+      operationId: StartDependencyInsights
+      description: Starts generating dependency insights for a service. Generation runs asynchronously; the response returns
+        the initial status, and you retrieve the results with GetDependencyInsights. To use this operation, you must have
+        the resiliencehub:StartDependencyInsights permission on the service.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                serviceArn:
+                  $ref: '#/components/schemas/Arn'
+                clientToken:
+                  $ref: '#/components/schemas/ClientToken'
+              required:
+              - serviceArn
+      responses:
+        '202':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartDependencyInsightsResponse'
+      x-stackql-resource: dependency_insights
+      x-stackql-method: start_dependency_insights
+      x-stackql-verb: EXEC
   /v2/start-failure-mode-assessment:
     post:
       operationId: StartFailureModeAssessment
@@ -2035,7 +2224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFailureModeAssessmentResponse'
-      x-stackql-resource: services
+      x-stackql-resource: failure_mode_assessments
       x-stackql-method: start_failure_mode_assessment
       x-stackql-verb: EXEC
   /v2/start-test-run:
@@ -2065,7 +2254,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestRunResponse'
-      x-stackql-resource: tests
+      x-stackql-resource: test_runs
       x-stackql-method: start_test_run
       x-stackql-verb: EXEC
   /v2/stop-test-run:
@@ -2094,7 +2283,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTestRunResponse'
-      x-stackql-resource: tests
+      x-stackql-resource: test_runs
       x-stackql-method: stop_test_run
       x-stackql-verb: EXEC
   /v2/update-assertion:
@@ -2219,6 +2408,8 @@ paths:
                   $ref: '#/components/schemas/MultiRegionTargets'
                 dataRecovery:
                   $ref: '#/components/schemas/DataRecoveryTargets'
+                sharingEnabled:
+                  $ref: '#/components/schemas/Boolean'
               required:
               - policyArn
       responses:
@@ -2357,7 +2548,7 @@ paths:
                 stopConditions:
                   $ref: '#/components/schemas/StopConditionList'
                 roleName:
-                  $ref: '#/components/schemas/EntityName'
+                  $ref: '#/components/schemas/IamRoleName'
                 parameters:
                   $ref: '#/components/schemas/TestParameters'
               required:
@@ -2578,6 +2769,10 @@ components:
         namespaces:
           $ref: '#/components/schemas/EksSourceNamespacesList'
           description: The list of Kubernetes namespaces within the EKS cluster.
+        labelSelector:
+          $ref: '#/components/schemas/EksLabelSelector'
+          description: Filters discovery to the Kubernetes objects whose labels match the selector. When omitted, all supported
+            objects in the specified namespaces are discovered.
       required:
       - clusterArn
       - namespaces
@@ -2591,6 +2786,68 @@ components:
       minLength: 1
       maxLength: 63
       pattern: '[a-z0-9]([-a-z0-9]*[a-z0-9])?'
+    EksLabelSelector:
+      description: A label selector that filters the Kubernetes objects discovered from an Amazon EKS input source. An object
+        must satisfy both matchLabels and matchExpressions to match the selector. A selector with neither matches every object.
+        The selector must render to 2,048 characters or fewer in Kubernetes label selector syntax.
+      type: object
+      properties:
+        matchLabels:
+          type: object
+          properties: {}
+          description: The label key-value pairs that an object must have. All pairs must match for the object to be selected.
+        matchExpressions:
+          $ref: '#/components/schemas/EksLabelSelectorMatchExpressionsList'
+          description: The label requirements that an object must satisfy. All requirements in the list must match for the
+            object to be selected.
+    EksLabelSelectorMatchExpressionsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/EksLabelSelectorRequirement'
+    EksLabelSelectorRequirement:
+      description: A single label requirement in a label selector, expressed as a key, an operator, and an optional list of
+        values.
+      type: object
+      properties:
+        key:
+          $ref: '#/components/schemas/EksLabelKey'
+          description: The label key that the requirement applies to.
+        operator:
+          $ref: '#/components/schemas/EksLabelSelectorOperator'
+          description: The operator that relates the label key to the values.
+        values:
+          $ref: '#/components/schemas/EksLabelSelectorRequirementValuesList'
+          description: The label values to compare against. Specify values when the operator is IN or NOT_IN. Leave this empty
+            when the operator is EXISTS or DOES_NOT_EXIST.
+      required:
+      - key
+      - operator
+    EksLabelKey:
+      description: A Kubernetes label key. It can include an optional DNS subdomain prefix.
+      type: string
+      minLength: 1
+      maxLength: 317
+      pattern: ([a-z0-9]([-a-z0-9.]*[a-z0-9])?/)?[A-Za-z0-9]([-A-Za-z0-9_.]*[A-Za-z0-9])?
+    EksLabelSelectorOperator:
+      description: The operator that a label selector requirement applies to its key and values. IN — the key's value must
+        be one of the specified values. NOT_IN — the key's value must not be one of the specified values. EXISTS — the key
+        must be present, regardless of its value. DOES_NOT_EXIST — the key must not be present.
+      type: string
+      enum:
+      - IN
+      - NOT_IN
+      - EXISTS
+      - DOES_NOT_EXIST
+    EksLabelSelectorRequirementValuesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/EksLabelValue'
+    EksLabelValue:
+      description: A Kubernetes label value. This value can be empty.
+      type: string
+      minLength: 0
+      maxLength: 63
+      pattern: ([A-Za-z0-9]([-A-Za-z0-9_.]*[A-Za-z0-9])?)?
     CreateInputSourceResponse:
       type: object
       properties:
@@ -2694,6 +2951,8 @@ components:
     DataRecoveryTargetsTimeBetweenBackupsInMinutesInteger:
       type: integer
       minimum: 0
+    Boolean:
+      type: boolean
     KmsKeyId:
       description: KMS key identifier — accepts key ID, key ARN, alias name, or alias ARN.
       type: string
@@ -2733,6 +2992,12 @@ components:
         dataRecovery:
           $ref: '#/components/schemas/DataRecoveryTargets'
           description: The data recovery targets defined in the policy.
+        sharingEnabled:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether cross-account sharing is enabled.
+        organizationId:
+          $ref: '#/components/schemas/OrganizationId'
+          description: The identifier of the organization this policy is shared with.
         kmsKeyId:
           $ref: '#/components/schemas/KmsKeyId'
         tags:
@@ -2750,6 +3015,11 @@ components:
       required:
       - policyArn
       - name
+    OrganizationId:
+      type: string
+      minLength: 12
+      maxLength: 34
+      pattern: o-[a-z0-9]{10,32}
     Integer:
       type: integer
     ReportType:
@@ -2804,6 +3074,7 @@ components:
     TestRunId:
       description: The unique identifier of a test run.
       type: string
+      minLength: 1
     ServiceOwnedArn:
       description: An ARN owned by the service. Accepts either a standard 12-digit account ID or the literal "aws" for AWS-managed
         resources, such as AWS-managed test templates.
@@ -3236,13 +3507,6 @@ components:
       - IN_PROGRESS
       - FAILED
       - SUCCESS
-    Boolean:
-      type: boolean
-    OrganizationId:
-      type: string
-      minLength: 12
-      maxLength: 34
-      pattern: o-[a-z0-9]{10,32}
     OuId:
       type: string
       minLength: 16
@@ -3458,7 +3722,7 @@ components:
           $ref: '#/components/schemas/StopConditionList'
           description: The stop conditions for the test.
         roleName:
-          $ref: '#/components/schemas/EntityName'
+          $ref: '#/components/schemas/IamRoleName'
           description: The name of the IAM execution role used to run the test.
         parameters:
           type: object
@@ -3484,6 +3748,7 @@ components:
     TestId:
       description: The unique identifier of a test.
       type: string
+      minLength: 1
     TestActionList:
       type: array
       items:
@@ -3635,8 +3900,6 @@ components:
           description: The ARN of the CloudWatch alarm.
       required:
       - alarmArn
-    DeleteTestSourcesResponse:
-      type: object
     DeleteUserJourneyResponse:
       type: object
       properties:
@@ -3645,6 +3908,88 @@ components:
           description: The identifier of the deleted user journey.
       required:
       - userJourneyId
+    GetDependencyInsightsResponse:
+      type: object
+      properties:
+        overview:
+          $ref: '#/components/schemas/GetDependencyInsightsResponseOverviewString'
+          description: A summary of the dependency insights for the service. This field is not returned until the status is
+            COMPLETED.
+        insights:
+          $ref: '#/components/schemas/DependencyInsightsList'
+          description: The list of dependency insights generated for the service. This field is not returned until the status
+            is COMPLETED.
+        status:
+          $ref: '#/components/schemas/DependencyInsightsStatus'
+          description: 'The status of the dependency insights generation. Valid values: IN_PROGRESS - Insights generation
+            is in progress. COMPLETED - Insights generation completed successfully. FAILED - Insights generation failed. See
+            errorCode and errorMessage for details.'
+        createdAt:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the dependency insights were generated.
+        errorCode:
+          $ref: '#/components/schemas/DependencyInsightsErrorCode'
+          description: 'The error code returned when insights generation failed. Valid values: INSUFFICIENT_DATA - There was
+            not enough dependency data to generate insights. LLM_GENERATION_FAILED - The insights could not be generated.
+            INTERNAL_ERROR - An internal error occurred while generating insights.'
+        errorMessage:
+          $ref: '#/components/schemas/GetDependencyInsightsResponseErrorMessageString'
+          description: A message describing why insights generation failed.
+      required:
+      - status
+    GetDependencyInsightsResponseOverviewString:
+      type: string
+      minLength: 0
+      maxLength: 4096
+    DependencyInsightsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/DependencyInsight'
+    DependencyInsight:
+      description: Contains a single insight about a service's dependencies.
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/InsightsCategory'
+          description: 'The category of the insight. Valid values: CROSS_REGION - The insight relates to dependencies used
+            across multiple Regions. NEW_DEPENDENCY - The insight relates to a recently detected dependency. THIRD_PARTY -
+            The insight relates to a third-party dependency. UNEVEN_USAGE - The insight relates to a dependency with uneven
+            usage across the service. AWS_SERVICE - The insight relates to a dependency on an Amazon Web Services service.'
+        description:
+          $ref: '#/components/schemas/DependencyInsightDescriptionString'
+          description: A human-readable explanation of the insight, describing the dependency behavior or condition that was
+            detected.
+      required:
+      - category
+      - description
+    InsightsCategory:
+      type: string
+      enum:
+      - CROSS_REGION
+      - NEW_DEPENDENCY
+      - THIRD_PARTY
+      - UNEVEN_USAGE
+      - AWS_SERVICE
+    DependencyInsightDescriptionString:
+      type: string
+      minLength: 0
+      maxLength: 1024
+    DependencyInsightsStatus:
+      type: string
+      enum:
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    DependencyInsightsErrorCode:
+      type: string
+      enum:
+      - INSUFFICIENT_DATA
+      - LLM_GENERATION_FAILED
+      - INTERNAL_ERROR
+    GetDependencyInsightsResponseErrorMessageString:
+      type: string
+      minLength: 0
+      maxLength: 1024
     GetFailureModeFindingResponse:
       type: object
       properties:
@@ -3851,7 +4196,7 @@ components:
           $ref: '#/components/schemas/LoggingConfiguration'
           description: The logging configuration snapshotted from the test when the run was started.
         roleName:
-          $ref: '#/components/schemas/EntityName'
+          $ref: '#/components/schemas/IamRoleName'
           description: The IAM execution role name snapshotted from the test when the run was started.
         testTemplateArn:
           $ref: '#/components/schemas/ServiceOwnedArn'
@@ -3879,7 +4224,7 @@ components:
           description: The Regions snapshotted from the service when the run was started.
         accountTargeting:
           $ref: '#/components/schemas/AccountTargeting'
-          description: Indicates whether this test run targets a single account or multiple accounts.
+          description: Indicates whether the test run targets resources in a single AWS account or across multiple accounts.
       required:
       - testRunId
       - testId
@@ -4180,6 +4525,7 @@ components:
       type: integer
       format: int64
     DependencyCriticality:
+      description: The criticality classification of a dependency.
       type: string
       enum:
       - HARD
@@ -4403,6 +4749,12 @@ components:
         dataRecovery:
           $ref: '#/components/schemas/DataRecoveryTargets'
           description: The data recovery targets defined in the policy.
+        sharingEnabled:
+          $ref: '#/components/schemas/Boolean'
+          description: Specifies whether cross-account sharing is enabled.
+        organizationId:
+          $ref: '#/components/schemas/OrganizationId'
+          description: The identifier of the organization this policy is shared with.
         associatedServiceCount:
           $ref: '#/components/schemas/Integer'
           description: The number of services associated with this policy.
@@ -4415,6 +4767,154 @@ components:
       required:
       - policyArn
       - name
+    PolicyEventTypeList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PolicyEventType'
+    PolicyEventType:
+      type: string
+      enum:
+      - POLICY_ATTACHED_TO_SERVICE
+      - POLICY_DETACHED_FROM_SERVICE
+      - POLICY_SHARING_REVOKED
+      - POLICY_DELETED
+    ListPolicyEventsResponse:
+      type: object
+      properties:
+        events:
+          $ref: '#/components/schemas/PolicyEventList'
+          description: The list of policy events.
+        nextToken:
+          $ref: '#/components/schemas/NextToken'
+      required:
+      - events
+    PolicyEventList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PolicyEvent'
+    PolicyEvent:
+      description: An event on the timeline of a resilience policy.
+      type: object
+      properties:
+        eventId:
+          $ref: '#/components/schemas/Uuid'
+          description: The identifier of the event.
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+          description: The time the event occurred.
+        eventType:
+          $ref: '#/components/schemas/PolicyEventType'
+          description: The type of the event.
+        policyArn:
+          $ref: '#/components/schemas/Arn'
+        actor:
+          $ref: '#/components/schemas/EventActor'
+        eventDetails:
+          $ref: '#/components/schemas/PolicyEventDetails'
+          description: The details of the event.
+      required:
+      - eventId
+      - timestamp
+      - eventType
+      - policyArn
+      - actor
+      - eventDetails
+    EventActor:
+      description: Identifies the actor that triggered an event.
+      type: object
+      properties:
+        type_:
+          $ref: '#/components/schemas/ActorType'
+          description: The type of actor, either USER or SYSTEM.
+        principalId:
+          $ref: '#/components/schemas/String'
+          description: The principal ID of the actor.
+        accountId:
+          $ref: '#/components/schemas/String'
+          description: The AWS account ID of the actor.
+        userName:
+          $ref: '#/components/schemas/String'
+          description: The user name of the actor.
+      required:
+      - type_
+      - principalId
+    ActorType:
+      type: string
+      enum:
+      - USER
+      - SYSTEM
+    PolicyEventDetails:
+      description: Contains the title, description, and event-specific metadata for a single event on the timeline of a resilience
+        policy.
+      type: object
+      properties:
+        title_:
+          $ref: '#/components/schemas/String'
+          description: A short summary of the event.
+        description:
+          $ref: '#/components/schemas/String'
+          description: A description of the event.
+        eventMetadata:
+          $ref: '#/components/schemas/PolicyEventMetadata'
+          description: The event-specific metadata, with one member populated according to the event type.
+      required:
+      - title_
+      - description
+    PolicyEventMetadata:
+      description: Contains the event-specific metadata for a policy event. Exactly one member is populated, according to
+        the event type. policyAttachedToService — a service started using the policy. policyDetachedFromService — a service
+        stopped using the policy. policySharingRevoked — cross-account sharing was disabled for the policy. policyDeleted
+        — the policy was deleted.
+      type: object
+      properties:
+        policyAttachedToService:
+          $ref: '#/components/schemas/PolicyAttachedToServiceMetadata'
+          description: Contains details about the service that started using the policy, such as the account that owns the
+            service.
+        policyDetachedFromService:
+          $ref: '#/components/schemas/PolicyDetachedFromServiceMetadata'
+          description: Contains details about the service that stopped using the policy, such as the account that owns the
+            service.
+        policySharingRevoked:
+          $ref: '#/components/schemas/PolicySharingRevokedMetadata'
+          description: Contains details about a policy for which organization sharing was revoked, including the number of
+            services that were affected.
+        policyDeleted:
+          $ref: '#/components/schemas/PolicyDeletedMetadata'
+          description: Contains details about a policy that was deleted, including the number of services that were affected.
+    PolicyAttachedToServiceMetadata:
+      description: Contains details about the service that started using the policy, such as the account that owns the service.
+      type: object
+      properties:
+        serviceArn:
+          $ref: '#/components/schemas/Arn'
+        accountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account that owns the service.
+    PolicyDetachedFromServiceMetadata:
+      description: Contains details about the service that stopped using the policy, such as the account that owns the service.
+      type: object
+      properties:
+        serviceArn:
+          $ref: '#/components/schemas/Arn'
+        accountId:
+          $ref: '#/components/schemas/AccountId'
+          description: The account that owns the service.
+    PolicySharingRevokedMetadata:
+      description: Contains details about a policy for which organization sharing was revoked, including the number of services
+        that were affected.
+      type: object
+      properties:
+        affectedServiceCount:
+          $ref: '#/components/schemas/Integer'
+          description: The number of services that were using the policy when sharing was revoked.
+    PolicyDeletedMetadata:
+      description: Contains details about a policy that was deleted, including the number of services that were affected.
+      type: object
+      properties:
+        affectedServiceCount:
+          $ref: '#/components/schemas/Integer'
+          description: The number of services that were using the policy when it was deleted.
     ListReportsResponse:
       type: object
       properties:
@@ -4607,30 +5107,6 @@ components:
       - serviceArn
       - actor
       - eventDetails
-    EventActor:
-      description: Identifies the actor that triggered an event.
-      type: object
-      properties:
-        type_:
-          $ref: '#/components/schemas/ActorType'
-          description: The type of actor, either USER or SYSTEM.
-        principalId:
-          $ref: '#/components/schemas/String'
-          description: The principal ID of the actor.
-        accountId:
-          $ref: '#/components/schemas/String'
-          description: The AWS account ID of the actor.
-        userName:
-          $ref: '#/components/schemas/String'
-          description: The user name of the actor.
-      required:
-      - type_
-      - principalId
-    ActorType:
-      type: string
-      enum:
-      - USER
-      - SYSTEM
     ServiceEventDetails:
       description: Contains the details of a service event.
       type: object
@@ -4780,6 +5256,13 @@ components:
           description: The name of the associated policy.
         policyArn:
           $ref: '#/components/schemas/Arn'
+        policyOwnerAccountId:
+          $ref: '#/components/schemas/String'
+          description: The account that owns the policy.
+        policySource:
+          $ref: '#/components/schemas/PolicyValueSource'
+          description: The source of the policy. SELF — the policy belongs to the account that owns the service. CROSS_ACCOUNT
+            — the policy belongs to another account and was shared with the organization.
     ServicePolicyDisassociatedMetadata:
       description: Metadata for a service policy disassociated event.
       type: object
@@ -4789,6 +5272,22 @@ components:
           description: The name of the disassociated policy.
         policyArn:
           $ref: '#/components/schemas/Arn'
+        policyOwnerAccountId:
+          $ref: '#/components/schemas/String'
+          description: The account that owns the policy.
+        policySource:
+          $ref: '#/components/schemas/PolicyValueSource'
+          description: The source of the policy. SELF — the policy belongs to the account that owns the service. CROSS_ACCOUNT
+            — the policy belongs to another account and was shared with the organization.
+        reason:
+          $ref: '#/components/schemas/PolicyDisassociationReason'
+          description: The reason the policy was disassociated from the service.
+    PolicyDisassociationReason:
+      type: string
+      enum:
+      - REPLACED_BY_UPDATE
+      - SHARING_REVOKED
+      - POLICY_DELETED
     ServiceFunctionCreatedMetadata:
       description: Metadata for a service function created event.
       type: object
@@ -5323,6 +5822,78 @@ components:
         tags:
           type: object
           properties: {}
+    ListTestRunDependenciesResponse:
+      type: object
+      properties:
+        dependencies:
+          $ref: '#/components/schemas/TestRunDependencySummaryList'
+          description: The list of dependencies the test run blocked.
+        nextToken:
+          $ref: '#/components/schemas/NextToken'
+      required:
+      - dependencies
+    TestRunDependencySummaryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TestRunDependencySummary'
+    TestRunDependencySummary:
+      description: Contains summary information about a dependency that a test run blocked, as captured when the run started.
+      type: object
+      properties:
+        dependencyId:
+          $ref: '#/components/schemas/Uuid'
+          description: The unique identifier of the dependency. Absent when the dependency was entered manually and was not
+            part of dependency discovery.
+        dependencyName:
+          $ref: '#/components/schemas/TestRunDependencySummaryDependencyNameString'
+          description: The name of the dependency.
+        dnsName:
+          $ref: '#/components/schemas/TestRunDependencySummaryDnsNameString'
+          description: The DNS name of the dependency that the test run blocked.
+        criticality:
+          $ref: '#/components/schemas/DependencyCriticality'
+          description: The criticality classification of the dependency when the run started. A dependency that was not discovered
+            has the UNKNOWN criticality.
+        source:
+          $ref: '#/components/schemas/TestRunDependencySource'
+          description: The origin of the dependency. A discovered dependency was found by dependency discovery; a manual dependency
+            was entered when the run started.
+        location:
+          $ref: '#/components/schemas/TestRunDependencySummaryLocationString'
+          description: The location of the dependency.
+        sourceRegions:
+          $ref: '#/components/schemas/RegionList'
+          description: The source Regions from which the dependency was detected.
+        provider:
+          $ref: '#/components/schemas/TestRunDependencySummaryProviderString'
+          description: The provider of the dependency.
+      required:
+      - dependencyName
+      - dnsName
+      - criticality
+      - source
+    TestRunDependencySummaryDependencyNameString:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    TestRunDependencySummaryDnsNameString:
+      type: string
+      minLength: 1
+      maxLength: 253
+    TestRunDependencySource:
+      description: The origin of a blocked dependency.
+      type: string
+      enum:
+      - DISCOVERED
+      - MANUAL
+    TestRunDependencySummaryLocationString:
+      type: string
+      minLength: 1
+      maxLength: 1024
+    TestRunDependencySummaryProviderString:
+      type: string
+      minLength: 1
+      maxLength: 1024
     ListTestRunEventsResponse:
       type: object
       properties:
@@ -5373,6 +5944,113 @@ components:
     TestRunEventMessageString:
       type: string
       minLength: 1
+      maxLength: 2048
+    TestRunSourceArn:
+      description: The ARN of a test run monitoring source, such as a CloudWatch alarm.
+      type: string
+      minLength: 31
+      maxLength: 1024
+      pattern: arn:aws[a-zA-Z-]*:[a-z][a-z0-9-]*:[a-z]{2}(-[a-z]+)+-\d{1}:\d{12}:.+
+    ListTestRunSourceEventsResponse:
+      type: object
+      properties:
+        testRunSourceEvents:
+          $ref: '#/components/schemas/TestRunSourceEventList'
+          description: The list of source events, in chronological order.
+        nextToken:
+          $ref: '#/components/schemas/NextToken'
+      required:
+      - testRunSourceEvents
+    TestRunSourceEventList:
+      type: array
+      items:
+        $ref: '#/components/schemas/TestRunSourceEvent'
+    TestRunSourceEvent:
+      description: A state-change event observed for a test run monitoring source.
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/Timestamp'
+          description: The timestamp when the event occurred.
+        sourceArn:
+          $ref: '#/components/schemas/TestRunSourceArn'
+          description: The ARN of the monitoring source the event belongs to.
+        eventType:
+          $ref: '#/components/schemas/TestRunSourceEventType'
+          description: The type of the event. ALARM indicates an event from a CloudWatch alarm source; the detail member carries
+            either the alarm state change or a collection error.
+        detail:
+          $ref: '#/components/schemas/TestRunSourceEventDetail'
+          description: The event payload.
+      required:
+      - timestamp
+      - sourceArn
+      - eventType
+      - detail
+    TestRunSourceEventType:
+      description: The type of a test run source event. ALARM indicates an event produced from a CloudWatch alarm source.
+      type: string
+      enum:
+      - ALARM
+    TestRunSourceEventDetail:
+      description: The payload of a test run source event. Exactly one member is set.
+      type: object
+      properties:
+        alarmStateChange:
+          $ref: '#/components/schemas/AlarmStateChangeDetail'
+          description: A CloudWatch alarm state change.
+        error:
+          $ref: '#/components/schemas/TestRunSourceEventError'
+          description: An error that prevented event collection from the source.
+    AlarmStateChangeDetail:
+      description: Details about a CloudWatch alarm state change observed during a test run.
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/AlarmState'
+          description: The state the alarm transitioned to.
+        previousState:
+          $ref: '#/components/schemas/AlarmState'
+          description: The state the alarm transitioned from. Absent on the initial event, which records the alarm's state
+            when collection began.
+        reason:
+          $ref: '#/components/schemas/AlarmStateChangeDetailReasonString'
+          description: A human-readable explanation of the state change, as reported by CloudWatch.
+      required:
+      - state
+    AlarmState:
+      description: The state of a CloudWatch alarm.
+      type: string
+      enum:
+      - OK
+      - ALARM
+      - INSUFFICIENT_DATA
+    AlarmStateChangeDetailReasonString:
+      type: string
+      minLength: 0
+      maxLength: 1023
+    TestRunSourceEventError:
+      description: Describes an error that prevented event collection from a test run monitoring source.
+      type: object
+      properties:
+        errorCode:
+          $ref: '#/components/schemas/TestRunSourceEventErrorCode'
+          description: The error code.
+        errorMessage:
+          $ref: '#/components/schemas/TestRunSourceEventErrorErrorMessageString'
+          description: A human-readable description of the error.
+      required:
+      - errorCode
+      - errorMessage
+    TestRunSourceEventErrorCode:
+      description: The cause of a source event collection error.
+      type: string
+      enum:
+      - ACCESS_DENIED
+      - INTERNAL_ERROR
+    TestRunSourceEventErrorErrorMessageString:
+      type: string
+      minLength: 0
       maxLength: 2048
     TestRunSourceType:
       description: The type of a test run monitoring-source snapshot.
@@ -5501,7 +6179,7 @@ components:
           description: A human-readable reason for test run failure. Only present when the status is FAILED or ERROR.
         accountTargeting:
           $ref: '#/components/schemas/AccountTargeting'
-          description: Indicates whether this test run targets a single account or multiple accounts.
+          description: Indicates whether the test run targets resources in a single AWS account or across multiple accounts.
       required:
       - testRunId
       - status
@@ -5689,8 +6367,16 @@ components:
       required:
       - userJourneyId
       - name
-    PutTestSourcesResponse:
+    StartDependencyInsightsResponse:
       type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DependencyInsightsStatus'
+          description: 'The status of the dependency insights generation. Valid values: IN_PROGRESS - Insights generation
+            is in progress. COMPLETED - Insights generation completed successfully. FAILED - Insights generation failed. Call
+            GetDependencyInsights for the error code and message.'
+      required:
+      - status
     StartFailureModeAssessmentResponse:
       type: object
       properties:
@@ -5737,14 +6423,10 @@ components:
       required:
       - testRunId
       - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAssertionResponse:
       type: object
       properties:

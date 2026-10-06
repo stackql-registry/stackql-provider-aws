@@ -534,10 +534,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes tags from a resource. For usage examples, see the Controls Reference Guide .
@@ -557,10 +553,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /reset-enabled-baseline:
     post:
       operationId: ResetEnabledBaseline
@@ -1731,8 +1723,6 @@ components:
           description: A unique identifier assigned to a ResetLandingZone operation. You can use this identifier as an input parameter of GetLandingZoneOperation to check the operation's status.
       required:
         - operationIdentifier
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1741,8 +1731,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateEnabledBaselineOutput:
       type: object
       properties:
@@ -1863,6 +1851,28 @@ components:
       name: baselines
       title: baselines
       methods:
+        disable_baseline:
+          operation:
+            $ref: "#/paths/~1disable-baseline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_baseline:
+          operation:
+            $ref: "#/paths/~1enable-baseline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_baseline:
           operation:
             $ref: "#/paths/~1get-baseline/post"
@@ -1897,6 +1907,38 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/baselines/methods/get_baseline"
           - $ref: "#/components/x-stackQL-resources/baselines/methods/list_baselines"
+        insert: []
+        update: []
+        delete: []
+    controls:
+      id: aws.controltower.controls
+      name: controls
+      title: controls
+      methods:
+        disable_control:
+          operation:
+            $ref: "#/paths/~1disable-control/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_control:
+          operation:
+            $ref: "#/paths/~1enable-control/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -2157,7 +2199,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2168,7 +2209,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

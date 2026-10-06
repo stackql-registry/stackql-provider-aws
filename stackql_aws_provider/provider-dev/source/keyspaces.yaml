@@ -271,10 +271,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKeyspaceResponse'
       x-stackql-resource: keyspaces
       x-stackql-method: delete_keyspace
       x-stackql-verb: DELETE
@@ -315,10 +311,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTableResponse'
       x-stackql-resource: tables
       x-stackql-method: delete_table
       x-stackql-verb: DELETE
@@ -831,7 +823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableResponse'
-      x-stackql-resource: table
+      x-stackql-resource: tables
       x-stackql-method: restore_table
       x-stackql-verb: EXEC
   /TagResource:
@@ -871,10 +863,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -912,10 +900,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1637,10 +1621,6 @@ components:
       required:
       - keyspaceArn
       - typeName
-    DeleteKeyspaceResponse:
-      type: object
-    DeleteTableResponse:
-      type: object
     DeleteTypeResponse:
       type: object
       properties:
@@ -2085,10 +2065,6 @@ components:
           description: The Amazon Resource Name (ARN) of the restored table.
       required:
       - restoredTableARN
-    TagResourceResponse:
-      type: object
-    UntagResourceResponse:
-      type: object
     UpdateKeyspaceResponse:
       type: object
       properties:

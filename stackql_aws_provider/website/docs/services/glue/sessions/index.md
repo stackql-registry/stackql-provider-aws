@@ -216,6 +216,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Executes the statement.</td>
 </tr>
+<tr>
+    <td><a href="#stop_session"><CopyableCode code="stop_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops the session.</td>
+</tr>
 </tbody>
 </table>
 
@@ -451,7 +458,8 @@ WHERE region = '{{ region }}' --required
     values={[
         { label: 'cancel_statement', value: 'cancel_statement' },
         { label: 'list_sessions', value: 'list_sessions' },
-        { label: 'run_statement', value: 'run_statement' }
+        { label: 'run_statement', value: 'run_statement' },
+        { label: 'stop_session', value: 'stop_session' }
     ]}
 >
 <TabItem value="cancel_statement">
@@ -498,6 +506,21 @@ EXEC aws.glue.sessions.run_statement
 '{
 "SessionId": "{{ SessionId }}", 
 "Code": "{{ Code }}", 
+"RequestOrigin": "{{ RequestOrigin }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_session">
+
+Stops the session.
+
+```sql
+EXEC aws.glue.sessions.stop_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Id": "{{ Id }}", 
 "RequestOrigin": "{{ RequestOrigin }}"
 }'
 ;

@@ -18,7 +18,7 @@ quicksight service documentation.
 
 :::info[Service Summary]
 
-total resources: __95__  
+total resources: __94__  
 
 :::
 
@@ -34,11 +34,12 @@ total resources: __95__
 <a href="/services/quicksight/agent_permissions/">agent_permissions</a><br />
 <a href="/services/quicksight/agents/">agents</a><br />
 <a href="/services/quicksight/analyses/">analyses</a><br />
-<a href="/services/quicksight/analysis/">analysis</a><br />
 <a href="/services/quicksight/analysis_definitions/">analysis_definitions</a><br />
 <a href="/services/quicksight/analysis_permissions/">analysis_permissions</a><br />
+<a href="/services/quicksight/app_permissions/">app_permissions</a><br />
 <a href="/services/quicksight/application_with_token_exchange_grants/">application_with_token_exchange_grants</a><br />
 <a href="/services/quicksight/approval_policies/">approval_policies</a><br />
+<a href="/services/quicksight/apps/">apps</a><br />
 <a href="/services/quicksight/asset_bundle_export_jobs/">asset_bundle_export_jobs</a><br />
 <a href="/services/quicksight/asset_bundle_import_jobs/">asset_bundle_import_jobs</a><br />
 <a href="/services/quicksight/automation_jobs/">automation_jobs</a><br />
@@ -61,20 +62,19 @@ total resources: __95__
 <a href="/services/quicksight/data_sources/">data_sources</a><br />
 <a href="/services/quicksight/default_q_business_applications/">default_q_business_applications</a><br />
 <a href="/services/quicksight/dlp_settings/">dlp_settings</a><br />
-<a href="/services/quicksight/flow_metadatas/">flow_metadatas</a><br />
+<a href="/services/quicksight/embed_urls/">embed_urls</a><br />
+<a href="/services/quicksight/flow_metadata/">flow_metadata</a><br />
 <a href="/services/quicksight/flow_permissions/">flow_permissions</a><br />
 <a href="/services/quicksight/flows/">flows</a><br />
 <a href="/services/quicksight/folder_members/">folder_members</a><br />
 <a href="/services/quicksight/folder_permissions/">folder_permissions</a><br />
 <a href="/services/quicksight/folder_resolved_permissions/">folder_resolved_permissions</a><br />
 <a href="/services/quicksight/folders/">folders</a><br />
-<a href="/services/quicksight/folders_for_resources/">folders_for_resources</a><br />
 <a href="/services/quicksight/group_memberships/">group_memberships</a><br />
-<a href="/services/quicksight/groups/">groups</a><br />
-<a href="/services/quicksight/iam_policy_assignments/">iam_policy_assignments</a><br />
-<a href="/services/quicksight/iam_policy_assignments_for_users/">iam_policy_assignments_for_users</a>
+<a href="/services/quicksight/groups/">groups</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/quicksight/iam_policy_assignments/">iam_policy_assignments</a><br />
 <a href="/services/quicksight/identity_contexts/">identity_contexts</a><br />
 <a href="/services/quicksight/identity_propagation_configs/">identity_propagation_configs</a><br />
 <a href="/services/quicksight/ingestions/">ingestions</a><br />
@@ -87,6 +87,7 @@ total resources: __95__
 <a href="/services/quicksight/o_auth_client_applications/">o_auth_client_applications</a><br />
 <a href="/services/quicksight/public_sharing_settings/">public_sharing_settings</a><br />
 <a href="/services/quicksight/q_personalization_configurations/">q_personalization_configurations</a><br />
+<a href="/services/quicksight/qa_results/">qa_results</a><br />
 <a href="/services/quicksight/quick_sight_q_search_configurations/">quick_sight_q_search_configurations</a><br />
 <a href="/services/quicksight/refresh_schedules/">refresh_schedules</a><br />
 <a href="/services/quicksight/role_custom_permissions/">role_custom_permissions</a><br />
@@ -99,26 +100,24 @@ total resources: __95__
 <a href="/services/quicksight/spaces/">spaces</a><br />
 <a href="/services/quicksight/spice_capacity_configurations/">spice_capacity_configurations</a><br />
 <a href="/services/quicksight/tags/">tags</a><br />
-<a href="/services/quicksight/template_alias/">template_alias</a><br />
 <a href="/services/quicksight/template_aliases/">template_aliases</a><br />
 <a href="/services/quicksight/template_definitions/">template_definitions</a><br />
 <a href="/services/quicksight/template_permissions/">template_permissions</a><br />
 <a href="/services/quicksight/template_versions/">template_versions</a><br />
 <a href="/services/quicksight/templates/">templates</a><br />
-<a href="/services/quicksight/theme_alias/">theme_alias</a><br />
 <a href="/services/quicksight/theme_aliases/">theme_aliases</a><br />
 <a href="/services/quicksight/theme_permissions/">theme_permissions</a><br />
 <a href="/services/quicksight/theme_versions/">theme_versions</a><br />
 <a href="/services/quicksight/themes/">themes</a><br />
 <a href="/services/quicksight/topic_permissions/">topic_permissions</a><br />
-<a href="/services/quicksight/topic_permissions_v2s/">topic_permissions_v2s</a><br />
+<a href="/services/quicksight/topic_permissions_v2/">topic_permissions_v2</a><br />
 <a href="/services/quicksight/topic_refresh_schedules/">topic_refresh_schedules</a><br />
 <a href="/services/quicksight/topic_refreshes/">topic_refreshes</a><br />
 <a href="/services/quicksight/topic_reviewed_answers/">topic_reviewed_answers</a><br />
-<a href="/services/quicksight/topic_v2s/">topic_v2s</a><br />
 <a href="/services/quicksight/topics/">topics</a><br />
-<a href="/services/quicksight/topics_v2s/">topics_v2s</a><br />
+<a href="/services/quicksight/topics_v2/">topics_v2</a><br />
 <a href="/services/quicksight/user_groups/">user_groups</a><br />
+<a href="/services/quicksight/user_limits/">user_limits</a><br />
 <a href="/services/quicksight/users/">users</a><br />
 <a href="/services/quicksight/users_index_capacities/">users_index_capacities</a><br />
 <a href="/services/quicksight/vpc_connections/">vpc_connections</a>

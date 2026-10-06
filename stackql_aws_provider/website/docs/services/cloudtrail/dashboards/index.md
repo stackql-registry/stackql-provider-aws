@@ -149,42 +149,42 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns the specified dashboard.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns the specified dashboard.</td>
 </tr>
 <tr>
     <td><a href="#list_dashboards"><CopyableCode code="list_dashboards" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about all dashboards in the account, in the current Region.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about all dashboards in the account, in the current Region.</td>
 </tr>
 <tr>
     <td><a href="#create_dashboard"><CopyableCode code="create_dashboard" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a custom dashboard or the Highlights dashboard. Custom dashboards - Custom dashboards allow you to query events in any event data store type. You can add up to 10 widgets to a custom dashboard. You can manually refresh a custom dashboard, or you can set a refresh schedule. Highlights dashboard - You can create the Highlights dashboard to see a summary of key user activities and API usage across all your event data stores. CloudTrail Lake manages the Highlights dashboard and refreshes the dashboard every 6 hours. To create the Highlights dashboard, you must set and enable a refresh schedule. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. For more information about dashboards, see CloudTrail Lake dashboards in the CloudTrail User Guide.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a custom dashboard or the Highlights dashboard. Custom dashboards - Custom dashboards allow you to query events in any event data store type. You can add up to 10 widgets to a custom dashboard. You can manually refresh a custom dashboard, or you can set a refresh schedule. Highlights dashboard - You can create the Highlights dashboard to see a summary of key user activities and API usage across all your event data stores. CloudTrail Lake manages the Highlights dashboard and refreshes the dashboard every 6 hours. To create the Highlights dashboard, you must set and enable a refresh schedule. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. For more information about dashboards, see CloudTrail Lake dashboards in the CloudTrail User Guide.</td>
 </tr>
 <tr>
     <td><a href="#update_dashboard"><CopyableCode code="update_dashboard" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DashboardId"><code>DashboardId</code></a></td>
     <td></td>
-    <td>Updates the specified dashboard. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates the specified dashboard. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.</td>
 </tr>
 <tr>
     <td><a href="#delete_dashboard"><CopyableCode code="delete_dashboard" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.</td>
 </tr>
 <tr>
     <td><a href="#start_dashboard_refresh"><CopyableCode code="start_dashboard_refresh" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DashboardId"><code>DashboardId</code></a></td>
     <td></td>
-    <td>Starts a refresh of the specified dashboard. Each time a dashboard is refreshed, CloudTrail runs queries to populate the dashboard's widgets. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts a refresh of the specified dashboard. Each time a dashboard is refreshed, CloudTrail runs queries to populate the dashboard's widgets. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -221,7 +221,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_dashboard">
 
-Returns the specified dashboard.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns the specified dashboard.
 
 ```sql
 SELECT
@@ -242,7 +242,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_dashboards">
 
-Returns information about all dashboards in the account, in the current Region.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about all dashboards in the account, in the current Region.
 
 ```sql
 SELECT
@@ -267,7 +267,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_dashboard">
 
-Creates a custom dashboard or the Highlights dashboard. Custom dashboards - Custom dashboards allow you to query events in any event data store type. You can add up to 10 widgets to a custom dashboard. You can manually refresh a custom dashboard, or you can set a refresh schedule. Highlights dashboard - You can create the Highlights dashboard to see a summary of key user activities and API usage across all your event data stores. CloudTrail Lake manages the Highlights dashboard and refreshes the dashboard every 6 hours. To create the Highlights dashboard, you must set and enable a refresh schedule. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. For more information about dashboards, see CloudTrail Lake dashboards in the CloudTrail User Guide.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a custom dashboard or the Highlights dashboard. Custom dashboards - Custom dashboards allow you to query events in any event data store type. You can add up to 10 widgets to a custom dashboard. You can manually refresh a custom dashboard, or you can set a refresh schedule. Highlights dashboard - You can create the Highlights dashboard to see a summary of key user activities and API usage across all your event data stores. CloudTrail Lake manages the Highlights dashboard and refreshes the dashboard every 6 hours. To create the Highlights dashboard, you must set and enable a refresh schedule. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. For more information about dashboards, see CloudTrail Lake dashboards in the CloudTrail User Guide.
 
 ```sql
 INSERT INTO aws.cloudtrail.dashboards (
@@ -350,7 +350,7 @@ widgets
 >
 <TabItem value="update_dashboard">
 
-Updates the specified dashboard. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates the specified dashboard. To set a refresh schedule, CloudTrail must be granted permissions to run the StartDashboardRefresh operation to refresh the dashboard on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to the dashboard. For more information, see Resource-based policy example for a dashboard in the CloudTrail User Guide. CloudTrail runs queries to populate the dashboard's widgets during a manual or scheduled refresh. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.
 
 ```sql
 UPDATE aws.cloudtrail.dashboards
@@ -386,7 +386,7 @@ widgets;
 >
 <TabItem value="delete_dashboard">
 
-Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.
 
 ```sql
 DELETE FROM aws.cloudtrail.dashboards
@@ -407,7 +407,7 @@ WHERE region = '{{ region }}' --required
 >
 <TabItem value="start_dashboard_refresh">
 
-Starts a refresh of the specified dashboard. Each time a dashboard is refreshed, CloudTrail runs queries to populate the dashboard's widgets. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Starts a refresh of the specified dashboard. Each time a dashboard is refreshed, CloudTrail runs queries to populate the dashboard's widgets. CloudTrail must be granted permissions to run the StartQuery operation on your behalf. To provide permissions, run the PutResourcePolicy operation to attach a resource-based policy to each event data store. For more information, see Example: Allow CloudTrail to run queries to populate a dashboard in the CloudTrail User Guide.
 
 ```sql
 EXEC aws.cloudtrail.dashboards.start_dashboard_refresh 

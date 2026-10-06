@@ -18,16 +18,16 @@ pricing_plan_manager service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __2__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/pricing_plan_manager/subscriptions/">subscriptions</a>
+<a href="/services/pricing_plan_manager/paid_subscriptions/">paid_subscriptions</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/pricing_plan_manager/subscriptions/">subscriptions</a>
 </div>
 </div>

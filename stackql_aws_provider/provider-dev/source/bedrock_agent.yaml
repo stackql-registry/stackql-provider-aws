@@ -194,18 +194,21 @@ paths:
   /agents/:
     put:
       operationId: CreateAgent
-      description: Creates an agent that orchestrates interactions between foundation models, data sources, software applications,
-        user conversations, and APIs to carry out tasks to help customers. Specify the following fields for security purposes.
-        agentResourceRoleArn – The Amazon Resource Name (ARN) of the role with permissions to invoke API operations on an
-        agent. (Optional) customerEncryptionKeyArn – The Amazon Resource Name (ARN) of a KMS key to encrypt the creation of
-        the agent. (Optional) idleSessionTTLinSeconds – Specify the number of seconds for which the agent should maintain
-        session information. After this time expires, the subsequent InvokeAgent request begins a new session. To enable your
-        agent to retain conversational context across multiple sessions, include a memoryConfiguration object. For more information,
-        see Configure memory. To override the default prompt behavior for agent orchestration and to use advanced prompts,
-        include a promptOverrideConfiguration object. For more information, see Advanced prompts. If your agent fails to be
-        created, the response returns a list of failureReasons alongside a list of recommendedActions for you to troubleshoot.
-        The agent instructions will not be honored if your agent has only one knowledge base, uses default prompts, has no
-        action group, and user input is disabled.
+      description: Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no longer open to new customers. For capabilities
+        similar to Bedrock Agents Classic, explore Amazon Bedrock AgentCore. Existing customers can continue to use the service
+        as normal. For more information, see Amazon Bedrock Agents Classic availability change. Creates an agent that orchestrates
+        interactions between foundation models, data sources, software applications, user conversations, and APIs to carry
+        out tasks to help customers. Specify the following fields for security purposes. agentResourceRoleArn – The Amazon
+        Resource Name (ARN) of the role with permissions to invoke API operations on an agent. (Optional) customerEncryptionKeyArn
+        – The Amazon Resource Name (ARN) of a KMS key to encrypt the creation of the agent. (Optional) idleSessionTTLinSeconds
+        – Specify the number of seconds for which the agent should maintain session information. After this time expires,
+        the subsequent InvokeAgent request begins a new session. To enable your agent to retain conversational context across
+        multiple sessions, include a memoryConfiguration object. For more information, see Configure memory. To override the
+        default prompt behavior for agent orchestration and to use advanced prompts, include a promptOverrideConfiguration
+        object. For more information, see Advanced prompts. If your agent fails to be created, the response returns a list
+        of failureReasons alongside a list of recommendedActions for you to troubleshoot. The agent instructions will not
+        be honored if your agent has only one knowledge base, uses default prompts, has no action group, and user input is
+        disabled.
       parameters: []
       requestBody:
         required: true
@@ -425,7 +428,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAgentAliasResponse'
-      x-stackql-resource: agent_alias
+      x-stackql-resource: agent_aliases
       x-stackql-method: create_agent_alias
       x-stackql-verb: INSERT
     post:
@@ -662,7 +665,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFlowAliasResponse'
-      x-stackql-resource: flow_alias
+      x-stackql-resource: flow_aliases
       x-stackql-method: create_flow_alias
       x-stackql-verb: INSERT
     get:
@@ -1136,10 +1139,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAgentActionGroupResponse'
       x-stackql-resource: agent_action_groups
       x-stackql-method: delete_agent_action_group
       x-stackql-verb: DELETE
@@ -1257,7 +1256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAgentAliasResponse'
-      x-stackql-resource: agent_alias
+      x-stackql-resource: agent_aliases
       x-stackql-method: delete_agent_alias
       x-stackql-verb: DELETE
     get:
@@ -1283,7 +1282,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAgentAliasResponse'
-      x-stackql-resource: agent_alias
+      x-stackql-resource: agent_aliases
       x-stackql-method: get_agent_alias
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentAlias
@@ -1327,7 +1326,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAgentAliasResponse'
-      x-stackql-resource: agent_alias
+      x-stackql-resource: agent_aliases
       x-stackql-method: update_agent_alias
       x-stackql-verb: UPDATE
   /agents/{agent_id}/agentversions/{agent_version}/:
@@ -1636,7 +1635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteFlowAliasResponse'
-      x-stackql-resource: flow_alias
+      x-stackql-resource: flow_aliases
       x-stackql-method: delete_flow_alias
       x-stackql-verb: DELETE
     get:
@@ -1663,7 +1662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetFlowAliasResponse'
-      x-stackql-resource: flow_alias
+      x-stackql-resource: flow_aliases
       x-stackql-method: get_flow_alias
       x-stackql-verb: SELECT
     put:
@@ -1708,7 +1707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFlowAliasResponse'
-      x-stackql-resource: flow_alias
+      x-stackql-resource: flow_aliases
       x-stackql-method: update_flow_alias
       x-stackql-verb: UPDATE
   /flows/{flow_identifier}/versions/{flow_version}/:
@@ -2123,10 +2122,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAgentCollaboratorResponse'
       x-stackql-resource: agent_collaborators
       x-stackql-method: disassociate_agent_collaborator
       x-stackql-verb: UPDATE
@@ -2240,10 +2235,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAgentKnowledgeBaseResponse'
       x-stackql-resource: agent_knowledge_bases
       x-stackql-method: disassociate_agent_knowledge_base
       x-stackql-verb: UPDATE
@@ -2599,7 +2590,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartIngestionJobResponse'
-      x-stackql-resource: knowledge_bases
+      x-stackql-resource: ingestion_jobs
       x-stackql-method: start_ingestion_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -2648,10 +2639,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2674,10 +2661,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2712,7 +2695,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopIngestionJobResponse'
-      x-stackql-resource: knowledge_bases
+      x-stackql-resource: ingestion_jobs
       x-stackql-method: stop_ingestion_job
       x-stackql-verb: EXEC
   /flows/validate-definition:
@@ -3685,6 +3668,10 @@ components:
         connectorParameters:
           $ref: '#/components/schemas/Document'
           description: Connector-specific parameters. For more information, see Connect a data source.
+        syncSchedule:
+          $ref: '#/components/schemas/SyncSchedule'
+          description: The recurring schedule on which the connector automatically syncs this data source. If not specified,
+            the data source is not synced automatically and you start each sync yourself. Not supported for the Custom connector.
     DeletionProtectionConfiguration:
       description: Configuration for deletion protection.
       type: object
@@ -3748,6 +3735,72 @@ components:
           description: Whether video extraction is enabled or disabled.
       required:
       - videoExtractionStatus
+    SyncSchedule:
+      description: The recurring schedule on which a managed knowledge base connector automatically syncs its data source.
+        Specify exactly one of daily, weekly, or monthly.
+      type: object
+      properties:
+        daily:
+          $ref: '#/components/schemas/DailySchedule'
+          description: A daily sync that runs once a day at a system-chosen off-peak time. The run time is not configurable.
+        weekly:
+          $ref: '#/components/schemas/WeeklySchedule'
+          description: A weekly sync that runs once a week on the specified day of the week.
+        monthly:
+          $ref: '#/components/schemas/MonthlySchedule'
+          description: A monthly sync that runs once a month on the specified day of the month.
+    DailySchedule:
+      description: A daily sync. The run time is system-chosen (off-peak) and not configurable.
+      type: object
+    WeeklySchedule:
+      description: A weekly sync on a specified day of the week.
+      type: object
+      properties:
+        dayOfWeek:
+          $ref: '#/components/schemas/DayOfWeek'
+          description: The day of the week on which the weekly sync runs.
+      required:
+      - dayOfWeek
+    DayOfWeek:
+      description: The day of the week on which a weekly sync runs. Valid values are the standard English day names, for example,
+        MONDAY or TUESDAY.
+      type: string
+      enum:
+      - SUNDAY
+      - MONDAY
+      - TUESDAY
+      - WEDNESDAY
+      - THURSDAY
+      - FRIDAY
+      - SATURDAY
+    MonthlySchedule:
+      description: A monthly sync on a specified day of the month.
+      type: object
+      properties:
+        dayOfMonth:
+          $ref: '#/components/schemas/DayOfMonth'
+          description: The day of the month on which the monthly sync runs.
+      required:
+      - dayOfMonth
+    DayOfMonth:
+      description: The day of the month on which a monthly sync runs. Specify exactly one of dayNumber or lastDayOfMonth.
+      type: object
+      properties:
+        dayNumber:
+          $ref: '#/components/schemas/DayOfMonthNumber'
+          description: A specific day of the month, from 1 to 28. Values are capped at 28, so a monthly sync runs in every
+            month, including February.
+        lastDayOfMonth:
+          $ref: '#/components/schemas/LastDayOfMonth'
+          description: Set this option to run the monthly sync on the last calendar day of each month.
+    DayOfMonthNumber:
+      description: A specific day of the month, from 1 to 28.
+      type: integer
+      minimum: 1
+      maximum: 28
+    LastDayOfMonth:
+      description: The option to run the monthly sync on the last calendar day of each month.
+      type: object
     S3DataSourceConfiguration:
       description: The configuration information to connect to Amazon S3 as your data source for self-managed knowledge bases.
         To configure this data source for managed knowledge bases, use managedKnowledgeBaseConnectorConfiguration.
@@ -4385,8 +4438,11 @@ components:
       properties:
         parsingStrategy:
           $ref: '#/components/schemas/ParsingStrategy'
-          description: The parsing strategy for the data source. Only SMART_PARSING can be selected for managed knowledge
-            bases. For more information, see Customize ingestion for managed knowledge bases.
+          description: 'The parsing strategy for the data source. For managed knowledge bases, the strategy that you can select
+            depends on the embedding model that your knowledge base uses: If your knowledge base uses a native multimodal
+            embedding model, specify MULTI_MODAL_EMBEDDINGS. With this strategy, files are sent directly to the embedding
+            model instead of being parsed into text. This is the only strategy that is supported for these knowledge bases.
+            Otherwise, specify SMART_PARSING. For more information, see Customize ingestion for managed knowledge bases.'
         bedrockFoundationModelConfiguration:
           $ref: '#/components/schemas/BedrockFoundationModelConfiguration'
           description: If you specify BEDROCK_FOUNDATION_MODEL as the parsing strategy for ingesting your data source, use
@@ -4403,6 +4459,7 @@ components:
       - BEDROCK_FOUNDATION_MODEL
       - BEDROCK_DATA_AUTOMATION
       - SMART_PARSING
+      - MULTI_MODAL_EMBEDDINGS
     BedrockFoundationModelConfiguration:
       description: Settings for a foundation model used to parse documents for a data source.
       type: object
@@ -5219,7 +5276,7 @@ components:
           description: The input schema for the tool.
         strict:
           $ref: '#/components/schemas/Boolean'
-          description: Whether to enforce strict JSON schema adherence for the tool input
+          description: Whether the tool schema is strictly enforced.
       required:
       - name
       - inputSchema
@@ -5790,6 +5847,8 @@ components:
           description: Contains details about the model that's used to convert the data source into vector embeddings.
         managedKnowledgeBaseConfiguration:
           $ref: '#/components/schemas/ManagedKnowledgeBaseConfiguration'
+          description: Contains configuration details for a knowledge base that uses a vector store fully managed by Amazon
+            Bedrock. Specify this object when the knowledge base type is MANAGED.
         kendraKnowledgeBaseConfiguration:
           $ref: '#/components/schemas/KendraKnowledgeBaseConfiguration'
           description: Settings for an Amazon Kendra knowledge base.
@@ -5850,10 +5909,18 @@ components:
             available models and their vector data types.
         audio:
           $ref: '#/components/schemas/AudioConfigurations'
-          description: Configuration settings for processing audio content in multimodal knowledge bases.
+          description: Configuration settings for processing audio content in multimodal knowledge bases. This field is deprecated.
+            Use modelConfiguration instead.
         video:
           $ref: '#/components/schemas/VideoConfigurations'
-          description: Configuration settings for processing video content in multimodal knowledge bases.
+          description: Configuration settings for processing video content in multimodal knowledge bases. This field is deprecated.
+            Use modelConfiguration instead.
+        modelConfiguration:
+          $ref: '#/components/schemas/Document'
+          description: Model-specific configuration for the embedding model, provided as a JSON object. Use this field to
+            specify settings that apply to the embedding model that you selected, such as how audio and video files are divided
+            into segments. The fields that this object accepts depend on the embedding model. For the settings that each model
+            accepts, see the documentation for that model.
     Dimensions:
       type: integer
       minimum: 0
@@ -5959,13 +6026,21 @@ components:
       properties:
         embeddingModelType:
           $ref: '#/components/schemas/EmbeddingModelType'
+          description: Choose CUSTOM to provide your own Bedrock embedding model ARN. Choose MANAGED to use a service-managed
+            embedding model.
         embeddingModelArn:
           $ref: '#/components/schemas/BedrockEmbeddingModelArn'
           description: The ARN for the embeddings model.
         embeddingModelConfiguration:
           $ref: '#/components/schemas/EmbeddingModelConfiguration'
+          description: The configuration details for the embeddings model. Not required when choosing the MANAGED embeddingModelType.
         serverSideEncryptionConfiguration:
           $ref: '#/components/schemas/ServerSideEncryptionConfiguration'
+          description: Contains the configuration for server-side encryption for your managed knowledge base.
+        supplementalDataStorageConfiguration:
+          $ref: '#/components/schemas/SupplementalDataStorageConfiguration'
+          description: Use this object to specify the Amazon S3 location that the knowledge base uses to process and ingest
+            multimodal content. This field is required when you use a native multimodal embedding model.
     EmbeddingModelType:
       description: Choose CUSTOM to provide your own Bedrock embedding model ARN. Choose MANAGED to use a service-managed
         embedding model. For more information, see Embedding model options.
@@ -7017,8 +7092,6 @@ components:
       required:
       - agentId
       - agentStatus
-    DeleteAgentActionGroupResponse:
-      type: object
     DeleteAgentAliasResponse:
       type: object
       properties:
@@ -7242,10 +7315,6 @@ components:
           description: The revision identifier after the resource policy was deleted.
       required:
       - resourceArn
-    DisassociateAgentCollaboratorResponse:
-      type: object
-    DisassociateAgentKnowledgeBaseResponse:
-      type: object
     GetAgentResponse:
       type: object
       properties:
@@ -9278,8 +9347,6 @@ components:
           description: Contains information about the stopped data ingestion job.
       required:
       - ingestionJob
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -9289,8 +9356,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[a-zA-Z0-9\s._:/=+@-]*'
-    UntagResourceResponse:
-      type: object
     UpdateAgentResponse:
       type: object
       properties:

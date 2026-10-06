@@ -417,7 +417,8 @@ EXEC aws.bedrock_agentcore.batch_evaluations.start_batch_evaluation
 "evaluationMetadata": "{{ evaluationMetadata }}", 
 "tags": "{{ tags }}", 
 "kmsKeyArn": "{{ kmsKeyArn }}", 
-"description": "{{ description }}"
+"description": "{{ description }}", 
+"outputConfig": "{{ outputConfig }}"
 }'
 ;
 ```

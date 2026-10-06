@@ -169,7 +169,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.</td>
+    <td>Lists all ReplicationConfigurationTemplates, filtered by replication configuration template IDs.</td>
 </tr>
 <tr>
     <td><a href="#create_replication_configuration_template"><CopyableCode code="create_replication_configuration_template" /></a></td>
@@ -183,7 +183,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-replicationConfigurationTemplateID"><code>replicationConfigurationTemplateID</code></a></td>
     <td></td>
-    <td>Updates multiple ReplicationConfigurationTemplates by ID.</td>
+    <td>Updates a ReplicationConfigurationTemplate by ID.</td>
 </tr>
 <tr>
     <td><a href="#delete_replication_configuration_template"><CopyableCode code="delete_replication_configuration_template" /></a></td>
@@ -226,7 +226,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_replication_configuration_templates">
 
-Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
+Lists all ReplicationConfigurationTemplates, filtered by replication configuration template IDs.
 
 ```sql
 SELECT
@@ -402,7 +402,7 @@ use_fips_endpoint
 >
 <TabItem value="update_replication_configuration_template">
 
-Updates multiple ReplicationConfigurationTemplates by ID.
+Updates a ReplicationConfigurationTemplate by ID.
 
 ```sql
 UPDATE aws.mgn.replication_configuration_templates

@@ -6048,6 +6048,42 @@ components:
           $ref: "#/components/schemas/TimeToLiveSpecification"
           description: Represents the output of an UpdateTimeToLive operation.
   x-stackQL-resources:
+    statements:
+      id: aws.dynamodb.statements
+      name: statements
+      title: statements
+      methods:
+        batch_execute_statement:
+          operation:
+            $ref: "#/paths/~1BatchExecuteStatement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        execute_statement:
+          operation:
+            $ref: "#/paths/~1ExecuteStatement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     items:
       id: aws.dynamodb.items
       name: items
@@ -6056,6 +6092,19 @@ components:
         batch_get_item:
           operation:
             $ref: "#/paths/~1BatchGetItem/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_write_item:
+          operation:
+            $ref: "#/paths/~1BatchWriteItem/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6371,6 +6420,19 @@ components:
         export_table_to_point_in_time:
           operation:
             $ref: "#/paths/~1ExportTableToPointInTime/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_table:
+          operation:
+            $ref: "#/paths/~1ImportTable/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6920,6 +6982,29 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/time_to_lives/methods/update_time_to_live"
+        delete: []
+    transactions:
+      id: aws.dynamodb.transactions
+      name: transactions
+      title: transactions
+      methods:
+        execute_transaction:
+          operation:
+            $ref: "#/paths/~1ExecuteTransaction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     tags:
       id: aws.dynamodb.tags

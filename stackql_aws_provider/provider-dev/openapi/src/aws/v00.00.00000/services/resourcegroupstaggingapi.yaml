@@ -276,10 +276,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StartReportCreationOutput"
   /TagResources:
     post:
       operationId: TagResources
@@ -696,8 +692,6 @@ components:
       minLength: 3
       maxLength: 63
       pattern: "[a-z0-9.-]*"
-    StartReportCreationOutput:
-      type: object
     ResourceARNListForTagUntag:
       type: array
       items:
@@ -735,6 +729,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_report_creation:
+          operation:
+            $ref: "#/paths/~1StartReportCreation/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_open_id_token"
     values={[
-        { label: 'get_open_id_token', value: 'get_open_id_token' }
+        { label: 'get_open_id_token', value: 'get_open_id_token' },
+        { label: 'get_open_id_token_for_developer_identity', value: 'get_open_id_token_for_developer_identity' }
     ]}
 >
 <TabItem value="get_open_id_token">
@@ -58,6 +59,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="token" /></td>
     <td><code>string</code></td>
     <td>An OpenID token, valid for 10 minutes.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_open_id_token_for_developer_identity">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="identity_id" /></td>
+    <td><code>string</code></td>
+    <td>A unique identifier in the format REGION:GUID. (pattern: &lt;code&gt;&#91;\w-&#93;+:&#91;0-9a-f-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="token" /></td>
+    <td><code>string</code></td>
+    <td>An OpenID token.</td>
 </tr>
 </tbody>
 </table>
@@ -85,6 +110,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by GetId. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link. The OpenID token is valid for 10 minutes. This is a public API. You do not need any credentials to call this API.</td>
+</tr>
+<tr>
+    <td><a href="#get_open_id_token_for_developer_identity"><CopyableCode code="get_open_id_token_for_developer_identity" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the Logins map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users. You can use GetOpenIdTokenForDeveloperIdentity to create a new identity and to link new logins (that is, user credentials issued by a public provider or developer provider) to an existing identity. When you want to create a new identity, the IdentityId should be null. When you want to associate a new login with an existing authenticated/unauthenticated identity, you can do so by providing the existing IdentityId. This API will create the identity in the specified IdentityPoolId. You must use Amazon Web Services developer credentials to call this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -115,12 +147,26 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_open_id_token"
     values={[
-        { label: 'get_open_id_token', value: 'get_open_id_token' }
+        { label: 'get_open_id_token', value: 'get_open_id_token' },
+        { label: 'get_open_id_token_for_developer_identity', value: 'get_open_id_token_for_developer_identity' }
     ]}
 >
 <TabItem value="get_open_id_token">
 
 Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by GetId. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link. The OpenID token is valid for 10 minutes. This is a public API. You do not need any credentials to call this API.
+
+```sql
+SELECT
+identity_id,
+token
+FROM aws.cognito_identity.open_id_tokens
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_open_id_token_for_developer_identity">
+
+Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the Logins map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users. You can use GetOpenIdTokenForDeveloperIdentity to create a new identity and to link new logins (that is, user credentials issued by a public provider or developer provider) to an existing identity. When you want to create a new identity, the IdentityId should be null. When you want to associate a new login with an existing authenticated/unauthenticated identity, you can do so by providing the existing IdentityId. This API will create the identity in the specified IdentityPoolId. You must use Amazon Web Services developer credentials to call this operation.
 
 ```sql
 SELECT

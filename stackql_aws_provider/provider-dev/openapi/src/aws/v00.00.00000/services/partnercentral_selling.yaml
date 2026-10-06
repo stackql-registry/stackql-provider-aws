@@ -1835,7 +1835,6 @@ paths:
                   $ref: "#/components/schemas/Visibility"
                   description: "Determines whether to restrict visibility of the opportunity from AWS sales. Default value is Full. Valid values: Full: The opportunity is fully visible to AWS sales. Limited: The opportunity has restricted visibility to AWS sales."
               required:
-                - Catalog
                 - Identifier
                 - InvolvementType
       responses:
@@ -1873,10 +1872,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1910,10 +1905,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateEngagementContext:
     post:
       operationId: UpdateEngagementContext
@@ -2080,6 +2071,7 @@ components:
         type: string
   schemas:
     CatalogIdentifier:
+      description: Value space is validated at runtime against an allowlist, so the model keeps only a coarse character-class pattern.
       type: string
       pattern: "[a-zA-Z]+"
     EngagementInvitationArnOrIdentifier:
@@ -2721,7 +2713,7 @@ components:
         - LastName
     LeadJobTitle:
       type: string
-      minLength: 0
+      minLength: 1
       maxLength: 255
     LeadEmail:
       type: string
@@ -3910,6 +3902,9 @@ components:
         CosellMotion:
           $ref: "#/components/schemas/String"
           description: "Engagement classification for this opportunity. Read-only. Null before scoring. Known values: AWS Field-engaged, Agent-engaged, Partner-led."
+        SoftwareRevenue:
+          $ref: "#/components/schemas/AwsSoftwareRevenue"
+          description: "Seller-provided PARC deal terms: commitment value, discount, and contract dates."
         Catalog:
           $ref: "#/components/schemas/CatalogIdentifier"
           description: Specifies the catalog in which the AWS Opportunity exists. This is the environment (e.g., AWS or Sandbox) where the opportunity is being managed.
@@ -4077,6 +4072,7 @@ components:
         - PDM
         - PSM
         - ISVSM
+        - Signatory
     AwsOpportunityInsights:
       description: Contains insights provided by AWS for the opportunity, offering recommendations and analysis that can help the partner optimize their engagement and strategy.
       type: object
@@ -4309,6 +4305,21 @@ components:
         AwsPartition:
           $ref: "#/components/schemas/AwsPartition"
           description: "AWS partition where the opportunity will be deployed. Possible values: aws-eusc for AWS European Sovereign Cloud, null for all other partitions."
+    AwsSoftwareRevenue:
+      description: Seller-provided PARC deal terms for the opportunity, including commitment value, discount percentage, and contract dates.
+      type: object
+      properties:
+        Value:
+          $ref: "#/components/schemas/MonetaryValue"
+        Discount:
+          $ref: "#/components/schemas/String"
+          description: "Discount percentage offered on the software revenue. Percent convention: 15.00 means 15%."
+        EffectiveDate:
+          $ref: "#/components/schemas/String"
+          description: Contract effective (start) date in YYYY-MM-DD format.
+        ExpirationDate:
+          $ref: "#/components/schemas/String"
+          description: Contract expiration (end) date in YYYY-MM-DD format.
     GetEngagementResponse:
       type: object
       properties:
@@ -4775,6 +4786,9 @@ components:
         CosellMotion:
           $ref: "#/components/schemas/String"
           description: "Engagement classification for this opportunity. Read-only. Null before scoring. Known values: AWS Field-engaged, Agent-engaged, Partner-led."
+        SoftwareRevenue:
+          $ref: "#/components/schemas/AwsSoftwareRevenue"
+          description: "Seller-provided PARC deal terms: commitment value, discount, and contract dates."
     AwsAccountIdOrAliasList:
       type: array
       items:
@@ -5989,14 +6003,10 @@ components:
         - TaskName
         - StartTime
         - TaskStatus
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateEngagementContextPayload:
       description: Represents the updated payload of an engagement context. The structure of this payload varies based on the context type being updated.
       type: object
@@ -6295,6 +6305,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        submit_opportunity:
+          operation:
+            $ref: "#/paths/~1SubmitOpportunity/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6606,6 +6628,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_prospecting_from_engagement_task:
+          operation:
+            $ref: "#/paths/~1StartProspectingFromEngagementTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/prospecting_from_engagement_tasks/methods/get_prospecting_from_engagement_task"
@@ -6867,7 +6902,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6880,7 +6914,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

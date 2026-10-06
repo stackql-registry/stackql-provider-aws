@@ -930,7 +930,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableBucketStorageClassResponse'
-      x-stackql-resource: table_bucket_storage_class
+      x-stackql-resource: table_bucket_storage_classes
       x-stackql-method: get_table_bucket_storage_class
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.storageClassConfiguration
@@ -960,7 +960,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: table_bucket_storage_class
+      x-stackql-resource: table_bucket_storage_classes
       x-stackql-method: put_table_bucket_storage_class
       x-stackql-verb: REPLACE
   /tables/{table_bucket_arn}/{namespace}/{name}/encryption:
@@ -1066,7 +1066,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableMaintenanceJobStatusResponse'
-      x-stackql-resource: table_maintenance_job_status
+      x-stackql-resource: table_maintenance_job_statuses
       x-stackql-method: get_table_maintenance_job_status
       x-stackql-verb: SELECT
   /tables/{table_bucket_arn}/{namespace}/{name}/metadata-location:
@@ -1228,7 +1228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableRecordExpirationJobStatusResponse'
-      x-stackql-resource: table_record_expiration_job_status
+      x-stackql-resource: table_record_expiration_job_statuses
       x-stackql-method: get_table_record_expiration_job_status
       x-stackql-verb: SELECT
   /replication-status:
@@ -1251,7 +1251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableReplicationStatusResponse'
-      x-stackql-resource: table_replication_status
+      x-stackql-resource: table_replication_statuses
       x-stackql-method: get_table_replication_status
       x-stackql-verb: SELECT
   /tables/{table_bucket_arn}/{namespace}/{name}/storage-class:
@@ -1286,7 +1286,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTableStorageClassResponse'
-      x-stackql-resource: table_storage_class
+      x-stackql-resource: table_storage_classes
       x-stackql-method: get_table_storage_class
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.storageClassConfiguration
@@ -1398,10 +1398,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1429,10 +1425,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1560,7 +1552,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: table_buckets
+      x-stackql-resource: tables
       x-stackql-method: rename_table
       x-stackql-verb: EXEC
 components:
@@ -2774,8 +2766,6 @@ components:
       required:
       - versionToken
       - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2784,8 +2774,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateTableMetadataLocationResponse:
       type: object
       properties:

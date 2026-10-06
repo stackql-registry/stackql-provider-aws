@@ -100,10 +100,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePipelineResponse"
   /2022-01-01/osis/deletePipelineEndpoint/{endpoint_id}:
     delete:
       operationId: DeletePipelineEndpoint
@@ -118,10 +114,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePipelineEndpointResponse"
   /2022-01-01/osis/resourcePolicy/{resource_arn}:
     delete:
       operationId: DeleteResourcePolicy
@@ -136,10 +128,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Retrieves the resource-based policy attached to an OpenSearch Ingestion resource.
@@ -430,10 +418,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /2022-01-01/osis/untagResource/:
     post:
       operationId: UntagResource
@@ -459,10 +443,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /2022-01-01/osis/updatePipeline/{pipeline_name}:
     put:
       operationId: UpdatePipeline
@@ -907,12 +887,6 @@ components:
         - DELETING
         - REVOKING
         - REVOKED
-    DeletePipelineResponse:
-      type: object
-    DeletePipelineEndpointResponse:
-      type: object
-    DeleteResourcePolicyResponse:
-      type: object
     GetPipelineResponse:
       type: object
       properties:
@@ -1214,14 +1188,10 @@ components:
       properties:
         Pipeline:
           $ref: "#/components/schemas/Pipeline"
-    TagResourceResponse:
-      type: object
     StringList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdatePipelineResponse:
       type: object
       properties:
@@ -1270,7 +1240,6 @@ components:
             $ref: "#/paths/~12022-01-01~1osis~1deletePipeline~1{pipeline_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_pipeline:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1getPipeline~1{pipeline_name}/get"
@@ -1286,9 +1255,32 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        start_pipeline:
+          operation:
+            $ref: "#/paths/~12022-01-01~1osis~1startPipeline~1{pipeline_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_pipeline:
+          operation:
+            $ref: "#/paths/~12022-01-01~1osis~1stopPipeline~1{pipeline_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         update_pipeline:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1updatePipeline~1{pipeline_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_pipeline:
+          operation:
+            $ref: "#/paths/~12022-01-01~1osis~1validatePipeline/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1328,7 +1320,6 @@ components:
             $ref: "#/paths/~12022-01-01~1osis~1deletePipelineEndpoint~1{endpoint_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         list_pipeline_endpoints:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1listPipelineEndpoints/get"
@@ -1364,7 +1355,6 @@ components:
             $ref: "#/paths/~12022-01-01~1osis~1resourcePolicy~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1resourcePolicy~1{resource_arn}/get"
@@ -1417,10 +1407,10 @@ components:
         insert: []
         update: []
         delete: []
-    pipeline_change_progress:
-      id: aws.osis.pipeline_change_progress
-      name: pipeline_change_progress
-      title: pipeline_change_progress
+    pipeline_change_progresses:
+      id: aws.osis.pipeline_change_progresses
+      name: pipeline_change_progresses
+      title: pipeline_change_progresses
       methods:
         get_pipeline_change_progress:
           operation:
@@ -1430,7 +1420,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/pipeline_change_progress/methods/get_pipeline_change_progress"
+          - $ref: "#/components/x-stackQL-resources/pipeline_change_progresses/methods/get_pipeline_change_progress"
         insert: []
         update: []
         delete: []
@@ -1492,7 +1482,6 @@ components:
             $ref: "#/paths/~12022-01-01~1osis~1tagResource~1/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1503,7 +1492,6 @@ components:
             $ref: "#/paths/~12022-01-01~1osis~1untagResource~1/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

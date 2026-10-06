@@ -193,11 +193,25 @@ The following methods are available for this resource:
     <td>Deletes the specified license.</td>
 </tr>
 <tr>
+    <td><a href="#check_in_license"><CopyableCode code="check_in_license" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LicenseConsumptionToken"><code>LicenseConsumptionToken</code></a></td>
+    <td></td>
+    <td>Checks in the specified license. Check in a license when it is no longer in use.</td>
+</tr>
+<tr>
     <td><a href="#checkout_borrow_license"><CopyableCode code="checkout_borrow_license" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-LicenseArn"><code>LicenseArn</code></a>, <a href="#parameter-Entitlements"><code>Entitlements</code></a>, <a href="#parameter-DigitalSignatureMethod"><code>DigitalSignatureMethod</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
     <td></td>
     <td>Checks out the specified license for offline use.</td>
+</tr>
+<tr>
+    <td><a href="#checkout_license"><CopyableCode code="checkout_license" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProductSKU"><code>ProductSKU</code></a>, <a href="#parameter-CheckoutType"><code>CheckoutType</code></a>, <a href="#parameter-KeyFingerprint"><code>KeyFingerprint</code></a>, <a href="#parameter-Entitlements"><code>Entitlements</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a></td>
+    <td></td>
+    <td>Checks out the specified license. If the account that created the license is the same that is performing the check out, you must specify the account as the beneficiary.</td>
 </tr>
 </tbody>
 </table>
@@ -429,11 +443,28 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="checkout_borrow_license"
+    defaultValue="check_in_license"
     values={[
-        { label: 'checkout_borrow_license', value: 'checkout_borrow_license' }
+        { label: 'check_in_license', value: 'check_in_license' },
+        { label: 'checkout_borrow_license', value: 'checkout_borrow_license' },
+        { label: 'checkout_license', value: 'checkout_license' }
     ]}
 >
+<TabItem value="check_in_license">
+
+Checks in the specified license. Check in a license when it is no longer in use.
+
+```sql
+EXEC aws.license_manager.licenses.check_in_license 
+@region='{{ region }}' --required 
+@@json=
+'{
+"LicenseConsumptionToken": "{{ LicenseConsumptionToken }}", 
+"Beneficiary": "{{ Beneficiary }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="checkout_borrow_license">
 
 Checks out the specified license for offline use.
@@ -449,6 +480,26 @@ EXEC aws.license_manager.licenses.checkout_borrow_license
 "NodeId": "{{ NodeId }}", 
 "CheckoutMetadata": "{{ CheckoutMetadata }}", 
 "ClientToken": "{{ ClientToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="checkout_license">
+
+Checks out the specified license. If the account that created the license is the same that is performing the check out, you must specify the account as the beneficiary.
+
+```sql
+EXEC aws.license_manager.licenses.checkout_license 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ProductSKU": "{{ ProductSKU }}", 
+"CheckoutType": "{{ CheckoutType }}", 
+"KeyFingerprint": "{{ KeyFingerprint }}", 
+"Entitlements": "{{ Entitlements }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Beneficiary": "{{ Beneficiary }}", 
+"NodeId": "{{ NodeId }}"
 }'
 ;
 ```

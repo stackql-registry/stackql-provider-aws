@@ -33,15 +33,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ActivateOrganizationsAccessOutputDisplay'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: activate_organizations_access
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ActivateOrganizationsAccessOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_ActivateOrganizationsAccess
       description: Activate trusted access with Organizations. With trusted access between StackSets and Organizations activated,
@@ -49,21 +43,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ActivateOrganizationsAccessOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/ActivateOrganizationsAccessInput'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: activate_organizations_access
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ActivateOrganizationsAccessOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=ActivateType&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -163,7 +151,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ActivateTypeOutputDisplay'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: activate_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ActivateTypeOutputDisplay
@@ -190,7 +178,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ActivateTypeInput'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: activate_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ActivateTypeOutputDisplay
@@ -223,7 +211,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchDescribeTypeConfigurationsOutputDisplay'
-      x-stackql-resource: batch_describe_type_configurations
+      x-stackql-resource: types
       x-stackql-method: batch_describe_type_configurations
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDescribeTypeConfigurationsOutputDisplay
@@ -246,7 +234,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchDescribeTypeConfigurationsInput'
-      x-stackql-resource: batch_describe_type_configurations
+      x-stackql-resource: types
       x-stackql-method: batch_describe_type_configurations
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDescribeTypeConfigurationsOutputDisplay
@@ -380,15 +368,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ContinueUpdateRollbackOutputDisplay'
       x-stackql-resource: stacks
       x-stackql-method: continue_update_rollback
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ContinueUpdateRollbackOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_ContinueUpdateRollback
       description: Continues rolling back a stack from UPDATE_ROLLBACK_FAILED to UPDATE_ROLLBACK_COMPLETE state. Depending
@@ -403,10 +385,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ContinueUpdateRollbackOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -416,8 +394,6 @@ paths:
       x-stackql-resource: stacks
       x-stackql-method: continue_update_rollback
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ContinueUpdateRollbackOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateChangeSet&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1407,15 +1383,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeactivateOrganizationsAccessOutputDisplay'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: deactivate_organizations_access
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DeactivateOrganizationsAccessOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeactivateOrganizationsAccess
       description: Deactivates trusted access with Organizations. If trusted access is deactivated, the management account
@@ -1423,21 +1393,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeactivateOrganizationsAccessOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeactivateOrganizationsAccessInput'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: deactivate_organizations_access
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DeactivateOrganizationsAccessOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeactivateType&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1479,15 +1443,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeactivateTypeOutputDisplay'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: deactivate_type
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DeactivateTypeOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeactivateType
       description: Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when
@@ -1499,21 +1457,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeactivateTypeOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeactivateTypeInput'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: deactivate_type
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: DeactivateTypeOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteChangeSet&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1546,15 +1498,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteChangeSetOutputDisplay'
       x-stackql-resource: change_sets
       x-stackql-method: delete_change_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteChangeSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteChangeSet
       description: Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
@@ -1564,10 +1510,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteChangeSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1577,8 +1519,6 @@ paths:
       x-stackql-resource: change_sets
       x-stackql-method: delete_change_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteChangeSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteGeneratedTemplate&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1858,15 +1798,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteStackSetOutputDisplay'
       x-stackql-resource: stack_sets
       x-stackql-method: delete_stack_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteStackSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteStackSet
       description: Deletes a StackSet. Before you can delete a StackSet, all its member stack instances must be deleted. For
@@ -1874,10 +1808,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteStackSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1887,8 +1817,6 @@ paths:
       x-stackql-resource: stack_sets
       x-stackql-method: delete_stack_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteStackSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeregisterType&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1939,15 +1867,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterTypeOutputDisplay'
       x-stackql-resource: types
       x-stackql-method: deregister_type
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterTypeOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeregisterType
       description: Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from
@@ -1962,10 +1884,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeregisterTypeOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1975,8 +1893,6 @@ paths:
       x-stackql-resource: types
       x-stackql-method: deregister_type
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeregisterTypeOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAccountLimits&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2360,7 +2276,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeOrganizationsAccessOutputDisplay'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: describe_organizations_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeOrganizationsAccessOutputDisplay
@@ -2383,7 +2299,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeOrganizationsAccessInput'
-      x-stackql-resource: organizations_access
+      x-stackql-resource: organizations_accesses
       x-stackql-method: describe_organizations_access
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeOrganizationsAccessOutputDisplay
@@ -2534,7 +2450,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DescribeStackDriftDetectionStatusOutputDisplay'
-      x-stackql-resource: stack_drift_detection_status
+      x-stackql-resource: stack_drift_detection_statuses
       x-stackql-method: describe_stack_drift_detection_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStackDriftDetectionStatusOutputDisplay
@@ -2562,7 +2478,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DescribeStackDriftDetectionStatusInput'
-      x-stackql-resource: stack_drift_detection_status
+      x-stackql-resource: stack_drift_detection_statuses
       x-stackql-method: describe_stack_drift_detection_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStackDriftDetectionStatusOutputDisplay
@@ -3488,7 +3404,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DetectStackResourceDriftOutputDisplay'
-      x-stackql-resource: stacks
+      x-stackql-resource: stack_resource_drifts
       x-stackql-method: detect_stack_resource_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackResourceDriftOutputDisplay
@@ -3516,7 +3432,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DetectStackResourceDriftInput'
-      x-stackql-resource: stacks
+      x-stackql-resource: stack_resource_drifts
       x-stackql-method: detect_stack_resource_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackResourceDriftOutputDisplay
@@ -3664,7 +3580,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EstimateTemplateCostOutputDisplay'
-      x-stackql-resource: estimate_template_cost
+      x-stackql-resource: templates
       x-stackql-method: estimate_template_cost
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EstimateTemplateCostOutputDisplay
@@ -3686,7 +3602,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EstimateTemplateCostInput'
-      x-stackql-resource: estimate_template_cost
+      x-stackql-resource: templates
       x-stackql-method: estimate_template_cost
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EstimateTemplateCostOutputDisplay
@@ -3750,15 +3666,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ExecuteChangeSetOutputDisplay'
       x-stackql-resource: change_sets
       x-stackql-method: execute_change_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ExecuteChangeSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_ExecuteChangeSet
       description: Updates a stack using the input information that was provided when the specified change set was created.
@@ -3770,10 +3680,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/ExecuteChangeSetOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3783,8 +3689,6 @@ paths:
       x-stackql-resource: change_sets
       x-stackql-method: execute_change_set
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ExecuteChangeSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=ExecuteStackRefactor&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4245,7 +4149,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ImportStacksToStackSetOutputDisplay'
-      x-stackql-resource: stacks
+      x-stackql-resource: stack_sets
       x-stackql-method: import_stacks_to_stack_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ImportStacksToStackSetOutputDisplay
@@ -4268,7 +4172,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ImportStacksToStackSetInput'
-      x-stackql-resource: stacks
+      x-stackql-resource: stack_sets
       x-stackql-method: import_stacks_to_stack_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ImportStacksToStackSetOutputDisplay
@@ -6009,7 +5913,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PublishTypeOutputDisplay'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: publish_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishTypeOutputDisplay
@@ -6034,7 +5938,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PublishTypeInput'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: publish_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishTypeOutputDisplay
@@ -6098,15 +6002,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RecordHandlerProgressOutputDisplay'
-      x-stackql-resource: record_handler_progress
+      x-stackql-resource: handler_progresses
       x-stackql-method: record_handler_progress
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: RecordHandlerProgressOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RecordHandlerProgress
       description: Reports progress of a resource handler to CloudFormation. Reserved for use by the CloudFormation CLI. Don't
@@ -6114,21 +6012,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RecordHandlerProgressOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/RecordHandlerProgressInput'
-      x-stackql-resource: record_handler_progress
+      x-stackql-resource: handler_progresses
       x-stackql-method: record_handler_progress
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: RecordHandlerProgressOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=RegisterPublisher&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6597,15 +6489,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetTypeDefaultVersionOutputDisplay'
       x-stackql-resource: types
       x-stackql-method: set_type_default_version
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetTypeDefaultVersionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetTypeDefaultVersion
       description: Specify the default version of an extension. The default version of an extension will be used in CloudFormation
@@ -6613,10 +6499,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetTypeDefaultVersionOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -6626,8 +6508,6 @@ paths:
       x-stackql-resource: types
       x-stackql-method: set_type_default_version
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetTypeDefaultVersionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=SignalResource&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6730,7 +6610,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartResourceScanOutputDisplay'
-      x-stackql-resource: resource_scan
+      x-stackql-resource: resource_scans
       x-stackql-method: start_resource_scan
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartResourceScanOutputDisplay
@@ -6752,7 +6632,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartResourceScanInput'
-      x-stackql-resource: resource_scan
+      x-stackql-resource: resource_scans
       x-stackql-method: start_resource_scan
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartResourceScanOutputDisplay
@@ -6797,15 +6677,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/StopStackSetOperationOutputDisplay'
-      x-stackql-resource: stack_sets
+      x-stackql-resource: stack_set_operations
       x-stackql-method: stop_stack_set_operation
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: StopStackSetOperationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_StopStackSetOperation
       description: Stops an in-progress operation on a StackSet and its associated stack instances. StackSets will cancel
@@ -6813,21 +6687,15 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/StopStackSetOperationOutputDisplay'
       parameters: []
       requestBody:
         content:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopStackSetOperationInput'
-      x-stackql-resource: stack_sets
+      x-stackql-resource: stack_set_operations
       x-stackql-method: stop_stack_set_operation
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: StopStackSetOperationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=TestType&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6894,7 +6762,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TestTypeOutputDisplay'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: test_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestTypeOutputDisplay
@@ -6924,7 +6792,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TestTypeInput'
-      x-stackql-resource: type
+      x-stackql-resource: types
       x-stackql-method: test_type
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestTypeOutputDisplay
@@ -7765,7 +7633,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ValidateTemplateOutputDisplay'
-      x-stackql-resource: template
+      x-stackql-resource: templates
       x-stackql-method: validate_template
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ValidateTemplateOutputDisplay
@@ -7788,7 +7656,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ValidateTemplateInput'
-      x-stackql-resource: template
+      x-stackql-resource: templates
       x-stackql-method: validate_template
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ValidateTemplateOutputDisplay
@@ -7838,13 +7706,6 @@ components:
       schema:
         type: string
   schemas:
-    ActivateOrganizationsAccessOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivateOrganizationsAccessOutputDisplay'
     ActivateOrganizationsAccessInput:
       type: object
     ThirdPartyType:
@@ -8050,13 +7911,6 @@ components:
     ResourceToSkip:
       type: string
       pattern: '[a-zA-Z0-9]+|[a-zA-Z][-a-zA-Z0-9]*\.[a-zA-Z0-9]+'
-    ContinueUpdateRollbackOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContinueUpdateRollbackOutputDisplay'
     ContinueUpdateRollbackInput:
       description: The input for the ContinueUpdateRollback action.
       type: object
@@ -9178,26 +9032,12 @@ components:
             operations.
       required:
       - StackSetName
-    DeactivateOrganizationsAccessOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeactivateOrganizationsAccessOutputDisplay'
     DeactivateOrganizationsAccessInput:
       type: object
     PrivateTypeArn:
       type: string
       maxLength: 1024
       pattern: arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+
-    DeactivateTypeOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeactivateTypeOutputDisplay'
     DeactivateTypeInput:
       type: object
       properties:
@@ -9217,13 +9057,6 @@ components:
       minLength: 1
       maxLength: 1600
       pattern: '[a-zA-Z][-a-zA-Z0-9]*|arn:[-a-zA-Z0-9:/]*'
-    DeleteChangeSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteChangeSetOutputDisplay'
     DeleteChangeSetInput:
       description: The input for the DeleteChangeSet action.
       type: object
@@ -9347,13 +9180,6 @@ components:
       - StackSetName
       - Regions
       - RetainStacks
-    DeleteStackSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteStackSetOutputDisplay'
     DeleteStackSetInput:
       type: object
       properties:
@@ -9381,13 +9207,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[A-Za-z0-9-]+'
-    DeregisterTypeOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeregisterTypeOutputDisplay'
     DeregisterTypeInput:
       type: object
       properties:
@@ -10717,13 +10536,6 @@ components:
         Parameters:
           $ref: '#/components/schemas/Parameters'
           description: A list of Parameter structures that specify input parameters.
-    ExecuteChangeSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExecuteChangeSetOutputDisplay'
     ExecuteChangeSetInput:
       description: The input for the ExecuteChangeSet action.
       type: object
@@ -12474,13 +12286,6 @@ components:
       type: string
       minLength: 1
       maxLength: 16384
-    RecordHandlerProgressOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordHandlerProgressOutputDisplay'
     RecordHandlerProgressInput:
       type: object
       properties:
@@ -12679,13 +12484,6 @@ components:
           description: 'The type of extension. Conditional: You must specify ConfigurationArn, or Type and TypeName.'
       required:
       - Configuration
-    SetTypeDefaultVersionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetTypeDefaultVersionOutputDisplay'
     SetTypeDefaultVersionInput:
       type: object
       properties:
@@ -12777,13 +12575,6 @@ components:
         ScanFilters:
           $ref: '#/components/schemas/ScanFilters'
           description: The scan filters to use.
-    StopStackSetOperationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/StopStackSetOperationOutputDisplay'
     StopStackSetOperationInput:
       type: object
       properties:

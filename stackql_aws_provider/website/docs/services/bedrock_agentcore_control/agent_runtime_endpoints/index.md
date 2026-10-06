@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the AgentCore Runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
+    <td>The current status of the AgentCore Runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="target_version" /></td>
@@ -162,7 +162,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the agent runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING)</td>
+    <td>The current status of the agent runtime endpoint. (CREATING, CREATE_FAILED, UPDATING, UPDATE_FAILED, READY, DELETING, DELETE_FAILED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="target_version" /></td>

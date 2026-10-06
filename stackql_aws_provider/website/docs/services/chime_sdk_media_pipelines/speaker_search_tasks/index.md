@@ -96,6 +96,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves the details of the specified speaker search task.</td>
 </tr>
+<tr>
+    <td><a href="#start_speaker_search_task"><CopyableCode code="start_speaker_search_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-VoiceProfileDomainArn"><code>VoiceProfileDomainArn</code></a></td>
+    <td></td>
+    <td>Starts a speaker search task. Before starting any speaker search tasks, you must provide all notices and obtain all consents from the speaker as required under applicable privacy and biometrics laws, and as required under the AWS service terms for the Amazon Chime SDK.</td>
+</tr>
+<tr>
+    <td><a href="#stop_speaker_search_task"><CopyableCode code="stop_speaker_search_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-speaker_search_task_id"><code>speaker_search_task_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a speaker search task.</td>
+</tr>
 </tbody>
 </table>
 
@@ -125,7 +139,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-speaker_search_task_id">
     <td><CopyableCode code="speaker_search_task_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the speaker search task.</td>
+    <td>The speaker search task ID.</td>
 </tr>
 </tbody>
 </table>
@@ -152,6 +166,47 @@ FROM aws.chime_sdk_media_pipelines.speaker_search_tasks
 WHERE identifier = '{{ identifier }}' -- required
 AND speaker_search_task_id = '{{ speaker_search_task_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_speaker_search_task"
+    values={[
+        { label: 'start_speaker_search_task', value: 'start_speaker_search_task' },
+        { label: 'stop_speaker_search_task', value: 'stop_speaker_search_task' }
+    ]}
+>
+<TabItem value="start_speaker_search_task">
+
+Starts a speaker search task. Before starting any speaker search tasks, you must provide all notices and obtain all consents from the speaker as required under applicable privacy and biometrics laws, and as required under the AWS service terms for the Amazon Chime SDK.
+
+```sql
+EXEC aws.chime_sdk_media_pipelines.speaker_search_tasks.start_speaker_search_task 
+@identifier='{{ identifier }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"VoiceProfileDomainArn": "{{ VoiceProfileDomainArn }}", 
+"KinesisVideoStreamSourceTaskConfiguration": "{{ KinesisVideoStreamSourceTaskConfiguration }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_speaker_search_task">
+
+Stops a speaker search task.
+
+```sql
+EXEC aws.chime_sdk_media_pipelines.speaker_search_tasks.stop_speaker_search_task 
+@identifier='{{ identifier }}' --required, 
+@speaker_search_task_id='{{ speaker_search_task_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

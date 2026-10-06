@@ -88,10 +88,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSuiteDefinitionResponse'
       x-stackql-resource: suite_definitions
       x-stackql-method: delete_suite_definition
       x-stackql-verb: DELETE
@@ -335,10 +331,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -361,10 +353,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -401,7 +389,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSuiteRunResponse'
-      x-stackql-resource: suite_definitions
+      x-stackql-resource: suite_runs
       x-stackql-method: start_suite_run
       x-stackql-verb: EXEC
   /suiteDefinitions/{suite_definition_id}/suiteRuns/{suite_run_id}/stop:
@@ -425,11 +413,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopSuiteRunResponse'
-      x-stackql-resource: suite_definitions
+      x-stackql-resource: suite_runs
       x-stackql-method: stop_suite_run
       x-stackql-verb: EXEC
 components:
@@ -581,8 +565,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteSuiteDefinitionResponse:
-      type: object
     AuthenticationMethod:
       type: string
       enum:
@@ -966,10 +948,6 @@ components:
         endpoint:
           $ref: '#/components/schemas/Endpoint'
           description: The response of an Device Advisor test endpoint.
-    StopSuiteRunResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -978,8 +956,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateSuiteDefinitionResponse:
       type: object
       properties:

@@ -18,19 +18,20 @@ signer service documentation.
 
 :::info[Service Summary]
 
-total resources: __7__  
+total resources: __8__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/signer/payloads/">payloads</a><br />
 <a href="/services/signer/profile_permissions/">profile_permissions</a><br />
-<a href="/services/signer/revocation_status/">revocation_status</a><br />
-<a href="/services/signer/signatures/">signatures</a><br />
-<a href="/services/signer/signing_jobs/">signing_jobs</a>
+<a href="/services/signer/revocation_statuses/">revocation_statuses</a><br />
+<a href="/services/signer/signatures/">signatures</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/signer/signing_jobs/">signing_jobs</a><br />
 <a href="/services/signer/signing_platforms/">signing_platforms</a><br />
 <a href="/services/signer/signing_profiles/">signing_profiles</a><br />
 <a href="/services/signer/tags/">tags</a>

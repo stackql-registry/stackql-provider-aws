@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_web_acl"
     values={[
-        { label: 'get_web_acl', value: 'get_web_acl' }
+        { label: 'get_web_acl', value: 'get_web_acl' },
+        { label: 'get_web_acl_for_resource', value: 'get_web_acl_for_resource' }
     ]}
 >
 <TabItem value="get_web_acl">
@@ -82,6 +83,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="get_web_acl_for_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>A friendly name or description of the WebACL. You can't change the name of a WebACL after you create it. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="web_acl_id" /></td>
+    <td><code>string</code></td>
+    <td>A unique identifier for a WebACL. You use WebACLId to get information about a WebACL (see GetWebACL), update a WebACL (see UpdateWebACL), and delete a WebACL from AWS WAF (see DeleteWebACL). WebACLId is returned by CreateWebACL and by ListWebACLs. (pattern: &lt;code&gt;.*\S.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -105,6 +130,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>This is AWS WAF Classic documentation. For more information, see AWS WAF Classic in the developer guide. For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS WAF Developer Guide. With the latest version, AWS WAF has a single set of endpoints for regional and global use. Returns the WebACL that is specified by WebACLId.</td>
+</tr>
+<tr>
+    <td><a href="#get_web_acl_for_resource"><CopyableCode code="get_web_acl_for_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This is AWS WAF Classic Regional documentation. For more information, see AWS WAF Classic in the developer guide. For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS WAF Developer Guide. With the latest version, AWS WAF has a single set of endpoints for regional and global use. Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage.</td>
 </tr>
 <tr>
     <td><a href="#create_web_acl"><CopyableCode code="create_web_acl" /></a></td>
@@ -177,7 +209,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_web_acl"
     values={[
-        { label: 'get_web_acl', value: 'get_web_acl' }
+        { label: 'get_web_acl', value: 'get_web_acl' },
+        { label: 'get_web_acl_for_resource', value: 'get_web_acl_for_resource' }
     ]}
 >
 <TabItem value="get_web_acl">
@@ -191,6 +224,19 @@ metric_name,
 name,
 rules,
 web_acl_arn,
+web_acl_id
+FROM aws.waf_regional.web_acls
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_web_acl_for_resource">
+
+This is AWS WAF Classic Regional documentation. For more information, see AWS WAF Classic in the developer guide. For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS WAF Developer Guide. With the latest version, AWS WAF has a single set of endpoints for regional and global use. Returns the web ACL for the specified resource, either an application load balancer or Amazon API Gateway stage.
+
+```sql
+SELECT
+name,
 web_acl_id
 FROM aws.waf_regional.web_acls
 WHERE region = '{{ region }}' -- required

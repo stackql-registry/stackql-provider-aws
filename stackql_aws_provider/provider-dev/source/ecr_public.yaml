@@ -112,7 +112,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteImageResponse'
-      x-stackql-resource: repositories
+      x-stackql-resource: images
       x-stackql-method: batch_delete_image
       x-stackql-verb: EXEC
   /CompleteLayerUpload:
@@ -593,7 +593,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRegistryCatalogDataResponse'
-      x-stackql-resource: registry_catalog_datas
+      x-stackql-resource: registry_catalog_data
       x-stackql-method: get_registry_catalog_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.registryCatalogData
@@ -635,7 +635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRepositoryCatalogDataResponse'
-      x-stackql-resource: repository_catalog_datas
+      x-stackql-resource: repository_catalog_data
       x-stackql-method: get_repository_catalog_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.catalogData
@@ -854,7 +854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRegistryCatalogDataResponse'
-      x-stackql-resource: registry_catalog_datas
+      x-stackql-resource: registry_catalog_data
       x-stackql-method: put_registry_catalog_data
       x-stackql-verb: REPLACE
   /PutRepositoryCatalogData:
@@ -899,7 +899,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRepositoryCatalogDataResponse'
-      x-stackql-resource: repository_catalog_datas
+      x-stackql-resource: repository_catalog_data
       x-stackql-method: put_repository_catalog_data
       x-stackql-verb: REPLACE
   /SetRepositoryPolicy:
@@ -990,10 +990,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1031,10 +1027,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1859,14 +1851,10 @@ components:
         policyText:
           $ref: '#/components/schemas/RepositoryPolicyText'
           description: The JSON repository policy text that's applied to the repository.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     LayerPartBlob:
       type: string
       format: byte

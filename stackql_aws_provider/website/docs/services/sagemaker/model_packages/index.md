@@ -329,6 +329,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a model package. A model package is used to create SageMaker models or list on Amazon Web Services Marketplace. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.</td>
 </tr>
+<tr>
+    <td><a href="#batch_describe_model_package"><CopyableCode code="batch_describe_model_package" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ModelPackageArnList"><code>ModelPackageArnList</code></a></td>
+    <td></td>
+    <td>This action batch describes a list of versioned model packages</td>
+</tr>
 </tbody>
 </table>
 
@@ -852,6 +859,31 @@ Deletes a model package. A model package is used to create SageMaker models or l
 ```sql
 DELETE FROM aws.sagemaker.model_packages
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_describe_model_package"
+    values={[
+        { label: 'batch_describe_model_package', value: 'batch_describe_model_package' }
+    ]}
+>
+<TabItem value="batch_describe_model_package">
+
+This action batch describes a list of versioned model packages
+
+```sql
+EXEC aws.sagemaker.model_packages.batch_describe_model_package 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ModelPackageArnList": "{{ ModelPackageArnList }}"
+}'
 ;
 ```
 </TabItem>

@@ -53,7 +53,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="data_access_role_arn" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) that grants AWS HealthLake access to the input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) that grants HealthLake access to the input data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="datastore_id" /></td>
@@ -168,6 +168,13 @@ The following methods are available for this resource:
     <td></td>
     <td>List all FHIR import jobs associated with an account and their statuses.</td>
 </tr>
+<tr>
+    <td><a href="#start_fhir_import_job"><CopyableCode code="start_fhir_import_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-JobOutputDataConfig"><code>JobOutputDataConfig</code></a>, <a href="#parameter-DatastoreId"><code>DatastoreId</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a></td>
+    <td></td>
+    <td>Start importing bulk FHIR data into an ACTIVE data store. The import job imports FHIR data found in the InputDataConfig object and stores processing results in the JobOutputDataConfig object.</td>
+</tr>
 </tbody>
 </table>
 
@@ -234,6 +241,41 @@ import_job_properties_list,
 next_token
 FROM aws.healthlake.fhir_import_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_fhir_import_job"
+    values={[
+        { label: 'start_fhir_import_job', value: 'start_fhir_import_job' }
+    ]}
+>
+<TabItem value="start_fhir_import_job">
+
+Start importing bulk FHIR data into an ACTIVE data store. The import job imports FHIR data found in the InputDataConfig object and stores processing results in the JobOutputDataConfig object.
+
+```sql
+EXEC aws.healthlake.fhir_import_jobs.start_fhir_import_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobName": "{{ JobName }}", 
+"InputDataConfig": "{{ InputDataConfig }}", 
+"JobOutputDataConfig": "{{ JobOutputDataConfig }}", 
+"DatastoreId": "{{ DatastoreId }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"ClientToken": "{{ ClientToken }}", 
+"ValidationLevel": "{{ ValidationLevel }}", 
+"ProfileId": "{{ ProfileId }}", 
+"InputFormat": "{{ InputFormat }}", 
+"DriftDetectionEnabled": {{ DriftDetectionEnabled }}, 
+"ProvenanceEnabled": {{ ProvenanceEnabled }}
+}'
 ;
 ```
 </TabItem>

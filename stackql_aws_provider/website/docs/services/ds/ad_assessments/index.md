@@ -155,6 +155,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a directory assessment and all associated data. This operation permanently removes the assessment results, validation reports, and configuration information. You cannot delete system-initiated assessments. You can delete customer-created assessments even if they are in progress.</td>
 </tr>
+<tr>
+    <td><a href="#start_ad_assessment"><CopyableCode code="start_ad_assessment" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Initiates a directory assessment to validate your self-managed AD environment for hybrid domain join. The assessment checks compatibility and connectivity of the self-managed AD environment. A directory assessment is automatically created when you create a hybrid directory. There are two types of assessments: CUSTOMER and SYSTEM. Your Amazon Web Services account has a limit of 100 CUSTOMER directory assessments. The assessment process typically takes 30 minutes or more to complete. The assessment process is asynchronous and you can monitor it with DescribeADAssessment. The InstanceIds must have a one-to-one correspondence with CustomerDnsIps, meaning that if the IP address for instance i-10243410 is 10.24.34.100 and the IP address for instance i-10243420 is 10.24.34.200, then the input arrays must maintain the same order relationship, either &#91;10.24.34.100, 10.24.34.200&#93; paired with &#91;i-10243410, i-10243420&#93; or &#91;10.24.34.200, 10.24.34.100&#93; paired with &#91;i-10243420, i-10243410&#93;. Note: You must provide exactly one DirectoryId or AssessmentConfiguration.</td>
+</tr>
 </tbody>
 </table>
 
@@ -238,6 +245,32 @@ Deletes a directory assessment and all associated data. This operation permanent
 ```sql
 DELETE FROM aws.ds.ad_assessments
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_ad_assessment"
+    values={[
+        { label: 'start_ad_assessment', value: 'start_ad_assessment' }
+    ]}
+>
+<TabItem value="start_ad_assessment">
+
+Initiates a directory assessment to validate your self-managed AD environment for hybrid domain join. The assessment checks compatibility and connectivity of the self-managed AD environment. A directory assessment is automatically created when you create a hybrid directory. There are two types of assessments: CUSTOMER and SYSTEM. Your Amazon Web Services account has a limit of 100 CUSTOMER directory assessments. The assessment process typically takes 30 minutes or more to complete. The assessment process is asynchronous and you can monitor it with DescribeADAssessment. The InstanceIds must have a one-to-one correspondence with CustomerDnsIps, meaning that if the IP address for instance i-10243410 is 10.24.34.100 and the IP address for instance i-10243420 is 10.24.34.200, then the input arrays must maintain the same order relationship, either [10.24.34.100, 10.24.34.200] paired with [i-10243410, i-10243420] or [10.24.34.200, 10.24.34.100] paired with [i-10243420, i-10243410]. Note: You must provide exactly one DirectoryId or AssessmentConfiguration.
+
+```sql
+EXEC aws.ds.ad_assessments.start_ad_assessment 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AssessmentConfiguration": "{{ AssessmentConfiguration }}", 
+"DirectoryId": "{{ DirectoryId }}"
+}'
 ;
 ```
 </TabItem>

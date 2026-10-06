@@ -41,9 +41,9 @@ total resources: __19__
 <a href="/services/forecast/predictor_backtest_export_jobs/">predictor_backtest_export_jobs</a><br />
 <a href="/services/forecast/predictors/">predictors</a><br />
 <a href="/services/forecast/resource_trees/">resource_trees</a><br />
+<a href="/services/forecast/resources/">resources</a><br />
 <a href="/services/forecast/tags/">tags</a><br />
 <a href="/services/forecast/what_if_analyses/">what_if_analyses</a><br />
-<a href="/services/forecast/what_if_analysis/">what_if_analysis</a><br />
 <a href="/services/forecast/what_if_forecast_exports/">what_if_forecast_exports</a><br />
 <a href="/services/forecast/what_if_forecasts/">what_if_forecasts</a>
 </div>

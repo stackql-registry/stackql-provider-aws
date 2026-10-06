@@ -146,6 +146,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-HostReservationIdSet"><code>HostReservationIdSet</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Describes reservations that are associated with Dedicated Hosts in your account.</td>
 </tr>
+<tr>
+    <td><a href="#purchase_host_reservation"><CopyableCode code="purchase_host_reservation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-HostIdSet"><code>HostIdSet</code></a>, <a href="#parameter-OfferingId"><code>OfferingId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-CurrencyCode"><code>CurrencyCode</code></a>, <a href="#parameter-LimitPrice"><code>LimitPrice</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
+    <td>Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.</td>
+</tr>
 </tbody>
 </table>
 
@@ -162,10 +169,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-HostIdSet">
+    <td><CopyableCode code="HostIdSet" /></td>
+    <td><code>array</code></td>
+    <td>The IDs of the Dedicated Hosts with which the reservation will be associated.</td>
+</tr>
+<tr id="parameter-OfferingId">
+    <td><CopyableCode code="OfferingId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the offering.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-ClientToken">
+    <td><CopyableCode code="ClientToken" /></td>
+    <td><code>string</code></td>
+    <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.</td>
+</tr>
+<tr id="parameter-CurrencyCode">
+    <td><CopyableCode code="CurrencyCode" /></td>
+    <td><code>string</code></td>
+    <td>The currency in which the totalUpfrontPrice, LimitPrice, and totalHourlyPrice amounts are specified. At this time, the only supported currency is USD.</td>
 </tr>
 <tr id="parameter-Filter">
     <td><CopyableCode code="Filter" /></td>
@@ -177,6 +204,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>The host reservation IDs.</td>
 </tr>
+<tr id="parameter-LimitPrice">
+    <td><CopyableCode code="LimitPrice" /></td>
+    <td><code>string</code></td>
+    <td>The specified limit is checked against the total upfront cost of the reservation (calculated as the offering's upfront cost multiplied by the host count). If the total upfront cost is greater than the specified price limit, the request fails. This is used to ensure that the purchase does not exceed the expected upfront cost of the purchase. At this time, the only supported currency is USD. For example, to indicate a limit price of USD 100, specify 100.00.</td>
+</tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
     <td><code>integer</code></td>
@@ -186,6 +218,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="NextToken" /></td>
     <td><code>string</code></td>
     <td>The token to use to retrieve the next page of results.</td>
+</tr>
+<tr id="parameter-TagSpecification">
+    <td><CopyableCode code="TagSpecification" /></td>
+    <td><code>array</code></td>
+    <td>The tags to apply to the Dedicated Host Reservation during purchase.</td>
 </tr>
 </tbody>
 </table>
@@ -224,6 +261,33 @@ AND Filter = '{{ Filter }}'
 AND HostReservationIdSet = '{{ HostReservationIdSet }}'
 AND MaxResults = '{{ MaxResults }}'
 AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="purchase_host_reservation"
+    values={[
+        { label: 'purchase_host_reservation', value: 'purchase_host_reservation' }
+    ]}
+>
+<TabItem value="purchase_host_reservation">
+
+Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.
+
+```sql
+EXEC aws.ec2.host_reservations.purchase_host_reservation 
+@HostIdSet='{{ HostIdSet }}' --required, 
+@OfferingId='{{ OfferingId }}' --required, 
+@region='{{ region }}' --required, 
+@ClientToken='{{ ClientToken }}', 
+@CurrencyCode='{{ CurrencyCode }}', 
+@LimitPrice='{{ LimitPrice }}', 
+@TagSpecification='{{ TagSpecification }}'
 ;
 ```
 </TabItem>

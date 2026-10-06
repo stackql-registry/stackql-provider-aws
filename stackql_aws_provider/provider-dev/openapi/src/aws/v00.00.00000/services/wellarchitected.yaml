@@ -783,10 +783,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentContextResponse"
     get:
       operationId: GetAgentContext
       description: Retrieves detailed information about a specific context associated with a profile.
@@ -866,10 +862,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentGoalResponse"
     get:
       operationId: GetAgentGoal
       description: Retrieves detailed information about a specific optimization goal.
@@ -945,10 +937,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentProfileResponse"
     get:
       operationId: GetAgentProfile
       description: Retrieves detailed information about an optimization profile, including its configuration and metadata.
@@ -2624,10 +2612,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: "Deletes specified tags from a resource. The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a profile ARN, or review template ARN. To specify multiple tags, use separate tagKeys parameters, for example: DELETE /tags/WorkloadArn?tagKeys=key1&tagKeys=key2"
@@ -2646,10 +2630,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /workloadsSummaries:
     post:
       operationId: ListWorkloads
@@ -2704,10 +2684,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutAgentRecommendationFeedbackResponse"
   /api/v1/agent-recommendations/{recommendation_arn}/status:
     patch:
       operationId: UpdateAgentRecommendationStatus
@@ -2735,10 +2711,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAgentRecommendationStatusResponse"
   /workloads/{workload_id}/updateIntegration:
     post:
       operationId: UpdateIntegration
@@ -3782,12 +3754,6 @@ components:
           $ref: "#/components/schemas/WorkloadId"
         ShareId:
           $ref: "#/components/schemas/ShareId"
-    DeleteAgentContextResponse:
-      type: object
-    DeleteAgentGoalResponse:
-      type: object
-    DeleteAgentProfileResponse:
-      type: object
     LensStatusType:
       type: string
       enum:
@@ -7091,8 +7057,6 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: "[\\P{C}]+"
-    PutAgentRecommendationFeedbackResponse:
-      type: object
     RecommendationTypes:
       type: array
       items:
@@ -7146,8 +7110,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -7157,8 +7119,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[\p{L}\p{N}\p{Z}_.:/=+@-]+
-    UntagResourceOutput:
-      type: object
     UpdateAgentContextRequestClientTokenString:
       type: string
       minLength: 1
@@ -7315,8 +7275,6 @@ components:
       type: string
       minLength: 1
       maxLength: 4096
-    UpdateAgentRecommendationStatusResponse:
-      type: object
     ChoiceUpdates:
       type: object
       properties: {}
@@ -7488,11 +7446,55 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_lens_version:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}~1versions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        get_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Lens
+          request:
+            nativeCasing: pascal
         disassociate_lenses:
           operation:
             $ref: "#/paths/~1workloads~1{workload_id}~1disassociateLenses/patch"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}~1export/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        import_lens:
+          operation:
+            $ref: "#/paths/~1importLens/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7508,11 +7510,14 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
+          - $ref: "#/components/x-stackQL-resources/lenses/methods/get_lens"
           - $ref: "#/components/x-stackQL-resources/lenses/methods/list_lenses"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/lenses/methods/create_lens_version"
         update:
           - $ref: "#/components/x-stackQL-resources/lenses/methods/associate_lenses"
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/lenses/methods/delete_lens"
     profiles:
       id: aws.wellarchitected.profiles
       name: profiles
@@ -7633,7 +7638,6 @@ components:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}~1contexts~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_agent_context:
           operation:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}~1contexts~1{id}/get"
@@ -7700,7 +7704,6 @@ components:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}~1goals~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_agent_goal:
           operation:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}~1goals~1{id}/get"
@@ -7767,7 +7770,6 @@ components:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_agent_profile:
           operation:
             $ref: "#/paths/~1api~1v1~1agent-profiles~1{profile_arn}/get"
@@ -7834,63 +7836,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/lens_shares/methods/delete_lens_share"
-    lens:
-      id: aws.wellarchitected.lens
-      name: lens
-      title: lens
-      methods:
-        create_lens_version:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}~1versions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        get_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Lens
-          request:
-            nativeCasing: pascal
-        export_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}~1export/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        import_lens:
-          operation:
-            $ref: "#/paths/~1importLens/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/lens/methods/get_lens"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/lens/methods/create_lens_version"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/lens/methods/delete_lens"
     milestones:
       id: aws.wellarchitected.milestones
       name: milestones
@@ -8259,7 +8204,6 @@ components:
             $ref: "#/paths/~1api~1v1~1agent-recommendations~1{recommendation_arn}~1feedback/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8270,7 +8214,6 @@ components:
             $ref: "#/paths/~1api~1v1~1agent-recommendations~1{recommendation_arn}~1status/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8564,6 +8507,16 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        upgrade_review_template_lens_review:
+          operation:
+            $ref: "#/paths/~1reviewTemplates~1{template_arn}~1lensReviews~1{lens_alias}~1upgrade/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/review_template_lens_reviews/methods/get_review_template_lens_review"
@@ -8750,7 +8703,6 @@ components:
             $ref: "#/paths/~1tags~1{workload_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8761,7 +8713,6 @@ components:
             $ref: "#/paths/~1tags~1{workload_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

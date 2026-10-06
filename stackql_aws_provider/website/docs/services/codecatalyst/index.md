@@ -18,7 +18,7 @@ codecatalyst service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __14__  
 
 :::
 
@@ -30,10 +30,11 @@ total resources: __13__
 <a href="/services/codecatalyst/dev_environments/">dev_environments</a><br />
 <a href="/services/codecatalyst/event_logs/">event_logs</a><br />
 <a href="/services/codecatalyst/projects/">projects</a><br />
-<a href="/services/codecatalyst/source_repositories/">source_repositories</a><br />
-<a href="/services/codecatalyst/source_repository_branches/">source_repository_branches</a>
+<a href="/services/codecatalyst/sessions/">sessions</a><br />
+<a href="/services/codecatalyst/source_repositories/">source_repositories</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/codecatalyst/source_repository_branches/">source_repository_branches</a><br />
 <a href="/services/codecatalyst/source_repository_clone_urls/">source_repository_clone_urls</a><br />
 <a href="/services/codecatalyst/spaces/">spaces</a><br />
 <a href="/services/codecatalyst/subscriptions/">subscriptions</a><br />

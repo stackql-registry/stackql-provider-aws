@@ -442,11 +442,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartReportCreationOutput'
-      x-stackql-resource: report_creation
+      x-stackql-resource: report_creations
       x-stackql-method: start_report_creation
       x-stackql-verb: EXEC
   /TagResources:
@@ -927,8 +923,6 @@ components:
       minLength: 3
       maxLength: 63
       pattern: '[a-z0-9.-]*'
-    StartReportCreationOutput:
-      type: object
     ResourceARNListForTagUntag:
       type: array
       items:

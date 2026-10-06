@@ -18,7 +18,7 @@ ce service documentation.
 
 :::info[Service Summary]
 
-total resources: __29__  
+total resources: __28__  
 
 :::
 
@@ -30,7 +30,6 @@ total resources: __29__
 <a href="/services/ce/anomaly_subscriptions/">anomaly_subscriptions</a><br />
 <a href="/services/ce/approximate_usage_records/">approximate_usage_records</a><br />
 <a href="/services/ce/commitment_purchase_analyses/">commitment_purchase_analyses</a><br />
-<a href="/services/ce/commitment_purchase_analysis/">commitment_purchase_analysis</a><br />
 <a href="/services/ce/cost_allocation_tag_backfill_histories/">cost_allocation_tag_backfill_histories</a><br />
 <a href="/services/ce/cost_allocation_tags/">cost_allocation_tags</a><br />
 <a href="/services/ce/cost_and_usage_comparisons/">cost_and_usage_comparisons</a><br />

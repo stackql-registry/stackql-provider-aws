@@ -71,6 +71,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a given schema. Schemas in a development and published state can only be deleted.</td>
 </tr>
+<tr>
+    <td><a href="#apply_schema"><CopyableCode code="apply_schema" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-PublishedSchemaArn"><code>PublishedSchemaArn</code></a></td>
+    <td></td>
+    <td>Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.</td>
+</tr>
+<tr>
+    <td><a href="#publish_schema"><CopyableCode code="publish_schema" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-x-amz-data-partition"><code>x-amz-data-partition</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Version"><code>Version</code></a></td>
+    <td></td>
+    <td>Publishes a development schema with a major version and a recommended minor version.</td>
+</tr>
 </tbody>
 </table>
 
@@ -95,7 +109,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-x-amz-data-partition">
     <td><CopyableCode code="x-amz-data-partition" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the development schema. For more information, see arns.</td>
+    <td>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see arns.</td>
 </tr>
 </tbody>
 </table>
@@ -185,6 +199,50 @@ Deletes a given schema. Schemas in a development and published state can only be
 DELETE FROM aws.clouddirectory.schemas
 WHERE `x-amz-data-partition` = '{{ x-amz-data-partition }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="apply_schema"
+    values={[
+        { label: 'apply_schema', value: 'apply_schema' },
+        { label: 'publish_schema', value: 'publish_schema' }
+    ]}
+>
+<TabItem value="apply_schema">
+
+Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.
+
+```sql
+EXEC aws.clouddirectory.schemas.apply_schema 
+@x-amz-data-partition='{{ x-amz-data-partition }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"PublishedSchemaArn": "{{ PublishedSchemaArn }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="publish_schema">
+
+Publishes a development schema with a major version and a recommended minor version.
+
+```sql
+EXEC aws.clouddirectory.schemas.publish_schema 
+@x-amz-data-partition='{{ x-amz-data-partition }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Version": "{{ Version }}", 
+"MinorVersion": "{{ MinorVersion }}", 
+"Name": "{{ Name }}"
+}'
 ;
 ```
 </TabItem>

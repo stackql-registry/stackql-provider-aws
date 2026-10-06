@@ -155,18 +155,18 @@ The following methods are available for this resource:
     <td>Updates a custom permissions profile.</td>
 </tr>
 <tr>
-    <td><a href="#delete_user_custom_permission"><CopyableCode code="delete_user_custom_permission" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-user_name"><code>user_name</code></a>, <a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-namespace"><code>namespace</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes a custom permissions profile from a user.</td>
-</tr>
-<tr>
     <td><a href="#delete_custom_permissions"><CopyableCode code="delete_custom_permissions" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-custom_permissions_name"><code>custom_permissions_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a custom permissions profile.</td>
+</tr>
+<tr>
+    <td><a href="#delete_user_custom_permission"><CopyableCode code="delete_user_custom_permission" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-user_name"><code>user_name</code></a>, <a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-namespace"><code>namespace</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a custom permissions profile from a user.</td>
 </tr>
 </tbody>
 </table>
@@ -187,7 +187,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-aws_account_id">
     <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Amazon Web Services account that contains the custom permissions profile that you want to delete.</td>
+    <td>The ID of the Amazon Web Services account that contains the custom permission configuration that you want to delete.</td>
 </tr>
 <tr id="parameter-custom_permissions_name">
     <td><CopyableCode code="custom_permissions_name" /></td>
@@ -668,12 +668,24 @@ status;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_user_custom_permission"
+    defaultValue="delete_custom_permissions"
     values={[
-        { label: 'delete_user_custom_permission', value: 'delete_user_custom_permission' },
-        { label: 'delete_custom_permissions', value: 'delete_custom_permissions' }
+        { label: 'delete_custom_permissions', value: 'delete_custom_permissions' },
+        { label: 'delete_user_custom_permission', value: 'delete_user_custom_permission' }
     ]}
 >
+<TabItem value="delete_custom_permissions">
+
+Deletes a custom permissions profile.
+
+```sql
+DELETE FROM aws.quicksight.custom_permissions
+WHERE aws_account_id = '{{ aws_account_id }}' --required
+AND custom_permissions_name = '{{ custom_permissions_name }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="delete_user_custom_permission">
 
 Deletes a custom permissions profile from a user.
@@ -683,18 +695,6 @@ DELETE FROM aws.quicksight.custom_permissions
 WHERE user_name = '{{ user_name }}' --required
 AND aws_account_id = '{{ aws_account_id }}' --required
 AND namespace = '{{ namespace }}' --required
-AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_custom_permissions">
-
-Deletes a custom permissions profile.
-
-```sql
-DELETE FROM aws.quicksight.custom_permissions
-WHERE aws_account_id = '{{ aws_account_id }}' --required
-AND custom_permissions_name = '{{ custom_permissions_name }}' --required
 AND region = '{{ region }}' --required
 ;
 ```

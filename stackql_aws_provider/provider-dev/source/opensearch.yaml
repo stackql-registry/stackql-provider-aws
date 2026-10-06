@@ -35,7 +35,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInboundConnectionResponse'
-      x-stackql-resource: inbound_connection
+      x-stackql-resource: inbound_connections
       x-stackql-method: accept_inbound_connection
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/domain/{domain_name}/dataSource:
@@ -253,12 +253,11 @@ paths:
   /2021-01-01/opensearch/application/{id}/attachDataSource:
     post:
       operationId: AttachDataSource
-      description: Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service
-        domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the ACTIVE state,
-        the attachment completes immediately and returns a status of ATTACHED. If either resource is not yet active, the operation
-        stores the request and returns a status of PENDING. A background process then completes the attachment when both resources
-        become active. Pending attachments that are not completed within 24 hours are marked as FAILED. This operation is
-        idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+      description: 'Attaches a data source to an OpenSearch application. The data source must be an Amazon OpenSearch Service
+        domain. If both the application and the data source are active, the attachment completes immediately with a status
+        of ATTACHED. Otherwise, the operation returns PENDING and completes the attachment automatically once both become
+        active. If the attachment cannot be completed, its status becomes FAILED. This operation is idempotent: If the data
+        source is already attached or pending, the operation returns the existing attachment.'
       parameters:
       - name: id
         in: path
@@ -325,7 +324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthorizeVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: authorize_vpc_endpoint_access
       x-stackql-verb: UPDATE
   /2021-01-01/opensearch/domain/{domain_name}/config/cancel:
@@ -684,10 +683,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -1259,7 +1254,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeDomainChangeProgressResponse'
-      x-stackql-resource: domain_change_progress
+      x-stackql-resource: domain_change_progresses
       x-stackql-method: describe_domain_change_progress
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChangeProgressStatus
@@ -1462,7 +1457,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeDryRunProgressResponse'
-      x-stackql-resource: dry_run_progress
+      x-stackql-resource: dry_run_progresses
       x-stackql-method: describe_dry_run_progress
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/cc/inboundConnection/search:
@@ -1932,7 +1927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDomainMaintenanceStatusResponse'
-      x-stackql-resource: domain_maintenance_status
+      x-stackql-resource: domain_maintenance_statuses
       x-stackql-method: get_domain_maintenance_status
       x-stackql-verb: SELECT
     post:
@@ -1966,7 +1961,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDomainMaintenanceResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: domain_maintenances
       x-stackql-method: start_domain_maintenance
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/app-migrations/{migration_id}:
@@ -2082,7 +2077,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUpgradeStatusResponse'
-      x-stackql-resource: upgrade_status
+      x-stackql-resource: upgrade_statuses
       x-stackql-method: get_upgrade_status
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/insight-feedback:
@@ -2290,7 +2285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDomainsForPackageResponse'
-      x-stackql-resource: domains_for_packages
+      x-stackql-resource: domains
       x-stackql-method: list_domains_for_package
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/insights:
@@ -2452,7 +2447,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMigrationResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: migrations
       x-stackql-method: start_migration
       x-stackql-verb: EXEC
   /2021-01-01/domain/{domain_name}/packages:
@@ -2488,7 +2483,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPackagesForDomainResponse'
-      x-stackql-resource: packages_for_domains
+      x-stackql-resource: packages
       x-stackql-method: list_packages_for_domain
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/domain/{domain_name}/scheduledActions:
@@ -2609,7 +2604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: list_vpc_endpoint_access
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/domain/{domain_name}/vpcEndpoints:
@@ -2637,7 +2632,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListVpcEndpointsForDomainResponse'
-      x-stackql-resource: vpc_endpoints_for_domains
+      x-stackql-resource: vpc_endpoints
       x-stackql-method: list_vpc_endpoints_for_domain
       x-stackql-verb: SELECT
   /2021-01-01/opensearch/purchaseReservedInstanceOffering:
@@ -2727,7 +2722,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectInboundConnectionResponse'
-      x-stackql-resource: inbound_connection
+      x-stackql-resource: inbound_connections
       x-stackql-method: reject_inbound_connection
       x-stackql-verb: EXEC
   /2021-01-01/tags-removal:
@@ -2783,11 +2778,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokeVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: revoke_vpc_endpoint_access
       x-stackql-verb: UPDATE
   /2021-01-01/opensearch/serviceSoftwareUpdate/rollback:
@@ -5398,8 +5389,6 @@ components:
       - UPDATE_FAILED
       - DELETING
       - DELETE_FAILED
-    DeleteApplicationResponse:
-      type: object
     DeleteDataSourceResponse:
       description: The result of a GetDataSource operation.
       type: object
@@ -7916,8 +7905,6 @@ components:
         Connection:
           $ref: '#/components/schemas/InboundConnection'
           description: Contains details about the rejected inbound connection.
-    RevokeVpcEndpointAccessResponse:
-      type: object
     RollbackServiceSoftwareUpdateResponse:
       description: Contains details about the rolled-back service software update.
       type: object

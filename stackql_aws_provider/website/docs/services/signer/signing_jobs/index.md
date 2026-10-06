@@ -263,6 +263,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-status"><code>status</code></a>, <a href="#parameter-platformId"><code>platformId</code></a>, <a href="#parameter-requestedBy"><code>requestedBy</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-isRevoked"><code>isRevoked</code></a>, <a href="#parameter-signatureExpiresBefore"><code>signatureExpiresBefore</code></a>, <a href="#parameter-signatureExpiresAfter"><code>signatureExpiresAfter</code></a>, <a href="#parameter-jobInvoker"><code>jobInvoker</code></a></td>
     <td>Lists all your signing jobs. You can use the maxResults parameter to limit the number of signing jobs that are returned in the response. If additional jobs remain to be listed, AWS Signer returns a nextToken value. Use this value in subsequent calls to ListSigningJobs to fetch the remaining values. You can continue calling ListSigningJobs with your maxResults parameter and with new values that Signer returns in the nextToken parameter until all of your signing jobs have been returned.</td>
 </tr>
+<tr>
+    <td><a href="#start_signing_job"><CopyableCode code="start_signing_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-source"><code>source</code></a>, <a href="#parameter-destination"><code>destination</code></a>, <a href="#parameter-profileName"><code>profileName</code></a>, <a href="#parameter-clientRequestToken"><code>clientRequestToken</code></a></td>
+    <td></td>
+    <td>Initiates a signing job to be performed on the code provided. Signing jobs are viewable by the ListSigningJobs operation. Note the following requirements: You must create an Amazon S3 source bucket. For more information, see Creating a Bucket in the Amazon S3 Getting Started Guide. Your S3 source bucket must be version enabled. You must create an S3 destination bucket. AWS Signer uses your S3 destination bucket to write your signed code. You specify the name of the source and destination buckets when calling the StartSigningJob operation. You must ensure the S3 buckets are from the same Region as the signing profile. Cross-Region signing isn't supported. You must also specify a request token that identifies your request to Signer. You can call the DescribeSigningJob and the ListSigningJobs actions after you call StartSigningJob. For a Java example that shows how to use this action, see StartSigningJob.</td>
+</tr>
 </tbody>
 </table>
 
@@ -408,6 +415,35 @@ AND isRevoked = '{{ isRevoked }}'
 AND signatureExpiresBefore = '{{ signatureExpiresBefore }}'
 AND signatureExpiresAfter = '{{ signatureExpiresAfter }}'
 AND jobInvoker = '{{ jobInvoker }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_signing_job"
+    values={[
+        { label: 'start_signing_job', value: 'start_signing_job' }
+    ]}
+>
+<TabItem value="start_signing_job">
+
+Initiates a signing job to be performed on the code provided. Signing jobs are viewable by the ListSigningJobs operation. Note the following requirements: You must create an Amazon S3 source bucket. For more information, see Creating a Bucket in the Amazon S3 Getting Started Guide. Your S3 source bucket must be version enabled. You must create an S3 destination bucket. AWS Signer uses your S3 destination bucket to write your signed code. You specify the name of the source and destination buckets when calling the StartSigningJob operation. You must ensure the S3 buckets are from the same Region as the signing profile. Cross-Region signing isn't supported. You must also specify a request token that identifies your request to Signer. You can call the DescribeSigningJob and the ListSigningJobs actions after you call StartSigningJob. For a Java example that shows how to use this action, see StartSigningJob.
+
+```sql
+EXEC aws.signer.signing_jobs.start_signing_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"source": "{{ source }}", 
+"destination": "{{ destination }}", 
+"profileName": "{{ profileName }}", 
+"clientRequestToken": "{{ clientRequestToken }}", 
+"profileOwner": "{{ profileOwner }}"
+}'
 ;
 ```
 </TabItem>

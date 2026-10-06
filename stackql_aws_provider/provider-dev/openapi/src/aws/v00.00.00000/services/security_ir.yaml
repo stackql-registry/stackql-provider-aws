@@ -466,10 +466,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes a tag(s) from a designate resource.
@@ -489,10 +485,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /v1/cases/{case_id}/feedback/{result_id}/send-feedback:
     post:
       operationId: SendFeedback
@@ -526,10 +518,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendFeedbackResponse"
   /v1/cases/{case_id}/update-case:
     post:
       operationId: UpdateCase
@@ -583,10 +571,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCaseResponse"
   /v1/cases/{case_id}/update-case-comment/{comment_id}:
     put:
       operationId: UpdateCaseComment
@@ -682,10 +666,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMembershipResponse"
   /v1/cases/{case_id}/update-resolver-type:
     post:
       operationId: UpdateResolverType
@@ -1652,10 +1632,6 @@ components:
     ResultId:
       type: string
       pattern: inv-[a-z0-9]{10,32}
-    SendFeedbackResponse:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1664,10 +1640,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
-    UpdateCaseResponse:
-      type: object
     UpdateCaseCommentResponse:
       type: object
       properties:
@@ -1713,8 +1685,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/OrganizationalUnitId"
-    UpdateMembershipResponse:
-      type: object
     UpdateResolverTypeResponse:
       type: object
       properties:
@@ -1804,7 +1774,6 @@ components:
             $ref: "#/paths/~1v1~1membership~1{membership_id}~1update-membership/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1871,7 +1840,6 @@ components:
             $ref: "#/paths/~1v1~1cases~1{case_id}~1feedback~1{result_id}~1send-feedback/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1882,7 +1850,6 @@ components:
             $ref: "#/paths/~1v1~1cases~1{case_id}~1update-case/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2088,7 +2055,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2099,7 +2065,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -36,7 +36,8 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_domain"
     values={[
         { label: 'describe_domain', value: 'describe_domain' },
-        { label: 'describe_domains', value: 'describe_domains' }
+        { label: 'describe_domains', value: 'describe_domains' },
+        { label: 'list_domains_for_package', value: 'list_domains_for_package' }
     ]}
 >
 <TabItem value="describe_domain">
@@ -262,6 +263,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_domains_for_package">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="domain_package_details_list" /></td>
+    <td><code>array</code></td>
+    <td>Information about all domains associated with a package.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -292,6 +317,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns domain configuration information about the specified Amazon OpenSearch Service domains.</td>
+</tr>
+<tr>
+    <td><a href="#list_domains_for_package"><CopyableCode code="list_domains_for_package" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-package_id"><code>package_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see Custom packages for Amazon OpenSearch Service.</td>
 </tr>
 <tr>
     <td><a href="#create_domain"><CopyableCode code="create_domain" /></a></td>
@@ -363,10 +395,25 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The name of the domain.</td>
 </tr>
+<tr id="parameter-package_id">
+    <td><CopyableCode code="package_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the package for which to list associated domains.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>An optional parameter that specifies the maximum number of results to return. You can use nextToken to get the next page of results.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>If your initial ListDomainsForPackage operation returns a nextToken, you can include the returned nextToken in subsequent ListDomainsForPackage operations, which returns results in the next page.</td>
 </tr>
 </tbody>
 </table>
@@ -377,7 +424,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_domain"
     values={[
         { label: 'describe_domain', value: 'describe_domain' },
-        { label: 'describe_domains', value: 'describe_domains' }
+        { label: 'describe_domains', value: 'describe_domains' },
+        { label: 'list_domains_for_package', value: 'list_domains_for_package' }
     ]}
 >
 <TabItem value="describe_domain">
@@ -439,6 +487,22 @@ SELECT
 domain_status_list
 FROM aws.opensearch.domains
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_domains_for_package">
+
+Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see Custom packages for Amazon OpenSearch Service.
+
+```sql
+SELECT
+domain_package_details_list,
+next_token
+FROM aws.opensearch.domains
+WHERE package_id = '{{ package_id }}' -- required
+AND region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>

@@ -37,6 +37,7 @@ The following fields are returned by `SELECT` queries:
     values={[
         { label: 'get_session', value: 'get_session' },
         { label: 'list_sessions', value: 'list_sessions' },
+        { label: 'list_sessions_for_worker', value: 'list_sessions_for_worker' },
         { label: 'batch_get_session', value: 'batch_get_session' }
     ]}
 >
@@ -173,6 +174,55 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_sessions_for_worker">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ended_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the resource ended running.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_id" /></td>
+    <td><code>string</code></td>
+    <td>The job ID for the job associated with the worker's session. (pattern: &lt;code&gt;job-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="lifecycle_status" /></td>
+    <td><code>string</code></td>
+    <td>The life cycle status for the worker's session. (STARTED, UPDATE_IN_PROGRESS, UPDATE_SUCCEEDED, UPDATE_FAILED, ENDED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="queue_id" /></td>
+    <td><code>string</code></td>
+    <td>The queue ID for the queue associated to the worker. (pattern: &lt;code&gt;queue-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="session_id" /></td>
+    <td><code>string</code></td>
+    <td>The session ID for the session action. (pattern: &lt;code&gt;session-&#91;0-9a-f&#93;&#123;32&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="started_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time the resource started running.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="target_lifecycle_status" /></td>
+    <td><code>string</code></td>
+    <td>The life cycle status (ENDED)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="batch_get_session">
 
 <table>
@@ -229,6 +279,13 @@ The following methods are available for this resource:
     <td>Lists sessions.</td>
 </tr>
 <tr>
+    <td><a href="#list_sessions_for_worker"><CopyableCode code="list_sessions_for_worker" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-farm_id"><code>farm_id</code></a>, <a href="#parameter-fleet_id"><code>fleet_id</code></a>, <a href="#parameter-worker_id"><code>worker_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
+    <td>Lists sessions for a worker.</td>
+</tr>
+<tr>
     <td><a href="#batch_get_session"><CopyableCode code="batch_get_session" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -270,6 +327,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The identifier of the farm that contains queues or fleets to return statistics for.</td>
 </tr>
+<tr id="parameter-fleet_id">
+    <td><CopyableCode code="fleet_id" /></td>
+    <td><code>string</code></td>
+    <td>The fleet ID for the session.</td>
+</tr>
 <tr id="parameter-job_id">
     <td><CopyableCode code="job_id" /></td>
     <td><code>string</code></td>
@@ -289,6 +351,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="session_id" /></td>
     <td><code>string</code></td>
     <td>The session ID to update.</td>
+</tr>
+<tr id="parameter-worker_id">
+    <td><CopyableCode code="worker_id" /></td>
+    <td><code>string</code></td>
+    <td>The worker ID for the session.</td>
 </tr>
 <tr id="parameter-X-Amz-Client-Token">
     <td><CopyableCode code="X-Amz-Client-Token" /></td>
@@ -315,6 +382,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     values={[
         { label: 'get_session', value: 'get_session' },
         { label: 'list_sessions', value: 'list_sessions' },
+        { label: 'list_sessions_for_worker', value: 'list_sessions_for_worker' },
         { label: 'batch_get_session', value: 'batch_get_session' }
     ]}
 >
@@ -364,6 +432,29 @@ FROM aws.deadline.sessions
 WHERE farm_id = '{{ farm_id }}' -- required
 AND queue_id = '{{ queue_id }}' -- required
 AND job_id = '{{ job_id }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+<TabItem value="list_sessions_for_worker">
+
+Lists sessions for a worker.
+
+```sql
+SELECT
+ended_at,
+job_id,
+lifecycle_status,
+queue_id,
+session_id,
+started_at,
+target_lifecycle_status
+FROM aws.deadline.sessions
+WHERE farm_id = '{{ farm_id }}' -- required
+AND fleet_id = '{{ fleet_id }}' -- required
+AND worker_id = '{{ worker_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'

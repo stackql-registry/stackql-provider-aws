@@ -163,6 +163,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-TypeFilter"><code>TypeFilter</code></a>, <a href="#parameter-StatusFilter"><code>StatusFilter</code></a></td>
     <td>Lists all device discovery tasks, with optional filtering by type and status.</td>
 </tr>
+<tr>
+    <td><a href="#start_device_discovery"><CopyableCode code="start_device_discovery" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DiscoveryType"><code>DiscoveryType</code></a></td>
+    <td></td>
+    <td>This API is used to start device discovery for hub-connected and third-party-connected devices. The authentication material (install code) is delivered as a message to the controller instructing it to start the discovery.</td>
+</tr>
 </tbody>
 </table>
 
@@ -258,6 +265,42 @@ AND NextToken = '{{ NextToken }}'
 AND MaxResults = '{{ MaxResults }}'
 AND TypeFilter = '{{ TypeFilter }}'
 AND StatusFilter = '{{ StatusFilter }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_device_discovery"
+    values={[
+        { label: 'start_device_discovery', value: 'start_device_discovery' }
+    ]}
+>
+<TabItem value="start_device_discovery">
+
+This API is used to start device discovery for hub-connected and third-party-connected devices. The authentication material (install code) is delivered as a message to the controller instructing it to start the discovery.
+
+```sql
+EXEC aws.iot_managed_integrations.device_discoveries.start_device_discovery 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DiscoveryType": "{{ DiscoveryType }}", 
+"CustomProtocolDetail": "{{ CustomProtocolDetail }}", 
+"ControllerIdentifier": "{{ ControllerIdentifier }}", 
+"ConnectorAssociationIdentifier": "{{ ConnectorAssociationIdentifier }}", 
+"AccountAssociationId": "{{ AccountAssociationId }}", 
+"AuthenticationMaterial": "{{ AuthenticationMaterial }}", 
+"AuthenticationMaterialType": "{{ AuthenticationMaterialType }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Tags": "{{ Tags }}", 
+"ConnectorDeviceIdList": "{{ ConnectorDeviceIdList }}", 
+"Protocol": "{{ Protocol }}", 
+"EndDeviceIdentifier": "{{ EndDeviceIdentifier }}"
+}'
 ;
 ```
 </TabItem>

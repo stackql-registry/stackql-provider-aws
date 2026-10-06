@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobRunResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: job_runs
       x-stackql-method: cancel_job_run
       x-stackql-verb: EXEC
     get:
@@ -200,10 +200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -333,7 +329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDashboardForJobRunResponse'
-      x-stackql-resource: dashboard_for_job_runs
+      x-stackql-resource: dashboards
       x-stackql-method: get_dashboard_for_job_run
       x-stackql-verb: SELECT
   /applications/{application_id}/dashboard:
@@ -610,7 +606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: job_runs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /applications/{application_id}/sessions:
@@ -710,7 +706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: sessions
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -763,10 +759,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -790,10 +782,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -811,10 +799,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
@@ -833,10 +817,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
@@ -1256,8 +1236,6 @@ components:
       minLength: 60
       maxLength: 1024
       pattern: arn:(aws[a-zA-Z0-9-]*):emr-serverless:.+:(\d{12}):\/applications\/[0-9a-zA-Z]+
-    DeleteApplicationResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -2240,8 +2218,6 @@ components:
           type: object
           properties: {}
           description: The tags for the resource.
-    StartApplicationResponse:
-      type: object
     StartJobRunResponse:
       type: object
       properties:
@@ -2274,10 +2250,6 @@ components:
       - applicationId
       - sessionId
       - arn
-    StopApplicationResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TerminateSessionResponse:
       type: object
       properties:
@@ -2299,8 +2271,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: '[A-Za-z0-9 /_.:=+@-]+'
-    UntagResourceResponse:
-      type: object
     UpdateApplicationResponse:
       type: object
       properties:

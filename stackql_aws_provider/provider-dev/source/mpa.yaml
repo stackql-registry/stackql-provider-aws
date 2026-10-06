@@ -30,10 +30,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelSessionResponse'
       x-stackql-resource: sessions
       x-stackql-method: cancel_session
       x-stackql-verb: EXEC
@@ -192,10 +188,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInactiveApprovalTeamVersionResponse'
       x-stackql-resource: inactive_approval_team_versions
       x-stackql-method: delete_inactive_approval_team_version
       x-stackql-verb: DELETE
@@ -578,10 +570,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -610,10 +598,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -645,7 +629,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartActiveApprovalTeamDeletionResponse'
-      x-stackql-resource: active_approval_team_deletion
+      x-stackql-resource: active_approval_team_deletions
       x-stackql-method: start_active_approval_team_deletion
       x-stackql-verb: EXEC
   /approval-teams/{arn}/baseline:
@@ -728,8 +712,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: arn:aws(-[^:]+)?:mpa:[a-z0-9-]{1,20}:[0-9]{12}:session/[a-zA-Z0-9._-]+/[a-zA-Z0-9_-]+
-    CancelSessionResponse:
-      type: object
     Token:
       type: string
       minLength: 0
@@ -876,8 +858,6 @@ components:
       type: string
       enum:
       - IAM_IDENTITY_CENTER
-    DeleteInactiveApprovalTeamVersionResponse:
-      type: object
     GetApprovalTeamResponse:
       type: object
       properties:
@@ -1795,8 +1775,6 @@ components:
         BaselineSessionArn:
           $ref: '#/components/schemas/SessionArn'
           description: Amazon Resource Name (ARN) for the session.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1805,8 +1783,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateActions:
       type: array
       items:

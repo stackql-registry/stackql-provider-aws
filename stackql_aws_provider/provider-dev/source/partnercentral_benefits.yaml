@@ -68,11 +68,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AmendBenefitApplicationOutput'
-      x-stackql-resource: amend_benefit_application
+      x-stackql-resource: benefit_applications
       x-stackql-method: amend_benefit_application
       x-stackql-verb: EXEC
   /AssociateBenefitApplicationResource:
@@ -159,11 +155,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelBenefitApplicationOutput'
-      x-stackql-resource: benefits
+      x-stackql-resource: benefit_applications
       x-stackql-method: cancel_benefit_application
       x-stackql-verb: EXEC
   /CreateBenefitApplication:
@@ -654,11 +646,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RecallBenefitApplicationOutput'
-      x-stackql-resource: recall_benefit_application
+      x-stackql-resource: benefit_applications
       x-stackql-method: recall_benefit_application
       x-stackql-verb: EXEC
   /SubmitBenefitApplication:
@@ -694,11 +682,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubmitBenefitApplicationOutput'
-      x-stackql-resource: benefits
+      x-stackql-resource: benefit_applications
       x-stackql-method: submit_benefit_application
       x-stackql-verb: EXEC
   /TagResource:
@@ -734,10 +718,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -774,10 +754,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -923,8 +899,6 @@ components:
       required:
       - FieldPath
       - NewValue
-    AmendBenefitApplicationOutput:
-      type: object
     AssociateBenefitApplicationResourceInputResourceArnString:
       type: string
       minLength: 0
@@ -955,8 +929,6 @@ components:
       minLength: 0
       maxLength: 1000
       pattern: '[\s\S]{1,1000}'
-    CancelBenefitApplicationOutput:
-      type: object
     CreateBenefitApplicationInputClientTokenString:
       type: string
       minLength: 1
@@ -1920,18 +1892,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Tag'
-    RecallBenefitApplicationOutput:
-      type: object
-    SubmitBenefitApplicationOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateBenefitApplicationInputClientTokenString:
       type: string
       minLength: 1

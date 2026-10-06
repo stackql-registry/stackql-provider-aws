@@ -18,26 +18,30 @@ neptunedata service documentation.
 
 :::info[Service Summary]
 
-total resources: __17__  
+total resources: __21__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/neptunedata/engine_status/">engine_status</a><br />
+<a href="/services/neptunedata/engine_statuses/">engine_statuses</a><br />
+<a href="/services/neptunedata/fast_resets/">fast_resets</a><br />
+<a href="/services/neptunedata/gremlin_explain_queries/">gremlin_explain_queries</a><br />
+<a href="/services/neptunedata/gremlin_profile_queries/">gremlin_profile_queries</a><br />
 <a href="/services/neptunedata/gremlin_queries/">gremlin_queries</a><br />
-<a href="/services/neptunedata/gremlin_query_status/">gremlin_query_status</a><br />
-<a href="/services/neptunedata/loader_job_status/">loader_job_status</a><br />
+<a href="/services/neptunedata/gremlin_query_statuses/">gremlin_query_statuses</a><br />
+<a href="/services/neptunedata/loader_job_statuses/">loader_job_statuses</a><br />
 <a href="/services/neptunedata/loader_jobs/">loader_jobs</a><br />
 <a href="/services/neptunedata/ml_data_processing_jobs/">ml_data_processing_jobs</a><br />
 <a href="/services/neptunedata/ml_endpoints/">ml_endpoints</a><br />
-<a href="/services/neptunedata/ml_model_training_jobs/">ml_model_training_jobs</a><br />
-<a href="/services/neptunedata/ml_model_transform_jobs/">ml_model_transform_jobs</a>
+<a href="/services/neptunedata/ml_model_training_jobs/">ml_model_training_jobs</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/neptunedata/ml_model_transform_jobs/">ml_model_transform_jobs</a><br />
+<a href="/services/neptunedata/open_cypher_explain_queries/">open_cypher_explain_queries</a><br />
 <a href="/services/neptunedata/open_cypher_queries/">open_cypher_queries</a><br />
-<a href="/services/neptunedata/open_cypher_query_status/">open_cypher_query_status</a><br />
+<a href="/services/neptunedata/open_cypher_query_statuses/">open_cypher_query_statuses</a><br />
 <a href="/services/neptunedata/propertygraph_statistics/">propertygraph_statistics</a><br />
 <a href="/services/neptunedata/propertygraph_streams/">propertygraph_streams</a><br />
 <a href="/services/neptunedata/propertygraph_summaries/">propertygraph_summaries</a><br />

@@ -28,7 +28,7 @@ total resources: __7__
 <a href="/services/medical_imaging/datastores/">datastores</a><br />
 <a href="/services/medical_imaging/dicom_import_jobs/">dicom_import_jobs</a><br />
 <a href="/services/medical_imaging/image_frames/">image_frames</a><br />
-<a href="/services/medical_imaging/image_set_metadatas/">image_set_metadatas</a>
+<a href="/services/medical_imaging/image_set_metadata/">image_set_metadata</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/medical_imaging/image_set_versions/">image_set_versions</a><br />

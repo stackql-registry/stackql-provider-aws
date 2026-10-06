@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the feed. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(&#91;a-zA-Z0-9-_&#93;&#123;0,126&#125;&#91;a-zA-Z0-9&#93;)?&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="access_role_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that Elemental Inference assumes. Elemental Inference uses this role to access resources in your account on your behalf. This property is absent if the feed doesn't have an IAM role. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of the feed.</td>
@@ -254,6 +259,7 @@ Retrieves information about the specified feed.
 SELECT
 id,
 name,
+access_role_arn,
 arn,
 association,
 data_endpoints,
@@ -317,6 +323,7 @@ SELECT
 RETURNING
 id,
 name,
+access_role_arn,
 arn,
 association,
 data_endpoints,
@@ -357,6 +364,8 @@ tags
                 height: {{ height }}
               dictionary: "{{ dictionary }}"
               profanityFilter: "{{ profanityFilter }}"
+            contextualMetadata:
+              summaryGeneration: "{{ summaryGeneration }}"
           status: "{{ status }}"
           description: "{{ description }}"
     - name: tags
@@ -415,6 +424,7 @@ AND outputs = '{{ outputs }}' --required
 RETURNING
 id,
 name,
+access_role_arn,
 arn,
 association,
 data_endpoints,

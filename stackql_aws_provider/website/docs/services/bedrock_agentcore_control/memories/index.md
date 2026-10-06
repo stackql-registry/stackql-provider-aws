@@ -227,7 +227,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-memory_id"><code>memory_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-clientToken"><code>clientToken</code></a></td>
-    <td>Deletes an Amazon Bedrock AgentCore Memory resource.</td>
+    <td>Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.</td>
 </tr>
 </tbody>
 </table>
@@ -592,7 +592,7 @@ memory;
 >
 <TabItem value="delete_memory">
 
-Deletes an Amazon Bedrock AgentCore Memory resource.
+Deletes an Amazon Bedrock AgentCore Memory resource. When you delete a memory resource, it is permanently removed.
 
 ```sql
 DELETE FROM aws.bedrock_agentcore_control.memories

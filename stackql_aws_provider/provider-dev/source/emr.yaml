@@ -198,10 +198,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddTagsOutput'
       x-stackql-resource: tags
       x-stackql-method: add_tags
       x-stackql-verb: UPDATE
@@ -536,10 +532,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSecurityConfigurationOutput'
       x-stackql-resource: security_configurations
       x-stackql-method: delete_security_configuration
       x-stackql-verb: DELETE
@@ -2147,10 +2139,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutAutoTerminationPolicyOutput'
       x-stackql-resource: auto_termination_policies
       x-stackql-method: put_auto_termination_policy
       x-stackql-verb: REPLACE
@@ -2194,10 +2182,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutBlockPublicAccessConfigurationOutput'
       x-stackql-resource: block_public_access_configurations
       x-stackql-method: put_block_public_access_configuration
       x-stackql-verb: REPLACE
@@ -2236,10 +2220,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutManagedScalingPolicyOutput'
       x-stackql-resource: managed_scaling_policies
       x-stackql-method: put_managed_scaling_policy
       x-stackql-verb: REPLACE
@@ -2277,10 +2257,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveAutoScalingPolicyOutput'
       x-stackql-resource: instance_groups
       x-stackql-method: remove_auto_scaling_policy
       x-stackql-verb: UPDATE
@@ -2313,10 +2289,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveAutoTerminationPolicyOutput'
       x-stackql-resource: auto_termination_policies
       x-stackql-method: remove_auto_termination_policy
       x-stackql-verb: UPDATE
@@ -2349,10 +2321,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveManagedScalingPolicyOutput'
       x-stackql-resource: managed_scaling_policies
       x-stackql-method: remove_managed_scaling_policy
       x-stackql-verb: UPDATE
@@ -2396,10 +2364,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveTagsOutput'
       x-stackql-resource: tags
       x-stackql-method: remove_tags
       x-stackql-verb: UPDATE
@@ -2615,7 +2579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RunJobFlowOutput'
-      x-stackql-resource: job_flow
+      x-stackql-resource: job_flows
       x-stackql-method: run_job_flow
       x-stackql-verb: EXEC
   /SetKeepJobFlowAliveWhenNoSteps:
@@ -2870,7 +2834,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookExecutionOutput'
-      x-stackql-resource: notebook_execution
+      x-stackql-resource: notebook_executions
       x-stackql-method: start_notebook_execution
       x-stackql-verb: EXEC
   /StartSession:
@@ -2933,7 +2897,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionOutput'
-      x-stackql-resource: clusters
+      x-stackql-resource: sessions
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /StopNotebookExecution:
@@ -2965,7 +2929,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: notebook_execution
+      x-stackql-resource: notebook_executions
       x-stackql-method: stop_notebook_execution
       x-stackql-verb: EXEC
   /TerminateJobFlows:
@@ -4013,9 +3977,6 @@ components:
     ClusterId:
       type: string
       maxLength: 256
-    AddTagsOutput:
-      description: This output indicates the result of adding tags to a resource.
-      type: object
     StepCancellationOption:
       type: string
       enum:
@@ -4121,8 +4082,6 @@ components:
       enum:
       - USER
       - GROUP
-    DeleteSecurityConfigurationOutput:
-      type: object
     DescribeClusterOutput:
       description: This output contains the description of the cluster.
       type: object
@@ -6856,21 +6815,6 @@ components:
         ClusterArn:
           $ref: '#/components/schemas/ArnType'
           description: The Amazon Resource Name (ARN) of the cluster.
-    PutAutoTerminationPolicyOutput:
-      type: object
-    PutBlockPublicAccessConfigurationOutput:
-      type: object
-    PutManagedScalingPolicyOutput:
-      type: object
-    RemoveAutoScalingPolicyOutput:
-      type: object
-    RemoveAutoTerminationPolicyOutput:
-      type: object
-    RemoveManagedScalingPolicyOutput:
-      type: object
-    RemoveTagsOutput:
-      description: This output indicates the result of removing tags from the resource.
-      type: object
     JobFlowInstancesConfig:
       description: A description of the Amazon EC2 instance on which the cluster (job flow) runs. A valid JobFlowInstancesConfig
         must contain either InstanceGroups or InstanceFleets. They cannot be used together. You may also have MasterInstanceType,

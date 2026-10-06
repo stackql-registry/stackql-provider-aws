@@ -64,6 +64,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Disassociates a resource from application. Both the resource and the application can be specified either by ID or name. Minimum permissions You must have the following permissions to remove a resource that's been associated with an application using the APPLY_APPLICATION_TAG option for AssociateResource. tag:GetResources tag:UntagResources You must also have the following permissions if you don't use the AWSServiceCatalogAppRegistryFullAccess policy. For more information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry Administrator Guide. resource-groups:DisassociateResource cloudformation:UpdateStack cloudformation:DescribeStacks In addition, you must have the tagging permission defined by the Amazon Web Services service that creates the resource. For more information, see UntagResources in the Resource Groups Tagging API Reference.</td>
 </tr>
+<tr>
+    <td><a href="#sync_resource"><CopyableCode code="sync_resource" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-resource_type"><code>resource_type</code></a>, <a href="#parameter-resource"><code>resource</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Syncs the resource with current AppRegistry records. Specifically, the resource’s AppRegistry system tags sync with its associated application. We remove the resource's AppRegistry system tags if it does not associate with the application. The caller must have permissions to read and update the resource.</td>
+</tr>
 </tbody>
 </table>
 
@@ -93,12 +100,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-resource">
     <td><CopyableCode code="resource" /></td>
     <td><code>string</code></td>
-    <td>The name or ID of the resource.</td>
+    <td>An entity you can work with and specify with a name or ID. Examples include an Amazon EC2 instance, an Amazon Web Services CloudFormation stack, or an Amazon S3 bucket.</td>
 </tr>
 <tr id="parameter-resource_type">
     <td><CopyableCode code="resource_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the resource that is being disassociated.</td>
+    <td>The type of resource of which the application will be associated.</td>
 </tr>
 </tbody>
 </table>
@@ -138,7 +145,8 @@ resource_arn;
 <Tabs
     defaultValue="disassociate_resource"
     values={[
-        { label: 'disassociate_resource', value: 'disassociate_resource' }
+        { label: 'disassociate_resource', value: 'disassociate_resource' },
+        { label: 'sync_resource', value: 'sync_resource' }
     ]}
 >
 <TabItem value="disassociate_resource">
@@ -148,6 +156,18 @@ Disassociates a resource from application. Both the resource and the application
 ```sql
 EXEC aws.servicecatalog_appregistry.resources.disassociate_resource 
 @application='{{ application }}' --required, 
+@resource_type='{{ resource_type }}' --required, 
+@resource='{{ resource }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="sync_resource">
+
+Syncs the resource with current AppRegistry records. Specifically, the resource’s AppRegistry system tags sync with its associated application. We remove the resource's AppRegistry system tags if it does not associate with the application. The caller must have permissions to read and update the resource.
+
+```sql
+EXEC aws.servicecatalog_appregistry.resources.sync_resource 
 @resource_type='{{ resource_type }}' --required, 
 @resource='{{ resource }}' --required, 
 @region='{{ region }}' --required

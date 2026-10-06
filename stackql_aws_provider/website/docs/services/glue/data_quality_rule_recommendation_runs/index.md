@@ -183,6 +183,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists the recommendation runs meeting the filter criteria.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_data_quality_rule_recommendation_run"><CopyableCode code="cancel_data_quality_rule_recommendation_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RunId"><code>RunId</code></a></td>
+    <td></td>
+    <td>Cancels the specified recommendation run that was being used to generate rules.</td>
+</tr>
+<tr>
+    <td><a href="#start_data_quality_rule_recommendation_run"><CopyableCode code="start_data_quality_rule_recommendation_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DataSource"><code>DataSource</code></a></td>
+    <td></td>
+    <td>Starts a recommendation run that is used to generate rules when you don't know what rules to write. Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You can then triage the ruleset and modify the generated ruleset to your liking. Recommendation runs are automatically deleted after 90 days.</td>
+</tr>
 </tbody>
 </table>
 
@@ -252,6 +266,53 @@ next_token,
 runs
 FROM aws.glue.data_quality_rule_recommendation_runs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_data_quality_rule_recommendation_run"
+    values={[
+        { label: 'cancel_data_quality_rule_recommendation_run', value: 'cancel_data_quality_rule_recommendation_run' },
+        { label: 'start_data_quality_rule_recommendation_run', value: 'start_data_quality_rule_recommendation_run' }
+    ]}
+>
+<TabItem value="cancel_data_quality_rule_recommendation_run">
+
+Cancels the specified recommendation run that was being used to generate rules.
+
+```sql
+EXEC aws.glue.data_quality_rule_recommendation_runs.cancel_data_quality_rule_recommendation_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"RunId": "{{ RunId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_data_quality_rule_recommendation_run">
+
+Starts a recommendation run that is used to generate rules when you don't know what rules to write. Glue Data Quality analyzes the data and comes up with recommendations for a potential ruleset. You can then triage the ruleset and modify the generated ruleset to your liking. Recommendation runs are automatically deleted after 90 days.
+
+```sql
+EXEC aws.glue.data_quality_rule_recommendation_runs.start_data_quality_rule_recommendation_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DataSource": "{{ DataSource }}", 
+"Role": "{{ Role }}", 
+"NumberOfWorkers": {{ NumberOfWorkers }}, 
+"Timeout": {{ Timeout }}, 
+"CreatedRulesetName": "{{ CreatedRulesetName }}", 
+"DataQualitySecurityConfiguration": "{{ DataQualitySecurityConfiguration }}", 
+"ClientToken": "{{ ClientToken }}", 
+"AdditionalRunOptions": "{{ AdditionalRunOptions }}"
+}'
 ;
 ```
 </TabItem>

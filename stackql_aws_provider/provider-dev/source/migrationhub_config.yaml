@@ -94,10 +94,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteHomeRegionControlResult'
       x-stackql-resource: home_region_controls
       x-stackql-method: delete_home_region_control
       x-stackql-verb: DELETE
@@ -292,8 +288,6 @@ components:
     RequestedTime:
       type: string
       format: date-time
-    DeleteHomeRegionControlResult:
-      type: object
     DescribeHomeRegionControlsMaxResults:
       type: integer
       minimum: 1

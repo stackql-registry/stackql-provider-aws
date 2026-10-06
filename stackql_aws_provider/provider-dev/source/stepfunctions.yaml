@@ -50,11 +50,10 @@ paths:
                 name:
                   $ref: '#/components/schemas/Name'
                   description: 'The name of the activity to create. This name must be unique for your Amazon Web Services
-                    account and region for 90 days. For more information, see Limits Related to State Machine Executions in
-                    the Step Functions Developer Guide. A name must not contain: white space brackets < > { } [ ] wildcard
-                    characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F,
-                    U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch
-                    Logs, the name should only contain 0-9, A-Z, a-z, - and _.'
+                    account and region. A name must not contain: white space brackets < > { } [ ] wildcard characters ? *
+                    special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF)
+                    surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name
+                    should only contain 0-9, A-Z, a-z, - and _.'
                 tags:
                   $ref: '#/components/schemas/TagList'
                   description: 'The list of tags to add to a resource. An array of key-value pairs. For more information,
@@ -220,7 +219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateStateMachineAliasOutput'
-      x-stackql-resource: state_machine_alias
+      x-stackql-resource: state_machine_aliases
       x-stackql-method: create_state_machine_alias
       x-stackql-verb: INSERT
   /DeleteActivity:
@@ -252,10 +251,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteActivityOutput'
       x-stackql-resource: activities
       x-stackql-method: delete_activity
       x-stackql-verb: DELETE
@@ -298,10 +293,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStateMachineOutput'
       x-stackql-resource: state_machines
       x-stackql-method: delete_state_machine
       x-stackql-verb: DELETE
@@ -336,11 +327,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStateMachineAliasOutput'
-      x-stackql-resource: state_machine_alias
+      x-stackql-resource: state_machine_aliases
       x-stackql-method: delete_state_machine_alias
       x-stackql-verb: DELETE
   /DeleteStateMachineVersion:
@@ -376,10 +363,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStateMachineVersionOutput'
       x-stackql-resource: state_machine_versions
       x-stackql-method: delete_state_machine_version
       x-stackql-verb: DELETE
@@ -596,7 +579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeStateMachineAliasOutput'
-      x-stackql-resource: state_machine_alias
+      x-stackql-resource: state_machine_aliases
       x-stackql-method: describe_state_machine_alias
       x-stackql-verb: SELECT
   /DescribeStateMachineForExecution:
@@ -641,7 +624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeStateMachineForExecutionOutput'
-      x-stackql-resource: state_machine_for_executions
+      x-stackql-resource: state_machines
       x-stackql-method: describe_state_machine_for_execution
       x-stackql-verb: SELECT
   /GetActivityTask:
@@ -651,10 +634,9 @@ paths:
         by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds
         as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service
         holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns
-        a taskToken with a null string. This API action isn't logged in CloudTrail. Workers should set their client side socket
-        timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request). Polling
-        with GetActivityTask can cause latency in some implementations. See Avoid Latency When Polling for Activity Tasks
-        in the Step Functions Developer Guide.
+        a taskToken with a null string. Workers should set their client side socket timeout to at least 65 seconds (5 seconds
+        higher than the maximum time the service may hold the poll request). Polling with GetActivityTask can cause latency
+        in some implementations. See Avoid Latency When Polling for Activity Tasks in the Step Functions Developer Guide.
       parameters:
       - name: X-Amz-Target
         in: header
@@ -814,11 +796,13 @@ paths:
         by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
         Using this API action, you can also list all redriven executions. You can also provide a state machine alias ARN or
         version ARN to list the executions associated with a specific alias or version. Results are sorted by time, with the
-        most recent execution first. If nextToken is returned, there are more results available. The value of nextToken is
+        most recent execution first. Running executions are sorted by their startDate or redriveDate, and other executions
+        are sorted by their stopDate. If nextToken is returned, there are more results available. The value of nextToken is
         a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep
         all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will
         return an HTTP 400 InvalidToken error. This operation is eventually consistent. The results are best effort and may
-        not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines.
+        not reflect very recent updates and changes. This API action is not supported by EXPRESS state machines. However,
+        you may list EXPRESS children started by a map run using the mapRunArn parameter.
       parameters:
       - name: X-Amz-Target
         in: header
@@ -1185,7 +1169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishStateMachineVersionOutput'
-      x-stackql-resource: state_machines
+      x-stackql-resource: state_machine_versions
       x-stackql-method: publish_state_machine_version
       x-stackql-verb: EXEC
   /RedriveExecution:
@@ -1289,11 +1273,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendTaskFailureOutput'
-      x-stackql-resource: task_failure
+      x-stackql-resource: task_failures
       x-stackql-method: send_task_failure
       x-stackql-verb: EXEC
   /SendTaskHeartbeat:
@@ -1333,11 +1313,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendTaskHeartbeatOutput'
-      x-stackql-resource: task_heartbeat
+      x-stackql-resource: task_heartbeats
       x-stackql-method: send_task_heartbeat
       x-stackql-verb: EXEC
   /SendTaskSuccess:
@@ -1376,11 +1352,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendTaskSuccessOutput'
-      x-stackql-resource: task_success
+      x-stackql-resource: task_successes
       x-stackql-method: send_task_success
       x-stackql-verb: EXEC
   /StartExecution:
@@ -1400,7 +1372,7 @@ paths:
         that points to the version. StartExecution is idempotent for STANDARD workflows. For a STANDARD workflow, if you call
         StartExecution with the same name and input as a running execution, the call succeeds and return the same response
         as the original request. If the execution is closed or if the input is different, it returns a 400 ExecutionAlreadyExists
-        error. You can reuse names after 90 days. StartExecution isn''t idempotent for EXPRESS workflows.'
+        error. You can reuse the name 90 days after it closes. StartExecution isn''t idempotent for EXPRESS workflows.'
       parameters:
       - name: X-Amz-Target
         in: header
@@ -1436,14 +1408,15 @@ paths:
                     for that execution.'
                 name:
                   $ref: '#/components/schemas/Name'
-                  description: 'Optional name of the execution. This name must be unique for your Amazon Web Services account,
-                    Region, and state machine for 90 days. For more information, see Limits Related to State Machine Executions
-                    in the Step Functions Developer Guide. If you don''t provide a name for the execution, Step Functions
-                    automatically generates a universally unique identifier (UUID) as the execution name. A name must not
-                    contain: white space brackets < > { } [ ] wildcard characters ? * special characters " # % \ ^ | ~ ` $
-                    & , ; : / control characters (U+0000-001F, U+007F-009F, U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid
-                    characters ( U+10FFFF) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z,
-                    a-z, - and _.'
+                  description: 'Optional name of the execution. For STANDARD workflows, this name must be unique for your
+                    Amazon Web Services account, region, and state machine. If a previous execution with the same name exists,
+                    you can reuse the name 90 days after it closes. For EXPRESS workflows, execution names can be reused immediately.
+                    For more information, see Limits Related to State Machine Executions in the Step Functions Developer Guide.
+                    If you don''t provide a name for the execution, Step Functions automatically generates a universally unique
+                    identifier (UUID) as the execution name. A name must not contain: white space brackets < > { } [ ] wildcard
+                    characters ? * special characters " # % \ ^ | ~ ` $ & , ; : / control characters (U+0000-001F, U+007F-009F,
+                    U+FFFE-FFFF) surrogates (U+D800-DFFF) invalid characters ( U+10FFFF) To enable logging with CloudWatch
+                    Logs, the name should only contain 0-9, A-Z, a-z, - and _.'
                 input:
                   $ref: '#/components/schemas/SensitiveData'
                   description: 'The string that contains the JSON input data for the execution, for example: "{\"first_name\"
@@ -1465,7 +1438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExecutionOutput'
-      x-stackql-resource: execution
+      x-stackql-resource: executions
       x-stackql-method: start_execution
       x-stackql-verb: EXEC
   /StartSyncExecution:
@@ -1475,7 +1448,6 @@ paths:
         workflows. StartSyncExecution will return a 200 OK response, even if your execution fails, because the status code
         in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your execution
         from running, such as permissions errors, limit errors, or issues with your state machine code and configuration.
-        This API action isn't logged in CloudTrail.
       parameters:
       - name: X-Amz-Target
         in: header
@@ -1525,7 +1497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSyncExecutionOutput'
-      x-stackql-resource: state_machines
+      x-stackql-resource: executions
       x-stackql-method: start_sync_execution
       x-stackql-verb: EXEC
   /StopExecution:
@@ -1570,7 +1542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopExecutionOutput'
-      x-stackql-resource: execution
+      x-stackql-resource: executions
       x-stackql-method: stop_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -1609,10 +1581,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1700,7 +1668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestStateOutput'
-      x-stackql-resource: state
+      x-stackql-resource: states
       x-stackql-method: test_state
       x-stackql-verb: EXEC
   /UntagResource:
@@ -1736,10 +1704,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1783,10 +1747,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateMapRunOutput'
       x-stackql-resource: map_runs
       x-stackql-method: update_map_run
       x-stackql-verb: UPDATE
@@ -1913,7 +1873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateStateMachineAliasOutput'
-      x-stackql-resource: state_machine_alias
+      x-stackql-resource: state_machine_aliases
       x-stackql-method: update_state_machine_alias
       x-stackql-verb: UPDATE
   /ValidateStateMachineDefinition:
@@ -2233,18 +2193,10 @@ components:
       required:
       - stateMachineAliasArn
       - creationDate
-    DeleteActivityOutput:
-      type: object
-    DeleteStateMachineOutput:
-      type: object
-    DeleteStateMachineAliasOutput:
-      type: object
     LongArn:
       type: string
       minLength: 1
       maxLength: 2000
-    DeleteStateMachineVersionOutput:
-      type: object
     DescribeActivityOutput:
       type: object
       properties:
@@ -3797,12 +3749,6 @@ components:
           description: The date the execution was last redriven.
       required:
       - redriveDate
-    SendTaskFailureOutput:
-      type: object
-    SendTaskHeartbeatOutput:
-      type: object
-    SendTaskSuccessOutput:
-      type: object
     StartExecutionOutput:
       type: object
       properties:
@@ -3902,8 +3848,6 @@ components:
           description: The date the execution is stopped.
       required:
       - stopDate
-    TagResourceOutput:
-      type: object
     InspectionLevel:
       type: string
       enum:
@@ -4159,10 +4103,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceOutput:
-      type: object
-    UpdateMapRunOutput:
-      type: object
     UpdateStateMachineOutput:
       type: object
       properties:

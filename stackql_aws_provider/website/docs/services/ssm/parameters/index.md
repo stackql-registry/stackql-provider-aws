@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_parameters"
     values={[
         { label: 'get_parameters', value: 'get_parameters' },
+        { label: 'get_parameters_by_path', value: 'get_parameters_by_path' },
         { label: 'describe_parameters', value: 'describe_parameters' }
     ]}
 >
@@ -59,6 +60,65 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="parameters" /></td>
     <td><code>array</code></td>
     <td>A list of details for a parameter.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="get_parameters_by_path">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="data_type" /></td>
+    <td><code>string</code></td>
+    <td>The data type of the parameter, such as text or aws:ec2:image. The default is text.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_modified_date" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Date the parameter was last changed or updated and the parameter version was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the parameter.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="selector" /></td>
+    <td><code>string</code></td>
+    <td>Either the version number or the label used to retrieve the parameter value. Specify selectors by using one of the following formats: parameter_name:version parameter_name:label</td>
+</tr>
+<tr>
+    <td><CopyableCode code="source_result" /></td>
+    <td><code>string</code></td>
+    <td>Applies to parameters that reference information in other Amazon Web Services services. SourceResult is the raw result or response from the source.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type" /></td>
+    <td><code>string</code></td>
+    <td>The type of parameter. Valid values include the following: String, StringList, and SecureString. If type is StringList, the system returns a comma-separated string with no spaces between commas in the Value field. (String, StringList, SecureString)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="value" /></td>
+    <td><code>string</code></td>
+    <td>The parameter value. If type is StringList, the system returns a comma-separated string with no spaces between commas in the Value field.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="version" /></td>
+    <td><code>integer (int64)</code></td>
+    <td>The parameter version.</td>
 </tr>
 </tbody>
 </table>
@@ -162,6 +222,13 @@ The following methods are available for this resource:
     <td>Get information about one or more parameters by specifying multiple parameter names. To get information about a single parameter, you can use the GetParameter operation instead. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.</td>
 </tr>
 <tr>
+    <td><a href="#get_parameters_by_path"><CopyableCode code="get_parameters_by_path" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieve information about one or more parameters under a specified level in a hierarchy. Request results are returned on a best-effort basis. If you specify MaxResults in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of MaxResults. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a NextToken. You can specify the NextToken in a subsequent call to get the next set of results. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error.</td>
+</tr>
+<tr>
     <td><a href="#describe_parameters"><CopyableCode code="describe_parameters" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -171,7 +238,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#put_parameter"><CopyableCode code="put_parameter" /></a></td>
     <td><CopyableCode code="replace" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Value"><code>Value</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Create or update a parameter in Parameter Store. Parameter Store throughput defines the number of API transactions per second (TPS) that Systems Manager can process. This applies to GetParameter, GetParameters, and PutParameter API calls for your Amazon Web Services account and Amazon Web Services Region. By default, Parameter Store is configured with a standard throughput quota suitable for low- to moderate-volume workloads. Applications that retrieve configuration data infrequently or operate at smaller scale can use this default setting without additional cost. For higher-volume workloads, you can enable higher throughput. This increases the maximum number of supported transactions per second for your account and Region. Increased throughput supports applications and workloads that need concurrent access to multiple parameters. If you experience ThrottlingException: Rate exceeded errors, enable higher throughput. For more information, see Changing Parameter Store throughput.</td>
 </tr>
@@ -226,6 +293,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_parameters"
     values={[
         { label: 'get_parameters', value: 'get_parameters' },
+        { label: 'get_parameters_by_path', value: 'get_parameters_by_path' },
         { label: 'describe_parameters', value: 'describe_parameters' }
     ]}
 >
@@ -237,6 +305,26 @@ Get information about one or more parameters by specifying multiple parameter na
 SELECT
 invalid_parameters,
 parameters
+FROM aws.ssm.parameters
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="get_parameters_by_path">
+
+Retrieve information about one or more parameters under a specified level in a hierarchy. Request results are returned on a best-effort basis. If you specify MaxResults in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of MaxResults. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a NextToken. You can specify the NextToken in a subsequent call to get the next set of results. Parameter names can't contain spaces. The service removes any spaces specified for the beginning or end of a parameter name. If the specified name for a parameter contains spaces between characters, the request fails with a ValidationException error.
+
+```sql
+SELECT
+arn,
+data_type,
+last_modified_date,
+name,
+selector,
+source_result,
+type,
+value,
+version
 FROM aws.ssm.parameters
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,7 +384,6 @@ Policies = '{{ Policies }}',
 DataType = '{{ DataType }}'
 WHERE 
 region = '{{ region }}' --required
-AND Value = '{{ Value }}' --required
 RETURNING
 tier,
 version;

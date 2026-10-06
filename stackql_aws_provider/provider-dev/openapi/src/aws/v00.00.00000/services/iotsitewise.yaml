@@ -1684,10 +1684,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccessPolicyResponse"
     get:
       operationId: DescribeAccessPolicy
       description: Describes an access policy, which specifies an identity's access to an IoT SiteWise Monitor portal or project.
@@ -1737,10 +1733,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAccessPolicyResponse"
   /workspaces/{workspace_name}/applications/{id}:
     delete:
       operationId: DeleteApplication
@@ -1761,10 +1753,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteApplicationResponse"
     get:
       operationId: DescribeApplication
       description: Retrieves Application details based on the ID
@@ -2329,10 +2317,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDashboardResponse"
     get:
       operationId: DescribeDashboard
       description: Retrieves information about a dashboard.
@@ -2381,10 +2365,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDashboardResponse"
   /datasets/{dataset_id}:
     delete:
       operationId: DeleteDataset
@@ -2738,10 +2718,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectResponse"
     get:
       operationId: DescribeProject
       description: Retrieves information about a project.
@@ -2787,10 +2763,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateProjectResponse"
   /workspaces/{workspace_name}/tasks/{task_name}:
     delete:
       operationId: DeleteTask
@@ -3308,10 +3280,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutLoggingOptionsResponse"
   /workspaces/{workspace_name}/pipelines/{pipeline_name}/executions/{pipeline_execution_id}:
     get:
       operationId: DescribePipelineExecution
@@ -4557,6 +4525,8 @@ paths:
               properties:
                 executionEnvironmentVariableOverrides:
                   $ref: "#/components/schemas/ExecutionEnvironmentVariables"
+                executionMountOverrides:
+                  $ref: "#/components/schemas/MountOverrides"
                 executionPriority:
                   $ref: "#/components/schemas/ExecutionPriority"
                 clientToken:
@@ -4737,10 +4707,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes a tag from an IoT SiteWise resource.
@@ -4760,10 +4726,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /timeseries/:
     get:
       operationId: ListTimeSeries
@@ -7492,6 +7454,9 @@ components:
         processingUnit:
           $ref: "#/components/schemas/ProcessingUnit"
           description: The processing unit allocation that determines the vCPU, memory, and GPU resources.
+        ephemeralStorageConfiguration:
+          $ref: "#/components/schemas/EphemeralStorageConfiguration"
+          description: Ephemeral storage configuration for the container task.
         command:
           $ref: "#/components/schemas/CommandList"
           description: The command to execute in the container.
@@ -7502,6 +7467,9 @@ components:
           type: object
           properties: {}
           description: Environment variables passed to the container at runtime.
+        mounts:
+          $ref: "#/components/schemas/MountList"
+          description: Mounts attached to the container filesystem. Each mount exposes an external data source as a local directory inside the container. The service assigns each mount a container path based on the mount name. The container reads files through that path as if the data were on the local filesystem.
       required:
         - ecrUri
         - taskExecutionRole
@@ -7543,6 +7511,31 @@ components:
         - UNITS_72
         - UNITS_84
         - UNITS_96
+    EphemeralStorageConfiguration:
+      description: Configuration for ephemeral storage attached to the container task.
+      type: object
+      properties:
+        storageClass:
+          $ref: "#/components/schemas/StorageClass"
+          description: Storage type that determines I/O performance family and level.
+        storageSizeInGiB:
+          $ref: "#/components/schemas/EphemeralStorageConfigurationStorageSizeInGiBInteger"
+          description: Storage volume size in GiB.
+      required:
+        - storageClass
+        - storageSizeInGiB
+    StorageClass:
+      description: The storage type that determines I/O performance characteristics. Family name indicates workload pattern, level number indicates performance within that family.
+      type: string
+      enum:
+        - STANDARD_1
+        - STANDARD_2
+        - THROUGHPUT_1
+        - THROUGHPUT_2
+    EphemeralStorageConfigurationStorageSizeInGiBInteger:
+      type: integer
+      minimum: 1
+      maximum: 16384
     CommandList:
       description: A list of command strings to execute in the container.
       type: array
@@ -7554,6 +7547,73 @@ components:
       format: int64
       minimum: 60
       maximum: 86400
+    MountList:
+      description: A list of mounts for a task. Each mount attaches an external data source to the container filesystem at a customer-supplied relative path under the service-owned mount root.
+      type: array
+      items:
+        $ref: "#/components/schemas/Mount"
+    Mount:
+      description: Attaches a data source to the container filesystem for a task at a customer-supplied relative path under the service-owned mount root.
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/ResourceName"
+          description: A unique name for the mount within the task.
+        relativePath:
+          $ref: "#/components/schemas/MountRelativePath"
+          description: The relative path under the service-owned mount root where this mount is attached inside the container.
+        source:
+          $ref: "#/components/schemas/MountSource"
+          description: The data source for the mount.
+        storageType:
+          $ref: "#/components/schemas/MountStorageType"
+          description: The type of storage used for the mount.
+      required:
+        - name
+        - relativePath
+        - source
+        - storageType
+    MountRelativePath:
+      description: A relative path under the service-owned mount root where this mount is attached inside the container.
+      type: string
+      minLength: 1
+      maxLength: 1024
+      pattern: ((?!.*(^|/)\.\.?(/|$))(?!.*//)[a-zA-Z0-9._-][a-zA-Z0-9._/-]*[a-zA-Z0-9._-]|[a-zA-Z0-9_-])
+    MountSource:
+      description: The data source configuration for a mount. Specify exactly one of the following.
+      type: object
+      properties:
+        s3AccessPoint:
+          $ref: "#/components/schemas/S3AccessPointSource"
+          description: Configuration for a mount that reads from an Amazon S3 access point.
+    S3AccessPointSource:
+      description: Configures a mount that reads from an Amazon S3 access point.
+      type: object
+      properties:
+        accessPointArn:
+          $ref: "#/components/schemas/MountS3AccessPointArn"
+          description: The Amazon Resource Name (ARN) of the S3 access point.
+        prefix:
+          $ref: "#/components/schemas/MountS3KeyPrefix"
+          description: An optional key prefix to scope the mount to a subset of objects at the access point.
+      required:
+        - accessPointArn
+    MountS3AccessPointArn:
+      description: The Amazon Resource Name (ARN) of the Amazon S3 access point. The mount reads objects from the bucket associated with this access point. Access is governed by the access point policy and the task execution role's IAM permissions.
+      type: string
+      minLength: 4
+      maxLength: 128
+      pattern: arn:aws(-cn|-us-gov)?:s3:[a-z0-9-]*:\d{12}:accesspoint[/:][a-zA-Z0-9._-]+
+    MountS3KeyPrefix:
+      description: An object key name prefix. If specified, the mount includes only objects whose keys begin with this prefix. The maximum prefix length is 1,024 characters. To include all objects at the access point, omit this field.
+      type: string
+      minLength: 1
+      maxLength: 1024
+    MountStorageType:
+      description: The type of storage used for a mount inside the container.
+      type: string
+      enum:
+        - SHARED_STORAGE
     CreateTaskResponse:
       description: Response structure for CreateTask operation.
       type: object
@@ -7646,10 +7706,6 @@ components:
       required:
         - code
         - message
-    DeleteAccessPolicyResponse:
-      type: object
-    DeleteApplicationResponse:
-      type: object
     DeleteAssetResponse:
       type: object
       properties:
@@ -7709,8 +7765,6 @@ components:
           description: The status of the computation model. It contains a state (DELETING after successfully calling this operation) and any error messages.
       required:
         - computationModelStatus
-    DeleteDashboardResponse:
-      type: object
     DeleteDatasetResponse:
       type: object
       properties:
@@ -7736,8 +7790,6 @@ components:
           description: The status of the portal, which contains a state (DELETING after successfully calling this operation) and any error message.
       required:
         - portalStatus
-    DeleteProjectResponse:
-      type: object
     DeleteTaskResponse:
       description: Response structure for DeleteTask operation.
       type: object
@@ -9196,6 +9248,9 @@ components:
         requestEnvironmentVariables:
           $ref: "#/components/schemas/ExecutionEnvironmentVariables"
           description: The environment variables provided as input for the pipeline execution.
+        requestMountOverrides:
+          $ref: "#/components/schemas/MountOverrides"
+          description: The mount overrides provided as input for the pipeline execution. Present when mount overrides were supplied at execution time.
         executionPriority:
           $ref: "#/components/schemas/ExecutionPriority"
           description: Scheduling priority for the execution. When not specified, defaults to lowest priority.
@@ -9286,6 +9341,16 @@ components:
           type: object
           properties: {}
           description: Per-compute-node environment variable overrides. Each entry maps a compute node name to its environment variable overrides.
+    MountOverrides:
+      description: Runtime mount overrides applied to a single pipeline execution. Overrides are transient — they do not modify the stored task configuration.
+      type: object
+      properties:
+        computeNodes:
+          type: object
+          properties: {}
+          description: The mount overrides for each compute node, keyed by compute node name.
+      required:
+        - computeNodes
     ExecutionPriority:
       description: Scheduling priority for pipeline execution. Lower values indicate higher priority. When not specified, defaults to lowest priority.
       type: integer
@@ -9328,6 +9393,9 @@ components:
           type: object
           properties: {}
           description: The fully resolved environment variables used for this compute node execution.
+        executionMounts:
+          $ref: "#/components/schemas/MountList"
+          description: The fully resolved mounts used for this compute node execution, after merging task-defined mounts with any execution-level mount overrides. Each mount attaches an external data source to the container filesystem at a relative path under the service-owned mount root.
       required:
         - computeNodeName
         - taskName
@@ -12082,8 +12150,6 @@ components:
       required:
         - encryptionType
         - configurationStatus
-    PutLoggingOptionsResponse:
-      type: object
     PutStorageConfigurationResponse:
       type: object
       properties:
@@ -12200,8 +12266,6 @@ components:
         - searchId
         - workspaceName
         - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -12210,10 +12274,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
-    UpdateAccessPolicyResponse:
-      type: object
     UpdateAssetResponse:
       type: object
       properties:
@@ -12258,8 +12318,6 @@ components:
           description: The status of the computation model. It contains a state (UPDATING after successfully calling this operation) and an error message if any.
       required:
         - computationModelStatus
-    UpdateDashboardResponse:
-      type: object
     UpdateDatasetResponse:
       type: object
       properties:
@@ -12314,8 +12372,6 @@ components:
           description: The status of the portal, which contains a state (UPDATING after successfully calling this operation) and any error message.
       required:
         - portalStatus
-    UpdateProjectResponse:
-      type: object
     UpdateTaskResponse:
       description: Response structure for UpdateTask operation.
       type: object
@@ -12771,6 +12827,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_put_asset_property_value:
+          operation:
+            $ref: "#/paths/~1properties/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_asset_property_value:
           operation:
             $ref: "#/paths/~1properties~1latest/get"
@@ -12955,7 +13022,6 @@ components:
             $ref: "#/paths/~1access-policies~1{access_policy_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_access_policy:
@@ -12969,7 +13035,6 @@ components:
             $ref: "#/paths/~1access-policies~1{access_policy_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -13023,7 +13088,6 @@ components:
             $ref: "#/paths/~1workspaces~1{workspace_name}~1applications~1{id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         describe_application:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_name}~1applications~1{id}/get"
@@ -13336,7 +13400,6 @@ components:
             $ref: "#/paths/~1dashboards~1{dashboard_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_dashboard:
@@ -13350,7 +13413,6 @@ components:
             $ref: "#/paths/~1dashboards~1{dashboard_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -13700,7 +13762,6 @@ components:
             $ref: "#/paths/~1projects~1{project_id}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         describe_project:
@@ -13714,7 +13775,6 @@ components:
             $ref: "#/paths/~1projects~1{project_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -13893,6 +13953,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        execute_action:
+          operation:
+            $ref: "#/paths/~1actions/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_actions:
           operation:
             $ref: "#/paths/~1actions/get"
@@ -14066,7 +14137,6 @@ components:
             $ref: "#/paths/~1logging/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -14137,6 +14207,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        execute_query:
+          operation:
+            $ref: "#/paths/~1queries~1execution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         list_queries:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_name}~1queries/get"
@@ -14228,10 +14316,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/storage_configurations/methods/put_storage_configuration"
         delete: []
-    capture_datas:
-      id: aws.iotsitewise.capture_datas
-      name: capture_datas
-      title: capture_datas
+    capture_data:
+      id: aws.iotsitewise.capture_data
+      name: capture_data
+      title: capture_data
       methods:
         get_capture_data:
           operation:
@@ -14246,7 +14334,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/capture_datas/methods/get_capture_data"
+          - $ref: "#/components/x-stackQL-resources/capture_data/methods/get_capture_data"
         insert: []
         update: []
         delete: []
@@ -14337,6 +14425,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/search_results/methods/get_search_results"
+        insert: []
+        update: []
+        delete: []
+    assistants:
+      id: aws.iotsitewise.assistants
+      name: assistants
+      title: assistants
+      methods:
+        invoke_assistant:
+          operation:
+            $ref: "#/paths/~1assistant~1invocation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []
@@ -14584,7 +14693,6 @@ components:
             $ref: "#/paths/~1tags/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -14595,7 +14703,6 @@ components:
             $ref: "#/paths/~1tags/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -99,7 +99,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptSubscriptionRequestOutput'
-      x-stackql-resource: subscriptions
+      x-stackql-resource: subscription_requests
       x-stackql-method: accept_subscription_request
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/addOwner:
@@ -141,10 +141,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddEntityOwnerOutput'
       x-stackql-resource: entity_owners
       x-stackql-method: add_entity_owner
       x-stackql-verb: UPDATE
@@ -227,10 +223,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateEnvironmentRoleOutput'
       x-stackql-resource: environments
       x-stackql-method: associate_environment_role
       x-stackql-verb: UPDATE
@@ -259,10 +251,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateEnvironmentRoleOutput'
       x-stackql-resource: environments
       x-stackql-method: disassociate_environment_role
       x-stackql-verb: UPDATE
@@ -303,10 +291,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateGovernedTermsOutput'
       x-stackql-resource: domains
       x-stackql-method: associate_governed_terms
       x-stackql-verb: UPDATE
@@ -352,7 +336,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetAttributesMetadataOutput'
-      x-stackql-resource: attributes_metadatas
+      x-stackql-resource: attributes_metadata
       x-stackql-method: batch_get_attributes_metadata
       x-stackql-verb: SELECT
     put:
@@ -397,7 +381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutAttributesMetadataOutput'
-      x-stackql-resource: domains
+      x-stackql-resource: attributes_metadata
       x-stackql-method: batch_put_attributes_metadata
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/metadata-generation-runs/{identifier}/cancel:
@@ -422,11 +406,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CancelMetadataGenerationRunOutput'
-      x-stackql-resource: domains
+      x-stackql-resource: metadata_generation_runs
       x-stackql-method: cancel_metadata_generation_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/subscriptions/{identifier}/cancel:
@@ -453,7 +433,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSubscriptionOutput'
-      x-stackql-resource: domains
+      x-stackql-resource: subscriptions
       x-stackql-method: cancel_subscription
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/account-pools:
@@ -1447,7 +1427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDomainUnitsForParentOutput'
-      x-stackql-resource: domain_units_for_parents
+      x-stackql-resource: domain_units
       x-stackql-method: list_domain_units_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
@@ -2385,10 +2365,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateProjectMembershipOutput'
       x-stackql-resource: project_memberships
       x-stackql-method: create_project_membership
       x-stackql-verb: INSERT
@@ -3012,10 +2988,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAccountPoolOutput'
       x-stackql-resource: account_pools
       x-stackql-method: delete_account_pool
       x-stackql-verb: DELETE
@@ -3109,10 +3081,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssetOutput'
       x-stackql-resource: assets
       x-stackql-method: delete_asset
       x-stackql-verb: DELETE
@@ -3288,10 +3256,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssetTypeOutput'
       x-stackql-resource: asset_types
       x-stackql-method: delete_asset_type
       x-stackql-verb: DELETE
@@ -3453,10 +3417,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataExportConfigurationOutput'
       x-stackql-resource: data_export_configurations
       x-stackql-method: delete_data_export_configuration
       x-stackql-verb: DELETE
@@ -3514,10 +3474,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutDataExportConfigurationOutput'
       x-stackql-resource: data_export_configurations
       x-stackql-method: put_data_export_configuration
       x-stackql-verb: REPLACE
@@ -3542,10 +3498,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataProductOutput'
       x-stackql-resource: data_products
       x-stackql-method: delete_data_product
       x-stackql-verb: DELETE
@@ -3721,7 +3673,20 @@ paths:
         required: false
         schema:
           $ref: '#/components/schemas/Boolean'
-        description: Specifies the optional flag to delete all child entities within the domain.
+        description: Specifies whether to skip the check that prevents deletion of a domain that still contains resources.
+          When you use this parameter, Amazon DataZone deletes the domain but might not remove its associated resources, which
+          can leave orphaned resources behind. To delete a domain and fully clean up its associated resources, use cascadeDelete
+          instead. You can't use this parameter together with cascadeDelete.
+      - name: cascadeDelete
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Boolean'
+        description: Specifies whether to delete the domain along with all of its associated resources. When you use this
+          parameter, Amazon DataZone deletes the domain and cleanly removes its associated resources without leaving orphaned
+          resources behind. Amazon DataZone reports deletion progress in the deleteProgress field. Amazon DataZone reports
+          any resources that it can't delete in the failureReasons field of the GetDomain response. You can't use this parameter
+          together with skipDeletionCheck. If you don't specify a value, the default is false.
       responses:
         '202':
           description: Success
@@ -3815,10 +3780,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDomainUnitOutput'
       x-stackql-resource: domain_units
       x-stackql-method: delete_domain_unit
       x-stackql-verb: DELETE
@@ -4194,10 +4155,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEnvironmentBlueprintConfigurationOutput'
       x-stackql-resource: environment_blueprint_configurations
       x-stackql-method: delete_environment_blueprint_configuration
       x-stackql-verb: DELETE
@@ -4394,10 +4351,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFormTypeOutput'
       x-stackql-resource: form_types
       x-stackql-method: delete_form_type
       x-stackql-verb: DELETE
@@ -4468,10 +4421,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGlossaryOutput'
       x-stackql-resource: glossaries
       x-stackql-method: delete_glossary
       x-stackql-verb: DELETE
@@ -4567,10 +4516,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGlossaryTermOutput'
       x-stackql-resource: glossary_terms
       x-stackql-method: delete_glossary_term
       x-stackql-verb: DELETE
@@ -4721,10 +4666,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteListingOutput'
       x-stackql-resource: listings
       x-stackql-method: delete_listing
       x-stackql-verb: DELETE
@@ -4781,10 +4722,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteNotebookOutput'
       x-stackql-resource: notebooks
       x-stackql-method: delete_notebook
       x-stackql-verb: DELETE
@@ -4889,10 +4826,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectOutput'
       x-stackql-resource: projects
       x-stackql-method: delete_project
       x-stackql-verb: DELETE
@@ -5002,10 +4935,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectMembershipOutput'
       x-stackql-resource: project_memberships
       x-stackql-method: delete_project_membership
       x-stackql-verb: DELETE
@@ -5029,10 +4958,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectProfileOutput'
       x-stackql-resource: project_profiles
       x-stackql-method: delete_project_profile
       x-stackql-verb: DELETE
@@ -5135,10 +5060,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleOutput'
       x-stackql-resource: rules
       x-stackql-method: delete_rule
       x-stackql-verb: DELETE
@@ -5518,10 +5439,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTimeSeriesDataPointsOutput'
       x-stackql-resource: time_series_data_points
       x-stackql-method: delete_time_series_data_points
       x-stackql-verb: DELETE
@@ -5679,10 +5596,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateGovernedTermsOutput'
       x-stackql-resource: domains
       x-stackql-method: disassociate_governed_terms
       x-stackql-verb: UPDATE
@@ -6315,7 +6228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceRunOutput'
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_runs
       x-stackql-method: start_data_source_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/owners:
@@ -6575,7 +6488,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostLineageEventOutput'
-      x-stackql-resource: domains
+      x-stackql-resource: lineage_events
       x-stackql-method: post_lineage_event
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/lineage/nodes/{identifier}/history:
@@ -6758,7 +6671,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataGenerationRunOutput'
-      x-stackql-resource: domains
+      x-stackql-resource: metadata_generation_runs
       x-stackql-method: start_metadata_generation_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notebook-runs:
@@ -6881,7 +6794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookRunOutput'
-      x-stackql-resource: notebooks
+      x-stackql-resource: notebook_runs
       x-stackql-method: start_notebook_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notifications:
@@ -7317,10 +7230,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -7343,10 +7252,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -7483,7 +7388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectSubscriptionRequestOutput'
-      x-stackql-resource: subscriptions
+      x-stackql-resource: subscription_requests
       x-stackql-method: reject_subscription_request
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/removeOwner:
@@ -7525,10 +7430,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemoveEntityOwnerOutput'
       x-stackql-resource: entity_owners
       x-stackql-method: remove_entity_owner
       x-stackql-verb: UPDATE
@@ -7576,10 +7477,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RemovePolicyGrantOutput'
       x-stackql-resource: policy_grants
       x-stackql-method: remove_policy_grant
       x-stackql-verb: UPDATE
@@ -7939,7 +7836,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookExportOutput'
-      x-stackql-resource: notebooks
+      x-stackql-resource: notebook_exports
       x-stackql-method: start_notebook_export
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notebook-imports:
@@ -8064,7 +7961,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopNotebookRunOutput'
-      x-stackql-resource: notebooks
+      x-stackql-resource: notebook_runs
       x-stackql-method: stop_notebook_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/root-domain-unit-owner:
@@ -8097,10 +7994,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRootDomainUnitOwnerOutput'
       x-stackql-resource: domains
       x-stackql-method: update_root_domain_unit_owner
       x-stackql-verb: UPDATE
@@ -8792,8 +8685,6 @@ components:
     GroupIdentifier:
       type: string
       pattern: .*(^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$|[\p{L}\p{M}\p{S}\p{N}\p{P}\t\n\r  ]+).*
-    AddEntityOwnerOutput:
-      type: object
     TargetEntityType:
       type: string
       enum:
@@ -9076,8 +8967,6 @@ components:
     EnvironmentId:
       type: string
       pattern: '[a-zA-Z0-9_-]{1,36}'
-    AssociateEnvironmentRoleOutput:
-      type: object
     EntityIdentifier:
       type: string
       pattern: '[a-zA-Z0-9_-]{1,36}'
@@ -9092,8 +8981,6 @@ components:
     GlossaryTermId:
       type: string
       pattern: '[a-zA-Z0-9_-]{1,36}'
-    AssociateGovernedTermsOutput:
-      type: object
     AttributeEntityType:
       type: string
       enum:
@@ -9240,8 +9127,6 @@ components:
     MetadataGenerationRunIdentifier:
       type: string
       pattern: '[a-zA-Z0-9_-]{1,36}'
-    CancelMetadataGenerationRunOutput:
-      type: object
     CancelSubscriptionOutput:
       type: object
       properties:
@@ -13481,8 +13366,6 @@ components:
       - SUCCESSFUL
       - FAILED_VALIDATION
       - FAILED_DEPLOYMENT
-    CreateProjectMembershipOutput:
-      type: object
     ProjectProfileName:
       type: string
       minLength: 1
@@ -14312,22 +14195,12 @@ components:
       - NOT_ASSIGNED
       - ACTIVATED
       - DEACTIVATED
-    DeleteAccountPoolOutput:
-      type: object
-    DeleteAssetOutput:
-      type: object
-    DeleteAssetTypeOutput:
-      type: object
     DeleteConnectionOutput:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/String'
           description: The status of the action.
-    DeleteDataExportConfigurationOutput:
-      type: object
-    DeleteDataProductOutput:
-      type: object
     DeleteDataSourceOutput:
       type: object
       properties:
@@ -14481,16 +14354,6 @@ components:
           description: The status of the domain.
       required:
       - status
-    DeleteDomainUnitOutput:
-      type: object
-    DeleteEnvironmentBlueprintConfigurationOutput:
-      type: object
-    DeleteFormTypeOutput:
-      type: object
-    DeleteGlossaryOutput:
-      type: object
-    DeleteGlossaryTermOutput:
-      type: object
     LineageEventIdentifier:
       type: string
       pattern: '[a-z0-9]{14}'
@@ -14513,18 +14376,6 @@ components:
       - PROCESSING
       - SUCCESS
       - FAILED
-    DeleteListingOutput:
-      type: object
-    DeleteNotebookOutput:
-      type: object
-    DeleteProjectOutput:
-      type: object
-    DeleteProjectMembershipOutput:
-      type: object
-    DeleteProjectProfileOutput:
-      type: object
-    DeleteRuleOutput:
-      type: object
     DeleteSubscriptionGrantOutput:
       type: object
       properties:
@@ -14578,16 +14429,10 @@ components:
       enum:
       - ASSET
       - LISTING
-    DeleteTimeSeriesDataPointsOutput:
-      type: object
-    DisassociateEnvironmentRoleOutput:
-      type: object
     DisassociateGovernedTermsInputGovernedGlossaryTermsList:
       type: array
       items:
         $ref: '#/components/schemas/GlossaryTermId'
-    DisassociateGovernedTermsOutput:
-      type: object
     GetAccountPoolOutput:
       type: object
       properties:
@@ -15172,10 +15017,42 @@ components:
         serviceRole:
           $ref: '#/components/schemas/RoleArn'
           description: The service role of the domain.
+        failureReasons:
+          $ref: '#/components/schemas/FailureReasonsList'
+          description: The list of failure reasons for resources that Amazon DataZone could not delete during a cascade deletion
+            of the domain.
+        deleteProgress:
+          $ref: '#/components/schemas/DeleteProgress'
+          description: The progress of the current domain deletion, including the number of projects that Amazon DataZone
+            successfully deleted.
       required:
       - id
       - domainExecutionRole
       - status
+    FailureReasonsList:
+      description: A list of FailureReason objects that describe the resources that Amazon DataZone could not delete during
+        a cascade deletion. Amazon DataZone returns this list in the failureReasons field of the GetDomain response.
+      type: array
+      items:
+        $ref: '#/components/schemas/FailureReason'
+    FailureReason:
+      description: The details of a resource deletion failure during a cascade deletion of the domain.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/String'
+          description: The identifier of the resource that failed to delete.
+        message:
+          $ref: '#/components/schemas/String'
+          description: The error message associated with the resource that failed to delete.
+    DeleteProgress:
+      description: The progress of a domain deletion, including the number of projects that Amazon DataZone successfully deleted.
+        Amazon DataZone returns this structure in the response to a GetDomain request while a cascade deletion is in progress.
+      type: object
+      properties:
+        successfullyDeletedProjectCount:
+          $ref: '#/components/schemas/Integer'
+          description: The number of projects that Amazon DataZone successfully deleted during the domain deletion.
     GetDomainUnitOutput:
       type: object
       properties:
@@ -19072,8 +18949,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TimeSeriesDataPointFormOutput'
-    PutDataExportConfigurationOutput:
-      type: object
     RegionalParameterMap:
       type: object
       properties: {}
@@ -19478,10 +19353,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SubscribedListing'
-    RemoveEntityOwnerOutput:
-      type: object
-    RemovePolicyGrantOutput:
-      type: object
     RevokeSubscriptionOutput:
       type: object
       properties:
@@ -20663,14 +20534,10 @@ components:
       - domainId
       - owningProjectId
       - status
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateAccountPoolOutput:
       type: object
       properties:
@@ -21704,8 +21571,6 @@ components:
       - id
       - name
       - createdBy
-    UpdateRootDomainUnitOwnerOutput:
-      type: object
     UpdateRuleOutput:
       type: object
       properties:

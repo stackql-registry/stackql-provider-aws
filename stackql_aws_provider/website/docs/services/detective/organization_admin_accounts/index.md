@@ -86,6 +86,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns information about the Detective administrator account for an organization. Can only be called by the organization management account.</td>
 </tr>
+<tr>
+    <td><a href="#disable_organization_admin_account"><CopyableCode code="disable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes the Detective administrator account in the current Region. Deletes the organization behavior graph. Can only be called by the organization management account. Removing the Detective administrator account does not affect the delegated administrator account for Detective in Organizations. To remove the delegated administrator account in Organizations, use the Organizations API. Removing the delegated administrator account also removes the Detective administrator account in all Regions, except for Regions where the Detective administrator account is the organization management account.</td>
+</tr>
+<tr>
+    <td><a href="#enable_organization_admin_account"><CopyableCode code="enable_organization_admin_account" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AccountId"><code>AccountId</code></a></td>
+    <td></td>
+    <td>Designates the Detective administrator account for the organization in the current Region. If the account does not have Detective enabled, then enables Detective for that account and creates a new behavior graph. Can only be called by the organization management account. If the organization has a delegated administrator account in Organizations, then the Detective administrator account must be either the delegated administrator account or the organization management account. If the organization does not have a delegated administrator account in Organizations, then you can choose any account in the organization. If you choose an account other than the organization management account, Detective calls Organizations to make that account the delegated administrator account for Detective. The organization management account cannot be the delegated administrator account.</td>
+</tr>
 </tbody>
 </table>
 
@@ -128,6 +142,42 @@ administrators,
 next_token
 FROM aws.detective.organization_admin_accounts
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="disable_organization_admin_account"
+    values={[
+        { label: 'disable_organization_admin_account', value: 'disable_organization_admin_account' },
+        { label: 'enable_organization_admin_account', value: 'enable_organization_admin_account' }
+    ]}
+>
+<TabItem value="disable_organization_admin_account">
+
+Removes the Detective administrator account in the current Region. Deletes the organization behavior graph. Can only be called by the organization management account. Removing the Detective administrator account does not affect the delegated administrator account for Detective in Organizations. To remove the delegated administrator account in Organizations, use the Organizations API. Removing the delegated administrator account also removes the Detective administrator account in all Regions, except for Regions where the Detective administrator account is the organization management account.
+
+```sql
+EXEC aws.detective.organization_admin_accounts.disable_organization_admin_account 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="enable_organization_admin_account">
+
+Designates the Detective administrator account for the organization in the current Region. If the account does not have Detective enabled, then enables Detective for that account and creates a new behavior graph. Can only be called by the organization management account. If the organization has a delegated administrator account in Organizations, then the Detective administrator account must be either the delegated administrator account or the organization management account. If the organization does not have a delegated administrator account in Organizations, then you can choose any account in the organization. If you choose an account other than the organization management account, Detective calls Organizations to make that account the delegated administrator account for Detective. The organization management account cannot be the delegated administrator account.
+
+```sql
+EXEC aws.detective.organization_admin_accounts.enable_organization_admin_account 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AccountId": "{{ AccountId }}"
+}'
 ;
 ```
 </TabItem>

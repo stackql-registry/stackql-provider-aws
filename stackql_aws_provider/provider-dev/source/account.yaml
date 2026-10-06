@@ -149,7 +149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccountInformationResponse'
-      x-stackql-resource: account_informations
+      x-stackql-resource: account_information
       x-stackql-method: get_account_information
       x-stackql-verb: SELECT
   /getAlternateContact:
@@ -207,7 +207,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetContactInformationResponse'
-      x-stackql-resource: contact_informations
+      x-stackql-resource: contact_information
       x-stackql-method: get_contact_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactInformation
@@ -234,7 +234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetGovCloudAccountInformationResponse'
-      x-stackql-resource: gov_cloud_account_informations
+      x-stackql-resource: gov_cloud_account_information
       x-stackql-method: get_gov_cloud_account_information
       x-stackql-verb: SELECT
   /getPrimaryEmail:
@@ -285,7 +285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPrimaryEmailUpdateStatusResponse'
-      x-stackql-resource: primary_email_update_status
+      x-stackql-resource: primary_email_update_statuses
       x-stackql-method: get_primary_email_update_status
       x-stackql-verb: SELECT
   /getRegionOptStatus:
@@ -313,7 +313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetRegionOptStatusResponse'
-      x-stackql-resource: region_opt_status
+      x-stackql-resource: region_opt_statuses
       x-stackql-method: get_region_opt_status
       x-stackql-verb: SELECT
   /listRegions:
@@ -438,7 +438,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: contact_informations
+      x-stackql-resource: contact_information
       x-stackql-method: put_contact_information
       x-stackql-verb: REPLACE
   /startPrimaryEmailUpdate:

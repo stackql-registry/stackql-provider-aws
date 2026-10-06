@@ -91,6 +91,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Describes the status of the StartReportCreation operation. You can call this operation only from the organization's management account and from the us-east-1 Region.</td>
 </tr>
+<tr>
+    <td><a href="#start_report_creation"><CopyableCode code="start_report_creation" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-S3Bucket"><code>S3Bucket</code></a></td>
+    <td></td>
+    <td>Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy. Compliance data is refreshed daily. The report is generated asynchronously. The generated report is saved to the following location: s3:​//amzn-s3-demo-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv For more information about evaluating resource compliance with tag policies, including the required permissions, review Permissions for evaluating organization-wide compliance in the Tagging Amazon Web Services Resources and Tag Editor user guide. You can call this operation only from the organization's management account and from the us-east-1 Region. If the account associated with the identity used to call StartReportCreation is different from the account that owns the Amazon S3 bucket, there must be a bucket policy attached to the bucket to provide access. For more information, review Amazon S3 bucket policy for report storage in the Tagging Amazon Web Services Resources and Tag Editor user guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -134,6 +141,31 @@ s3_location,
 status
 FROM aws.resourcegroupstaggingapi.report_creations
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_report_creation"
+    values={[
+        { label: 'start_report_creation', value: 'start_report_creation' }
+    ]}
+>
+<TabItem value="start_report_creation">
+
+Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy. Compliance data is refreshed daily. The report is generated asynchronously. The generated report is saved to the following location: s3://amzn-s3-demo-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv For more information about evaluating resource compliance with tag policies, including the required permissions, review Permissions for evaluating organization-wide compliance in the Tagging Amazon Web Services Resources and Tag Editor user guide. You can call this operation only from the organization's management account and from the us-east-1 Region. If the account associated with the identity used to call StartReportCreation is different from the account that owns the Amazon S3 bucket, there must be a bucket policy attached to the bucket to provide access. For more information, review Amazon S3 bucket policy for report storage in the Tagging Amazon Web Services Resources and Tag Editor user guide.
+
+```sql
+EXEC aws.resourcegroupstaggingapi.report_creations.start_report_creation 
+@region='{{ region }}' --required 
+@@json=
+'{
+"S3Bucket": "{{ S3Bucket }}"
+}'
 ;
 ```
 </TabItem>

@@ -102,10 +102,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AssociateAwsTrainingCertificationEmailDomainResponse"
   /CancelConnection:
     post:
       operationId: CancelConnection
@@ -387,10 +383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateAwsTrainingCertificationEmailDomainResponse"
   /GetAllianceLeadContact:
     post:
       operationId: GetAllianceLeadContact
@@ -1096,10 +1088,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SendEmailVerificationCodeResponse"
   /StartProfileUpdateTask:
     post:
       operationId: StartProfileUpdateTask
@@ -1295,10 +1283,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1332,10 +1316,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateConnectionPreferences:
     post:
       operationId: UpdateConnectionPreferences
@@ -1503,8 +1483,6 @@ components:
       minLength: 6
       maxLength: 6
       pattern: "[0-9]+"
-    AssociateAwsTrainingCertificationEmailDomainResponse:
-      type: object
     ConnectionType:
       type: string
       enum:
@@ -2117,8 +2095,6 @@ components:
       minLength: 1
       maxLength: 253
       pattern: "[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
-    DisassociateAwsTrainingCertificationEmailDomainResponse:
-      type: object
     GetAllianceLeadContactResponse:
       type: object
       properties:
@@ -2933,8 +2909,6 @@ components:
       minLength: 1
       maxLength: 256
       pattern: "[\\u0020-\\u007E\\u00A0-\\uD7FF\\uE000-\\uFFFD\\n]+"
-    SendEmailVerificationCodeResponse:
-      type: object
     StartProfileUpdateTaskResponse:
       type: object
       properties:
@@ -3076,14 +3050,10 @@ components:
         - VerificationStatus
         - VerificationResponseDetails
         - StartedAt
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateConnectionPreferencesRequestExcludedParticipantIdentifiersList:
       type: array
       items:
@@ -3124,6 +3094,19 @@ components:
         accept_connection_invitation:
           operation:
             $ref: "#/paths/~1AcceptConnectionInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_connection:
+          operation:
+            $ref: "#/paths/~1CancelConnection/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3211,7 +3194,6 @@ components:
             $ref: "#/paths/~1AssociateAwsTrainingCertificationEmailDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3224,7 +3206,6 @@ components:
             $ref: "#/paths/~1DisassociateAwsTrainingCertificationEmailDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3238,6 +3219,56 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/aws_training_certification_email_domains/methods/associate_aws_training_certification_email_domain"
           - $ref: "#/components/x-stackQL-resources/aws_training_certification_email_domains/methods/disassociate_aws_training_certification_email_domain"
+        delete: []
+    profile_update_tasks:
+      id: aws.partnercentral_account.profile_update_tasks
+      name: profile_update_tasks
+      title: profile_update_tasks
+      methods:
+        cancel_profile_update_task:
+          operation:
+            $ref: "#/paths/~1CancelProfileUpdateTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_profile_update_task:
+          operation:
+            $ref: "#/paths/~1GetProfileUpdateTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_profile_update_task:
+          operation:
+            $ref: "#/paths/~1StartProfileUpdateTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/profile_update_tasks/methods/get_profile_update_task"
+        insert: []
+        update: []
         delete: []
     connection_invitations:
       id: aws.partnercentral_account.connection_invitations
@@ -3436,30 +3467,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/connection_preferences/methods/update_connection_preferences"
         delete: []
-    profile_update_tasks:
-      id: aws.partnercentral_account.profile_update_tasks
-      name: profile_update_tasks
-      title: profile_update_tasks
-      methods:
-        get_profile_update_task:
-          operation:
-            $ref: "#/paths/~1GetProfileUpdateTask/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/profile_update_tasks/methods/get_profile_update_task"
-        insert: []
-        update: []
-        delete: []
     profile_visibilities:
       id: aws.partnercentral_account.profile_visibilities
       name: profile_visibilities
@@ -3541,6 +3548,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_qualifications_association_task:
+          operation:
+            $ref: "#/paths/~1StartQualificationsAssociationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/qualifications_association_tasks/methods/get_qualifications_association_task"
@@ -3565,6 +3585,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_qualifications_disassociation_task:
+          operation:
+            $ref: "#/paths/~1StartQualificationsDisassociationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/qualifications_disassociation_tasks/methods/get_qualifications_disassociation_task"
@@ -3579,6 +3612,19 @@ components:
         get_verification:
           operation:
             $ref: "#/paths/~1GetVerification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_verification:
+          operation:
+            $ref: "#/paths/~1StartVerification/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3618,7 +3664,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3631,7 +3676,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3646,4 +3690,26 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    email_verification_codes:
+      id: aws.partnercentral_account.email_verification_codes
+      name: email_verification_codes
+      title: email_verification_codes
+      methods:
+        send_email_verification_code:
+          operation:
+            $ref: "#/paths/~1SendEmailVerificationCode/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

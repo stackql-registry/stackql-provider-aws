@@ -93,6 +93,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Delete a media object from the WhatsApp service. If the object is still in an Amazon S3 bucket you should delete it from there too.</td>
 </tr>
+<tr>
+    <td><a href="#post_whats_app_message_media"><CopyableCode code="post_whats_app_message_media" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-originationPhoneNumberId"><code>originationPhoneNumberId</code></a></td>
+    <td></td>
+    <td>Upload a media file to the WhatsApp service. Only the specified originationPhoneNumberId has the permissions to send the media file when using SendWhatsAppMessage. You must use either sourceS3File or sourceS3PresignedUrl for the source. If both or neither are specified then an InvalidParameterException is returned.</td>
+</tr>
 </tbody>
 </table>
 
@@ -168,6 +175,33 @@ DELETE FROM aws.socialmessaging.whats_app_message_medias
 WHERE mediaId = '{{ mediaId }}' --required
 AND originationPhoneNumberId = '{{ originationPhoneNumberId }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="post_whats_app_message_media"
+    values={[
+        { label: 'post_whats_app_message_media', value: 'post_whats_app_message_media' }
+    ]}
+>
+<TabItem value="post_whats_app_message_media">
+
+Upload a media file to the WhatsApp service. Only the specified originationPhoneNumberId has the permissions to send the media file when using SendWhatsAppMessage. You must use either sourceS3File or sourceS3PresignedUrl for the source. If both or neither are specified then an InvalidParameterException is returned.
+
+```sql
+EXEC aws.socialmessaging.whats_app_message_medias.post_whats_app_message_media 
+@region='{{ region }}' --required 
+@@json=
+'{
+"originationPhoneNumberId": "{{ originationPhoneNumberId }}", 
+"sourceS3PresignedUrl": "{{ sourceS3PresignedUrl }}", 
+"sourceS3File": "{{ sourceS3File }}"
+}'
 ;
 ```
 </TabItem>

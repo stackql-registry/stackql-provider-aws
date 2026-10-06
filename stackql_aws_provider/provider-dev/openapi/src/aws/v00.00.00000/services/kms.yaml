@@ -80,10 +80,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ConnectCustomKeyStoreResponse"
   /CreateAlias:
     post:
       operationId: CreateAlias
@@ -411,10 +407,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomKeyStoreResponse"
   /DeleteImportedKeyMaterial:
     post:
       operationId: DeleteImportedKeyMaterial
@@ -664,10 +656,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisconnectCustomKeyStoreResponse"
   /EnableKey:
     post:
       operationId: EnableKey
@@ -2062,10 +2050,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateCustomKeyStoreResponse"
   /UpdateKeyDescription:
     post:
       operationId: UpdateKeyDescription
@@ -2294,8 +2278,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    ConnectCustomKeyStoreResponse:
-      type: object
     AliasNameType:
       type: string
       minLength: 1
@@ -2831,8 +2813,6 @@ components:
       format: byte
       minLength: 1
       maxLength: 4096
-    DeleteCustomKeyStoreResponse:
-      type: object
     DeleteImportedKeyMaterialResponse:
       type: object
       properties:
@@ -2983,8 +2963,6 @@ components:
         KeyMetadata:
           $ref: "#/components/schemas/KeyMetadata"
           description: Metadata associated with the key.
-    DisconnectCustomKeyStoreResponse:
-      type: object
     RotationPeriodInDaysType:
       type: integer
       minimum: 90
@@ -3561,8 +3539,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKeyType"
-    UpdateCustomKeyStoreResponse:
-      type: object
     VerifyResponse:
       type: object
       properties:
@@ -3942,7 +3918,6 @@ components:
             $ref: "#/paths/~1ConnectCustomKeyStore/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3968,7 +3943,6 @@ components:
             $ref: "#/paths/~1DeleteCustomKeyStore/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4002,7 +3976,6 @@ components:
             $ref: "#/paths/~1DisconnectCustomKeyStore/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4015,7 +3988,6 @@ components:
             $ref: "#/paths/~1UpdateCustomKeyStore/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4032,10 +4004,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/update_custom_key_store"
         delete:
           - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/delete_custom_key_store"
-    alias:
-      id: aws.kms.alias
-      name: alias
-      title: alias
+    aliases:
+      id: aws.kms.aliases
+      name: aliases
+      title: aliases
       methods:
         create_alias:
           operation:
@@ -4061,6 +4033,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_aliases:
+          operation:
+            $ref: "#/paths/~1ListAliases/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Aliases
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_alias:
           operation:
             $ref: "#/paths/~1UpdateAlias/post"
@@ -4074,13 +4067,14 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
         insert:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/create_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/create_alias"
         update:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/update_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/update_alias"
         delete:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
+          - $ref: "#/components/x-stackQL-resources/aliases/methods/delete_alias"
     grants:
       id: aws.kms.grants
       name: grants
@@ -4120,6 +4114,18 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        retire_grant:
+          operation:
+            $ref: "#/paths/~1RetireGrant/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         revoke_grant:
           operation:
             $ref: "#/paths/~1RevokeGrant/post"
@@ -4139,6 +4145,52 @@ components:
           - $ref: "#/components/x-stackQL-resources/grants/methods/create_grant"
         update:
           - $ref: "#/components/x-stackQL-resources/grants/methods/revoke_grant"
+        delete: []
+    decrypts:
+      id: aws.kms.decrypts
+      name: decrypts
+      title: decrypts
+      methods:
+        decrypt:
+          operation:
+            $ref: "#/paths/~1Decrypt/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    randoms:
+      id: aws.kms.randoms
+      name: randoms
+      title: randoms
+      methods:
+        generate_random:
+          operation:
+            $ref: "#/paths/~1GenerateRandom/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     key_last_usages:
       id: aws.kms.key_last_usages
@@ -4229,10 +4281,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/key_policies/methods/put_key_policy"
         delete: []
-    key_rotation_status:
-      id: aws.kms.key_rotation_status
-      name: key_rotation_status
-      title: key_rotation_status
+    key_rotation_statuses:
+      id: aws.kms.key_rotation_statuses
+      name: key_rotation_statuses
+      title: key_rotation_statuses
       methods:
         get_key_rotation_status:
           operation:
@@ -4249,14 +4301,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/key_rotation_status/methods/get_key_rotation_status"
+          - $ref: "#/components/x-stackQL-resources/key_rotation_statuses/methods/get_key_rotation_status"
         insert: []
         update: []
         delete: []
-    parameters_for_imports:
-      id: aws.kms.parameters_for_imports
-      name: parameters_for_imports
-      title: parameters_for_imports
+    parameters:
+      id: aws.kms.parameters
+      name: parameters
+      title: parameters
       methods:
         get_parameters_for_import:
           operation:
@@ -4273,7 +4325,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/parameters_for_imports/methods/get_parameters_for_import"
+          - $ref: "#/components/x-stackQL-resources/parameters/methods/get_parameters_for_import"
         insert: []
         update: []
         delete: []
@@ -4298,38 +4350,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/public_keys/methods/get_public_key"
-        insert: []
-        update: []
-        delete: []
-    aliases:
-      id: aws.kms.aliases
-      name: aliases
-      title: aliases
-      methods:
-        list_aliases:
-          operation:
-            $ref: "#/paths/~1ListAliases/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Aliases
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: Marker
-                location: body
-              responseToken:
-                key: $.NextMarker
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/aliases/methods/list_aliases"
         insert: []
         update: []
         delete: []
@@ -4426,6 +4446,29 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/retirable_grants/methods/list_retirable_grants"
+        insert: []
+        update: []
+        delete: []
+    encrypts:
+      id: aws.kms.encrypts
+      name: encrypts
+      title: encrypts
+      methods:
+        re_encrypt:
+          operation:
+            $ref: "#/paths/~1ReEncrypt/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

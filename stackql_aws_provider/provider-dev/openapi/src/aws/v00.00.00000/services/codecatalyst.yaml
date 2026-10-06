@@ -331,10 +331,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccessTokenResponse"
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}:
     delete:
       operationId: DeleteDevEnvironment
@@ -1475,8 +1471,6 @@ components:
       type: string
       minLength: 1
       maxLength: 255
-    DeleteAccessTokenResponse:
-      type: object
     DeleteDevEnvironmentResponse:
       type: object
       properties:
@@ -2909,7 +2903,6 @@ components:
             $ref: "#/paths/~1v1~1accessTokens~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_tokens/methods/list_access_tokens"
@@ -3437,6 +3430,22 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/event_logs/methods/list_event_logs"
+        insert: []
+        update: []
+        delete: []
+    sessions:
+      id: aws.codecatalyst.sessions
+      name: sessions
+      title: sessions
+      methods:
+        verify_session:
+          operation:
+            $ref: "#/paths/~1session/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

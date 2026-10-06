@@ -18,7 +18,7 @@ servicecatalog_appregistry service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __7__  
 
 :::
 
@@ -31,7 +31,6 @@ total resources: __8__
 <a href="/services/servicecatalog_appregistry/attribute_groups/">attribute_groups</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/servicecatalog_appregistry/attribute_groups_for_applications/">attribute_groups_for_applications</a><br />
 <a href="/services/servicecatalog_appregistry/configurations/">configurations</a><br />
 <a href="/services/servicecatalog_appregistry/resources/">resources</a><br />
 <a href="/services/servicecatalog_appregistry/tags/">tags</a>

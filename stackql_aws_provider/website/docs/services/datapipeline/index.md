@@ -18,7 +18,7 @@ datapipeline service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __8__  
 
 :::
 
@@ -27,10 +27,13 @@ total resources: __5__
 <div class="providerDocColumn">
 <a href="/services/datapipeline/objects/">objects</a><br />
 <a href="/services/datapipeline/pipeline_definitions/">pipeline_definitions</a><br />
-<a href="/services/datapipeline/pipelines/">pipelines</a>
+<a href="/services/datapipeline/pipelines/">pipelines</a><br />
+<a href="/services/datapipeline/tags/">tags</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/datapipeline/tags/">tags</a><br />
-<a href="/services/datapipeline/task_status/">task_status</a>
+<a href="/services/datapipeline/task_progresses/">task_progresses</a><br />
+<a href="/services/datapipeline/task_runner_heartbeats/">task_runner_heartbeats</a><br />
+<a href="/services/datapipeline/task_statuses/">task_statuses</a><br />
+<a href="/services/datapipeline/tasks/">tasks</a>
 </div>
 </div>

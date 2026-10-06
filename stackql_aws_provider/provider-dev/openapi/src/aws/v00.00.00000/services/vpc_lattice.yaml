@@ -817,10 +817,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAccessLogSubscriptionResponse"
     get:
       operationId: GetAccessLogSubscription
       description: Retrieves information about the specified access log subscription.
@@ -880,10 +876,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAuthPolicyResponse"
     get:
       operationId: GetAuthPolicy
       description: Retrieves information about the auth policy for the specified service or service network.
@@ -943,10 +935,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDomainVerificationResponse"
     get:
       operationId: GetDomainVerification
       description: Retrieves information about a domain verification.ß
@@ -984,10 +972,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteListenerResponse"
     get:
       operationId: GetListener
       description: Retrieves information about the specified listener for the specified service.
@@ -1059,10 +1043,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourceConfigurationResponse"
     get:
       operationId: GetResourceConfiguration
       description: Retrieves information about the specified resource configuration.
@@ -1203,10 +1183,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyResponse"
     get:
       operationId: GetResourcePolicy
       description: Retrieves information about the specified resource policy. The resource policy is an IAM policy created on behalf of the resource owner when they share a resource.
@@ -1248,10 +1224,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutResourcePolicyResponse"
   /services/{service_identifier}/listeners/{listener_identifier}/rules/{rule_identifier}:
     delete:
       operationId: DeleteRule
@@ -1278,10 +1250,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteRuleResponse"
     get:
       operationId: GetRule
       description: Retrieves information about the specified listener rules. You can also retrieve information about the default listener rule. For more information, see Listener rules in the Amazon VPC Lattice User Guide.
@@ -1432,10 +1400,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteServiceNetworkResponse"
     get:
       operationId: GetServiceNetwork
       description: Retrieves information about the specified service network.
@@ -1878,10 +1842,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes the specified tags from the specified resource.
@@ -1901,10 +1861,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /targetgroups/{target_group_identifier}/listtargets:
     post:
       operationId: ListTargets
@@ -2441,6 +2397,7 @@ components:
         - CHILD
         - SINGLE
         - ARN
+        - CIDR
     PortRangeList:
       type: array
       items:
@@ -2454,6 +2411,7 @@ components:
       type: string
       enum:
         - TCP
+        - TCP_UDP
     ResourceGatewayIdentifier:
       type: string
       minLength: 17
@@ -2477,6 +2435,9 @@ components:
         arnResource:
           $ref: "#/components/schemas/ArnResource"
           description: The Amazon Resource Name (ARN) of the resource.
+        cidrResource:
+          $ref: "#/components/schemas/CidrResource"
+          description: The network segment for a resource configuration of type CIDR, specified as one or more CIDR ranges (cidrRanges). Resources whose IP addresses fall within these ranges are reachable through a Tunnel VPC endpoint.
     DnsResource:
       description: The DNS name of the resource.
       type: object
@@ -2520,6 +2481,21 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: arn:[a-z0-9][-.a-z0-9]{0,62}:[a-z0-9][-.a-z0-9]{0,62}:([a-z0-9][-.a-z0-9]{0,62})?:\d{12}?:[^/].{0,1023}
+    CidrResource:
+      description: Describes a CIDR resource, which represents a network segment as one or more CIDR ranges.
+      type: object
+      properties:
+        cidrRanges:
+          $ref: "#/components/schemas/CidrRangeList"
+          description: The CIDR ranges of the network segment, for example, 10.0.0.0/16.
+    CidrRangeList:
+      type: array
+      items:
+        $ref: "#/components/schemas/CidrRange"
+    CidrRange:
+      type: string
+      minLength: 1
+      maxLength: 50
     DomainVerificationIdentifier:
       type: string
       minLength: 20
@@ -2545,7 +2521,7 @@ components:
           description: The ID of the parent resource configuration of type GROUP.
         type_:
           $ref: "#/components/schemas/ResourceConfigurationType"
-          description: "The type of resource configuration. A resource configuration can be one of the following types: SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource."
+          description: "The type of resource configuration. A resource configuration can be one of the following types: SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment, expressed as a range of IP addresses (a CIDR block). A consumer accesses the resources within the CIDR range through a Tunnel VPC endpoint. A CIDR resource configuration must be associated with a resource gateway whose DNS resolution is set to IN_VPC."
         portRanges:
           $ref: "#/components/schemas/PortRangeList"
           description: The port range.
@@ -3186,16 +3162,6 @@ components:
       minLength: 17
       maxLength: 2048
       pattern: ((als-[0-9a-z]{17})|(arn:[a-z0-9\-]+:vpc-lattice:[a-zA-Z0-9\-]+:\d{12}:accesslogsubscription/als-[0-9a-z]{17}))
-    DeleteAccessLogSubscriptionResponse:
-      type: object
-    DeleteAuthPolicyResponse:
-      type: object
-    DeleteDomainVerificationResponse:
-      type: object
-    DeleteListenerResponse:
-      type: object
-    DeleteResourceConfigurationResponse:
-      type: object
     ResourceEndpointAssociationIdentifier:
       type: string
       minLength: 21
@@ -3249,10 +3215,6 @@ components:
         status:
           $ref: "#/components/schemas/ResourceGatewayStatus"
           description: The status of the resource gateway.
-    DeleteResourcePolicyResponse:
-      type: object
-    DeleteRuleResponse:
-      type: object
     DeleteServiceResponse:
       type: object
       properties:
@@ -3268,8 +3230,6 @@ components:
         status:
           $ref: "#/components/schemas/ServiceStatus"
           description: The status. You can retry the operation if the status is DELETE_FAILED. However, if you retry it while the status is DELETE_IN_PROGRESS, the status doesn't change.
-    DeleteServiceNetworkResponse:
-      type: object
     ServiceNetworkResourceAssociationIdentifier:
       type: string
       minLength: 22
@@ -3540,13 +3500,13 @@ components:
           description: The Amazon Resource Name (ARN) of the resource configuration.
         resourceGatewayId:
           $ref: "#/components/schemas/ResourceGatewayId"
-          description: The ID of the resource gateway used to connect to the resource configuration in a given VPC. You can specify the resource gateway identifier only for resource configurations with type SINGLE, GROUP, or ARN.
+          description: The ID of the resource gateway used to connect to the resource configuration in a given VPC. You can specify the resource gateway identifier only for resource configurations with type SINGLE, GROUP, ARN, or CIDR.
         resourceConfigurationGroupId:
           $ref: "#/components/schemas/ResourceConfigurationId"
           description: The ID of the group resource configuration.
         type_:
           $ref: "#/components/schemas/ResourceConfigurationType"
-          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource.
+          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment (a range of IP addresses) accessed through a Tunnel VPC endpoint.
         allowAssociationToShareableServiceNetwork:
           $ref: "#/components/schemas/Boolean"
           description: Specifies whether the resource configuration is associated with a sharable service network.
@@ -3797,7 +3757,7 @@ components:
           description: The most recent date and time that the association was updated, in ISO-8601 format.
         privateDnsEntry:
           $ref: "#/components/schemas/DnsEntry"
-          description: The private DNS entry for the service.
+          description: The private DNS entry for the service. This entry includes only the domain name.
         privateDnsEnabled:
           $ref: "#/components/schemas/Boolean"
           description: Indicates if private DNS is enabled in the service network resource association.
@@ -4133,7 +4093,7 @@ components:
           description: The ID of the group resource configuration.
         type_:
           $ref: "#/components/schemas/ResourceConfigurationType"
-          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource.
+          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. You must create a group resource configuration before you create a child resource configuration. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment (a range of IP addresses) accessed through a Tunnel VPC endpoint.
         status:
           $ref: "#/components/schemas/ResourceConfigurationStatus"
           description: The status of the resource configuration.
@@ -4206,6 +4166,32 @@ components:
         createdAt:
           $ref: "#/components/schemas/Timestamp"
           description: The date and time that the VPC endpoint association was created, in ISO-8601 format.
+        payerResponsibility:
+          $ref: "#/components/schemas/PayerResponsibilityList"
+          description: Who pays for each category of charges on the VPC endpoint association.
+    PayerResponsibilityList:
+      type: array
+      items:
+        $ref: "#/components/schemas/PayerResponsibilityEntry"
+    PayerResponsibilityEntry:
+      description: Specifies which account pays for a category of charges on a VPC endpoint association.
+      type: object
+      properties:
+        scope:
+          $ref: "#/components/schemas/PayerResponsibilityScope"
+          description: The category of charges that this entry applies to. ResourceGatewayCharges covers the resource gateway's data processing charge.
+        payerResponsibilityType:
+          $ref: "#/components/schemas/PayerResponsibilityPayer"
+          description: The account that pays this category of charges. VpcEndpointAccount owns the VPC endpoint. ResourceGatewayAccount owns the resource gateway.
+    PayerResponsibilityScope:
+      type: string
+      enum:
+        - ResourceGatewayCharges
+    PayerResponsibilityPayer:
+      type: string
+      enum:
+        - VpcEndpointAccount
+        - ResourceGatewayAccount
     ListResourceGatewaysResponse:
       type: object
       properties:
@@ -4356,7 +4342,7 @@ components:
           description: The DNS entry for the service.
         privateDnsEntry:
           $ref: "#/components/schemas/DnsEntry"
-          description: The private DNS entry for the service.
+          description: The private DNS entry for the service. This entry includes only the domain name.
         isManagedAssociation:
           $ref: "#/components/schemas/Boolean"
           description: Specifies whether the association is managed by Amazon.
@@ -4728,8 +4714,6 @@ components:
         state:
           $ref: "#/components/schemas/AuthPolicyState"
           description: The state of the auth policy. The auth policy is only active when the auth type is set to AWS_IAM. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is NONE, then, any auth policy that you provide remains inactive. For more information, see Create a service network in the Amazon VPC Lattice User Guide.
-    PutResourcePolicyResponse:
-      type: object
     RegisterTargetsRequestTargetsList:
       type: array
       items:
@@ -4766,8 +4750,6 @@ components:
         - arn
         - domainName
         - status
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
@@ -4776,8 +4758,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateAccessLogSubscriptionResponse:
       type: object
       properties:
@@ -4849,7 +4829,7 @@ components:
           description: The ID of the group resource configuration.
         type_:
           $ref: "#/components/schemas/ResourceConfigurationType"
-          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource.
+          description: The type of resource configuration. SINGLE - A single resource. GROUP - A group of resources. CHILD - A single resource that is part of a group resource configuration. ARN - An Amazon Web Services resource. CIDR - A network segment (a range of IP addresses) accessed through a Tunnel VPC endpoint.
         portRanges:
           $ref: "#/components/schemas/PortRangeList"
           description: "The TCP port ranges that a consumer can use to access a resource configuration. You can separate port ranges with a comma. Example: 1-65535 or 1,2,22-30"
@@ -5058,7 +5038,6 @@ components:
             $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_listener:
           operation:
             $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/get"
@@ -5124,7 +5103,6 @@ components:
             $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}~1rules~1{rule_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_rule:
           operation:
             $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}~1rules~1{rule_identifier}/get"
@@ -5190,7 +5168,6 @@ components:
             $ref: "#/paths/~1accesslogsubscriptions~1{access_log_subscription_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_access_log_subscription:
           operation:
             $ref: "#/paths/~1accesslogsubscriptions~1{access_log_subscription_identifier}/get"
@@ -5256,7 +5233,6 @@ components:
             $ref: "#/paths/~1resourceconfigurations~1{resource_configuration_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_resource_configuration:
           operation:
             $ref: "#/paths/~1resourceconfigurations~1{resource_configuration_identifier}/get"
@@ -5454,7 +5430,6 @@ components:
             $ref: "#/paths/~1servicenetworks~1{service_network_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_service_network:
           operation:
             $ref: "#/paths/~1servicenetworks~1{service_network_identifier}/get"
@@ -5732,7 +5707,6 @@ components:
             $ref: "#/paths/~1authpolicy~1{resource_identifier}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_auth_policy:
           operation:
             $ref: "#/paths/~1authpolicy~1{resource_identifier}/get"
@@ -5769,7 +5743,6 @@ components:
             $ref: "#/paths/~1domainverifications~1{domain_verification_identifier}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_domain_verification:
           operation:
             $ref: "#/paths/~1domainverifications~1{domain_verification_identifier}/get"
@@ -5793,6 +5766,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_domain_verification:
+          operation:
+            $ref: "#/paths/~1domainverifications/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_verifications/methods/get_domain_verification"
@@ -5846,7 +5830,6 @@ components:
             $ref: "#/paths/~1resourcepolicy~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
         get_resource_policy:
           operation:
             $ref: "#/paths/~1resourcepolicy~1{resource_arn}/get"
@@ -5858,7 +5841,6 @@ components:
             $ref: "#/paths/~1resourcepolicy~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5971,7 +5953,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5982,7 +5963,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

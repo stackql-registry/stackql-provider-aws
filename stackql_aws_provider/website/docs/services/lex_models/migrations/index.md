@@ -158,6 +158,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-sortByAttribute"><code>sortByAttribute</code></a>, <a href="#parameter-sortByOrder"><code>sortByOrder</code></a>, <a href="#parameter-v1BotNameContains"><code>v1BotNameContains</code></a>, <a href="#parameter-migrationStatusEquals"><code>migrationStatusEquals</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.</td>
 </tr>
+<tr>
+    <td><a href="#start_migration"><CopyableCode code="start_migration" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-v1BotName"><code>v1BotName</code></a>, <a href="#parameter-v1BotVersion"><code>v1BotVersion</code></a>, <a href="#parameter-v2BotName"><code>v2BotName</code></a>, <a href="#parameter-v2BotRole"><code>v2BotRole</code></a>, <a href="#parameter-migrationStrategy"><code>migrationStrategy</code></a></td>
+    <td></td>
+    <td>Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take advantage of the new features of Amazon Lex V2. For more information, see Migrating a bot in the Amazon Lex developer guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -264,6 +271,35 @@ AND v1BotNameContains = '{{ v1BotNameContains }}'
 AND migrationStatusEquals = '{{ migrationStatusEquals }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_migration"
+    values={[
+        { label: 'start_migration', value: 'start_migration' }
+    ]}
+>
+<TabItem value="start_migration">
+
+Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take advantage of the new features of Amazon Lex V2. For more information, see Migrating a bot in the Amazon Lex developer guide.
+
+```sql
+EXEC aws.lex_models.migrations.start_migration 
+@region='{{ region }}' --required 
+@@json=
+'{
+"v1BotName": "{{ v1BotName }}", 
+"v1BotVersion": "{{ v1BotVersion }}", 
+"v2BotName": "{{ v2BotName }}", 
+"v2BotRole": "{{ v2BotRole }}", 
+"migrationStrategy": "{{ migrationStrategy }}"
+}'
 ;
 ```
 </TabItem>

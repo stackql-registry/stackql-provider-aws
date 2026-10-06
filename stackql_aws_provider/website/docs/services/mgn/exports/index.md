@@ -131,6 +131,13 @@ The following methods are available for this resource:
     <td></td>
     <td>List exports.</td>
 </tr>
+<tr>
+    <td><a href="#start_export"><CopyableCode code="start_export" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-s3Bucket"><code>s3Bucket</code></a>, <a href="#parameter-s3Key"><code>s3Key</code></a></td>
+    <td></td>
+    <td>Start export.</td>
+</tr>
 </tbody>
 </table>
 
@@ -182,6 +189,34 @@ summary,
 tags
 FROM aws.mgn.exports
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_export"
+    values={[
+        { label: 'start_export', value: 'start_export' }
+    ]}
+>
+<TabItem value="start_export">
+
+Start export.
+
+```sql
+EXEC aws.mgn.exports.start_export 
+@region='{{ region }}' --required 
+@@json=
+'{
+"s3Bucket": "{{ s3Bucket }}", 
+"s3Key": "{{ s3Key }}", 
+"s3BucketOwner": "{{ s3BucketOwner }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

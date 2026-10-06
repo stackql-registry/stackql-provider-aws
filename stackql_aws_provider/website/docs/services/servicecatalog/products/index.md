@@ -125,6 +125,13 @@ The following methods are available for this resource:
     <td>Deletes the specified product. You cannot delete a product if it was shared with you or is associated with a portfolio. A delegated admin is authorized to invoke this command.</td>
 </tr>
 <tr>
+    <td><a href="#copy_product"><CopyableCode code="copy_product" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceProductArn"><code>SourceProductArn</code></a>, <a href="#parameter-IdempotencyToken"><code>IdempotencyToken</code></a></td>
+    <td></td>
+    <td>Copies the specified source product to the specified target product or a new product. You can copy a product to the same account or another account. You can copy a product to the same Region or another Region. If you copy a product to another account, you must first share the product in a portfolio using CreatePortfolioShare. This operation is performed asynchronously. To track the progress of the operation, use DescribeCopyProductStatus.</td>
+</tr>
+<tr>
     <td><a href="#search_products"><CopyableCode code="search_products" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -405,11 +412,32 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="search_products"
+    defaultValue="copy_product"
     values={[
+        { label: 'copy_product', value: 'copy_product' },
         { label: 'search_products', value: 'search_products' }
     ]}
 >
+<TabItem value="copy_product">
+
+Copies the specified source product to the specified target product or a new product. You can copy a product to the same account or another account. You can copy a product to the same Region or another Region. If you copy a product to another account, you must first share the product in a portfolio using CreatePortfolioShare. This operation is performed asynchronously. To track the progress of the operation, use DescribeCopyProductStatus.
+
+```sql
+EXEC aws.servicecatalog.products.copy_product 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AcceptLanguage": "{{ AcceptLanguage }}", 
+"SourceProductArn": "{{ SourceProductArn }}", 
+"TargetProductId": "{{ TargetProductId }}", 
+"TargetProductName": "{{ TargetProductName }}", 
+"SourceProvisioningArtifactIdentifiers": "{{ SourceProvisioningArtifactIdentifiers }}", 
+"CopyOptions": "{{ CopyOptions }}", 
+"IdempotencyToken": "{{ IdempotencyToken }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="search_products">
 
 Gets information about the products to which the caller has access.

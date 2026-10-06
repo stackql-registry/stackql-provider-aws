@@ -105,6 +105,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the resource-based permission policy attached to the secret. To attach a policy to a secret, use PutResourcePolicy. Secrets Manager generates a CloudTrail log entry when you call this action. Do not include sensitive information in request parameters because it might be logged. For more information, see Logging Secrets Manager events with CloudTrail. Required permissions: secretsmanager:DeleteResourcePolicy. For more information, see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager.</td>
 </tr>
+<tr>
+    <td><a href="#validate_resource_policy"><CopyableCode code="validate_resource_policy" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourcePolicy"><code>ResourcePolicy</code></a></td>
+    <td></td>
+    <td>Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets. The API performs three checks when validating the policy: Sends a call to Zelkova, an automated reasoning engine, to ensure your resource policy does not allow broad access to your secret, for example policies that use a wildcard for the principal. Checks for correct syntax in a policy. Verifies the policy does not lock out a caller. Secrets Manager generates a CloudTrail log entry when you call this action. Do not include sensitive information in request parameters because it might be logged. For more information, see Logging Secrets Manager events with CloudTrail. Required permissions: secretsmanager:ValidateResourcePolicy and secretsmanager:PutResourcePolicy. For more information, see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager.</td>
+</tr>
 </tbody>
 </table>
 
@@ -199,6 +206,32 @@ Deletes the resource-based permission policy attached to the secret. To attach a
 ```sql
 DELETE FROM aws.secretsmanager.resource_policies
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="validate_resource_policy"
+    values={[
+        { label: 'validate_resource_policy', value: 'validate_resource_policy' }
+    ]}
+>
+<TabItem value="validate_resource_policy">
+
+Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets. The API performs three checks when validating the policy: Sends a call to Zelkova, an automated reasoning engine, to ensure your resource policy does not allow broad access to your secret, for example policies that use a wildcard for the principal. Checks for correct syntax in a policy. Verifies the policy does not lock out a caller. Secrets Manager generates a CloudTrail log entry when you call this action. Do not include sensitive information in request parameters because it might be logged. For more information, see Logging Secrets Manager events with CloudTrail. Required permissions: secretsmanager:ValidateResourcePolicy and secretsmanager:PutResourcePolicy. For more information, see IAM policy actions for Secrets Manager and Authentication and access control in Secrets Manager.
+
+```sql
+EXEC aws.secretsmanager.resource_policies.validate_resource_policy 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SecretId": "{{ SecretId }}", 
+"ResourcePolicy": "{{ ResourcePolicy }}"
+}'
 ;
 ```
 </TabItem>

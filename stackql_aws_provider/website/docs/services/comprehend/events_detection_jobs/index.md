@@ -168,6 +168,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of the events detection jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_events_detection_job"><CopyableCode code="start_events_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a>, <a href="#parameter-TargetEventTypes"><code>TargetEventTypes</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous event detection job for a collection of documents.</td>
+</tr>
+<tr>
+    <td><a href="#stop_events_detection_job"><CopyableCode code="stop_events_detection_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops an events detection job in progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -234,6 +248,53 @@ events_detection_job_properties_list,
 next_token
 FROM aws.comprehend.events_detection_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_events_detection_job"
+    values={[
+        { label: 'start_events_detection_job', value: 'start_events_detection_job' },
+        { label: 'stop_events_detection_job', value: 'stop_events_detection_job' }
+    ]}
+>
+<TabItem value="start_events_detection_job">
+
+Starts an asynchronous event detection job for a collection of documents.
+
+```sql
+EXEC aws.comprehend.events_detection_jobs.start_events_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"LanguageCode": "{{ LanguageCode }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"TargetEventTypes": "{{ TargetEventTypes }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_events_detection_job">
+
+Stops an events detection job in progress.
+
+```sql
+EXEC aws.comprehend.events_detection_jobs.stop_events_detection_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

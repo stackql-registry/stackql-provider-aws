@@ -134,7 +134,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-workflowBuildVersionArn"><code>workflowBuildVersionArn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get a workflow resource object.</td>
+    <td>Retrieves a workflow resource object.</td>
 </tr>
 <tr>
     <td><a href="#list_workflows"><CopyableCode code="list_workflows" /></a></td>
@@ -148,7 +148,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-semanticVersion"><code>semanticVersion</code></a>, <a href="#parameter-clientToken"><code>clientToken</code></a>, <a href="#parameter-type"><code>type</code></a></td>
     <td></td>
-    <td>Create a new workflow or a new version of an existing workflow.</td>
+    <td>Creates a new workflow or a new version of an existing workflow.</td>
 </tr>
 <tr>
     <td><a href="#delete_workflow"><CopyableCode code="delete_workflow" /></a></td>
@@ -204,7 +204,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_workflow">
 
-Get a workflow resource object.
+Retrieves a workflow resource object.
 
 ```sql
 SELECT
@@ -248,7 +248,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_workflow">
 
-Create a new workflow or a new version of an existing workflow.
+Creates a new workflow or a new version of an existing workflow.
 
 ```sql
 INSERT INTO aws.imagebuilder.workflows (

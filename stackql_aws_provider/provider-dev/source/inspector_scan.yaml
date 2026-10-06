@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScanSbomResponse'
-      x-stackql-resource: scan_sbom
+      x-stackql-resource: sboms
       x-stackql-method: scan_sbom
       x-stackql-verb: EXEC
 components:

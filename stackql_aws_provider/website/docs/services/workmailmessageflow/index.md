@@ -25,7 +25,7 @@ total resources: __1__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/workmailmessageflow/raw_message_contents/">raw_message_contents</a>
+<a href="/services/workmailmessageflow/raw_message_content/">raw_message_content</a>
 </div>
 <div class="providerDocColumn">
 

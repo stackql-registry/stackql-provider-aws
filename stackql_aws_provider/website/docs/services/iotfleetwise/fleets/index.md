@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_fleet"
     values={[
         { label: 'get_fleet', value: 'get_fleet' },
+        { label: 'list_fleets_for_vehicle', value: 'list_fleets_for_vehicle' },
         { label: 'list_fleets', value: 'list_fleets' }
     ]}
 >
@@ -79,6 +80,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="signal_catalog_arn" /></td>
     <td><code>string</code></td>
     <td>The ARN of a signal catalog associated with the fleet.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_fleets_for_vehicle">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="fleet" /></td>
+    <td><code>string</code></td>
+    <td>A list of fleet IDs that the vehicle is associated with.</td>
 </tr>
 </tbody>
 </table>
@@ -152,6 +172,13 @@ The following methods are available for this resource:
     <td>Retrieves information about a fleet.</td>
 </tr>
 <tr>
+    <td><a href="#list_fleets_for_vehicle"><CopyableCode code="list_fleets_for_vehicle" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves a list of IDs for all fleets that the vehicle is associated with. This API operation uses pagination. Specify the nextToken parameter in the request to return more results.</td>
+</tr>
+<tr>
     <td><a href="#list_fleets"><CopyableCode code="list_fleets" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -223,6 +250,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_fleet"
     values={[
         { label: 'get_fleet', value: 'get_fleet' },
+        { label: 'list_fleets_for_vehicle', value: 'list_fleets_for_vehicle' },
         { label: 'list_fleets', value: 'list_fleets' }
     ]}
 >
@@ -238,6 +266,18 @@ creation_time,
 description,
 last_modification_time,
 signal_catalog_arn
+FROM aws.iotfleetwise.fleets
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_fleets_for_vehicle">
+
+Retrieves a list of IDs for all fleets that the vehicle is associated with. This API operation uses pagination. Specify the nextToken parameter in the request to return more results.
+
+```sql
+SELECT
+fleet
 FROM aws.iotfleetwise.fleets
 WHERE region = '{{ region }}' -- required
 ;

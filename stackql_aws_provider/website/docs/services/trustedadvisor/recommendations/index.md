@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_recommendation"
     values={[
         { label: 'get_recommendation', value: 'get_recommendation' },
+        { label: 'list_recommendations_for_resource', value: 'list_recommendations_for_resource' },
         { label: 'list_recommendations', value: 'list_recommendations' }
     ]}
 >
@@ -163,6 +164,60 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_recommendations_for_resource">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="aws_resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The AWS Resource ARN (pattern: &lt;code&gt;arn:aws(-\w+)*:&#91;\w\d-&#93;+:(&#91;\w\d-&#93;*)?:&#91;\w\d_-&#93;*(&#91;:/&#93;.+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="check_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Check ARN (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor:::check\/&#91;\w-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="exclusion_status" /></td>
+    <td><code>string</code></td>
+    <td>The exclusion status of the recommendation (excluded, included)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_updated_at" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>When the recommendation was last updated</td>
+</tr>
+<tr>
+    <td><CopyableCode code="metadata" /></td>
+    <td><code>object</code></td>
+    <td>Metadata associated with the recommendation</td>
+</tr>
+<tr>
+    <td><CopyableCode code="pillars" /></td>
+    <td><code>array</code></td>
+    <td>The Pillars that the Recommendation is optimizing</td>
+</tr>
+<tr>
+    <td><CopyableCode code="recommendation_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Recommendation ARN (pattern: &lt;code&gt;arn:&#91;\w-&#93;+:trustedadvisor::\d&#123;12&#125;:recommendation\/&#91;\w-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the recommendation (ok, warning, error)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_recommendations">
 
 <table>
@@ -277,6 +332,13 @@ The following methods are available for this resource:
     <td>Get a specific Recommendation. This API provides global recommendations, eliminating the need to call the API in each AWS Region.</td>
 </tr>
 <tr>
+    <td><a href="#list_recommendations_for_resource"><CopyableCode code="list_recommendations_for_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-aws_resource_arn"><code>aws_resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-pillar"><code>pillar</code></a>, <a href="#parameter-status"><code>status</code></a>, <a href="#parameter-checkArn"><code>checkArn</code></a>, <a href="#parameter-language"><code>language</code></a></td>
+    <td>List all Trusted Advisor recommendations for a given AWS resource ARN.</td>
+</tr>
+<tr>
     <td><a href="#list_recommendations"><CopyableCode code="list_recommendations" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -306,6 +368,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-aws_resource_arn">
+    <td><CopyableCode code="aws_resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the AWS resource to query recommendations for</td>
+</tr>
 <tr id="parameter-recommendation_identifier">
     <td><CopyableCode code="recommendation_identifier" /></td>
     <td><code>string</code></td>
@@ -330,6 +397,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="beforeLastUpdatedAt" /></td>
     <td><code>string (date-time)</code></td>
     <td>Before the last update of the Recommendation</td>
+</tr>
+<tr id="parameter-checkArn">
+    <td><CopyableCode code="checkArn" /></td>
+    <td><code>string</code></td>
+    <td>The AWS Trusted Advisor Check ARN that relates to the Recommendation</td>
 </tr>
 <tr id="parameter-checkIdentifier">
     <td><CopyableCode code="checkIdentifier" /></td>
@@ -380,6 +452,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_recommendation"
     values={[
         { label: 'get_recommendation', value: 'get_recommendation' },
+        { label: 'list_recommendations_for_resource', value: 'list_recommendations_for_resource' },
         { label: 'list_recommendations', value: 'list_recommendations' }
     ]}
 >
@@ -414,6 +487,32 @@ updated_on_behalf_of_job_title
 FROM aws.trustedadvisor.recommendations
 WHERE recommendation_identifier = '{{ recommendation_identifier }}' -- required
 AND region = '{{ region }}' -- required
+AND language = '{{ language }}'
+;
+```
+</TabItem>
+<TabItem value="list_recommendations_for_resource">
+
+List all Trusted Advisor recommendations for a given AWS resource ARN.
+
+```sql
+SELECT
+aws_resource_arn,
+check_arn,
+exclusion_status,
+last_updated_at,
+metadata,
+pillars,
+recommendation_arn,
+status
+FROM aws.trustedadvisor.recommendations
+WHERE aws_resource_arn = '{{ aws_resource_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
+AND maxResults = '{{ maxResults }}'
+AND pillar = '{{ pillar }}'
+AND status = '{{ status }}'
+AND checkArn = '{{ checkArn }}'
 AND language = '{{ language }}'
 ;
 ```

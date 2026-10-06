@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="change_severity" /></td>
     <td><code>string</code></td>
-    <td>An indication of which action is required if the value for this configuration option changes: NoInterruption : There is no interruption to the environment or application availability. RestartEnvironment : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process. RestartApplicationServer : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</td>
+    <td>An indication of which action is required if the value for this configuration option changes: NoInterruption : There is no interruption to the environment or application availability. RestartEnvironment : The environment is entirely restarted, all A resources are deleted and recreated, and the environment is unavailable during the process. RestartApplicationServer : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</td>
 </tr>
 <tr>
     <td><CopyableCode code="default_value" /></td>
@@ -82,7 +82,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="namespace" /></td>
     <td><code>string</code></td>
-    <td>A unique namespace identifying the option's associated AWS resource.</td>
+    <td>A unique namespace identifying the option's associated Amazon Web Services resource.</td>
 </tr>
 <tr>
     <td><CopyableCode code="regex" /></td>
@@ -129,7 +129,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ApplicationName"><code>ApplicationName</code></a>, <a href="#parameter-TemplateName"><code>TemplateName</code></a>, <a href="#parameter-EnvironmentName"><code>EnvironmentName</code></a>, <a href="#parameter-SolutionStackName"><code>SolutionStackName</code></a>, <a href="#parameter-PlatformArn"><code>PlatformArn</code></a>, <a href="#parameter-Options"><code>Options</code></a></td>
-    <td>Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.</td>
+    <td>Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.</td>
 </tr>
 </tbody>
 </table>
@@ -195,7 +195,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_configuration_options">
 
-Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
+Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed. This action only returns information about resources that the calling principle has IAM permissions to access. For example, consider a case where a user only has permission to access one of three resources. When the user calls the this action, the response will only include the one resource that the user has permission to access instead of all three resources. If the user doesn’t have access to any of the resources an empty result is returned. The AWSElasticBeanstalkReadOnly managed policy allows operators to view information about resources related to Elastic Beanstalk. For more information, see Managing Elastic Beanstalk user policies in the Elastic Beanstalk Developer Guide. For detailed instructions to attach a policy to a user or group, see the section Controlling access with managed policies in the same topic.
 
 ```sql
 SELECT

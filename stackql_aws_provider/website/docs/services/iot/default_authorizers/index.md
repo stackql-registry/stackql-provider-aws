@@ -133,6 +133,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer. Requires permission to access the SetDefaultAuthorizer action.</td>
 </tr>
+<tr>
+    <td><a href="#clear_default_authorizer"><CopyableCode code="clear_default_authorizer" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Clears the default authorizer. Requires permission to access the ClearDefaultAuthorizer action.</td>
+</tr>
 </tbody>
 </table>
 
@@ -211,6 +218,27 @@ AND authorizerName = '{{ authorizerName }}' --required
 RETURNING
 authorizer_arn,
 authorizer_name;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="clear_default_authorizer"
+    values={[
+        { label: 'clear_default_authorizer', value: 'clear_default_authorizer' }
+    ]}
+>
+<TabItem value="clear_default_authorizer">
+
+Clears the default authorizer. Requires permission to access the ClearDefaultAuthorizer action.
+
+```sql
+EXEC aws.iot.default_authorizers.clear_default_authorizer 
+@region='{{ region }}' --required
+;
 ```
 </TabItem>
 </Tabs>

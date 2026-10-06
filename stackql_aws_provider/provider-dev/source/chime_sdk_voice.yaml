@@ -137,7 +137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdatePhoneNumberResponse'
-      x-stackql-resource: batch_update_phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: batch_update_phone_number
       x-stackql-verb: EXEC
   /phone-number-orders:
@@ -2476,7 +2476,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeakerSearchTaskResponse'
-      x-stackql-resource: voice_connectors
+      x-stackql-resource: speaker_search_tasks
       x-stackql-method: start_speaker_search_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/voice-tone-analysis-tasks:
@@ -2516,7 +2516,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVoiceToneAnalysisTaskResponse'
-      x-stackql-resource: voice_connectors
+      x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: start_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/speaker-search-tasks/{speaker_search_task_id}?operation=stop:
@@ -2539,7 +2539,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: voice_connectors
+      x-stackql-resource: speaker_search_tasks
       x-stackql-method: stop_speaker_search_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/voice-tone-analysis-tasks/{voice_tone_analysis_task_id}?operation=stop:
@@ -2562,7 +2562,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: voice_connectors
+      x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: stop_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /tags?operation=tag-resource:
@@ -2697,7 +2697,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateE911AddressResponse'
-      x-stackql-resource: e911_address
+      x-stackql-resource: e911_addresses
       x-stackql-method: validate_e911_address
       x-stackql-verb: EXEC
 components:

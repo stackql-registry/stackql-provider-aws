@@ -136,11 +136,32 @@ The following methods are available for this resource:
     <td>For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled. Without this call, no Amazon S3 objects are automatically deleted when a transaction cancels. The Glue ETL library function write_dynamic_frame.from_catalog() includes an option to automatically call DeleteObjectsOnCancel before writes. For more information, see Rolling Back Amazon S3 Writes.</td>
 </tr>
 <tr>
+    <td><a href="#cancel_transaction"><CopyableCode code="cancel_transaction" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TransactionId"><code>TransactionId</code></a></td>
+    <td></td>
+    <td>Attempts to cancel the specified transaction. Returns an exception if the transaction was previously committed.</td>
+</tr>
+<tr>
     <td><a href="#commit_transaction"><CopyableCode code="commit_transaction" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TransactionId"><code>TransactionId</code></a></td>
     <td></td>
     <td>Attempts to commit the specified transaction. Returns an exception if the transaction was previously aborted. This API action is idempotent if called multiple times for the same transaction.</td>
+</tr>
+<tr>
+    <td><a href="#extend_transaction"><CopyableCode code="extend_transaction" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted. Write transactions that remain idle for a long period are automatically aborted unless explicitly extended.</td>
+</tr>
+<tr>
+    <td><a href="#start_transaction"><CopyableCode code="start_transaction" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a new transaction and returns its transaction ID. Transaction IDs are opaque objects that you can use to identify a transaction.</td>
 </tr>
 </tbody>
 </table>
@@ -230,11 +251,28 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="commit_transaction"
+    defaultValue="cancel_transaction"
     values={[
-        { label: 'commit_transaction', value: 'commit_transaction' }
+        { label: 'cancel_transaction', value: 'cancel_transaction' },
+        { label: 'commit_transaction', value: 'commit_transaction' },
+        { label: 'extend_transaction', value: 'extend_transaction' },
+        { label: 'start_transaction', value: 'start_transaction' }
     ]}
 >
+<TabItem value="cancel_transaction">
+
+Attempts to cancel the specified transaction. Returns an exception if the transaction was previously committed.
+
+```sql
+EXEC aws.lakeformation.transactions.cancel_transaction 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TransactionId": "{{ TransactionId }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="commit_transaction">
 
 Attempts to commit the specified transaction. Returns an exception if the transaction was previously aborted. This API action is idempotent if called multiple times for the same transaction.
@@ -245,6 +283,34 @@ EXEC aws.lakeformation.transactions.commit_transaction
 @@json=
 '{
 "TransactionId": "{{ TransactionId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="extend_transaction">
+
+Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted. Write transactions that remain idle for a long period are automatically aborted unless explicitly extended.
+
+```sql
+EXEC aws.lakeformation.transactions.extend_transaction 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TransactionId": "{{ TransactionId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_transaction">
+
+Starts a new transaction and returns its transaction ID. Transaction IDs are opaque objects that you can use to identify a transaction.
+
+```sql
+EXEC aws.lakeformation.transactions.start_transaction 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TransactionType": "{{ TransactionType }}"
 }'
 ;
 ```

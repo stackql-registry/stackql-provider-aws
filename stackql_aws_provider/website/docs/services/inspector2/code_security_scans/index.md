@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves information about a specific code security scan.</td>
 </tr>
+<tr>
+    <td><a href="#start_code_security_scan"><CopyableCode code="start_code_security_scan" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-resource"><code>resource</code></a></td>
+    <td></td>
+    <td>Initiates a code security scan on a specified repository.</td>
+</tr>
 </tbody>
 </table>
 
@@ -164,6 +171,32 @@ status_reason,
 updated_at
 FROM aws.inspector2.code_security_scans
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_code_security_scan"
+    values={[
+        { label: 'start_code_security_scan', value: 'start_code_security_scan' }
+    ]}
+>
+<TabItem value="start_code_security_scan">
+
+Initiates a code security scan on a specified repository.
+
+```sql
+EXEC aws.inspector2.code_security_scans.start_code_security_scan 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientToken": "{{ clientToken }}", 
+"resource": "{{ resource }}"
+}'
 ;
 ```
 </TabItem>

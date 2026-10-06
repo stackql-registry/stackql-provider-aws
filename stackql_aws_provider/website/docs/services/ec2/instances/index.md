@@ -382,6 +382,13 @@ The following methods are available for this resource:
     <td>Describes the specified instances or all instances. If you specify instance IDs, the output includes information for only the specified instances. If you specify filters, the output includes information for only those instances that meet the filter criteria. If you do not specify instance IDs or filters, the output includes information for all instances, which can affect performance. We recommend that you use pagination to ensure that the operation returns quickly and successfully. The response includes SQL license exemption status information for instances registered with the SQL LE service, providing visibility into license exemption configuration and status. If you specify an instance ID that is not valid, an error is returned. If you specify an instance that you do not own, it is not included in the output. Recently terminated instances might appear in the returned results. This interval is usually less than one hour. If you describe instances in the rare case where an Availability Zone is experiencing a service disruption and you specify instance IDs that are in the affected zone, or do not specify any instance IDs at all, the call fails. If you describe instances and specify only instance IDs that are in an unaffected zone, the call works normally. The Amazon EC2 API follows an eventual consistency model. This means that the result of an API command you run that creates or modifies resources might not be immediately available to all subsequent commands you run. For guidance on how to manage eventual consistency, see Eventual consistency in the Amazon EC2 API in the Amazon EC2 Developer Guide. We strongly recommend using only paginated requests. Unpaginated requests are susceptible to throttling and timeouts. The order of the elements in the response, including those within nested structures, might vary. Applications should not assume the elements appear in a particular order.</td>
 </tr>
 <tr>
+    <td><a href="#run_instances"><CopyableCode code="run_instances" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-MaxCount"><code>MaxCount</code></a>, <a href="#parameter-MinCount"><code>MinCount</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a>, <a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Ipv6AddressCount"><code>Ipv6AddressCount</code></a>, <a href="#parameter-Ipv6Address"><code>Ipv6Address</code></a>, <a href="#parameter-KernelId"><code>KernelId</code></a>, <a href="#parameter-KeyName"><code>KeyName</code></a>, <a href="#parameter-Monitoring"><code>Monitoring</code></a>, <a href="#parameter-Placement"><code>Placement</code></a>, <a href="#parameter-RamdiskId"><code>RamdiskId</code></a>, <a href="#parameter-SecurityGroupId"><code>SecurityGroupId</code></a>, <a href="#parameter-SecurityGroup"><code>SecurityGroup</code></a>, <a href="#parameter-SubnetId"><code>SubnetId</code></a>, <a href="#parameter-UserData"><code>UserData</code></a>, <a href="#parameter-ElasticGpuSpecification"><code>ElasticGpuSpecification</code></a>, <a href="#parameter-ElasticInferenceAccelerator"><code>ElasticInferenceAccelerator</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-LaunchTemplate"><code>LaunchTemplate</code></a>, <a href="#parameter-InstanceMarketOptions"><code>InstanceMarketOptions</code></a>, <a href="#parameter-CreditSpecification"><code>CreditSpecification</code></a>, <a href="#parameter-CpuOptions"><code>CpuOptions</code></a>, <a href="#parameter-CapacityReservationSpecification"><code>CapacityReservationSpecification</code></a>, <a href="#parameter-HibernationOptions"><code>HibernationOptions</code></a>, <a href="#parameter-LicenseSpecification"><code>LicenseSpecification</code></a>, <a href="#parameter-MetadataOptions"><code>MetadataOptions</code></a>, <a href="#parameter-EnclaveOptions"><code>EnclaveOptions</code></a>, <a href="#parameter-PrivateDnsNameOptions"><code>PrivateDnsNameOptions</code></a>, <a href="#parameter-MaintenanceOptions"><code>MaintenanceOptions</code></a>, <a href="#parameter-DisableApiStop"><code>DisableApiStop</code></a>, <a href="#parameter-EnablePrimaryIpv6"><code>EnablePrimaryIpv6</code></a>, <a href="#parameter-NetworkPerformanceOptions"><code>NetworkPerformanceOptions</code></a>, <a href="#parameter-Operator"><code>Operator</code></a>, <a href="#parameter-SecondaryInterface"><code>SecondaryInterface</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-DisableApiTermination"><code>DisableApiTermination</code></a>, <a href="#parameter-InstanceInitiatedShutdownBehavior"><code>InstanceInitiatedShutdownBehavior</code></a>, <a href="#parameter-PrivateIpAddress"><code>PrivateIpAddress</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-AdditionalInfo"><code>AdditionalInfo</code></a>, <a href="#parameter-NetworkInterface"><code>NetworkInterface</code></a>, <a href="#parameter-IamInstanceProfile"><code>IamInstanceProfile</code></a>, <a href="#parameter-EbsOptimized"><code>EbsOptimized</code></a></td>
+    <td>Launches the specified number of instances using an AMI for which you have permissions. You can specify a number of options, or leave the default options. The following rules apply: If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you don't have a default VPC, you must specify a subnet ID in the request. All instances have a network interface with a primary private IPv4 address. If you don't specify this address, we choose one from the IPv4 range of your subnet. Not all instance types support IPv6 addresses. For more information, see Instance types. If you don't specify a security group ID, we use the default security group for the VPC. For more information, see Security groups. If any of the AMIs have a product code attached for which the user has not subscribed, the request fails. You can create a launch template, which is a resource that contains the parameters to launch an instance. When you launch an instance using RunInstances, you can specify the launch template instead of specifying the launch parameters. To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances. RunInstances is subject to both request rate limiting and resource rate limiting. For more information, see Request throttling. An instance is ready for you to use when it's in the running state. You can check the state of your instance using DescribeInstances. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see CreateTags and Tagging your Amazon EC2 resources. Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see Key pairs. For troubleshooting, see What to do if an instance immediately terminates, and Troubleshooting connecting to your instance.</td>
+</tr>
+<tr>
     <td><a href="#create_delegate_mac_volume_ownership_task"><CopyableCode code="create_delegate_mac_volume_ownership_task" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-MacCredentials"><code>MacCredentials</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -394,13 +401,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-MacSystemIntegrityProtectionStatus"><code>MacSystemIntegrityProtectionStatus</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-MacCredentials"><code>MacCredentials</code></a>, <a href="#parameter-MacSystemIntegrityProtectionConfiguration"><code>MacSystemIntegrityProtectionConfiguration</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
     <td>Creates a System Integrity Protection (SIP) modification task to configure the SIP settings for an x86 Mac instance or Apple silicon Mac instance. For more information, see Configure SIP for Amazon EC2 instances in the Amazon EC2 User Guide. When you configure the SIP settings for your instance, you can either enable or disable all SIP settings, or you can specify a custom SIP configuration that selectively enables or disables specific SIP settings. If you implement a custom configuration, connect to the instance and verify the settings to ensure that your requirements are properly implemented and functioning as intended. SIP configurations might change with macOS updates. We recommend that you review custom SIP settings after any macOS version upgrade to ensure continued compatibility and proper functionality of your security configurations. To enable or disable all SIP settings, use the MacSystemIntegrityProtectionStatus parameter only. For example, to enable all SIP settings, specify the following: MacSystemIntegrityProtectionStatus=enabled To specify a custom configuration that selectively enables or disables specific SIP settings, use the MacSystemIntegrityProtectionStatus parameter to enable or disable all SIP settings, and then use the MacSystemIntegrityProtectionConfiguration parameter to specify exceptions. In this case, the exceptions you specify for MacSystemIntegrityProtectionConfiguration override the value you specify for MacSystemIntegrityProtectionStatus. For example, to enable all SIP settings, except NvramProtections, specify the following: MacSystemIntegrityProtectionStatus=enabled MacSystemIntegrityProtectionConfigurationRequest "NvramProtections=disabled"</td>
-</tr>
-<tr>
-    <td><a href="#run_instances"><CopyableCode code="run_instances" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-MaxCount"><code>MaxCount</code></a>, <a href="#parameter-MinCount"><code>MinCount</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-BlockDeviceMapping"><code>BlockDeviceMapping</code></a>, <a href="#parameter-ImageId"><code>ImageId</code></a>, <a href="#parameter-InstanceType"><code>InstanceType</code></a>, <a href="#parameter-Ipv6AddressCount"><code>Ipv6AddressCount</code></a>, <a href="#parameter-Ipv6Address"><code>Ipv6Address</code></a>, <a href="#parameter-KernelId"><code>KernelId</code></a>, <a href="#parameter-KeyName"><code>KeyName</code></a>, <a href="#parameter-Monitoring"><code>Monitoring</code></a>, <a href="#parameter-Placement"><code>Placement</code></a>, <a href="#parameter-RamdiskId"><code>RamdiskId</code></a>, <a href="#parameter-SecurityGroupId"><code>SecurityGroupId</code></a>, <a href="#parameter-SecurityGroup"><code>SecurityGroup</code></a>, <a href="#parameter-SubnetId"><code>SubnetId</code></a>, <a href="#parameter-UserData"><code>UserData</code></a>, <a href="#parameter-ElasticGpuSpecification"><code>ElasticGpuSpecification</code></a>, <a href="#parameter-ElasticInferenceAccelerator"><code>ElasticInferenceAccelerator</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-LaunchTemplate"><code>LaunchTemplate</code></a>, <a href="#parameter-InstanceMarketOptions"><code>InstanceMarketOptions</code></a>, <a href="#parameter-CreditSpecification"><code>CreditSpecification</code></a>, <a href="#parameter-CpuOptions"><code>CpuOptions</code></a>, <a href="#parameter-CapacityReservationSpecification"><code>CapacityReservationSpecification</code></a>, <a href="#parameter-HibernationOptions"><code>HibernationOptions</code></a>, <a href="#parameter-LicenseSpecification"><code>LicenseSpecification</code></a>, <a href="#parameter-MetadataOptions"><code>MetadataOptions</code></a>, <a href="#parameter-EnclaveOptions"><code>EnclaveOptions</code></a>, <a href="#parameter-PrivateDnsNameOptions"><code>PrivateDnsNameOptions</code></a>, <a href="#parameter-MaintenanceOptions"><code>MaintenanceOptions</code></a>, <a href="#parameter-DisableApiStop"><code>DisableApiStop</code></a>, <a href="#parameter-EnablePrimaryIpv6"><code>EnablePrimaryIpv6</code></a>, <a href="#parameter-NetworkPerformanceOptions"><code>NetworkPerformanceOptions</code></a>, <a href="#parameter-Operator"><code>Operator</code></a>, <a href="#parameter-SecondaryInterface"><code>SecondaryInterface</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-DisableApiTermination"><code>DisableApiTermination</code></a>, <a href="#parameter-InstanceInitiatedShutdownBehavior"><code>InstanceInitiatedShutdownBehavior</code></a>, <a href="#parameter-PrivateIpAddress"><code>PrivateIpAddress</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-AdditionalInfo"><code>AdditionalInfo</code></a>, <a href="#parameter-NetworkInterface"><code>NetworkInterface</code></a>, <a href="#parameter-IamInstanceProfile"><code>IamInstanceProfile</code></a>, <a href="#parameter-EbsOptimized"><code>EbsOptimized</code></a></td>
-    <td>Launches the specified number of instances using an AMI for which you have permissions. You can specify a number of options, or leave the default options. The following rules apply: If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you don't have a default VPC, you must specify a subnet ID in the request. All instances have a network interface with a primary private IPv4 address. If you don't specify this address, we choose one from the IPv4 range of your subnet. Not all instance types support IPv6 addresses. For more information, see Instance types. If you don't specify a security group ID, we use the default security group for the VPC. For more information, see Security groups. If any of the AMIs have a product code attached for which the user has not subscribed, the request fails. You can create a launch template, which is a resource that contains the parameters to launch an instance. When you launch an instance using RunInstances, you can specify the launch template instead of specifying the launch parameters. To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances. RunInstances is subject to both request rate limiting and resource rate limiting. For more information, see Request throttling. An instance is ready for you to use when it's in the running state. You can check the state of your instance using DescribeInstances. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see CreateTags and Tagging your Amazon EC2 resources. Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see Key pairs. For troubleshooting, see What to do if an instance immediately terminates, and Troubleshooting connecting to your instance.</td>
 </tr>
 <tr>
     <td><a href="#modify_instance_event_start_time"><CopyableCode code="modify_instance_event_start_time" /></a></td>
@@ -464,6 +464,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-SqlServerCredentials"><code>SqlServerCredentials</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Enable Amazon EC2 instances running in an SQL Server High Availability cluster for SQL Server High Availability instance standby detection monitoring. Once enabled, Amazon Web Services monitors the metadata for the instances to determine whether they are active or standby nodes in the SQL Server High Availability cluster. If the instances are determined to be standby failover nodes, Amazon Web Services automatically applies SQL Server licensing fee waiver for those instances. To register an instance, it must be running a Windows SQL Server license-included AMI and have the Amazon Web Services Systems Manager agent installed and running. Only Windows Server 2019 and later and SQL Server (Standard and Enterprise editions) 2017 and later are supported. For more information, see Prerequisites for using SQL Server High Availability instance standby detection.</td>
+</tr>
+<tr>
+    <td><a href="#import_instance"><CopyableCode code="import_instance" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-LaunchSpecification"><code>LaunchSpecification</code></a>, <a href="#parameter-DiskImage"><code>DiskImage</code></a>, <a href="#parameter-Platform"><code>Platform</code></a></td>
+    <td>We recommend that you use the ImportImage API instead. For more information, see Importing a VM as an image using VM Import/Export in the VM Import/Export User Guide. Creates an import instance task using metadata from the specified disk image. This API action supports only single-volume VMs. To import multi-volume VMs, use ImportImage instead. For information about the import manifest referenced by this API action, see VM Import Manifest. This API action is not supported by the Command Line Interface (CLI).</td>
 </tr>
 <tr>
     <td><a href="#modify_instance_maintenance_options"><CopyableCode code="modify_instance_maintenance_options" /></a></td>
@@ -702,6 +709,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>object</code></td>
     <td>The credit option for CPU usage of the burstable performance instance. Valid values are standard and unlimited. To change this attribute after launch, use ModifyInstanceCreditSpecification. For more information, see Burstable performance instances in the Amazon EC2 User Guide. Default: standard (T2 instances) or unlimited (T3/T3a/T4g instances) For T3 instances with host tenancy, only standard is supported.</td>
 </tr>
+<tr id="parameter-Description">
+    <td><CopyableCode code="Description" /></td>
+    <td><code>string</code></td>
+    <td>A description for the instance being imported.</td>
+</tr>
 <tr id="parameter-DisableApiStop">
     <td><CopyableCode code="DisableApiStop" /></td>
     <td><code>boolean</code></td>
@@ -711,6 +723,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="DisableApiTermination" /></td>
     <td><code>boolean</code></td>
     <td>Indicates whether termination protection is enabled for the instance. The default is false, which means that you can terminate the instance using the Amazon EC2 console, command line tools, or API. You can enable termination protection when you launch an instance, while the instance is running, or while the instance is stopped.</td>
+</tr>
+<tr id="parameter-DiskImage">
+    <td><CopyableCode code="DiskImage" /></td>
+    <td><code>array</code></td>
+    <td>The disk image.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
@@ -967,6 +984,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>object</code></td>
     <td>The placement for the instance.</td>
 </tr>
+<tr id="parameter-Platform">
+    <td><CopyableCode code="Platform" /></td>
+    <td><code>string</code></td>
+    <td>The instance operating system.</td>
+</tr>
 <tr id="parameter-PrivateDnsHostnameType">
     <td><CopyableCode code="PrivateDnsHostnameType" /></td>
     <td><code>string</code></td>
@@ -1162,80 +1184,14 @@ AND MaxResults = '{{ MaxResults }}'
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_delegate_mac_volume_ownership_task"
+    defaultValue="run_instances"
     values={[
+        { label: 'run_instances', value: 'run_instances' },
         { label: 'create_delegate_mac_volume_ownership_task', value: 'create_delegate_mac_volume_ownership_task' },
         { label: 'create_mac_system_integrity_protection_modification_task', value: 'create_mac_system_integrity_protection_modification_task' },
-        { label: 'run_instances', value: 'run_instances' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_delegate_mac_volume_ownership_task">
-
-Delegates ownership of the Amazon EBS root volume for an Apple silicon Mac instance to an administrative user.
-
-```sql
-INSERT INTO aws.ec2.instances (
-InstanceId,
-MacCredentials,
-region,
-ClientToken,
-DryRun,
-TagSpecification
-)
-SELECT 
-'{{ InstanceId }}',
-'{{ MacCredentials }}',
-'{{ region }}',
-'{{ ClientToken }}',
-'{{ DryRun }}',
-'{{ TagSpecification }}'
-RETURNING
-instance_id,
-mac_modification_task_id,
-mac_system_integrity_protection_config,
-start_time,
-tags,
-task_state,
-task_type
-;
-```
-</TabItem>
-<TabItem value="create_mac_system_integrity_protection_modification_task">
-
-Creates a System Integrity Protection (SIP) modification task to configure the SIP settings for an x86 Mac instance or Apple silicon Mac instance. For more information, see Configure SIP for Amazon EC2 instances in the Amazon EC2 User Guide. When you configure the SIP settings for your instance, you can either enable or disable all SIP settings, or you can specify a custom SIP configuration that selectively enables or disables specific SIP settings. If you implement a custom configuration, connect to the instance and verify the settings to ensure that your requirements are properly implemented and functioning as intended. SIP configurations might change with macOS updates. We recommend that you review custom SIP settings after any macOS version upgrade to ensure continued compatibility and proper functionality of your security configurations. To enable or disable all SIP settings, use the MacSystemIntegrityProtectionStatus parameter only. For example, to enable all SIP settings, specify the following: MacSystemIntegrityProtectionStatus=enabled To specify a custom configuration that selectively enables or disables specific SIP settings, use the MacSystemIntegrityProtectionStatus parameter to enable or disable all SIP settings, and then use the MacSystemIntegrityProtectionConfiguration parameter to specify exceptions. In this case, the exceptions you specify for MacSystemIntegrityProtectionConfiguration override the value you specify for MacSystemIntegrityProtectionStatus. For example, to enable all SIP settings, except NvramProtections, specify the following: MacSystemIntegrityProtectionStatus=enabled MacSystemIntegrityProtectionConfigurationRequest "NvramProtections=disabled"
-
-```sql
-INSERT INTO aws.ec2.instances (
-InstanceId,
-MacSystemIntegrityProtectionStatus,
-region,
-ClientToken,
-DryRun,
-MacCredentials,
-MacSystemIntegrityProtectionConfiguration,
-TagSpecification
-)
-SELECT 
-'{{ InstanceId }}',
-'{{ MacSystemIntegrityProtectionStatus }}',
-'{{ region }}',
-'{{ ClientToken }}',
-'{{ DryRun }}',
-'{{ MacCredentials }}',
-'{{ MacSystemIntegrityProtectionConfiguration }}',
-'{{ TagSpecification }}'
-RETURNING
-instance_id,
-mac_modification_task_id,
-mac_system_integrity_protection_config,
-start_time,
-tags,
-task_state,
-task_type
-;
-```
-</TabItem>
 <TabItem value="run_instances">
 
 Launches the specified number of instances using an AMI for which you have permissions. You can specify a number of options, or leave the default options. The following rules apply: If you don't specify a subnet ID, we choose a default subnet from your default VPC for you. If you don't have a default VPC, you must specify a subnet ID in the request. All instances have a network interface with a primary private IPv4 address. If you don't specify this address, we choose one from the IPv4 range of your subnet. Not all instance types support IPv6 addresses. For more information, see Instance types. If you don't specify a security group ID, we use the default security group for the VPC. For more information, see Security groups. If any of the AMIs have a product code attached for which the user has not subscribed, the request fails. You can create a launch template, which is a resource that contains the parameters to launch an instance. When you launch an instance using RunInstances, you can specify the launch template instead of specifying the launch parameters. To ensure faster instance launches, break up large requests into smaller batches. For example, create five separate launch requests for 100 instances each instead of one launch request for 500 instances. RunInstances is subject to both request rate limiting and resource rate limiting. For more information, see Request throttling. An instance is ready for you to use when it's in the running state. You can check the state of your instance using DescribeInstances. You can tag instances and EBS volumes during launch, after launch, or both. For more information, see CreateTags and Tagging your Amazon EC2 resources. Linux instances have access to the public key of the key pair at boot. You can use this key to provide secure access to the instance. Amazon EC2 public images use this feature to provide secure access without passwords. For more information, see Key pairs. For troubleshooting, see What to do if an instance immediately terminates, and Troubleshooting connecting to your instance.
@@ -1399,45 +1355,95 @@ vpc_id
 ;
 ```
 </TabItem>
+<TabItem value="create_delegate_mac_volume_ownership_task">
+
+Delegates ownership of the Amazon EBS root volume for an Apple silicon Mac instance to an administrative user.
+
+```sql
+INSERT INTO aws.ec2.instances (
+InstanceId,
+MacCredentials,
+region,
+ClientToken,
+DryRun,
+TagSpecification
+)
+SELECT 
+'{{ InstanceId }}',
+'{{ MacCredentials }}',
+'{{ region }}',
+'{{ ClientToken }}',
+'{{ DryRun }}',
+'{{ TagSpecification }}'
+RETURNING
+instance_id,
+mac_modification_task_id,
+mac_system_integrity_protection_config,
+start_time,
+tags,
+task_state,
+task_type
+;
+```
+</TabItem>
+<TabItem value="create_mac_system_integrity_protection_modification_task">
+
+Creates a System Integrity Protection (SIP) modification task to configure the SIP settings for an x86 Mac instance or Apple silicon Mac instance. For more information, see Configure SIP for Amazon EC2 instances in the Amazon EC2 User Guide. When you configure the SIP settings for your instance, you can either enable or disable all SIP settings, or you can specify a custom SIP configuration that selectively enables or disables specific SIP settings. If you implement a custom configuration, connect to the instance and verify the settings to ensure that your requirements are properly implemented and functioning as intended. SIP configurations might change with macOS updates. We recommend that you review custom SIP settings after any macOS version upgrade to ensure continued compatibility and proper functionality of your security configurations. To enable or disable all SIP settings, use the MacSystemIntegrityProtectionStatus parameter only. For example, to enable all SIP settings, specify the following: MacSystemIntegrityProtectionStatus=enabled To specify a custom configuration that selectively enables or disables specific SIP settings, use the MacSystemIntegrityProtectionStatus parameter to enable or disable all SIP settings, and then use the MacSystemIntegrityProtectionConfiguration parameter to specify exceptions. In this case, the exceptions you specify for MacSystemIntegrityProtectionConfiguration override the value you specify for MacSystemIntegrityProtectionStatus. For example, to enable all SIP settings, except NvramProtections, specify the following: MacSystemIntegrityProtectionStatus=enabled MacSystemIntegrityProtectionConfigurationRequest "NvramProtections=disabled"
+
+```sql
+INSERT INTO aws.ec2.instances (
+InstanceId,
+MacSystemIntegrityProtectionStatus,
+region,
+ClientToken,
+DryRun,
+MacCredentials,
+MacSystemIntegrityProtectionConfiguration,
+TagSpecification
+)
+SELECT 
+'{{ InstanceId }}',
+'{{ MacSystemIntegrityProtectionStatus }}',
+'{{ region }}',
+'{{ ClientToken }}',
+'{{ DryRun }}',
+'{{ MacCredentials }}',
+'{{ MacSystemIntegrityProtectionConfiguration }}',
+'{{ TagSpecification }}'
+RETURNING
+instance_id,
+mac_modification_task_id,
+mac_system_integrity_protection_config,
+start_time,
+tags,
+task_state,
+task_type
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
 - name: instances
   props:
-    - name: InstanceId
-      value: "{{ InstanceId }}"
-      description: Required parameter for the instances resource.
-    - name: MacCredentials
-      value: "{{ MacCredentials }}"
-      description: Required parameter for the instances resource.
-    - name: region
-      value: "{{ region }}"
-      description: Required parameter for the instances resource.
-    - name: MacSystemIntegrityProtectionStatus
-      value: "{{ MacSystemIntegrityProtectionStatus }}"
-      description: Required parameter for the instances resource.
     - name: MaxCount
       value: {{ MaxCount }}
       description: Required parameter for the instances resource.
     - name: MinCount
       value: {{ MinCount }}
       description: Required parameter for the instances resource.
-    - name: ClientToken
-      value: "{{ ClientToken }}"
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring Idempotency.
-    - name: DryRun
-      value: {{ DryRun }}
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
-      description: Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
-    - name: TagSpecification
-      value: "{{ TagSpecification }}"
-      description: The tags to assign to the volume ownership delegation task.
-      description: The tags to assign to the volume ownership delegation task.
-    - name: MacSystemIntegrityProtectionConfiguration
-      value: "{{ MacSystemIntegrityProtectionConfiguration }}"
-      description: Specifies the overrides to selectively enable or disable individual SIP settings. The individual settings you specify here override the overall SIP status you specify for MacSystemIntegrityProtectionStatus.
-      description: Specifies the overrides to selectively enable or disable individual SIP settings. The individual settings you specify here override the overall SIP status you specify for MacSystemIntegrityProtectionStatus.
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the instances resource.
+    - name: InstanceId
+      value: "{{ InstanceId }}"
+      description: Required parameter for the instances resource.
+    - name: MacCredentials
+      value: "{{ MacCredentials }}"
+      description: Required parameter for the instances resource.
+    - name: MacSystemIntegrityProtectionStatus
+      value: "{{ MacSystemIntegrityProtectionStatus }}"
+      description: Required parameter for the instances resource.
     - name: BlockDeviceMapping
       value: "{{ BlockDeviceMapping }}"
       description: The block device mapping, which defines the EBS volumes and instance store volumes to attach to the instance at launch. For more information, see Block device mappings in the Amazon EC2 User Guide.
@@ -1502,6 +1508,10 @@ vpc_id
       value: "{{ ElasticInferenceAccelerator }}"
       description: An elastic inference accelerator to associate with the instance. Amazon Elastic Inference is no longer available.
       description: An elastic inference accelerator to associate with the instance. Amazon Elastic Inference is no longer available.
+    - name: TagSpecification
+      value: "{{ TagSpecification }}"
+      description: The tags to apply to the resources that are created during instance launch. You can specify tags for the following resources only: Instances Volumes Spot Instance requests Network interfaces To tag a resource after it has been created, see CreateTags.
+      description: The tags to apply to the resources that are created during instance launch. You can specify tags for the following resources only: Instances Volumes Spot Instance requests Network interfaces To tag a resource after it has been created, see CreateTags.
     - name: LaunchTemplate
       value: "{{ LaunchTemplate }}"
       description: The launch template. Any additional parameters that you specify for the new instance overwrite the corresponding parameters included in the launch template.
@@ -1566,6 +1576,10 @@ vpc_id
       value: "{{ SecondaryInterface }}"
       description: The secondary interfaces to associate with the instance.
       description: The secondary interfaces to associate with the instance.
+    - name: DryRun
+      value: {{ DryRun }}
+      description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+      description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
     - name: DisableApiTermination
       value: {{ DisableApiTermination }}
       description: Indicates whether termination protection is enabled for the instance. The default is false, which means that you can terminate the instance using the Amazon EC2 console, command line tools, or API. You can enable termination protection when you launch an instance, while the instance is running, or while the instance is stopped.
@@ -1578,6 +1592,10 @@ vpc_id
       value: "{{ PrivateIpAddress }}"
       description: The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet. Only one private IP address can be designated as primary. You can't specify this option if you've specified the option to designate a private IP address as the primary IP address in a network interface specification. You cannot specify this option if you're launching more than one instance in the request. You cannot specify this option and the network interfaces option in the same request.
       description: The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet. Only one private IP address can be designated as primary. You can't specify this option if you've specified the option to designate a private IP address as the primary IP address in a network interface specification. You cannot specify this option if you're launching more than one instance in the request. You cannot specify this option and the network interfaces option in the same request.
+    - name: ClientToken
+      value: "{{ ClientToken }}"
+      description: Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency. For more information, see Ensuring idempotency in Amazon EC2 API requests. Constraints: Maximum 64 ASCII characters
+      description: Unique, case-sensitive identifier you provide to ensure the idempotency of the request. If you do not specify a client token, a randomly generated token is used for the request to ensure idempotency. For more information, see Ensuring idempotency in Amazon EC2 API requests. Constraints: Maximum 64 ASCII characters
     - name: AdditionalInfo
       value: "{{ AdditionalInfo }}"
       description: Reserved.
@@ -1594,6 +1612,10 @@ vpc_id
       value: {{ EbsOptimized }}
       description: Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: false
       description: Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: false
+    - name: MacSystemIntegrityProtectionConfiguration
+      value: "{{ MacSystemIntegrityProtectionConfiguration }}"
+      description: Specifies the overrides to selectively enable or disable individual SIP settings. The individual settings you specify here override the overall SIP status you specify for MacSystemIntegrityProtectionStatus.
+      description: Specifies the overrides to selectively enable or disable individual SIP settings. The individual settings you specify here override the overall SIP status you specify for MacSystemIntegrityProtectionStatus.
 `}</CodeBlock>
 
 </TabItem>
@@ -1728,6 +1750,7 @@ AND DryRun = '{{ DryRun }}'
         { label: 'confirm_product_instance', value: 'confirm_product_instance' },
         { label: 'disable_instance_sql_ha_standby_detections', value: 'disable_instance_sql_ha_standby_detections' },
         { label: 'enable_instance_sql_ha_standby_detections', value: 'enable_instance_sql_ha_standby_detections' },
+        { label: 'import_instance', value: 'import_instance' },
         { label: 'modify_instance_maintenance_options', value: 'modify_instance_maintenance_options' },
         { label: 'modify_instance_metadata_options', value: 'modify_instance_metadata_options' },
         { label: 'modify_instance_placement', value: 'modify_instance_placement' },
@@ -1791,6 +1814,21 @@ EXEC aws.ec2.instances.enable_instance_sql_ha_standby_detections
 @region='{{ region }}' --required, 
 @SqlServerCredentials='{{ SqlServerCredentials }}', 
 @DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="import_instance">
+
+We recommend that you use the ImportImage API instead. For more information, see Importing a VM as an image using VM Import/Export in the VM Import/Export User Guide. Creates an import instance task using metadata from the specified disk image. This API action supports only single-volume VMs. To import multi-volume VMs, use ImportImage instead. For information about the import manifest referenced by this API action, see VM Import Manifest. This API action is not supported by the Command Line Interface (CLI).
+
+```sql
+EXEC aws.ec2.instances.import_instance 
+@region='{{ region }}' --required, 
+@DryRun={{ DryRun }}, 
+@Description='{{ Description }}', 
+@LaunchSpecification='{{ LaunchSpecification }}', 
+@DiskImage='{{ DiskImage }}', 
+@Platform='{{ Platform }}'
 ;
 ```
 </TabItem>

@@ -163,6 +163,13 @@ The following methods are available for this resource:
     <td>Deletes a connection.</td>
 </tr>
 <tr>
+    <td><a href="#deauthorize_connection"><CopyableCode code="deauthorize_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes all authorization parameters from the connection. This lets you remove the secret from the connection so you can reuse it without having to create a new connection.</td>
+</tr>
+<tr>
     <td><a href="#list_connections"><CopyableCode code="list_connections" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -407,11 +414,26 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_connections"
+    defaultValue="deauthorize_connection"
     values={[
+        { label: 'deauthorize_connection', value: 'deauthorize_connection' },
         { label: 'list_connections', value: 'list_connections' }
     ]}
 >
+<TabItem value="deauthorize_connection">
+
+Removes all authorization parameters from the connection. This lets you remove the secret from the connection so you can reuse it without having to create a new connection.
+
+```sql
+EXEC aws.events.connections.deauthorize_connection 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Name": "{{ Name }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="list_connections">
 
 Retrieves a list of connections from the account.

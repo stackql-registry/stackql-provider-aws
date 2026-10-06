@@ -237,6 +237,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a signing profile. A signing profile is a code-signing template that can be used to carry out a pre-defined signing job.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_signing_profile"><CopyableCode code="cancel_signing_profile" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-profile_name"><code>profile_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Changes the state of an ACTIVE signing profile to CANCELED. A canceled profile is still viewable with the ListSigningProfiles operation, but it cannot perform new signing jobs. See Data Retention for more information on scheduled deletion of a canceled signing profile.</td>
+</tr>
 </tbody>
 </table>
 
@@ -256,7 +263,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-profile_name">
     <td><CopyableCode code="profile_name" /></td>
     <td><code>string</code></td>
-    <td>The name of the signing profile to be created.</td>
+    <td>The name of the signing profile to be canceled.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -420,6 +427,28 @@ RETURNING
 arn,
 profile_version,
 profile_version_arn;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_signing_profile"
+    values={[
+        { label: 'cancel_signing_profile', value: 'cancel_signing_profile' }
+    ]}
+>
+<TabItem value="cancel_signing_profile">
+
+Changes the state of an ACTIVE signing profile to CANCELED. A canceled profile is still viewable with the ListSigningProfiles operation, but it cannot perform new signing jobs. See Data Retention for more information on scheduled deletion of a canceled signing profile.
+
+```sql
+EXEC aws.signer.signing_profiles.cancel_signing_profile 
+@profile_name='{{ profile_name }}' --required, 
+@region='{{ region }}' --required
+;
 ```
 </TabItem>
 </Tabs>

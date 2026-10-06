@@ -125,10 +125,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEnvironmentOutput"
     get:
       operationId: GetEnvironment
       description: Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
@@ -332,10 +328,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: 'Removes key-value tag pairs associated to your Amazon Managed Workflows for Apache Airflow (MWAA) environment. For example, "Environment": "Staging".'
@@ -355,10 +347,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /metrics/environments/{environment_name}:
     post:
       operationId: PublishMetrics
@@ -384,10 +372,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PublishMetricsOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -466,7 +450,7 @@ components:
       pattern: arn:aws(-[a-z]+)?:s3:::[a-z0-9.\-]+
     RelativePath:
       type: string
-      minLength: 1
+      minLength: 0
       maxLength: 1024
       pattern: .*
     NetworkConfiguration:
@@ -499,7 +483,7 @@ components:
       pattern: sg-[a-zA-Z0-9\-._]+
     S3ObjectVersion:
       type: string
-      minLength: 1
+      minLength: 0
       maxLength: 1024
     AirflowConfigurationOptions:
       type: object
@@ -626,8 +610,6 @@ components:
       type: string
       minLength: 1
       maxLength: 64
-    DeleteEnvironmentOutput:
-      type: object
     GetEnvironmentOutput:
       type: object
       properties:
@@ -1024,10 +1006,6 @@ components:
         Maximum:
           $ref: "#/components/schemas/Double"
           description: Internal only. The maximum value of the sample set.
-    PublishMetricsOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1037,8 +1015,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]*)
-    UntagResourceOutput:
-      type: object
     UpdateNetworkConfigurationInput:
       description: Defines the VPC networking components used to secure and enable network traffic between the Amazon Web Services resources for your environment. For more information, refer to About networking on Amazon MWAA.
       type: object
@@ -1093,7 +1069,6 @@ components:
             $ref: "#/paths/~1environments~1{name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_environment:
           operation:
             $ref: "#/paths/~1environments~1{name}/get"
@@ -1140,7 +1115,6 @@ components:
             $ref: "#/paths/~1metrics~1environments~1{environment_name}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1173,6 +1147,27 @@ components:
           - $ref: "#/components/x-stackQL-resources/web_login_tokens/methods/create_web_login_token"
         update: []
         delete: []
+    rest_apis:
+      id: aws.mwaa.rest_apis
+      name: rest_apis
+      title: rest_apis
+      methods:
+        invoke_rest_api:
+          operation:
+            $ref: "#/paths/~1restapi~1{name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     tags:
       id: aws.mwaa.tags
       name: tags
@@ -1189,7 +1184,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1200,7 +1194,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -31,10 +31,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteEarthObservationJobOutput"
     get:
       operationId: GetEarthObservationJob
       description: Get the details for a previously initiated Earth Observation job.
@@ -66,10 +62,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteVectorEnrichmentJobOutput"
     get:
       operationId: GetVectorEnrichmentJob
       description: Retrieves details of a Vector Enrichment Job for a given job Amazon Resource Name (ARN).
@@ -344,10 +336,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: The resource you want to untag.
@@ -367,10 +355,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /list-vector-enrichment-jobs:
     post:
       operationId: ListVectorEnrichmentJobs
@@ -518,10 +502,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopEarthObservationJobOutput"
   /vector-enrichment-jobs/stop:
     post:
       operationId: StopVectorEnrichmentJob
@@ -539,10 +519,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopVectorEnrichmentJobOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -591,13 +567,9 @@ components:
     EarthObservationJobArn:
       type: string
       pattern: ^arn:aws[a-z-]{0,12}:sagemaker-geospatial:[a-z0-9-]{1,25}:[0-9]{12}:earth-observation-job/[a-z0-9]{12,}$
-    DeleteEarthObservationJobOutput:
-      type: object
     VectorEnrichmentJobArn:
       type: string
       pattern: ^arn:aws[a-z-]{0,12}:sagemaker-geospatial:[a-z0-9-]{1,25}:[0-9]{12}:vector-enrichment-job/[a-z0-9]{12,}$
-    DeleteVectorEnrichmentJobOutput:
-      type: object
     ExportEarthObservationJobInputClientTokenString:
       type: string
       minLength: 36
@@ -2044,18 +2016,10 @@ components:
         - Name
         - Status
         - Type
-    StopEarthObservationJobOutput:
-      type: object
-    StopVectorEnrichmentJobOutput:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     earth_observation_jobs:
       id: aws.sagemaker_geospatial.earth_observation_jobs
@@ -2067,13 +2031,23 @@ components:
             $ref: "#/paths/~1earth-observation-jobs~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_earth_observation_job:
           operation:
             $ref: "#/paths/~1earth-observation-jobs~1{arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        export_earth_observation_job:
+          operation:
+            $ref: "#/paths/~1export-earth-observation-job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_earth_observation_jobs:
           operation:
             $ref: "#/paths/~1list-earth-observation-jobs/post"
@@ -2091,6 +2065,27 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_earth_observation_job:
+          operation:
+            $ref: "#/paths/~1earth-observation-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_earth_observation_job:
+          operation:
+            $ref: "#/paths/~1earth-observation-jobs~1stop/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2111,13 +2106,23 @@ components:
             $ref: "#/paths/~1vector-enrichment-jobs~1{arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_vector_enrichment_job:
           operation:
             $ref: "#/paths/~1vector-enrichment-jobs~1{arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        export_vector_enrichment_job:
+          operation:
+            $ref: "#/paths/~1export-vector-enrichment-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_vector_enrichment_jobs:
           operation:
             $ref: "#/paths/~1list-vector-enrichment-jobs/post"
@@ -2135,6 +2140,27 @@ components:
               responseToken:
                 key: $.NextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_vector_enrichment_job:
+          operation:
+            $ref: "#/paths/~1vector-enrichment-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_vector_enrichment_job:
+          operation:
+            $ref: "#/paths/~1vector-enrichment-jobs~1stop/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2227,7 +2253,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2238,7 +2263,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

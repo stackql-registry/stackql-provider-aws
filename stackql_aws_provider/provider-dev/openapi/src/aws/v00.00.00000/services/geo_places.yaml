@@ -2764,6 +2764,59 @@ components:
       type: integer
       minimum: 0
   x-stackQL-resources:
+    autocompletes:
+      id: aws.geo_places.autocompletes
+      name: autocompletes
+      title: autocompletes
+      methods:
+        autocomplete:
+          operation:
+            $ref: "#/paths/~1v2~1autocomplete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    geocodes:
+      id: aws.geo_places.geocodes
+      name: geocodes
+      title: geocodes
+      methods:
+        geocode:
+          operation:
+            $ref: "#/paths/~1v2~1geocode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reverse_geocode:
+          operation:
+            $ref: "#/paths/~1v2~1reverse-geocode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     places:
       id: aws.geo_places.places
       name: places
@@ -2824,6 +2877,27 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/texts/methods/search_text"
+        insert: []
+        update: []
+        delete: []
+    suggests:
+      id: aws.geo_places.suggests
+      name: suggests
+      title: suggests
+      methods:
+        suggest:
+          operation:
+            $ref: "#/paths/~1v2~1suggest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

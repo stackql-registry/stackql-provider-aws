@@ -162,6 +162,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the custom line item identified by the given ARN in the current, or previous billing period.</td>
 </tr>
+<tr>
+    <td><a href="#batch_associate_resources_to_custom_line_item"><CopyableCode code="batch_associate_resources_to_custom_line_item" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TargetArn"><code>TargetArn</code></a>, <a href="#parameter-ResourceArns"><code>ResourceArns</code></a></td>
+    <td></td>
+    <td>Associates a batch of resources to a percentage custom line item.</td>
+</tr>
+<tr>
+    <td><a href="#batch_disassociate_resources_from_custom_line_item"><CopyableCode code="batch_disassociate_resources_from_custom_line_item" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TargetArn"><code>TargetArn</code></a>, <a href="#parameter-ResourceArns"><code>ResourceArns</code></a></td>
+    <td></td>
+    <td>Disassociates a batch of resources from a percentage custom line item.</td>
+</tr>
 </tbody>
 </table>
 
@@ -380,6 +394,50 @@ Deletes the custom line item identified by the given ARN in the current, or prev
 ```sql
 DELETE FROM aws.billingconductor.custom_line_items
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_associate_resources_to_custom_line_item"
+    values={[
+        { label: 'batch_associate_resources_to_custom_line_item', value: 'batch_associate_resources_to_custom_line_item' },
+        { label: 'batch_disassociate_resources_from_custom_line_item', value: 'batch_disassociate_resources_from_custom_line_item' }
+    ]}
+>
+<TabItem value="batch_associate_resources_to_custom_line_item">
+
+Associates a batch of resources to a percentage custom line item.
+
+```sql
+EXEC aws.billingconductor.custom_line_items.batch_associate_resources_to_custom_line_item 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TargetArn": "{{ TargetArn }}", 
+"ResourceArns": "{{ ResourceArns }}", 
+"BillingPeriodRange": "{{ BillingPeriodRange }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_disassociate_resources_from_custom_line_item">
+
+Disassociates a batch of resources from a percentage custom line item.
+
+```sql
+EXEC aws.billingconductor.custom_line_items.batch_disassociate_resources_from_custom_line_item 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TargetArn": "{{ TargetArn }}", 
+"ResourceArns": "{{ ResourceArns }}", 
+"BillingPeriodRange": "{{ BillingPeriodRange }}"
+}'
 ;
 ```
 </TabItem>

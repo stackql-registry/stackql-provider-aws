@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_vpc_endpoints"
     values={[
         { label: 'describe_vpc_endpoints', value: 'describe_vpc_endpoints' },
+        { label: 'list_vpc_endpoints_for_domain', value: 'list_vpc_endpoints_for_domain' },
         { label: 'list_vpc_endpoints', value: 'list_vpc_endpoints' }
     ]}
 >
@@ -59,6 +60,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="vpc_endpoints" /></td>
     <td><code>array</code></td>
     <td>Information about each requested VPC endpoint.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_vpc_endpoints_for_domain">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vpc_endpoint_summary_list" /></td>
+    <td><code>array</code></td>
+    <td>Provides list of VpcEndpointSummary summarizing details of the VPC endpoints.</td>
 </tr>
 </tbody>
 </table>
@@ -112,6 +137,13 @@ The following methods are available for this resource:
     <td>Describes one or more Amazon OpenSearch Service-managed VPC endpoints.</td>
 </tr>
 <tr>
+    <td><a href="#list_vpc_endpoints_for_domain"><CopyableCode code="list_vpc_endpoints_for_domain" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.</td>
+</tr>
+<tr>
     <td><a href="#list_vpc_endpoints"><CopyableCode code="list_vpc_endpoints" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -155,6 +187,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-domain_name">
+    <td><CopyableCode code="domain_name" /></td>
+    <td><code>string</code></td>
+    <td>Name of the ElasticSearch domain whose VPC endpoints are to be listed.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
@@ -179,6 +216,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_vpc_endpoints"
     values={[
         { label: 'describe_vpc_endpoints', value: 'describe_vpc_endpoints' },
+        { label: 'list_vpc_endpoints_for_domain', value: 'list_vpc_endpoints_for_domain' },
         { label: 'list_vpc_endpoints', value: 'list_vpc_endpoints' }
     ]}
 >
@@ -192,6 +230,21 @@ vpc_endpoint_errors,
 vpc_endpoints
 FROM aws.es.vpc_endpoints
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_vpc_endpoints_for_domain">
+
+Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+
+```sql
+SELECT
+next_token,
+vpc_endpoint_summary_list
+FROM aws.es.vpc_endpoints
+WHERE domain_name = '{{ domain_name }}' -- required
+AND region = '{{ region }}' -- required
+AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>

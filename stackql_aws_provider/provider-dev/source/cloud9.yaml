@@ -183,10 +183,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEnvironmentResult'
       x-stackql-resource: environments
       x-stackql-method: delete_environment
       x-stackql-verb: DELETE
@@ -224,10 +220,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEnvironmentMembershipResult'
       x-stackql-resource: environment_memberships
       x-stackql-method: delete_environment_membership
       x-stackql-verb: DELETE
@@ -323,7 +315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeEnvironmentStatusResult'
-      x-stackql-resource: environment_status
+      x-stackql-resource: environment_statuses
       x-stackql-method: describe_environment_status
       x-stackql-verb: SELECT
   /DescribeEnvironments:
@@ -487,10 +479,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -528,10 +516,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -578,10 +562,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEnvironmentResult'
       x-stackql-resource: environments
       x-stackql-method: update_environment
       x-stackql-verb: UPDATE
@@ -802,10 +782,6 @@ components:
     Timestamp:
       type: string
       format: date-time
-    DeleteEnvironmentResult:
-      type: object
-    DeleteEnvironmentMembershipResult:
-      type: object
     PermissionsList:
       type: array
       items:
@@ -972,21 +948,15 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: The list of tags associated with the Cloud9 development environment.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     ManagedCredentialsAction:
       type: string
       enum:
       - ENABLE
       - DISABLE
-    UpdateEnvironmentResult:
-      type: object
     UpdateEnvironmentMembershipResult:
       type: object
       properties:

@@ -102,10 +102,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeletePerformanceAnalysisReportResponse"
   /DescribeDimensionKeys:
     post:
       operationId: DescribeDimensionKeys
@@ -634,10 +630,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -675,10 +667,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -775,8 +763,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: report-[0-9a-f]{17}
-    DeletePerformanceAnalysisReportResponse:
-      type: object
     RequestString:
       type: string
       minLength: 0
@@ -1346,14 +1332,10 @@ components:
         Tags:
           $ref: "#/components/schemas/TagList"
           description: The metadata assigned to an Amazon RDS resource consisting of a key-value pair.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
   x-stackQL-resources:
     performance_analysis_reports:
       id: aws.pi.performance_analysis_reports
@@ -1378,7 +1360,6 @@ components:
             $ref: "#/paths/~1DeletePerformanceAnalysisReport/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1470,10 +1451,10 @@ components:
         insert: []
         update: []
         delete: []
-    resource_metadatas:
-      id: aws.pi.resource_metadatas
-      name: resource_metadatas
-      title: resource_metadatas
+    resource_metadata:
+      id: aws.pi.resource_metadata
+      name: resource_metadata
+      title: resource_metadata
       methods:
         get_resource_metadata:
           operation:
@@ -1490,7 +1471,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/resource_metadatas/methods/get_resource_metadata"
+          - $ref: "#/components/x-stackQL-resources/resource_metadata/methods/get_resource_metadata"
         insert: []
         update: []
         delete: []
@@ -1621,7 +1602,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1634,7 +1614,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

@@ -644,10 +644,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFleetOutput"
   /DeleteProject:
     post:
       operationId: DeleteProject
@@ -677,10 +673,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteProjectOutput"
   /DeleteReport:
     post:
       operationId: DeleteReport
@@ -710,10 +702,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReportOutput"
   /DeleteReportGroup:
     post:
       operationId: DeleteReportGroup
@@ -746,10 +734,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteReportGroupOutput"
   /DeleteResourcePolicy:
     post:
       operationId: DeleteResourcePolicy
@@ -779,10 +763,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteResourcePolicyOutput"
   /DeleteSourceCredentials:
     post:
       operationId: DeleteSourceCredentials
@@ -845,10 +825,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWebhookOutput"
   /DescribeCodeCoverages:
     post:
       operationId: DescribeCodeCoverages
@@ -1091,10 +1067,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InvalidateProjectCacheOutput"
   /ListBuildBatches:
     post:
       operationId: ListBuildBatches
@@ -4663,24 +4635,12 @@ components:
         buildsNotDeleted:
           $ref: "#/components/schemas/BuildsNotDeleted"
           description: An array of BuildNotDeleted objects that specify the builds that could not be deleted.
-    DeleteFleetOutput:
-      type: object
-    DeleteProjectOutput:
-      type: object
-    DeleteReportOutput:
-      type: object
-    DeleteReportGroupOutput:
-      type: object
-    DeleteResourcePolicyOutput:
-      type: object
     DeleteSourceCredentialsOutput:
       type: object
       properties:
         arn:
           $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Resource Name (ARN) of the token.
-    DeleteWebhookOutput:
-      type: object
     PageSize:
       type: integer
       minimum: 1
@@ -4872,8 +4832,6 @@ components:
         arn:
           $ref: "#/components/schemas/NonEmptyString"
           description: The Amazon Resource Name (ARN) of the token.
-    InvalidateProjectCacheOutput:
-      type: object
     BuildBatchFilter:
       description: Specifies filters when retrieving batch builds.
       type: object
@@ -5367,9 +5325,75 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_builds_for_project:
+          operation:
+            $ref: "#/paths/~1ListBuildsForProject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBuildsForProjectOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retry_build:
+          operation:
+            $ref: "#/paths/~1RetryBuild/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_build:
+          operation:
+            $ref: "#/paths/~1StartBuild/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_build_batch:
           operation:
             $ref: "#/paths/~1StartBuildBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_build:
+          operation:
+            $ref: "#/paths/~1StopBuild/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5396,6 +5420,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/builds/methods/batch_get_builds"
+          - $ref: "#/components/x-stackQL-resources/builds/methods/list_builds_for_project"
           - $ref: "#/components/x-stackQL-resources/builds/methods/list_builds"
         insert: []
         update: []
@@ -5458,6 +5483,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        retry_build_batch:
+          operation:
+            $ref: "#/paths/~1RetryBuildBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/build_batches/methods/batch_get_build_batches"
@@ -5484,9 +5522,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_command_executions_for_sandbox:
+          operation:
+            $ref: "#/paths/~1ListCommandExecutionsForSandbox/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.commandExecutions
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/command_executions/methods/batch_get_command_executions"
+          - $ref: "#/components/x-stackQL-resources/command_executions/methods/list_command_executions_for_sandbox"
         insert: []
         update: []
         delete: []
@@ -5526,7 +5586,6 @@ components:
             $ref: "#/paths/~1DeleteFleet/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5626,7 +5685,6 @@ components:
             $ref: "#/paths/~1DeleteProject/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5639,7 +5697,6 @@ components:
             $ref: "#/paths/~1DeleteWebhook/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5652,7 +5709,6 @@ components:
             $ref: "#/paths/~1InvalidateProjectCache/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5734,8 +5790,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/projects/methods/create_project"
           - $ref: "#/components/x-stackQL-resources/projects/methods/create_webhook"
         update:
-          - $ref: "#/components/x-stackQL-resources/projects/methods/update_project_visibility"
           - $ref: "#/components/x-stackQL-resources/projects/methods/update_project"
+          - $ref: "#/components/x-stackQL-resources/projects/methods/update_project_visibility"
           - $ref: "#/components/x-stackQL-resources/projects/methods/update_webhook"
         delete:
           - $ref: "#/components/x-stackQL-resources/projects/methods/delete_project"
@@ -5776,7 +5832,6 @@ components:
             $ref: "#/paths/~1DeleteReportGroup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5857,7 +5912,6 @@ components:
             $ref: "#/paths/~1DeleteReport/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5892,9 +5946,37 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_reports_for_report_group:
+          operation:
+            $ref: "#/paths/~1ListReportsForReportGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReportsForReportGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reports/methods/batch_get_reports"
+          - $ref: "#/components/x-stackQL-resources/reports/methods/list_reports_for_report_group"
           - $ref: "#/components/x-stackQL-resources/reports/methods/list_reports"
         insert: []
         update: []
@@ -5945,9 +6027,49 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        list_sandboxes_for_project:
+          operation:
+            $ref: "#/paths/~1ListSandboxesForProject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSandboxesForProjectOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         start_command_execution:
           operation:
             $ref: "#/paths/~1StartCommandExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_sandbox:
+          operation:
+            $ref: "#/paths/~1StartSandbox/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5971,9 +6093,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_sandbox:
+          operation:
+            $ref: "#/paths/~1StopSandbox/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sandboxes/methods/batch_get_sandboxes"
+          - $ref: "#/components/x-stackQL-resources/sandboxes/methods/list_sandboxes_for_project"
           - $ref: "#/components/x-stackQL-resources/sandboxes/methods/list_sandboxes"
         insert: []
         update: []
@@ -5988,7 +6124,6 @@ components:
             $ref: "#/paths/~1DeleteResourcePolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6208,76 +6343,6 @@ components:
         insert: []
         update: []
         delete: []
-    builds_for_projects:
-      id: aws.codebuild.builds_for_projects
-      name: builds_for_projects
-      title: builds_for_projects
-      methods:
-        list_builds_for_project:
-          operation:
-            $ref: "#/paths/~1ListBuildsForProject/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListBuildsForProjectOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/builds_for_projects/methods/list_builds_for_project"
-        insert: []
-        update: []
-        delete: []
-    command_executions_for_sandboxes:
-      id: aws.codebuild.command_executions_for_sandboxes
-      name: command_executions_for_sandboxes
-      title: command_executions_for_sandboxes
-      methods:
-        list_command_executions_for_sandbox:
-          operation:
-            $ref: "#/paths/~1ListCommandExecutionsForSandbox/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.commandExecutions
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/command_executions_for_sandboxes/methods/list_command_executions_for_sandbox"
-        insert: []
-        update: []
-        delete: []
     curated_environment_images:
       id: aws.codebuild.curated_environment_images
       name: curated_environment_images
@@ -6299,82 +6364,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/curated_environment_images/methods/list_curated_environment_images"
-        insert: []
-        update: []
-        delete: []
-    reports_for_report_groups:
-      id: aws.codebuild.reports_for_report_groups
-      name: reports_for_report_groups
-      title: reports_for_report_groups
-      methods:
-        list_reports_for_report_group:
-          operation:
-            $ref: "#/paths/~1ListReportsForReportGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListReportsForReportGroupOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/reports_for_report_groups/methods/list_reports_for_report_group"
-        insert: []
-        update: []
-        delete: []
-    sandboxes_for_projects:
-      id: aws.codebuild.sandboxes_for_projects
-      name: sandboxes_for_projects
-      title: sandboxes_for_projects
-      methods:
-        list_sandboxes_for_project:
-          operation:
-            $ref: "#/paths/~1ListSandboxesForProject/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListSandboxesForProjectOutputDisplay"
-            transform:
-              type: golang_template_json_v0.3.0
-              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: nextToken
-                location: body
-              responseToken:
-                key: $.nextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sandboxes_for_projects/methods/list_sandboxes_for_project"
         insert: []
         update: []
         delete: []

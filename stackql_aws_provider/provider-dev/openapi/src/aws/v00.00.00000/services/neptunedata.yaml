@@ -2335,10 +2335,46 @@ components:
           $ref: "#/components/schemas/Long"
           description: The creation time of the model transform job, in milliseconds.
   x-stackQL-resources:
-    gremlin_query_status:
-      id: aws.neptunedata.gremlin_query_status
-      name: gremlin_query_status
-      title: gremlin_query_status
+    gremlin_queries:
+      id: aws.neptunedata.gremlin_queries
+      name: gremlin_queries
+      title: gremlin_queries
+      methods:
+        cancel_gremlin_query:
+          operation:
+            $ref: "#/paths/~1gremlin~1status~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        execute_gremlin_query:
+          operation:
+            $ref: "#/paths/~1gremlin/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_gremlin_queries:
+          operation:
+            $ref: "#/paths/~1gremlin~1status/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/gremlin_queries/methods/list_gremlin_queries"
+        insert: []
+        update: []
+        delete: []
+    gremlin_query_statuses:
+      id: aws.neptunedata.gremlin_query_statuses
+      name: gremlin_query_statuses
+      title: gremlin_query_statuses
       methods:
         get_gremlin_query_status:
           operation:
@@ -2348,14 +2384,50 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/gremlin_query_status/methods/get_gremlin_query_status"
+          - $ref: "#/components/x-stackQL-resources/gremlin_query_statuses/methods/get_gremlin_query_status"
         insert: []
         update: []
         delete: []
-    loader_job_status:
-      id: aws.neptunedata.loader_job_status
-      name: loader_job_status
-      title: loader_job_status
+    loader_jobs:
+      id: aws.neptunedata.loader_jobs
+      name: loader_jobs
+      title: loader_jobs
+      methods:
+        cancel_loader_job:
+          operation:
+            $ref: "#/paths/~1loader~1{load_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_loader_jobs:
+          operation:
+            $ref: "#/paths/~1loader/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        start_loader_job:
+          operation:
+            $ref: "#/paths/~1loader/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/loader_jobs/methods/list_loader_jobs"
+        insert: []
+        update: []
+        delete: []
+    loader_job_statuses:
+      id: aws.neptunedata.loader_job_statuses
+      name: loader_job_statuses
+      title: loader_job_statuses
       methods:
         get_loader_job_status:
           operation:
@@ -2367,7 +2439,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/loader_job_status/methods/get_loader_job_status"
+          - $ref: "#/components/x-stackQL-resources/loader_job_statuses/methods/get_loader_job_status"
         insert: []
         update: []
         delete: []
@@ -2376,6 +2448,12 @@ components:
       name: ml_data_processing_jobs
       title: ml_data_processing_jobs
       methods:
+        cancel_ml_data_processing_job:
+          operation:
+            $ref: "#/paths/~1ml~1dataprocessing~1{id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_ml_data_processing_job:
           operation:
             $ref: "#/paths/~1ml~1dataprocessing~1{id}/get"
@@ -2399,6 +2477,17 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        start_ml_data_processing_job:
+          operation:
+            $ref: "#/paths/~1ml~1dataprocessing/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ml_data_processing_jobs/methods/get_ml_data_processing_job"
@@ -2411,6 +2500,12 @@ components:
       name: ml_model_training_jobs
       title: ml_model_training_jobs
       methods:
+        cancel_ml_model_training_job:
+          operation:
+            $ref: "#/paths/~1ml~1modeltraining~1{id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_ml_model_training_job:
           operation:
             $ref: "#/paths/~1ml~1modeltraining~1{id}/get"
@@ -2434,6 +2529,17 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        start_ml_model_training_job:
+          operation:
+            $ref: "#/paths/~1ml~1modeltraining/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ml_model_training_jobs/methods/get_ml_model_training_job"
@@ -2446,6 +2552,12 @@ components:
       name: ml_model_transform_jobs
       title: ml_model_transform_jobs
       methods:
+        cancel_ml_model_transform_job:
+          operation:
+            $ref: "#/paths/~1ml~1modeltransform~1{id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_ml_model_transform_job:
           operation:
             $ref: "#/paths/~1ml~1modeltransform~1{id}/get"
@@ -2469,6 +2581,17 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        start_ml_model_transform_job:
+          operation:
+            $ref: "#/paths/~1ml~1modeltransform/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ml_model_transform_jobs/methods/get_ml_model_transform_job"
@@ -2476,10 +2599,46 @@ components:
         insert: []
         update: []
         delete: []
-    open_cypher_query_status:
-      id: aws.neptunedata.open_cypher_query_status
-      name: open_cypher_query_status
-      title: open_cypher_query_status
+    open_cypher_queries:
+      id: aws.neptunedata.open_cypher_queries
+      name: open_cypher_queries
+      title: open_cypher_queries
+      methods:
+        cancel_open_cypher_query:
+          operation:
+            $ref: "#/paths/~1opencypher~1status~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        execute_open_cypher_query:
+          operation:
+            $ref: "#/paths/~1opencypher/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_open_cypher_queries:
+          operation:
+            $ref: "#/paths/~1opencypher~1status/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/open_cypher_queries/methods/list_open_cypher_queries"
+        insert: []
+        update: []
+        delete: []
+    open_cypher_query_statuses:
+      id: aws.neptunedata.open_cypher_query_statuses
+      name: open_cypher_query_statuses
+      title: open_cypher_query_statuses
       methods:
         get_open_cypher_query_status:
           operation:
@@ -2489,7 +2648,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/open_cypher_query_status/methods/get_open_cypher_query_status"
+          - $ref: "#/components/x-stackQL-resources/open_cypher_query_statuses/methods/get_open_cypher_query_status"
         insert: []
         update: []
         delete: []
@@ -2619,10 +2778,94 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/sparql_statistics/methods/delete_sparql_statistics"
-    engine_status:
-      id: aws.neptunedata.engine_status
-      name: engine_status
-      title: engine_status
+    fast_resets:
+      id: aws.neptunedata.fast_resets
+      name: fast_resets
+      title: fast_resets
+      methods:
+        execute_fast_reset:
+          operation:
+            $ref: "#/paths/~1system/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    gremlin_explain_queries:
+      id: aws.neptunedata.gremlin_explain_queries
+      name: gremlin_explain_queries
+      title: gremlin_explain_queries
+      methods:
+        execute_gremlin_explain_query:
+          operation:
+            $ref: "#/paths/~1gremlin~1explain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    gremlin_profile_queries:
+      id: aws.neptunedata.gremlin_profile_queries
+      name: gremlin_profile_queries
+      title: gremlin_profile_queries
+      methods:
+        execute_gremlin_profile_query:
+          operation:
+            $ref: "#/paths/~1gremlin~1profile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    open_cypher_explain_queries:
+      id: aws.neptunedata.open_cypher_explain_queries
+      name: open_cypher_explain_queries
+      title: open_cypher_explain_queries
+      methods:
+        execute_open_cypher_explain_query:
+          operation:
+            $ref: "#/paths/~1opencypher~1explain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    engine_statuses:
+      id: aws.neptunedata.engine_statuses
+      name: engine_statuses
+      title: engine_statuses
       methods:
         get_engine_status:
           operation:
@@ -2632,7 +2875,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/engine_status/methods/get_engine_status"
+          - $ref: "#/components/x-stackQL-resources/engine_statuses/methods/get_engine_status"
         insert: []
         update: []
         delete: []
@@ -2709,63 +2952,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sparql_streams/methods/get_sparql_stream"
-        insert: []
-        update: []
-        delete: []
-    gremlin_queries:
-      id: aws.neptunedata.gremlin_queries
-      name: gremlin_queries
-      title: gremlin_queries
-      methods:
-        list_gremlin_queries:
-          operation:
-            $ref: "#/paths/~1gremlin~1status/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/gremlin_queries/methods/list_gremlin_queries"
-        insert: []
-        update: []
-        delete: []
-    loader_jobs:
-      id: aws.neptunedata.loader_jobs
-      name: loader_jobs
-      title: loader_jobs
-      methods:
-        list_loader_jobs:
-          operation:
-            $ref: "#/paths/~1loader/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/loader_jobs/methods/list_loader_jobs"
-        insert: []
-        update: []
-        delete: []
-    open_cypher_queries:
-      id: aws.neptunedata.open_cypher_queries
-      name: open_cypher_queries
-      title: open_cypher_queries
-      methods:
-        list_open_cypher_queries:
-          operation:
-            $ref: "#/paths/~1opencypher~1status/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/open_cypher_queries/methods/list_open_cypher_queries"
         insert: []
         update: []
         delete: []

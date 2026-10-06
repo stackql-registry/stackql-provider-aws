@@ -81,6 +81,27 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists the categories of a Amazon Q Business application environment instance. For more information, see Custom labels for Amazon Q Apps.</td>
 </tr>
+<tr>
+    <td><a href="#batch_create_category"><CopyableCode code="batch_create_category" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance-id"><code>instance-id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-categories"><code>categories</code></a></td>
+    <td></td>
+    <td>Creates Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.</td>
+</tr>
+<tr>
+    <td><a href="#batch_delete_category"><CopyableCode code="batch_delete_category" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance-id"><code>instance-id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-categories"><code>categories</code></a></td>
+    <td></td>
+    <td>Deletes Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.</td>
+</tr>
+<tr>
+    <td><a href="#batch_update_category"><CopyableCode code="batch_update_category" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-instance-id"><code>instance-id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-categories"><code>categories</code></a></td>
+    <td></td>
+    <td>Updates Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.</td>
+</tr>
 </tbody>
 </table>
 
@@ -128,6 +149,64 @@ categories
 FROM aws.qapps.categories
 WHERE `instance-id` = '{{ instance-id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_create_category"
+    values={[
+        { label: 'batch_create_category', value: 'batch_create_category' },
+        { label: 'batch_delete_category', value: 'batch_delete_category' },
+        { label: 'batch_update_category', value: 'batch_update_category' }
+    ]}
+>
+<TabItem value="batch_create_category">
+
+Creates Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.
+
+```sql
+EXEC aws.qapps.categories.batch_create_category 
+@instance-id='{{ instance-id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"categories": "{{ categories }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_delete_category">
+
+Deletes Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.
+
+```sql
+EXEC aws.qapps.categories.batch_delete_category 
+@instance-id='{{ instance-id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"categories": "{{ categories }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_update_category">
+
+Updates Categories for the Amazon Q Business application environment instance. Web experience users use Categories to tag and filter library items. For more information, see Custom labels for Amazon Q Apps.
+
+```sql
+EXEC aws.qapps.categories.batch_update_category 
+@instance-id='{{ instance-id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"categories": "{{ categories }}"
+}'
 ;
 ```
 </TabItem>

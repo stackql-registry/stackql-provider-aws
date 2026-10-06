@@ -220,6 +220,13 @@ The following methods are available for this resource:
     <td>Deletes the specified snapshot. When you make periodic snapshots of a volume, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the volume. You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI. You must first deregister the AMI before you can delete the snapshot. For more information, see Delete an Amazon EBS snapshot in the Amazon EBS User Guide.</td>
 </tr>
 <tr>
+    <td><a href="#copy_snapshot"><CopyableCode code="copy_snapshot" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SourceRegion"><code>SourceRegion</code></a>, <a href="#parameter-SourceSnapshotId"><code>SourceSnapshotId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-DestinationOutpostArn"><code>DestinationOutpostArn</code></a>, <a href="#parameter-DestinationRegion"><code>DestinationRegion</code></a>, <a href="#parameter-Encrypted"><code>Encrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-PresignedUrl"><code>PresignedUrl</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-CompletionDurationMinutes"><code>CompletionDurationMinutes</code></a>, <a href="#parameter-DestinationAvailabilityZone"><code>DestinationAvailabilityZone</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Creates an exact copy of an Amazon EBS snapshot. The location of the source snapshot determines whether you can copy it or not, and the allowed destinations for the snapshot copy. If the source snapshot is in a Region, you can copy it within that Region, to another Region, to an Outpost associated with that Region, or to a Local Zone in that Region. If the source snapshot is in a Local Zone, you can copy it within that Local Zone, to another Local Zone in the same zone group, or to the parent Region of the Local Zone. If the source snapshot is on an Outpost, you can't copy it. When copying snapshots to a Region, the encryption outcome for the snapshot copy depends on the Amazon EBS encryption by default setting for the destination Region, the encryption status of the source snapshot, and the encryption parameters you specify in the request. For more information, see Encryption and snapshot copying. Snapshots copied to an Outpost must be encrypted. Unencrypted snapshots are not supported on Outposts. For more information, Amazon EBS local snapshots on Outposts. Snapshots copies have an arbitrary source volume ID. Do not use this volume ID for any purpose. For more information, see Copy an Amazon EBS snapshot in the Amazon EBS User Guide.</td>
+</tr>
+<tr>
     <td><a href="#disable_snapshot_block_public_access"><CopyableCode code="disable_snapshot_block_public_access" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -232,6 +239,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-State"><code>State</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Enables or modifies the block public access for snapshots setting at the account level for the specified Amazon Web Services Region. After you enable block public access for snapshots in a Region, users can no longer request public sharing for snapshots in that Region. Snapshots that are already publicly shared are either treated as private or they remain publicly shared, depending on the State that you specify. Enabling block public access for snapshots in block all sharing mode does not change the permissions for snapshots that are already publicly shared. Instead, it prevents these snapshots from be publicly visible and publicly accessible. Therefore, the attributes for these snapshots still indicate that they are publicly shared, even though they are not publicly available. If you later disable block public access or change the mode to block new sharing, these snapshots will become publicly available again. For more information, see Block public access for snapshots in the Amazon EBS User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#import_snapshot"><CopyableCode code="import_snapshot" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-ClientData"><code>ClientData</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-Description"><code>Description</code></a>, <a href="#parameter-DiskContainer"><code>DiskContainer</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a>, <a href="#parameter-Encrypted"><code>Encrypted</code></a>, <a href="#parameter-KmsKeyId"><code>KmsKeyId</code></a>, <a href="#parameter-RoleName"><code>RoleName</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a></td>
+    <td>Imports a disk into an EBS snapshot. For more information, see Importing a disk as a snapshot using VM Import/Export in the VM Import/Export User Guide.</td>
 </tr>
 <tr>
     <td><a href="#lock_snapshot"><CopyableCode code="lock_snapshot" /></a></td>
@@ -304,6 +318,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ID of the snapshot to unlock.</td>
 </tr>
+<tr id="parameter-SourceRegion">
+    <td><CopyableCode code="SourceRegion" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Region that contains the snapshot to be copied.</td>
+</tr>
+<tr id="parameter-SourceSnapshotId">
+    <td><CopyableCode code="SourceSnapshotId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the EBS snapshot to copy.</td>
+</tr>
 <tr id="parameter-VolumeId">
     <td><CopyableCode code="VolumeId" /></td>
     <td><code>string</code></td>
@@ -313,6 +337,21 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-ClientData">
+    <td><CopyableCode code="ClientData" /></td>
+    <td><code>object</code></td>
+    <td>The client-specific data.</td>
+</tr>
+<tr id="parameter-ClientToken">
+    <td><CopyableCode code="ClientToken" /></td>
+    <td><code>string</code></td>
+    <td>Token to enable idempotency for VM import requests.</td>
+</tr>
+<tr id="parameter-CompletionDurationMinutes">
+    <td><CopyableCode code="CompletionDurationMinutes" /></td>
+    <td><code>integer</code></td>
+    <td>Not supported when copying snapshots to or from Local Zones or Outposts. Specify a completion duration, in 15 minute increments, to initiate a time-based snapshot copy. Time-based snapshot copy operations complete within the specified duration. For more information, see Time-based copies. If you do not specify a value, the snapshot copy operation is completed on a best-effort basis.</td>
 </tr>
 <tr id="parameter-CoolOffPeriod">
     <td><CopyableCode code="CoolOffPeriod" /></td>
@@ -327,12 +366,37 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Description">
     <td><CopyableCode code="Description" /></td>
     <td><code>string</code></td>
-    <td>A description propagated to every snapshot specified by the instance.</td>
+    <td>The description string for the import snapshot task.</td>
+</tr>
+<tr id="parameter-DestinationAvailabilityZone">
+    <td><CopyableCode code="DestinationAvailabilityZone" /></td>
+    <td><code>string</code></td>
+    <td>The Local Zone, for example, cn-north-1-pkx-1a to which to copy the snapshot. Only supported when copying a snapshot to a Local Zone.</td>
+</tr>
+<tr id="parameter-DestinationOutpostArn">
+    <td><CopyableCode code="DestinationOutpostArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the Outpost to which to copy the snapshot. Only supported when copying a snapshot to an Outpost. For more information, see Copy snapshots from an Amazon Web Services Region to an Outpost in the Amazon EBS User Guide.</td>
+</tr>
+<tr id="parameter-DestinationRegion">
+    <td><CopyableCode code="DestinationRegion" /></td>
+    <td><code>string</code></td>
+    <td>The destination Region to use in the PresignedUrl parameter of a snapshot copy operation. This parameter is only valid for specifying the destination Region in a PresignedUrl parameter, where it is required. The snapshot copy is sent to the regional endpoint that you sent the HTTP request to (for example, ec2.us-east-1.amazonaws.com). With the CLI, this is specified using the --region parameter or the default Region in your Amazon Web Services configuration file.</td>
+</tr>
+<tr id="parameter-DiskContainer">
+    <td><CopyableCode code="DiskContainer" /></td>
+    <td><code>object</code></td>
+    <td>Information about the disk container.</td>
 </tr>
 <tr id="parameter-DryRun">
     <td><CopyableCode code="DryRun" /></td>
     <td><code>boolean</code></td>
     <td>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.</td>
+</tr>
+<tr id="parameter-Encrypted">
+    <td><CopyableCode code="Encrypted" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the destination snapshot of the imported image should be encrypted. The default KMS key for EBS is used unless you specify a non-default KMS key using KmsKeyId. For more information, see Amazon EBS Encryption in the Amazon Elastic Compute Cloud User Guide.</td>
 </tr>
 <tr id="parameter-ExpirationDate">
     <td><CopyableCode code="ExpirationDate" /></td>
@@ -343,6 +407,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="Filter" /></td>
     <td><code>array</code></td>
     <td>The filters. description - A description of the snapshot. encrypted - Indicates whether the snapshot is encrypted (true | false) owner-alias - The owner alias, from an Amazon-maintained list (amazon). This is not the user-configured Amazon Web Services account alias set using the IAM console. We recommend that you use the related parameter instead of this filter. owner-id - The Amazon Web Services account ID of the owner. We recommend that you use the related parameter instead of this filter. progress - The progress of the snapshot, as a percentage (for example, 80%). snapshot-id - The snapshot ID. start-time - The time stamp when the snapshot was initiated. status - The status of the snapshot (pending | completed | error). storage-tier - The storage tier of the snapshot (archive | standard). transfer-type - The type of operation used to create the snapshot (time-based | standard). tag:<code>&lt;key&gt;</code> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key Owner and the value TeamA, specify tag:Owner for the filter name and TeamA for the filter value. tag-key - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value. volume-id - The ID of the volume the snapshot is for. volume-size - The size of the volume, in GiB.</td>
+</tr>
+<tr id="parameter-KmsKeyId">
+    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>An identifier for the symmetric KMS key to use when creating the encrypted snapshot. This parameter is only required if you want to use a non-default KMS key; if this parameter is not specified, the default KMS key for EBS is used. If a KmsKeyId is specified, the Encrypted flag must also be set. The KMS key identifier may be provided in any of the following formats: Key ID Key alias ARN using key ID. The ID ARN contains the arn:aws:kms namespace, followed by the Region of the key, the Amazon Web Services account ID of the key owner, the key namespace, and then the key ID. For example, arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef. ARN using key alias. The alias ARN contains the arn:aws:kms namespace, followed by the Region of the key, the Amazon Web Services account ID of the key owner, the alias namespace, and then the key alias. For example, arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias. Amazon Web Services parses KmsKeyId asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure. The specified KMS key must exist in the Region that the snapshot is being copied to. Amazon EBS does not support asymmetric KMS keys.</td>
 </tr>
 <tr id="parameter-Location">
     <td><CopyableCode code="Location" /></td>
@@ -379,10 +448,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>boolean</code></td>
     <td>Indicates whether to permanently restore an archived snapshot. To permanently restore an archived snapshot, specify true and omit the RestoreSnapshotTierRequest$TemporaryRestoreDays parameter.</td>
 </tr>
+<tr id="parameter-PresignedUrl">
+    <td><CopyableCode code="PresignedUrl" /></td>
+    <td><code>string</code></td>
+    <td>When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see Query requests. The PresignedUrl should use the snapshot source endpoint, the CopySnapshot action, and include the SourceRegion, SourceSnapshotId, and DestinationRegion parameters. The PresignedUrl must be signed using Amazon Web Services Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference. An invalid or improperly signed PresignedUrl will cause the copy operation to fail asynchronously, and the snapshot will move to an error state.</td>
+</tr>
 <tr id="parameter-RestorableBy">
     <td><CopyableCode code="RestorableBy" /></td>
     <td><code>array</code></td>
     <td>The IDs of the Amazon Web Services accounts that can create volumes from the snapshot.</td>
+</tr>
+<tr id="parameter-RoleName">
+    <td><CopyableCode code="RoleName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the role to use when not using the default role, 'vmimport'.</td>
 </tr>
 <tr id="parameter-SnapshotId">
     <td><CopyableCode code="SnapshotId" /></td>
@@ -402,7 +481,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
-    <td>Tags to apply to every snapshot specified by the instance.</td>
+    <td>The tags to apply to the import snapshot task during creation.</td>
 </tr>
 <tr id="parameter-TemporaryRestoreDays">
     <td><CopyableCode code="TemporaryRestoreDays" /></td>
@@ -663,10 +742,12 @@ AND DryRun = '{{ DryRun }}'
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="disable_snapshot_block_public_access"
+    defaultValue="copy_snapshot"
     values={[
+        { label: 'copy_snapshot', value: 'copy_snapshot' },
         { label: 'disable_snapshot_block_public_access', value: 'disable_snapshot_block_public_access' },
         { label: 'enable_snapshot_block_public_access', value: 'enable_snapshot_block_public_access' },
+        { label: 'import_snapshot', value: 'import_snapshot' },
         { label: 'lock_snapshot', value: 'lock_snapshot' },
         { label: 'reset_snapshot_attribute', value: 'reset_snapshot_attribute' },
         { label: 'restore_snapshot_from_recycle_bin', value: 'restore_snapshot_from_recycle_bin' },
@@ -674,6 +755,28 @@ AND DryRun = '{{ DryRun }}'
         { label: 'unlock_snapshot', value: 'unlock_snapshot' }
     ]}
 >
+<TabItem value="copy_snapshot">
+
+Creates an exact copy of an Amazon EBS snapshot. The location of the source snapshot determines whether you can copy it or not, and the allowed destinations for the snapshot copy. If the source snapshot is in a Region, you can copy it within that Region, to another Region, to an Outpost associated with that Region, or to a Local Zone in that Region. If the source snapshot is in a Local Zone, you can copy it within that Local Zone, to another Local Zone in the same zone group, or to the parent Region of the Local Zone. If the source snapshot is on an Outpost, you can't copy it. When copying snapshots to a Region, the encryption outcome for the snapshot copy depends on the Amazon EBS encryption by default setting for the destination Region, the encryption status of the source snapshot, and the encryption parameters you specify in the request. For more information, see Encryption and snapshot copying. Snapshots copied to an Outpost must be encrypted. Unencrypted snapshots are not supported on Outposts. For more information, Amazon EBS local snapshots on Outposts. Snapshots copies have an arbitrary source volume ID. Do not use this volume ID for any purpose. For more information, see Copy an Amazon EBS snapshot in the Amazon EBS User Guide.
+
+```sql
+EXEC aws.ec2.snapshots.copy_snapshot 
+@SourceRegion='{{ SourceRegion }}' --required, 
+@SourceSnapshotId='{{ SourceSnapshotId }}' --required, 
+@region='{{ region }}' --required, 
+@Description='{{ Description }}', 
+@DestinationOutpostArn='{{ DestinationOutpostArn }}', 
+@DestinationRegion='{{ DestinationRegion }}', 
+@Encrypted={{ Encrypted }}, 
+@KmsKeyId='{{ KmsKeyId }}', 
+@PresignedUrl='{{ PresignedUrl }}', 
+@TagSpecification='{{ TagSpecification }}', 
+@CompletionDurationMinutes='{{ CompletionDurationMinutes }}', 
+@DestinationAvailabilityZone='{{ DestinationAvailabilityZone }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
 <TabItem value="disable_snapshot_block_public_access">
 
 Disables the block public access for snapshots setting at the account level for the specified Amazon Web Services Region. After you disable block public access for snapshots in a Region, users can publicly share snapshots in that Region. Enabling block public access for snapshots in block-all-sharing mode does not change the permissions for snapshots that are already publicly shared. Instead, it prevents these snapshots from be publicly visible and publicly accessible. Therefore, the attributes for these snapshots still indicate that they are publicly shared, even though they are not publicly available. If you disable block public access , these snapshots will become publicly available again. For more information, see Block public access for snapshots in the Amazon EBS User Guide .
@@ -694,6 +797,25 @@ EXEC aws.ec2.snapshots.enable_snapshot_block_public_access
 @region='{{ region }}' --required, 
 @State='{{ State }}', 
 @DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="import_snapshot">
+
+Imports a disk into an EBS snapshot. For more information, see Importing a disk as a snapshot using VM Import/Export in the VM Import/Export User Guide.
+
+```sql
+EXEC aws.ec2.snapshots.import_snapshot 
+@region='{{ region }}' --required, 
+@ClientData='{{ ClientData }}', 
+@ClientToken='{{ ClientToken }}', 
+@Description='{{ Description }}', 
+@DiskContainer='{{ DiskContainer }}', 
+@DryRun={{ DryRun }}, 
+@Encrypted={{ Encrypted }}, 
+@KmsKeyId='{{ KmsKeyId }}', 
+@RoleName='{{ RoleName }}', 
+@TagSpecification='{{ TagSpecification }}'
 ;
 ```
 </TabItem>

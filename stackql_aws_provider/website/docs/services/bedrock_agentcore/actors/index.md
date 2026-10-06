@@ -81,6 +81,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists all actors in an AgentCore Memory resource. We recommend using pagination to ensure that the operation returns quickly and successfully. To use this operation, you must have the bedrock-agentcore:ListActors permission.</td>
 </tr>
+<tr>
+    <td><a href="#ingest_data"><CopyableCode code="ingest_data" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-memory_id"><code>memory_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-source"><code>source</code></a>, <a href="#parameter-contentTimestamp"><code>contentTimestamp</code></a>, <a href="#parameter-actorId"><code>actorId</code></a></td>
+    <td></td>
+    <td>Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource. To use this operation, you must have the bedrock-agentcore:IngestData permission.</td>
+</tr>
 </tbody>
 </table>
 
@@ -100,7 +107,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-memory_id">
     <td><CopyableCode code="memory_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of the AgentCore Memory resource for which to list actors.</td>
+    <td>The identifier of the AgentCore Memory resource to ingest content into.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -128,6 +135,38 @@ actor_id
 FROM aws.bedrock_agentcore.actors
 WHERE memory_id = '{{ memory_id }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="ingest_data"
+    values={[
+        { label: 'ingest_data', value: 'ingest_data' }
+    ]}
+>
+<TabItem value="ingest_data">
+
+Submits content directly for ingestion to generate long-term memory records in a AgentCore Memory resource. To use this operation, you must have the bedrock-agentcore:IngestData permission.
+
+```sql
+EXEC aws.bedrock_agentcore.actors.ingest_data 
+@memory_id='{{ memory_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"source": "{{ source }}", 
+"contentTimestamp": "{{ contentTimestamp }}", 
+"actorId": "{{ actorId }}", 
+"sessionId": "{{ sessionId }}", 
+"extractionConfig": "{{ extractionConfig }}", 
+"metadata": "{{ metadata }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

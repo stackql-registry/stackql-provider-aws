@@ -18,7 +18,7 @@ wellarchitected service documentation.
 
 :::info[Service Summary]
 
-total resources: __32__  
+total resources: __31__  
 
 :::
 
@@ -36,14 +36,13 @@ total resources: __32__
 <a href="/services/wellarchitected/check_summaries/">check_summaries</a><br />
 <a href="/services/wellarchitected/consolidated_reports/">consolidated_reports</a><br />
 <a href="/services/wellarchitected/global_settings/">global_settings</a><br />
-<a href="/services/wellarchitected/lens/">lens</a><br />
 <a href="/services/wellarchitected/lens_review_improvements/">lens_review_improvements</a><br />
 <a href="/services/wellarchitected/lens_review_reports/">lens_review_reports</a><br />
 <a href="/services/wellarchitected/lens_reviews/">lens_reviews</a><br />
-<a href="/services/wellarchitected/lens_shares/">lens_shares</a>
+<a href="/services/wellarchitected/lens_shares/">lens_shares</a><br />
+<a href="/services/wellarchitected/lens_version_differences/">lens_version_differences</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/wellarchitected/lens_version_differences/">lens_version_differences</a><br />
 <a href="/services/wellarchitected/lenses/">lenses</a><br />
 <a href="/services/wellarchitected/milestones/">milestones</a><br />
 <a href="/services/wellarchitected/notifications/">notifications</a><br />

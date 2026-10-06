@@ -433,6 +433,13 @@ The following methods are available for this resource:
     <td>Create a new transcoding job. For information about jobs and job settings, see the User Guide at http:​//docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</td>
 </tr>
 <tr>
+    <td><a href="#cancel_job"><CopyableCode code="cancel_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Permanently cancel a job. Once you have canceled a job, you can't start it again.</td>
+</tr>
+<tr>
     <td><a href="#search_jobs"><CopyableCode code="search_jobs" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -465,7 +472,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>the job ID of the job.</td>
+    <td>The Job ID of the job to be cancelled.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -1102,12 +1109,24 @@ job
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="search_jobs"
+    defaultValue="cancel_job"
     values={[
+        { label: 'cancel_job', value: 'cancel_job' },
         { label: 'search_jobs', value: 'search_jobs' },
         { label: 'start_jobs_query', value: 'start_jobs_query' }
     ]}
 >
+<TabItem value="cancel_job">
+
+Permanently cancel a job. Once you have canceled a job, you can't start it again.
+
+```sql
+EXEC aws.mediaconvert.jobs.cancel_job 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
 <TabItem value="search_jobs">
 
 Retrieve a JSON array that includes job details for up to twenty of your most recent jobs. Optionally filter results further according to input file, queue, or status. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.

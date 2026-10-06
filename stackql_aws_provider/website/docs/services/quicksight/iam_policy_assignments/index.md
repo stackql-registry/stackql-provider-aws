@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_iam_policy_assignment"
     values={[
         { label: 'describe_iam_policy_assignment', value: 'describe_iam_policy_assignment' },
+        { label: 'list_iam_policy_assignments_for_user', value: 'list_iam_policy_assignments_for_user' },
         { label: 'list_iam_policy_assignments', value: 'list_iam_policy_assignments' }
     ]}
 >
@@ -64,6 +65,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="status" /></td>
     <td><code>integer</code></td>
     <td>The HTTP status of the request.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_iam_policy_assignments_for_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="assignment_name" /></td>
+    <td><code>string</code></td>
+    <td>A name for the IAM policy assignment. (pattern: &lt;code&gt;(?=^.&#123;2,256&#125;$)(?!.*\s)&#91;0-9a-zA-Z-_.:=+@&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="policy_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the resource.</td>
 </tr>
 </tbody>
 </table>
@@ -115,6 +140,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-assignment_name"><code>assignment_name</code></a>, <a href="#parameter-namespace"><code>namespace</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Describes an existing IAM policy assignment, as specified by the assignment name.</td>
+</tr>
+<tr>
+    <td><a href="#list_iam_policy_assignments_for_user"><CopyableCode code="list_iam_policy_assignments_for_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-user_name"><code>user_name</code></a>, <a href="#parameter-namespace"><code>namespace</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-next-token"><code>next-token</code></a>, <a href="#parameter-max-results"><code>max-results</code></a></td>
+    <td>Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.</td>
 </tr>
 <tr>
     <td><a href="#list_iam_policy_assignments"><CopyableCode code="list_iam_policy_assignments" /></a></td>
@@ -180,6 +212,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-user_name">
+    <td><CopyableCode code="user_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the user.</td>
+</tr>
 <tr id="parameter-assignment-status">
     <td><CopyableCode code="assignment-status" /></td>
     <td><code>string</code></td>
@@ -204,6 +241,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_iam_policy_assignment"
     values={[
         { label: 'describe_iam_policy_assignment', value: 'describe_iam_policy_assignment' },
+        { label: 'list_iam_policy_assignments_for_user', value: 'list_iam_policy_assignments_for_user' },
         { label: 'list_iam_policy_assignments', value: 'list_iam_policy_assignments' }
     ]}
 >
@@ -221,6 +259,24 @@ WHERE aws_account_id = '{{ aws_account_id }}' -- required
 AND assignment_name = '{{ assignment_name }}' -- required
 AND namespace = '{{ namespace }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_iam_policy_assignments_for_user">
+
+Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.
+
+```sql
+SELECT
+assignment_name,
+policy_arn
+FROM aws.quicksight.iam_policy_assignments
+WHERE aws_account_id = '{{ aws_account_id }}' -- required
+AND user_name = '{{ user_name }}' -- required
+AND namespace = '{{ namespace }}' -- required
+AND region = '{{ region }}' -- required
+AND `next-token` = '{{ next-token }}'
+AND `max-results` = '{{ max-results }}'
 ;
 ```
 </TabItem>

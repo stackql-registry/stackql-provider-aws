@@ -430,10 +430,6 @@ paths:
       responses:
         "202":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutGroupConfigurationOutput"
   /resources/search:
     post:
       operationId: SearchResources
@@ -1368,8 +1364,6 @@ components:
         CreatedAt:
           $ref: "#/components/schemas/timestamp"
           description: The timestamp of when the tag-sync task was created.
-    PutGroupConfigurationOutput:
-      type: object
     SearchResourcesOutput:
       type: object
       properties:
@@ -1480,6 +1474,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        tag:
+          operation:
+            $ref: "#/paths/~1resources~1{arn}~1tags/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         start_tag_sync_task:
           operation:
             $ref: "#/paths/~1start-tag-sync-task/post"
@@ -1628,7 +1633,6 @@ components:
             $ref: "#/paths/~1put-group-configuration/post"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1716,6 +1720,27 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/tag_sync_tasks/methods/get_tag_sync_task"
           - $ref: "#/components/x-stackQL-resources/tag_sync_tasks/methods/list_tag_sync_tasks"
+        insert: []
+        update: []
+        delete: []
+    untags:
+      id: aws.resource_groups.untags
+      name: untags
+      title: untags
+      methods:
+        untag:
+          operation:
+            $ref: "#/paths/~1resources~1{arn}~1tags/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

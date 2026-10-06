@@ -200,10 +200,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDeliveryStreamOutput'
       x-stackql-resource: delivery_streams
       x-stackql-method: delete_delivery_stream
       x-stackql-verb: DELETE
@@ -548,10 +544,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartDeliveryStreamEncryptionOutput'
       x-stackql-resource: delivery_streams
       x-stackql-method: start_delivery_stream_encryption
       x-stackql-verb: EXEC
@@ -595,10 +587,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopDeliveryStreamEncryptionOutput'
       x-stackql-resource: delivery_streams
       x-stackql-method: stop_delivery_stream_encryption
       x-stackql-verb: EXEC
@@ -640,10 +628,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagDeliveryStreamOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_delivery_stream
       x-stackql-verb: UPDATE
@@ -682,10 +666,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagDeliveryStreamOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_delivery_stream
       x-stackql-verb: UPDATE
@@ -774,10 +754,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDestinationOutput'
       x-stackql-resource: delivery_streams
       x-stackql-method: update_destination
       x-stackql-verb: UPDATE
@@ -2956,8 +2932,6 @@ components:
       minLength: 1
       maxLength: 512
       pattern: arn:.*:firehose:[a-zA-Z0-9\-]+:\d{12}:deliverystream/[a-zA-Z0-9._-]+
-    DeleteDeliveryStreamOutput:
-      type: object
     DescribeDeliveryStreamInputLimit:
       type: integer
       minimum: 1
@@ -3948,18 +3922,10 @@ components:
       type: string
     ErrorMessage:
       type: string
-    StartDeliveryStreamEncryptionOutput:
-      type: object
-    StopDeliveryStreamEncryptionOutput:
-      type: object
-    TagDeliveryStreamOutput:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagDeliveryStreamOutput:
-      type: object
     S3DestinationUpdate:
       description: Describes an update for a destination in Amazon S3.
       type: object
@@ -4427,5 +4393,3 @@ components:
           description: Configuration describing where the destination Iceberg tables are persisted.
         S3Configuration:
           $ref: '#/components/schemas/S3DestinationConfiguration'
-    UpdateDestinationOutput:
-      type: object

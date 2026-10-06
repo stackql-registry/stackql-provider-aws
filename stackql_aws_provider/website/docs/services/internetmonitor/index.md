@@ -31,7 +31,7 @@ total resources: __6__
 </div>
 <div class="providerDocColumn">
 <a href="/services/internetmonitor/query_results/">query_results</a><br />
-<a href="/services/internetmonitor/query_status/">query_status</a><br />
+<a href="/services/internetmonitor/query_statuses/">query_statuses</a><br />
 <a href="/services/internetmonitor/tags/">tags</a>
 </div>
 </div>

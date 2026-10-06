@@ -25,18 +25,18 @@ total resources: __14__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/service_quotas/association_for_service_quota_templates/">association_for_service_quota_templates</a><br />
+<a href="/services/service_quotas/associations/">associations</a><br />
 <a href="/services/service_quotas/auto_management_configurations/">auto_management_configurations</a><br />
 <a href="/services/service_quotas/auto_managements/">auto_managements</a><br />
 <a href="/services/service_quotas/aws_default_service_quotas/">aws_default_service_quotas</a><br />
 <a href="/services/service_quotas/quota_utilization_reports/">quota_utilization_reports</a><br />
 <a href="/services/service_quotas/requested_service_quota_change_histories/">requested_service_quota_change_histories</a><br />
-<a href="/services/service_quotas/requested_service_quota_change_history_by_quotas/">requested_service_quota_change_history_by_quotas</a>
+<a href="/services/service_quotas/requested_service_quota_changes/">requested_service_quota_changes</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/service_quotas/requested_service_quota_changes/">requested_service_quota_changes</a><br />
 <a href="/services/service_quotas/service_quota_increase_request_from_templates/">service_quota_increase_request_from_templates</a><br />
 <a href="/services/service_quotas/service_quota_increase_requests_in_templates/">service_quota_increase_requests_in_templates</a><br />
+<a href="/services/service_quotas/service_quota_increases/">service_quota_increases</a><br />
 <a href="/services/service_quotas/service_quotas/">service_quotas</a><br />
 <a href="/services/service_quotas/services/">services</a><br />
 <a href="/services/service_quotas/support_cases/">support_cases</a><br />

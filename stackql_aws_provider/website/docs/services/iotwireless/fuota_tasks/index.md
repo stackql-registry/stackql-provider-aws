@@ -195,20 +195,6 @@ The following methods are available for this resource:
     <td>Associate a wireless device with a FUOTA task.</td>
 </tr>
 <tr>
-    <td><a href="#disassociate_multicast_group_from_fuota_task"><CopyableCode code="disassociate_multicast_group_from_fuota_task" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-multicast_group_id"><code>multicast_group_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Disassociates a multicast group from a FUOTA task.</td>
-</tr>
-<tr>
-    <td><a href="#disassociate_wireless_device_from_fuota_task"><CopyableCode code="disassociate_wireless_device_from_fuota_task" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-wireless_device_id"><code>wireless_device_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Disassociates a wireless device from a FUOTA task.</td>
-</tr>
-<tr>
     <td><a href="#update_fuota_task"><CopyableCode code="update_fuota_task" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -221,6 +207,27 @@ The following methods are available for this resource:
     <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a FUOTA task.</td>
+</tr>
+<tr>
+    <td><a href="#start_fuota_task"><CopyableCode code="start_fuota_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a FUOTA task.</td>
+</tr>
+<tr>
+    <td><a href="#disassociate_multicast_group_from_fuota_task"><CopyableCode code="disassociate_multicast_group_from_fuota_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-multicast_group_id"><code>multicast_group_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disassociates a multicast group from a FUOTA task.</td>
+</tr>
+<tr>
+    <td><a href="#disassociate_wireless_device_from_fuota_task"><CopyableCode code="disassociate_wireless_device_from_fuota_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-wireless_device_id"><code>wireless_device_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Disassociates a wireless device from a FUOTA task.</td>
 </tr>
 </tbody>
 </table>
@@ -438,8 +445,6 @@ id
     values={[
         { label: 'associate_multicast_group_with_fuota_task', value: 'associate_multicast_group_with_fuota_task' },
         { label: 'associate_wireless_device_with_fuota_task', value: 'associate_wireless_device_with_fuota_task' },
-        { label: 'disassociate_multicast_group_from_fuota_task', value: 'disassociate_multicast_group_from_fuota_task' },
-        { label: 'disassociate_wireless_device_from_fuota_task', value: 'disassociate_wireless_device_from_fuota_task' },
         { label: 'update_fuota_task', value: 'update_fuota_task' }
     ]}
 >
@@ -469,34 +474,6 @@ WHERE
 id = '{{ id }}' --required
 AND region = '{{ region }}' --required
 AND WirelessDeviceId = '{{ WirelessDeviceId }}' --required;
-```
-</TabItem>
-<TabItem value="disassociate_multicast_group_from_fuota_task">
-
-Disassociates a multicast group from a FUOTA task.
-
-```sql
-UPDATE aws.iotwireless.fuota_tasks
-SET 
--- No updatable properties
-WHERE 
-id = '{{ id }}' --required
-AND multicast_group_id = '{{ multicast_group_id }}' --required
-AND region = '{{ region }}' --required;
-```
-</TabItem>
-<TabItem value="disassociate_wireless_device_from_fuota_task">
-
-Disassociates a wireless device from a FUOTA task.
-
-```sql
-UPDATE aws.iotwireless.fuota_tasks
-SET 
--- No updatable properties
-WHERE 
-id = '{{ id }}' --required
-AND wireless_device_id = '{{ wireless_device_id }}' --required
-AND region = '{{ region }}' --required;
 ```
 </TabItem>
 <TabItem value="update_fuota_task">
@@ -539,6 +516,58 @@ Deletes a FUOTA task.
 DELETE FROM aws.iotwireless.fuota_tasks
 WHERE id = '{{ id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_fuota_task"
+    values={[
+        { label: 'start_fuota_task', value: 'start_fuota_task' },
+        { label: 'disassociate_multicast_group_from_fuota_task', value: 'disassociate_multicast_group_from_fuota_task' },
+        { label: 'disassociate_wireless_device_from_fuota_task', value: 'disassociate_wireless_device_from_fuota_task' }
+    ]}
+>
+<TabItem value="start_fuota_task">
+
+Starts a FUOTA task.
+
+```sql
+EXEC aws.iotwireless.fuota_tasks.start_fuota_task 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"LoRaWAN": "{{ LoRaWAN }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="disassociate_multicast_group_from_fuota_task">
+
+Disassociates a multicast group from a FUOTA task.
+
+```sql
+EXEC aws.iotwireless.fuota_tasks.disassociate_multicast_group_from_fuota_task 
+@id='{{ id }}' --required, 
+@multicast_group_id='{{ multicast_group_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="disassociate_wireless_device_from_fuota_task">
+
+Disassociates a wireless device from a FUOTA task.
+
+```sql
+EXEC aws.iotwireless.fuota_tasks.disassociate_wireless_device_from_fuota_task 
+@id='{{ id }}' --required, 
+@wireless_device_id='{{ wireless_device_id }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

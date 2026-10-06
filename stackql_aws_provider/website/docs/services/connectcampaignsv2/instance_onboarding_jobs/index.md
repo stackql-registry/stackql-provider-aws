@@ -57,6 +57,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance.</td>
 </tr>
+<tr>
+    <td><a href="#start_instance_onboarding_job"><CopyableCode code="start_instance_onboarding_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-connect_instance_id"><code>connect_instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-encryptionConfig"><code>encryptionConfig</code></a></td>
+    <td></td>
+    <td>Onboard the specific Amazon Connect instance to Connect Campaigns.</td>
+</tr>
 </tbody>
 </table>
 
@@ -102,6 +109,32 @@ Delete the Connect Campaigns onboarding job for the specified Amazon Connect ins
 DELETE FROM aws.connectcampaignsv2.instance_onboarding_jobs
 WHERE connect_instance_id = '{{ connect_instance_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_instance_onboarding_job"
+    values={[
+        { label: 'start_instance_onboarding_job', value: 'start_instance_onboarding_job' }
+    ]}
+>
+<TabItem value="start_instance_onboarding_job">
+
+Onboard the specific Amazon Connect instance to Connect Campaigns.
+
+```sql
+EXEC aws.connectcampaignsv2.instance_onboarding_jobs.start_instance_onboarding_job 
+@connect_instance_id='{{ connect_instance_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"encryptionConfig": "{{ encryptionConfig }}"
+}'
 ;
 ```
 </TabItem>

@@ -125,6 +125,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-KeyName"><code>KeyName</code></a>, <a href="#parameter-KeyPairId"><code>KeyPairId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Deletes the specified key pair, by removing the public key from Amazon EC2.</td>
 </tr>
+<tr>
+    <td><a href="#import_key_pair"><CopyableCode code="import_key_pair" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-KeyName"><code>KeyName</code></a>, <a href="#parameter-PublicKeyMaterial"><code>PublicKeyMaterial</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool. You give Amazon Web Services only the public key. The private key is never transferred between you and Amazon Web Services. For more information about the requirements for importing a key pair, see Create a key pair and import the public key to Amazon EC2 in the Amazon EC2 User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -144,7 +151,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-KeyName">
     <td><CopyableCode code="KeyName" /></td>
     <td><code>string</code></td>
-    <td>A unique name for the key pair. Constraints: Up to 255 ASCII characters</td>
+    <td>A unique name for the key pair.</td>
+</tr>
+<tr id="parameter-PublicKeyMaterial">
+    <td><CopyableCode code="PublicKeyMaterial" /></td>
+    <td><code>string (byte)</code></td>
+    <td>The public key.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -189,7 +201,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-TagSpecification">
     <td><CopyableCode code="TagSpecification" /></td>
     <td><code>array</code></td>
-    <td>The tags to apply to the new key pair.</td>
+    <td>The tags to apply to the imported key pair.</td>
 </tr>
 </tbody>
 </table>
@@ -317,6 +329,31 @@ WHERE region = '{{ region }}' --required
 AND KeyName = '{{ KeyName }}'
 AND KeyPairId = '{{ KeyPairId }}'
 AND DryRun = '{{ DryRun }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="import_key_pair"
+    values={[
+        { label: 'import_key_pair', value: 'import_key_pair' }
+    ]}
+>
+<TabItem value="import_key_pair">
+
+Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool. You give Amazon Web Services only the public key. The private key is never transferred between you and Amazon Web Services. For more information about the requirements for importing a key pair, see Create a key pair and import the public key to Amazon EC2 in the Amazon EC2 User Guide.
+
+```sql
+EXEC aws.ec2.key_pairs.import_key_pair 
+@KeyName='{{ KeyName }}' --required, 
+@PublicKeyMaterial='{{ PublicKeyMaterial }}' --required, 
+@region='{{ region }}' --required, 
+@TagSpecification='{{ TagSpecification }}', 
+@DryRun={{ DryRun }}
 ;
 ```
 </TabItem>

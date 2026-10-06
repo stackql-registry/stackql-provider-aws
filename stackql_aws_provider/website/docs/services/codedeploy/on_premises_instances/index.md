@@ -33,32 +33,13 @@ Creates, updates, deletes, gets or lists an <code>on_premises_instances</code> r
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_on_premises_instances"
+    defaultValue="get_on_premises_instance"
     values={[
-        { label: 'batch_get_on_premises_instances', value: 'batch_get_on_premises_instances' },
         { label: 'get_on_premises_instance', value: 'get_on_premises_instance' },
+        { label: 'batch_get_on_premises_instances', value: 'batch_get_on_premises_instances' },
         { label: 'list_on_premises_instances', value: 'list_on_premises_instances' }
     ]}
 >
-<TabItem value="batch_get_on_premises_instances">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="instance_infos" /></td>
-    <td><code>array</code></td>
-    <td>Information about the on-premises instances.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_on_premises_instance">
 
 <table>
@@ -108,6 +89,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_on_premises_instances">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="instance_infos" /></td>
+    <td><code>array</code></td>
+    <td>Information about the on-premises instances.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_on_premises_instances">
 
 <table>
@@ -145,18 +145,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_on_premises_instances"><CopyableCode code="batch_get_on_premises_instances" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.</td>
-</tr>
-<tr>
     <td><a href="#get_on_premises_instance"><CopyableCode code="get_on_premises_instance" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Gets information about an on-premises instance.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_on_premises_instances"><CopyableCode code="batch_get_on_premises_instances" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.</td>
 </tr>
 <tr>
     <td><a href="#list_on_premises_instances"><CopyableCode code="list_on_premises_instances" /></a></td>
@@ -206,25 +206,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_on_premises_instances"
+    defaultValue="get_on_premises_instance"
     values={[
-        { label: 'batch_get_on_premises_instances', value: 'batch_get_on_premises_instances' },
         { label: 'get_on_premises_instance', value: 'get_on_premises_instance' },
+        { label: 'batch_get_on_premises_instances', value: 'batch_get_on_premises_instances' },
         { label: 'list_on_premises_instances', value: 'list_on_premises_instances' }
     ]}
 >
-<TabItem value="batch_get_on_premises_instances">
-
-Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.
-
-```sql
-SELECT
-instance_infos
-FROM aws.codedeploy.on_premises_instances
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_on_premises_instance">
 
 Gets information about an on-premises instance.
@@ -238,6 +226,18 @@ instance_arn,
 instance_name,
 register_time,
 tags
+FROM aws.codedeploy.on_premises_instances
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_on_premises_instances">
+
+Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.
+
+```sql
+SELECT
+instance_infos
 FROM aws.codedeploy.on_premises_instances
 WHERE region = '{{ region }}' -- required
 ;

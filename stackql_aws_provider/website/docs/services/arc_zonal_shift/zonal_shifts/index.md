@@ -128,6 +128,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Update an active zonal shift in Amazon Application Recovery Controller in your Amazon Web Services account. You can update a zonal shift to set a new expiration, or edit or replace the comment for the zonal shift.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_zonal_shift"><CopyableCode code="cancel_zonal_shift" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-zonal_shift_id"><code>zonal_shift_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancel a zonal shift in Amazon Application Recovery Controller. To cancel the zonal shift, specify the zonal shift ID. A zonal shift can be one that you've started for a resource in your Amazon Web Services account in an Amazon Web Services Region, or it can be a zonal shift started by a practice run with zonal autoshift.</td>
+</tr>
+<tr>
+    <td><a href="#start_zonal_shift"><CopyableCode code="start_zonal_shift" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-resourceIdentifier"><code>resourceIdentifier</code></a>, <a href="#parameter-awayFrom"><code>awayFrom</code></a>, <a href="#parameter-expiresIn"><code>expiresIn</code></a>, <a href="#parameter-comment"><code>comment</code></a></td>
+    <td></td>
+    <td>You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with ARC by Amazon Web Services services. Amazon Application Recovery Controller currently supports enabling the following resources for zonal shift and zonal autoshift: Amazon EC2 Auto Scaling groups Amazon Elastic Kubernetes Service Application Load Balancer Network Load Balancer When you start a zonal shift, traffic for the resource is no longer routed to the Availability Zone. The zonal shift is created immediately in ARC. However, it can take a short time, typically up to a few minutes, for existing, in-progress connections in the Availability Zone to complete. For more information, see Zonal shift in the Amazon Application Recovery Controller Developer Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,7 +166,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-zonal_shift_id">
     <td><CopyableCode code="zonal_shift_id" /></td>
     <td><code>string</code></td>
-    <td>The identifier of a zonal shift.</td>
+    <td>The internally-generated identifier of a zonal shift.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>
@@ -240,6 +254,46 @@ resource_identifier,
 start_time,
 status,
 zonal_shift_id;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_zonal_shift"
+    values={[
+        { label: 'cancel_zonal_shift', value: 'cancel_zonal_shift' },
+        { label: 'start_zonal_shift', value: 'start_zonal_shift' }
+    ]}
+>
+<TabItem value="cancel_zonal_shift">
+
+Cancel a zonal shift in Amazon Application Recovery Controller. To cancel the zonal shift, specify the zonal shift ID. A zonal shift can be one that you've started for a resource in your Amazon Web Services account in an Amazon Web Services Region, or it can be a zonal shift started by a practice run with zonal autoshift.
+
+```sql
+EXEC aws.arc_zonal_shift.zonal_shifts.cancel_zonal_shift 
+@zonal_shift_id='{{ zonal_shift_id }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_zonal_shift">
+
+You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone. You can start a zonal shift in ARC only for managed resources in your Amazon Web Services account in an Amazon Web Services Region. Resources are automatically registered with ARC by Amazon Web Services services. Amazon Application Recovery Controller currently supports enabling the following resources for zonal shift and zonal autoshift: Amazon EC2 Auto Scaling groups Amazon Elastic Kubernetes Service Application Load Balancer Network Load Balancer When you start a zonal shift, traffic for the resource is no longer routed to the Availability Zone. The zonal shift is created immediately in ARC. However, it can take a short time, typically up to a few minutes, for existing, in-progress connections in the Availability Zone to complete. For more information, see Zonal shift in the Amazon Application Recovery Controller Developer Guide.
+
+```sql
+EXEC aws.arc_zonal_shift.zonal_shifts.start_zonal_shift 
+@region='{{ region }}' --required 
+@@json=
+'{
+"resourceIdentifier": "{{ resourceIdentifier }}", 
+"awayFrom": "{{ awayFrom }}", 
+"expiresIn": "{{ expiresIn }}", 
+"comment": "{{ comment }}"
+}'
+;
 ```
 </TabItem>
 </Tabs>

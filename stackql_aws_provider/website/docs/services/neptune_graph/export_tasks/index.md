@@ -198,6 +198,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-graphIdentifier"><code>graphIdentifier</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Retrieves a list of export tasks.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_export_task"><CopyableCode code="cancel_export_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-task_identifier"><code>task_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Cancel the specified export task.</td>
+</tr>
+<tr>
+    <td><a href="#start_export_task"><CopyableCode code="start_export_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-graphIdentifier"><code>graphIdentifier</code></a>, <a href="#parameter-roleArn"><code>roleArn</code></a>, <a href="#parameter-format"><code>format</code></a>, <a href="#parameter-destination"><code>destination</code></a>, <a href="#parameter-kmsKeyIdentifier"><code>kmsKeyIdentifier</code></a></td>
+    <td></td>
+    <td>Export data from an existing Neptune Analytics graph to Amazon S3. The graph state should be AVAILABLE.</td>
+</tr>
 </tbody>
 </table>
 
@@ -294,6 +308,50 @@ WHERE region = '{{ region }}' -- required
 AND graphIdentifier = '{{ graphIdentifier }}'
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_export_task"
+    values={[
+        { label: 'cancel_export_task', value: 'cancel_export_task' },
+        { label: 'start_export_task', value: 'start_export_task' }
+    ]}
+>
+<TabItem value="cancel_export_task">
+
+Cancel the specified export task.
+
+```sql
+EXEC aws.neptune_graph.export_tasks.cancel_export_task 
+@task_identifier='{{ task_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_export_task">
+
+Export data from an existing Neptune Analytics graph to Amazon S3. The graph state should be AVAILABLE.
+
+```sql
+EXEC aws.neptune_graph.export_tasks.start_export_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"graphIdentifier": "{{ graphIdentifier }}", 
+"roleArn": "{{ roleArn }}", 
+"format": "{{ format }}", 
+"destination": "{{ destination }}", 
+"kmsKeyIdentifier": "{{ kmsKeyIdentifier }}", 
+"parquetType": "{{ parquetType }}", 
+"exportFilter": "{{ exportFilter }}", 
+"tags": "{{ tags }}"
+}'
 ;
 ```
 </TabItem>

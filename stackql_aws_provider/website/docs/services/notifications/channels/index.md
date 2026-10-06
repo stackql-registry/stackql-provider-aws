@@ -214,7 +214,8 @@ Associates an additional Channel with a particular ManagedNotificationConfigurat
 ```sql
 UPDATE aws.notifications.channels
 SET 
-managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}'
+managedNotificationConfigurationArn = '{{ managedNotificationConfigurationArn }}',
+isSensitiveEventsSubscribed = {{ isSensitiveEventsSubscribed }}
 WHERE 
 channel_arn = '{{ channel_arn }}' --required
 AND region = '{{ region }}' --required

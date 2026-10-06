@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_group"
     values={[
         { label: 'get_group', value: 'get_group' },
+        { label: 'list_groups_for_user', value: 'list_groups_for_user' },
         { label: 'list_groups', value: 'list_groups' }
     ]}
 >
@@ -89,6 +90,45 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="user_name" /></td>
     <td><code>string</code></td>
     <td>The friendly name identifying the user.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_groups_for_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="create_date" /></td>
+    <td><code>string</code></td>
+    <td>The date and time, in ISO 8601 date-time format, when the group was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="group_id" /></td>
+    <td><code>string</code></td>
+    <td>The stable and unique string identifying the group. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="group_name" /></td>
+    <td><code>string</code></td>
+    <td>The friendly name that identifies the group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="path" /></td>
+    <td><code>string</code></td>
+    <td>The path to the group. For more information about paths, see IAM identifiers in the IAM User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -155,6 +195,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-GroupName"><code>GroupName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
     <td>Returns a list of IAM users that are in the specified IAM group. You can paginate the results using the MaxItems and Marker parameters.</td>
+</tr>
+<tr>
+    <td><a href="#list_groups_for_user"><CopyableCode code="list_groups_for_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-UserName"><code>UserName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the IAM groups that the specified IAM user belongs to. You can paginate the results using the MaxItems and Marker parameters.</td>
 </tr>
 <tr>
     <td><a href="#list_groups"><CopyableCode code="list_groups" /></a></td>
@@ -268,6 +315,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_group"
     values={[
         { label: 'get_group', value: 'get_group' },
+        { label: 'list_groups_for_user', value: 'list_groups_for_user' },
         { label: 'list_groups', value: 'list_groups' }
     ]}
 >
@@ -287,6 +335,25 @@ user_id,
 user_name
 FROM aws.iam.groups
 WHERE GroupName = '{{ GroupName }}' -- required
+AND region = '{{ region }}' -- required
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
+;
+```
+</TabItem>
+<TabItem value="list_groups_for_user">
+
+Lists the IAM groups that the specified IAM user belongs to. You can paginate the results using the MaxItems and Marker parameters.
+
+```sql
+SELECT
+arn,
+create_date,
+group_id,
+group_name,
+path
+FROM aws.iam.groups
+WHERE UserName = '{{ UserName }}' -- required
 AND region = '{{ region }}' -- required
 AND Marker = '{{ Marker }}'
 AND MaxItems = '{{ MaxItems }}'

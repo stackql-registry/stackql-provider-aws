@@ -31,7 +31,7 @@ total resources: __25__
 <a href="/services/ds/client_authentication_settings/">client_authentication_settings</a><br />
 <a href="/services/ds/conditional_forwarders/">conditional_forwarders</a><br />
 <a href="/services/ds/directories/">directories</a><br />
-<a href="/services/ds/directory_data_access/">directory_data_access</a><br />
+<a href="/services/ds/directory_data_accesses/">directory_data_accesses</a><br />
 <a href="/services/ds/directory_limits/">directory_limits</a><br />
 <a href="/services/ds/domain_controllers/">domain_controllers</a><br />
 <a href="/services/ds/event_topics/">event_topics</a><br />

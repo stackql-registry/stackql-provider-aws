@@ -61,6 +61,11 @@ The following fields are returned by `SELECT` queries:
     <td>The name of the action that the specified step performs. (pattern: &lt;code&gt;^&#91;A-Za-z&#93;&#91;A-Za-z0-9-_&#93;&#123;1,99&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="attempt_number" /></td>
+    <td><code>integer</code></td>
+    <td>The current attempt number for the specified runtime instance of the workflow step. The first run is attempt one. The number increases by one for each retry.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Describes the specified workflow step.</td>
@@ -79,6 +84,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="inputs" /></td>
     <td><code>string</code></td>
     <td>Input parameters that Image Builder provided for the specified runtime instance of the workflow step.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_attempts" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of attempts allowed for the specified runtime instance of the workflow step, based on the retry configuration in the workflow document. If the step doesn't configure retries, the maximum is one attempt.</td>
 </tr>
 <tr>
     <td><CopyableCode code="message" /></td>
@@ -160,6 +170,11 @@ The following fields are returned by `SELECT` queries:
     <td>The step action name. (pattern: &lt;code&gt;^&#91;A-Za-z&#93;&#91;A-Za-z0-9-_&#93;&#123;1,99&#125;$&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="attempt_number" /></td>
+    <td><code>integer</code></td>
+    <td>The current attempt number for the workflow step. The first run is attempt one. The number increases by one for each retry.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the workflow step.</td>
@@ -173,6 +188,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="inputs" /></td>
     <td><code>string</code></td>
     <td>Input parameters that Image Builder provides for the workflow step.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="max_attempts" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of attempts allowed for the workflow step, based on the retry configuration in the workflow document. If the step doesn't configure retries, the maximum is one attempt.</td>
 </tr>
 <tr>
     <td><CopyableCode code="message" /></td>
@@ -229,7 +249,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-stepExecutionId"><code>stepExecutionId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Get the runtime information that was logged for a specific runtime instance of the workflow step.</td>
+    <td>Retrieves runtime information for a specific runtime instance of the workflow step.</td>
 </tr>
 <tr>
     <td><a href="#list_workflow_step_executions"><CopyableCode code="list_workflow_step_executions" /></a></td>
@@ -278,16 +298,18 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_workflow_step_execution">
 
-Get the runtime information that was logged for a specific runtime instance of the workflow step.
+Retrieves runtime information for a specific runtime instance of the workflow step.
 
 ```sql
 SELECT
 name,
 action,
+attempt_number,
 description,
 end_time,
 image_build_version_arn,
 inputs,
+max_attempts,
 message,
 on_failure,
 outputs,
@@ -313,9 +335,11 @@ Returns runtime data for each step in a runtime instance of the workflow that yo
 SELECT
 name,
 action,
+attempt_number,
 description,
 end_time,
 inputs,
+max_attempts,
 message,
 outputs,
 rollback_status,

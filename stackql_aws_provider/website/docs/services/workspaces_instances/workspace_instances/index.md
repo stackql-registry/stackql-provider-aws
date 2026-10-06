@@ -298,6 +298,7 @@ workspace_instance_id
           AmdSevSnp: "{{ AmdSevSnp }}"
           CoreCount: {{ CoreCount }}
           ThreadsPerCore: {{ ThreadsPerCore }}
+          NestedVirtualization: "{{ NestedVirtualization }}"
         CreditSpecification:
           CpuCredits: "{{ CpuCredits }}"
         DisableApiStop: {{ DisableApiStop }}

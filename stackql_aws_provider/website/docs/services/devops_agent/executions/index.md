@@ -77,7 +77,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="execution_status" /></td>
     <td><code>string</code></td>
-    <td>The current status of this execution (FAILED, RUNNING, STOPPED, CANCELED, TIMED_OUT)</td>
+    <td>The current status of this execution (FAILED, RUNNING, STOPPED, CANCELED, TIMED_OUT, WAITING)</td>
 </tr>
 <tr>
     <td><CopyableCode code="parent_execution_id" /></td>

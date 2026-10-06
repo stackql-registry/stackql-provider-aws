@@ -36,10 +36,150 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_backup_access_point"
     values={[
         { label: 'describe_backup_access_point', value: 'describe_backup_access_point' },
+        { label: 'list_backup_access_points_by_recovery_point', value: 'list_backup_access_points_by_recovery_point' },
+        { label: 'list_backup_access_points_by_resource', value: 'list_backup_access_points_by_resource' },
         { label: 'list_backup_access_points', value: 'list_backup_access_points' }
     ]}
 >
 <TabItem value="describe_backup_access_point">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="access_point_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that uniquely identifies the backup access point. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:backup:&#91;a-z-\d&#93;+:\d&#123;12&#125;:accesspoint/)&#91;\da-z&#93;&#123;1&#125;&#91;\da-z-&#93;&#123;1,48&#125;&#91;\da-z&#93;&#123;1&#125;(?&lt;!-s3alias)(?&lt;!-ext-s3alias)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="access_point_metadata" /></td>
+    <td><code>object</code></td>
+    <td>Metadata for the backup access point. After the backup access point reaches the AVAILABLE status, this map contains S3AccessPointArn and S3AccessPointAlias, which you use with standard Amazon S3 read APIs to access the backup data. For continuous recovery points, this map also contains AccessPointInTime (in format 2021-11-27T03:30:27Z). The access point provides access to the content present in the backup at that specific time.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="backup_vault_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the backup vault that contains the recovery point.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="backup_vault_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the backup vault that contains the recovery point. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="creation_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time that the backup access point was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the backup access point. (pattern: &lt;code&gt;&#91;\da-z&#93;&#123;1&#125;&#91;\da-z-&#93;&#123;1,48&#125;&#91;\da-z&#93;&#123;1&#125;(?&lt;!-s3alias)(?&lt;!-ext-s3alias)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="recovery_point_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the recovery point that the backup access point provides access to. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:&#91;a-z-\d&#93;+:&#91;a-z-\d&#93;+:).+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the resource that was backed up, such as an Amazon S3 bucket. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:&#91;a-z-\d&#93;+:).+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of Amazon Web Services resource associated with the recovery point. For example, S3 for Amazon Simple Storage Service.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the backup access point. (AVAILABLE, CREATING, DELETING, DISASSOCIATED, DISASSOCIATING, EXPIRED, FAILED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status_message" /></td>
+    <td><code>string</code></td>
+    <td>A message that provides additional detail about the status of the backup access point, such as the reason a creation or deletion attempt failed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_backup_access_points_by_recovery_point">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="access_point_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that uniquely identifies the backup access point. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:backup:&#91;a-z-\d&#93;+:\d&#123;12&#125;:accesspoint/)&#91;\da-z&#93;&#123;1&#125;&#91;\da-z-&#93;&#123;1,48&#125;&#91;\da-z&#93;&#123;1&#125;(?&lt;!-s3alias)(?&lt;!-ext-s3alias)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="access_point_metadata" /></td>
+    <td><code>object</code></td>
+    <td>Metadata for the backup access point. After the backup access point reaches the AVAILABLE status, this map contains S3AccessPointArn and S3AccessPointAlias, which you use with standard Amazon S3 read APIs to access the backup data. For continuous recovery points, this map also contains AccessPointInTime (in format 2021-11-27T03:30:27Z). The access point provides access to the content present in the backup at that specific time.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="backup_vault_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the backup vault that contains the recovery point.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="backup_vault_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the backup vault that contains the recovery point. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9\-\_&#93;&#123;2,50&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="creation_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time that the backup access point was created, in Unix format and Coordinated Universal Time (UTC). The value of CreationTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the backup access point. (pattern: &lt;code&gt;&#91;\da-z&#93;&#123;1&#125;&#91;\da-z-&#93;&#123;1,48&#125;&#91;\da-z&#93;&#123;1&#125;(?&lt;!-s3alias)(?&lt;!-ext-s3alias)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="recovery_point_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the recovery point that the backup access point provides access to. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:&#91;a-z-\d&#93;+:&#91;a-z-\d&#93;+:).+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the resource that was backed up, such as an Amazon S3 bucket. (pattern: &lt;code&gt;(arn:aws&#91;a-z-&#93;*:&#91;a-z-\d&#93;+:).+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="resource_type" /></td>
+    <td><code>string</code></td>
+    <td>The type of Amazon Web Services resource associated with the recovery point. For example, S3 for Amazon Simple Storage Service.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the backup access point. (AVAILABLE, CREATING, DELETING, DISASSOCIATED, DISASSOCIATING, EXPIRED, FAILED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status_message" /></td>
+    <td><code>string</code></td>
+    <td>A message that provides additional detail about the status of the backup access point, such as the reason a creation or deletion attempt failed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_backup_access_points_by_resource">
 
 <table>
 <thead>
@@ -202,6 +342,20 @@ The following methods are available for this resource:
     <td>Returns metadata about a backup access point, including its status and the details of the underlying Amazon S3 access point. After a backup access point reaches the AVAILABLE status, use this operation to retrieve the Amazon S3 access point ARN and alias that you need to read the backup data.</td>
 </tr>
 <tr>
+    <td><a href="#list_backup_access_points_by_recovery_point"><CopyableCode code="list_backup_access_points_by_recovery_point" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-recovery_point_arn"><code>recovery_point_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td>Returns the backup access points associated with the specified recovery point. If you own the recovery point and have shared it with other accounts, the response includes backup access points created by those accounts.</td>
+</tr>
+<tr>
+    <td><a href="#list_backup_access_points_by_resource"><CopyableCode code="list_backup_access_points_by_resource" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td>Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket.</td>
+</tr>
+<tr>
     <td><a href="#list_backup_access_points"><CopyableCode code="list_backup_access_points" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -243,10 +397,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the backup access point to delete.</td>
 </tr>
+<tr id="parameter-recovery_point_arn">
+    <td><CopyableCode code="recovery_point_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the recovery point whose backup access points you want to list.</td>
+</tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-resource_arn">
+    <td><CopyableCode code="resource_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the resource whose backup access points you want to list.</td>
 </tr>
 <tr id="parameter-MaxResults">
     <td><CopyableCode code="MaxResults" /></td>
@@ -267,6 +431,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_backup_access_point"
     values={[
         { label: 'describe_backup_access_point', value: 'describe_backup_access_point' },
+        { label: 'list_backup_access_points_by_recovery_point', value: 'list_backup_access_points_by_recovery_point' },
+        { label: 'list_backup_access_points_by_resource', value: 'list_backup_access_points_by_resource' },
         { label: 'list_backup_access_points', value: 'list_backup_access_points' }
     ]}
 >
@@ -290,6 +456,56 @@ status_message
 FROM aws.backup.backup_access_points
 WHERE access_point_arn = '{{ access_point_arn }}' -- required
 AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_backup_access_points_by_recovery_point">
+
+Returns the backup access points associated with the specified recovery point. If you own the recovery point and have shared it with other accounts, the response includes backup access points created by those accounts.
+
+```sql
+SELECT
+access_point_arn,
+access_point_metadata,
+backup_vault_arn,
+backup_vault_name,
+creation_time,
+name,
+recovery_point_arn,
+resource_arn,
+resource_type,
+status,
+status_message
+FROM aws.backup.backup_access_points
+WHERE recovery_point_arn = '{{ recovery_point_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND MaxResults = '{{ MaxResults }}'
+AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+<TabItem value="list_backup_access_points_by_resource">
+
+Returns the backup access points associated with the specified resource, such as an Amazon S3 bucket.
+
+```sql
+SELECT
+access_point_arn,
+access_point_metadata,
+backup_vault_arn,
+backup_vault_name,
+creation_time,
+name,
+recovery_point_arn,
+resource_arn,
+resource_type,
+status,
+status_message
+FROM aws.backup.backup_access_points
+WHERE resource_arn = '{{ resource_arn }}' -- required
+AND region = '{{ region }}' -- required
+AND MaxResults = '{{ MaxResults }}'
+AND NextToken = '{{ NextToken }}'
 ;
 ```
 </TabItem>

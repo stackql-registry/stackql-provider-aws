@@ -76,9 +76,19 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time when the agreement ends. The field is null for pay-as-you-go agreements, which don’t have end dates.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="end_time_behavior" /></td>
+    <td><code>object</code></td>
+    <td>The behavior of the agreement when it reaches its end date. For example, whether the agreement renews, and if it doesn't, the reason why. This field is present for every active agreement that has an end date. It is not present for an agreement that has no end date, because such an agreement never reaches an end time. Pay-as-you-go agreements are the most common example. It is also not present for an agreement that is no longer active.</td>
+</tr>
+<tr>
     <td><CopyableCode code="estimated_charges" /></td>
     <td><code>object</code></td>
     <td>The estimated cost of the agreement.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="initial_agreement_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the very first agreement in a chain of related agreements, such as renewals or replacements. It stays the same across all agreements in that chain, which lets you trace an agreement back to the original. When an agreement isn't derived from another agreement, its InitialAgreementId is its own AgreementId. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="proposal_summary" /></td>
@@ -98,7 +108,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the agreement. Statuses include: ACTIVE – The terms of the agreement are active. ARCHIVED – The agreement ended without a specified reason. CANCELLED – The acceptor ended the agreement before the defined end date. EXPIRED – The agreement ended on the defined end date. RENEWED – The agreement was renewed into a new agreement (for example, an auto-renewal). REPLACED – The agreement was replaced using an agreement replacement offer. TERMINATED – The agreement ended before the defined end date because of an AWS termination (for example, a payment failure). (ACTIVE, ARCHIVED, CANCELLED, EXPIRED, RENEWED, REPLACED, ROLLED_BACK, SUPERSEDED, TERMINATED)</td>
+    <td>The current status of the agreement. Statuses include: ACTIVE – The terms of the agreement are active. CANCELLED – The acceptor ended the agreement before the defined end date. EXPIRED – The agreement ended on the defined end date. RENEWED – The agreement was renewed into a new agreement (for example, an auto-renewal). REPLACED – The agreement was replaced using an agreement replacement offer. TERMINATED – The agreement ended before the defined end date because of an AWS termination (for example, a payment failure). (ACTIVE, ARCHIVED, CANCELLED, EXPIRED, RENEWED, REPLACED, ROLLED_BACK, SUPERSEDED, TERMINATED)</td>
 </tr>
 </tbody>
 </table>
@@ -140,9 +150,29 @@ The following fields are returned by `SELECT` queries:
     <td>The date and time when the agreement ends. The field is null for pay-as-you-go agreements, which don’t have end dates.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="end_time_behavior_reason_code" /></td>
+    <td><code>string</code></td>
+    <td>The reason why the agreement doesn't renew at its end date. The field is null when the agreement renews. More than one reason can apply to the same agreement. When that happens, the operation returns only one reason code, and PROPOSER_RENEW_OPTED_OUT takes precedence over all others. The EnableAutoRenew field reflects only the acceptor's preference, and doesn't reflect the other reasons an agreement might not renew. Reason codes include: PROPOSER_RENEW_OPTED_OUT – The proposer opted out of renewing the agreement. ACCEPTOR_RENEW_OPTED_OUT – The acceptor opted out of renewing the agreement. NO_RENEWAL_TERM – The accepted terms of the agreement don't include a renewal term, which is required for an agreement to renew. RENEWAL_LIMIT_EXHAUSTED – The agreement reached the maximum number of renewals allowed by its renewal term. (PROPOSER_RENEW_OPTED_OUT, ACCEPTOR_RENEW_OPTED_OUT, NO_RENEWAL_TERM, RENEWAL_LIMIT_EXHAUSTED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="end_time_behavior_type" /></td>
+    <td><code>string</code></td>
+    <td>The behavior of the agreement when it reaches its end date. The field is null for agreements that have no end date, because those agreements never reach an end time. Types include: RENEW – A new agreement is created from the accepted terms of this agreement. REPLACE – A new agreement is created from a different offer than the one this agreement was created from. This happens, for example, when a private offer reaches its end date and the acceptor transitions to the public offer for the product. EXPIRE – The agreement ends and isn't renewed or replaced. (RENEW, REPLACE, EXPIRE)</td>
+</tr>
+<tr>
     <td><CopyableCode code="entitlements" /></td>
     <td><code>array</code></td>
     <td>A list of entitlements associated with the agreement.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="initial_agreement_id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the very first agreement in a chain of related agreements, such as renewals or replacements. It stays the same across all agreements in that chain, which lets you trace an agreement back to the original. You can also use it as the InitialAgreementId filter value to return every agreement in the same chain. (pattern: &lt;code&gt;&#91;A-Za-z0-9_/-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="last_update_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time when the agreement was last updated. An agreement is updated when any of its attributes or accepted terms change. Amendments, renewals, and a party changing whether the agreement renews are all examples. Use the BeforeLastUpdateTime and AfterLastUpdateTime filters to search on this value, and LastUpdateTime as the SortBy value to sort by it. Sorting by LastUpdateTime is supported only when PartyType is Proposer.</td>
 </tr>
 <tr>
     <td><CopyableCode code="proposal_summary" /></td>
@@ -196,7 +226,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Searches across all agreements that a proposer or an acceptor has in AWS Marketplace. The search returns a list of agreements with basic agreement information. The following filter combinations are supported when the PartyType is Proposer: AgreementType AgreementType + EndTime AgreementType + ResourceType AgreementType + ResourceType + EndTime AgreementType + ResourceType + Status AgreementType + ResourceType + Status + EndTime AgreementType + ResourceIdentifier AgreementType + ResourceIdentifier + EndTime AgreementType + ResourceIdentifier + Status AgreementType + ResourceIdentifier + Status + EndTime AgreementType + AcceptorAccountId AgreementType + AcceptorAccountId + EndTime AgreementType + AcceptorAccountId + Status AgreementType + AcceptorAccountId + Status + EndTime AgreementType + AcceptorAccountId + OfferId AgreementType + AcceptorAccountId + OfferId + Status AgreementType + AcceptorAccountId + OfferId + EndTime AgreementType + AcceptorAccountId + OfferId + Status + EndTime AgreementType + AcceptorAccountId + ResourceIdentifier AgreementType + AcceptorAccountId + ResourceIdentifier + Status AgreementType + AcceptorAccountId + ResourceIdentifier + EndTime AgreementType + AcceptorAccountId + ResourceIdentifier + Status + EndTime AgreementType + AcceptorAccountId + ResourceType AgreementType + AcceptorAccountId + ResourceType + EndTime AgreementType + AcceptorAccountId + ResourceType + Status AgreementType + AcceptorAccountId + ResourceType + Status + EndTime AgreementType + Status AgreementType + Status + EndTime AgreementType + OfferId AgreementType + OfferId + EndTime AgreementType + OfferId + Status AgreementType + OfferId + Status + EndTime AgreementType + OfferSetId AgreementType + OfferSetId + EndTime AgreementType + OfferSetId + Status AgreementType + OfferSetId + Status + EndTime To filter by EndTime, you can use BeforeEndTime and/or AfterEndTime. Only EndTime is supported for sorting. The following filter combinations are supported when the PartyType is Acceptor: AgreementType AgreementType + Status AgreementType + EndTime AgreementType + Status + EndTime AgreementType + ResourceIdentifier AgreementType + ResourceIdentifier + EndTime AgreementType + ResourceIdentifier + Status AgreementType + ResourceIdentifier + Status + EndTime AgreementType + ResourceType AgreementType + ResourceType + EndTime AgreementType + OfferId AgreementType + OfferId + EndTime AgreementType + OfferId + Status AgreementType + OfferId + Status + EndTime AgreementType + OfferSetId AgreementType + OfferSetId + EndTime AgreementType + OfferSetId + Status AgreementType + OfferSetId + Status + EndTime</td>
+    <td>Searches across all agreements that a proposer or an acceptor has in AWS Marketplace. The search returns a list of agreements with basic agreement information.</td>
 </tr>
 <tr>
     <td><a href="#create_agreement_request"><CopyableCode code="create_agreement_request" /></a></td>
@@ -319,7 +349,9 @@ acceptor,
 agreement_id,
 agreement_type,
 end_time,
+end_time_behavior,
 estimated_charges,
+initial_agreement_id,
 proposal_summary,
 proposer,
 start_time,
@@ -331,7 +363,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="search_agreements">
 
-Searches across all agreements that a proposer or an acceptor has in AWS Marketplace. The search returns a list of agreements with basic agreement information. The following filter combinations are supported when the PartyType is Proposer: AgreementType AgreementType + EndTime AgreementType + ResourceType AgreementType + ResourceType + EndTime AgreementType + ResourceType + Status AgreementType + ResourceType + Status + EndTime AgreementType + ResourceIdentifier AgreementType + ResourceIdentifier + EndTime AgreementType + ResourceIdentifier + Status AgreementType + ResourceIdentifier + Status + EndTime AgreementType + AcceptorAccountId AgreementType + AcceptorAccountId + EndTime AgreementType + AcceptorAccountId + Status AgreementType + AcceptorAccountId + Status + EndTime AgreementType + AcceptorAccountId + OfferId AgreementType + AcceptorAccountId + OfferId + Status AgreementType + AcceptorAccountId + OfferId + EndTime AgreementType + AcceptorAccountId + OfferId + Status + EndTime AgreementType + AcceptorAccountId + ResourceIdentifier AgreementType + AcceptorAccountId + ResourceIdentifier + Status AgreementType + AcceptorAccountId + ResourceIdentifier + EndTime AgreementType + AcceptorAccountId + ResourceIdentifier + Status + EndTime AgreementType + AcceptorAccountId + ResourceType AgreementType + AcceptorAccountId + ResourceType + EndTime AgreementType + AcceptorAccountId + ResourceType + Status AgreementType + AcceptorAccountId + ResourceType + Status + EndTime AgreementType + Status AgreementType + Status + EndTime AgreementType + OfferId AgreementType + OfferId + EndTime AgreementType + OfferId + Status AgreementType + OfferId + Status + EndTime AgreementType + OfferSetId AgreementType + OfferSetId + EndTime AgreementType + OfferSetId + Status AgreementType + OfferSetId + Status + EndTime To filter by EndTime, you can use BeforeEndTime and/or AfterEndTime. Only EndTime is supported for sorting. The following filter combinations are supported when the PartyType is Acceptor: AgreementType AgreementType + Status AgreementType + EndTime AgreementType + Status + EndTime AgreementType + ResourceIdentifier AgreementType + ResourceIdentifier + EndTime AgreementType + ResourceIdentifier + Status AgreementType + ResourceIdentifier + Status + EndTime AgreementType + ResourceType AgreementType + ResourceType + EndTime AgreementType + OfferId AgreementType + OfferId + EndTime AgreementType + OfferId + Status AgreementType + OfferId + Status + EndTime AgreementType + OfferSetId AgreementType + OfferSetId + EndTime AgreementType + OfferSetId + Status AgreementType + OfferSetId + Status + EndTime
+Searches across all agreements that a proposer or an acceptor has in AWS Marketplace. The search returns a list of agreements with basic agreement information.
 
 ```sql
 SELECT
@@ -340,7 +372,11 @@ acceptor,
 agreement_id,
 agreement_type,
 end_time,
+end_time_behavior_reason_code,
+end_time_behavior_type,
 entitlements,
+initial_agreement_id,
+last_update_time,
 proposal_summary,
 proposer,
 start_time,

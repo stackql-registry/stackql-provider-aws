@@ -1221,7 +1221,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay'
-      x-stackql-resource: services_for_auto_scaling_configurations
+      x-stackql-resource: services
       x-stackql-method: list_services_for_auto_scaling_configuration
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListServicesForAutoScalingConfigurationOutputDisplay
@@ -1504,10 +1504,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1545,10 +1541,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3233,14 +3225,10 @@ components:
             the ListOperations call to track the operation's progress.
       required:
       - OperationId
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateDefaultAutoScalingConfigurationResponse:
       type: object
       properties:

@@ -18,7 +18,7 @@ partnercentral_account service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __14__  
 
 :::
 
@@ -30,10 +30,11 @@ total resources: __13__
 <a href="/services/partnercentral_account/connection_invitations/">connection_invitations</a><br />
 <a href="/services/partnercentral_account/connection_preferences/">connection_preferences</a><br />
 <a href="/services/partnercentral_account/connections/">connections</a><br />
-<a href="/services/partnercentral_account/partners/">partners</a><br />
-<a href="/services/partnercentral_account/profile_update_tasks/">profile_update_tasks</a>
+<a href="/services/partnercentral_account/email_verification_codes/">email_verification_codes</a><br />
+<a href="/services/partnercentral_account/partners/">partners</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/partnercentral_account/profile_update_tasks/">profile_update_tasks</a><br />
 <a href="/services/partnercentral_account/profile_visibilities/">profile_visibilities</a><br />
 <a href="/services/partnercentral_account/qualifications_association_details/">qualifications_association_details</a><br />
 <a href="/services/partnercentral_account/qualifications_association_tasks/">qualifications_association_tasks</a><br />

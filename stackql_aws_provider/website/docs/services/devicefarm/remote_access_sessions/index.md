@@ -204,6 +204,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns a list of all currently running remote access sessions.</td>
 </tr>
+<tr>
+    <td><a href="#stop_remote_access_session"><CopyableCode code="stop_remote_access_session" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-arn"><code>arn</code></a></td>
+    <td></td>
+    <td>Ends a specified remote access session.</td>
+</tr>
 </tbody>
 </table>
 
@@ -350,6 +357,7 @@ remote_access_session
         deviceProxy:
           host: "{{ host }}"
           port: {{ port }}
+        parameters: "{{ parameters }}"
     - name: interactionMode
       value: "{{ interactionMode }}"
       description: |
@@ -392,7 +400,8 @@ WHERE region = '{{ region }}' --required
     defaultValue="install_to_remote_access_session"
     values={[
         { label: 'install_to_remote_access_session', value: 'install_to_remote_access_session' },
-        { label: 'list_remote_access_sessions', value: 'list_remote_access_sessions' }
+        { label: 'list_remote_access_sessions', value: 'list_remote_access_sessions' },
+        { label: 'stop_remote_access_session', value: 'stop_remote_access_session' }
     ]}
 >
 <TabItem value="install_to_remote_access_session">
@@ -421,6 +430,20 @@ EXEC aws.devicefarm.remote_access_sessions.list_remote_access_sessions
 '{
 "arn": "{{ arn }}", 
 "nextToken": "{{ nextToken }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_remote_access_session">
+
+Ends a specified remote access session.
+
+```sql
+EXEC aws.devicefarm.remote_access_sessions.stop_remote_access_session 
+@region='{{ region }}' --required 
+@@json=
+'{
+"arn": "{{ arn }}"
 }'
 ;
 ```

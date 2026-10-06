@@ -407,10 +407,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCallAnalyticsCategoryResponse'
       x-stackql-resource: call_analytics_categories
       x-stackql-method: delete_call_analytics_category
       x-stackql-verb: DELETE
@@ -444,10 +440,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCallAnalyticsJobResponse'
       x-stackql-resource: call_analytics_jobs
       x-stackql-method: delete_call_analytics_job
       x-stackql-verb: DELETE
@@ -2122,10 +2114,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2166,10 +2154,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3047,15 +3031,11 @@ components:
           $ref: '#/components/schemas/DateTime'
           description: The date and time you created your custom vocabulary filter. Timestamps are in the format YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC.
             For example, 2022-05-04T12:32:58.761000-07:00 represents 12:32 PM UTC-7 on May 4, 2022.
-    DeleteCallAnalyticsCategoryResponse:
-      type: object
     CallAnalyticsJobName:
       type: string
       minLength: 1
       maxLength: 200
       pattern: ^[0-9a-zA-Z._-]+
-    DeleteCallAnalyticsJobResponse:
-      type: object
     TranscriptionJobName:
       type: string
       minLength: 1
@@ -3440,6 +3420,24 @@ components:
       - NAME
       - PHONE
       - SSN
+      - DATE_TIME
+      - PASSPORT_NUMBER
+      - DRIVER_ID
+      - URL
+      - AGE
+      - USERNAME
+      - PASSWORD
+      - AWS_ACCESS_KEY
+      - AWS_SECRET_KEY
+      - IP_ADDRESS
+      - MAC_ADDRESS
+      - LICENSE_PLATE
+      - VEHICLE_IDENTIFICATION_NUMBER
+      - US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER
+      - CA_HEALTH_NUMBER
+      - CA_SOCIAL_INSURANCE_NUMBER
+      - INTERNATIONAL_BANK_ACCOUNT_NUMBER
+      - SWIFT_CODE
       - ALL
     LanguageOptions:
       type: array
@@ -4711,14 +4709,10 @@ components:
           $ref: '#/components/schemas/TranscriptionJob'
           description: Provides detailed information about the current transcription job, including job status and, if applicable,
             failure reason.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateCallAnalyticsCategoryResponse:
       type: object
       properties:

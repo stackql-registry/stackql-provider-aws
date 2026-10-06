@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>data_quality_ruleset_evaluation
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_data_quality_ruleset_evaluation_run"
+    defaultValue="get_data_quality_ruleset_evaluation_run"
     values={[
-        { label: 'batch_get_data_quality_ruleset_evaluation_run', value: 'batch_get_data_quality_ruleset_evaluation_run' },
         { label: 'get_data_quality_ruleset_evaluation_run', value: 'get_data_quality_ruleset_evaluation_run' },
+        { label: 'batch_get_data_quality_ruleset_evaluation_run', value: 'batch_get_data_quality_ruleset_evaluation_run' },
         { label: 'list_data_quality_ruleset_evaluation_runs', value: 'list_data_quality_ruleset_evaluation_runs' }
     ]}
 >
-<TabItem value="batch_get_data_quality_ruleset_evaluation_run">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="runs" /></td>
-    <td><code>array</code></td>
-    <td>A list of evaluation run details for the requested run IDs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="runs_not_found" /></td>
-    <td><code>array</code></td>
-    <td>A list of run IDs that were not found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_data_quality_ruleset_evaluation_run">
 
 <table>
@@ -153,6 +129,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_data_quality_ruleset_evaluation_run">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="runs" /></td>
+    <td><code>array</code></td>
+    <td>A list of evaluation run details for the requested run IDs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="runs_not_found" /></td>
+    <td><code>array</code></td>
+    <td>A list of run IDs that were not found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_data_quality_ruleset_evaluation_runs">
 
 <table>
@@ -195,18 +195,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_data_quality_ruleset_evaluation_run"><CopyableCode code="batch_get_data_quality_ruleset_evaluation_run" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the details of multiple evaluation runs in a single request.</td>
-</tr>
-<tr>
     <td><a href="#get_data_quality_ruleset_evaluation_run"><CopyableCode code="get_data_quality_ruleset_evaluation_run" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves a specific run where a ruleset is evaluated against a data source.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_data_quality_ruleset_evaluation_run"><CopyableCode code="batch_get_data_quality_ruleset_evaluation_run" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the details of multiple evaluation runs in a single request.</td>
 </tr>
 <tr>
     <td><a href="#list_data_quality_ruleset_evaluation_runs"><CopyableCode code="list_data_quality_ruleset_evaluation_runs" /></a></td>
@@ -242,26 +242,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_data_quality_ruleset_evaluation_run"
+    defaultValue="get_data_quality_ruleset_evaluation_run"
     values={[
-        { label: 'batch_get_data_quality_ruleset_evaluation_run', value: 'batch_get_data_quality_ruleset_evaluation_run' },
         { label: 'get_data_quality_ruleset_evaluation_run', value: 'get_data_quality_ruleset_evaluation_run' },
+        { label: 'batch_get_data_quality_ruleset_evaluation_run', value: 'batch_get_data_quality_ruleset_evaluation_run' },
         { label: 'list_data_quality_ruleset_evaluation_runs', value: 'list_data_quality_ruleset_evaluation_runs' }
     ]}
 >
-<TabItem value="batch_get_data_quality_ruleset_evaluation_run">
-
-Retrieves the details of multiple evaluation runs in a single request.
-
-```sql
-SELECT
-runs,
-runs_not_found
-FROM aws.glue.data_quality_ruleset_evaluation_runs
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_data_quality_ruleset_evaluation_run">
 
 Retrieves a specific run where a ruleset is evaluated against a data source.
@@ -283,6 +270,19 @@ run_id,
 started_on,
 status,
 timeout
+FROM aws.glue.data_quality_ruleset_evaluation_runs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_data_quality_ruleset_evaluation_run">
+
+Retrieves the details of multiple evaluation runs in a single request.
+
+```sql
+SELECT
+runs,
+runs_not_found
 FROM aws.glue.data_quality_ruleset_evaluation_runs
 WHERE region = '{{ region }}' -- required
 ;

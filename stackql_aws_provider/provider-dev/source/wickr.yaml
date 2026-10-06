@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateUserResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_create_user
       x-stackql-verb: EXEC
     get:
@@ -211,7 +211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteUserResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_delete_user
       x-stackql-verb: EXEC
   /networks/{network_id}/users/uname-lookup:
@@ -250,7 +250,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchLookupUserUnameResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_lookup_user_uname
       x-stackql-verb: EXEC
   /networks/{network_id}/users/re-invite:
@@ -289,7 +289,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchReinviteUserResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_reinvite_user
       x-stackql-verb: EXEC
   /networks/{network_id}/users/{user_id}/devices:
@@ -335,7 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchResetDevicesForUserResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_reset_devices_for_user
       x-stackql-verb: EXEC
     get:
@@ -389,7 +389,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDevicesForUserResponse'
-      x-stackql-resource: devices_for_users
+      x-stackql-resource: devices
       x-stackql-method: list_devices_for_user
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.devices
@@ -438,7 +438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchToggleUserSuspendStatusResponse'
-      x-stackql-resource: networks
+      x-stackql-resource: users
       x-stackql-method: batch_toggle_user_suspend_status
       x-stackql-verb: EXEC
   /networks/{network_id}/bots:
@@ -1291,7 +1291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOidcInfoResponse'
-      x-stackql-resource: oidc_infos
+      x-stackql-resource: oidc_info
       x-stackql-method: get_oidc_info
       x-stackql-verb: SELECT
   /networks/{network_id}/tdf:

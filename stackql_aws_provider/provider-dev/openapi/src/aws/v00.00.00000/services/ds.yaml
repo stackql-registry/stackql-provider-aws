@@ -87,10 +87,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddIpRoutesResult"
   /AddRegion:
     post:
       operationId: AddRegion
@@ -127,10 +123,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddRegionResult"
   /AddTagsToResource:
     post:
       operationId: AddTagsToResource
@@ -164,10 +156,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddTagsToResourceResult"
   /CancelSchemaExtension:
     post:
       operationId: CancelSchemaExtension
@@ -201,10 +189,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelSchemaExtensionResult"
   /ConnectDirectory:
     post:
       operationId: ConnectDirectory
@@ -251,9 +235,7 @@ paths:
                   $ref: "#/components/schemas/NetworkType"
                   description: The network type for your directory. The default value is IPv4 or IPv6 based on the provided subnet capabilities.
               required:
-                - Name
                 - Password
-                - Size
                 - ConnectSettings
       responses:
         "200":
@@ -384,10 +366,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateConditionalForwarderResult"
   /CreateDirectory:
     post:
       operationId: CreateDirectory
@@ -515,10 +493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateLogSubscriptionResult"
   /CreateMicrosoftAD:
     post:
       operationId: CreateMicrosoftAD
@@ -734,10 +708,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteConditionalForwarderResult"
   /DeleteDirectory:
     post:
       operationId: DeleteDirectory
@@ -800,10 +770,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLogSubscriptionResult"
   /DeleteSnapshot:
     post:
       operationId: DeleteSnapshot
@@ -906,10 +872,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterCertificateResult"
   /DeregisterEventTopic:
     post:
       operationId: DeregisterEventTopic
@@ -943,10 +905,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterEventTopicResult"
   /DescribeADAssessment:
     post:
       operationId: DescribeADAssessment
@@ -1627,10 +1585,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableCAEnrollmentPolicyResult"
   /DisableClientAuthentication:
     post:
       operationId: DisableClientAuthentication
@@ -1663,10 +1617,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableClientAuthenticationResult"
   /DisableDirectoryDataAccess:
     post:
       operationId: DisableDirectoryDataAccess
@@ -1696,10 +1646,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableDirectoryDataAccessResult"
   /DisableLDAPS:
     post:
       operationId: DisableLDAPS
@@ -1732,10 +1678,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableLDAPSResult"
   /DisableRadius:
     post:
       operationId: DisableRadius
@@ -1765,10 +1707,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableRadiusResult"
   /DisableSso:
     post:
       operationId: DisableSso
@@ -1804,10 +1742,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableSsoResult"
   /EnableCAEnrollmentPolicy:
     post:
       operationId: EnableCAEnrollmentPolicy
@@ -1841,10 +1775,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableCAEnrollmentPolicyResult"
   /EnableClientAuthentication:
     post:
       operationId: EnableClientAuthentication
@@ -1877,10 +1807,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableClientAuthenticationResult"
   /EnableDirectoryDataAccess:
     post:
       operationId: EnableDirectoryDataAccess
@@ -1910,10 +1836,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableDirectoryDataAccessResult"
   /EnableLDAPS:
     post:
       operationId: EnableLDAPS
@@ -1946,10 +1868,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableLDAPSResult"
   /EnableRadius:
     post:
       operationId: EnableRadius
@@ -1983,10 +1901,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableRadiusResult"
   /EnableSso:
     post:
       operationId: EnableSso
@@ -2022,10 +1936,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableSsoResult"
   /GetDirectoryLimits:
     post:
       operationId: GetDirectoryLimits
@@ -2392,10 +2302,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterEventTopicResult"
   /RejectSharedDirectory:
     post:
       operationId: RejectSharedDirectory
@@ -2464,10 +2370,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveIpRoutesResult"
   /RemoveRegion:
     post:
       operationId: RemoveRegion
@@ -2497,10 +2399,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveRegionResult"
   /RemoveTagsFromResource:
     post:
       operationId: RemoveTagsFromResource
@@ -2534,10 +2432,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RemoveTagsFromResourceResult"
   /ResetUserPassword:
     post:
       operationId: ResetUserPassword
@@ -2575,10 +2469,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ResetUserPasswordResult"
   /RestoreFromSnapshot:
     post:
       operationId: RestoreFromSnapshot
@@ -2608,10 +2498,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RestoreFromSnapshotResult"
   /ShareDirectory:
     post:
       operationId: ShareDirectory
@@ -2810,10 +2696,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateConditionalForwarderResult"
   /UpdateDirectorySetup:
     post:
       operationId: UpdateDirectorySetup
@@ -2859,10 +2741,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDirectorySetupResult"
   /UpdateHybridAD:
     post:
       operationId: UpdateHybridAD
@@ -2935,10 +2813,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNumberOfDomainControllersResult"
   /UpdateRadius:
     post:
       operationId: UpdateRadius
@@ -2972,10 +2846,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateRadiusResult"
   /UpdateSettings:
     post:
       operationId: UpdateSettings
@@ -3226,8 +3096,6 @@ components:
       pattern: ^([a-zA-Z0-9_])[\\a-zA-Z0-9_@#%*+=:?./!\s-]*$
     UpdateSecurityGroupForDirectoryControllers:
       type: boolean
-    AddIpRoutesResult:
-      type: object
     RegionName:
       type: string
       minLength: 8
@@ -3255,8 +3123,6 @@ components:
     SubnetId:
       type: string
       pattern: ^(subnet-[0-9a-f]{8}|subnet-[0-9a-f]{17})$
-    AddRegionResult:
-      type: object
     ResourceId:
       type: string
       pattern: ^[d]-[0-9a-f]{10}$
@@ -3287,13 +3153,9 @@ components:
       minLength: 0
       maxLength: 256
       pattern: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$
-    AddTagsToResourceResult:
-      type: object
     SchemaExtensionId:
       type: string
       pattern: ^e-[0-9a-f]{10}$
-    CancelSchemaExtensionResult:
-      type: object
     DirectoryName:
       type: string
       pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+$
@@ -3439,9 +3301,6 @@ components:
       type: string
       maxLength: 1024
       pattern: ^([a-zA-Z0-9]+[\\.-])+([a-zA-Z0-9])+[.]?$
-    CreateConditionalForwarderResult:
-      description: The result of a CreateConditinalForwarder request.
-      type: object
     Password:
       type: string
       pattern: (?=^.{8,64}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9\s])(?=.*[a-z])|(?=.*[^A-Za-z0-9\s])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]))^.*
@@ -3469,8 +3328,6 @@ components:
       minLength: 1
       maxLength: 512
       pattern: "[-._/#A-Za-z0-9]+"
-    CreateLogSubscriptionResult:
-      type: object
     DirectoryEdition:
       type: string
       enum:
@@ -3536,9 +3393,6 @@ components:
         AssessmentId:
           $ref: "#/components/schemas/AssessmentId"
           description: The unique identifier of the deleted directory assessment.
-    DeleteConditionalForwarderResult:
-      description: The result of a DeleteConditionalForwarder request.
-      type: object
     DeleteDirectoryResult:
       description: Contains the results of the DeleteDirectory operation.
       type: object
@@ -3546,8 +3400,6 @@ components:
         DirectoryId:
           $ref: "#/components/schemas/DirectoryId"
           description: The directory identifier.
-    DeleteLogSubscriptionResult:
-      type: object
     DeleteSnapshotResult:
       description: Contains the results of the DeleteSnapshot operation.
       type: object
@@ -3567,16 +3419,11 @@ components:
     CertificateId:
       type: string
       pattern: ^c-[0-9a-f]{10}$
-    DeregisterCertificateResult:
-      type: object
     TopicName:
       type: string
       minLength: 1
       maxLength: 256
       pattern: "[a-zA-Z0-9_-]+"
-    DeregisterEventTopicResult:
-      description: The result of a DeregisterEventTopic request.
-      type: object
     DescribeADAssessmentResult:
       type: object
       properties:
@@ -4825,36 +4672,6 @@ components:
         OSVersion:
           $ref: "#/components/schemas/OSVersion"
           description: OS version that the directory needs to be updated to.
-    DisableCAEnrollmentPolicyResult:
-      description: Contains the results of the DisableCAEnrollmentPolicy operation.
-      type: object
-    DisableClientAuthenticationResult:
-      type: object
-    DisableDirectoryDataAccessResult:
-      type: object
-    DisableLDAPSResult:
-      type: object
-    DisableRadiusResult:
-      description: Contains the results of the DisableRadius operation.
-      type: object
-    DisableSsoResult:
-      description: Contains the results of the DisableSso operation.
-      type: object
-    EnableCAEnrollmentPolicyResult:
-      description: Contains the results of the EnableCAEnrollmentPolicy operation.
-      type: object
-    EnableClientAuthenticationResult:
-      type: object
-    EnableDirectoryDataAccessResult:
-      type: object
-    EnableLDAPSResult:
-      type: object
-    EnableRadiusResult:
-      description: Contains the results of the EnableRadius operation.
-      type: object
-    EnableSsoResult:
-      description: Contains the results of the EnableSso operation.
-      type: object
     GetDirectoryLimitsResult:
       description: Contains the results of the GetDirectoryLimits operation.
       type: object
@@ -5151,9 +4968,6 @@ components:
         CertificateId:
           $ref: "#/components/schemas/CertificateId"
           description: The identifier of the certificate.
-    RegisterEventTopicResult:
-      description: The result of a RegisterEventTopic request.
-      type: object
     RejectSharedDirectoryResult:
       type: object
       properties:
@@ -5168,16 +4982,10 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/CidrIpv6"
-    RemoveIpRoutesResult:
-      type: object
-    RemoveRegionResult:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    RemoveTagsFromResourceResult:
-      type: object
     CustomerUserName:
       type: string
       minLength: 1
@@ -5187,11 +4995,6 @@ components:
       type: string
       minLength: 1
       maxLength: 127
-    ResetUserPasswordResult:
-      type: object
-    RestoreFromSnapshotResult:
-      description: Contains the results of the RestoreFromSnapshot operation.
-      type: object
     ShareTarget:
       description: Identifier that contains details about the directory consumer account.
       type: object
@@ -5279,9 +5082,6 @@ components:
         SharedDirectoryId:
           $ref: "#/components/schemas/DirectoryId"
           description: Identifier of the directory stored in the directory consumer account that is to be unshared from the specified directory (DirectoryId).
-    UpdateConditionalForwarderResult:
-      description: The result of an UpdateConditionalForwarder request.
-      type: object
     DirectorySizeUpdateSettings:
       description: Contains the directory size configuration for update operations.
       type: object
@@ -5301,8 +5101,6 @@ components:
           description: IPv6 addresses of DNS servers or domain controllers in the self-managed directory. Required only when updating an AD Connector directory.
     CreateSnapshotBeforeUpdate:
       type: boolean
-    UpdateDirectorySetupResult:
-      type: object
     HybridAdministratorAccountUpdate:
       description: Use to recover to the hybrid directory administrator account credentials.
       type: object
@@ -5334,11 +5132,6 @@ components:
         AssessmentId:
           $ref: "#/components/schemas/AssessmentId"
           description: The identifier of the assessment performed to validate the update configuration. This assessment ensures the updated settings are compatible with your environment.
-    UpdateNumberOfDomainControllersResult:
-      type: object
-    UpdateRadiusResult:
-      description: Contains the results of the UpdateRadius operation.
-      type: object
     Settings:
       type: array
       items:
@@ -5450,7 +5243,6 @@ components:
             $ref: "#/paths/~1AddIpRoutes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5484,7 +5276,6 @@ components:
             $ref: "#/paths/~1RemoveIpRoutes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5510,7 +5301,6 @@ components:
             $ref: "#/paths/~1AddRegion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5544,7 +5334,6 @@ components:
             $ref: "#/paths/~1RemoveRegion/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5570,7 +5359,6 @@ components:
             $ref: "#/paths/~1AddTagsToResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5604,7 +5392,6 @@ components:
             $ref: "#/paths/~1RemoveTagsFromResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5628,6 +5415,18 @@ components:
         cancel_schema_extension:
           operation:
             $ref: "#/paths/~1CancelSchemaExtension/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        connect_directory:
+          operation:
+            $ref: "#/paths/~1ConnectDirectory/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5716,7 +5515,6 @@ components:
             $ref: "#/paths/~1DisableCAEnrollmentPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5729,7 +5527,6 @@ components:
             $ref: "#/paths/~1DisableClientAuthentication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5742,7 +5539,6 @@ components:
             $ref: "#/paths/~1DisableLDAPS/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5755,7 +5551,6 @@ components:
             $ref: "#/paths/~1DisableRadius/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5768,7 +5563,6 @@ components:
             $ref: "#/paths/~1DisableSso/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5781,7 +5575,6 @@ components:
             $ref: "#/paths/~1EnableCAEnrollmentPolicy/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5794,7 +5587,6 @@ components:
             $ref: "#/paths/~1EnableClientAuthentication/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5807,7 +5599,6 @@ components:
             $ref: "#/paths/~1EnableLDAPS/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5820,7 +5611,6 @@ components:
             $ref: "#/paths/~1EnableRadius/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5833,7 +5623,6 @@ components:
             $ref: "#/paths/~1EnableSso/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5846,7 +5635,6 @@ components:
             $ref: "#/paths/~1ResetUserPassword/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5898,7 +5686,6 @@ components:
             $ref: "#/paths/~1UpdateDirectorySetup/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5911,7 +5698,6 @@ components:
             $ref: "#/paths/~1UpdateRadius/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5924,8 +5710,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/directories/methods/describe_directories"
         insert:
           - $ref: "#/components/x-stackQL-resources/directories/methods/create_computer"
-          - $ref: "#/components/x-stackQL-resources/directories/methods/create_alias"
           - $ref: "#/components/x-stackQL-resources/directories/methods/create_directory"
+          - $ref: "#/components/x-stackQL-resources/directories/methods/create_alias"
         update:
           - $ref: "#/components/x-stackQL-resources/directories/methods/update_directory_setup"
           - $ref: "#/components/x-stackQL-resources/directories/methods/update_radius"
@@ -5941,7 +5727,6 @@ components:
             $ref: "#/paths/~1CreateConditionalForwarder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5954,7 +5739,6 @@ components:
             $ref: "#/paths/~1DeleteConditionalForwarder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5980,7 +5764,6 @@ components:
             $ref: "#/paths/~1UpdateConditionalForwarder/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6045,7 +5828,6 @@ components:
             $ref: "#/paths/~1CreateLogSubscription/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6058,7 +5840,6 @@ components:
             $ref: "#/paths/~1DeleteLogSubscription/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6176,7 +5957,6 @@ components:
             $ref: "#/paths/~1RestoreFromSnapshot/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6331,6 +6111,19 @@ components:
                 location: body
             requestBodyTranslate:
               algorithm: naive
+        start_ad_assessment:
+          operation:
+            $ref: "#/paths/~1StartADAssessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ad_assessments/methods/describe_ad_assessment"
@@ -6349,7 +6142,6 @@ components:
             $ref: "#/paths/~1DeregisterCertificate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6424,7 +6216,6 @@ components:
             $ref: "#/paths/~1DeregisterEventTopic/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6450,7 +6241,6 @@ components:
             $ref: "#/paths/~1RegisterEventTopic/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6522,10 +6312,10 @@ components:
         insert: []
         update: []
         delete: []
-    directory_data_access:
-      id: aws.ds.directory_data_access
-      name: directory_data_access
-      title: directory_data_access
+    directory_data_accesses:
+      id: aws.ds.directory_data_accesses
+      name: directory_data_accesses
+      title: directory_data_accesses
       methods:
         describe_directory_data_access:
           operation:
@@ -6545,7 +6335,6 @@ components:
             $ref: "#/paths/~1DisableDirectoryDataAccess/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6558,7 +6347,6 @@ components:
             $ref: "#/paths/~1EnableDirectoryDataAccess/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6568,7 +6356,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/directory_data_access/methods/describe_directory_data_access"
+          - $ref: "#/components/x-stackQL-resources/directory_data_accesses/methods/describe_directory_data_access"
         insert: []
         update: []
         delete: []
@@ -6603,7 +6391,6 @@ components:
             $ref: "#/paths/~1UpdateNumberOfDomainControllers/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

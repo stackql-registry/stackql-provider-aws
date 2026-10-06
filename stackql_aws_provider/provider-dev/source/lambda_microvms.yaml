@@ -409,10 +409,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TerminateMicrovmResponse'
       x-stackql-resource: microvms
       x-stackql-method: terminate_microvm
       x-stackql-verb: DELETE
@@ -691,7 +687,7 @@ paths:
                 logging:
                   $ref: '#/components/schemas/Logging'
                 runHookPayload:
-                  $ref: '#/components/schemas/RunMicrovmRequestRunHookPayloadString'
+                  $ref: '#/components/schemas/RunHookPayload'
                 maximumDurationInSeconds:
                   $ref: '#/components/schemas/RunMicrovmRequestMaximumDurationInSecondsInteger'
                 clientToken:
@@ -705,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RunMicrovmResponse'
-      x-stackql-resource: microvm
+      x-stackql-resource: microvms
       x-stackql-method: run_microvm
       x-stackql-verb: EXEC
   /2017-03-31/tags/{resource}:
@@ -793,11 +789,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResumeMicrovmResponse'
-      x-stackql-resource: microvm
+      x-stackql-resource: microvms
       x-stackql-method: resume_microvm
       x-stackql-verb: EXEC
   /2025-09-09/microvms/{microvm_identifier}/suspend:
@@ -815,10 +807,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SuspendMicrovmResponse'
       x-stackql-resource: microvms
       x-stackql-method: suspend_microvm
       x-stackql-verb: EXEC
@@ -948,7 +936,7 @@ components:
       properties:
         uri:
           $ref: '#/components/schemas/NonBlankString'
-          description: The URI of the code artifact, such as an Amazon S3 path or Amazon ECR image URI.
+          description: The URI of the code artifact in Amazon S3.
     Logging:
       description: 'Configuration for MicroVM logging output. Specify exactly one: cloudWatch to enable CloudWatch logging,
         or disabled to turn off logging.'
@@ -1361,6 +1349,7 @@ components:
       type: string
       minLength: 20
       maxLength: 2048
+      pattern: arn:[a-z0-9-]+:lambda:[a-z0-9-]*:[a-z0-9]*:microvm-image:.+
     IdlePolicy:
       description: Configuration that controls MicroVM auto-suspend and auto-resume behavior. Idle time is measured by inbound
         traffic through the MicroVM proxy endpoint — if no requests arrive within the configured duration, the MicroVM is
@@ -1608,6 +1597,10 @@ components:
         imageVersion:
           $ref: '#/components/schemas/NonBlankString'
           description: The version of the managed MicroVM image.
+        status:
+          $ref: '#/components/schemas/ManagedMicrovmImageVersionStatus'
+          description: 'The lifecycle status of the managed MicroVM image version. Valid values: AVAILABLE (the version is
+            available for use) or DEPRECATED (the version is deprecated; do not use it for new MicroVM images).'
         createdAt:
           $ref: '#/components/schemas/Timestamp'
           description: The timestamp when the version was created.
@@ -1618,6 +1611,12 @@ components:
       - imageArn
       - imageVersion
       - createdAt
+    ManagedMicrovmImageVersionStatus:
+      description: The lifecycle status of a managed MicroVM image version.
+      type: string
+      enum:
+      - AVAILABLE
+      - DEPRECATED
     ListManagedMicrovmImagesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1920,9 +1919,7 @@ components:
           type: object
           properties: {}
           description: The key-value pairs of tags associated with the resource.
-    ResumeMicrovmResponse:
-      type: object
-    RunMicrovmRequestRunHookPayloadString:
+    RunHookPayload:
       type: string
       minLength: 0
       maxLength: 4096
@@ -1989,10 +1986,6 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    SuspendMicrovmResponse:
-      type: object
-    TerminateMicrovmResponse:
-      type: object
     TagKeyList:
       type: array
       items:

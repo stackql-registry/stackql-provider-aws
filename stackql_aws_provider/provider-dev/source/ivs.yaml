@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchStartViewerSessionRevocationResponse'
-      x-stackql-resource: batch_start_viewer_session_revocation
+      x-stackql-resource: viewer_session_revocations
       x-stackql-method: batch_start_viewer_session_revocation
       x-stackql-verb: EXEC
   /CreateAdConfiguration:
@@ -344,10 +344,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePlaybackKeyPairResponse'
       x-stackql-resource: playback_key_pairs
       x-stackql-method: delete_playback_key_pair
       x-stackql-verb: DELETE
@@ -669,7 +665,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportPlaybackKeyPairResponse'
-      x-stackql-resource: playback_key_pair
+      x-stackql-resource: playback_key_pairs
       x-stackql-method: import_playback_key_pair
       x-stackql-verb: EXEC
   /InsertAdBreak:
@@ -1007,10 +1003,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1035,10 +1027,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1096,11 +1084,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartViewerSessionRevocationResponse'
-      x-stackql-resource: channels
+      x-stackql-resource: viewer_session_revocations
       x-stackql-method: start_viewer_session_revocation
       x-stackql-verb: EXEC
   /StopStream:
@@ -1124,11 +1108,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopStreamResponse'
-      x-stackql-resource: channels
+      x-stackql-resource: streams
       x-stackql-method: stop_stream
       x-stackql-verb: EXEC
   /UpdateAdConfiguration:
@@ -2002,8 +1982,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: arn:aws:ivs:[a-z0-9-]+:[0-9]+:playback-key/[a-zA-Z0-9-]+
-    DeletePlaybackKeyPairResponse:
-      type: object
     GetAdConfigurationResponse:
       type: object
       properties:
@@ -2709,12 +2687,6 @@ components:
     StreamMetadata:
       type: string
       minLength: 1
-    StartViewerSessionRevocationResponse:
-      type: object
-    StopStreamResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2724,8 +2696,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ([\p{L}\p{Z}\p{N}_.:/=+\-@]+)
-    UntagResourceResponse:
-      type: object
     UpdateAdConfigurationResponse:
       type: object
       properties:

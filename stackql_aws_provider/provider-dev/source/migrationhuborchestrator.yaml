@@ -224,10 +224,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTemplateResponse'
       x-stackql-resource: templates
       x-stackql-method: delete_template
       x-stackql-verb: DELETE
@@ -367,10 +363,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkflowStepResponse'
       x-stackql-resource: workflow_steps
       x-stackql-method: delete_workflow_step
       x-stackql-verb: DELETE
@@ -478,10 +470,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWorkflowStepGroupResponse'
       x-stackql-resource: workflow_step_groups
       x-stackql-method: delete_workflow_step_group
       x-stackql-verb: DELETE
@@ -709,10 +697,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -735,10 +719,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -987,7 +967,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryWorkflowStepResponse'
-      x-stackql-resource: workflows
+      x-stackql-resource: workflow_steps
       x-stackql-method: retry_workflow_step
       x-stackql-verb: EXEC
   /migrationworkflow/{id}/start:
@@ -1008,7 +988,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMigrationWorkflowResponse'
-      x-stackql-resource: workflow
+      x-stackql-resource: workflows
       x-stackql-method: start_workflow
       x-stackql-verb: EXEC
   /migrationworkflow/{id}/stop:
@@ -1029,7 +1009,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopMigrationWorkflowResponse'
-      x-stackql-resource: workflow
+      x-stackql-resource: workflows
       x-stackql-method: stop_workflow
       x-stackql-verb: EXEC
 components:
@@ -1423,8 +1403,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: '[-a-zA-Z0-9_.+]+[-a-zA-Z0-9_.+ ]*'
-    DeleteTemplateResponse:
-      type: object
     DeleteMigrationWorkflowResponse:
       type: object
       properties:
@@ -1442,10 +1420,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: '[a-zA-Z0-9-]+'
-    DeleteWorkflowStepResponse:
-      type: object
-    DeleteWorkflowStepGroupResponse:
-      type: object
     GetMigrationWorkflowTemplateResponse:
       type: object
       properties:
@@ -2214,8 +2188,6 @@ components:
         lastStopTime:
           $ref: '#/components/schemas/Timestamp'
           description: The time at which the migration workflow was stopped.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2225,8 +2197,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
-    UntagResourceResponse:
-      type: object
     UpdateTemplateRequestTemplateNameString:
       type: string
       minLength: 1

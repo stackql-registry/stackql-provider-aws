@@ -93,6 +93,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates an Amazon FSx for Lustre data repository task. A CreateDataRepositoryTask operation will fail if a data repository is not linked to the FSx file system. You use import and export data repository tasks to perform bulk operations between your FSx for Lustre file system and its linked data repositories. An example of a data repository task is exporting any data and metadata changes, including POSIX metadata, to files, directories, and symbolic links (symlinks) from your FSx file system to a linked data repository. You use release data repository tasks to release data from your file system for files that are exported to S3. The metadata of released files remains on the file system so users or applications can still access released files by reading the files again, which will restore data from Amazon S3 to the FSx for Lustre file system. To learn more about data repository tasks, see Data Repository Tasks. To learn more about linking a data repository to your file system, see Linking your file system to an S3 bucket.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_data_repository_task"><CopyableCode code="cancel_data_repository_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TaskId"><code>TaskId</code></a></td>
+    <td></td>
+    <td>Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state. When you cancel an export task, Amazon FSx does the following. Any files that FSx has already exported are not reverted. FSx continues to export any files that are in-flight when the cancel operation is received. FSx does not export any files that have not yet been exported. For a release task, Amazon FSx will stop releasing files upon cancellation. Any files that have already been released will remain in the released state.</td>
+</tr>
 </tbody>
 </table>
 
@@ -234,5 +241,30 @@ data_repository_task
           Value: {{ Value }}
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_data_repository_task"
+    values={[
+        { label: 'cancel_data_repository_task', value: 'cancel_data_repository_task' }
+    ]}
+>
+<TabItem value="cancel_data_repository_task">
+
+Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state. When you cancel an export task, Amazon FSx does the following. Any files that FSx has already exported are not reverted. FSx continues to export any files that are in-flight when the cancel operation is received. FSx does not export any files that have not yet been exported. For a release task, Amazon FSx will stop releasing files upon cancellation. Any files that have already been released will remain in the released state.
+
+```sql
+EXEC aws.fsx.data_repository_tasks.cancel_data_repository_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TaskId": "{{ TaskId }}"
+}'
+;
+```
 </TabItem>
 </Tabs>

@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptChannelHandshakeResponse'
-      x-stackql-resource: channel_handshake
+      x-stackql-resource: channel_handshakes
       x-stackql-method: accept_channel_handshake
       x-stackql-verb: EXEC
   /CancelChannelHandshake:
@@ -95,7 +95,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelChannelHandshakeResponse'
-      x-stackql-resource: channel_handshake
+      x-stackql-resource: channel_handshakes
       x-stackql-method: cancel_channel_handshake
       x-stackql-verb: EXEC
   /CreateChannelHandshake:
@@ -309,10 +309,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProgramManagementAccountResponse'
       x-stackql-resource: program_management_accounts
       x-stackql-method: delete_program_management_account
       x-stackql-verb: DELETE
@@ -356,10 +352,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRelationshipResponse'
       x-stackql-resource: relationships
       x-stackql-method: delete_relationship
       x-stackql-verb: DELETE
@@ -669,7 +661,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectChannelHandshakeResponse'
-      x-stackql-resource: channel_handshake
+      x-stackql-resource: channel_handshakes
       x-stackql-method: reject_channel_handshake
       x-stackql-verb: EXEC
   /TagResource:
@@ -705,10 +697,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -745,10 +733,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1241,15 +1225,11 @@ components:
       minLength: 16
       maxLength: 16
       pattern: rs-[a-z0-9]{13}
-    DeleteProgramManagementAccountResponse:
-      type: object
     RelationshipIdentifier:
       type: string
       minLength: 16
       maxLength: 1011
       pattern: (arn:[a-z-]+:partnercentral:[a-z0-9-]+:[0-9]{12}:catalog/[a-zA-Z]+/program-management-account/pma-[a-z0-9]{13}/relationship/)?rs-[a-z0-9]{13}
-    DeleteRelationshipResponse:
-      type: object
     GetRelationshipResponse:
       type: object
       properties:
@@ -1766,14 +1746,10 @@ components:
         status:
           $ref: '#/components/schemas/HandshakeStatus'
           description: The current status of the rejected handshake.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateProgramManagementAccountResponse:
       type: object
       properties:

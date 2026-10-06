@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>Refers to an identity provider.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="license_expiration_date" /></td>
+    <td><code>string</code></td>
+    <td>The expiration date of the license associated with this subscription, in ISO 8601 UTC format (for example, 2025-03-15T00:00:00Z). This field applies only to subscriptions that use license server endpoints, such as Remote Desktop Services (RDS) Subscriber Access License (SAL). It returns null for products that don't use license-based subscriptions.</td>
+</tr>
+<tr>
     <td><CopyableCode code="product" /></td>
     <td><code>string</code></td>
     <td>The name of the user-based subscription product.</td>
@@ -121,6 +126,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists the user-based subscription products available from an identity provider.</td>
 </tr>
+<tr>
+    <td><a href="#start_product_subscription"><CopyableCode code="start_product_subscription" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-IdentityProvider"><code>IdentityProvider</code></a></td>
+    <td></td>
+    <td>Starts a product subscription for a user with the specified identity provider. Your estimated bill for charges on the number of users and related costs will take 48 hours to appear for billing periods that haven't closed (marked as Pending billing status) in Amazon Web Services Billing. For more information, see Viewing your monthly charges in the Amazon Web Services Billing User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#stop_product_subscription"><CopyableCode code="stop_product_subscription" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a product subscription for a user with the specified identity provider.</td>
+</tr>
 </tbody>
 </table>
 
@@ -161,6 +180,7 @@ Lists the user-based subscription products available from an identity provider.
 SELECT
 domain,
 identity_provider,
+license_expiration_date,
 product,
 product_user_arn,
 status,
@@ -170,6 +190,54 @@ subscription_start_date,
 username
 FROM aws.license_manager_user_subscriptions.product_subscriptions
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_product_subscription"
+    values={[
+        { label: 'start_product_subscription', value: 'start_product_subscription' },
+        { label: 'stop_product_subscription', value: 'stop_product_subscription' }
+    ]}
+>
+<TabItem value="start_product_subscription">
+
+Starts a product subscription for a user with the specified identity provider. Your estimated bill for charges on the number of users and related costs will take 48 hours to appear for billing periods that haven't closed (marked as Pending billing status) in Amazon Web Services Billing. For more information, see Viewing your monthly charges in the Amazon Web Services Billing User Guide.
+
+```sql
+EXEC aws.license_manager_user_subscriptions.product_subscriptions.start_product_subscription 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Username": "{{ Username }}", 
+"IdentityProvider": "{{ IdentityProvider }}", 
+"Product": "{{ Product }}", 
+"Domain": "{{ Domain }}", 
+"Tags": "{{ Tags }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_product_subscription">
+
+Stops a product subscription for a user with the specified identity provider.
+
+```sql
+EXEC aws.license_manager_user_subscriptions.product_subscriptions.stop_product_subscription 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Username": "{{ Username }}", 
+"IdentityProvider": "{{ IdentityProvider }}", 
+"Product": "{{ Product }}", 
+"ProductUserArn": "{{ ProductUserArn }}", 
+"Domain": "{{ Domain }}"
+}'
 ;
 ```
 </TabItem>

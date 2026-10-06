@@ -40,10 +40,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AcceptInvitationResponse"
   /custom-data-identifiers/get:
     post:
       operationId: BatchGetCustomDataIdentifiers
@@ -442,10 +438,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateSampleFindingsResponse"
   /invitations/decline:
     post:
       operationId: DeclineInvitations
@@ -489,10 +481,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAllowListResponse"
     get:
       operationId: GetAllowList
       description: Retrieves the settings and status of an allow list.
@@ -557,10 +545,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomDataIdentifierResponse"
     get:
       operationId: GetCustomDataIdentifier
       description: Retrieves the criteria and other settings for a custom data identifier.
@@ -592,10 +576,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteFindingsFilterResponse"
     get:
       operationId: GetFindingsFilter
       description: Retrieves the criteria and other settings for a findings filter.
@@ -686,10 +666,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMemberResponse"
     get:
       operationId: GetMember
       description: Retrieves information about an account that's associated with an Amazon Macie administrator account.
@@ -776,10 +752,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateClassificationJobResponse"
   /admin/configuration:
     get:
       operationId: DescribeOrganizationConfiguration
@@ -810,10 +782,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateOrganizationConfigurationResponse"
   /macie:
     delete:
       operationId: DisableMacie
@@ -822,10 +790,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableMacieResponse"
     post:
       operationId: EnableMacie
       description: Enables Amazon Macie and specifies the configuration settings for a Macie account.
@@ -846,10 +810,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableMacieResponse"
     get:
       operationId: GetMacieSession
       description: Retrieves the status and configuration settings for an Amazon Macie account.
@@ -879,10 +839,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMacieSessionResponse"
   /admin:
     delete:
       operationId: DisableOrganizationAdminAccount
@@ -897,10 +853,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisableOrganizationAdminAccountResponse"
     post:
       operationId: EnableOrganizationAdminAccount
       description: Designates an account as the delegated Amazon Macie administrator account for an organization in Organizations.
@@ -921,10 +873,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EnableOrganizationAdminAccountResponse"
     get:
       operationId: ListOrganizationAdminAccounts
       description: Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.
@@ -956,10 +904,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFromAdministratorAccountResponse"
   /master/disassociate:
     post:
       operationId: DisassociateFromMasterAccount
@@ -968,10 +912,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateFromMasterAccountResponse"
   /members/disassociate/{id}:
     post:
       operationId: DisassociateMember
@@ -986,10 +926,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DisassociateMemberResponse"
   /administrator:
     get:
       operationId: GetAdministratorAccount
@@ -1034,10 +970,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAutomatedDiscoveryConfigurationResponse"
   /datasources/s3/statistics:
     post:
       operationId: GetBucketStatistics
@@ -1133,10 +1065,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateClassificationScopeResponse"
   /findings/statistics:
     post:
       operationId: GetFindingStatistics
@@ -1221,10 +1149,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutFindingsPublicationConfigurationResponse"
   /invitations/count:
     get:
       operationId: GetInvitationsCount
@@ -1289,10 +1213,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceProfileResponse"
   /reveal-configuration:
     get:
       operationId: GetRevealConfiguration
@@ -1409,10 +1329,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSensitivityInspectionTemplateResponse"
   /usage/statistics:
     post:
       operationId: GetUsageStatistics
@@ -1658,10 +1574,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateResourceProfileDetectionsResponse"
   /templates/sensitivity-inspections:
     get:
       operationId: ListSensitivityInspectionTemplates
@@ -1728,10 +1640,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Removes one or more tags (keys and values) from an Amazon Macie resource.
@@ -1751,10 +1659,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /datasources/search-resources:
     post:
       operationId: SearchResources
@@ -1839,10 +1743,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateMemberSessionResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1890,8 +1790,6 @@ components:
   schemas:
     __string:
       type: string
-    AcceptInvitationResponse:
-      type: object
     __listOf__string:
       type: array
       items:
@@ -2443,28 +2341,18 @@ components:
         - Policy:IAMUser/S3BucketEncryptionDisabled
         - Policy:IAMUser/S3BlockPublicAccessDisabled
         - Policy:IAMUser/S3BucketSharedWithCloudFront
-    CreateSampleFindingsResponse:
-      type: object
     DeclineInvitationsResponse:
       type: object
       properties:
         unprocessedAccounts:
           $ref: "#/components/schemas/__listOfUnprocessedAccount"
           description: An array of objects, one for each account whose invitation hasn't been declined. Each object identifies the account and explains why the request hasn't been processed for that account.
-    DeleteAllowListResponse:
-      type: object
-    DeleteCustomDataIdentifierResponse:
-      type: object
-    DeleteFindingsFilterResponse:
-      type: object
     DeleteInvitationsResponse:
       type: object
       properties:
         unprocessedAccounts:
           $ref: "#/components/schemas/__listOfUnprocessedAccount"
           description: An array of objects, one for each account whose invitation hasn't been deleted. Each object identifies the account and explains why the request hasn't been processed for that account.
-    DeleteMemberResponse:
-      type: object
     BucketCriteria:
       description: Specifies, as a map, one or more property-based conditions that filter the results of a query for information about S3 buckets.
       type: object
@@ -2918,16 +2806,6 @@ components:
         maxAccountLimitReached:
           $ref: "#/components/schemas/__boolean"
           description: Specifies whether the maximum number of Amazon Macie member accounts are part of the organization.
-    DisableMacieResponse:
-      type: object
-    DisableOrganizationAdminAccountResponse:
-      type: object
-    DisassociateFromAdministratorAccountResponse:
-      type: object
-    DisassociateFromMasterAccountResponse:
-      type: object
-    DisassociateMemberResponse:
-      type: object
     FindingPublishingFrequency:
       description: "The frequency with which Amazon Macie publishes updates to policy findings for an account. This includes publishing updates to Security Hub and Amazon EventBridge (formerly Amazon CloudWatch Events). For more information, see Monitoring and processing findings in the Amazon Macie User Guide. Valid values are:"
       type: string
@@ -2941,10 +2819,6 @@ components:
       enum:
         - PAUSED
         - ENABLED
-    EnableMacieResponse:
-      type: object
-    EnableOrganizationAdminAccountResponse:
-      type: object
     GetAdministratorAccountResponse:
       type: object
       properties:
@@ -5060,8 +4934,6 @@ components:
         configuration:
           $ref: "#/components/schemas/ClassificationExportConfiguration"
           description: The location where the data classification results are stored, and the encryption settings that are used when storing results in that location.
-    PutFindingsPublicationConfigurationResponse:
-      type: object
     SearchResourcesBucketCriteria:
       description: Specifies property- and tag-based conditions that define filter criteria for including or excluding S3 buckets from the query results. Exclude conditions take precedence over include conditions.
       type: object
@@ -5235,16 +5107,12 @@ components:
         unclassifiableObjectSizeInBytes:
           $ref: "#/components/schemas/ObjectLevelStatistics"
           description: The total storage size, in bytes, of the objects that Amazon Macie can't analyze in the bucket. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.
-    TagResourceResponse:
-      type: object
     TestCustomDataIdentifierResponse:
       type: object
       properties:
         matchCount:
           $ref: "#/components/schemas/__integer"
           description: The number of occurrences of sample text that matched the criteria specified by the custom data identifier.
-    UntagResourceResponse:
-      type: object
     UpdateAllowListResponse:
       type: object
       properties:
@@ -5254,10 +5122,6 @@ components:
         id:
           $ref: "#/components/schemas/__stringMin22Max22PatternAZ0922"
           description: The unique identifier for the allow list.
-    UpdateAutomatedDiscoveryConfigurationResponse:
-      type: object
-    UpdateClassificationJobResponse:
-      type: object
     S3ClassificationScopeUpdate:
       description: Specifies changes to the list of S3 buckets that are excluded from automated sensitive data discovery for an Amazon Macie account.
       type: object
@@ -5287,8 +5151,6 @@ components:
         - ADD
         - REPLACE
         - REMOVE
-    UpdateClassificationScopeResponse:
-      type: object
     UpdateFindingsFilterResponse:
       type: object
       properties:
@@ -5298,14 +5160,6 @@ components:
         id:
           $ref: "#/components/schemas/__string"
           description: The unique identifier for the filter that was updated.
-    UpdateMacieSessionResponse:
-      type: object
-    UpdateMemberSessionResponse:
-      type: object
-    UpdateOrganizationConfigurationResponse:
-      type: object
-    UpdateResourceProfileResponse:
-      type: object
     __listOfSuppressDataIdentifier:
       type: array
       items:
@@ -5320,8 +5174,6 @@ components:
         type_:
           $ref: "#/components/schemas/DataIdentifierType"
           description: "The type of data identifier that detected the sensitive data. Possible values are: CUSTOM, for a custom data identifier; and, MANAGED, for a managed data identifier."
-    UpdateResourceProfileDetectionsResponse:
-      type: object
     UpdateRetrievalConfiguration:
       description: Specifies the access method and settings to use when retrieving occurrences of sensitive data reported by findings. If your request specifies an Identity and Access Management (IAM) role to assume, Amazon Macie verifies that the role exists and the attached policies are configured correctly. If there's an issue, Macie returns an error. For information about addressing the issue, see Configuration options for retrieving sensitive data samples in the Amazon Macie User Guide.
       type: object
@@ -5343,8 +5195,6 @@ components:
         retrievalConfiguration:
           $ref: "#/components/schemas/RetrievalConfiguration"
           description: The access method and settings to use when retrieving the sensitive data.
-    UpdateSensitivityInspectionTemplateResponse:
-      type: object
   x-stackQL-resources:
     invitations:
       id: aws.macie2.invitations
@@ -5356,7 +5206,6 @@ components:
             $ref: "#/paths/~1invitations~1accept/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5452,7 +5301,6 @@ components:
             $ref: "#/paths/~1custom-data-identifiers~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_custom_data_identifier:
           operation:
             $ref: "#/paths/~1custom-data-identifiers~1{id}/get"
@@ -5476,6 +5324,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+            requestBodyTranslate:
+              algorithm: naive
+        test_custom_data_identifier:
+          operation:
+            $ref: "#/paths/~1custom-data-identifiers~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5564,7 +5423,6 @@ components:
             $ref: "#/paths/~1allow-lists~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         get_allow_list:
@@ -5621,7 +5479,6 @@ components:
             $ref: "#/paths/~1jobs~1{job_id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5693,7 +5550,6 @@ components:
             $ref: "#/paths/~1findingsfilters~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_findings_filter:
           operation:
             $ref: "#/paths/~1findingsfilters~1{id}/get"
@@ -5759,7 +5615,6 @@ components:
             $ref: "#/paths/~1members~1{id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_member:
           operation:
             $ref: "#/paths/~1members~1{id}/get"
@@ -5771,13 +5626,11 @@ components:
             $ref: "#/paths/~1members~1disassociate~1{id}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_member_session:
           operation:
             $ref: "#/paths/~1macie~1members~1{id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5804,7 +5657,6 @@ components:
             $ref: "#/paths/~1findings~1sample/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5900,7 +5752,6 @@ components:
             $ref: "#/paths/~1admin~1configuration/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5912,6 +5763,31 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
+        delete: []
+    macies:
+      id: aws.macie2.macies
+      name: macies
+      title: macies
+      methods:
+        disable_macie:
+          operation:
+            $ref: "#/paths/~1macie/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_macie:
+          operation:
+            $ref: "#/paths/~1macie/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     macie_sessions:
       id: aws.macie2.macie_sessions
@@ -5929,7 +5805,6 @@ components:
             $ref: "#/paths/~1macie/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5947,6 +5822,21 @@ components:
       name: organization_admin_accounts
       title: organization_admin_accounts
       methods:
+        disable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1admin/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_organization_admin_account:
+          operation:
+            $ref: "#/paths/~1admin/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_organization_admin_accounts:
           operation:
             $ref: "#/paths/~1admin/get"
@@ -5980,7 +5870,6 @@ components:
             $ref: "#/paths/~1administrator~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_administrator_account:
           operation:
             $ref: "#/paths/~1administrator/get"
@@ -6005,7 +5894,6 @@ components:
             $ref: "#/paths/~1master~1disassociate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_master_account:
           operation:
             $ref: "#/paths/~1master/get"
@@ -6036,7 +5924,6 @@ components:
             $ref: "#/paths/~1automated-discovery~1configuration/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6118,7 +6005,6 @@ components:
             $ref: "#/paths/~1classification-scopes~1{id}/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6188,7 +6074,6 @@ components:
             $ref: "#/paths/~1findings-publication-configuration/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6237,7 +6122,6 @@ components:
             $ref: "#/paths/~1resource-profiles/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6329,7 +6213,6 @@ components:
             $ref: "#/paths/~1templates~1sensitivity-inspections~1{id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6494,7 +6377,6 @@ components:
             $ref: "#/paths/~1resource-profiles~1detections/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6523,7 +6405,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6534,7 +6415,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

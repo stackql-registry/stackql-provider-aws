@@ -180,18 +180,18 @@ The following methods are available for this resource:
     <td>Updates a room’s configuration.</td>
 </tr>
 <tr>
-    <td><a href="#delete_message"><CopyableCode code="delete_message" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s EventName is aws:DELETE_MESSAGE. This replicates the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.</td>
-</tr>
-<tr>
     <td><a href="#delete_room"><CopyableCode code="delete_room" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified room.</td>
+</tr>
+<tr>
+    <td><a href="#delete_message"><CopyableCode code="delete_message" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s EventName is aws:DELETE_MESSAGE. This replicates the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.</td>
 </tr>
 <tr>
     <td><a href="#disconnect_user"><CopyableCode code="disconnect_user" /></a></td>
@@ -435,15 +435,15 @@ update_time;
 ## `DELETE` examples
 
 <Tabs
-    defaultValue="delete_message"
+    defaultValue="delete_room"
     values={[
-        { label: 'delete_message', value: 'delete_message' },
-        { label: 'delete_room', value: 'delete_room' }
+        { label: 'delete_room', value: 'delete_room' },
+        { label: 'delete_message', value: 'delete_message' }
     ]}
 >
-<TabItem value="delete_message">
+<TabItem value="delete_room">
 
-Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s EventName is aws:DELETE_MESSAGE. This replicates the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
+Deletes the specified room.
 
 ```sql
 DELETE FROM aws.ivschat.rooms
@@ -451,9 +451,9 @@ WHERE region = '{{ region }}' --required
 ;
 ```
 </TabItem>
-<TabItem value="delete_room">
+<TabItem value="delete_message">
 
-Deletes the specified room.
+Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history. This event’s EventName is aws:DELETE_MESSAGE. This replicates the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
 
 ```sql
 DELETE FROM aws.ivschat.rooms

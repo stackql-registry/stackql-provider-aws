@@ -411,10 +411,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCrossAccountAuthorizationResponse'
       x-stackql-resource: cross_account_authorizations
       x-stackql-method: delete_cross_account_authorization
       x-stackql-verb: DELETE
@@ -735,7 +731,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReadinessCheckResourceStatusResponse'
-      x-stackql-resource: readiness_check_resource_status
+      x-stackql-resource: readiness_check_resource_statuses
       x-stackql-method: get_readiness_check_resource_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
@@ -773,7 +769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetReadinessCheckStatusResponse'
-      x-stackql-resource: readiness_check_status
+      x-stackql-resource: readiness_check_statuses
       x-stackql-method: get_readiness_check_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
@@ -900,10 +896,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1144,8 +1136,6 @@ components:
         Tags:
           type: object
           properties: {}
-    DeleteCrossAccountAuthorizationResponse:
-      type: object
     MaxResults:
       type: integer
       minimum: 1
@@ -1587,8 +1577,6 @@ components:
         Tags:
           type: object
           properties: {}
-    TagResourceResponse:
-      type: object
     UpdateCellResponse:
       type: object
       properties:

@@ -71,10 +71,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateWebACLResponse'
       x-stackql-resource: web_acls
       x-stackql-method: associate_web_acl
       x-stackql-verb: UPDATE
@@ -124,7 +120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckCapacityResponse'
-      x-stackql-resource: check_capacity
+      x-stackql-resource: capacities
       x-stackql-method: check_capacity
       x-stackql-verb: EXEC
   /CreateAPIKey:
@@ -543,10 +539,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAPIKeyResponse'
       x-stackql-resource: api_keys
       x-stackql-method: delete_api_key
       x-stackql-verb: DELETE
@@ -646,10 +638,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIPSetResponse'
       x-stackql-resource: ip_sets
       x-stackql-method: delete_ip_set
       x-stackql-verb: DELETE
@@ -695,10 +683,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLoggingConfigurationResponse'
       x-stackql-resource: logging_configurations
       x-stackql-method: delete_logging_configuration
       x-stackql-verb: DELETE
@@ -733,10 +717,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePermissionPolicyResponse'
       x-stackql-resource: permission_policies
       x-stackql-method: delete_permission_policy
       x-stackql-verb: DELETE
@@ -790,10 +770,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRegexPatternSetResponse'
       x-stackql-resource: regex_pattern_sets
       x-stackql-method: delete_regex_pattern_set
       x-stackql-verb: DELETE
@@ -847,10 +823,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRuleGroupResponse'
       x-stackql-resource: rule_groups
       x-stackql-method: delete_rule_group
       x-stackql-verb: DELETE
@@ -910,10 +882,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWebACLResponse'
       x-stackql-resource: web_acls
       x-stackql-method: delete_web_acl
       x-stackql-verb: DELETE
@@ -998,7 +966,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeManagedProductsByVendorResponse'
-      x-stackql-resource: managed_products_by_vendors
+      x-stackql-resource: managed_products
       x-stackql-method: describe_managed_products_by_vendor
       x-stackql-verb: SELECT
   /DescribeManagedRuleGroup:
@@ -1095,10 +1063,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateWebACLResponse'
       x-stackql-resource: web_acls
       x-stackql-method: disassociate_web_acl
       x-stackql-verb: UPDATE
@@ -1933,7 +1897,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTopPathStatisticsByTrafficResponse'
-      x-stackql-resource: top_path_statistics_by_traffics
+      x-stackql-resource: top_path_statistics
       x-stackql-method: get_top_path_statistics_by_traffic
       x-stackql-verb: SELECT
   /GetWebACL:
@@ -2496,7 +2460,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListResourcesForWebACLOutputDisplay'
-      x-stackql-resource: resources_for_web_acls
+      x-stackql-resource: resources
       x-stackql-method: list_resources_for_web_acl
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListResourcesForWebACLOutputDisplay
@@ -2886,10 +2850,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPermissionPolicyResponse'
       x-stackql-resource: permission_policies
       x-stackql-method: put_permission_policy
       x-stackql-verb: REPLACE
@@ -2930,10 +2890,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -2972,10 +2928,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3503,8 +3455,6 @@ components:
       minLength: 20
       maxLength: 2048
       pattern: .*\S.*
-    AssociateWebACLResponse:
-      type: object
     Scope:
       type: string
       enum:
@@ -6772,8 +6722,11 @@ components:
           description: Specifies the web request component type to protect.
         FieldKeys:
           $ref: '#/components/schemas/FieldToProtectKeys'
-          description: Specifies the keys to protect for the specified field type. If you don't specify any key, then all
-            keys for the field type are protected.
+          description: 'Specifies the keys to protect for the specified field type. Required for SINGLE_HEADER, SINGLE_COOKIE,
+            and SINGLE_QUERY_ARGUMENT: provide a non-empty array naming the specific headers, cookies, or query arguments
+            to protect. There is no option to protect all keys of these field types, so enumerate each key you intend to protect.
+            Must be omitted for QUERY_STRING and BODY: the entire component is protected and these field types take no keys.
+            Supplying FieldKeys for them is rejected.'
       required:
       - FieldType
     FieldToProtectType:
@@ -6908,8 +6861,6 @@ components:
         ARN:
           $ref: '#/components/schemas/ResourceArn'
           description: The Amazon Resource Name (ARN) of the entity.
-    DeleteAPIKeyResponse:
-      type: object
     DeleteFirewallManagerRuleGroupsResponse:
       type: object
       properties:
@@ -6920,8 +6871,6 @@ components:
             the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to
             the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException.
             If this happens, perform another get, and use the new token returned by that operation.
-    DeleteIPSetResponse:
-      type: object
     LogType:
       type: string
       enum:
@@ -6932,16 +6881,6 @@ components:
       - CUSTOMER
       - SECURITY_LAKE
       - CLOUDWATCH_TELEMETRY_RULE_MANAGED
-    DeleteLoggingConfigurationResponse:
-      type: object
-    DeletePermissionPolicyResponse:
-      type: object
-    DeleteRegexPatternSetResponse:
-      type: object
-    DeleteRuleGroupResponse:
-      type: object
-    DeleteWebACLResponse:
-      type: object
     DescribeAllManagedProductsResponse:
       type: object
       properties:
@@ -7083,8 +7022,6 @@ components:
         Name:
           $ref: '#/components/schemas/LabelName'
           description: An individual label specification.
-    DisassociateWebACLResponse:
-      type: object
     Platform:
       type: string
       enum:
@@ -8808,16 +8745,10 @@ components:
             the token to operations like update and delete. WAF uses the token to ensure that no changes have been made to
             the entity since you last retrieved it. If a change has been made, the update fails with a WAFOptimisticLockException.
             If this happens, perform another get, and use the new token returned by that operation.
-    PutPermissionPolicyResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateIPSetResponse:
       type: object
       properties:

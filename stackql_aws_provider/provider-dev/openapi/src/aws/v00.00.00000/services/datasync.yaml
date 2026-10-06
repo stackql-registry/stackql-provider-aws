@@ -47,10 +47,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CancelTaskExecutionResponse"
   /CreateAgent:
     post:
       operationId: CreateAgent
@@ -816,10 +812,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteAgentResponse"
   /DeleteLocation:
     post:
       operationId: DeleteLocation
@@ -849,10 +841,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLocationResponse"
   /DeleteTask:
     post:
       operationId: DeleteTask
@@ -882,10 +870,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteTaskResponse"
   /DescribeAgent:
     post:
       operationId: DescribeAgent
@@ -1615,10 +1599,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -1652,10 +1632,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAgent:
     post:
       operationId: UpdateAgent
@@ -1688,10 +1664,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAgentResponse"
   /UpdateLocationAzureBlob:
     post:
       operationId: UpdateLocationAzureBlob
@@ -1745,10 +1717,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationAzureBlobResponse"
   /UpdateLocationEfs:
     post:
       operationId: UpdateLocationEfs
@@ -1790,10 +1758,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationEfsResponse"
   /UpdateLocationFsxLustre:
     post:
       operationId: UpdateLocationFsxLustre
@@ -1826,10 +1790,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationFsxLustreResponse"
   /UpdateLocationFsxOntap:
     post:
       operationId: UpdateLocationFsxOntap
@@ -1865,10 +1825,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationFsxOntapResponse"
   /UpdateLocationFsxOpenZfs:
     post:
       operationId: UpdateLocationFsxOpenZfs
@@ -1903,10 +1859,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationFsxOpenZfsResponse"
   /UpdateLocationFsxWindows:
     post:
       operationId: UpdateLocationFsxWindows
@@ -1954,10 +1906,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationFsxWindowsResponse"
   /UpdateLocationHdfs:
     post:
       operationId: UpdateLocationHdfs
@@ -2029,10 +1977,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationHdfsResponse"
   /UpdateLocationNfs:
     post:
       operationId: UpdateLocationNfs
@@ -2072,10 +2016,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationNfsResponse"
   /UpdateLocationObjectStorage:
     post:
       operationId: UpdateLocationObjectStorage
@@ -2135,10 +2075,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationObjectStorageResponse"
   /UpdateLocationS3:
     post:
       operationId: UpdateLocationS3
@@ -2176,10 +2112,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationS3Response"
   /UpdateLocationSmb:
     post:
       operationId: UpdateLocationSmb
@@ -2250,10 +2182,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateLocationSmbResponse"
   /UpdateTask:
     post:
       operationId: UpdateTask
@@ -2306,10 +2234,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTaskResponse"
   /UpdateTaskExecution:
     post:
       operationId: UpdateTaskExecution
@@ -2341,10 +2265,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateTaskExecutionResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2394,8 +2314,6 @@ components:
       type: string
       maxLength: 128
       pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:task/task-[0-9a-f]{17}/execution/exec-[0-9a-f]{17}$
-    CancelTaskExecutionResponse:
-      type: object
     ActivationKey:
       type: string
       maxLength: 29
@@ -3267,12 +3185,6 @@ components:
       type: string
       maxLength: 128
       pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:task/task-[0-9a-f]{17}$
-    DeleteAgentResponse:
-      type: object
-    DeleteLocationResponse:
-      type: object
-    DeleteTaskResponse:
-      type: object
     DescribeAgentResponse:
       description: DescribeAgentResponse
       type: object
@@ -4224,18 +4136,10 @@ components:
         TaskExecutionArn:
           $ref: "#/components/schemas/TaskExecutionArn"
           description: The ARN of the running task execution.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateAgentResponse:
-      type: object
-    UpdateLocationAzureBlobResponse:
-      type: object
     UpdatedEfsAccessPointArn:
       type: string
       maxLength: 128
@@ -4244,10 +4148,6 @@ components:
       type: string
       maxLength: 2048
       pattern: (^arn:(aws|aws-cn|aws-us-gov|aws-eusc|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$)|(^$)
-    UpdateLocationEfsResponse:
-      type: object
-    UpdateLocationFsxLustreResponse:
-      type: object
     FsxUpdateProtocol:
       description: Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system. You can't update the Network File System (NFS) protocol configuration for FSx for ONTAP locations. DataSync currently only supports NFS version 3 with this location type.
       type: object
@@ -4282,26 +4182,6 @@ components:
       type: string
       maxLength: 253
       pattern: ^([A-Za-z0-9]((\.|-+)?[A-Za-z0-9]){0,252})?$
-    UpdateLocationFsxOntapResponse:
-      type: object
-    UpdateLocationFsxOpenZfsResponse:
-      type: object
-    UpdateLocationFsxWindowsResponse:
-      type: object
-    UpdateLocationHdfsResponse:
-      type: object
-    UpdateLocationNfsResponse:
-      type: object
-    UpdateLocationObjectStorageResponse:
-      type: object
-    UpdateLocationS3Response:
-      type: object
-    UpdateLocationSmbResponse:
-      type: object
-    UpdateTaskResponse:
-      type: object
-    UpdateTaskExecutionResponse:
-      type: object
   x-stackQL-resources:
     tasks:
       id: aws.datasync.tasks
@@ -4313,7 +4193,6 @@ components:
             $ref: "#/paths/~1CancelTaskExecution/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4339,7 +4218,6 @@ components:
             $ref: "#/paths/~1DeleteTask/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4399,7 +4277,6 @@ components:
             $ref: "#/paths/~1UpdateTask/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4440,7 +4317,6 @@ components:
             $ref: "#/paths/~1DeleteAgent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4487,7 +4363,6 @@ components:
             $ref: "#/paths/~1UpdateAgent/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4541,7 +4416,6 @@ components:
             $ref: "#/paths/~1UpdateLocationAzureBlob/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4593,7 +4467,6 @@ components:
             $ref: "#/paths/~1UpdateLocationEfs/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4645,7 +4518,6 @@ components:
             $ref: "#/paths/~1UpdateLocationFsxLustre/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4697,7 +4569,6 @@ components:
             $ref: "#/paths/~1UpdateLocationFsxOntap/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4749,7 +4620,6 @@ components:
             $ref: "#/paths/~1UpdateLocationFsxOpenZfs/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4801,7 +4671,6 @@ components:
             $ref: "#/paths/~1UpdateLocationFsxWindows/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4853,7 +4722,6 @@ components:
             $ref: "#/paths/~1UpdateLocationHdfs/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4905,7 +4773,6 @@ components:
             $ref: "#/paths/~1UpdateLocationNfs/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4921,10 +4788,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/location_nfs/methods/update_location_nfs"
         delete: []
-    location_object_storages:
-      id: aws.datasync.location_object_storages
-      name: location_object_storages
-      title: location_object_storages
+    location_object_storage:
+      id: aws.datasync.location_object_storage
+      name: location_object_storage
+      title: location_object_storage
       methods:
         create_location_object_storage:
           operation:
@@ -4957,7 +4824,6 @@ components:
             $ref: "#/paths/~1UpdateLocationObjectStorage/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4967,11 +4833,11 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/location_object_storages/methods/describe_location_object_storage"
+          - $ref: "#/components/x-stackQL-resources/location_object_storage/methods/describe_location_object_storage"
         insert:
-          - $ref: "#/components/x-stackQL-resources/location_object_storages/methods/create_location_object_storage"
+          - $ref: "#/components/x-stackQL-resources/location_object_storage/methods/create_location_object_storage"
         update:
-          - $ref: "#/components/x-stackQL-resources/location_object_storages/methods/update_location_object_storage"
+          - $ref: "#/components/x-stackQL-resources/location_object_storage/methods/update_location_object_storage"
         delete: []
     location_s3s:
       id: aws.datasync.location_s3s
@@ -5009,7 +4875,6 @@ components:
             $ref: "#/paths/~1UpdateLocationS3/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5061,7 +4926,6 @@ components:
             $ref: "#/paths/~1UpdateLocationSmb/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5087,7 +4951,6 @@ components:
             $ref: "#/paths/~1DeleteLocation/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5167,7 +5030,6 @@ components:
             $ref: "#/paths/~1UpdateTaskExecution/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5214,7 +5076,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5227,7 +5088,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

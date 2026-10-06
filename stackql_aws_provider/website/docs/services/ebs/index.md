@@ -18,16 +18,17 @@ ebs service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/ebs/changed_blocks/">changed_blocks</a>
+<a href="/services/ebs/changed_blocks/">changed_blocks</a><br />
+<a href="/services/ebs/snapshot_blocks/">snapshot_blocks</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/ebs/snapshot_blocks/">snapshot_blocks</a>
+<a href="/services/ebs/snapshots/">snapshots</a>
 </div>
 </div>

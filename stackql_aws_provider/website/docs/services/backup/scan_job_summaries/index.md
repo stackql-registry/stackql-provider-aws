@@ -119,7 +119,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-AccountId"><code>AccountId</code></a>, <a href="#parameter-ResourceType"><code>ResourceType</code></a>, <a href="#parameter-MalwareScanner"><code>MalwareScanner</code></a>, <a href="#parameter-ScanResultStatus"><code>ScanResultStatus</code></a>, <a href="#parameter-State"><code>State</code></a>, <a href="#parameter-AggregationPeriod"><code>AggregationPeriod</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
-    <td>This is a request for a summary of scan jobs created or running within the most recent 30 days.</td>
+    <td>This is a request for a summary of scan jobs created or running within the most recent 14 days.</td>
 </tr>
 </tbody>
 </table>
@@ -195,7 +195,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_scan_job_summaries">
 
-This is a request for a summary of scan jobs created or running within the most recent 30 days.
+This is a request for a summary of scan jobs created or running within the most recent 14 days.
 
 ```sql
 SELECT

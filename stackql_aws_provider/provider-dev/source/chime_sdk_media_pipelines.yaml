@@ -720,7 +720,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeakerSearchTaskResponse'
-      x-stackql-resource: speaker_search_task
+      x-stackql-resource: speaker_search_tasks
       x-stackql-method: start_speaker_search_task
       x-stackql-verb: EXEC
   /media-insights-pipelines/{identifier}/voice-tone-analysis-tasks?operation=start:
@@ -760,7 +760,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVoiceToneAnalysisTaskResponse'
-      x-stackql-resource: voice_tone_analysis_task
+      x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: start_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /media-insights-pipelines/{identifier}/speaker-search-tasks/{speaker_search_task_id}?operation=stop:
@@ -784,7 +784,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: speaker_search_task
+      x-stackql-resource: speaker_search_tasks
       x-stackql-method: stop_speaker_search_task
       x-stackql-verb: EXEC
   /media-insights-pipelines/{identifier}/voice-tone-analysis-tasks/{voice_tone_analysis_task_id}?operation=stop:
@@ -808,7 +808,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: voice_tone_analysis_task
+      x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: stop_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /tags?operation=tag-resource:
@@ -834,10 +834,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -863,10 +859,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -896,7 +888,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: media_insights_pipeline_status
+      x-stackql-resource: media_insights_pipeline_statuses
       x-stackql-method: update_media_insights_pipeline_status
       x-stackql-verb: UPDATE
 components:
@@ -2913,14 +2905,10 @@ components:
         VoiceToneAnalysisTask:
           $ref: '#/components/schemas/VoiceToneAnalysisTask'
           description: The details of the voice tone analysis task.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateMediaInsightsPipelineConfigurationResponse:
       type: object
       properties:

@@ -127,10 +127,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteMonitorOutput'
       x-stackql-resource: monitors
       x-stackql-method: delete_monitor
       x-stackql-verb: DELETE
@@ -347,7 +343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetQueryStatusOutput'
-      x-stackql-resource: query_status
+      x-stackql-resource: query_statuses
       x-stackql-method: get_query_status
       x-stackql-verb: SELECT
   /v20210603/Monitors/{monitor_name}/HealthEvents:
@@ -524,10 +520,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -550,10 +542,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceOutput'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -624,10 +612,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopQueryOutput'
       x-stackql-resource: monitors
       x-stackql-method: stop_query
       x-stackql-verb: EXEC
@@ -822,8 +806,6 @@ components:
       - ACTIVE
       - INACTIVE
       - ERROR
-    DeleteMonitorOutput:
-      type: object
     HealthEventName:
       type: string
       minLength: 1
@@ -1572,10 +1554,6 @@ components:
           description: The internally-generated identifier of a specific query.
       required:
       - QueryId
-    StopQueryOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1584,8 +1562,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateMonitorOutput:
       type: object
       properties:

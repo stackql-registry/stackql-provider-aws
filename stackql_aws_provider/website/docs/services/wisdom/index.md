@@ -27,8 +27,8 @@ total resources: __10__
 <div class="providerDocColumn">
 <a href="/services/wisdom/assistant_associations/">assistant_associations</a><br />
 <a href="/services/wisdom/assistants/">assistants</a><br />
+<a href="/services/wisdom/content/">content</a><br />
 <a href="/services/wisdom/content_summaries/">content_summaries</a><br />
-<a href="/services/wisdom/contents/">contents</a><br />
 <a href="/services/wisdom/import_jobs/">import_jobs</a>
 </div>
 <div class="providerDocColumn">

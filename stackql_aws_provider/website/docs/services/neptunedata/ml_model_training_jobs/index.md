@@ -133,6 +133,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxItems"><code>maxItems</code></a>, <a href="#parameter-neptuneIamRoleArn"><code>neptuneIamRoleArn</code></a></td>
     <td>Lists Neptune ML model-training jobs. See Model training using the modeltraining command. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:neptune-db:ListMLModelTrainingJobs IAM action in that cluster.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_ml_model_training_job"><CopyableCode code="cancel_ml_model_training_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-id"><code>id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-neptuneIamRoleArn"><code>neptuneIamRoleArn</code></a>, <a href="#parameter-clean"><code>clean</code></a></td>
+    <td>Cancels a Neptune ML model training job. See Model training using the modeltraining command. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelMLModelTrainingJob IAM action in that cluster.</td>
+</tr>
+<tr>
+    <td><a href="#start_ml_model_training_job"><CopyableCode code="start_ml_model_training_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-dataProcessingJobId"><code>dataProcessingJobId</code></a>, <a href="#parameter-trainModelS3Location"><code>trainModelS3Location</code></a></td>
+    <td></td>
+    <td>Creates a new Neptune ML model training job. See Model training using the modeltraining command. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartMLModelTrainingJob IAM action in that cluster.</td>
+</tr>
 </tbody>
 </table>
 
@@ -152,12 +166,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-id">
     <td><CopyableCode code="id" /></td>
     <td><code>string</code></td>
-    <td>The unique identifier of the model-training job to retrieve.</td>
+    <td>The unique identifier of the model-training job to be canceled.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-clean">
+    <td><CopyableCode code="clean" /></td>
+    <td><code>boolean</code></td>
+    <td>If set to TRUE, this flag specifies that all Amazon S3 artifacts should be deleted when the job is stopped. The default is FALSE.</td>
 </tr>
 <tr id="parameter-maxItems">
     <td><CopyableCode code="maxItems" /></td>
@@ -211,6 +230,62 @@ FROM aws.neptunedata.ml_model_training_jobs
 WHERE region = '{{ region }}' -- required
 AND maxItems = '{{ maxItems }}'
 AND neptuneIamRoleArn = '{{ neptuneIamRoleArn }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_ml_model_training_job"
+    values={[
+        { label: 'cancel_ml_model_training_job', value: 'cancel_ml_model_training_job' },
+        { label: 'start_ml_model_training_job', value: 'start_ml_model_training_job' }
+    ]}
+>
+<TabItem value="cancel_ml_model_training_job">
+
+Cancels a Neptune ML model training job. See Model training using the modeltraining command. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:CancelMLModelTrainingJob IAM action in that cluster.
+
+```sql
+EXEC aws.neptunedata.ml_model_training_jobs.cancel_ml_model_training_job 
+@id='{{ id }}' --required, 
+@region='{{ region }}' --required, 
+@neptuneIamRoleArn='{{ neptuneIamRoleArn }}', 
+@clean={{ clean }}
+;
+```
+</TabItem>
+<TabItem value="start_ml_model_training_job">
+
+Creates a new Neptune ML model training job. See Model training using the modeltraining command. When invoking this operation in a Neptune cluster that has IAM authentication enabled, the IAM user or role making the request must have a policy attached that allows the neptune-db:StartMLModelTrainingJob IAM action in that cluster.
+
+```sql
+EXEC aws.neptunedata.ml_model_training_jobs.start_ml_model_training_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}", 
+"previousModelTrainingJobId": "{{ previousModelTrainingJobId }}", 
+"dataProcessingJobId": "{{ dataProcessingJobId }}", 
+"trainModelS3Location": "{{ trainModelS3Location }}", 
+"sagemakerIamRoleArn": "{{ sagemakerIamRoleArn }}", 
+"neptuneIamRoleArn": "{{ neptuneIamRoleArn }}", 
+"baseProcessingInstanceType": "{{ baseProcessingInstanceType }}", 
+"trainingInstanceType": "{{ trainingInstanceType }}", 
+"trainingInstanceVolumeSizeInGB": {{ trainingInstanceVolumeSizeInGB }}, 
+"trainingTimeOutInSeconds": {{ trainingTimeOutInSeconds }}, 
+"maxHPONumberOfTrainingJobs": {{ maxHPONumberOfTrainingJobs }}, 
+"maxHPOParallelTrainingJobs": {{ maxHPOParallelTrainingJobs }}, 
+"subnets": "{{ subnets }}", 
+"securityGroupIds": "{{ securityGroupIds }}", 
+"volumeEncryptionKMSKey": "{{ volumeEncryptionKMSKey }}", 
+"s3OutputEncryptionKMSKey": "{{ s3OutputEncryptionKMSKey }}", 
+"enableManagedSpotTraining": {{ enableManagedSpotTraining }}, 
+"customModelTrainingParameters": "{{ customModelTrainingParameters }}"
+}'
 ;
 ```
 </TabItem>

@@ -105,7 +105,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateResourcesToCustomLineItemOutput'
-      x-stackql-resource: batch_associate_resources_to_custom_line_item
+      x-stackql-resource: custom_line_items
       x-stackql-method: batch_associate_resources_to_custom_line_item
       x-stackql-verb: EXEC
   /batch-disassociate-resources-from-custom-line-item:
@@ -136,7 +136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateResourcesFromCustomLineItemOutput'
-      x-stackql-resource: batch_disassociate_resources_from_custom_line_item
+      x-stackql-resource: custom_line_items
       x-stackql-method: batch_disassociate_resources_from_custom_line_item
       x-stackql-verb: EXEC
   /create-billing-group:
@@ -945,10 +945,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -971,10 +967,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1556,8 +1548,9 @@ components:
         FreeTier:
           $ref: '#/components/schemas/CreateFreeTierConfig'
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-      - FreeTier
+        CustomTiers:
+          $ref: '#/components/schemas/CustomTiersList'
+          description: The set of custom tiers for the pricing rule.
     CreateFreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object
@@ -1569,6 +1562,40 @@ components:
       - Activated
     TieringActivated:
       type: boolean
+    CustomTiersList:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomTier'
+    CustomTier:
+      description: A custom tier for the pricing rule. Each custom tier applies a rate to the usage that falls within the
+        tier's range.
+      type: object
+      properties:
+        BeginRangeInclusive:
+          $ref: '#/components/schemas/CustomTierBeginRangeInclusive'
+          description: The inclusive start of the usage range that this tier applies to.
+        EndRangeExclusive:
+          $ref: '#/components/schemas/CustomTierEndRangeExclusive'
+          description: The exclusive end of the usage range that this tier applies to. If you don't specify a value, this
+            tier applies to all usage that is greater than or equal to BeginRangeInclusive.
+        RateValue:
+          $ref: '#/components/schemas/CustomTierRateValue'
+          description: The rate that's applied to the usage that falls within this tier.
+      required:
+      - BeginRangeInclusive
+      - RateValue
+    CustomTierBeginRangeInclusive:
+      type: number
+      format: double
+      minimum: 0
+    CustomTierEndRangeExclusive:
+      type: number
+      format: double
+      minimum: 0
+    CustomTierRateValue:
+      type: number
+      format: double
+      minimum: 0
     UsageType:
       type: string
       minLength: 1
@@ -2374,8 +2401,9 @@ components:
         FreeTier:
           $ref: '#/components/schemas/FreeTierConfig'
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-      - FreeTier
+        CustomTiers:
+          $ref: '#/components/schemas/CustomTiersList'
+          description: The set of custom tiers for the pricing rule.
     FreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object
@@ -2451,8 +2479,6 @@ components:
           type: object
           properties: {}
           description: The tags for the resource.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2461,8 +2487,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateBillingGroupAccountGrouping:
       description: Specifies if the billing group has the following features enabled.
       type: object
@@ -2597,8 +2621,9 @@ components:
         FreeTier:
           $ref: '#/components/schemas/UpdateFreeTierConfig'
           description: The possible Amazon Web Services Free Tier configurations.
-      required:
-      - FreeTier
+        CustomTiers:
+          $ref: '#/components/schemas/CustomTiersList'
+          description: The set of custom tiers for the pricing rule.
     UpdateFreeTierConfig:
       description: The possible Amazon Web Services Free Tier configurations.
       type: object

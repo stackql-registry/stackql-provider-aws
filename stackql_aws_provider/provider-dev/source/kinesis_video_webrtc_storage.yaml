@@ -51,7 +51,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: join_storage_session
+      x-stackql-resource: storage_sessions
       x-stackql-method: join_storage_session
       x-stackql-verb: EXEC
   /joinStorageSessionAsViewer:
@@ -84,7 +84,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: join_storage_session_as_viewer
+      x-stackql-resource: storage_session_as_viewers
       x-stackql-method: join_storage_session_as_viewer
       x-stackql-verb: EXEC
 components:

@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_workspace"
     values={[
         { label: 'describe_workspace', value: 'describe_workspace' },
-        { label: 'list_workspaces', value: 'list_workspaces' },
-        { label: 'search_workspaces', value: 'search_workspaces' }
+        { label: 'list_workspaces', value: 'list_workspaces' }
     ]}
 >
 <TabItem value="describe_workspace">
@@ -143,60 +142,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_workspaces">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the workspace.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="created_at" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when the workspace was created.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;\r\n\t&#93;*$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The unique identifier of the workspace.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the workspace. (pattern: &lt;code&gt;.*\\S.*&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags associated with the workspace.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="title" /></td>
-    <td><code>string</code></td>
-    <td>The title displayed for the workspace. (pattern: &lt;code&gt;^&#91;\\P&#123;C&#125;&#93;*$&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="visibility" /></td>
-    <td><code>string</code></td>
-    <td>The visibility setting of the workspace. (ALL, ASSIGNED, NONE)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -227,13 +172,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
     <td>Lists the workspaces in an Amazon Connect instance.</td>
-</tr>
-<tr>
-    <td><a href="#search_workspaces"><CopyableCode code="search_workspaces" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches workspaces based on name, description, visibility, or tags.</td>
 </tr>
 <tr>
     <td><a href="#create_workspace"><CopyableCode code="create_workspace" /></a></td>
@@ -276,6 +214,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-workspace_id"><code>workspace_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceArns"><code>ResourceArns</code></a></td>
     <td></td>
     <td>Removes the association between a workspace and one or more users or routing profiles.</td>
+</tr>
+<tr>
+    <td><a href="#search_workspaces"><CopyableCode code="search_workspaces" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches workspaces based on name, description, visibility, or tags.</td>
 </tr>
 <tr>
     <td><a href="#update_workspace_theme"><CopyableCode code="update_workspace_theme" /></a></td>
@@ -341,8 +286,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_workspace"
     values={[
         { label: 'describe_workspace', value: 'describe_workspace' },
-        { label: 'list_workspaces', value: 'list_workspaces' },
-        { label: 'search_workspaces', value: 'search_workspaces' }
+        { label: 'list_workspaces', value: 'list_workspaces' }
     ]}
 >
 <TabItem value="describe_workspace">
@@ -384,25 +328,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_workspaces">
-
-Searches workspaces based on name, description, visibility, or tags.
-
-```sql
-SELECT
-arn,
-created_at,
-description,
-id,
-name,
-tags,
-title,
-visibility
-FROM aws.connect.workspaces
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -611,6 +536,7 @@ AND region = '{{ region }}' --required
     values={[
         { label: 'import_workspace_media', value: 'import_workspace_media' },
         { label: 'disassociate_workspace', value: 'disassociate_workspace' },
+        { label: 'search_workspaces', value: 'search_workspaces' },
         { label: 'update_workspace_theme', value: 'update_workspace_theme' },
         { label: 'update_workspace_visibility', value: 'update_workspace_visibility' }
     ]}
@@ -644,6 +570,24 @@ EXEC aws.connect.workspaces.disassociate_workspace
 @@json=
 '{
 "ResourceArns": "{{ ResourceArns }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="search_workspaces">
+
+Searches workspaces based on name, description, visibility, or tags.
+
+```sql
+EXEC aws.connect.workspaces.search_workspaces 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
 }'
 ;
 ```

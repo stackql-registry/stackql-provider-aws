@@ -232,7 +232,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListNamedShadowsForThingResponse'
-      x-stackql-resource: named_shadows_for_things
+      x-stackql-resource: named_shadows
       x-stackql-method: list_named_shadows_for_thing
       x-stackql-verb: SELECT
   /retainedMessage:
@@ -396,7 +396,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: publish
+      x-stackql-resource: hs
       x-stackql-method: publish
       x-stackql-verb: EXEC
   /connections/{client_id}/messages:
@@ -498,7 +498,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDirectMessageResponse'
-      x-stackql-resource: direct_message
+      x-stackql-resource: direct_messages
       x-stackql-method: send_direct_message
       x-stackql-verb: EXEC
 components:

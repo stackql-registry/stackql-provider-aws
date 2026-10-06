@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_test_case"
     values={[
         { label: 'describe_test_case', value: 'describe_test_case' },
-        { label: 'list_test_cases', value: 'list_test_cases' },
-        { label: 'search_test_cases', value: 'search_test_cases' }
+        { label: 'list_test_cases', value: 'list_test_cases' }
     ]}
 >
 <TabItem value="describe_test_case">
@@ -158,80 +157,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_test_cases">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the test case.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="content" /></td>
-    <td><code>string</code></td>
-    <td>The JSON string that represents the content of the test.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the test case.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="entry_point" /></td>
-    <td><code>object</code></td>
-    <td>Defines the starting point for a test case.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="id" /></td>
-    <td><code>string</code></td>
-    <td>The identifier of the test case.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="initialization_data" /></td>
-    <td><code>string</code></td>
-    <td>Defines the test attributes for precise data representation. The value must be a valid JSON string.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The region in which the test case was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The time at which the test case was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the test case.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="status" /></td>
-    <td><code>string</code></td>
-    <td>The status of a test case. (PUBLISHED, SAVED)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="test_case_sha_256" /></td>
-    <td><code>string</code></td>
-    <td>The SHA256 hash of the test case content. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9&#93;&#123;64&#125;$&lt;/code&gt;)</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -264,13 +189,6 @@ The following methods are available for this resource:
     <td>Lists the test cases present in the specific Amazon Connect instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_test_cases"><CopyableCode code="search_test_cases" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches for test cases in the specified Amazon Connect instance, with optional filtering.</td>
-</tr>
-<tr>
     <td><a href="#create_test_case"><CopyableCode code="create_test_case" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -290,6 +208,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-test_case_id"><code>test_case_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the test case that has already been created for the specified Amazon Connect instance.</td>
+</tr>
+<tr>
+    <td><a href="#search_test_cases"><CopyableCode code="search_test_cases" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches for test cases in the specified Amazon Connect instance, with optional filtering.</td>
 </tr>
 <tr>
     <td><a href="#start_test_case_execution"><CopyableCode code="start_test_case_execution" /></a></td>
@@ -380,8 +305,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_test_case"
     values={[
         { label: 'describe_test_case', value: 'describe_test_case' },
-        { label: 'list_test_cases', value: 'list_test_cases' },
-        { label: 'search_test_cases', value: 'search_test_cases' }
+        { label: 'list_test_cases', value: 'list_test_cases' }
     ]}
 >
 <TabItem value="describe_test_case">
@@ -427,29 +351,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_test_cases">
-
-Searches for test cases in the specified Amazon Connect instance, with optional filtering.
-
-```sql
-SELECT
-arn,
-content,
-description,
-entry_point,
-id,
-initialization_data,
-last_modified_region,
-last_modified_time,
-name,
-status,
-tags,
-test_case_sha_256
-FROM aws.connect.test_cases
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -616,12 +517,31 @@ AND region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_test_case_execution"
+    defaultValue="search_test_cases"
     values={[
+        { label: 'search_test_cases', value: 'search_test_cases' },
         { label: 'start_test_case_execution', value: 'start_test_case_execution' },
         { label: 'stop_test_case_execution', value: 'stop_test_case_execution' }
     ]}
 >
+<TabItem value="search_test_cases">
+
+Searches for test cases in the specified Amazon Connect instance, with optional filtering.
+
+```sql
+EXEC aws.connect.test_cases.search_test_cases 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_test_case_execution">
 
 Starts executing a published test case.

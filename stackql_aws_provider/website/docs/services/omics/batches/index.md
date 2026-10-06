@@ -98,7 +98,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress), PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs), RUNS_DELETED (runs deleted). (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETED)</td>
+    <td>The current status of the run batch. Possible values: CREATING (initial setup), PENDING (ready to submit runs), SUBMITTING (submitting runs), INPROGRESS (runs executing), STOPPING (cancellation in progress), PROCESSED (all runs completed), CANCELLED (batch cancelled), FAILED (batch failed), RUNS_DELETING (deleting runs), RUNS_DELETE_FAILED (run deletion failed for some or all runs), RUNS_DELETED (runs deleted). (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETE_FAILED, RUNS_DELETED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="submission_summary" /></td>
@@ -113,7 +113,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
-    <td>AWS tags associated with the run batch.</td>
+    <td>Amazon Web Services tags associated with the run batch.</td>
 </tr>
 <tr>
     <td><CopyableCode code="total_runs" /></td>
@@ -157,7 +157,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="status" /></td>
     <td><code>string</code></td>
-    <td>The current batch status. (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETED)</td>
+    <td>The current batch status. (CREATING, PENDING, SUBMITTING, INPROGRESS, STOPPING, CANCELLED, FAILED, PROCESSED, RUNS_DELETING, RUNS_DELETE_FAILED, RUNS_DELETED)</td>
 </tr>
 <tr>
     <td><CopyableCode code="total_runs" /></td>
@@ -208,14 +208,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-batch_id"><code>batch_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch.</td>
-</tr>
-<tr>
-    <td><a href="#delete_run_batch"><CopyableCode code="delete_run_batch" /></a></td>
-    <td><CopyableCode code="delete" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Deletes the individual workflow runs within a batch. This operation is separate from DeleteBatch, which removes the batch metadata. Delete is only allowed on batches in PROCESSED or CANCELLED state. Delete operations are non-atomic and may be partially successful. Use GetBatch to review successfulDeleteSubmissionCount and failedDeleteSubmissionCount in the submissionSummary. Only one cancel or delete operation per batch is allowed at a time.</td>
+    <td>Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, RUNS_DELETE_FAILED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch.</td>
 </tr>
 <tr>
     <td><a href="#batch_delete_read_set"><CopyableCode code="batch_delete_read_set" /></a></td>
@@ -223,6 +216,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-sequence_store_id"><code>sequence_store_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ids"><code>ids</code></a></td>
     <td></td>
     <td>Deletes one or more read sets. If the operation is successful, it returns a response with no body. If there is an error with deleting one of the read sets, the operation returns an error list. If the operation successfully deletes only a subset of files, it will return an error list for the remaining files that fail to be deleted. There is a limit of 100 read sets that can be deleted in each BatchDeleteReadSet API call.</td>
+</tr>
+<tr>
+    <td><a href="#delete_run_batch"><CopyableCode code="delete_run_batch" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-batchId"><code>batchId</code></a></td>
+    <td></td>
+    <td>Deletes the individual workflow runs within a batch. This operation is separate from DeleteBatch, which removes the batch metadata. Delete is only allowed on batches in PROCESSED or CANCELLED state. Delete operations are non-atomic and may be partially successful. Use GetBatch to review successfulDeleteSubmissionCount and failedDeleteSubmissionCount in the submissionSummary. Only one cancel or delete operation per batch is allowed at a time.</td>
 </tr>
 </tbody>
 </table>
@@ -349,28 +349,17 @@ AND runGroupId = '{{ runGroupId }}'
 <Tabs
     defaultValue="delete_batch"
     values={[
-        { label: 'delete_batch', value: 'delete_batch' },
-        { label: 'delete_run_batch', value: 'delete_run_batch' }
+        { label: 'delete_batch', value: 'delete_batch' }
     ]}
 >
 <TabItem value="delete_batch">
 
-Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch.
+Deletes a run batch resource and its associated metadata. This operation does not delete the individual workflow runs. To delete the runs, call DeleteRunBatch before calling DeleteBatch. DeleteBatch requires the batch to be in a terminal state: PROCESSED, FAILED, CANCELLED, RUNS_DELETE_FAILED, or RUNS_DELETED. After DeleteBatch completes, the batch metadata is no longer accessible. You cannot call GetBatch, ListRunsInBatch, DeleteRunBatch, or CancelRunBatch on a deleted batch.
 
 ```sql
 DELETE FROM aws.omics.batches
 WHERE batch_id = '{{ batch_id }}' --required
 AND region = '{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="delete_run_batch">
-
-Deletes the individual workflow runs within a batch. This operation is separate from DeleteBatch, which removes the batch metadata. Delete is only allowed on batches in PROCESSED or CANCELLED state. Delete operations are non-atomic and may be partially successful. Use GetBatch to review successfulDeleteSubmissionCount and failedDeleteSubmissionCount in the submissionSummary. Only one cancel or delete operation per batch is allowed at a time.
-
-```sql
-DELETE FROM aws.omics.batches
-WHERE region = '{{ region }}' --required
 ;
 ```
 </TabItem>
@@ -382,7 +371,8 @@ WHERE region = '{{ region }}' --required
 <Tabs
     defaultValue="batch_delete_read_set"
     values={[
-        { label: 'batch_delete_read_set', value: 'batch_delete_read_set' }
+        { label: 'batch_delete_read_set', value: 'batch_delete_read_set' },
+        { label: 'delete_run_batch', value: 'delete_run_batch' }
     ]}
 >
 <TabItem value="batch_delete_read_set">
@@ -396,6 +386,20 @@ EXEC aws.omics.batches.batch_delete_read_set
 @@json=
 '{
 "ids": "{{ ids }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="delete_run_batch">
+
+Deletes the individual workflow runs within a batch. This operation is separate from DeleteBatch, which removes the batch metadata. Delete is only allowed on batches in PROCESSED or CANCELLED state. Delete operations are non-atomic and may be partially successful. Use GetBatch to review successfulDeleteSubmissionCount and failedDeleteSubmissionCount in the submissionSummary. Only one cancel or delete operation per batch is allowed at a time.
+
+```sql
+EXEC aws.omics.batches.delete_run_batch 
+@region='{{ region }}' --required 
+@@json=
+'{
+"batchId": "{{ batchId }}"
 }'
 ;
 ```

@@ -169,6 +169,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a code security scan configuration.</td>
 </tr>
+<tr>
+    <td><a href="#batch_associate_code_security_scan_configuration"><CopyableCode code="batch_associate_code_security_scan_configuration" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-associateConfigurationRequests"><code>associateConfigurationRequests</code></a></td>
+    <td></td>
+    <td>Associates multiple code repositories with an Amazon Inspector code security scan configuration.</td>
+</tr>
+<tr>
+    <td><a href="#batch_disassociate_code_security_scan_configuration"><CopyableCode code="batch_disassociate_code_security_scan_configuration" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-disassociateConfigurationRequests"><code>disassociateConfigurationRequests</code></a></td>
+    <td></td>
+    <td>Disassociates multiple code repositories from an Amazon Inspector code security scan configuration.</td>
+</tr>
 </tbody>
 </table>
 
@@ -364,6 +378,46 @@ Deletes a code security scan configuration.
 ```sql
 DELETE FROM aws.inspector2.code_security_scan_configurations
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="batch_associate_code_security_scan_configuration"
+    values={[
+        { label: 'batch_associate_code_security_scan_configuration', value: 'batch_associate_code_security_scan_configuration' },
+        { label: 'batch_disassociate_code_security_scan_configuration', value: 'batch_disassociate_code_security_scan_configuration' }
+    ]}
+>
+<TabItem value="batch_associate_code_security_scan_configuration">
+
+Associates multiple code repositories with an Amazon Inspector code security scan configuration.
+
+```sql
+EXEC aws.inspector2.code_security_scan_configurations.batch_associate_code_security_scan_configuration 
+@region='{{ region }}' --required 
+@@json=
+'{
+"associateConfigurationRequests": "{{ associateConfigurationRequests }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="batch_disassociate_code_security_scan_configuration">
+
+Disassociates multiple code repositories from an Amazon Inspector code security scan configuration.
+
+```sql
+EXEC aws.inspector2.code_security_scan_configurations.batch_disassociate_code_security_scan_configuration 
+@region='{{ region }}' --required 
+@@json=
+'{
+"disassociateConfigurationRequests": "{{ disassociateConfigurationRequests }}"
+}'
 ;
 ```
 </TabItem>

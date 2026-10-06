@@ -248,6 +248,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists automation events based on specified filters. You can retrieve events that were created within the past year.</td>
 </tr>
+<tr>
+    <td><a href="#rollback_automation_event"><CopyableCode code="rollback_automation_event" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-eventId"><code>eventId</code></a></td>
+    <td></td>
+    <td>Initiates a rollback for a completed automation event. Management accounts and delegated administrators can only initiate a rollback for events belonging to associated member accounts. You can associate a member account using AssociateAccounts.</td>
+</tr>
 </tbody>
 </table>
 
@@ -330,6 +337,32 @@ resource_type,
 rule_id
 FROM aws.compute_optimizer_automation.automation_events
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="rollback_automation_event"
+    values={[
+        { label: 'rollback_automation_event', value: 'rollback_automation_event' }
+    ]}
+>
+<TabItem value="rollback_automation_event">
+
+Initiates a rollback for a completed automation event. Management accounts and delegated administrators can only initiate a rollback for events belonging to associated member accounts. You can associate a member account using AssociateAccounts.
+
+```sql
+EXEC aws.compute_optimizer_automation.automation_events.rollback_automation_event 
+@region='{{ region }}' --required 
+@@json=
+'{
+"eventId": "{{ eventId }}", 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

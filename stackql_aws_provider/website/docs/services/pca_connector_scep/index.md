@@ -25,7 +25,7 @@ total resources: __5__
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/pca_connector_scep/challenge_metadatas/">challenge_metadatas</a><br />
+<a href="/services/pca_connector_scep/challenge_metadata/">challenge_metadata</a><br />
 <a href="/services/pca_connector_scep/challenge_passwords/">challenge_passwords</a><br />
 <a href="/services/pca_connector_scep/challenges/">challenges</a>
 </div>

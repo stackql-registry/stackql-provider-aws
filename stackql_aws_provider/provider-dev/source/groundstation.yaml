@@ -1142,10 +1142,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1168,10 +1164,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1245,7 +1237,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactIdResponse'
-      x-stackql-resource: mission_profiles
+      x-stackql-resource: contacts
       x-stackql-method: reserve_contact
       x-stackql-verb: EXEC
   /agent/{agent_id}:
@@ -1283,7 +1275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAgentStatusResponse'
-      x-stackql-resource: agent_status
+      x-stackql-resource: agent_statuses
       x-stackql-method: update_agent_status
       x-stackql-verb: UPDATE
 components:
@@ -3635,16 +3627,10 @@ components:
         agentId:
           $ref: '#/components/schemas/Uuid'
           description: UUID of registered agent.
-    TagResourceResponse:
-      description: Output for the TagResource operation.
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/UnboundedString'
-    UntagResourceResponse:
-      description: Output for the UntagResource operation.
-      type: object
     AggregateStatus:
       description: Aggregate status of Agent components.
       type: object

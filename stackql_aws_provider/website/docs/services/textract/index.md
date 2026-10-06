@@ -18,7 +18,7 @@ textract service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __12__  
 
 :::
 
@@ -27,12 +27,16 @@ total resources: __8__
 <div class="providerDocColumn">
 <a href="/services/textract/adapter_versions/">adapter_versions</a><br />
 <a href="/services/textract/adapters/">adapters</a><br />
-<a href="/services/textract/document_analysis/">document_analysis</a><br />
-<a href="/services/textract/document_text_detections/">document_text_detections</a>
+<a href="/services/textract/document_analyses/">document_analyses</a><br />
+<a href="/services/textract/document_text_detections/">document_text_detections</a><br />
+<a href="/services/textract/document_texts/">document_texts</a><br />
+<a href="/services/textract/documents/">documents</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/textract/expense_analysis/">expense_analysis</a><br />
-<a href="/services/textract/lending_analysis/">lending_analysis</a><br />
+<a href="/services/textract/expense_analyses/">expense_analyses</a><br />
+<a href="/services/textract/expenses/">expenses</a><br />
+<a href="/services/textract/ids/">ids</a><br />
+<a href="/services/textract/lending_analyses/">lending_analyses</a><br />
 <a href="/services/textract/lending_analysis_summaries/">lending_analysis_summaries</a><br />
 <a href="/services/textract/tags/">tags</a>
 </div>

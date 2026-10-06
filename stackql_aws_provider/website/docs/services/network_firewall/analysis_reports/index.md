@@ -96,6 +96,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns a list of all traffic analysis reports generated within the last 30 days.</td>
 </tr>
+<tr>
+    <td><a href="#start_analysis_report"><CopyableCode code="start_analysis_report" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AnalysisType"><code>AnalysisType</code></a></td>
+    <td></td>
+    <td>Generates a traffic analysis report for the timeframe and traffic type you specify. For information on the contents of a traffic analysis report, see AnalysisReport.</td>
+</tr>
 </tbody>
 </table>
 
@@ -140,6 +147,33 @@ report_time,
 status
 FROM aws.network_firewall.analysis_reports
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_analysis_report"
+    values={[
+        { label: 'start_analysis_report', value: 'start_analysis_report' }
+    ]}
+>
+<TabItem value="start_analysis_report">
+
+Generates a traffic analysis report for the timeframe and traffic type you specify. For information on the contents of a traffic analysis report, see AnalysisReport.
+
+```sql
+EXEC aws.network_firewall.analysis_reports.start_analysis_report 
+@region='{{ region }}' --required 
+@@json=
+'{
+"FirewallName": "{{ FirewallName }}", 
+"FirewallArn": "{{ FirewallArn }}", 
+"AnalysisType": "{{ AnalysisType }}"
+}'
 ;
 ```
 </TabItem>

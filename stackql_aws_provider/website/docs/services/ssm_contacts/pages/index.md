@@ -35,7 +35,9 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_page"
     values={[
-        { label: 'describe_page', value: 'describe_page' }
+        { label: 'describe_page', value: 'describe_page' },
+        { label: 'list_pages_by_contact', value: 'list_pages_by_contact' },
+        { label: 'list_pages_by_engagement', value: 'list_pages_by_engagement' }
     ]}
 >
 <TabItem value="describe_page">
@@ -112,6 +114,114 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_pages_by_contact">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="contact_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the contact that Incident Manager is engaging. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="delivery_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time the message was delivered to the contact channel.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="engagement_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the engagement that this page is part of. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="incident_id" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the incident that's engaging the contact channel. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="page_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the page to the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="read_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the contact channel acknowledged engagement.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sender" /></td>
+    <td><code>string</code></td>
+    <td>The user that started the engagement. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sent_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that Incident Manager engaged the contact channel.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_pages_by_engagement">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="contact_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the contact that Incident Manager is engaging. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="delivery_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time the message was delivered to the contact channel.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="engagement_arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the engagement that this page is part of. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="incident_id" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the incident that's engaging the contact channel. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="page_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the page to the contact channel. (pattern: &lt;code&gt;arn:(aws|aws-cn|aws-us-gov):ssm-contacts:&#91;-\w+=\/,.@&#93;*:&#91;0-9&#93;+:(&#91;\w+=\/,.@:-&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="read_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the contact channel acknowledged engagement.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sender" /></td>
+    <td><code>string</code></td>
+    <td>The user that started the engagement. (pattern: &lt;code&gt;^&#91;\\a-zA-Z0-9_@#%*+=:?.\/!\s-&#93;*$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="sent_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that Incident Manager engaged the contact channel.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -135,6 +245,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists details of the engagement to a contact channel.</td>
+</tr>
+<tr>
+    <td><a href="#list_pages_by_contact"><CopyableCode code="list_pages_by_contact" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the engagements to a contact's contact channels.</td>
+</tr>
+<tr>
+    <td><a href="#list_pages_by_engagement"><CopyableCode code="list_pages_by_engagement" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the engagements to contact channels that occurred by engaging a contact.</td>
 </tr>
 <tr>
     <td><a href="#accept_page"><CopyableCode code="accept_page" /></a></td>
@@ -172,7 +296,9 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_page"
     values={[
-        { label: 'describe_page', value: 'describe_page' }
+        { label: 'describe_page', value: 'describe_page' },
+        { label: 'list_pages_by_contact', value: 'list_pages_by_contact' },
+        { label: 'list_pages_by_engagement', value: 'list_pages_by_engagement' }
     ]}
 >
 <TabItem value="describe_page">
@@ -193,6 +319,44 @@ read_time,
 sender,
 sent_time,
 subject
+FROM aws.ssm_contacts.pages
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_pages_by_contact">
+
+Lists the engagements to a contact's contact channels.
+
+```sql
+SELECT
+contact_arn,
+delivery_time,
+engagement_arn,
+incident_id,
+page_arn,
+read_time,
+sender,
+sent_time
+FROM aws.ssm_contacts.pages
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_pages_by_engagement">
+
+Lists the engagements to contact channels that occurred by engaging a contact.
+
+```sql
+SELECT
+contact_arn,
+delivery_time,
+engagement_arn,
+incident_id,
+page_arn,
+read_time,
+sender,
+sent_time
 FROM aws.ssm_contacts.pages
 WHERE region = '{{ region }}' -- required
 ;

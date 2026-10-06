@@ -158,6 +158,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of runs for a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can get a sortable, filterable list of machine learning task runs by calling GetMLTaskRuns with their parent transform's TransformID and other optional parameters as documented in this section. This operation returns a list of historic runs and must be paginated.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_ml_task_run"><CopyableCode code="cancel_ml_task_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TransformId"><code>TransformId</code></a>, <a href="#parameter-TaskRunId"><code>TaskRunId</code></a></td>
+    <td></td>
+    <td>Cancels (stops) a task run. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can cancel a machine learning task run at any time by calling CancelMLTaskRun with a task run's parent transform's TransformID and the task run's TaskRunId.</td>
+</tr>
 </tbody>
 </table>
 
@@ -222,6 +229,32 @@ next_token,
 task_runs
 FROM aws.glue.ml_task_runs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_ml_task_run"
+    values={[
+        { label: 'cancel_ml_task_run', value: 'cancel_ml_task_run' }
+    ]}
+>
+<TabItem value="cancel_ml_task_run">
+
+Cancels (stops) a task run. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can cancel a machine learning task run at any time by calling CancelMLTaskRun with a task run's parent transform's TransformID and the task run's TaskRunId.
+
+```sql
+EXEC aws.glue.ml_task_runs.cancel_ml_task_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"TransformId": "{{ TransformId }}", 
+"TaskRunId": "{{ TaskRunId }}"
+}'
 ;
 ```
 </TabItem>

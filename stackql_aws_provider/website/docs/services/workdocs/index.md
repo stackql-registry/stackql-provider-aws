@@ -18,7 +18,7 @@ workdocs service documentation.
 
 :::info[Service Summary]
 
-total resources: __15__  
+total resources: __16__  
 
 :::
 
@@ -29,12 +29,13 @@ total resources: __15__
 <a href="/services/workdocs/comments/">comments</a><br />
 <a href="/services/workdocs/current_users/">current_users</a><br />
 <a href="/services/workdocs/document_paths/">document_paths</a><br />
+<a href="/services/workdocs/document_version_uploads/">document_version_uploads</a><br />
 <a href="/services/workdocs/document_versions/">document_versions</a><br />
 <a href="/services/workdocs/documents/">documents</a><br />
-<a href="/services/workdocs/folder_contents/">folder_contents</a><br />
-<a href="/services/workdocs/folder_paths/">folder_paths</a>
+<a href="/services/workdocs/folder_content/">folder_content</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/workdocs/folder_paths/">folder_paths</a><br />
 <a href="/services/workdocs/folders/">folders</a><br />
 <a href="/services/workdocs/groups/">groups</a><br />
 <a href="/services/workdocs/notification_subscriptions/">notification_subscriptions</a><br />

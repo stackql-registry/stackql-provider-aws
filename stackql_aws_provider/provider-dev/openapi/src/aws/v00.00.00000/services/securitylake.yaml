@@ -146,10 +146,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateDataLakeExceptionSubscriptionResponse"
     delete:
       operationId: DeleteDataLakeExceptionSubscription
       description: Deletes the specified notification subscription in Amazon Security Lake for the organization you specify.
@@ -157,10 +153,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataLakeExceptionSubscriptionResponse"
     get:
       operationId: GetDataLakeExceptionSubscription
       description: Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for exception notifications.
@@ -195,10 +187,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDataLakeExceptionSubscriptionResponse"
   /v1/datalake/organization/configuration:
     post:
       operationId: CreateDataLakeOrganizationConfiguration
@@ -216,10 +204,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateDataLakeOrganizationConfigurationResponse"
     get:
       operationId: GetDataLakeOrganizationConfiguration
       description: Retrieves the configuration that will be automatically set up for accounts added to the organization after the organization has onboarded to Amazon Security Lake. This API does not take input parameters.
@@ -331,10 +315,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSubscriberNotificationResponse"
     put:
       operationId: UpdateSubscriberNotification
       description: Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the notification subscription endpoint for a subscriber.
@@ -406,10 +386,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteCustomLogSourceResponse"
   /v1/datalake/delete:
     post:
       operationId: DeleteDataLake
@@ -429,10 +405,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataLakeResponse"
   /v1/datalake/organization/configuration/delete:
     post:
       operationId: DeleteDataLakeOrganizationConfiguration
@@ -450,10 +422,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteDataLakeOrganizationConfigurationResponse"
   /v1/subscribers/{subscriber_id}:
     delete:
       operationId: DeleteSubscriber
@@ -468,10 +436,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSubscriberResponse"
     get:
       operationId: GetSubscriber
       description: Retrieves the subscription information for the specified subscription ID. You can get information about a specific subscriber.
@@ -529,10 +493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeregisterDataLakeDelegatedAdministratorResponse"
     post:
       operationId: RegisterDataLakeDelegatedAdministrator
       description: Designates the Amazon Security Lake delegated administrator account for the organization. This API can only be called by the organization management account. The organization management account cannot be the delegated administrator account.
@@ -551,10 +511,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RegisterDataLakeDelegatedAdministratorResponse"
   /v1/datalake/sources:
     post:
       operationId: GetDataLakeSources
@@ -694,10 +650,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: "Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region."
@@ -717,10 +669,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1132,8 +1080,6 @@ components:
     SubscriptionProtocol:
       type: string
       pattern: ^[a-z\-]*$
-    CreateDataLakeExceptionSubscriptionResponse:
-      type: object
     DataLakeAutoEnableNewAccountConfigurationList:
       type: array
       items:
@@ -1165,8 +1111,6 @@ components:
         sourceVersion:
           $ref: "#/components/schemas/AwsLogSourceVersion"
           description: The version for a Amazon Web Services source. This must be a Regionally unique value.
-    CreateDataLakeOrganizationConfigurationResponse:
-      type: object
     AccessTypeList:
       type: array
       items:
@@ -1331,20 +1275,6 @@ components:
         failed:
           $ref: "#/components/schemas/AccountList"
           description: Deletion of the Amazon Web Services sources failed as the account is not a part of the organization.
-    DeleteCustomLogSourceResponse:
-      type: object
-    DeleteDataLakeResponse:
-      type: object
-    DeleteDataLakeExceptionSubscriptionResponse:
-      type: object
-    DeleteDataLakeOrganizationConfigurationResponse:
-      type: object
-    DeleteSubscriberResponse:
-      type: object
-    DeleteSubscriberNotificationResponse:
-      type: object
-    DeregisterDataLakeDelegatedAdministratorResponse:
-      type: object
     GetDataLakeExceptionSubscriptionResponse:
       type: object
       properties:
@@ -1512,16 +1442,10 @@ components:
         tags:
           $ref: "#/components/schemas/TagList"
           description: An array of objects, one for each tag (key and value) that’s associated with the Amazon Security Lake resource.
-    RegisterDataLakeDelegatedAdministratorResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateDataLakeResponse:
       type: object
       properties:
@@ -1532,8 +1456,6 @@ components:
       type: integer
       format: int64
       minimum: 1
-    UpdateDataLakeExceptionSubscriptionResponse:
-      type: object
     UpdateSubscriberRequestSubscriberNameString:
       type: string
       minLength: 0
@@ -1595,7 +1517,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1logsources~1custom~1{source_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
         list_log_sources:
@@ -1659,7 +1580,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1delete/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1670,13 +1590,11 @@ components:
             $ref: "#/paths/~1v1~1datalake~1delegate/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         register_data_lake_delegated_administrator:
           operation:
             $ref: "#/paths/~1v1~1datalake~1delegate/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1711,7 +1629,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1exceptions~1subscription/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1722,7 +1639,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1exceptions~1subscription/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_data_lake_exception_subscription:
           operation:
             $ref: "#/paths/~1v1~1datalake~1exceptions~1subscription/get"
@@ -1734,7 +1650,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1exceptions~1subscription/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1759,7 +1674,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1organization~1configuration/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1776,7 +1690,6 @@ components:
             $ref: "#/paths/~1v1~1datalake~1organization~1configuration~1delete/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1839,7 +1752,6 @@ components:
             $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}~1notification/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         update_subscriber_notification:
           operation:
             $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}~1notification/put"
@@ -1856,7 +1768,6 @@ components:
             $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_subscriber:
           operation:
             $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/get"
@@ -1963,7 +1874,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1974,7 +1884,6 @@ components:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

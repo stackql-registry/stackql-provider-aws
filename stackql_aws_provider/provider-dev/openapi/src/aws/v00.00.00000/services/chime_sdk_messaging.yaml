@@ -3023,7 +3023,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/channel_flows/methods/associate_channel_flow"
           - $ref: "#/components/x-stackQL-resources/channel_flows/methods/update_channel_flow"
-          - $ref: "#/components/x-stackQL-resources/channel_flows/methods/disassociate_channel_flow"
         delete:
           - $ref: "#/components/x-stackQL-resources/channel_flows/methods/delete_channel_flow"
     channels:
@@ -3084,6 +3083,15 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_channel_moderated_by_app_instance_user:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}?scope=app-instance-user-moderated-channel/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Channel
+          request:
+            nativeCasing: pascal
         send_channel_message:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1messages/post"
@@ -3095,6 +3103,14 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_channels_moderated_by_app_instance_user:
+          operation:
+            $ref: "#/paths/~1channels?scope=app-instance-user-moderated-channels/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         put_channel_expiration_settings:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}~1expiration-settings/put"
@@ -3137,8 +3153,10 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
-          - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel"
           - $ref: "#/components/x-stackQL-resources/channels/methods/search_channels"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel_moderated_by_app_instance_user"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels_moderated_by_app_instance_user"
         insert:
           - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
         update:
@@ -3232,10 +3250,29 @@ components:
             objectKey: $.ChannelMembership
           request:
             nativeCasing: pascal
+        describe_channel_membership_for_app_instance_user:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}?scope=app-instance-user-membership/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ChannelMembership
+          request:
+            nativeCasing: pascal
+        list_channel_memberships_for_app_instance_user:
+          operation:
+            $ref: "#/paths/~1channels?scope=app-instance-user-memberships/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/describe_channel_membership"
+          - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/describe_channel_membership_for_app_instance_user"
           - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/list_channel_memberships"
+          - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/list_channel_memberships_for_app_instance_user"
         insert:
           - $ref: "#/components/x-stackQL-resources/channel_memberships/methods/create_channel_membership"
         update: []
@@ -3371,46 +3408,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/messaging_streaming_configurations/methods/put_messaging_streaming_configurations"
         delete:
           - $ref: "#/components/x-stackQL-resources/messaging_streaming_configurations/methods/delete_messaging_streaming_configurations"
-    channel_membership_for_app_instance_users:
-      id: aws.chime_sdk_messaging.channel_membership_for_app_instance_users
-      name: channel_membership_for_app_instance_users
-      title: channel_membership_for_app_instance_users
-      methods:
-        describe_channel_membership_for_app_instance_user:
-          operation:
-            $ref: "#/paths/~1channels~1{channel_arn}?scope=app-instance-user-membership/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ChannelMembership
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/channel_membership_for_app_instance_users/methods/describe_channel_membership_for_app_instance_user"
-        insert: []
-        update: []
-        delete: []
-    channel_moderated_by_app_instance_users:
-      id: aws.chime_sdk_messaging.channel_moderated_by_app_instance_users
-      name: channel_moderated_by_app_instance_users
-      title: channel_moderated_by_app_instance_users
-      methods:
-        describe_channel_moderated_by_app_instance_user:
-          operation:
-            $ref: "#/paths/~1channels~1{channel_arn}?scope=app-instance-user-moderated-channel/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Channel
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/channel_moderated_by_app_instance_users/methods/describe_channel_moderated_by_app_instance_user"
-        insert: []
-        update: []
-        delete: []
     channel_membership_preferences:
       id: aws.chime_sdk_messaging.channel_membership_preferences
       name: channel_membership_preferences
@@ -3441,10 +3438,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/channel_membership_preferences/methods/put_channel_membership_preferences"
         delete: []
-    channel_message_status:
-      id: aws.chime_sdk_messaging.channel_message_status
-      name: channel_message_status
-      title: channel_message_status
+    channel_message_statuses:
+      id: aws.chime_sdk_messaging.channel_message_statuses
+      name: channel_message_statuses
+      title: channel_message_statuses
       methods:
         get_channel_message_status:
           operation:
@@ -3457,7 +3454,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/channel_message_status/methods/get_channel_message_status"
+          - $ref: "#/components/x-stackQL-resources/channel_message_statuses/methods/get_channel_message_status"
         insert: []
         update: []
         delete: []
@@ -3481,25 +3478,6 @@ components:
         insert: []
         update: []
         delete: []
-    channel_memberships_for_app_instance_users:
-      id: aws.chime_sdk_messaging.channel_memberships_for_app_instance_users
-      name: channel_memberships_for_app_instance_users
-      title: channel_memberships_for_app_instance_users
-      methods:
-        list_channel_memberships_for_app_instance_user:
-          operation:
-            $ref: "#/paths/~1channels?scope=app-instance-user-memberships/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/channel_memberships_for_app_instance_users/methods/list_channel_memberships_for_app_instance_user"
-        insert: []
-        update: []
-        delete: []
     channels_associated_with_channel_flows:
       id: aws.chime_sdk_messaging.channels_associated_with_channel_flows
       name: channels_associated_with_channel_flows
@@ -3516,25 +3494,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels_associated_with_channel_flows/methods/list_channels_associated_with_channel_flow"
-        insert: []
-        update: []
-        delete: []
-    channels_moderated_by_app_instance_users:
-      id: aws.chime_sdk_messaging.channels_moderated_by_app_instance_users
-      name: channels_moderated_by_app_instance_users
-      title: channels_moderated_by_app_instance_users
-      methods:
-        list_channels_moderated_by_app_instance_user:
-          operation:
-            $ref: "#/paths/~1channels?scope=app-instance-user-moderated-channels/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/channels_moderated_by_app_instance_users/methods/list_channels_moderated_by_app_instance_user"
         insert: []
         update: []
         delete: []

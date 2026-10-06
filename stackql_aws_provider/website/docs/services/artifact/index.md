@@ -27,15 +27,15 @@ total resources: __10__
 <div class="providerDocColumn">
 <a href="/services/artifact/account_settings/">account_settings</a><br />
 <a href="/services/artifact/compliance_inquiries/">compliance_inquiries</a><br />
-<a href="/services/artifact/compliance_inquiry_metadatas/">compliance_inquiry_metadatas</a><br />
+<a href="/services/artifact/compliance_inquiry_metadata/">compliance_inquiry_metadata</a><br />
 <a href="/services/artifact/compliance_inquiry_queries/">compliance_inquiry_queries</a><br />
 <a href="/services/artifact/customer_agreements/">customer_agreements</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/artifact/report_metadatas/">report_metadatas</a><br />
+<a href="/services/artifact/report_metadata/">report_metadata</a><br />
 <a href="/services/artifact/report_versions/">report_versions</a><br />
 <a href="/services/artifact/reports/">reports</a><br />
 <a href="/services/artifact/tags/">tags</a><br />
-<a href="/services/artifact/term_for_reports/">term_for_reports</a>
+<a href="/services/artifact/terms/">terms</a>
 </div>
 </div>

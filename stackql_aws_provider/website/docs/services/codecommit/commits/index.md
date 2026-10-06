@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>commits</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_commits"
+    defaultValue="get_commit"
     values={[
-        { label: 'batch_get_commits', value: 'batch_get_commits' },
-        { label: 'get_commit', value: 'get_commit' }
+        { label: 'get_commit', value: 'get_commit' },
+        { label: 'batch_get_commits', value: 'batch_get_commits' }
     ]}
 >
-<TabItem value="batch_get_commits">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="commits" /></td>
-    <td><code>array</code></td>
-    <td>An array of commit data type objects, each of which contains information about a specified commit.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Returns any commit IDs for which information could not be found. For example, if one of the commit IDs was a shortened SHA ID or that commit was not found in the specified repository, the ID returns an error object with more information.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_commit">
 
 <table>
@@ -112,6 +88,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_commits">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="commits" /></td>
+    <td><code>array</code></td>
+    <td>An array of commit data type objects, each of which contains information about a specified commit.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Returns any commit IDs for which information could not be found. For example, if one of the commit IDs was a shortened SHA ID or that commit was not found in the specified repository, the ID returns an error object with more information.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -130,18 +130,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_commits"><CopyableCode code="batch_get_commits" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns information about the contents of one or more commits in a repository.</td>
-</tr>
-<tr>
     <td><a href="#get_commit"><CopyableCode code="get_commit" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns information about a commit, including commit message and committer information.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_commits"><CopyableCode code="batch_get_commits" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns information about the contents of one or more commits in a repository.</td>
 </tr>
 <tr>
     <td><a href="#create_commit"><CopyableCode code="create_commit" /></a></td>
@@ -177,25 +177,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_commits"
+    defaultValue="get_commit"
     values={[
-        { label: 'batch_get_commits', value: 'batch_get_commits' },
-        { label: 'get_commit', value: 'get_commit' }
+        { label: 'get_commit', value: 'get_commit' },
+        { label: 'batch_get_commits', value: 'batch_get_commits' }
     ]}
 >
-<TabItem value="batch_get_commits">
-
-Returns information about the contents of one or more commits in a repository.
-
-```sql
-SELECT
-commits,
-errors
-FROM aws.codecommit.commits
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_commit">
 
 Returns information about a commit, including commit message and committer information.
@@ -209,6 +196,19 @@ committer,
 message,
 parents,
 tree_id
+FROM aws.codecommit.commits
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_commits">
+
+Returns information about the contents of one or more commits in a repository.
+
+```sql
+SELECT
+commits,
+errors
 FROM aws.codecommit.commits
 WHERE region = '{{ region }}' -- required
 ;

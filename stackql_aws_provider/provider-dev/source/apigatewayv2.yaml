@@ -137,7 +137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportApiResponse'
-      x-stackql-resource: api
+      x-stackql-resource: apis
       x-stackql-method: import_api
       x-stackql-verb: EXEC
   /v2/domainnames/{domain_name}/apimappings:
@@ -2435,10 +2435,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPortalProductSharingPolicyResponse'
       x-stackql-resource: portal_product_sharing_policies
       x-stackql-method: put_portal_product_sharing_policy
       x-stackql-verb: REPLACE
@@ -3126,10 +3122,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVpcLinkResponse'
       x-stackql-resource: vpc_links
       x-stackql-method: delete_vpc_link
       x-stackql-verb: DELETE
@@ -3221,10 +3213,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PublishPortalResponse'
       x-stackql-resource: portals
       x-stackql-method: publish_portal
       x-stackql-verb: EXEC
@@ -3278,7 +3266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportApiResponse'
-      x-stackql-resource: api
+      x-stackql-resource: apis
       x-stackql-method: export_api
       x-stackql-verb: EXEC
   /v2/apis/{api_id}/models/{model_id}/template:
@@ -3351,10 +3339,6 @@ paths:
       responses:
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3394,10 +3378,6 @@ paths:
       responses:
         '202':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PreviewPortalResponse'
       x-stackql-resource: portals
       x-stackql-method: preview_portal
       x-stackql-verb: EXEC
@@ -4996,8 +4976,6 @@ components:
       type: string
       enum:
       - V2
-    DeleteVpcLinkResponse:
-      type: object
     ExportApiResponse:
       type: object
       properties:
@@ -6713,12 +6691,6 @@ components:
         RoutingRuleId:
           $ref: '#/components/schemas/Id'
           description: The routing rule ID.
-    PreviewPortalResponse:
-      type: object
-    PublishPortalResponse:
-      type: object
-    PutPortalProductSharingPolicyResponse:
-      type: object
     PutRoutingRuleResponse:
       type: object
       properties:
@@ -6799,8 +6771,6 @@ components:
         Warnings:
           $ref: '#/components/schemas/__listOf__string'
           description: The warning messages reported when failonwarnings is turned on during API import.
-    TagResourceResponse:
-      type: object
     UpdateApiResponse:
       type: object
       properties:

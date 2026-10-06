@@ -450,7 +450,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMedicalScribeListeningSessionOutput'
-      x-stackql-resource: medical_scribe_listening_session
+      x-stackql-resource: medical_scribe_listening_sessions
       x-stackql-method: start_medical_scribe_listening_session
       x-stackql-verb: EXEC
   /domain/{domain_id}/patient-insights-job:
@@ -498,7 +498,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPatientInsightsJobResponse'
-      x-stackql-resource: domains
+      x-stackql-resource: patient_insights_jobs
       x-stackql-method: start_patient_insights_job
       x-stackql-verb: EXEC
 components:

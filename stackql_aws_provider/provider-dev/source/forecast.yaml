@@ -1008,7 +1008,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWhatIfAnalysisResponse'
-      x-stackql-resource: what_if_analysis
+      x-stackql-resource: what_if_analyses
       x-stackql-method: create_what_if_analysis
       x-stackql-verb: INSERT
   /CreateWhatIfForecast:
@@ -1532,7 +1532,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: what_if_analysis
+      x-stackql-resource: what_if_analyses
       x-stackql-method: delete_what_if_analysis
       x-stackql-verb: DELETE
   /DeleteWhatIfForecast:
@@ -2055,7 +2055,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeWhatIfAnalysisResponse'
-      x-stackql-resource: what_if_analysis
+      x-stackql-resource: what_if_analyses
       x-stackql-method: describe_what_if_analysis
       x-stackql-verb: SELECT
   /DescribeWhatIfForecast:
@@ -2986,7 +2986,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource
+      x-stackql-resource: resources
       x-stackql-method: resume_resource
       x-stackql-verb: EXEC
   /StopResource:
@@ -3023,7 +3023,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource
+      x-stackql-resource: resources
       x-stackql-method: stop_resource
       x-stackql-verb: EXEC
   /TagResource:
@@ -3071,10 +3071,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3111,10 +3107,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3153,10 +3145,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDatasetGroupResponse'
       x-stackql-resource: dataset_groups
       x-stackql-method: update_dataset_group
       x-stackql-verb: UPDATE
@@ -5708,13 +5696,7 @@ components:
           description: 'The last time the resource was modified. The timestamp depends on the status of the job: CREATE_PENDING
             - The CreationTime. CREATE_IN_PROGRESS - The current timestamp. CREATE_STOPPING - The current timestamp. CREATE_STOPPED
             - When the job stopped. ACTIVE or CREATE_FAILED - When the job finished or failed.'
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateDatasetGroupResponse:
-      type: object

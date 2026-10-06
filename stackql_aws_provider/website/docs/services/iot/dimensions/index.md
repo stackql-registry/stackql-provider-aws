@@ -124,35 +124,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.</td>
 </tr>
 <tr>
     <td><a href="#list_dimensions"><CopyableCode code="list_dimensions" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-nextToken"><code>nextToken</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a></td>
-    <td>List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.</td>
 </tr>
 <tr>
     <td><a href="#create_dimension"><CopyableCode code="create_dimension" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-type"><code>type</code></a>, <a href="#parameter-stringValues"><code>stringValues</code></a>, <a href="#parameter-clientRequestToken"><code>clientRequestToken</code></a></td>
     <td></td>
-    <td>Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.</td>
 </tr>
 <tr>
     <td><a href="#update_dimension"><CopyableCode code="update_dimension" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-stringValues"><code>stringValues</code></a></td>
     <td></td>
-    <td>Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.</td>
 </tr>
 <tr>
     <td><a href="#delete_dimension"><CopyableCode code="delete_dimension" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.</td>
+    <td>The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.</td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +204,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_dimension">
 
-Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Provides details about a dimension that is defined in your Amazon Web Services accounts. Requires permission to access the DescribeDimension action.
 
 ```sql
 SELECT
@@ -222,7 +222,7 @@ AND region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_dimensions">
 
-List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. List the set of dimensions that are defined for your Amazon Web Services accounts. Requires permission to access the ListDimensions action.
 
 ```sql
 SELECT
@@ -248,7 +248,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_dimension">
 
-Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a TOPIC_FILTER dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension. Requires permission to access the CreateDimension action.
 
 ```sql
 INSERT INTO aws.iot.dimensions (
@@ -311,7 +311,7 @@ arn
 >
 <TabItem value="update_dimension">
 
-Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it). Requires permission to access the UpdateDimension action.
 
 ```sql
 UPDATE aws.iot.dimensions
@@ -343,7 +343,7 @@ type_;
 >
 <TabItem value="delete_dimension">
 
-Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.
+The IoT Device Defender detect feature will no longer be available to new customers starting August 31, 2026. If you would like to use the detect feature, sign up prior to August 31, 2026. To learn about alternatives to IoT Device Defender detect, see IoT Device Defender detect feature availability change in the IoT Device Defender Developer Guide. There is no change to IoT Device Defender audit availability. Removes the specified dimension from your Amazon Web Services accounts. Requires permission to access the DeleteDimension action.
 
 ```sql
 DELETE FROM aws.iot.dimensions

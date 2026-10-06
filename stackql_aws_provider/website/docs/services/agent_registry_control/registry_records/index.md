@@ -61,6 +61,16 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the registry record was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="created_by" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Amazon Web Services account that created the registry record. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_by_auto_detection" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the registry record was created by auto-detection. true indicates the record was automatically created by the service based on the registry's auto-detection configuration; false indicates the record was created through a control-plane API call.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the Resource</td>
@@ -76,9 +86,14 @@ The following fields are returned by `SELECT` queries:
     <td>Display name for a registry record</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provenance" /></td>
+    <td><code>array</code></td>
+    <td>List of provenance entries on a registry record. Capped at one entry today: a record carries a single DETECTED_FROM lineage. Modeled as a list so additional relations can be unlocked post-GA by raising this bound without a breaking shape change.</td>
+</tr>
+<tr>
     <td><CopyableCode code="record_arn" /></td>
     <td><code>string</code></td>
-    <td>The &ARN; of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="record_id" /></td>
@@ -88,7 +103,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="record_type" /></td>
     <td><code>string</code></td>
-    <td>Record type enum for registry record classification (MCP, AGENT, CUSTOM, SKILL)</td>
+    <td>Record type enum for registry record classification (MCP, AGENT, CUSTOM, SKILL, GATEWAY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="record_version" /></td>
@@ -98,7 +113,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
-    <td>The &ARN; of the parent registry that owns the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the parent registry that owns the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -140,6 +155,16 @@ The following fields are returned by `SELECT` queries:
     <td>The timestamp when the registry record was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="created_by" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Amazon Web Services account that created the registry record. (pattern: &lt;code&gt;&#91;0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_by_auto_detection" /></td>
+    <td><code>boolean</code></td>
+    <td>Specifies whether the registry record was created by auto-detection. true indicates the record was automatically created by the service based on the registry's auto-detection configuration; false indicates the record was created through a control-plane API call.</td>
+</tr>
+<tr>
     <td><CopyableCode code="description" /></td>
     <td><code>string</code></td>
     <td>Description of the Resource</td>
@@ -150,9 +175,14 @@ The following fields are returned by `SELECT` queries:
     <td>Display name for a registry record</td>
 </tr>
 <tr>
+    <td><CopyableCode code="provenance_summary_list" /></td>
+    <td><code>array</code></td>
+    <td>List of condensed provenance entries surfaced on RegistryRecordSummary. Mirrors ProvenanceList's cardinality (one entry today); modeled as a list for forward-compatibility.</td>
+</tr>
+<tr>
     <td><CopyableCode code="record_arn" /></td>
     <td><code>string</code></td>
-    <td>The &ARN; of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the registry record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;/record/&#91;a-zA-Z0-9&#93;&#123;12&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="record_id" /></td>
@@ -162,7 +192,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="record_type" /></td>
     <td><code>string</code></td>
-    <td>Record type enum for registry record classification (MCP, AGENT, CUSTOM, SKILL)</td>
+    <td>Record type enum for registry record classification (MCP, AGENT, CUSTOM, SKILL, GATEWAY)</td>
 </tr>
 <tr>
     <td><CopyableCode code="record_version" /></td>
@@ -172,7 +202,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="registry_arn" /></td>
     <td><code>string</code></td>
-    <td>The &ARN; of the parent registry that owns the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
+    <td>The Amazon Resource Name (ARN) of the parent registry that owns the record. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:agent-registry:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:registry/&#91;a-zA-Z0-9&#93;&#123;12,16&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
     <td><CopyableCode code="status" /></td>
@@ -304,9 +334,12 @@ Retrieves the details of a registry record
 SELECT
 name,
 created_at,
+created_by,
+created_by_auto_detection,
 description,
 descriptors,
 display_name,
+provenance,
 record_arn,
 record_id,
 record_type,
@@ -330,8 +363,11 @@ Lists the registry records within a registry, with optional filtering by name, s
 SELECT
 name,
 created_at,
+created_by,
+created_by_auto_detection,
 description,
 display_name,
+provenance_summary_list,
 record_arn,
 record_id,
 record_type,
@@ -370,6 +406,7 @@ recordType,
 descriptors,
 recordVersion,
 clientToken,
+provenance,
 tags,
 registry_id,
 region
@@ -382,6 +419,7 @@ SELECT
 '{{ descriptors }}' /* required */,
 '{{ recordVersion }}',
 '{{ clientToken }}',
+'{{ provenance }}',
 '{{ tags }}',
 '{{ registry_id }}',
 '{{ region }}'
@@ -418,7 +456,7 @@ status
       value: "{{ recordType }}"
       description: |
         Record type enum for registry record classification
-      valid_values: ['MCP', 'AGENT', 'CUSTOM', 'SKILL']
+      valid_values: ['MCP', 'AGENT', 'CUSTOM', 'SKILL', 'GATEWAY']
     - name: descriptors
       description: |
         The typed set of descriptors for a registry record. Exactly one descriptor field is populated based on the record type.
@@ -460,6 +498,24 @@ status
                 fromUrl: "{{ fromUrl }}"
         custom:
           data: "{{ data }}"
+        http:
+          source:
+            fromUrl:
+              url: "{{ url }}"
+              credentialProviderConfigurations:
+                - credentialProviderType: "{{ credentialProviderType }}"
+                  credentialProvider:
+                    oauthCredentialProvider: "{{ oauthCredentialProvider }}"
+                    iamCredentialProvider: "{{ iamCredentialProvider }}"
+        agui:
+          source:
+            fromUrl:
+              url: "{{ url }}"
+              credentialProviderConfigurations:
+                - credentialProviderType: "{{ credentialProviderType }}"
+                  credentialProvider:
+                    oauthCredentialProvider: "{{ oauthCredentialProvider }}"
+                    iamCredentialProvider: "{{ iamCredentialProvider }}"
     - name: recordVersion
       value: "{{ recordVersion }}"
       description: |
@@ -468,6 +524,42 @@ status
       value: "{{ clientToken }}"
       description: |
         Client specified token used for idempotency checks
+    - name: provenance
+      description: |
+        List of provenance entries on a registry record. Capped at one entry today: a record carries a single DETECTED_FROM lineage. Modeled as a list so additional relations can be unlocked post-GA by raising this bound without a breaking shape change.
+      value:
+        - relation: "{{ relation }}"
+          sourceId: "{{ sourceId }}"
+          sourceType: "{{ sourceType }}"
+          sourceDetails:
+            agentcoreRuntime:
+              protocolConfiguration:
+                serverProtocol: "{{ serverProtocol }}"
+              authorizerConfiguration:
+                customJWTAuthorizer:
+                  discoveryUrl: "{{ discoveryUrl }}"
+                  allowedAudience: "{{ allowedAudience }}"
+                  allowedClients: "{{ allowedClients }}"
+                  allowedScopes: "{{ allowedScopes }}"
+                  customClaims: "{{ customClaims }}"
+                  privateEndpoint: "{{ privateEndpoint }}"
+                  privateEndpointOverrides: "{{ privateEndpointOverrides }}"
+              workloadIdentityDetails:
+                workloadIdentityArn: "{{ workloadIdentityArn }}"
+            agentcoreGateway:
+              protocolType: "{{ protocolType }}"
+              authorizerType: "{{ authorizerType }}"
+              authorizerConfiguration:
+                customJWTAuthorizer:
+                  discoveryUrl: "{{ discoveryUrl }}"
+                  allowedAudience: "{{ allowedAudience }}"
+                  allowedClients: "{{ allowedClients }}"
+                  allowedScopes: "{{ allowedScopes }}"
+                  customClaims: "{{ customClaims }}"
+                  privateEndpoint: "{{ privateEndpoint }}"
+                  privateEndpointOverrides: "{{ privateEndpointOverrides }}"
+              workloadIdentityDetails:
+                workloadIdentityArn: "{{ workloadIdentityArn }}"
     - name: tags
       value: "{{ tags }}"
       description: |
@@ -524,7 +616,8 @@ description = '{{ description }}',
 recordType = '{{ recordType }}',
 descriptors = '{{ descriptors }}',
 recordVersion = '{{ recordVersion }}',
-triggerSynchronization = {{ triggerSynchronization }}
+triggerSynchronization = {{ triggerSynchronization }},
+provenance = '{{ provenance }}'
 WHERE 
 registry_id = '{{ registry_id }}' --required
 AND record_id = '{{ record_id }}' --required
@@ -532,9 +625,12 @@ AND region = '{{ region }}' --required
 RETURNING
 name,
 created_at,
+created_by,
+created_by_auto_detection,
 description,
 descriptors,
 display_name,
+provenance,
 record_arn,
 record_id,
 record_type,

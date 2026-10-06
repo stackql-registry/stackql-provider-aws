@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="batch_get_reports"
     values={[
         { label: 'batch_get_reports', value: 'batch_get_reports' },
+        { label: 'list_reports_for_report_group', value: 'list_reports_for_report_group' },
         { label: 'list_reports', value: 'list_reports' }
     ]}
 >
@@ -59,6 +60,25 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="reports_not_found" /></td>
     <td><code>array</code></td>
     <td>An array of ARNs passed to BatchGetReportGroups that are not associated with a Report.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_reports_for_report_group">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="report" /></td>
+    <td><code>string</code></td>
+    <td>The list of report ARNs.</td>
 </tr>
 </tbody>
 </table>
@@ -107,6 +127,13 @@ The following methods are available for this resource:
     <td>Returns an array of reports.</td>
 </tr>
 <tr>
+    <td><a href="#list_reports_for_report_group"><CopyableCode code="list_reports_for_report_group" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of ARNs for the reports that belong to a ReportGroup.</td>
+</tr>
+<tr>
     <td><a href="#list_reports"><CopyableCode code="list_reports" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -150,6 +177,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="batch_get_reports"
     values={[
         { label: 'batch_get_reports', value: 'batch_get_reports' },
+        { label: 'list_reports_for_report_group', value: 'list_reports_for_report_group' },
         { label: 'list_reports', value: 'list_reports' }
     ]}
 >
@@ -161,6 +189,18 @@ Returns an array of reports.
 SELECT
 reports,
 reports_not_found
+FROM aws.codebuild.reports
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_reports_for_report_group">
+
+Returns a list of ARNs for the reports that belong to a ReportGroup.
+
+```sql
+SELECT
+report
 FROM aws.codebuild.reports
 WHERE region = '{{ region }}' -- required
 ;

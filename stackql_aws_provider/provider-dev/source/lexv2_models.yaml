@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateCustomVocabularyItemResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: custom_vocabulary_items
       x-stackql-method: batch_create_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/customvocabulary/DEFAULT/batchdelete:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteCustomVocabularyItemResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: custom_vocabulary_items
       x-stackql-method: batch_delete_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/customvocabulary/DEFAULT/batchupdate:
@@ -149,7 +149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateCustomVocabularyItemResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: custom_vocabulary_items
       x-stackql-method: batch_update_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/:
@@ -185,7 +185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildBotLocaleResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: bot_locales
       x-stackql-method: build_bot_locale
       x-stackql-verb: EXEC
     delete:
@@ -432,7 +432,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: create_bot_alias
       x-stackql-verb: INSERT
     post:
@@ -1471,7 +1471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: delete_bot_alias
       x-stackql-verb: DELETE
     get:
@@ -1497,7 +1497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: describe_bot_alias
       x-stackql-verb: SELECT
     put:
@@ -1544,7 +1544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBotAliasResponse'
-      x-stackql-resource: bot_alias
+      x-stackql-resource: bot_aliases
       x-stackql-method: update_bot_alias
       x-stackql-verb: UPDATE
   /bots/{bot_id}/botanalyzer/{bot_analyzer_request_id}/:
@@ -1570,10 +1570,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteBotAnalyzerRecommendationResponse'
       x-stackql-resource: bot_analyzer_recommendations
       x-stackql-method: delete_bot_analyzer_recommendation
       x-stackql-verb: DELETE
@@ -2436,10 +2432,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUtterancesResponse'
       x-stackql-resource: bots
       x-stackql-method: delete_utterances
       x-stackql-verb: DELETE
@@ -2650,7 +2642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeCustomVocabularyMetadataResponse'
-      x-stackql-resource: custom_vocabulary_metadatas
+      x-stackql-resource: custom_vocabulary_metadata
       x-stackql-method: describe_custom_vocabulary_metadata
       x-stackql-verb: SELECT
   /testexecutions/{test_execution_id}:
@@ -3002,7 +2994,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBotRecommendationResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: bot_recommendations
       x-stackql-method: start_bot_recommendation
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/generations:
@@ -3532,7 +3524,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListSessionAnalyticsDataResponse'
-      x-stackql-resource: session_analytics_datas
+      x-stackql-resource: session_analytics_data
       x-stackql-method: list_session_analytics_data
       x-stackql-verb: SELECT
   /bots/{bot_id}/analytics/sessionmetrics:
@@ -3639,10 +3631,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3665,10 +3653,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3844,7 +3828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListUtteranceAnalyticsDataResponse'
-      x-stackql-resource: utterance_analytics_datas
+      x-stackql-resource: utterance_analytics_data
       x-stackql-method: list_utterance_analytics_data
       x-stackql-verb: SELECT
   /bots/{bot_id}/analytics/utterancemetrics:
@@ -4047,7 +4031,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBotResourceGenerationResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: bot_resource_generations
       x-stackql-method: start_bot_resource_generation
       x-stackql-verb: EXEC
   /testsets/{test_set_id}/testexecutions:
@@ -4084,7 +4068,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestExecutionResponse'
-      x-stackql-resource: test_sets
+      x-stackql-resource: test_executions
       x-stackql-method: start_test_execution
       x-stackql-verb: EXEC
   /testsetgenerations:
@@ -4123,7 +4107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestSetGenerationResponse'
-      x-stackql-resource: test_sets
+      x-stackql-resource: test_set_generations
       x-stackql-method: start_test_set_generation
       x-stackql-verb: EXEC
   /bots/{bot_id}/botanalyzer/{bot_analyzer_request_id}/stop/:
@@ -4191,7 +4175,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBotRecommendationResponse'
-      x-stackql-resource: bots
+      x-stackql-resource: bot_recommendations
       x-stackql-method: stop_bot_recommendation
       x-stackql-verb: EXEC
 components:
@@ -6820,8 +6804,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}'
-    DeleteBotAnalyzerRecommendationResponse:
-      type: object
     DeleteBotLocaleResponse:
       type: object
       properties:
@@ -6940,8 +6922,6 @@ components:
       minLength: 2
       maxLength: 100
       pattern: '[0-9a-zA-Z._:-]+'
-    DeleteUtterancesResponse:
-      type: object
     DescribeBotResponse:
       type: object
       properties:
@@ -11993,8 +11973,6 @@ components:
         botRecommendationId:
           $ref: '#/components/schemas/Id'
           description: The unique identifier of the bot recommendation that is being stopped.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -12003,8 +11981,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateBotResponse:
       type: object
       properties:

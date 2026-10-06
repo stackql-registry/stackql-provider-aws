@@ -203,7 +203,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-resourceArn"><code>resourceArn</code></a>, <a href="#parameter-principalSubscriber"><code>principalSubscriber</code></a></td>
     <td></td>
-    <td>Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows</td>
+    <td>Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an Amazon Web Services user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows</td>
 </tr>
 <tr>
     <td><a href="#delete_share"><CopyableCode code="delete_share" /></a></td>
@@ -326,7 +326,7 @@ AND maxResults = '{{ maxResults }}'
 >
 <TabItem value="create_share">
 
-Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an AWS user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows
+Creates a cross-account shared resource. The resource owner makes an offer to share the resource with the principal subscriber (an Amazon Web Services user with a different account than the resource owner). The following resources support cross-account sharing: HealthOmics variant stores HealthOmics annotation stores Private workflows
 
 ```sql
 INSERT INTO aws.omics.shares (

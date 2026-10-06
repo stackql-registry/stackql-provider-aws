@@ -29,11 +29,11 @@ total resources: __9__
 <a href="/services/ecr_public/image_tags/">image_tags</a><br />
 <a href="/services/ecr_public/images/">images</a><br />
 <a href="/services/ecr_public/registries/">registries</a><br />
-<a href="/services/ecr_public/registry_catalog_datas/">registry_catalog_datas</a>
+<a href="/services/ecr_public/registry_catalog_data/">registry_catalog_data</a>
 </div>
 <div class="providerDocColumn">
 <a href="/services/ecr_public/repositories/">repositories</a><br />
-<a href="/services/ecr_public/repository_catalog_datas/">repository_catalog_datas</a><br />
+<a href="/services/ecr_public/repository_catalog_data/">repository_catalog_data</a><br />
 <a href="/services/ecr_public/repository_policies/">repository_policies</a><br />
 <a href="/services/ecr_public/tags/">tags</a>
 </div>

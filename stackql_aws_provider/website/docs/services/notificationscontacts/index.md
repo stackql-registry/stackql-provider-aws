@@ -18,13 +18,14 @@ notificationscontacts service documentation.
 
 :::info[Service Summary]
 
-total resources: __2__  
+total resources: __3__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/notificationscontacts/activation_codes/">activation_codes</a><br />
 <a href="/services/notificationscontacts/email_contacts/">email_contacts</a>
 </div>
 <div class="providerDocColumn">

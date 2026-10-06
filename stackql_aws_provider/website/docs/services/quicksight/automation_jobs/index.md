@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-includeInputPayload"><code>includeInputPayload</code></a>, <a href="#parameter-includeOutputPayload"><code>includeOutputPayload</code></a></td>
     <td>Retrieves the status and details of a specified automation job, including its status and outputs.</td>
 </tr>
+<tr>
+    <td><a href="#start_automation_job"><CopyableCode code="start_automation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-aws_account_id"><code>aws_account_id</code></a>, <a href="#parameter-automation_group_id"><code>automation_group_id</code></a>, <a href="#parameter-automation_id"><code>automation_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Starts a new job for a specified automation. The job runs the automation with the provided input payload.</td>
+</tr>
 </tbody>
 </table>
 
@@ -135,17 +142,17 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-automation_group_id">
     <td><CopyableCode code="automation_group_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the automation group that contains the automation.</td>
+    <td>The ID of the automation group that contains the automation to run.</td>
 </tr>
 <tr id="parameter-automation_id">
     <td><CopyableCode code="automation_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the automation that the job belongs to.</td>
+    <td>The ID of the automation to run.</td>
 </tr>
 <tr id="parameter-aws_account_id">
     <td><CopyableCode code="aws_account_id" /></td>
     <td><code>string</code></td>
-    <td>The ID of the Amazon Web Services account that contains the automation job.</td>
+    <td>The ID of the Amazon Web Services account that contains the automation.</td>
 </tr>
 <tr id="parameter-job_id">
     <td><CopyableCode code="job_id" /></td>
@@ -200,6 +207,34 @@ AND job_id = '{{ job_id }}' -- required
 AND region = '{{ region }}' -- required
 AND includeInputPayload = '{{ includeInputPayload }}'
 AND includeOutputPayload = '{{ includeOutputPayload }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_automation_job"
+    values={[
+        { label: 'start_automation_job', value: 'start_automation_job' }
+    ]}
+>
+<TabItem value="start_automation_job">
+
+Starts a new job for a specified automation. The job runs the automation with the provided input payload.
+
+```sql
+EXEC aws.quicksight.automation_jobs.start_automation_job 
+@aws_account_id='{{ aws_account_id }}' --required, 
+@automation_group_id='{{ automation_group_id }}' --required, 
+@automation_id='{{ automation_id }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputPayload": "{{ InputPayload }}"
+}'
 ;
 ```
 </TabItem>

@@ -354,10 +354,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -380,10 +376,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -495,7 +487,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProductSubscriptionResponse'
-      x-stackql-resource: product_subscription
+      x-stackql-resource: product_subscriptions
       x-stackql-method: start_product_subscription
       x-stackql-verb: EXEC
   /user/StopProductSubscription:
@@ -527,7 +519,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopProductSubscriptionResponse'
-      x-stackql-resource: product_subscription
+      x-stackql-resource: product_subscriptions
       x-stackql-method: stop_product_subscription
       x-stackql-verb: EXEC
   /identity-provider/UpdateIdentityProviderSettings:
@@ -1119,6 +1111,12 @@ components:
         SubscriptionEndDate:
           $ref: '#/components/schemas/String'
           description: The end date of a subscription.
+        LicenseExpirationDate:
+          $ref: '#/components/schemas/String'
+          description: The expiration date of the license associated with this subscription, in ISO 8601 UTC format (for example,
+            2025-03-15T00:00:00Z). This field applies only to subscriptions that use license server endpoints, such as Remote
+            Desktop Services (RDS) Subscriber Access License (SAL). It returns null for products that don't use license-based
+            subscriptions.
       required:
       - Username
       - Product
@@ -1173,14 +1171,10 @@ components:
           description: Metadata that describes the start product subscription operation.
       required:
       - ProductUserSummary
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    UntagResourceResponse:
-      type: object
     UpdateSettings:
       description: Updates the registered identity provider’s product related configuration settings such as the subnets to
         provision VPC endpoints.

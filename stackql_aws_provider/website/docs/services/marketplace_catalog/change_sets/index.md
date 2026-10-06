@@ -188,6 +188,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Returns the list of change sets owned by the account being used to make the call. You can filter this list by providing any combination of entityId, ChangeSetName, and status. If you provide more than one filter, the API operation applies a logical AND between the filters. You can describe a change during the 60-day request history retention period for API calls.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_change_set"><CopyableCode code="cancel_change_set" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-catalog"><code>catalog</code></a>, <a href="#parameter-changeSetId"><code>changeSetId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Used to cancel an open change request. Must be sent before the status of the request changes to APPLYING, the final stage of completing your change request. You can describe a change during the 60-day request history retention period for API calls.</td>
+</tr>
+<tr>
+    <td><a href="#start_change_set"><CopyableCode code="start_change_set" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ChangeSet"><code>ChangeSet</code></a></td>
+    <td></td>
+    <td>Allows you to request changes for your entities. Within a single ChangeSet, you can't start the same change type against the same entity multiple times. Additionally, when a ChangeSet is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a ResourceInUseException error. For example, you can't start the ChangeSet described in the example later in this topic because it contains two changes to run the same change type (AddRevisions) against the same entity (entity-id@1). For more information about working with change sets, see Working with change sets. For information about change types for single-AMI products, see Working with single-AMI products. Also, for more information about change types available for container-based products, see Working with container products. To download "DetailsDocument" shapes, see Python and Java shapes on GitHub.</td>
+</tr>
 </tbody>
 </table>
 
@@ -207,12 +221,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-catalog">
     <td><CopyableCode code="catalog" /></td>
     <td><code>string</code></td>
-    <td>Required. The catalog related to the request. Fixed value: AWSMarketplace</td>
+    <td>Required. The catalog related to the request. Fixed value: AWSMarketplace.</td>
 </tr>
 <tr id="parameter-changeSetId">
     <td><CopyableCode code="changeSetId" /></td>
     <td><code>string</code></td>
-    <td>Required. The unique identifier for the StartChangeSet request that you want to describe the details for.</td>
+    <td>Required. The unique identifier of the StartChangeSet request that you want to cancel.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -270,6 +284,49 @@ start_time,
 status
 FROM aws.marketplace_catalog.change_sets
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_change_set"
+    values={[
+        { label: 'cancel_change_set', value: 'cancel_change_set' },
+        { label: 'start_change_set', value: 'start_change_set' }
+    ]}
+>
+<TabItem value="cancel_change_set">
+
+Used to cancel an open change request. Must be sent before the status of the request changes to APPLYING, the final stage of completing your change request. You can describe a change during the 60-day request history retention period for API calls.
+
+```sql
+EXEC aws.marketplace_catalog.change_sets.cancel_change_set 
+@catalog='{{ catalog }}' --required, 
+@changeSetId='{{ changeSetId }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="start_change_set">
+
+Allows you to request changes for your entities. Within a single ChangeSet, you can't start the same change type against the same entity multiple times. Additionally, when a ChangeSet is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a ResourceInUseException error. For example, you can't start the ChangeSet described in the example later in this topic because it contains two changes to run the same change type (AddRevisions) against the same entity (entity-id@1). For more information about working with change sets, see Working with change sets. For information about change types for single-AMI products, see Working with single-AMI products. Also, for more information about change types available for container-based products, see Working with container products. To download "DetailsDocument" shapes, see Python and Java shapes on GitHub.
+
+```sql
+EXEC aws.marketplace_catalog.change_sets.start_change_set 
+@region='{{ region }}' --required 
+@@json=
+'{
+"Catalog": "{{ Catalog }}", 
+"ChangeSet": "{{ ChangeSet }}", 
+"ChangeSetName": "{{ ChangeSetName }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"ChangeSetTags": "{{ ChangeSetTags }}", 
+"Intent": "{{ Intent }}"
+}'
 ;
 ```
 </TabItem>

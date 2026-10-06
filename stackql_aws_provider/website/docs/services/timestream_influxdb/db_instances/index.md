@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="get_db_instance"
     values={[
         { label: 'get_db_instance', value: 'get_db_instance' },
+        { label: 'list_db_instances_for_cluster', value: 'list_db_instances_for_cluster' },
         { label: 'list_db_instances', value: 'list_db_instances' }
     ]}
 >
@@ -188,6 +189,85 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_db_instances_for_cluster">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The service-generated unique identifier of the DB instance. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>A service-generated name for the DB instance based on the customer-supplied name for the DB cluster. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;a-zA-Z0-9&#93;*(-&#91;a-zA-Z0-9&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="allocated_storage" /></td>
+    <td><code>integer</code></td>
+    <td>The amount of storage allocated for your DB storage type in GiB (gibibytes).</td>
+</tr>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the DB instance. (pattern: &lt;code&gt;arn:aws&#91;a-z\-&#93;*:timestream\-influxdb:&#91;a-z0-9\-&#93;+:&#91;0-9&#93;&#123;12&#125;:(db\-instance|db\-cluster|db\-parameter\-group|db\-backup)/&#91;a-zA-Z0-9&#93;&#123;3,64&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="db_instance_type" /></td>
+    <td><code>string</code></td>
+    <td>The Timestream for InfluxDB instance type to run InfluxDB on. (db.influx.medium, db.influx.large, db.influx.xlarge, db.influx.2xlarge, db.influx.4xlarge, db.influx.8xlarge, db.influx.12xlarge, db.influx.16xlarge, db.influx.24xlarge)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="db_storage_type" /></td>
+    <td><code>string</code></td>
+    <td>The storage type for your DB instance. (InfluxIOIncludedT1, InfluxIOIncludedT2, InfluxIOIncludedT3)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="deployment_type" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the deployment type if applicable. (SINGLE_AZ, WITH_MULTIAZ_STANDBY)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="endpoint" /></td>
+    <td><code>string</code></td>
+    <td>The endpoint used to connect to InfluxDB. The default InfluxDB port is 8086.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="instance_mode" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the DB instance's role in the cluster. (PRIMARY, STANDBY, REPLICA, INGEST, QUERY, COMPACT, PROCESS)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="instance_modes" /></td>
+    <td><code>array</code></td>
+    <td>Specifies the DB instance's roles in the cluster.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="network_type" /></td>
+    <td><code>string</code></td>
+    <td>Specifies whether the network type of the Timestream for InfluxDB instance is IPv4, which can communicate over IPv4 protocol only, or DUAL, which can communicate over both IPv4 and IPv6 protocols. (IPV4, DUAL)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="port" /></td>
+    <td><code>integer</code></td>
+    <td>The port number on which InfluxDB accepts connections.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the DB instance. (CREATING, AVAILABLE, DELETING, MODIFYING, UPDATING, DELETED, FAILED, UPDATING_DEPLOYMENT_TYPE, UPDATING_INSTANCE_TYPE, MAINTENANCE, REBOOTING, REBOOT_FAILED, RESTORING, RESTORE_FAILED)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_db_instances">
 
 <table>
@@ -282,6 +362,13 @@ The following methods are available for this resource:
     <td>Returns a Timestream for InfluxDB DB instance.</td>
 </tr>
 <tr>
+    <td><a href="#list_db_instances_for_cluster"><CopyableCode code="list_db_instances_for_cluster" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of Timestream for InfluxDB clusters.</td>
+</tr>
+<tr>
     <td><a href="#list_db_instances"><CopyableCode code="list_db_instances" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -308,6 +395,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a Timestream for InfluxDB DB instance.</td>
+</tr>
+<tr>
+    <td><a href="#reboot_db_instance"><CopyableCode code="reboot_db_instance" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-identifier"><code>identifier</code></a></td>
+    <td></td>
+    <td>Reboots a Timestream for InfluxDB instance.</td>
 </tr>
 </tbody>
 </table>
@@ -339,6 +433,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="get_db_instance"
     values={[
         { label: 'get_db_instance', value: 'get_db_instance' },
+        { label: 'list_db_instances_for_cluster', value: 'list_db_instances_for_cluster' },
         { label: 'list_db_instances', value: 'list_db_instances' }
     ]}
 >
@@ -375,6 +470,30 @@ secondary_availability_zone,
 status,
 vpc_security_group_ids,
 vpc_subnet_ids
+FROM aws.timestream_influxdb.db_instances
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_db_instances_for_cluster">
+
+Returns a list of Timestream for InfluxDB clusters.
+
+```sql
+SELECT
+id,
+name,
+allocated_storage,
+arn,
+db_instance_type,
+db_storage_type,
+deployment_type,
+endpoint,
+instance_mode,
+instance_modes,
+network_type,
+port,
+status
 FROM aws.timestream_influxdb.db_instances
 WHERE region = '{{ region }}' -- required
 ;
@@ -680,6 +799,31 @@ Deletes a Timestream for InfluxDB DB instance.
 ```sql
 DELETE FROM aws.timestream_influxdb.db_instances
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reboot_db_instance"
+    values={[
+        { label: 'reboot_db_instance', value: 'reboot_db_instance' }
+    ]}
+>
+<TabItem value="reboot_db_instance">
+
+Reboots a Timestream for InfluxDB instance.
+
+```sql
+EXEC aws.timestream_influxdb.db_instances.reboot_db_instance 
+@region='{{ region }}' --required 
+@@json=
+'{
+"identifier": "{{ identifier }}"
+}'
 ;
 ```
 </TabItem>

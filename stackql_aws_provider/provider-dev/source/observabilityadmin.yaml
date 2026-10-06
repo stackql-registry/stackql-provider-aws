@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCentralizationRuleForOrganizationOutput'
-      x-stackql-resource: centralization_rule_for_organizations
+      x-stackql-resource: centralization_rules
       x-stackql-method: create_centralization_rule_for_organization
       x-stackql-verb: INSERT
   /CreateS3TableIntegration:
@@ -174,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTelemetryRuleForOrganizationOutput'
-      x-stackql-resource: telemetry_rule_for_organizations
+      x-stackql-resource: telemetry_rules
       x-stackql-method: create_telemetry_rule_for_organization
       x-stackql-verb: INSERT
   /DeleteCentralizationRuleForOrganization:
@@ -197,7 +197,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: centralization_rule_for_organizations
+      x-stackql-resource: centralization_rules
       x-stackql-method: delete_centralization_rule_for_organization
       x-stackql-verb: DELETE
   /DeleteS3TableIntegration:
@@ -243,10 +243,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTelemetryPipelineOutput'
       x-stackql-resource: telemetry_pipelines
       x-stackql-method: delete_telemetry_pipeline
       x-stackql-verb: DELETE
@@ -293,7 +289,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: telemetry_rule_for_organizations
+      x-stackql-resource: telemetry_rules
       x-stackql-method: delete_telemetry_rule_for_organization
       x-stackql-verb: DELETE
   /GetCentralizationRuleForOrganization:
@@ -320,7 +316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCentralizationRuleForOrganizationOutput'
-      x-stackql-resource: centralization_rule_for_organizations
+      x-stackql-resource: centralization_rules
       x-stackql-method: get_centralization_rule_for_organization
       x-stackql-verb: SELECT
   /GetS3TableIntegration:
@@ -362,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTelemetryEnrichmentStatusOutput'
-      x-stackql-resource: telemetry_enrichment_status
+      x-stackql-resource: telemetry_enrichment_statuses
       x-stackql-method: get_telemetry_enrichment_status
       x-stackql-verb: SELECT
   /GetTelemetryEvaluationStatus:
@@ -378,7 +374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTelemetryEvaluationStatusOutput'
-      x-stackql-resource: telemetry_evaluation_status
+      x-stackql-resource: telemetry_evaluation_statuses
       x-stackql-method: get_telemetry_evaluation_status
       x-stackql-verb: SELECT
   /GetTelemetryEvaluationStatusForOrganization:
@@ -395,7 +391,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTelemetryEvaluationStatusForOrganizationOutput'
-      x-stackql-resource: telemetry_evaluation_status_for_organizations
+      x-stackql-resource: telemetry_evaluation_statuses
       x-stackql-method: get_telemetry_evaluation_status_for_organization
       x-stackql-verb: SELECT
   /GetTelemetryPipeline:
@@ -475,7 +471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTelemetryRuleForOrganizationOutput'
-      x-stackql-resource: telemetry_rule_for_organizations
+      x-stackql-resource: telemetry_rules
       x-stackql-method: get_telemetry_rule_for_organization
       x-stackql-verb: SELECT
   /ListCentralizationRulesForOrganization:
@@ -506,7 +502,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListCentralizationRulesForOrganizationOutput'
-      x-stackql-resource: centralization_rules_for_organizations
+      x-stackql-resource: centralization_rules
       x-stackql-method: list_centralization_rules_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CentralizationRuleSummaries
@@ -586,7 +582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListResourceTelemetryForOrganizationOutput'
-      x-stackql-resource: resource_telemetry_for_organizations
+      x-stackql-resource: resource_telemetries
       x-stackql-method: list_resource_telemetry_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryConfigurations
@@ -744,7 +740,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTelemetryRulesForOrganizationOutput'
-      x-stackql-resource: telemetry_rules_for_organizations
+      x-stackql-resource: telemetry_rules
       x-stackql-method: list_telemetry_rules_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryRuleSummaries
@@ -764,7 +760,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTelemetryEnrichmentOutput'
-      x-stackql-resource: telemetry_enrichment
+      x-stackql-resource: telemetry_enrichments
       x-stackql-method: start_telemetry_enrichment
       x-stackql-verb: EXEC
   /StartTelemetryEvaluation:
@@ -786,7 +782,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: telemetry_evaluation
+      x-stackql-resource: telemetry_evaluations
       x-stackql-method: start_telemetry_evaluation
       x-stackql-verb: EXEC
   /StartTelemetryEvaluationForOrganization:
@@ -808,7 +804,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: telemetry_evaluation_for_organization
+      x-stackql-resource: telemetry_evaluations
       x-stackql-method: start_telemetry_evaluation_for_organization
       x-stackql-verb: EXEC
   /StopTelemetryEnrichment:
@@ -824,7 +820,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTelemetryEnrichmentOutput'
-      x-stackql-resource: telemetry_enrichment
+      x-stackql-resource: telemetry_enrichments
       x-stackql-method: stop_telemetry_enrichment
       x-stackql-verb: EXEC
   /StopTelemetryEvaluation:
@@ -835,7 +831,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: telemetry_evaluation
+      x-stackql-resource: telemetry_evaluations
       x-stackql-method: stop_telemetry_evaluation
       x-stackql-verb: EXEC
   /StopTelemetryEvaluationForOrganization:
@@ -847,7 +843,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: telemetry_evaluation_for_organization
+      x-stackql-resource: telemetry_evaluations
       x-stackql-method: stop_telemetry_evaluation_for_organization
       x-stackql-verb: EXEC
   /TagResource:
@@ -904,7 +900,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestTelemetryPipelineOutput'
-      x-stackql-resource: telemetry_pipeline
+      x-stackql-resource: telemetry_pipelines
       x-stackql-method: test_telemetry_pipeline
       x-stackql-verb: EXEC
   /UntagResource:
@@ -959,7 +955,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCentralizationRuleForOrganizationOutput'
-      x-stackql-resource: centralization_rule_for_organizations
+      x-stackql-resource: centralization_rules
       x-stackql-method: update_centralization_rule_for_organization
       x-stackql-verb: UPDATE
   /UpdateTelemetryPipeline:
@@ -1000,10 +996,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTelemetryPipelineOutput'
       x-stackql-resource: telemetry_pipelines
       x-stackql-method: update_telemetry_pipeline
       x-stackql-verb: UPDATE
@@ -1065,7 +1057,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTelemetryRuleForOrganizationOutput'
-      x-stackql-resource: telemetry_rule_for_organizations
+      x-stackql-resource: telemetry_rules
       x-stackql-method: update_telemetry_rule_for_organization
       x-stackql-verb: UPDATE
   /ValidateTelemetryPipelineConfiguration:
@@ -1932,8 +1924,6 @@ components:
       type: string
       minLength: 1
       maxLength: 512
-    DeleteTelemetryPipelineOutput:
-      type: object
     GetCentralizationRuleForOrganizationOutput:
       type: object
       properties:
@@ -2678,8 +2668,6 @@ components:
         RuleArn:
           $ref: '#/components/schemas/ResourceArn'
           description: The Amazon Resource Name (ARN) of the updated organization centralization rule.
-    UpdateTelemetryPipelineOutput:
-      type: object
     UpdateTelemetryRuleOutput:
       type: object
       properties:

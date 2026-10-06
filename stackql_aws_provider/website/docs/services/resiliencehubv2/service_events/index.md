@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="actor" /></td>
     <td><code>object</code></td>
-    <td>The actor that triggered the event.</td>
+    <td>Identifies the actor that triggered an event.</td>
 </tr>
 <tr>
     <td><CopyableCode code="event_details" /></td>
@@ -140,7 +140,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-eventTypes">
     <td><CopyableCode code="eventTypes" /></td>
     <td><code>array</code></td>
-    <td>Filter events by type.</td>
+    <td>The type of events to include in the results.</td>
 </tr>
 <tr id="parameter-maxResults">
     <td><CopyableCode code="maxResults" /></td>

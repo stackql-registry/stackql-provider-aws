@@ -18,7 +18,7 @@ controltower service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
@@ -28,6 +28,7 @@ total resources: __8__
 <a href="/services/controltower/baseline_operations/">baseline_operations</a><br />
 <a href="/services/controltower/baselines/">baselines</a><br />
 <a href="/services/controltower/control_operations/">control_operations</a><br />
+<a href="/services/controltower/controls/">controls</a><br />
 <a href="/services/controltower/enabled_baselines/">enabled_baselines</a>
 </div>
 <div class="providerDocColumn">

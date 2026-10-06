@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDomainExportResponse'
-      x-stackql-resource: domain_export
+      x-stackql-resource: exports
       x-stackql-method: start_domain_export
       x-stackql-verb: EXEC
 components:

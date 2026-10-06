@@ -18,7 +18,7 @@ ecs service documentation.
 
 :::info[Service Summary]
 
-total resources: __21__  
+total resources: __24__  
 
 :::
 
@@ -26,22 +26,25 @@ total resources: __21__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/ecs/account_settings/">account_settings</a><br />
+<a href="/services/ecs/attachment_state_changes/">attachment_state_changes</a><br />
 <a href="/services/ecs/attributes/">attributes</a><br />
 <a href="/services/ecs/capacity_providers/">capacity_providers</a><br />
 <a href="/services/ecs/clusters/">clusters</a><br />
+<a href="/services/ecs/commands/">commands</a><br />
 <a href="/services/ecs/container_agents/">container_agents</a><br />
 <a href="/services/ecs/container_instances/">container_instances</a><br />
+<a href="/services/ecs/container_state_changes/">container_state_changes</a><br />
 <a href="/services/ecs/daemon_deployments/">daemon_deployments</a><br />
 <a href="/services/ecs/daemon_revisions/">daemon_revisions</a><br />
-<a href="/services/ecs/daemon_task_definitions/">daemon_task_definitions</a><br />
-<a href="/services/ecs/daemons/">daemons</a><br />
-<a href="/services/ecs/express_gateway_services/">express_gateway_services</a>
+<a href="/services/ecs/daemon_task_definitions/">daemon_task_definitions</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/ecs/daemons/">daemons</a><br />
+<a href="/services/ecs/express_gateway_services/">express_gateway_services</a><br />
+<a href="/services/ecs/poll_endpoints/">poll_endpoints</a><br />
 <a href="/services/ecs/service_deployments/">service_deployments</a><br />
 <a href="/services/ecs/service_revisions/">service_revisions</a><br />
 <a href="/services/ecs/services/">services</a><br />
-<a href="/services/ecs/services_by_namespaces/">services_by_namespaces</a><br />
 <a href="/services/ecs/tags/">tags</a><br />
 <a href="/services/ecs/task_definition_families/">task_definition_families</a><br />
 <a href="/services/ecs/task_definitions/">task_definitions</a><br />

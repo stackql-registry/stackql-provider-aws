@@ -179,21 +179,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-ApplicationStatusCheckId"><code>ApplicationStatusCheckId</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-IncludeAll"><code>IncludeAll</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Describes one or more application status checks. Returns configuration details for your application status checks, including protocol, port, path, thresholds, and associations. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances.</td>
+    <td>Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the NextToken parameter to retrieve additional results. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances.</td>
 </tr>
 <tr>
     <td><a href="#create_application_status_check"><CopyableCode code="create_application_status_check" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-HealthCheckPath"><code>HealthCheckPath</code></a>, <a href="#parameter-Aggregation"><code>Aggregation</code></a>, <a href="#parameter-Protocol"><code>Protocol</code></a>, <a href="#parameter-Port"><code>Port</code></a>, <a href="#parameter-Path"><code>Path</code></a>, <a href="#parameter-DeviceIndex"><code>DeviceIndex</code></a>, <a href="#parameter-IpVersion"><code>IpVersion</code></a>, <a href="#parameter-IpScope"><code>IpScope</code></a>, <a href="#parameter-Interval"><code>Interval</code></a>, <a href="#parameter-Timeout"><code>Timeout</code></a>, <a href="#parameter-FailureThreshold"><code>FailureThreshold</code></a>, <a href="#parameter-SuccessThreshold"><code>SuccessThreshold</code></a>, <a href="#parameter-StatusCodeMatcher"><code>StatusCodeMatcher</code></a>, <a href="#parameter-InitializationGracePeriodSeconds"><code>InitializationGracePeriodSeconds</code></a>, <a href="#parameter-TagSpecification"><code>TagSpecification</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks per account. Health checks do not start until you associate the check with instances or tags using AssociateApplicationStatusCheck. The Timeout value must be less than the Interval value. The Path must start with a forward slash (/). Default: /. If you do not specify Aggregation, it defaults to included, which means the check contributes to the instance-level application status. Default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources.</td>
+    <td>Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks for each account. You must associate the check with instances or tags using AssociateApplicationStatusCheck before health checks start. You must set the Timeout value to less than the Interval value. You must start the Path with a forward slash (/). Default: /. You can specify Aggregation as included or excluded. If you do not specify a value, it defaults to included, which means the check contributes to the instance-level application status. You can use the following default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources.</td>
 </tr>
 <tr>
     <td><a href="#associate_application_status_check"><CopyableCode code="associate_application_status_check" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-ApplicationStatusCheckId"><code>ApplicationStatusCheckId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TargetTagAssociation"><code>TargetTagAssociation</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. The application status check must already exist and belong to your account. Tag keys must not be blank. Maximum 50 tag associations per application status check. Use DisassociateApplicationStatusCheck to remove associations. When you associate tags, the application status check automatically monitors all current and future instances that have the specified tags.</td>
+    <td>Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. You must own the application status check. The check must already exist in your account. You must not leave tag keys blank. You can create a maximum of 50 tag associations for each application status check. You can use DisassociateApplicationStatusCheck to remove associations. You can associate tags so that the application status check automatically monitors all current and future instances that have the specified tags.</td>
 </tr>
 <tr>
     <td><a href="#delete_application_status_check"><CopyableCode code="delete_application_status_check" /></a></td>
@@ -207,7 +207,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs per request.</td>
+    <td>Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.</td>
 </tr>
 <tr>
     <td><a href="#disassociate_application_status_check"><CopyableCode code="disassociate_application_status_check" /></a></td>
@@ -221,7 +221,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-InstanceId"><code>InstanceId</code></a>, <a href="#parameter-DurationSeconds"><code>DurationSeconds</code></a>, <a href="#parameter-ClientToken"><code>ClientToken</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
-    <td>Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: Maximum 100 instance IDs per request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression.</td>
+    <td>Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: You can specify a maximum of 100 instance IDs for each request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression.</td>
 </tr>
 <tr>
     <td><a href="#modify_application_status_check"><CopyableCode code="modify_application_status_check" /></a></td>
@@ -269,7 +269,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-ClientToken">
     <td><CopyableCode code="ClientToken" /></td>
     <td><code>string</code></td>
-    <td>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.</td>
+    <td>A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.</td>
 </tr>
 <tr id="parameter-DeviceIndex">
     <td><CopyableCode code="DeviceIndex" /></td>
@@ -394,7 +394,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="describe_application_status_checks">
 
-Describes one or more application status checks. Returns configuration details for your application status checks, including protocol, port, path, thresholds, and associations. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances.
+Describes application status checks, including configuration details such as protocol, port, path, thresholds, and associations. Results are paginated. Use the NextToken parameter to retrieve additional results. The following rules apply: If you do not specify any application status check IDs, all checks in your account are returned. Use DescribeApplicationStatus to see the actual health status of instances.
 
 ```sql
 SELECT
@@ -444,7 +444,7 @@ AND DryRun = '{{ DryRun }}'
 >
 <TabItem value="create_application_status_check">
 
-Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks per account. Health checks do not start until you associate the check with instances or tags using AssociateApplicationStatusCheck. The Timeout value must be less than the Interval value. The Path must start with a forward slash (/). Default: /. If you do not specify Aggregation, it defaults to included, which means the check contributes to the instance-level application status. Default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources.
+Creates an application status check for monitoring the health of applications running on your instances. You can configure the protocol, port, path, and thresholds for the health check. The following rules apply: You can create a maximum of 50 application status checks for each account. You must associate the check with instances or tags using AssociateApplicationStatusCheck before health checks start. You must set the Timeout value to less than the Interval value. You must start the Path with a forward slash (/). Default: /. You can specify Aggregation as included or excluded. If you do not specify a value, it defaults to included, which means the check contributes to the instance-level application status. You can use the following default values: Interval is 60 seconds, Timeout is 6 seconds, FailureThreshold is 2, SuccessThreshold is 2, StatusCodeMatcher is 200, InitializationGracePeriodSeconds is 300 seconds. You can tag the application status check during creation. For more information, see Tag your Amazon EC2 resources.
 
 ```sql
 INSERT INTO aws.ec2.application_status_checks (
@@ -581,8 +581,8 @@ timeout
       description: The tags to apply to the application status check.
     - name: ClientToken
       value: "{{ ClientToken }}"
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
-      description: Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see Ensuring idempotency.
+      description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
+      description: A unique, case-sensitive identifier that you provide to ensure that the operation completes no more than one time. If you retry a request with the same token, the service ignores the request but does not return an error. For more information, see Ensuring idempotency.
     - name: DryRun
       value: {{ DryRun }}
       description: Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
@@ -603,7 +603,7 @@ timeout
 >
 <TabItem value="associate_application_status_check">
 
-Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. The application status check must already exist and belong to your account. Tag keys must not be blank. Maximum 50 tag associations per application status check. Use DisassociateApplicationStatusCheck to remove associations. When you associate tags, the application status check automatically monitors all current and future instances that have the specified tags.
+Associates an application status check with instances or tags. Once you create an association, health monitoring automatically begins for the specified instances or for instances that match the specified tags. The following rules apply: You must specify either TargetTagAssociations or InstanceIds, but not both. Specifying both results in an InvalidParameterCombination error. You must own the application status check. The check must already exist in your account. You must not leave tag keys blank. You can create a maximum of 50 tag associations for each application status check. You can use DisassociateApplicationStatusCheck to remove associations. You can associate tags so that the application status check automatically monitors all current and future instances that have the specified tags.
 
 ```sql
 UPDATE aws.ec2.application_status_checks
@@ -661,7 +661,7 @@ AND DryRun = '{{ DryRun }}'
 >
 <TabItem value="disable_application_status_check_suppression">
 
-Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs per request.
+Disables suppression of application status checks for the specified instances. After suppression is disabled, health check results resume affecting the instance-level application status. You can specify a maximum of 100 instance IDs for each request.
 
 ```sql
 EXEC aws.ec2.application_status_checks.disable_application_status_check_suppression 
@@ -689,7 +689,7 @@ EXEC aws.ec2.application_status_checks.disassociate_application_status_check
 </TabItem>
 <TabItem value="enable_application_status_check_suppression">
 
-Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: Maximum 100 instance IDs per request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression.
+Suppresses application status checks for the specified instances. While suppressed, health checks continue to run but do not affect the instance-level application status. The following rules apply: You can specify a maximum of 100 instance IDs for each request. Use DisableApplicationStatusCheckSuppression to resume normal health check reporting. If you do not specify DurationSeconds, suppression continues indefinitely until you call DisableApplicationStatusCheckSuppression.
 
 ```sql
 EXEC aws.ec2.application_status_checks.enable_application_status_check_suppression 

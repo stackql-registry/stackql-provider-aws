@@ -445,6 +445,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Sends a signal to an Automation execution to change the current behavior or status of the execution.</td>
 </tr>
+<tr>
+    <td><a href="#start_automation_execution"><CopyableCode code="start_automation_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DocumentName"><code>DocumentName</code></a></td>
+    <td></td>
+    <td>Initiates execution of an Automation runbook.</td>
+</tr>
+<tr>
+    <td><a href="#stop_automation_execution"><CopyableCode code="stop_automation_execution" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AutomationExecutionId"><code>AutomationExecutionId</code></a></td>
+    <td></td>
+    <td>Stop an Automation that is currently running.</td>
+</tr>
 </tbody>
 </table>
 
@@ -576,7 +590,9 @@ WHERE region = '{{ region }}' -- required
 <Tabs
     defaultValue="send_automation_signal"
     values={[
-        { label: 'send_automation_signal', value: 'send_automation_signal' }
+        { label: 'send_automation_signal', value: 'send_automation_signal' },
+        { label: 'start_automation_execution', value: 'start_automation_execution' },
+        { label: 'stop_automation_execution', value: 'stop_automation_execution' }
     ]}
 >
 <TabItem value="send_automation_signal">
@@ -591,6 +607,48 @@ EXEC aws.ssm.automation_executions.send_automation_signal
 "AutomationExecutionId": "{{ AutomationExecutionId }}", 
 "SignalType": "{{ SignalType }}", 
 "Payload": "{{ Payload }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="start_automation_execution">
+
+Initiates execution of an Automation runbook.
+
+```sql
+EXEC aws.ssm.automation_executions.start_automation_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"DocumentName": "{{ DocumentName }}", 
+"DocumentVersion": "{{ DocumentVersion }}", 
+"Parameters": "{{ Parameters }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Mode": "{{ Mode }}", 
+"TargetParameterName": "{{ TargetParameterName }}", 
+"Targets": "{{ Targets }}", 
+"TargetMaps": "{{ TargetMaps }}", 
+"MaxConcurrency": "{{ MaxConcurrency }}", 
+"MaxErrors": "{{ MaxErrors }}", 
+"TargetLocations": "{{ TargetLocations }}", 
+"Tags": "{{ Tags }}", 
+"AlarmConfiguration": "{{ AlarmConfiguration }}", 
+"TargetLocationsURL": "{{ TargetLocationsURL }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_automation_execution">
+
+Stop an Automation that is currently running.
+
+```sql
+EXEC aws.ssm.automation_executions.stop_automation_execution 
+@region='{{ region }}' --required 
+@@json=
+'{
+"AutomationExecutionId": "{{ AutomationExecutionId }}", 
+"Type": "{{ Type }}"
 }'
 ;
 ```

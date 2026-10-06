@@ -18,24 +18,23 @@ transfer service documentation.
 
 :::info[Service Summary]
 
-total resources: __16__  
+total resources: __15__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/transfer/access/">access</a><br />
 <a href="/services/transfer/accesses/">accesses</a><br />
 <a href="/services/transfer/agreements/">agreements</a><br />
 <a href="/services/transfer/certificates/">certificates</a><br />
 <a href="/services/transfer/connectors/">connectors</a><br />
 <a href="/services/transfer/executions/">executions</a><br />
 <a href="/services/transfer/file_transfer_results/">file_transfer_results</a><br />
-<a href="/services/transfer/host_keys/">host_keys</a>
+<a href="/services/transfer/host_keys/">host_keys</a><br />
+<a href="/services/transfer/profiles/">profiles</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/transfer/profiles/">profiles</a><br />
 <a href="/services/transfer/security_policies/">security_policies</a><br />
 <a href="/services/transfer/servers/">servers</a><br />
 <a href="/services/transfer/tags/">tags</a><br />

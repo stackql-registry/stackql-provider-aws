@@ -33,9 +33,9 @@ total resources: __23__
 <a href="/services/qconnect/ai_prompts/">ai_prompts</a><br />
 <a href="/services/qconnect/assistant_associations/">assistant_associations</a><br />
 <a href="/services/qconnect/assistants/">assistants</a><br />
+<a href="/services/qconnect/content/">content</a><br />
 <a href="/services/qconnect/content_associations/">content_associations</a><br />
 <a href="/services/qconnect/content_summaries/">content_summaries</a><br />
-<a href="/services/qconnect/contents/">contents</a><br />
 <a href="/services/qconnect/import_jobs/">import_jobs</a>
 </div>
 <div class="providerDocColumn">

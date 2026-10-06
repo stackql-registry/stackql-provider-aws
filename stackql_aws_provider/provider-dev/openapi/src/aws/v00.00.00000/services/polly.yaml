@@ -30,10 +30,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteLexiconOutput"
     get:
       operationId: GetLexicon
       description: Returns the content of the specified pronunciation lexicon stored in an Amazon Web Services Region. For more information, see Managing Lexicons.
@@ -75,10 +71,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/PutLexiconOutput"
   /v1/voices:
     get:
       operationId: DescribeVoices
@@ -374,8 +366,6 @@ components:
     LexiconName:
       type: string
       pattern: "[0-9A-Za-z]{1,20}"
-    DeleteLexiconOutput:
-      type: object
     Engine:
       type: string
       enum:
@@ -801,8 +791,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/SynthesisTask"
-    PutLexiconOutput:
-      type: object
     StartSpeechSynthesisStreamActionStream:
       description: Inbound event stream for sending input and control events to manage bidirectional speech synthesis.
       type: object
@@ -1031,7 +1019,6 @@ components:
             $ref: "#/paths/~1v1~1lexicons~1{lexicon_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_lexicon:
           operation:
             $ref: "#/paths/~1v1~1lexicons~1{lexicon_name}/get"
@@ -1043,7 +1030,6 @@ components:
             $ref: "#/paths/~1v1~1lexicons~1{lexicon_name}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1159,6 +1145,27 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/speech_synthesis_tasks/methods/get_speech_synthesis_task"
           - $ref: "#/components/x-stackQL-resources/speech_synthesis_tasks/methods/list_speech_synthesis_tasks"
+        insert: []
+        update: []
+        delete: []
+    speech_synthesis_streams:
+      id: aws.polly.speech_synthesis_streams
+      name: speech_synthesis_streams
+      title: speech_synthesis_streams
+      methods:
+        start_speech_synthesis_stream:
+          operation:
+            $ref: "#/paths/~1v1~1synthesisStream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
         insert: []
         update: []
         delete: []

@@ -18,7 +18,7 @@ finspace_data service documentation.
 
 :::info[Service Summary]
 
-total resources: __10__  
+total resources: __8__  
 
 :::
 
@@ -28,14 +28,12 @@ total resources: __10__
 <a href="/services/finspace_data/changesets/">changesets</a><br />
 <a href="/services/finspace_data/data_views/">data_views</a><br />
 <a href="/services/finspace_data/datasets/">datasets</a><br />
-<a href="/services/finspace_data/external_data_view_access_details/">external_data_view_access_details</a><br />
-<a href="/services/finspace_data/permission_groups/">permission_groups</a>
+<a href="/services/finspace_data/external_data_view_access_details/">external_data_view_access_details</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/finspace_data/permission_groups_by_users/">permission_groups_by_users</a><br />
+<a href="/services/finspace_data/permission_groups/">permission_groups</a><br />
 <a href="/services/finspace_data/programmatic_access_credentials/">programmatic_access_credentials</a><br />
 <a href="/services/finspace_data/users/">users</a><br />
-<a href="/services/finspace_data/users_by_permission_groups/">users_by_permission_groups</a><br />
 <a href="/services/finspace_data/working_locations/">working_locations</a>
 </div>
 </div>

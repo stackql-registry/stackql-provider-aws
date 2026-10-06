@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelRecoveryPlanExecutionResponse'
-      x-stackql-resource: recovery_plans
+      x-stackql-resource: recovery_plan_executions
       x-stackql-method: cancel_recovery_plan_execution
       x-stackql-verb: EXEC
   /CreateExtendedSourceServer:
@@ -325,10 +325,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteJobResponse'
       x-stackql-resource: jobs
       x-stackql-method: delete_job
       x-stackql-verb: DELETE
@@ -354,10 +350,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLaunchActionResponse'
       x-stackql-resource: launch_actions
       x-stackql-method: delete_launch_action
       x-stackql-verb: DELETE
@@ -380,10 +372,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLaunchConfigurationTemplateResponse'
       x-stackql-resource: launch_configuration_templates
       x-stackql-method: delete_launch_configuration_template
       x-stackql-verb: DELETE
@@ -508,10 +496,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReplicationConfigurationTemplateResponse'
       x-stackql-resource: replication_configuration_templates
       x-stackql-method: delete_replication_configuration_template
       x-stackql-verb: DELETE
@@ -534,10 +518,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSourceNetworkResponse'
       x-stackql-resource: source_networks
       x-stackql-method: delete_source_network
       x-stackql-verb: DELETE
@@ -560,10 +540,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSourceServerResponse'
       x-stackql-resource: source_servers
       x-stackql-method: delete_source_server
       x-stackql-verb: DELETE
@@ -1115,11 +1091,7 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InitializeServiceResponse'
-      x-stackql-resource: initialize_service
+      x-stackql-resource: services
       x-stackql-method: initialize_service
       x-stackql-verb: EXEC
   /ListExtensibleSourceServers:
@@ -1594,7 +1566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReverseReplicationResponse'
-      x-stackql-resource: recovery_instances
+      x-stackql-resource: replications
       x-stackql-method: reverse_replication
       x-stackql-verb: EXEC
   /StartFailbackLaunch:
@@ -1623,7 +1595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFailbackLaunchResponse'
-      x-stackql-resource: failback_launch
+      x-stackql-resource: failback_launches
       x-stackql-method: start_failback_launch
       x-stackql-verb: EXEC
   /StartRecovery:
@@ -1654,7 +1626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecoveryResponse'
-      x-stackql-resource: recovery
+      x-stackql-resource: recoveries
       x-stackql-method: start_recovery
       x-stackql-verb: EXEC
   /StartRecoveryPlanExecution:
@@ -1690,7 +1662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecoveryPlanExecutionResponse'
-      x-stackql-resource: recovery_plans
+      x-stackql-resource: recovery_plan_executions
       x-stackql-method: start_recovery_plan_execution
       x-stackql-verb: EXEC
   /StartReplication:
@@ -1717,7 +1689,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationResponse'
-      x-stackql-resource: source_servers
+      x-stackql-resource: replications
       x-stackql-method: start_replication
       x-stackql-verb: EXEC
   /StartSourceNetworkRecovery:
@@ -1824,7 +1796,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationResponse'
-      x-stackql-resource: source_servers
+      x-stackql-resource: replications
       x-stackql-method: stop_replication
       x-stackql-verb: EXEC
   /StopSourceNetworkReplication:
@@ -2937,6 +2909,9 @@ components:
         supportsNitroInstances:
           $ref: '#/components/schemas/Boolean'
           description: Are EC2 nitro instance types supported when recovering the Source Server.
+        architecture:
+          $ref: '#/components/schemas/SourceServerArchitecture'
+          description: The architecture of the Source Server.
     EC2InstanceType:
       type: string
       minLength: 0
@@ -3018,6 +2993,11 @@ components:
         fullString:
           $ref: '#/components/schemas/BoundedString'
           description: The long name of the Operating System.
+    SourceServerArchitecture:
+      type: string
+      enum:
+      - x86_64
+      - arm64
     StagingArea:
       description: Staging information related to source server.
       type: object
@@ -3473,16 +3453,10 @@ components:
         sourceNetworkID:
           $ref: '#/components/schemas/SourceNetworkID'
           description: ID of the created Source Network.
-    DeleteJobResponse:
-      type: object
     LaunchActionResourceId:
       description: Launch configuration template Id or Source Server Id
       type: string
       pattern: (s-[0-9a-zA-Z]{17}$|lct-[0-9a-zA-Z]{17})
-    DeleteLaunchActionResponse:
-      type: object
-    DeleteLaunchConfigurationTemplateResponse:
-      type: object
     DeleteRecoveryPlanResponse:
       type: object
       properties:
@@ -3507,12 +3481,6 @@ components:
           description: The ARN of the deleted Recovery Plan step.
       required:
       - recoveryPlanStepArn
-    DeleteReplicationConfigurationTemplateResponse:
-      type: object
-    DeleteSourceNetworkResponse:
-      type: object
-    DeleteSourceServerResponse:
-      type: object
     PaginationToken:
       type: string
       minLength: 0
@@ -4565,8 +4533,6 @@ components:
       - SC1
       - ST1
       - STANDARD
-    InitializeServiceResponse:
-      type: object
     MaxResultsReplicatingSourceServers:
       type: integer
       minimum: 1

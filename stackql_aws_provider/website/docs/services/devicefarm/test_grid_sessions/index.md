@@ -136,7 +136,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult$url. You can use the following to look up sessions: The session ARN (GetTestGridSessionRequest$sessionArn). The project ARN and a session ID (GetTestGridSessionRequest$projectArn and GetTestGridSessionRequest$sessionId).</td>
+    <td>A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult. You can use the following to look up sessions: The session ARN. The project ARN and a session ID.</td>
 </tr>
 </tbody>
 </table>
@@ -186,7 +186,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="get_test_grid_session">
 
-A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult$url. You can use the following to look up sessions: The session ARN (GetTestGridSessionRequest$sessionArn). The project ARN and a session ID (GetTestGridSessionRequest$projectArn and GetTestGridSessionRequest$sessionId).
+A session is an instance of a browser created through a RemoteWebDriver with the URL from CreateTestGridUrlResult. You can use the following to look up sessions: The session ARN. The project ARN and a session ID.
 
 ```sql
 SELECT

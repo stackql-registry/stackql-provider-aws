@@ -208,6 +208,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Retrieves a list of all the imports performed.</td>
 </tr>
+<tr>
+    <td><a href="#start_import_file_task"><CopyableCode code="start_import_file_task" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-S3Bucket"><code>S3Bucket</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-s3key"><code>s3key</code></a></td>
+    <td></td>
+    <td>Starts a file import.</td>
+</tr>
 </tbody>
 </table>
 
@@ -300,6 +307,36 @@ FROM aws.migrationhubstrategy.import_file_tasks
 WHERE region = '{{ region }}' -- required
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_import_file_task"
+    values={[
+        { label: 'start_import_file_task', value: 'start_import_file_task' }
+    ]}
+>
+<TabItem value="start_import_file_task">
+
+Starts a file import.
+
+```sql
+EXEC aws.migrationhubstrategy.import_file_tasks.start_import_file_task 
+@region='{{ region }}' --required 
+@@json=
+'{
+"S3Bucket": "{{ S3Bucket }}", 
+"dataSourceType": "{{ dataSourceType }}", 
+"groupId": "{{ groupId }}", 
+"name": "{{ name }}", 
+"s3bucketForReportData": "{{ s3bucketForReportData }}", 
+"s3key": "{{ s3key }}"
+}'
 ;
 ```
 </TabItem>

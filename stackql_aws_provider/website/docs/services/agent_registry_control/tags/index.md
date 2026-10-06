@@ -52,7 +52,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
-    <td></td>
+    <td>The tags currently associated with the resource, as a map of tag keys to tag values.</td>
 </tr>
 </tbody>
 </table>
@@ -79,21 +79,21 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>List the tags on a resource</td>
+    <td>Lists the tags associated with the specified Amazon Web Services Agent Registry resource. Returns the current tag key-value pairs on the resource.</td>
 </tr>
 <tr>
     <td><a href="#tag_resource"><CopyableCode code="tag_resource" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-tags"><code>tags</code></a></td>
     <td></td>
-    <td>Tag a resource with key-value pairs</td>
+    <td>Adds or overwrites one or more tags for the specified Amazon Web Services Agent Registry resource. Tags are key-value pairs that you can use to categorize and manage Amazon Web Services resources. If a tag with the same key already exists on the resource, the service replaces its value with the value you specify.</td>
 </tr>
 <tr>
     <td><a href="#untag_resource"><CopyableCode code="untag_resource" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-resource_arn"><code>resource_arn</code></a>, <a href="#parameter-tagKeys"><code>tagKeys</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Remove tags from a resource by key</td>
+    <td>Removes one or more tags from the specified Amazon Web Services Agent Registry resource. The operation removes only the tags whose keys you supply; other tags on the resource remain unchanged.</td>
 </tr>
 </tbody>
 </table>
@@ -119,12 +119,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-resource_arn">
     <td><CopyableCode code="resource_arn" /></td>
     <td><code>string</code></td>
-    <td></td>
+    <td>The Amazon Resource Name (ARN) of the resource to remove tags from. Supported resources include registries and registry records.</td>
 </tr>
 <tr id="parameter-tagKeys">
     <td><CopyableCode code="tagKeys" /></td>
     <td><code>array</code></td>
-    <td></td>
+    <td>The keys of the tags to remove from the resource. Tags with keys not included in this list remain on the resource.</td>
 </tr>
 </tbody>
 </table>
@@ -139,7 +139,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="list_tags_for_resource">
 
-List the tags on a resource
+Lists the tags associated with the specified Amazon Web Services Agent Registry resource. Returns the current tag key-value pairs on the resource.
 
 ```sql
 SELECT
@@ -164,7 +164,7 @@ AND region = '{{ region }}' -- required
 >
 <TabItem value="tag_resource">
 
-Tag a resource with key-value pairs
+Adds or overwrites one or more tags for the specified Amazon Web Services Agent Registry resource. Tags are key-value pairs that you can use to categorize and manage Amazon Web Services resources. If a tag with the same key already exists on the resource, the service replaces its value with the value you specify.
 
 ```sql
 UPDATE aws.agent_registry_control.tags
@@ -178,7 +178,7 @@ AND tags = '{{ tags }}' --required;
 </TabItem>
 <TabItem value="untag_resource">
 
-Remove tags from a resource by key
+Removes one or more tags from the specified Amazon Web Services Agent Registry resource. The operation removes only the tags whose keys you supply; other tags on the resource remain unchanged.
 
 ```sql
 UPDATE aws.agent_registry_control.tags

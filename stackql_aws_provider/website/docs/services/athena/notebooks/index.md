@@ -60,7 +60,7 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#update_notebook"><CopyableCode code="update_notebook" /></a></td>
     <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-NotebookId"><code>NotebookId</code></a>, <a href="#parameter-Payload"><code>Payload</code></a>, <a href="#parameter-Type"><code>Type</code></a></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-NotebookId"><code>NotebookId</code></a>, <a href="#parameter-Type"><code>Type</code></a></td>
     <td></td>
     <td>Updates the contents of a Spark notebook.</td>
 </tr>
@@ -70,6 +70,20 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified notebook.</td>
+</tr>
+<tr>
+    <td><a href="#export_notebook"><CopyableCode code="export_notebook" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-NotebookId"><code>NotebookId</code></a></td>
+    <td></td>
+    <td>Exports the specified notebook and its metadata.</td>
+</tr>
+<tr>
+    <td><a href="#import_notebook"><CopyableCode code="import_notebook" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-WorkGroup"><code>WorkGroup</code></a>, <a href="#parameter-Name"><code>Name</code></a>, <a href="#parameter-Type"><code>Type</code></a></td>
+    <td></td>
+    <td>Imports a single ipynb file to a Spark enabled workgroup. To import the notebook, the request must specify a value for either Payload or NoteBookS3LocationUri. If neither is specified or both are specified, an InvalidRequestException occurs. The maximum file size that can be imported is 10 megabytes. If an ipynb file with the same name already exists in the workgroup, throws an error.</td>
 </tr>
 </tbody>
 </table>
@@ -174,7 +188,6 @@ ClientRequestToken = '{{ ClientRequestToken }}'
 WHERE 
 region = '{{ region }}' --required
 AND NotebookId = '{{ NotebookId }}' --required
-AND Payload = '{{ Payload }}' --required
 AND Type = '{{ Type }}' --required;
 ```
 </TabItem>
@@ -196,6 +209,51 @@ Deletes the specified notebook.
 ```sql
 DELETE FROM aws.athena.notebooks
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="export_notebook"
+    values={[
+        { label: 'export_notebook', value: 'export_notebook' },
+        { label: 'import_notebook', value: 'import_notebook' }
+    ]}
+>
+<TabItem value="export_notebook">
+
+Exports the specified notebook and its metadata.
+
+```sql
+EXEC aws.athena.notebooks.export_notebook 
+@region='{{ region }}' --required 
+@@json=
+'{
+"NotebookId": "{{ NotebookId }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="import_notebook">
+
+Imports a single ipynb file to a Spark enabled workgroup. To import the notebook, the request must specify a value for either Payload or NoteBookS3LocationUri. If neither is specified or both are specified, an InvalidRequestException occurs. The maximum file size that can be imported is 10 megabytes. If an ipynb file with the same name already exists in the workgroup, throws an error.
+
+```sql
+EXEC aws.athena.notebooks.import_notebook 
+@region='{{ region }}' --required 
+@@json=
+'{
+"WorkGroup": "{{ WorkGroup }}", 
+"Name": "{{ Name }}", 
+"Payload": "{{ Payload }}", 
+"Type": "{{ Type }}", 
+"NotebookS3LocationUri": "{{ NotebookS3LocationUri }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}"
+}'
 ;
 ```
 </TabItem>

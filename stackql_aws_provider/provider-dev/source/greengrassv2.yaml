@@ -43,7 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateServiceRoleToAccountResponse'
-      x-stackql-resource: service_role_to_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: associate_service_role_to_account
       x-stackql-verb: UPDATE
     delete:
@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateServiceRoleFromAccountResponse'
-      x-stackql-resource: service_role_from_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: disassociate_service_role_from_account
       x-stackql-verb: UPDATE
     get:
@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetServiceRoleForAccountResponse'
-      x-stackql-resource: service_role_for_accounts
+      x-stackql-resource: service_roles
       x-stackql-method: get_service_role_for_account
       x-stackql-verb: SELECT
   /greengrass/v2/coreDevices/{core_device_thing_name}/associateClientDevices:
@@ -113,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateClientDeviceWithCoreDeviceResponse'
-      x-stackql-resource: batch_associate_client_device_with_core_device
+      x-stackql-resource: client_devices
       x-stackql-method: batch_associate_client_device_with_core_device
       x-stackql-verb: EXEC
   /greengrass/v2/coreDevices/{core_device_thing_name}/disassociateClientDevices:
@@ -145,7 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateClientDeviceFromCoreDeviceResponse'
-      x-stackql-resource: batch_disassociate_client_device_from_core_device
+      x-stackql-resource: core_devices
       x-stackql-method: batch_disassociate_client_device_from_core_device
       x-stackql-verb: EXEC
   /greengrass/v2/deployments/{deployment_id}/cancel:
@@ -526,7 +526,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetConnectivityInfoResponse'
-      x-stackql-resource: connectivity_infos
+      x-stackql-resource: connectivity_info
       x-stackql-method: get_connectivity_info
       x-stackql-verb: SELECT
     put:
@@ -561,7 +561,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateConnectivityInfoResponse'
-      x-stackql-resource: connectivity_infos
+      x-stackql-resource: connectivity_info
       x-stackql-method: update_connectivity_info
       x-stackql-verb: UPDATE
   /greengrass/v2/coreDevices/{core_device_thing_name}/associatedClientDevices:
@@ -877,10 +877,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -903,10 +899,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -941,7 +933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResolveComponentCandidatesResponse'
-      x-stackql-resource: resolve_component_candidates
+      x-stackql-resource: components
       x-stackql-method: resolve_component_candidates
       x-stackql-verb: EXEC
 components:
@@ -2343,8 +2335,6 @@ components:
           $ref: '#/components/schemas/NonEmptyString'
           description: A message that communicates details about the vendor guidance state of the component version. This
             message communicates why a component version is discontinued or deleted.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -2353,8 +2343,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
     UpdateConnectivityInfoResponse:
       type: object
       properties:

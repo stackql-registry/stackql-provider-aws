@@ -142,6 +142,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a pull through cache rule.</td>
 </tr>
+<tr>
+    <td><a href="#validate_pull_through_cache_rule"><CopyableCode code="validate_pull_through_cache_rule" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ecrRepositoryPrefix"><code>ecrRepositoryPrefix</code></a></td>
+    <td></td>
+    <td>Validates an existing pull through cache rule for an upstream registry that requires authentication. This will retrieve the contents of the Amazon Web Services Secrets Manager secret, verify the syntax, and then validate that authentication to the upstream registry is successful.</td>
+</tr>
 </tbody>
 </table>
 
@@ -334,6 +341,32 @@ Deletes a pull through cache rule.
 ```sql
 DELETE FROM aws.ecr.pull_through_cache_rules
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="validate_pull_through_cache_rule"
+    values={[
+        { label: 'validate_pull_through_cache_rule', value: 'validate_pull_through_cache_rule' }
+    ]}
+>
+<TabItem value="validate_pull_through_cache_rule">
+
+Validates an existing pull through cache rule for an upstream registry that requires authentication. This will retrieve the contents of the Amazon Web Services Secrets Manager secret, verify the syntax, and then validate that authentication to the upstream registry is successful.
+
+```sql
+EXEC aws.ecr.pull_through_cache_rules.validate_pull_through_cache_rule 
+@region='{{ region }}' --required 
+@@json=
+'{
+"ecrRepositoryPrefix": "{{ ecrRepositoryPrefix }}", 
+"registryId": "{{ registryId }}"
+}'
 ;
 ```
 </TabItem>

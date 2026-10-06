@@ -339,7 +339,8 @@ paths:
   /applications/{application_identifier}:
     delete:
       operationId: DeleteApplication
-      description: Deletes the Application. Only Applications that don't have any Application Associations can be deleted.
+      description: Deletes an application. If the application has associations, you must delete them first. Alternatively,
+        use the force option to delete the application and remove its associations.
       parameters:
       - name: application_identifier
         in: path
@@ -347,13 +348,18 @@ paths:
         schema:
           $ref: '#/components/schemas/ArnOrUUID'
         description: The Amazon Resource Name (ARN) of the Application.
+      - name: force
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/Boolean'
+        description: Specifies whether to delete the application even if it still has application associations. If true, the
+          operation removes the application and its associations. If false or absent, the delete fails when associations exist.
+          Setting this parameter to true permanently removes all of the application's associations. Doing so might impact
+          other resources that rely on and reference the application. This action can't be undone.
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -419,10 +425,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: update_application
       x-stackql-verb: UPDATE
@@ -443,10 +445,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataIntegrationResponse'
       x-stackql-resource: data_integrations
       x-stackql-method: delete_data_integration
       x-stackql-verb: DELETE
@@ -498,10 +496,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataIntegrationResponse'
       x-stackql-resource: data_integrations
       x-stackql-method: update_data_integration
       x-stackql-verb: UPDATE
@@ -520,10 +514,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEventIntegrationResponse'
       x-stackql-resource: event_integrations
       x-stackql-method: delete_event_integration
       x-stackql-verb: DELETE
@@ -569,10 +559,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateEventIntegrationResponse'
       x-stackql-resource: event_integrations
       x-stackql-method: update_event_integration
       x-stackql-verb: UPDATE
@@ -697,10 +683,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -723,10 +705,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -762,10 +740,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataIntegrationAssociationResponse'
       x-stackql-resource: data_integration_associations
       x-stackql-method: update_data_integration_association
       x-stackql-verb: UPDATE
@@ -1187,12 +1161,6 @@ components:
       minLength: 1
       maxLength: 2048
       pattern: ^(arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})(:[\w\$]+)?$
-    DeleteApplicationResponse:
-      type: object
-    DeleteDataIntegrationResponse:
-      type: object
-    DeleteEventIntegrationResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -1548,8 +1516,6 @@ components:
           type: object
           properties: {}
           description: Information about the tags.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -1559,13 +1525,3 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
-    UpdateApplicationResponse:
-      type: object
-    UpdateDataIntegrationResponse:
-      type: object
-    UpdateDataIntegrationAssociationResponse:
-      type: object
-    UpdateEventIntegrationResponse:
-      type: object

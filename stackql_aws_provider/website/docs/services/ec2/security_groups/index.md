@@ -33,11 +33,56 @@ Creates, updates, deletes, gets or lists a <code>security_groups</code> resource
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_security_groups"
+    defaultValue="get_security_groups_for_vpc"
     values={[
+        { label: 'get_security_groups_for_vpc', value: 'get_security_groups_for_vpc' },
         { label: 'describe_security_groups', value: 'describe_security_groups' }
     ]}
 >
+<TabItem value="get_security_groups_for_vpc">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The security group's description.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="group_id" /></td>
+    <td><code>string</code></td>
+    <td>The security group ID.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="group_name" /></td>
+    <td><code>string</code></td>
+    <td>The security group name.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="owner_id" /></td>
+    <td><code>string</code></td>
+    <td>The security group owner ID.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="primary_vpc_id" /></td>
+    <td><code>string</code></td>
+    <td>The VPC ID in which the security group was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="tags" /></td>
+    <td><code>string</code></td>
+    <td>The security group tags.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_security_groups">
 
 <table>
@@ -115,6 +160,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_security_groups_for_vpc"><CopyableCode code="get_security_groups_for_vpc" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-VpcId"><code>VpcId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-Filter"><code>Filter</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC.</td>
+</tr>
+<tr>
     <td><a href="#describe_security_groups"><CopyableCode code="describe_security_groups" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -163,6 +215,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-CidrIp"><code>CidrIp</code></a>, <a href="#parameter-FromPort"><code>FromPort</code></a>, <a href="#parameter-GroupId"><code>GroupId</code></a>, <a href="#parameter-GroupName"><code>GroupName</code></a>, <a href="#parameter-IpPermissions"><code>IpPermissions</code></a>, <a href="#parameter-IpProtocol"><code>IpProtocol</code></a>, <a href="#parameter-SourceSecurityGroupName"><code>SourceSecurityGroupName</code></a>, <a href="#parameter-SourceSecurityGroupOwnerId"><code>SourceSecurityGroupOwnerId</code></a>, <a href="#parameter-ToPort"><code>ToPort</code></a>, <a href="#parameter-SecurityGroupRuleId"><code>SecurityGroupRuleId</code></a>, <a href="#parameter-DryRun"><code>DryRun</code></a></td>
     <td>Removes the specified inbound (ingress) rules from a security group. You can specify rules using either rule IDs or security group rule properties. If you use rule properties, the values that you specify (for example, ports) must match the existing rule's values exactly. Each rule has a protocol, from and to ports, and source (CIDR range, security group, or prefix list). For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not need to specify the description to revoke the rule. For a default VPC, if the values you specify do not match the existing rule's values, no error is returned, and the output describes the security group rules that were not revoked. For a non-default VPC, if the values you specify do not match the existing rule's values, an InvalidPermission.NotFound client error is returned, and no rules are revoked. Amazon Web Services recommends that you describe the security group to verify that the rules were removed. Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</td>
 </tr>
+<tr>
+    <td><a href="#validate_security_group_quotas_for_interface"><CopyableCode code="validate_security_group_quotas_for_interface" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-SecurityGroupId"><code>SecurityGroupId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-DryRun"><code>DryRun</code></a></td>
+    <td>Validates whether the specified security groups can be associated with a single network interface. The operation checks Amazon Virtual Private Cloud (Amazon VPC) quotas. It checks inbound or outbound rules per security group and security groups per network interface. Only authorized AWS services can call this operation. For more information about security group quotas, see Amazon VPC quotas in the Amazon VPC User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -193,6 +252,16 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><CopyableCode code="GroupName" /></td>
     <td><code>string</code></td>
     <td>The name of the security group. Names are case-insensitive and must be unique within the VPC. Constraints: Up to 255 characters in length. Can't start with sg-. Valid characters: a-z, A-Z, 0-9, spaces, and ._-:/()#,@&#91;&#93;+=&;&#123;&#125;!$*</td>
+</tr>
+<tr id="parameter-SecurityGroupId">
+    <td><CopyableCode code="SecurityGroupId" /></td>
+    <td><code>array</code></td>
+    <td>The IDs of the security groups to validate for association with a single network interface. You must specify at least one ID, and each ID must be unique. The number of IDs cannot exceed the maximum number of security groups allowed per network interface.</td>
+</tr>
+<tr id="parameter-VpcId">
+    <td><CopyableCode code="VpcId" /></td>
+    <td><code>string</code></td>
+    <td>The VPC ID where the security group can be used.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -285,11 +354,34 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_security_groups"
+    defaultValue="get_security_groups_for_vpc"
     values={[
+        { label: 'get_security_groups_for_vpc', value: 'get_security_groups_for_vpc' },
         { label: 'describe_security_groups', value: 'describe_security_groups' }
     ]}
 >
+<TabItem value="get_security_groups_for_vpc">
+
+Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC.
+
+```sql
+SELECT
+description,
+group_id,
+group_name,
+owner_id,
+primary_vpc_id,
+tags
+FROM aws.ec2.security_groups
+WHERE VpcId = '{{ VpcId }}' -- required
+AND region = '{{ region }}' -- required
+AND NextToken = '{{ NextToken }}'
+AND MaxResults = '{{ MaxResults }}'
+AND Filter = '{{ Filter }}'
+AND DryRun = '{{ DryRun }}'
+;
+```
+</TabItem>
 <TabItem value="describe_security_groups">
 
 Describes the specified security groups or all of your security groups.
@@ -480,7 +572,8 @@ AND DryRun = '{{ DryRun }}'
     defaultValue="revoke_security_group_egress"
     values={[
         { label: 'revoke_security_group_egress', value: 'revoke_security_group_egress' },
-        { label: 'revoke_security_group_ingress', value: 'revoke_security_group_ingress' }
+        { label: 'revoke_security_group_ingress', value: 'revoke_security_group_ingress' },
+        { label: 'validate_security_group_quotas_for_interface', value: 'validate_security_group_quotas_for_interface' }
     ]}
 >
 <TabItem value="revoke_security_group_egress">
@@ -520,6 +613,18 @@ EXEC aws.ec2.security_groups.revoke_security_group_ingress
 @SourceSecurityGroupOwnerId='{{ SourceSecurityGroupOwnerId }}', 
 @ToPort='{{ ToPort }}', 
 @SecurityGroupRuleId='{{ SecurityGroupRuleId }}', 
+@DryRun={{ DryRun }}
+;
+```
+</TabItem>
+<TabItem value="validate_security_group_quotas_for_interface">
+
+Validates whether the specified security groups can be associated with a single network interface. The operation checks Amazon Virtual Private Cloud (Amazon VPC) quotas. It checks inbound or outbound rules per security group and security groups per network interface. Only authorized AWS services can call this operation. For more information about security group quotas, see Amazon VPC quotas in the Amazon VPC User Guide.
+
+```sql
+EXEC aws.ec2.security_groups.validate_security_group_quotas_for_interface 
+@SecurityGroupId='{{ SecurityGroupId }}' --required, 
+@region='{{ region }}' --required, 
 @DryRun={{ DryRun }}
 ;
 ```

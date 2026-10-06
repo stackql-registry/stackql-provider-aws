@@ -18,7 +18,7 @@ mgn service documentation.
 
 :::info[Service Summary]
 
-total resources: __33__  
+total resources: __36__  
 
 :::
 
@@ -27,6 +27,7 @@ total resources: __33__
 <div class="providerDocColumn">
 <a href="/services/mgn/applications/">applications</a><br />
 <a href="/services/mgn/connectors/">connectors</a><br />
+<a href="/services/mgn/cutovers/">cutovers</a><br />
 <a href="/services/mgn/export_errors/">export_errors</a><br />
 <a href="/services/mgn/exports/">exports</a><br />
 <a href="/services/mgn/import_errors/">import_errors</a><br />
@@ -53,11 +54,13 @@ total resources: __33__
 <a href="/services/mgn/network_migration_mappings/">network_migration_mappings</a><br />
 <a href="/services/mgn/replication_configuration_templates/">replication_configuration_templates</a><br />
 <a href="/services/mgn/replication_configurations/">replication_configurations</a><br />
+<a href="/services/mgn/services/">services</a><br />
 <a href="/services/mgn/source_server_actions/">source_server_actions</a><br />
 <a href="/services/mgn/source_servers/">source_servers</a><br />
 <a href="/services/mgn/tags/">tags</a><br />
 <a href="/services/mgn/target_instances/">target_instances</a><br />
 <a href="/services/mgn/template_actions/">template_actions</a><br />
+<a href="/services/mgn/tests/">tests</a><br />
 <a href="/services/mgn/vcenter_clients/">vcenter_clients</a><br />
 <a href="/services/mgn/waves/">waves</a>
 </div>

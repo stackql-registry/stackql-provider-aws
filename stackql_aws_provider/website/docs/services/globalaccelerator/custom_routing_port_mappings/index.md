@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="list_custom_routing_port_mappings"
     values={[
-        { label: 'list_custom_routing_port_mappings', value: 'list_custom_routing_port_mappings' }
+        { label: 'list_custom_routing_port_mappings', value: 'list_custom_routing_port_mappings' },
+        { label: 'list_custom_routing_port_mappings_by_destination', value: 'list_custom_routing_port_mappings_by_destination' }
     ]}
 >
 <TabItem value="list_custom_routing_port_mappings">
@@ -82,6 +83,60 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_custom_routing_port_mappings_by_destination">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="accelerator_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the custom routing accelerator that you have port mappings for.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="accelerator_socket_addresses" /></td>
+    <td><code>array</code></td>
+    <td>The IP address/port combinations (sockets) that map to a given destination socket address.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="destination_socket_address" /></td>
+    <td><code>object</code></td>
+    <td>An IP address/port combination.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="destination_traffic_state" /></td>
+    <td><code>string</code></td>
+    <td>Indicates whether or not a port mapping destination can receive traffic. The value is either ALLOW, if traffic is allowed to the destination, or DENY, if traffic is not allowed to the destination. (ALLOW, DENY)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="endpoint_group_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the endpoint group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="endpoint_group_region" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services Region for the endpoint group.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="endpoint_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID for the virtual private cloud (VPC) subnet.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ip_address_type" /></td>
+    <td><code>string</code></td>
+    <td>The IP address type that an accelerator supports. For a custom routing accelerator, the value must be IPV4. (IPV4, DUAL_STACK)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -105,6 +160,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator. For each subnet endpoint that you add, Global Accelerator creates a new static port mapping for the accelerator. The port mappings don't change after Global Accelerator generates them, so you can retrieve and cache the full mapping on your servers. If you remove a subnet from your accelerator, Global Accelerator removes (reclaims) the port mappings. If you add a subnet to your accelerator, Global Accelerator creates new port mappings (the existing ones don't change). If you add or remove EC2 instances in your subnet, the port mappings don't change, because the mappings are created when you add the subnet to Global Accelerator. The mappings also include a flag for each destination denoting which destination IP addresses and ports are allowed or denied traffic.</td>
+</tr>
+<tr>
+    <td><a href="#list_custom_routing_port_mappings_by_destination"><CopyableCode code="list_custom_routing_port_mappings_by_destination" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.</td>
 </tr>
 </tbody>
 </table>
@@ -135,7 +197,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="list_custom_routing_port_mappings"
     values={[
-        { label: 'list_custom_routing_port_mappings', value: 'list_custom_routing_port_mappings' }
+        { label: 'list_custom_routing_port_mappings', value: 'list_custom_routing_port_mappings' },
+        { label: 'list_custom_routing_port_mappings_by_destination', value: 'list_custom_routing_port_mappings_by_destination' }
     ]}
 >
 <TabItem value="list_custom_routing_port_mappings">
@@ -150,6 +213,25 @@ destination_traffic_state,
 endpoint_group_arn,
 endpoint_id,
 protocols
+FROM aws.globalaccelerator.custom_routing_port_mappings
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_custom_routing_port_mappings_by_destination">
+
+List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.
+
+```sql
+SELECT
+accelerator_arn,
+accelerator_socket_addresses,
+destination_socket_address,
+destination_traffic_state,
+endpoint_group_arn,
+endpoint_group_region,
+endpoint_id,
+ip_address_type
 FROM aws.globalaccelerator.custom_routing_port_mappings
 WHERE region = '{{ region }}' -- required
 ;

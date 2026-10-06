@@ -112,10 +112,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePerformanceAnalysisReportResponse'
       x-stackql-resource: performance_analysis_reports
       x-stackql-method: delete_performance_analysis_report
       x-stackql-verb: DELETE
@@ -392,7 +388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetResourceMetadataResponse'
-      x-stackql-resource: resource_metadatas
+      x-stackql-resource: resource_metadata
       x-stackql-method: get_resource_metadata
       x-stackql-verb: SELECT
   /GetResourceMetrics:
@@ -803,10 +799,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -851,10 +843,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -958,8 +946,6 @@ components:
       minLength: 1
       maxLength: 100
       pattern: report-[0-9a-f]{17}
-    DeletePerformanceAnalysisReportResponse:
-      type: object
     RequestString:
       type: string
       minLength: 0
@@ -1647,11 +1633,7 @@ components:
         Tags:
           $ref: '#/components/schemas/TagList'
           description: The metadata assigned to an Amazon RDS resource consisting of a key-value pair.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object

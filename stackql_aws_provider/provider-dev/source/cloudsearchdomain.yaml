@@ -252,7 +252,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchResponse'
-      x-stackql-resource: search
+      x-stackql-resource: hs
       x-stackql-method: search
       x-stackql-verb: EXEC
   /2013-01-01/suggest?format=sdk&pretty=true:
@@ -293,7 +293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuggestResponse'
-      x-stackql-resource: suggest
+      x-stackql-resource: ts
       x-stackql-method: suggest
       x-stackql-verb: EXEC
   /2013-01-01/documents/batch?format=sdk:
@@ -337,7 +337,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadDocumentsResponse'
-      x-stackql-resource: upload_documents
+      x-stackql-resource: documents
       x-stackql-method: upload_documents
       x-stackql-verb: EXEC
 components:

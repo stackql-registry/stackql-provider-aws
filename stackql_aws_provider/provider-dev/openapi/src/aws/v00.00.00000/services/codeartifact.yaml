@@ -1948,10 +1948,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResult"
   /v1/untag:
     post:
       operationId: UntagResource
@@ -1977,10 +1973,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResult"
   /v1/package-group-origin-configuration:
     put:
       operationId: UpdatePackageGroupOriginConfiguration
@@ -3249,14 +3241,10 @@ components:
         policy:
           $ref: "#/components/schemas/ResourcePolicy"
           description: The resource policy that was set after processing the request.
-    TagResourceResult:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResult:
-      type: object
     UpdatePackageGroupResult:
       type: object
       properties:
@@ -3558,7 +3546,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/create_package_group"
         update:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/update_package_group"
-          - $ref: "#/components/x-stackQL-resources/package_groups/methods/update_package_group_origin_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/delete_package_group"
     repositories:
@@ -3900,10 +3887,10 @@ components:
         insert: []
         update: []
         delete: []
-    allowed_repositories_for_groups:
-      id: aws.codeartifact.allowed_repositories_for_groups
-      name: allowed_repositories_for_groups
-      title: allowed_repositories_for_groups
+    allowed_repositories:
+      id: aws.codeartifact.allowed_repositories
+      name: allowed_repositories
+      title: allowed_repositories
       methods:
         list_allowed_repositories_for_group:
           operation:
@@ -3930,7 +3917,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/allowed_repositories_for_groups/methods/list_allowed_repositories_for_group"
+          - $ref: "#/components/x-stackQL-resources/allowed_repositories/methods/list_allowed_repositories_for_group"
         insert: []
         update: []
         delete: []
@@ -4055,7 +4042,6 @@ components:
             $ref: "#/paths/~1v1~1tag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4066,7 +4052,6 @@ components:
             $ref: "#/paths/~1v1~1untag/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

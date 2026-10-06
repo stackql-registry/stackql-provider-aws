@@ -3274,12 +3274,12 @@ components:
           - $ref: "#/components/x-stackQL-resources/networks/methods/get_network"
           - $ref: "#/components/x-stackQL-resources/networks/methods/list_networks"
         insert:
+          - $ref: "#/components/x-stackQL-resources/networks/methods/create_network"
           - $ref: "#/components/x-stackQL-resources/networks/methods/register_oidc_config"
           - $ref: "#/components/x-stackQL-resources/networks/methods/register_oidc_config_test"
-          - $ref: "#/components/x-stackQL-resources/networks/methods/create_network"
         update:
-          - $ref: "#/components/x-stackQL-resources/networks/methods/update_data_retention"
           - $ref: "#/components/x-stackQL-resources/networks/methods/update_network"
+          - $ref: "#/components/x-stackQL-resources/networks/methods/update_data_retention"
         delete:
           - $ref: "#/components/x-stackQL-resources/networks/methods/delete_network"
     users:
@@ -3331,10 +3331,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
         delete: []
-    devices_for_users:
-      id: aws.wickr.devices_for_users
-      name: devices_for_users
-      title: devices_for_users
+    devices:
+      id: aws.wickr.devices
+      name: devices
+      title: devices
       methods:
         list_devices_for_user:
           operation:
@@ -3355,7 +3355,7 @@ components:
                 location: body
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/devices_for_users/methods/list_devices_for_user"
+          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices_for_user"
         insert: []
         update: []
         delete: []
@@ -3592,10 +3592,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/network_settings/methods/update_network_settings"
         delete: []
-    oidc_infos:
-      id: aws.wickr.oidc_infos
-      name: oidc_infos
-      title: oidc_infos
+    oidc_info:
+      id: aws.wickr.oidc_info
+      name: oidc_info
+      title: oidc_info
       methods:
         get_oidc_info:
           operation:
@@ -3607,7 +3607,7 @@ components:
             nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/oidc_infos/methods/get_oidc_info"
+          - $ref: "#/components/x-stackQL-resources/oidc_info/methods/get_oidc_info"
         insert: []
         update: []
         delete: []

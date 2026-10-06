@@ -772,10 +772,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteEnvironmentResponse'
       x-stackql-resource: environments
       x-stackql-method: delete_environment
       x-stackql-verb: DELETE
@@ -861,10 +857,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxClusterResponse'
       x-stackql-resource: kx_clusters
       x-stackql-method: delete_kx_cluster
       x-stackql-verb: DELETE
@@ -920,10 +912,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxClusterNodeResponse'
       x-stackql-resource: kx_cluster_nodes
       x-stackql-method: delete_kx_cluster_node
       x-stackql-verb: DELETE
@@ -954,10 +942,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxDatabaseResponse'
       x-stackql-resource: kx_databases
       x-stackql-method: delete_kx_database
       x-stackql-verb: DELETE
@@ -1058,10 +1042,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxDataviewResponse'
       x-stackql-resource: kx_dataviews
       x-stackql-method: delete_kx_dataview
       x-stackql-verb: DELETE
@@ -1168,10 +1148,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxEnvironmentResponse'
       x-stackql-resource: kx_environments
       x-stackql-method: delete_kx_environment
       x-stackql-verb: DELETE
@@ -1255,10 +1231,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxScalingGroupResponse'
       x-stackql-resource: kx_scaling_groups
       x-stackql-method: delete_kx_scaling_group
       x-stackql-verb: DELETE
@@ -1314,10 +1286,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxUserResponse'
       x-stackql-resource: kx_users
       x-stackql-method: delete_kx_user
       x-stackql-verb: DELETE
@@ -1413,10 +1381,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteKxVolumeResponse'
       x-stackql-resource: kx_volumes
       x-stackql-method: delete_kx_volume
       x-stackql-verb: DELETE
@@ -1638,10 +1602,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1665,10 +1625,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -1713,10 +1669,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateKxClusterCodeConfigurationResponse'
       x-stackql-resource: kx_clusters
       x-stackql-method: update_kx_cluster_code_configuration
       x-stackql-verb: UPDATE
@@ -1757,10 +1709,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateKxClusterDatabasesResponse'
       x-stackql-resource: kx_clusters
       x-stackql-method: update_kx_cluster_databases
       x-stackql-verb: UPDATE
@@ -2973,28 +2921,10 @@ components:
       minLength: 1
       maxLength: 250
       pattern: ^[a-zA-Z0-9\_\-\.\s]+$
-    DeleteEnvironmentResponse:
-      type: object
-    DeleteKxClusterResponse:
-      type: object
     KxClusterNodeIdString:
       type: string
       minLength: 1
       maxLength: 40
-    DeleteKxClusterNodeResponse:
-      type: object
-    DeleteKxDatabaseResponse:
-      type: object
-    DeleteKxDataviewResponse:
-      type: object
-    DeleteKxEnvironmentResponse:
-      type: object
-    DeleteKxScalingGroupResponse:
-      type: object
-    DeleteKxUserResponse:
-      type: object
-    DeleteKxVolumeResponse:
-      type: object
     GetEnvironmentResponse:
       type: object
       properties:
@@ -4176,8 +4106,6 @@ components:
           type: object
           properties: {}
           description: A list of all tags for a resource.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4187,8 +4115,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateEnvironmentResponse:
       type: object
       properties:
@@ -4216,8 +4142,6 @@ components:
       - NO_RESTART
       - ROLLING
       - FORCE
-    UpdateKxClusterCodeConfigurationResponse:
-      type: object
     KxDeploymentConfiguration:
       description: The configuration that allows you to choose how you want to update the databases on a cluster. Depending
         on the option you choose, you can reduce the time it takes to update the cluster.
@@ -4237,8 +4161,6 @@ components:
       enum:
       - NO_RESTART
       - ROLLING
-    UpdateKxClusterDatabasesResponse:
-      type: object
     UpdateKxDatabaseResponse:
       type: object
       properties:

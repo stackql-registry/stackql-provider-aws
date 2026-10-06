@@ -108,7 +108,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="private_dns_entry" /></td>
     <td><code>object</code></td>
-    <td>The private DNS entry for the service.</td>
+    <td>The private DNS entry for the service. This entry includes only the domain name.</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_configuration_arn" /></td>
@@ -202,7 +202,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="private_dns_entry" /></td>
     <td><code>object</code></td>
-    <td>The private DNS entry for the service.</td>
+    <td>The private DNS entry for the service. This entry includes only the domain name.</td>
 </tr>
 <tr>
     <td><CopyableCode code="resource_configuration_arn" /></td>

@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDocumentResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: documents
       x-stackql-method: batch_delete_document
       x-stackql-verb: EXEC
   /applications/{application_id}/indices/{index_id}/documents:
@@ -163,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutDocumentResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: documents
       x-stackql-method: batch_put_document
       x-stackql-verb: EXEC
   /applications/{application_id}/subscriptions/{subscription_id}:
@@ -445,7 +445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckDocumentAccessResponse'
-      x-stackql-resource: applications
+      x-stackql-resource: documents
       x-stackql-method: check_document_access
       x-stackql-verb: EXEC
   /applications/{application_id}/experiences/{web_experience_id}/anonymous-url:
@@ -1201,10 +1201,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateUserResponse'
       x-stackql-resource: users
       x-stackql-method: create_user
       x-stackql-verb: INSERT
@@ -1310,10 +1306,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -1377,10 +1369,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: update_application
       x-stackql-verb: UPDATE
@@ -1416,10 +1404,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAttachmentResponse'
       x-stackql-resource: attachments
       x-stackql-method: delete_attachment
       x-stackql-verb: DELETE
@@ -1437,10 +1421,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChatControlsConfigurationResponse'
       x-stackql-resource: chat_controls_configurations
       x-stackql-method: delete_chat_controls_configuration
       x-stackql-verb: DELETE
@@ -1518,10 +1498,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateChatControlsConfigurationResponse'
       x-stackql-resource: chat_controls_configurations
       x-stackql-method: update_chat_controls_configuration
       x-stackql-verb: UPDATE
@@ -1545,10 +1521,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChatResponseConfigurationResponse'
       x-stackql-resource: chat_response_configurations
       x-stackql-method: delete_chat_response_configuration
       x-stackql-verb: DELETE
@@ -1617,10 +1589,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateChatResponseConfigurationResponse'
       x-stackql-resource: chat_response_configurations
       x-stackql-method: update_chat_response_configuration
       x-stackql-verb: UPDATE
@@ -1650,10 +1618,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteConversationResponse'
       x-stackql-resource: conversations
       x-stackql-method: delete_conversation
       x-stackql-verb: DELETE
@@ -1727,10 +1691,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataAccessorResponse'
       x-stackql-resource: data_accessors
       x-stackql-method: delete_data_accessor
       x-stackql-verb: DELETE
@@ -1799,10 +1759,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataAccessorResponse'
       x-stackql-resource: data_accessors
       x-stackql-method: update_data_accessor
       x-stackql-verb: UPDATE
@@ -1833,10 +1789,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDataSourceResponse'
       x-stackql-resource: data_sources
       x-stackql-method: delete_data_source
       x-stackql-verb: DELETE
@@ -1920,10 +1872,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDataSourceResponse'
       x-stackql-resource: data_sources
       x-stackql-method: update_data_source
       x-stackql-verb: UPDATE
@@ -1968,10 +1916,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: delete_group
       x-stackql-verb: DELETE
@@ -2033,10 +1977,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteIndexResponse'
       x-stackql-resource: indexes
       x-stackql-method: delete_index
       x-stackql-verb: DELETE
@@ -2100,10 +2040,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateIndexResponse'
       x-stackql-resource: indexes
       x-stackql-method: update_index
       x-stackql-verb: UPDATE
@@ -2127,10 +2063,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePluginResponse'
       x-stackql-resource: plugins
       x-stackql-method: delete_plugin
       x-stackql-verb: DELETE
@@ -2196,10 +2128,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePluginResponse'
       x-stackql-resource: plugins
       x-stackql-method: update_plugin
       x-stackql-verb: UPDATE
@@ -2223,10 +2151,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteRetrieverResponse'
       x-stackql-resource: retrievers
       x-stackql-method: delete_retriever
       x-stackql-verb: DELETE
@@ -2288,10 +2212,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateRetrieverResponse'
       x-stackql-resource: retrievers
       x-stackql-method: update_retriever
       x-stackql-verb: UPDATE
@@ -2315,10 +2235,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -2405,10 +2321,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteWebExperienceResponse'
       x-stackql-resource: web_experiences
       x-stackql-method: delete_web_experience
       x-stackql-verb: DELETE
@@ -2484,10 +2396,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateWebExperienceResponse'
       x-stackql-resource: web_experiences
       x-stackql-method: update_web_experience
       x-stackql-verb: UPDATE
@@ -2513,10 +2421,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociatePermissionResponse'
       x-stackql-resource: applications
       x-stackql-method: disassociate_permission
       x-stackql-verb: UPDATE
@@ -2568,7 +2472,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetDocumentContentResponse'
-      x-stackql-resource: document_contents
+      x-stackql-resource: document_content
       x-stackql-method: get_document_content
       x-stackql-verb: SELECT
   /applications/{application_id}/conversations/{conversation_id}/messages/{message_id}/media/{media_id}:
@@ -2887,10 +2791,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutGroupResponse'
       x-stackql-resource: groups
       x-stackql-method: put_group
       x-stackql-verb: REPLACE
@@ -3001,7 +2901,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPluginTypeMetadataResponse'
-      x-stackql-resource: plugin_type_metadatas
+      x-stackql-resource: plugin_type_metadata
       x-stackql-method: list_plugin_type_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
@@ -3056,10 +2956,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3084,10 +2980,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3179,7 +3071,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchRelevantContentResponse'
-      x-stackql-resource: relevant_contents
+      x-stackql-resource: relevant_content
       x-stackql-method: search_relevant_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relevantContent
@@ -3217,7 +3109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceSyncJobResponse'
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_sync_jobs
       x-stackql-method: start_data_source_sync_job
       x-stackql-verb: EXEC
   /applications/{application_id}/indices/{index_id}/datasources/{data_source_id}/stopsync:
@@ -3246,11 +3138,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopDataSourceSyncJobResponse'
-      x-stackql-resource: data_sources
+      x-stackql-resource: data_source_sync_jobs
       x-stackql-method: stop_data_source_sync_job
       x-stackql-verb: EXEC
 components:
@@ -5410,8 +5298,6 @@ components:
           description: The identifier of the user id associated with the user aliases.
       required:
       - userId
-    CreateUserResponse:
-      type: object
     WebExperienceTitle:
       type: string
       minLength: 0
@@ -5550,34 +5436,6 @@ components:
       minLength: 0
       maxLength: 1284
       pattern: arn:[a-z0-9-\.]{1,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[a-z0-9-\.]{0,63}:[^/].{0,1023}
-    DeleteApplicationResponse:
-      type: object
-    DeleteAttachmentResponse:
-      type: object
-    DeleteChatControlsConfigurationResponse:
-      type: object
-    DeleteChatResponseConfigurationResponse:
-      type: object
-    DeleteConversationResponse:
-      type: object
-    DeleteDataAccessorResponse:
-      type: object
-    DeleteDataSourceResponse:
-      type: object
-    DeleteGroupResponse:
-      type: object
-    DeleteIndexResponse:
-      type: object
-    DeletePluginResponse:
-      type: object
-    DeleteRetrieverResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
-    DeleteWebExperienceResponse:
-      type: object
-    DisassociatePermissionResponse:
-      type: object
     GetApplicationResponse:
       type: object
       properties:
@@ -7346,8 +7204,6 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: \P{C}*
-    PutGroupResponse:
-      type: object
     QueryText:
       type: string
     ContentSource:
@@ -7426,18 +7282,10 @@ components:
         executionId:
           $ref: '#/components/schemas/ExecutionId'
           description: The identifier for a particular synchronization job.
-    StopDataSourceSyncJobResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
-    UpdateApplicationResponse:
-      type: object
     OrchestrationConfiguration:
       description: Configuration information required to enable chat orchestration for your Amazon Q Business application.
         Chat orchestration is optimized to work for English language content. For more details on language support in Amazon
@@ -7473,20 +7321,6 @@ components:
           description: Status information about whether CREATOR_MODE has been enabled or disabled. The default status is DISABLED.
       required:
       - creatorModeControl
-    UpdateChatControlsConfigurationResponse:
-      type: object
-    UpdateChatResponseConfigurationResponse:
-      type: object
-    UpdateDataAccessorResponse:
-      type: object
-    UpdateDataSourceResponse:
-      type: object
-    UpdateIndexResponse:
-      type: object
-    UpdatePluginResponse:
-      type: object
-    UpdateRetrieverResponse:
-      type: object
     UpdateSubscriptionResponse:
       type: object
       properties:
@@ -7511,5 +7345,3 @@ components:
         userAliasesDeleted:
           $ref: '#/components/schemas/UserAliases'
           description: The user aliases that have been deleted from a user id.
-    UpdateWebExperienceResponse:
-      type: object

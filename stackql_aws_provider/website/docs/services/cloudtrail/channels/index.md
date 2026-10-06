@@ -129,35 +129,35 @@ The following methods are available for this resource:
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about a specific channel.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about a specific channel.</td>
 </tr>
 <tr>
     <td><a href="#list_channels"><CopyableCode code="list_channels" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Lists the channels in the current account, and their source names.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Lists the channels in the current account, and their source names.</td>
 </tr>
 <tr>
     <td><a href="#create_channel"><CopyableCode code="create_channel" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.</td>
 </tr>
 <tr>
     <td><a href="#update_channel"><CopyableCode code="update_channel" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Channel"><code>Channel</code></a></td>
     <td></td>
-    <td>Updates a channel specified by a required channel ARN or UUID.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates a channel specified by a required channel ARN or UUID.</td>
 </tr>
 <tr>
     <td><a href="#delete_channel"><CopyableCode code="delete_channel" /></a></td>
     <td><CopyableCode code="delete" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Deletes a channel.</td>
+    <td>CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Deletes a channel.</td>
 </tr>
 </tbody>
 </table>
@@ -194,7 +194,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 >
 <TabItem value="get_channel">
 
-Returns information about a specific channel.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Returns information about a specific channel.
 
 ```sql
 SELECT
@@ -211,7 +211,7 @@ WHERE region = '{{ region }}' -- required
 </TabItem>
 <TabItem value="list_channels">
 
-Lists the channels in the current account, and their source names.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Lists the channels in the current account, and their source names.
 
 ```sql
 SELECT
@@ -236,7 +236,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_channel">
 
-Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Creates a channel for CloudTrail to ingest events from a partner or external source. After you create a channel, a CloudTrail Lake event data store can log events from the partner or source that you specify.
 
 ```sql
 INSERT INTO aws.cloudtrail.channels (
@@ -305,7 +305,7 @@ tags
 >
 <TabItem value="update_channel">
 
-Updates a channel specified by a required channel ARN or UUID.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Updates a channel specified by a required channel ARN or UUID.
 
 ```sql
 UPDATE aws.cloudtrail.channels
@@ -336,7 +336,7 @@ source;
 >
 <TabItem value="delete_channel">
 
-Deletes a channel.
+CloudTrail Lake will no longer be open to new customers starting May 31, 2026. If you would like to use CloudTrail Lake, sign up prior to that date. Existing customers can continue to use the service as normal. For more information, see CloudTrail Lake availability change. Deletes a channel.
 
 ```sql
 DELETE FROM aws.cloudtrail.channels

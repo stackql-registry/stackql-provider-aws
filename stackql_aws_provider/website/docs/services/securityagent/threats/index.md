@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>threats</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_threats"
+    defaultValue="list_threats"
     values={[
-        { label: 'batch_get_threats', value: 'batch_get_threats' },
-        { label: 'list_threats', value: 'list_threats' }
+        { label: 'list_threats', value: 'list_threats' },
+        { label: 'batch_get_threats', value: 'batch_get_threats' }
     ]}
 >
-<TabItem value="batch_get_threats">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="not_found" /></td>
-    <td><code>array</code></td>
-    <td>List of threat IDs.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="threats" /></td>
-    <td><code>array</code></td>
-    <td>The list of threats that were found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="list_threats">
 
 <table>
@@ -132,6 +108,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_threats">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="not_found" /></td>
+    <td><code>array</code></td>
+    <td>List of threat IDs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="threats" /></td>
+    <td><code>array</code></td>
+    <td>The list of threats that were found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -150,18 +150,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_threats"><CopyableCode code="batch_get_threats" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves information about one or more threats.</td>
-</tr>
-<tr>
     <td><a href="#list_threats"><CopyableCode code="list_threats" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns a paginated list of threats for a threat model job.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_threats"><CopyableCode code="batch_get_threats" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves information about one or more threats.</td>
 </tr>
 <tr>
     <td><a href="#create_threat"><CopyableCode code="create_threat" /></a></td>
@@ -204,25 +204,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_threats"
+    defaultValue="list_threats"
     values={[
-        { label: 'batch_get_threats', value: 'batch_get_threats' },
-        { label: 'list_threats', value: 'list_threats' }
+        { label: 'list_threats', value: 'list_threats' },
+        { label: 'batch_get_threats', value: 'batch_get_threats' }
     ]}
 >
-<TabItem value="batch_get_threats">
-
-Retrieves information about one or more threats.
-
-```sql
-SELECT
-not_found,
-threats
-FROM aws.securityagent.threats
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="list_threats">
 
 Returns a paginated list of threats for a threat model job.
@@ -240,6 +227,19 @@ threat_job_id,
 title_,
 updated_at,
 updated_by
+FROM aws.securityagent.threats
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_threats">
+
+Retrieves information about one or more threats.
+
+```sql
+SELECT
+not_found,
+threats
 FROM aws.securityagent.threats
 WHERE region = '{{ region }}' -- required
 ;

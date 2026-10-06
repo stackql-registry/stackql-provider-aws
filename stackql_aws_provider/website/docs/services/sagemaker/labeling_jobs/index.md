@@ -36,6 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_labeling_job"
     values={[
         { label: 'describe_labeling_job', value: 'describe_labeling_job' },
+        { label: 'list_labeling_jobs_for_workteam', value: 'list_labeling_jobs_for_workteam' },
         { label: 'list_labeling_jobs', value: 'list_labeling_jobs' }
     ]}
 >
@@ -143,6 +144,50 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_labeling_jobs_for_workteam">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="creation_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date and time that the labeling job was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="job_reference_code" /></td>
+    <td><code>string</code></td>
+    <td>A unique identifier for a labeling job. You can use this to refer to a specific labeling job. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="label_counters" /></td>
+    <td><code>object</code></td>
+    <td>Provides information about the progress of a labeling job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="labeling_job_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the labeling job that the work team is assigned to. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)&#123;0,62&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="number_of_human_workers_per_data_object" /></td>
+    <td><code>integer</code></td>
+    <td>The configured number of workers per data object.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="work_requester_account_id" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Web Services account ID of the account used to start the labeling job. (pattern: &lt;code&gt;\d+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_labeling_jobs">
 
 <table>
@@ -242,6 +287,13 @@ The following methods are available for this resource:
     <td>Gets information about a labeling job.</td>
 </tr>
 <tr>
+    <td><a href="#list_labeling_jobs_for_workteam"><CopyableCode code="list_labeling_jobs_for_workteam" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of labeling jobs assigned to a specified work team.</td>
+</tr>
+<tr>
     <td><a href="#list_labeling_jobs"><CopyableCode code="list_labeling_jobs" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -292,6 +344,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_labeling_job"
     values={[
         { label: 'describe_labeling_job', value: 'describe_labeling_job' },
+        { label: 'list_labeling_jobs_for_workteam', value: 'list_labeling_jobs_for_workteam' },
         { label: 'list_labeling_jobs', value: 'list_labeling_jobs' }
     ]}
 >
@@ -319,6 +372,23 @@ output_config,
 role_arn,
 stopping_conditions,
 tags
+FROM aws.sagemaker.labeling_jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_labeling_jobs_for_workteam">
+
+Gets a list of labeling jobs assigned to a specified work team.
+
+```sql
+SELECT
+creation_time,
+job_reference_code,
+label_counters,
+labeling_job_name,
+number_of_human_workers_per_data_object,
+work_requester_account_id
 FROM aws.sagemaker.labeling_jobs
 WHERE region = '{{ region }}' -- required
 ;

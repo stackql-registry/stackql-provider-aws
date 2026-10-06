@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Amazon Resource Name (ARN) of the function.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="aws_service_request_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for an AWS_SERVICE_REQUEST function. Specifies the target service, target Region, and request parameters.</td>
+</tr>
+<tr>
     <td><CopyableCode code="concurrent_executor_configuration" /></td>
     <td><code>object</code></td>
     <td>The configuration for a CONCURRENT_EXECUTOR function.</td>
@@ -78,7 +83,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
-    <td>The type of the function. (HTTP_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR)</td>
+    <td>The type of the function. (HTTP_REQUEST, AWS_SERVICE_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR, VAST_REQUEST)</td>
 </tr>
 <tr>
     <td><CopyableCode code="http_request_configuration" /></td>
@@ -94,6 +99,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the function. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vast_request_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for a VAST_REQUEST function.</td>
 </tr>
 </tbody>
 </table>
@@ -113,6 +123,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the function.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="aws_service_request_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for an AWS_SERVICE_REQUEST function. Contains the target service, target Region, and request parameters that the function uses to call an AWS service API. For more information, see AWS_SERVICE_REQUEST in the MediaTailor User Guide.</td>
 </tr>
 <tr>
     <td><CopyableCode code="concurrent_executor_configuration" /></td>
@@ -137,7 +152,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="function_type" /></td>
     <td><code>string</code></td>
-    <td>-- Define Enums (HTTP_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR)</td>
+    <td>The type of a function, which determines what the function can do at runtime. For more information, see Function types and composition in the MediaTailor User Guide. (HTTP_REQUEST, AWS_SERVICE_REQUEST, CUSTOM_OUTPUT, CONCURRENT_EXECUTOR, SEQUENTIAL_EXECUTOR, VAST_REQUEST)</td>
 </tr>
 <tr>
     <td><CopyableCode code="http_request_configuration" /></td>
@@ -153,6 +168,11 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="tags" /></td>
     <td><code>object</code></td>
     <td>The tags assigned to the function. Tags are key-value pairs that you can associate with Amazon resources to help with organization, access control, and cost tracking. For more information, see Tagging AWS Elemental MediaTailor Resources.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vast_request_configuration" /></td>
+    <td><code>object</code></td>
+    <td>The configuration for a VAST_REQUEST function. Specifies the HTTP method, URL, headers, body, timeout, and output expressions for a request to a VAST endpoint. MediaTailor parses the response as VAST and resolves wrapper redirects, then makes the parsed ads available to the function's output expressions. For more information, see Function types and composition in the MediaTailor User Guide.</td>
 </tr>
 </tbody>
 </table>
@@ -257,6 +277,7 @@ Retrieves the configuration and metadata for a function. For more information ab
 ```sql
 SELECT
 arn,
+aws_service_request_configuration,
 concurrent_executor_configuration,
 custom_output_configuration,
 description,
@@ -264,7 +285,8 @@ function_id,
 function_type,
 http_request_configuration,
 sequential_executor_configuration,
-tags
+tags,
+vast_request_configuration
 FROM aws.mediatailor.functions
 WHERE function_id = '{{ function_id }}' -- required
 AND region = '{{ region }}' -- required
@@ -278,6 +300,7 @@ Retrieves all functions associated with your AWS account in the current Region. 
 ```sql
 SELECT
 arn,
+aws_service_request_configuration,
 concurrent_executor_configuration,
 custom_output_configuration,
 description,
@@ -285,7 +308,8 @@ function_id,
 function_type,
 http_request_configuration,
 sequential_executor_configuration,
-tags
+tags,
+vast_request_configuration
 FROM aws.mediatailor.functions
 WHERE region = '{{ region }}' -- required
 AND MaxResults = '{{ MaxResults }}'
@@ -314,9 +338,11 @@ SET
 FunctionType = '{{ FunctionType }}',
 Description = '{{ Description }}',
 HttpRequestConfiguration = '{{ HttpRequestConfiguration }}',
+AwsServiceRequestConfiguration = '{{ AwsServiceRequestConfiguration }}',
 CustomOutputConfiguration = '{{ CustomOutputConfiguration }}',
 ConcurrentExecutorConfiguration = '{{ ConcurrentExecutorConfiguration }}',
 SequentialExecutorConfiguration = '{{ SequentialExecutorConfiguration }}',
+VastRequestConfiguration = '{{ VastRequestConfiguration }}',
 Tags = '{{ Tags }}'
 WHERE 
 function_id = '{{ function_id }}' --required
@@ -324,6 +350,7 @@ AND region = '{{ region }}' --required
 AND FunctionType = '{{ FunctionType }}' --required
 RETURNING
 arn,
+aws_service_request_configuration,
 concurrent_executor_configuration,
 custom_output_configuration,
 description,
@@ -331,7 +358,8 @@ function_id,
 function_type,
 http_request_configuration,
 sequential_executor_configuration,
-tags;
+tags,
+vast_request_configuration;
 ```
 </TabItem>
 </Tabs>

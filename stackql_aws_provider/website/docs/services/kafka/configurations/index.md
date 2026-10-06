@@ -176,18 +176,18 @@ The following methods are available for this resource:
     <td>Creates a new MSK configuration.</td>
 </tr>
 <tr>
-    <td><a href="#update_cluster_configuration"><CopyableCode code="update_cluster_configuration" /></a></td>
-    <td><CopyableCode code="update" /></td>
-    <td><a href="#parameter-cluster_arn"><code>cluster_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConfigurationInfo"><code>ConfigurationInfo</code></a>, <a href="#parameter-CurrentVersion"><code>CurrentVersion</code></a></td>
-    <td></td>
-    <td>Updates the cluster with the configuration that is specified in the request body.</td>
-</tr>
-<tr>
     <td><a href="#update_configuration"><CopyableCode code="update_configuration" /></a></td>
     <td><CopyableCode code="update" /></td>
     <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ServerProperties"><code>ServerProperties</code></a></td>
     <td></td>
     <td>Updates an MSK configuration.</td>
+</tr>
+<tr>
+    <td><a href="#update_cluster_configuration"><CopyableCode code="update_cluster_configuration" /></a></td>
+    <td><CopyableCode code="update" /></td>
+    <td><a href="#parameter-cluster_arn"><code>cluster_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConfigurationInfo"><code>ConfigurationInfo</code></a>, <a href="#parameter-CurrentVersion"><code>CurrentVersion</code></a></td>
+    <td></td>
+    <td>Updates the cluster with the configuration that is specified in the request body.</td>
 </tr>
 <tr>
     <td><a href="#delete_configuration"><CopyableCode code="delete_configuration" /></a></td>
@@ -353,12 +353,30 @@ state
 ## `UPDATE` examples
 
 <Tabs
-    defaultValue="update_cluster_configuration"
+    defaultValue="update_configuration"
     values={[
-        { label: 'update_cluster_configuration', value: 'update_cluster_configuration' },
-        { label: 'update_configuration', value: 'update_configuration' }
+        { label: 'update_configuration', value: 'update_configuration' },
+        { label: 'update_cluster_configuration', value: 'update_cluster_configuration' }
     ]}
 >
+<TabItem value="update_configuration">
+
+Updates an MSK configuration.
+
+```sql
+UPDATE aws.kafka.configurations
+SET 
+Description = '{{ Description }}',
+ServerProperties = '{{ ServerProperties }}'
+WHERE 
+arn = '{{ arn }}' --required
+AND region = '{{ region }}' --required
+AND ServerProperties = '{{ ServerProperties }}' --required
+RETURNING
+arn,
+latest_revision;
+```
+</TabItem>
 <TabItem value="update_cluster_configuration">
 
 Updates the cluster with the configuration that is specified in the request body.
@@ -376,24 +394,6 @@ AND CurrentVersion = '{{ CurrentVersion }}' --required
 RETURNING
 cluster_arn,
 cluster_operation_arn;
-```
-</TabItem>
-<TabItem value="update_configuration">
-
-Updates an MSK configuration.
-
-```sql
-UPDATE aws.kafka.configurations
-SET 
-Description = '{{ Description }}',
-ServerProperties = '{{ ServerProperties }}'
-WHERE 
-arn = '{{ arn }}' --required
-AND region = '{{ region }}' --required
-AND ServerProperties = '{{ ServerProperties }}' --required
-RETURNING
-arn,
-latest_revision;
 ```
 </TabItem>
 </Tabs>

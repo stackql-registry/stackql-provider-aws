@@ -10231,6 +10231,27 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/templates/methods/update_template_active_version"
         delete: []
+    number_validates:
+      id: aws.pinpoint.number_validates
+      name: number_validates
+      title: number_validates
+      methods:
+        phone_number_validate:
+          operation:
+            $ref: "#/paths/~1v1~1phone~1number~1validate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     events:
       id: aws.pinpoint.events
       name: events
@@ -10275,4 +10296,78 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/attributes/methods/remove_attributes"
+        delete: []
+    messages:
+      id: aws.pinpoint.messages
+      name: messages
+      title: messages
+      methods:
+        send_messages:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1messages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    otp_messages:
+      id: aws.pinpoint.otp_messages
+      name: otp_messages
+      title: otp_messages
+      methods:
+        send_otp_message:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1otp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify_otp_message:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1verify-otp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    users_messages:
+      id: aws.pinpoint.users_messages
+      name: users_messages
+      title: users_messages
+      methods:
+        send_users_messages:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1users-messages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

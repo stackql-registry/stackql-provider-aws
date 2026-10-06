@@ -56,6 +56,11 @@ The following fields are returned by `SELECT` queries:
     <td>The analytics configuration for the data store.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="backup_status_info" /></td>
+    <td><code>object</code></td>
+    <td>The backup status information for the data store.</td>
+</tr>
+<tr>
     <td><CopyableCode code="created_at" /></td>
     <td><code>string (date-time)</code></td>
     <td>The time the data store was created.</td>
@@ -199,6 +204,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Delete a FHIR-enabled data store.</td>
 </tr>
+<tr>
+    <td><a href="#restore_fhir_datastore"><CopyableCode code="restore_fhir_datastore" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SourceDatastoreId"><code>SourceDatastoreId</code></a>, <a href="#parameter-RestoreConfiguration"><code>RestoreConfiguration</code></a></td>
+    <td></td>
+    <td>Restore a backup-enabled data store to a point in time. Creates a new data store from the backup.</td>
+</tr>
 </tbody>
 </table>
 
@@ -239,6 +251,7 @@ Get properties for a FHIR-enabled data store.
 ```sql
 SELECT
 analytics_configuration,
+backup_status_info,
 created_at,
 datastore_arn,
 datastore_endpoint,
@@ -298,6 +311,7 @@ IdentityProviderConfiguration,
 AnalyticsConfiguration,
 NlpConfiguration,
 ProfileConfiguration,
+BackupConfiguration,
 region
 )
 SELECT 
@@ -311,6 +325,7 @@ SELECT
 '{{ AnalyticsConfiguration }}',
 '{{ NlpConfiguration }}',
 '{{ ProfileConfiguration }}',
+'{{ BackupConfiguration }}',
 '{{ region }}'
 RETURNING
 datastore_arn,
@@ -383,6 +398,14 @@ datastore_status
       value:
         DefaultProfiles:
           - "{{ DefaultProfiles }}"
+    - name: BackupConfiguration
+      description: |
+        The backup configuration for the data store.
+      value:
+        Status: "{{ Status }}"
+        BackupType: "{{ BackupType }}"
+        RetentionPeriodInDays: {{ RetentionPeriodInDays }}
+        BackupTagsEnabled: {{ BackupTagsEnabled }}
 `}</CodeBlock>
 
 </TabItem>
@@ -409,7 +432,8 @@ DatastoreName = '{{ DatastoreName }}',
 AnalyticsConfiguration = '{{ AnalyticsConfiguration }}',
 NlpConfiguration = '{{ NlpConfiguration }}',
 ProfileConfiguration = '{{ ProfileConfiguration }}',
-IdentityProviderConfiguration = '{{ IdentityProviderConfiguration }}'
+IdentityProviderConfiguration = '{{ IdentityProviderConfiguration }}',
+BackupConfiguration = '{{ BackupConfiguration }}'
 WHERE 
 region = '{{ region }}' --required
 AND DatastoreId = '{{ DatastoreId }}' --required
@@ -435,6 +459,40 @@ Delete a FHIR-enabled data store.
 ```sql
 DELETE FROM aws.healthlake.fhir_datastores
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="restore_fhir_datastore"
+    values={[
+        { label: 'restore_fhir_datastore', value: 'restore_fhir_datastore' }
+    ]}
+>
+<TabItem value="restore_fhir_datastore">
+
+Restore a backup-enabled data store to a point in time. Creates a new data store from the backup.
+
+```sql
+EXEC aws.healthlake.fhir_datastores.restore_fhir_datastore 
+@region='{{ region }}' --required 
+@@json=
+'{
+"SourceDatastoreId": "{{ SourceDatastoreId }}", 
+"RestoreConfiguration": "{{ RestoreConfiguration }}", 
+"DatastoreName": "{{ DatastoreName }}", 
+"SseConfiguration": "{{ SseConfiguration }}", 
+"ClientToken": "{{ ClientToken }}", 
+"Tags": "{{ Tags }}", 
+"IdentityProviderConfiguration": "{{ IdentityProviderConfiguration }}", 
+"AnalyticsConfiguration": "{{ AnalyticsConfiguration }}", 
+"NlpConfiguration": "{{ NlpConfiguration }}", 
+"ProfileConfiguration": "{{ ProfileConfiguration }}"
+}'
 ;
 ```
 </TabItem>

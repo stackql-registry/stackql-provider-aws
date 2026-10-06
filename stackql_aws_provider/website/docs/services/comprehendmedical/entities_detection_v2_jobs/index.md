@@ -178,6 +178,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Gets a list of medical entity detection jobs that you have submitted.</td>
 </tr>
+<tr>
+    <td><a href="#start_entities_detection_v2_job"><CopyableCode code="start_entities_detection_v2_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InputDataConfig"><code>InputDataConfig</code></a>, <a href="#parameter-OutputDataConfig"><code>OutputDataConfig</code></a>, <a href="#parameter-DataAccessRoleArn"><code>DataAccessRoleArn</code></a>, <a href="#parameter-LanguageCode"><code>LanguageCode</code></a></td>
+    <td></td>
+    <td>Starts an asynchronous medical entity detection job for a collection of documents. Use the DescribeEntitiesDetectionV2Job operation to track the status of a job.</td>
+</tr>
+<tr>
+    <td><a href="#stop_entities_detection_v2_job"><CopyableCode code="stop_entities_detection_v2_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-JobId"><code>JobId</code></a></td>
+    <td></td>
+    <td>Stops a medical entities detection job in progress.</td>
+</tr>
 </tbody>
 </table>
 
@@ -246,6 +260,52 @@ comprehend_medical_async_job_properties_list,
 next_token
 FROM aws.comprehendmedical.entities_detection_v2_jobs
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_entities_detection_v2_job"
+    values={[
+        { label: 'start_entities_detection_v2_job', value: 'start_entities_detection_v2_job' },
+        { label: 'stop_entities_detection_v2_job', value: 'stop_entities_detection_v2_job' }
+    ]}
+>
+<TabItem value="start_entities_detection_v2_job">
+
+Starts an asynchronous medical entity detection job for a collection of documents. Use the DescribeEntitiesDetectionV2Job operation to track the status of a job.
+
+```sql
+EXEC aws.comprehendmedical.entities_detection_v2_jobs.start_entities_detection_v2_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InputDataConfig": "{{ InputDataConfig }}", 
+"OutputDataConfig": "{{ OutputDataConfig }}", 
+"DataAccessRoleArn": "{{ DataAccessRoleArn }}", 
+"JobName": "{{ JobName }}", 
+"ClientRequestToken": "{{ ClientRequestToken }}", 
+"KMSKey": "{{ KMSKey }}", 
+"LanguageCode": "{{ LanguageCode }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_entities_detection_v2_job">
+
+Stops a medical entities detection job in progress.
+
+```sql
+EXEC aws.comprehendmedical.entities_detection_v2_jobs.stop_entities_detection_v2_job 
+@region='{{ region }}' --required 
+@@json=
+'{
+"JobId": "{{ JobId }}"
+}'
 ;
 ```
 </TabItem>

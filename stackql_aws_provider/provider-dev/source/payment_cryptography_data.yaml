@@ -72,7 +72,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DecryptDataOutput'
-      x-stackql-resource: decrypt_data
+      x-stackql-resource: data
       x-stackql-method: decrypt_data
       x-stackql-verb: EXEC
   /keys/{key_identifier}/encrypt:
@@ -133,7 +133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EncryptDataOutput'
-      x-stackql-resource: encrypt_data
+      x-stackql-resource: data
       x-stackql-method: encrypt_data
       x-stackql-verb: EXEC
   /as2805kekvalidation/generate:
@@ -180,7 +180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateAs2805KekValidationOutput'
-      x-stackql-resource: as2805_kek_validation
+      x-stackql-resource: as2805_kek_validations
       x-stackql-method: generate_as2805_kek_validation
       x-stackql-verb: EXEC
   /cryptogram/generate:
@@ -225,7 +225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateAuthRequestCryptogramOutput'
-      x-stackql-resource: auth_request_cryptogram
+      x-stackql-resource: auth_request_cryptograms
       x-stackql-method: generate_auth_request_cryptogram
       x-stackql-verb: EXEC
   /cardvalidationdata/generate:
@@ -313,7 +313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateMacOutput'
-      x-stackql-resource: mac
+      x-stackql-resource: macs
       x-stackql-method: generate_mac
       x-stackql-verb: EXEC
   /macemvpinchange/generate:
@@ -371,7 +371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateMacEmvPinChangeOutput'
-      x-stackql-resource: mac_emv_pin_change
+      x-stackql-resource: mac_emv_pin_changes
       x-stackql-method: generate_mac_emv_pin_change
       x-stackql-verb: EXEC
   /pindata/generate:
@@ -485,7 +485,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReEncryptDataOutput'
-      x-stackql-resource: re_encrypt_data
+      x-stackql-resource: encrypt_data
       x-stackql-method: re_encrypt_data
       x-stackql-verb: EXEC
   /keymaterial/translate:
@@ -528,7 +528,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TranslateKeyMaterialOutput'
-      x-stackql-resource: translate_key_material
+      x-stackql-resource: key_materials
       x-stackql-method: translate_key_material
       x-stackql-verb: EXEC
   /pindata/translate:
@@ -599,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TranslatePinDataOutput'
-      x-stackql-resource: translate_pin_data
+      x-stackql-resource: pin_data
       x-stackql-method: translate_pin_data
       x-stackql-verb: EXEC
   /cryptogram/verify:
@@ -650,7 +650,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyAuthRequestCryptogramOutput'
-      x-stackql-resource: auth_request_cryptogram
+      x-stackql-resource: auth_request_cryptograms
       x-stackql-method: verify_auth_request_cryptogram
       x-stackql-verb: EXEC
   /cardvalidationdata/verify:
@@ -739,7 +739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyMacOutput'
-      x-stackql-resource: mac
+      x-stackql-resource: macs
       x-stackql-method: verify_mac
       x-stackql-verb: EXEC
   /pindata/verify:

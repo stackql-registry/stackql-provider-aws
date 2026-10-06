@@ -206,6 +206,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Lists the commands requested by users of the Amazon Web Services account.</td>
 </tr>
+<tr>
+    <td><a href="#cancel_command"><CopyableCode code="cancel_command" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CommandId"><code>CommandId</code></a></td>
+    <td></td>
+    <td>Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.</td>
+</tr>
+<tr>
+    <td><a href="#send_command"><CopyableCode code="send_command" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-DocumentName"><code>DocumentName</code></a></td>
+    <td></td>
+    <td>Runs commands on one or more managed nodes.</td>
+</tr>
 </tbody>
 </table>
 
@@ -272,6 +286,64 @@ timeout_seconds,
 triggered_alarms
 FROM aws.ssm.commands
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="cancel_command"
+    values={[
+        { label: 'cancel_command', value: 'cancel_command' },
+        { label: 'send_command', value: 'send_command' }
+    ]}
+>
+<TabItem value="cancel_command">
+
+Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
+
+```sql
+EXEC aws.ssm.commands.cancel_command 
+@region='{{ region }}' --required 
+@@json=
+'{
+"CommandId": "{{ CommandId }}", 
+"InstanceIds": "{{ InstanceIds }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="send_command">
+
+Runs commands on one or more managed nodes.
+
+```sql
+EXEC aws.ssm.commands.send_command 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceIds": "{{ InstanceIds }}", 
+"Targets": "{{ Targets }}", 
+"DocumentName": "{{ DocumentName }}", 
+"DocumentVersion": "{{ DocumentVersion }}", 
+"DocumentHash": "{{ DocumentHash }}", 
+"DocumentHashType": "{{ DocumentHashType }}", 
+"TimeoutSeconds": {{ TimeoutSeconds }}, 
+"Comment": "{{ Comment }}", 
+"Parameters": "{{ Parameters }}", 
+"OutputS3Region": "{{ OutputS3Region }}", 
+"OutputS3BucketName": "{{ OutputS3BucketName }}", 
+"OutputS3KeyPrefix": "{{ OutputS3KeyPrefix }}", 
+"MaxConcurrency": "{{ MaxConcurrency }}", 
+"MaxErrors": "{{ MaxErrors }}", 
+"ServiceRoleArn": "{{ ServiceRoleArn }}", 
+"NotificationConfig": "{{ NotificationConfig }}", 
+"CloudWatchOutputConfig": "{{ CloudWatchOutputConfig }}", 
+"AlarmConfiguration": "{{ AlarmConfiguration }}"
+}'
 ;
 ```
 </TabItem>

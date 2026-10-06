@@ -1016,11 +1016,44 @@ components:
         - resourceIdentifier
         - zonalAutoshiftStatus
   x-stackQL-resources:
+    practice_runs:
+      id: aws.arc_zonal_shift.practice_runs
+      name: practice_runs
+      title: practice_runs
+      methods:
+        cancel_practice_run:
+          operation:
+            $ref: "#/paths/~1practiceruns~1{zonal_shift_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_practice_run:
+          operation:
+            $ref: "#/paths/~1practiceruns/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     zonal_shifts:
       id: aws.arc_zonal_shift.zonal_shifts
       name: zonal_shifts
       title: zonal_shifts
       methods:
+        cancel_zonal_shift:
+          operation:
+            $ref: "#/paths/~1zonalshifts~1{zonal_shift_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         update_zonal_shift:
           operation:
             $ref: "#/paths/~1zonalshifts~1{zonal_shift_id}/patch"
@@ -1049,6 +1082,17 @@ components:
               responseToken:
                 key: $.nextToken
                 location: body
+        start_zonal_shift:
+          operation:
+            $ref: "#/paths/~1zonalshifts/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/zonal_shifts/methods/list_zonal_shifts"
@@ -1097,10 +1141,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/practice_run_configurations/methods/update_practice_run_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/practice_run_configurations/methods/delete_practice_run_configuration"
-    autoshift_observer_notification_status:
-      id: aws.arc_zonal_shift.autoshift_observer_notification_status
-      name: autoshift_observer_notification_status
-      title: autoshift_observer_notification_status
+    autoshift_observer_notification_statuses:
+      id: aws.arc_zonal_shift.autoshift_observer_notification_statuses
+      name: autoshift_observer_notification_statuses
+      title: autoshift_observer_notification_statuses
       methods:
         get_autoshift_observer_notification_status:
           operation:
@@ -1121,10 +1165,10 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/autoshift_observer_notification_status/methods/get_autoshift_observer_notification_status"
+          - $ref: "#/components/x-stackQL-resources/autoshift_observer_notification_statuses/methods/get_autoshift_observer_notification_status"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/autoshift_observer_notification_status/methods/update_autoshift_observer_notification_status"
+          - $ref: "#/components/x-stackQL-resources/autoshift_observer_notification_statuses/methods/update_autoshift_observer_notification_status"
         delete: []
     managed_resources:
       id: aws.arc_zonal_shift.managed_resources

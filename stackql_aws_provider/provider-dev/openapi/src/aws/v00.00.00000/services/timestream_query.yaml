@@ -457,10 +457,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -494,10 +490,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAccountSettings:
     post:
       operationId: UpdateAccountSettings
@@ -1564,14 +1556,10 @@ components:
         UnloadWrittenBytes:
           $ref: "#/components/schemas/Long"
           description: Indicates the size, in bytes, written by the Unload operation.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     QueryComputeRequest:
       description: A request to retrieve or update the compute capacity settings for querying data.
       type: object
@@ -1607,6 +1595,62 @@ components:
           $ref: "#/components/schemas/QueryComputeResponse"
           description: Confirms the updated account settings for querying data in your account.
   x-stackQL-resources:
+    queries:
+      id: aws.timestream_query.queries
+      name: queries
+      title: queries
+      methods:
+        cancel_query:
+          operation:
+            $ref: "#/paths/~1CancelQuery/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        prepare_query:
+          operation:
+            $ref: "#/paths/~1PrepareQuery/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        query:
+          operation:
+            $ref: "#/paths/~1Query/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     scheduled_queries:
       id: aws.timestream_query.scheduled_queries
       name: scheduled_queries
@@ -1799,7 +1843,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1812,7 +1855,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

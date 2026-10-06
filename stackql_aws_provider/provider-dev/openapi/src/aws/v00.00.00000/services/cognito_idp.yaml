@@ -51,10 +51,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AddCustomAttributesResponse"
   /AddUserPoolClientSecret:
     post:
       operationId: AddUserPoolClientSecret
@@ -166,10 +162,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminConfirmSignUpResponse"
   /AdminCreateUser:
     post:
       operationId: AdminCreateUser
@@ -227,6 +219,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AdminCreateUserResponse"
+  /AdminDeleteSoftwareToken:
+    post:
+      operationId: AdminDeleteSoftwareToken
+      description: Deletes a user's registered time-based one-time password (TOTP) multi-factor authentication (MFA) factor, also known as a software token. After this operation, the user can no longer sign in with TOTP MFA, and can register a new TOTP factor with AssociateSoftwareToken. Use this operation when a user loses access to their TOTP-generating device, for example, a lost or reset phone, and needs to register a new one. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AWSCognitoIdentityProviderService.AdminDeleteSoftwareToken
+            default: AWSCognitoIdentityProviderService.AdminDeleteSoftwareToken
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                UserPoolId:
+                  $ref: "#/components/schemas/UserPoolIdType"
+                  description: The ID of the user pool where you want to delete the user's software token.
+                Username:
+                  $ref: "#/components/schemas/UsernameType"
+                  description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
+              required:
+                - UserPoolId
+      responses:
+        "200":
+          description: Success
   /AdminDeleteUser:
     post:
       operationId: AdminDeleteUser
@@ -295,10 +319,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminDeleteUserAttributesResponse"
   /AdminDisableProviderForUser:
     post:
       operationId: AdminDisableProviderForUser
@@ -331,10 +351,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminDisableProviderForUserResponse"
   /AdminDisableUser:
     post:
       operationId: AdminDisableUser
@@ -367,10 +383,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminDisableUserResponse"
   /AdminEnableUser:
     post:
       operationId: AdminEnableUser
@@ -403,10 +415,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminEnableUserResponse"
   /AdminForgetDevice:
     post:
       operationId: AdminForgetDevice
@@ -637,7 +645,7 @@ paths:
                   description: The ID of the user pool where you want to link a federated identity.
                 DestinationUser:
                   $ref: "#/components/schemas/ProviderUserIdentifierType"
-                  description: The existing user in the user pool that you want to assign to the external IdP user account. This user can be a local (Username + Password) Amazon Cognito user pools user or a federated user (for example, a SAML or Facebook user). If the user doesn't exist, Amazon Cognito generates an exception. Amazon Cognito returns this user when the new user (with the linked IdP attribute) signs in. For a native username + password user, the ProviderAttributeValue for the DestinationUser should be the username in the user pool. For a federated user, it should be the provider-specific user_id. The ProviderAttributeName of the DestinationUser is ignored. The ProviderName should be set to Cognito for users in Cognito user pools. All attributes in the DestinationUser profile must be mutable. If you have assigned the user any immutable custom attributes, the operation won't succeed.
+                  description: The existing user in the user pool that you want to assign to the external IdP user account. This user can be a local (Username + Password) Amazon Cognito user pools user or a federated user (for example, a SAML or Facebook user). If the user doesn't exist, Amazon Cognito generates an exception. Amazon Cognito returns this user when the new user (with the linked IdP attribute) signs in. For a native username + password user, the ProviderAttributeValue for the DestinationUser should be the username in the user pool. For a federated user, it should be the provider-specific user_id. The ProviderAttributeName of the DestinationUser is ignored. The ProviderName should be set to Cognito for users in Cognito user pools.
                 SourceUser:
                   $ref: "#/components/schemas/ProviderUserIdentifierType"
                   description: An external IdP account for a user who doesn't exist yet in the user pool. This user must be a federated user (for example, a SAML or Facebook user), not another native user. If the SourceUser is using a federated social IdP, such as Facebook, Google, or Login with Amazon, you must set the ProviderAttributeName to Cognito_Subject. For social IdPs, the ProviderName will be Facebook, Google, or LoginWithAmazon, and Amazon Cognito will automatically parse the Facebook, Google, and Login with Amazon tokens for id, sub, and user_id, respectively. The ProviderAttributeValue for the user must be the same value as the id, sub, or user_id value found in the social IdP token. For OIDC, the ProviderAttributeName can be any mapped value from a claim in the ID token, or that your app retrieves from the userInfo endpoint. For SAML, the ProviderAttributeName can be any mapped value from a claim in the SAML assertion. The following additional considerations apply to SourceUser for OIDC and SAML providers. You must map the claim to a user pool attribute in your IdP configuration, and set the user pool attribute name as the value of ProviderAttributeName in your AdminLinkProviderForUser request. For example, email. When you set ProviderAttributeName to Cognito_Subject, Amazon Cognito will automatically parse the default unique identifier found in the subject from the IdP token.
@@ -648,10 +656,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminLinkProviderForUserResponse"
   /AdminListDevices:
     post:
       operationId: AdminListDevices
@@ -850,10 +854,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminResetUserPasswordResponse"
   /AdminRespondToAuthChallenge:
     post:
       operationId: AdminRespondToAuthChallenge
@@ -954,10 +954,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminSetUserMFAPreferenceResponse"
   /AdminSetUserPassword:
     post:
       operationId: AdminSetUserPassword
@@ -997,10 +993,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminSetUserPasswordResponse"
   /AdminSetUserSettings:
     post:
       operationId: AdminSetUserSettings
@@ -1037,10 +1029,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminSetUserSettingsResponse"
   /AdminUpdateAuthEventFeedback:
     post:
       operationId: AdminUpdateAuthEventFeedback
@@ -1081,10 +1069,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminUpdateAuthEventFeedbackResponse"
   /AdminUpdateDeviceStatus:
     post:
       operationId: AdminUpdateDeviceStatus
@@ -1124,10 +1108,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminUpdateDeviceStatusResponse"
   /AdminUpdateUserAttributes:
     post:
       operationId: AdminUpdateUserAttributes
@@ -1167,10 +1147,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminUpdateUserAttributesResponse"
   /AdminUserGlobalSignOut:
     post:
       operationId: AdminUserGlobalSignOut
@@ -1203,10 +1179,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AdminUserGlobalSignOutResponse"
   /AssociateSoftwareToken:
     post:
       operationId: AssociateSoftwareToken
@@ -1277,10 +1249,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ChangePasswordResponse"
   /CompleteWebAuthnRegistration:
     post:
       operationId: CompleteWebAuthnRegistration
@@ -1314,10 +1282,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CompleteWebAuthnRegistrationResponse"
   /ConfirmDevice:
     post:
       operationId: ConfirmDevice
@@ -1414,10 +1378,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ConfirmForgotPasswordResponse"
   /ConfirmSignUp:
     post:
       operationId: ConfirmSignUp
@@ -2281,10 +2241,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserAttributesResponse"
   /DeleteUserPool:
     post:
       operationId: DeleteUserPool
@@ -2384,10 +2340,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserPoolClientSecretResponse"
   /DeleteUserPoolDomain:
     post:
       operationId: DeleteUserPoolDomain
@@ -2421,10 +2373,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteUserPoolDomainResponse"
   /DeleteUserPoolReplica:
     post:
       operationId: DeleteUserPoolReplica
@@ -2495,10 +2443,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteWebAuthnCredentialResponse"
   /DescribeIdentityProvider:
     post:
       operationId: DescribeIdentityProvider
@@ -2725,6 +2669,47 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DescribeTermsResponse"
+  /DescribeTermsByClient:
+    post:
+      operationId: DescribeTermsByClient
+      description: Returns details for the terms documents that are associated with an app client, identified by the app client ID, user pool ID, and terms name. For more information, see Terms documents. To call DescribeTermsByClient, you must have the cognito-idp:DescribeTermsByClient Identity and Access Management (IAM) permission. This operation additionally validates your permission for cognito-idp:DescribeTerms, the action for . As a result, an IAM policy that denies cognito-idp:DescribeTerms also denies requests to DescribeTermsByClient. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AWSCognitoIdentityProviderService.DescribeTermsByClient
+            default: AWSCognitoIdentityProviderService.DescribeTermsByClient
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClientId:
+                  $ref: "#/components/schemas/ClientIdType"
+                  description: The ID of the app client that the terms documents are associated with.
+                UserPoolId:
+                  $ref: "#/components/schemas/UserPoolIdType"
+                  description: The ID of the user pool that contains the terms documents that you want to describe.
+                TermsName:
+                  $ref: "#/components/schemas/TermsNameType"
+                  description: The name of the terms documents that you want to describe.
+              required:
+                - ClientId
+                - UserPoolId
+                - TermsName
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DescribeTermsByClientResponse"
   /DescribeUserImportJob:
     post:
       operationId: DescribeUserImportJob
@@ -2835,7 +2820,7 @@ paths:
   /DescribeUserPoolDomain:
     post:
       operationId: DescribeUserPoolDomain
-      description: Given a user pool domain name, returns information about the domain configuration. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
+      description: Given a user pool domain name, returns information about the domain configuration. This operation doesn't return results when you query a prefix domain in a secondary Region. Prefix domains are Region-specific and can only be described in the Region where they were created. To describe a prefix domain for a replica user pool, make the request to the primary Region's endpoint. Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you must use IAM credentials to authorize requests, and you must grant yourself the corresponding IAM permission in a policy. Learn more Signing Amazon Web Services API Requests Using the Amazon Cognito user pools API and user pool endpoints
       parameters:
         - name: X-Amz-Target
           in: header
@@ -2979,6 +2964,49 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetCSVHeaderResponse"
+  /GetClientToken:
+    post:
+      operationId: GetClientToken
+      description: Issues an access token for machine-to-machine (M2M) authorization. Your app client provides its client ID and secret, and receives an access token that authorizes requests to your resource servers. GetClientToken provides the same functionality as the OAuth2 client-credentials grant; both authorize an application rather than a user. To use this operation, you must configure the app client with a client secret and enable the ALLOW_CLIENT_TOKEN_AUTH authentication flow. The ALLOW_CLIENT_TOKEN_AUTH flow is mutually exclusive with user authentication flows. It must be the only authentication flow that you configure for the app client. For more information, see Scopes, M2M, and resource servers. Amazon Cognito doesn't evaluate Identity and Access Management (IAM) policies in requests for this API operation. For this operation, you can't use IAM credentials to authorize requests, and you can't grant IAM permissions in policies. For more information about authorization models in Amazon Cognito, see Using the Amazon Cognito user pools API and user pool endpoints.
+      parameters:
+        - name: X-Amz-Target
+          in: header
+          description: Action Header
+          required: false
+          schema:
+            type: string
+            enum:
+              - AWSCognitoIdentityProviderService.GetClientToken
+            default: AWSCognitoIdentityProviderService.GetClientToken
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                ClientId:
+                  $ref: "#/components/schemas/ClientIdType"
+                  description: The ID of the app client that requests the access token. The app client must have a client secret and the ALLOW_CLIENT_TOKEN_AUTH authentication flow.
+                Secret:
+                  $ref: "#/components/schemas/ClientSecretType"
+                  description: An active secret for the app client.
+                Scopes:
+                  $ref: "#/components/schemas/ScopeListType"
+                  description: The custom scopes to authorize in the access token, in the format resource-server-identifier/scope-name. Each scope must belong to a resource server in your user pool. If you don't specify any scopes, Amazon Cognito authorizes the scopes that are configured for the app client.
+                ClientMetadata:
+                  $ref: "#/components/schemas/ClientMetadataType"
+                  description: "A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers. When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a clientMetadata attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won't do the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the ClientMetadata value. Don't send sensitive information in this parameter."
+              required:
+                - ClientId
+                - Secret
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetClientTokenResponse"
   /GetDevice:
     post:
       operationId: GetDevice
@@ -3438,10 +3466,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/GlobalSignOutResponse"
   /InitiateAuth:
     post:
       operationId: InitiateAuth
@@ -4177,10 +4201,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/RevokeTokenResponse"
   /SetLogDeliveryConfiguration:
     post:
       operationId: SetLogDeliveryConfiguration
@@ -4346,10 +4366,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SetUserMFAPreferenceResponse"
   /SetUserPoolMfaConfig:
     post:
       operationId: SetUserPoolMfaConfig
@@ -4431,10 +4447,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SetUserSettingsResponse"
   /SignUp:
     post:
       operationId: SignUp
@@ -4632,10 +4644,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -4669,10 +4677,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateAuthEventFeedback:
     post:
       operationId: UpdateAuthEventFeedback
@@ -4717,10 +4721,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateAuthEventFeedbackResponse"
   /UpdateDeviceStatus:
     post:
       operationId: UpdateDeviceStatus
@@ -4757,10 +4757,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateDeviceStatusResponse"
   /UpdateGroup:
     post:
       operationId: UpdateGroup
@@ -5159,10 +5155,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateUserPoolResponse"
   /UpdateUserPoolClient:
     post:
       operationId: UpdateUserPoolClient
@@ -5429,10 +5421,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/VerifyUserAttributeResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -5550,9 +5538,6 @@ components:
         MaxLength:
           $ref: "#/components/schemas/StringType"
           description: The maximum length of a string attribute value. Must be a number less than or equal to 2^1023, represented as a string with a length of 131072 characters or fewer.
-    AddCustomAttributesResponse:
-      description: Represents the response from the server for the request to add custom attributes.
-      type: object
     ClientIdType:
       type: string
       minLength: 1
@@ -5603,9 +5588,6 @@ components:
     ClientMetadataType:
       type: object
       properties: {}
-    AdminConfirmSignUpResponse:
-      description: Represents the response from the server for the request to confirm registration.
-      type: object
     AttributeListType:
       type: array
       items:
@@ -5711,9 +5693,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/AttributeNameType"
-    AdminDeleteUserAttributesResponse:
-      description: Represents the response received from the server for a request to delete user attributes.
-      type: object
     ProviderUserIdentifierType:
       description: The characteristics of a source or destination user for linking a federated user profile to a local user profile.
       type: object
@@ -5732,14 +5711,6 @@ components:
       minLength: 1
       maxLength: 32
       pattern: "[\\p{L}\\p{M}\\p{S}\\p{N}\\p{P}\\p{Z}]+"
-    AdminDisableProviderForUserResponse:
-      type: object
-    AdminDisableUserResponse:
-      description: Represents the response received from the server to disable the user as an administrator.
-      type: object
-    AdminEnableUserResponse:
-      description: Represents the response from the server for the request to enable a user as an administrator.
-      type: object
     DeviceKeyType:
       type: string
       minLength: 1
@@ -5982,8 +5953,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/ChallengeNameType"
-    AdminLinkProviderForUserResponse:
-      type: object
     QueryLimitType:
       type: integer
       minimum: 0
@@ -6206,9 +6175,6 @@ components:
       enum:
         - Valid
         - Invalid
-    AdminResetUserPasswordResponse:
-      description: Represents the response from the server to reset a user password as an administrator.
-      type: object
     ChallengeResponsesType:
       type: object
       properties: {}
@@ -6266,34 +6232,16 @@ components:
         Enabled:
           $ref: "#/components/schemas/BooleanType"
           description: Specifies whether passkey MFA is activated for a user. When activated, the user's passkey authentication requires user verification, and passkey sign-in is available when MFA is required. The user must also have at least one other MFA method such as SMS, TOTP, or email activated to prevent account lockout.
-    AdminSetUserMFAPreferenceResponse:
-      type: object
-    AdminSetUserPasswordResponse:
-      type: object
-    AdminSetUserSettingsResponse:
-      description: Represents the response from the server to set user settings as an administrator.
-      type: object
     EventIdType:
       type: string
       minLength: 1
       maxLength: 50
       pattern: "[\\w+-]+"
-    AdminUpdateAuthEventFeedbackResponse:
-      type: object
     DeviceRememberedStatusType:
       type: string
       enum:
         - remembered
         - not_remembered
-    AdminUpdateDeviceStatusResponse:
-      description: The status response to the request to update the device, as an administrator.
-      type: object
-    AdminUpdateUserAttributesResponse:
-      description: Represents the response from the server for the request to update user attributes as an administrator.
-      type: object
-    AdminUserGlobalSignOutResponse:
-      description: The global sign-out response, as an administrator.
-      type: object
     AssociateSoftwareTokenResponse:
       type: object
       properties:
@@ -6307,12 +6255,7 @@ components:
       type: string
       minLength: 16
       pattern: "[A-Za-z0-9]+"
-    ChangePasswordResponse:
-      description: The response from the server to the change password request.
-      type: object
     Document:
-      type: object
-    CompleteWebAuthnRegistrationResponse:
       type: object
     DeviceSecretVerifierConfigType:
       description: A Secure Remote Password (SRP) value that your application generates when you register a user's device. For more information, see Getting a device key.
@@ -6355,9 +6298,6 @@ components:
         EncodedData:
           $ref: "#/components/schemas/StringType"
           description: Encoded device-fingerprint details that your app collected with the Amazon Cognito context data collection library. For more information, see Adding user device and session data to API requests.
-    ConfirmForgotPasswordResponse:
-      description: The response from the server that results from a user's request to retrieve a forgotten password.
-      type: object
     ConfirmSignUpResponse:
       description: Represents the response from the server for the registration confirmation.
       type: object
@@ -7757,22 +7697,12 @@ components:
       enum:
         - PRIMARY
         - SECONDARY
-    DeleteUserAttributesResponse:
-      description: Represents the response from the server to delete user attributes.
-      type: object
-    DeleteUserPoolClientSecretResponse:
-      description: The response from deleting a client secret.
-      type: object
-    DeleteUserPoolDomainResponse:
-      type: object
     DeleteUserPoolReplicaResponse:
       type: object
       properties:
         UserPoolReplica:
           $ref: "#/components/schemas/UserPoolReplicaType"
           description: Information about the deleted user pool replica.
-    DeleteWebAuthnCredentialResponse:
-      type: object
     DescribeIdentityProviderResponse:
       type: object
       properties:
@@ -7987,6 +7917,12 @@ components:
         Terms:
           $ref: "#/components/schemas/TermsType"
           description: A summary of the requested terms documents. Includes a unique identifier for later changes to the terms documents.
+    DescribeTermsByClientResponse:
+      type: object
+      properties:
+        Terms:
+          $ref: "#/components/schemas/TermsType"
+          description: A summary of the requested terms documents. Includes a unique identifier for later changes to the terms documents.
     DescribeUserImportJobResponse:
       description: Represents the response from the server to the request to describe the user import job.
       type: object
@@ -8103,6 +8039,25 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/StringType"
+    GetClientTokenResponse:
+      type: object
+      properties:
+        ClientAuthenticationResult:
+          $ref: "#/components/schemas/ClientAuthenticationResultType"
+          description: The access token that Amazon Cognito issues for the app client, and its metadata.
+    ClientAuthenticationResultType:
+      description: The access token and its metadata from a machine-to-machine (M2M) client credentials grant.
+      type: object
+      properties:
+        AccessToken:
+          $ref: "#/components/schemas/TokenModelType"
+          description: The access token for the requested app client. Present this token to a resource server to authorize a request, using the scopes granted in the token.
+        ExpiresIn:
+          $ref: "#/components/schemas/IntegerType"
+          description: The number of seconds until the access token expires.
+        TokenType:
+          $ref: "#/components/schemas/StringType"
+          description: The type of the token. For example, Bearer.
     GetDeviceResponse:
       description: Gets the device response.
       type: object
@@ -8430,9 +8385,6 @@ components:
       enum:
         - SINGLE_FACTOR
         - MULTI_FACTOR_WITH_USER_VERIFICATION
-    GlobalSignOutResponse:
-      description: The response to the request to sign out all devices.
-      type: object
     InitiateAuthResponse:
       description: Initiates the authentication response.
       type: object
@@ -8810,8 +8762,6 @@ components:
         AuthenticationResult:
           $ref: "#/components/schemas/AuthenticationResultType"
           description: The outcome of a successful authentication process. After your application has passed all challenges, Amazon Cognito returns an AuthenticationResult with the JSON web tokens (JWTs) that indicate successful sign-in.
-    RevokeTokenResponse:
-      type: object
     SetLogDeliveryConfigurationResponse:
       type: object
       properties:
@@ -8839,8 +8789,6 @@ components:
           description: Information about the hosted UI branding that you applied.
       required:
         - UICustomization
-    SetUserMFAPreferenceResponse:
-      type: object
     SetUserPoolMfaConfigResponse:
       type: object
       properties:
@@ -8859,9 +8807,6 @@ components:
         WebAuthnConfiguration:
           $ref: "#/components/schemas/WebAuthnConfigurationType"
           description: The configuration of your user pool for passkey, or WebAuthn, sign-in with authenticators such as biometric and security-key devices. Includes relying-party configuration and settings for user-verification requirements.
-    SetUserSettingsResponse:
-      description: The response from the server for a set user settings request.
-      type: object
     SignUpResponse:
       description: The response from the server for a registration request.
       type: object
@@ -8903,8 +8848,6 @@ components:
         UserImportJob:
           $ref: "#/components/schemas/UserImportJobType"
           description: The details of the user import job. Includes logging destination, status, and the Amazon S3 pre-signed URL for CSV upload.
-    TagResourceResponse:
-      type: object
     UserPoolTagsListType:
       type: array
       items:
@@ -8913,13 +8856,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceResponse:
-      type: object
-    UpdateAuthEventFeedbackResponse:
-      type: object
-    UpdateDeviceStatusResponse:
-      description: The response to the request to update the device status.
-      type: object
     UpdateGroupResponse:
       type: object
       properties:
@@ -8973,9 +8909,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/CodeDeliveryDetailsType"
-    UpdateUserPoolResponse:
-      description: Represents the response from the server when you make a request to update the user pool.
-      type: object
     UpdateUserPoolClientResponse:
       description: Represents the response from the server to the request to update the user pool client.
       type: object
@@ -9026,9 +8959,6 @@ components:
       enum:
         - SUCCESS
         - ERROR
-    VerifyUserAttributeResponse:
-      description: A container representing the response from the server from the request to verify user attributes.
-      type: object
   x-stackQL-resources:
     user_pools:
       id: aws.cognito_idp.user_pools
@@ -9040,7 +8970,6 @@ components:
             $ref: "#/paths/~1AddCustomAttributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9065,7 +8994,6 @@ components:
             $ref: "#/paths/~1AdminConfirmSignUp/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9079,6 +9007,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_delete_software_token:
+          operation:
+            $ref: "#/paths/~1AdminDeleteSoftwareToken/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9103,7 +9043,6 @@ components:
             $ref: "#/paths/~1AdminDeleteUserAttributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9116,7 +9055,6 @@ components:
             $ref: "#/paths/~1AdminDisableProviderForUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9129,7 +9067,6 @@ components:
             $ref: "#/paths/~1AdminDisableUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9142,7 +9079,6 @@ components:
             $ref: "#/paths/~1AdminEnableUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9206,7 +9142,6 @@ components:
             $ref: "#/paths/~1AdminLinkProviderForUser/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9271,7 +9206,6 @@ components:
             $ref: "#/paths/~1AdminResetUserPassword/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9297,7 +9231,6 @@ components:
             $ref: "#/paths/~1AdminSetUserMFAPreference/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9310,7 +9243,6 @@ components:
             $ref: "#/paths/~1AdminSetUserPassword/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9323,7 +9255,6 @@ components:
             $ref: "#/paths/~1AdminSetUserSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9336,7 +9267,6 @@ components:
             $ref: "#/paths/~1AdminUpdateAuthEventFeedback/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9349,7 +9279,6 @@ components:
             $ref: "#/paths/~1AdminUpdateDeviceStatus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9362,7 +9291,6 @@ components:
             $ref: "#/paths/~1AdminUpdateUserAttributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9375,7 +9303,6 @@ components:
             $ref: "#/paths/~1AdminUserGlobalSignOut/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9448,7 +9375,6 @@ components:
             $ref: "#/paths/~1UpdateAuthEventFeedback/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9461,7 +9387,6 @@ components:
             $ref: "#/paths/~1UpdateUserPool/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9504,7 +9429,6 @@ components:
             $ref: "#/paths/~1DeleteUserPoolClientSecret/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9588,6 +9512,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        confirm_device:
+          operation:
+            $ref: "#/paths/~1ConfirmDevice/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        forget_device:
+          operation:
+            $ref: "#/paths/~1ForgetDevice/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_device:
           operation:
             $ref: "#/paths/~1GetDevice/post"
@@ -9620,7 +9569,6 @@ components:
             $ref: "#/paths/~1UpdateDeviceStatus/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9654,11 +9602,152 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        verify_software_token:
+          operation:
+            $ref: "#/paths/~1VerifySoftwareToken/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select: []
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/software_tokens/methods/associate_software_token"
+        delete: []
+    passwords:
+      id: aws.cognito_idp.passwords
+      name: passwords
+      title: passwords
+      methods:
+        change_password:
+          operation:
+            $ref: "#/paths/~1ChangePassword/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    web_authn_registrations:
+      id: aws.cognito_idp.web_authn_registrations
+      name: web_authn_registrations
+      title: web_authn_registrations
+      methods:
+        complete_web_authn_registration:
+          operation:
+            $ref: "#/paths/~1CompleteWebAuthnRegistration/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_web_authn_registration:
+          operation:
+            $ref: "#/paths/~1StartWebAuthnRegistration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    forgot_passwords:
+      id: aws.cognito_idp.forgot_passwords
+      name: forgot_passwords
+      title: forgot_passwords
+      methods:
+        confirm_forgot_password:
+          operation:
+            $ref: "#/paths/~1ConfirmForgotPassword/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        forgot_password:
+          operation:
+            $ref: "#/paths/~1ForgotPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    sign_ups:
+      id: aws.cognito_idp.sign_ups
+      name: sign_ups
+      title: sign_ups
+      methods:
+        confirm_sign_up:
+          operation:
+            $ref: "#/paths/~1ConfirmSignUp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        sign_up:
+          operation:
+            $ref: "#/paths/~1SignUp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []
     groups:
       id: aws.cognito_idp.groups
@@ -9792,6 +9881,20 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_identity_provider_by_identifier:
+          operation:
+            $ref: "#/paths/~1GetIdentityProviderByIdentifier/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.IdentityProvider
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_identity_providers:
           operation:
             $ref: "#/paths/~1ListIdentityProviders/post"
@@ -9829,6 +9932,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/describe_identity_provider"
+          - $ref: "#/components/x-stackQL-resources/identity_providers/methods/get_identity_provider_by_identifier"
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/list_identity_providers"
         insert:
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/create_identity_provider"
@@ -9880,6 +9984,20 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_managed_login_branding_by_client:
+          operation:
+            $ref: "#/paths/~1DescribeManagedLoginBrandingByClient/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ManagedLoginBranding
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_managed_login_branding:
           operation:
             $ref: "#/paths/~1UpdateManagedLoginBranding/post"
@@ -9896,6 +10014,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_login_brandings/methods/describe_managed_login_branding"
+          - $ref: "#/components/x-stackQL-resources/managed_login_brandings/methods/describe_managed_login_branding_by_client"
         insert:
           - $ref: "#/components/x-stackQL-resources/managed_login_brandings/methods/create_managed_login_branding"
         update:
@@ -10033,6 +10152,20 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_terms_by_client:
+          operation:
+            $ref: "#/paths/~1DescribeTermsByClient/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Terms
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_terms:
           operation:
             $ref: "#/paths/~1ListTerms/post"
@@ -10062,6 +10195,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/terms/methods/describe_terms"
+          - $ref: "#/components/x-stackQL-resources/terms/methods/describe_terms_by_client"
           - $ref: "#/components/x-stackQL-resources/terms/methods/list_terms"
         insert:
           - $ref: "#/components/x-stackQL-resources/terms/methods/create_terms"
@@ -10233,7 +10367,6 @@ components:
             $ref: "#/paths/~1DeleteUserPoolDomain/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10365,7 +10498,6 @@ components:
             $ref: "#/paths/~1DeleteUserAttributes/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10412,7 +10544,6 @@ components:
             $ref: "#/paths/~1SetUserMFAPreference/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10425,7 +10556,6 @@ components:
             $ref: "#/paths/~1SetUserSettings/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10477,7 +10607,6 @@ components:
             $ref: "#/paths/~1VerifyUserAttribute/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10507,7 +10636,6 @@ components:
             $ref: "#/paths/~1DeleteWebAuthnCredential/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10535,31 +10663,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/web_authn_credentials/methods/delete_web_authn_credential"
-    managed_login_branding_by_clients:
-      id: aws.cognito_idp.managed_login_branding_by_clients
-      name: managed_login_branding_by_clients
-      title: managed_login_branding_by_clients
-      methods:
-        describe_managed_login_branding_by_client:
-          operation:
-            $ref: "#/paths/~1DescribeManagedLoginBrandingByClient/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ManagedLoginBranding
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/managed_login_branding_by_clients/methods/describe_managed_login_branding_by_client"
-        insert: []
-        update: []
-        delete: []
     risk_configurations:
       id: aws.cognito_idp.risk_configurations
       name: risk_configurations
@@ -10623,18 +10726,18 @@ components:
         insert: []
         update: []
         delete: []
-    identity_provider_by_identifiers:
-      id: aws.cognito_idp.identity_provider_by_identifiers
-      name: identity_provider_by_identifiers
-      title: identity_provider_by_identifiers
+    client_tokens:
+      id: aws.cognito_idp.client_tokens
+      name: client_tokens
+      title: client_tokens
       methods:
-        get_identity_provider_by_identifier:
+        get_client_token:
           operation:
-            $ref: "#/paths/~1GetIdentityProviderByIdentifier/post"
+            $ref: "#/paths/~1GetClientToken/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.IdentityProvider
+            objectKey: $.ClientAuthenticationResult
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10644,7 +10747,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/identity_provider_by_identifiers/methods/get_identity_provider_by_identifier"
+          - $ref: "#/components/x-stackQL-resources/client_tokens/methods/get_client_token"
         insert: []
         update: []
         delete: []
@@ -10877,6 +10980,51 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/user_pool_mfa_configs/methods/set_user_pool_mfa_config"
         delete: []
+    sign_outs:
+      id: aws.cognito_idp.sign_outs
+      name: sign_outs
+      title: sign_outs
+      methods:
+        global_sign_out:
+          operation:
+            $ref: "#/paths/~1GlobalSignOut/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    auths:
+      id: aws.cognito_idp.auths
+      name: auths
+      title: auths
+      methods:
+        initiate_auth:
+          operation:
+            $ref: "#/paths/~1InitiateAuth/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     tags:
       id: aws.cognito_idp.tags
       name: tags
@@ -10900,7 +11048,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10913,7 +11060,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10961,6 +11107,52 @@ components:
         insert: []
         update: []
         delete: []
+    confirmation_codes:
+      id: aws.cognito_idp.confirmation_codes
+      name: confirmation_codes
+      title: confirmation_codes
+      methods:
+        resend_confirmation_code:
+          operation:
+            $ref: "#/paths/~1ResendConfirmationCode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    auth_challenges:
+      id: aws.cognito_idp.auth_challenges
+      name: auth_challenges
+      title: auth_challenges
+      methods:
+        respond_to_auth_challenge:
+          operation:
+            $ref: "#/paths/~1RespondToAuthChallenge/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
     tokens:
       id: aws.cognito_idp.tokens
       name: tokens
@@ -10971,7 +11163,6 @@ components:
             $ref: "#/paths/~1RevokeToken/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

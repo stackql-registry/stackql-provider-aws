@@ -3766,7 +3766,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PhoneNumberValidateResponse'
-      x-stackql-resource: phone_number_validate
+      x-stackql-resource: number_validates
       x-stackql-method: phone_number_validate
       x-stackql-verb: EXEC
   /v1/apps/{application-id}/events:
@@ -3909,7 +3909,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendOTPMessageResponse'
-      x-stackql-resource: otp_message
+      x-stackql-resource: otp_messages
       x-stackql-method: send_otp_message
       x-stackql-verb: EXEC
   /v1/apps/{application-id}/users-messages:
@@ -4090,7 +4090,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyOTPMessageResponse'
-      x-stackql-resource: otp_message
+      x-stackql-resource: otp_messages
       x-stackql-method: verify_otp_message
       x-stackql-verb: EXEC
 components:

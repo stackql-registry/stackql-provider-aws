@@ -115,6 +115,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-UserName"><code>UserName</code></a></td>
     <td>Deletes a signing certificate associated with the specified IAM user. If you do not specify a user name, IAM determines the user name implicitly based on the Amazon Web Services access key ID signing the request. This operation works for access keys under the Amazon Web Services account. Consequently, you can use this operation to manage Amazon Web Services account root user credentials even if the Amazon Web Services account has no associated IAM users.</td>
 </tr>
+<tr>
+    <td><a href="#upload_signing_certificate"><CopyableCode code="upload_signing_certificate" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-CertificateBody"><code>CertificateBody</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-UserName"><code>UserName</code></a></td>
+    <td>Uploads an X.509 signing certificate and associates it with the specified IAM user. Some Amazon Web Services services require you to use certificates to validate requests that are signed with a corresponding private key. When you upload the certificate, its default status is Active. For information about when you would use an X.509 signing certificate, see Managing server certificates in IAM in the IAM User Guide. If the UserName is not specified, the IAM user name is determined implicitly based on the Amazon Web Services access key ID used to sign the request. This operation works for access keys under the Amazon Web Services account. Consequently, you can use this operation to manage Amazon Web Services account root user credentials even if the Amazon Web Services account has no associated users. Because the body of an X.509 certificate can be large, you should use POST rather than GET when calling UploadSigningCertificate. For information about setting up signatures and authorization through the API, see Signing Amazon Web Services API requests in the Amazon Web Services General Reference. For general information about using the Query API with IAM, see Making query requests in the IAM User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -131,6 +138,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-CertificateBody">
+    <td><CopyableCode code="CertificateBody" /></td>
+    <td><code>string</code></td>
+    <td>The contents of the signing certificate. The regex pattern used to validate this parameter is a string of characters consisting of the following: Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF) The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)</td>
+</tr>
 <tr id="parameter-CertificateId">
     <td><CopyableCode code="CertificateId" /></td>
     <td><code>string</code></td>
@@ -159,7 +171,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-UserName">
     <td><CopyableCode code="UserName" /></td>
     <td><code>string</code></td>
-    <td>The name of the user the signing certificate belongs to. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
+    <td>The name of the user the signing certificate is for. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
 </tr>
 </tbody>
 </table>
@@ -237,6 +249,29 @@ DELETE FROM aws.iam.signing_certificates
 WHERE CertificateId = '{{ CertificateId }}' --required
 AND region = '{{ region }}' --required
 AND UserName = '{{ UserName }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="upload_signing_certificate"
+    values={[
+        { label: 'upload_signing_certificate', value: 'upload_signing_certificate' }
+    ]}
+>
+<TabItem value="upload_signing_certificate">
+
+Uploads an X.509 signing certificate and associates it with the specified IAM user. Some Amazon Web Services services require you to use certificates to validate requests that are signed with a corresponding private key. When you upload the certificate, its default status is Active. For information about when you would use an X.509 signing certificate, see Managing server certificates in IAM in the IAM User Guide. If the UserName is not specified, the IAM user name is determined implicitly based on the Amazon Web Services access key ID used to sign the request. This operation works for access keys under the Amazon Web Services account. Consequently, you can use this operation to manage Amazon Web Services account root user credentials even if the Amazon Web Services account has no associated users. Because the body of an X.509 certificate can be large, you should use POST rather than GET when calling UploadSigningCertificate. For information about setting up signatures and authorization through the API, see Signing Amazon Web Services API requests in the Amazon Web Services General Reference. For general information about using the Query API with IAM, see Making query requests in the IAM User Guide.
+
+```sql
+EXEC aws.iam.signing_certificates.upload_signing_certificate 
+@CertificateBody='{{ CertificateBody }}' --required, 
+@region='{{ region }}' --required, 
+@UserName='{{ UserName }}'
 ;
 ```
 </TabItem>

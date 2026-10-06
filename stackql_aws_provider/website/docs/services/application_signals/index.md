@@ -18,7 +18,7 @@ application_signals service documentation.
 
 :::info[Service Summary]
 
-total resources: __15__  
+total resources: __17__  
 
 :::
 
@@ -26,15 +26,17 @@ total resources: __15__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/application_signals/audit_findings/">audit_findings</a><br />
+<a href="/services/application_signals/discoveries/">discoveries</a><br />
 <a href="/services/application_signals/entity_events/">entity_events</a><br />
+<a href="/services/application_signals/exclusion_windows/">exclusion_windows</a><br />
 <a href="/services/application_signals/grouping_attribute_definitions/">grouping_attribute_definitions</a><br />
 <a href="/services/application_signals/grouping_configurations/">grouping_configurations</a><br />
-<a href="/services/application_signals/instrumentation_configuration_status/">instrumentation_configuration_status</a><br />
+<a href="/services/application_signals/instrumentation_configuration_statuses/">instrumentation_configuration_statuses</a><br />
 <a href="/services/application_signals/instrumentation_configurations/">instrumentation_configurations</a><br />
-<a href="/services/application_signals/service_dependencies/">service_dependencies</a><br />
-<a href="/services/application_signals/service_dependents/">service_dependents</a>
+<a href="/services/application_signals/service_dependencies/">service_dependencies</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/application_signals/service_dependents/">service_dependents</a><br />
 <a href="/services/application_signals/service_level_objective_budget_reports/">service_level_objective_budget_reports</a><br />
 <a href="/services/application_signals/service_level_objective_exclusion_windows/">service_level_objective_exclusion_windows</a><br />
 <a href="/services/application_signals/service_level_objectives/">service_level_objectives</a><br />

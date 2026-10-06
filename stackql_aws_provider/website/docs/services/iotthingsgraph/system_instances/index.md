@@ -192,6 +192,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes a system instance. Only system instances that have never been deployed, or that have been undeployed can be deleted. Users can create a new system instance that has the same ID as a deleted system instance.</td>
 </tr>
+<tr>
+    <td><a href="#deploy_system_instance"><CopyableCode code="deploy_system_instance" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Greengrass and Cloud Deployments Deploys the system instance to the target specified in CreateSystemInstance. Greengrass Deployments If the system or any workflows and entities have been updated before this action is called, then the deployment will create a new Amazon Simple Storage Service resource file and then deploy it. Since this action creates a Greengrass deployment on the caller's behalf, the calling identity must have write permissions to the specified Greengrass group. Otherwise, the call will fail with an authorization error. For information about the artifacts that get added to your Greengrass core device when you use this API, see AWS IoT Things Graph and AWS IoT Greengrass.</td>
+</tr>
+<tr>
+    <td><a href="#undeploy_system_instance"><CopyableCode code="undeploy_system_instance" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Removes a system instance from its target (Cloud or Greengrass).</td>
+</tr>
 </tbody>
 </table>
 
@@ -368,6 +382,46 @@ Deletes a system instance. Only system instances that have never been deployed, 
 ```sql
 DELETE FROM aws.iotthingsgraph.system_instances
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="deploy_system_instance"
+    values={[
+        { label: 'deploy_system_instance', value: 'deploy_system_instance' },
+        { label: 'undeploy_system_instance', value: 'undeploy_system_instance' }
+    ]}
+>
+<TabItem value="deploy_system_instance">
+
+Greengrass and Cloud Deployments Deploys the system instance to the target specified in CreateSystemInstance. Greengrass Deployments If the system or any workflows and entities have been updated before this action is called, then the deployment will create a new Amazon Simple Storage Service resource file and then deploy it. Since this action creates a Greengrass deployment on the caller's behalf, the calling identity must have write permissions to the specified Greengrass group. Otherwise, the call will fail with an authorization error. For information about the artifacts that get added to your Greengrass core device when you use this API, see AWS IoT Things Graph and AWS IoT Greengrass.
+
+```sql
+EXEC aws.iotthingsgraph.system_instances.deploy_system_instance 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="undeploy_system_instance">
+
+Removes a system instance from its target (Cloud or Greengrass).
+
+```sql
+EXEC aws.iotthingsgraph.system_instances.undeploy_system_instance 
+@region='{{ region }}' --required 
+@@json=
+'{
+"id": "{{ id }}"
+}'
 ;
 ```
 </TabItem>

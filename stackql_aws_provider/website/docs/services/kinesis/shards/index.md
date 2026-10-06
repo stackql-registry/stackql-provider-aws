@@ -116,6 +116,13 @@ The following methods are available for this resource:
     <td>Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data. This API is only supported for the data streams with the provisioned capacity mode. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps. For example, if you have two shards, one with a hash key range of 276...381 and the other with a hash key range of 382...454, then you could merge these two shards into a single shard that would have a hash key range of 276...454. After the merge, the single child shard receives data for all hash key values covered by the two parent shards. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. MergeShards is called when there is a need to reduce the overall capacity of a stream because of excess capacity that is not being used. You must specify the shard to be merged and the adjacent shard for a stream. For more information about merging shards, see Merge Two Shards in the Amazon Kinesis Data Streams Developer Guide. If the stream is in the ACTIVE state, you can call MergeShards. If a stream is in the CREATING, UPDATING, or DELETING state, MergeShards returns a ResourceInUseException. If the specified stream does not exist, MergeShards returns a ResourceNotFoundException. You can use DescribeStreamSummary to check the state of the stream, which is returned in StreamStatus. MergeShards is an asynchronous operation. Upon receiving a MergeShards request, Amazon Kinesis Data Streams immediately returns a response and sets the StreamStatus to UPDATING. After the operation is completed, Kinesis Data Streams sets the StreamStatus to ACTIVE. Read and write operations continue to work while the stream is in the UPDATING state. You use DescribeStreamSummary and the ListShards APIs to determine the shard IDs that are specified in the MergeShards request. If you try to operate on too many streams in parallel using CreateStream, DeleteStream, MergeShards, or SplitShard, you receive a LimitExceededException. MergeShards has a limit of five transactions per second per account.</td>
 </tr>
 <tr>
+    <td><a href="#split_shard"><CopyableCode code="split_shard" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ShardToSplit"><code>ShardToSplit</code></a>, <a href="#parameter-NewStartingHashKey"><code>NewStartingHashKey</code></a></td>
+    <td></td>
+    <td>Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. SplitShard is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested. This API is only supported for the data streams with the provisioned capacity mode. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. You can also use SplitShard when a shard appears to be approaching its maximum utilization; for example, the producers sending data into the specific shard are suddenly sending more than previously anticipated. You can also call SplitShard to increase stream capacity, so that more Kinesis Data Streams applications can simultaneously read data from the stream for real-time processing. You must specify the shard to be split and the new hash key, which is the position in the shard where the shard gets split in two. In many cases, the new hash key might be the average of the beginning and ending hash key, but it can be any hash key value in the range being mapped into the shard. For more information, see Split a Shard in the Amazon Kinesis Data Streams Developer Guide. You can use DescribeStreamSummary and the ListShards APIs to determine the shard ID and hash key values for the ShardToSplit and NewStartingHashKey parameters that are specified in the SplitShard request. SplitShard is an asynchronous operation. Upon receiving a SplitShard request, Kinesis Data Streams immediately returns a response and sets the stream status to UPDATING. After the operation is completed, Kinesis Data Streams sets the stream status to ACTIVE. Read and write operations continue to work while the stream is in the UPDATING state. You can use DescribeStreamSummary to check the status of the stream, which is returned in StreamStatus. If the stream is in the ACTIVE state, you can call SplitShard. If the specified stream does not exist, DescribeStreamSummary returns a ResourceNotFoundException. If you try to create more shards than are authorized for your account, you receive a LimitExceededException. For the default shard limit for an Amazon Web Services account, see Kinesis Data Streams Limits in the Amazon Kinesis Data Streams Developer Guide. To increase this limit, contact Amazon Web Services Support. If you try to operate on too many streams simultaneously using CreateStream, DeleteStream, MergeShards, and/or SplitShard, you receive a LimitExceededException. SplitShard has a limit of five transactions per second per account.</td>
+</tr>
+<tr>
     <td><a href="#subscribe_to_shard"><CopyableCode code="subscribe_to_shard" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ConsumerARN"><code>ConsumerARN</code></a>, <a href="#parameter-ShardId"><code>ShardId</code></a>, <a href="#parameter-StartingPosition"><code>StartingPosition</code></a></td>
@@ -213,6 +220,7 @@ target_shard_count;
     defaultValue="merge_shards"
     values={[
         { label: 'merge_shards', value: 'merge_shards' },
+        { label: 'split_shard', value: 'split_shard' },
         { label: 'subscribe_to_shard', value: 'subscribe_to_shard' }
     ]}
 >
@@ -234,6 +242,24 @@ EXEC aws.kinesis.shards.merge_shards
 ;
 ```
 </TabItem>
+<TabItem value="split_shard">
+
+Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data. SplitShard is called when there is a need to increase the overall capacity of a stream because of an expected increase in the volume of data records being ingested. This API is only supported for the data streams with the provisioned capacity mode. When invoking this API, you must use either the StreamARN or the StreamName parameter, or both. It is recommended that you use the StreamARN input parameter when you invoke this API. You can also use SplitShard when a shard appears to be approaching its maximum utilization; for example, the producers sending data into the specific shard are suddenly sending more than previously anticipated. You can also call SplitShard to increase stream capacity, so that more Kinesis Data Streams applications can simultaneously read data from the stream for real-time processing. You must specify the shard to be split and the new hash key, which is the position in the shard where the shard gets split in two. In many cases, the new hash key might be the average of the beginning and ending hash key, but it can be any hash key value in the range being mapped into the shard. For more information, see Split a Shard in the Amazon Kinesis Data Streams Developer Guide. You can use DescribeStreamSummary and the ListShards APIs to determine the shard ID and hash key values for the ShardToSplit and NewStartingHashKey parameters that are specified in the SplitShard request. SplitShard is an asynchronous operation. Upon receiving a SplitShard request, Kinesis Data Streams immediately returns a response and sets the stream status to UPDATING. After the operation is completed, Kinesis Data Streams sets the stream status to ACTIVE. Read and write operations continue to work while the stream is in the UPDATING state. You can use DescribeStreamSummary to check the status of the stream, which is returned in StreamStatus. If the stream is in the ACTIVE state, you can call SplitShard. If the specified stream does not exist, DescribeStreamSummary returns a ResourceNotFoundException. If you try to create more shards than are authorized for your account, you receive a LimitExceededException. For the default shard limit for an Amazon Web Services account, see Kinesis Data Streams Limits in the Amazon Kinesis Data Streams Developer Guide. To increase this limit, contact Amazon Web Services Support. If you try to operate on too many streams simultaneously using CreateStream, DeleteStream, MergeShards, and/or SplitShard, you receive a LimitExceededException. SplitShard has a limit of five transactions per second per account.
+
+```sql
+EXEC aws.kinesis.shards.split_shard 
+@region='{{ region }}' --required 
+@@json=
+'{
+"StreamName": "{{ StreamName }}", 
+"ShardToSplit": "{{ ShardToSplit }}", 
+"NewStartingHashKey": "{{ NewStartingHashKey }}", 
+"StreamARN": "{{ StreamARN }}", 
+"StreamId": "{{ StreamId }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="subscribe_to_shard">
 
 This operation establishes an HTTP/2 connection between the consumer you specify in the ConsumerARN parameter and the shard you specify in the ShardId parameter. After the connection is successfully established, Kinesis Data Streams pushes records from the shard to the consumer over this connection. Before you call this operation, call RegisterStreamConsumer to register the consumer with Kinesis Data Streams. When the SubscribeToShard call succeeds, your consumer starts receiving events of type SubscribeToShardEvent over the HTTP/2 connection for up to 5 minutes, after which time you need to call SubscribeToShard again to renew the subscription if you want to continue to receive records. You can make one call to SubscribeToShard per second per registered consumer per shard. For example, if you have a 4000 shard stream and two registered stream consumers, you can make one SubscribeToShard request per second for each combination of shard and registered consumer, allowing you to subscribe both consumers to all 4000 shards in one second. If you call SubscribeToShard again with the same ConsumerARN and ShardId within 5 seconds of a successful call, you'll get a ResourceInUseException. If you call SubscribeToShard 5 seconds or more after a successful call, the second call takes over the subscription and the previous connection expires or fails with a ResourceInUseException. For an example of how to use this operation, see Enhanced Fan-Out Using the Kinesis Data Streams API.
@@ -246,7 +272,8 @@ EXEC aws.kinesis.shards.subscribe_to_shard
 "ConsumerARN": "{{ ConsumerARN }}", 
 "StreamId": "{{ StreamId }}", 
 "ShardId": "{{ ShardId }}", 
-"StartingPosition": "{{ StartingPosition }}"
+"StartingPosition": "{{ StartingPosition }}", 
+"DryRun": {{ DryRun }}
 }'
 ;
 ```

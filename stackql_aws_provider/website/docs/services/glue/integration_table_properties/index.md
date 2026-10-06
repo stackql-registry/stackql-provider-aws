@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_integration_table_properties"
     values={[
-        { label: 'get_integration_table_properties', value: 'get_integration_table_properties' }
+        { label: 'get_integration_table_properties', value: 'get_integration_table_properties' },
+        { label: 'list_integration_table_properties', value: 'list_integration_table_properties' }
     ]}
 >
 <TabItem value="get_integration_table_properties">
@@ -72,6 +73,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_integration_table_properties">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="integration_table_properties_list" /></td>
+    <td><code>array</code></td>
+    <td>A list of integration table properties meeting the filter criteria.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="marker" /></td>
+    <td><code>string</code></td>
+    <td>The pagination token for the next page. Returns null if there are no more results.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -95,6 +120,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>This API is used to retrieve optional override properties for the tables that need to be replicated. These properties can include properties for filtering and partition for source and target tables.</td>
+</tr>
+<tr>
+    <td><a href="#list_integration_table_properties"><CopyableCode code="list_integration_table_properties" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the integration table properties in your account. This operation supports filtering and pagination.</td>
 </tr>
 <tr>
     <td><a href="#create_integration_table_properties"><CopyableCode code="create_integration_table_properties" /></a></td>
@@ -146,7 +178,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_integration_table_properties"
     values={[
-        { label: 'get_integration_table_properties', value: 'get_integration_table_properties' }
+        { label: 'get_integration_table_properties', value: 'get_integration_table_properties' },
+        { label: 'list_integration_table_properties', value: 'list_integration_table_properties' }
     ]}
 >
 <TabItem value="get_integration_table_properties">
@@ -159,6 +192,19 @@ resource_arn,
 source_table_config,
 table_name,
 target_table_config
+FROM aws.glue.integration_table_properties
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_integration_table_properties">
+
+Lists the integration table properties in your account. This operation supports filtering and pagination.
+
+```sql
+SELECT
+integration_table_properties_list,
+marker
 FROM aws.glue.integration_table_properties
 WHERE region = '{{ region }}' -- required
 ;
@@ -233,6 +279,7 @@ SELECT
             FunctionSpec: "{{ FunctionSpec }}"
             ConversionSpec: "{{ ConversionSpec }}"
         TargetTableName: "{{ TargetTableName }}"
+        IntegrationArn: "{{ IntegrationArn }}"
 `}</CodeBlock>
 
 </TabItem>

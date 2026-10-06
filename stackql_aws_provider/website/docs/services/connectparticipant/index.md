@@ -18,7 +18,7 @@ connectparticipant service documentation.
 
 :::info[Service Summary]
 
-total resources: __5__  
+total resources: __9__  
 
 :::
 
@@ -27,9 +27,13 @@ total resources: __5__
 <div class="providerDocColumn">
 <a href="/services/connectparticipant/attachments/">attachments</a><br />
 <a href="/services/connectparticipant/authentication_urls/">authentication_urls</a><br />
-<a href="/services/connectparticipant/participant_connections/">participant_connections</a>
+<a href="/services/connectparticipant/events/">events</a><br />
+<a href="/services/connectparticipant/messages/">messages</a><br />
+<a href="/services/connectparticipant/participant_authentications/">participant_authentications</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/connectparticipant/participant_connections/">participant_connections</a><br />
+<a href="/services/connectparticipant/participants/">participants</a><br />
 <a href="/services/connectparticipant/transcripts/">transcripts</a><br />
 <a href="/services/connectparticipant/views/">views</a>
 </div>

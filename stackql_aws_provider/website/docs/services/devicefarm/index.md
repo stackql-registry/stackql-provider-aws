@@ -35,7 +35,7 @@ total resources: __27__
 <a href="/services/devicefarm/jobs/">jobs</a><br />
 <a href="/services/devicefarm/network_profiles/">network_profiles</a><br />
 <a href="/services/devicefarm/offering_promotions/">offering_promotions</a><br />
-<a href="/services/devicefarm/offering_status/">offering_status</a><br />
+<a href="/services/devicefarm/offering_statuses/">offering_statuses</a><br />
 <a href="/services/devicefarm/offering_transactions/">offering_transactions</a><br />
 <a href="/services/devicefarm/offerings/">offerings</a><br />
 <a href="/services/devicefarm/projects/">projects</a>

@@ -18,13 +18,14 @@ mpa service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
+<a href="/services/mpa/active_approval_team_deletions/">active_approval_team_deletions</a><br />
 <a href="/services/mpa/approval_teams/">approval_teams</a><br />
 <a href="/services/mpa/identity_sources/">identity_sources</a><br />
 <a href="/services/mpa/inactive_approval_team_versions/">inactive_approval_team_versions</a><br />

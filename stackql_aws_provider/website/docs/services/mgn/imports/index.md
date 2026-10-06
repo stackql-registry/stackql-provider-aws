@@ -122,6 +122,13 @@ The following methods are available for this resource:
     <td>List imports.</td>
 </tr>
 <tr>
+    <td><a href="#start_import"><CopyableCode code="start_import" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-s3BucketSource"><code>s3BucketSource</code></a></td>
+    <td></td>
+    <td>Start import.</td>
+</tr>
+<tr>
     <td><a href="#start_import_file_enrichment"><CopyableCode code="start_import_file_enrichment" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-s3BucketSource"><code>s3BucketSource</code></a>, <a href="#parameter-s3BucketTarget"><code>s3BucketTarget</code></a></td>
@@ -186,11 +193,28 @@ WHERE region = '{{ region }}' -- required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="start_import_file_enrichment"
+    defaultValue="start_import"
     values={[
+        { label: 'start_import', value: 'start_import' },
         { label: 'start_import_file_enrichment', value: 'start_import_file_enrichment' }
     ]}
 >
+<TabItem value="start_import">
+
+Start import.
+
+```sql
+EXEC aws.mgn.imports.start_import 
+@region='{{ region }}' --required 
+@@json=
+'{
+"clientToken": "{{ clientToken }}", 
+"s3BucketSource": "{{ s3BucketSource }}", 
+"tags": "{{ tags }}"
+}'
+;
+```
+</TabItem>
 <TabItem value="start_import_file_enrichment">
 
 Starts an import file enrichment job to process and enrich network migration import files with additional metadata and IP assignment strategies.

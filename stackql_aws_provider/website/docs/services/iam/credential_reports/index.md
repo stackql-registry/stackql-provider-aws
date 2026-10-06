@@ -91,6 +91,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Retrieves a credential report for the Amazon Web Services account. For more information about the credential report, see Getting credential reports in the IAM User Guide.</td>
 </tr>
+<tr>
+    <td><a href="#generate_credential_report"><CopyableCode code="generate_credential_report" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Generates a credential report for the Amazon Web Services account. For more information about the credential report, see Getting credential reports in the IAM User Guide.</td>
+</tr>
 </tbody>
 </table>
 
@@ -134,6 +141,27 @@ generated_time,
 report_format
 FROM aws.iam.credential_reports
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="generate_credential_report"
+    values={[
+        { label: 'generate_credential_report', value: 'generate_credential_report' }
+    ]}
+>
+<TabItem value="generate_credential_report">
+
+Generates a credential report for the Amazon Web Services account. For more information about the credential report, see Getting credential reports in the IAM User Guide.
+
+```sql
+EXEC aws.iam.credential_reports.generate_credential_report 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

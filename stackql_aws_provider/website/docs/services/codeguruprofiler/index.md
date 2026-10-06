@@ -27,7 +27,7 @@ total resources: __10__
 <div class="providerDocColumn">
 <a href="/services/codeguruprofiler/findings_report_account_summaries/">findings_report_account_summaries</a><br />
 <a href="/services/codeguruprofiler/findings_reports/">findings_reports</a><br />
-<a href="/services/codeguruprofiler/frame_metric_datas/">frame_metric_datas</a><br />
+<a href="/services/codeguruprofiler/frame_metric_data/">frame_metric_data</a><br />
 <a href="/services/codeguruprofiler/notification_configurations/">notification_configurations</a><br />
 <a href="/services/codeguruprofiler/policies/">policies</a>
 </div>

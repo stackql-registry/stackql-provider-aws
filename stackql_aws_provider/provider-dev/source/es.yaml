@@ -34,7 +34,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInboundCrossClusterSearchConnectionResponse'
-      x-stackql-resource: inbound_cross_cluster_search_connection
+      x-stackql-resource: inbound_cross_cluster_search_connections
       x-stackql-method: accept_inbound_cross_cluster_search_connection
       x-stackql-verb: EXEC
   /2015-01-01/tags:
@@ -120,7 +120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthorizeVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: authorize_vpc_endpoint_access
       x-stackql-verb: UPDATE
   /2015-01-01/es/domain/{domain_name}/config/cancel:
@@ -150,7 +150,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDomainConfigChangeResponse'
-      x-stackql-resource: domain_config_change
+      x-stackql-resource: domains
       x-stackql-method: cancel_domain_config_change
       x-stackql-verb: EXEC
   /2015-01-01/es/serviceSoftwareUpdate/cancel:
@@ -177,7 +177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelElasticsearchServiceSoftwareUpdateResponse'
-      x-stackql-resource: elasticsearch_service_software_update
+      x-stackql-resource: domains
       x-stackql-method: cancel_elasticsearch_service_software_update
       x-stackql-verb: EXEC
   /2015-01-01/es/domain:
@@ -563,7 +563,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeDomainChangeProgressResponse'
-      x-stackql-resource: domain_change_progress
+      x-stackql-resource: domain_change_progresses
       x-stackql-method: describe_domain_change_progress
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChangeProgressStatus
@@ -1040,7 +1040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUpgradeStatusResponse'
-      x-stackql-resource: upgrade_status
+      x-stackql-resource: upgrade_statuses
       x-stackql-method: get_upgrade_status
       x-stackql-verb: SELECT
   /2015-01-01/domain:
@@ -1096,7 +1096,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListDomainsForPackageResponse'
-      x-stackql-resource: domains_for_packages
+      x-stackql-resource: domains
       x-stackql-method: list_domains_for_package
       x-stackql-verb: SELECT
   /2015-01-01/es/instanceTypes/{elasticsearch_version}:
@@ -1217,7 +1217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPackagesForDomainResponse'
-      x-stackql-resource: packages_for_domains
+      x-stackql-resource: packages
       x-stackql-method: list_packages_for_domain
       x-stackql-verb: SELECT
   /2015-01-01/tags/:
@@ -1266,7 +1266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: list_vpc_endpoint_access
       x-stackql-verb: SELECT
   /2015-01-01/es/domain/{domain_name}/vpcEndpoints:
@@ -1293,7 +1293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListVpcEndpointsForDomainResponse'
-      x-stackql-resource: vpc_endpoints_for_domains
+      x-stackql-resource: vpc_endpoints
       x-stackql-method: list_vpc_endpoints_for_domain
       x-stackql-verb: SELECT
   /2015-01-01/es/purchaseReservedInstanceOffering:
@@ -1345,7 +1345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectInboundCrossClusterSearchConnectionResponse'
-      x-stackql-resource: inbound_cross_cluster_search_connection
+      x-stackql-resource: inbound_cross_cluster_search_connections
       x-stackql-method: reject_inbound_cross_cluster_search_connection
       x-stackql-verb: EXEC
   /2015-01-01/tags-removal:
@@ -1398,11 +1398,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RevokeVpcEndpointAccessResponse'
-      x-stackql-resource: vpc_endpoint_access
+      x-stackql-resource: vpc_endpoint_accesses
       x-stackql-method: revoke_vpc_endpoint_access
       x-stackql-verb: UPDATE
   /2015-01-01/es/serviceSoftwareUpdate/start:
@@ -1428,7 +1424,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartElasticsearchServiceSoftwareUpdateResponse'
-      x-stackql-resource: elasticsearch_service_software_update
+      x-stackql-resource: domains
       x-stackql-method: start_elasticsearch_service_software_update
       x-stackql-verb: EXEC
   /2015-01-01/packages/update:
@@ -1522,7 +1518,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpgradeElasticsearchDomainResponse'
-      x-stackql-resource: upgrade_elasticsearch_domain
+      x-stackql-resource: elasticsearch_domains
       x-stackql-method: upgrade_elasticsearch_domain
       x-stackql-verb: EXEC
 components:
@@ -4140,10 +4136,6 @@ components:
         CrossClusterSearchConnection:
           $ref: '#/components/schemas/InboundCrossClusterSearchConnection'
           description: Specifies the InboundCrossClusterSearchConnection of rejected inbound connection.
-    RevokeVpcEndpointAccessResponse:
-      description: Container for response parameters to the RevokeVpcEndpointAccess operation. The response body for this
-        operation is empty.
-      type: object
     StartElasticsearchServiceSoftwareUpdateResponse:
       description: The result of a StartElasticsearchServiceSoftwareUpdate operation. Contains the status of the update.
       type: object

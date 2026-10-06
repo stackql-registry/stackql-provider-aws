@@ -56,10 +56,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateBudgetResponse"
   /CreateBudgetAction:
     post:
       operationId: CreateBudgetAction
@@ -111,10 +107,8 @@ paths:
                 - NotificationType
                 - ActionType
                 - ActionThreshold
-                - Definition
                 - ExecutionRoleArn
                 - ApprovalModel
-                - Subscribers
       responses:
         "200":
           description: Success
@@ -163,10 +157,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateNotificationResponse"
   /CreateSubscriber:
     post:
       operationId: CreateSubscriber
@@ -208,10 +198,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/CreateSubscriberResponse"
   /DeleteBudget:
     post:
       operationId: DeleteBudget
@@ -245,10 +231,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteBudgetResponse"
   /DeleteBudgetAction:
     post:
       operationId: DeleteBudgetAction
@@ -325,10 +307,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteNotificationResponse"
   /DeleteSubscriber:
     post:
       operationId: DeleteSubscriber
@@ -370,10 +348,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSubscriberResponse"
   /DescribeBudget:
     post:
       operationId: DescribeBudget
@@ -893,10 +867,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /UntagResource:
     post:
       operationId: UntagResource
@@ -930,10 +900,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateBudget:
     post:
       operationId: UpdateBudget
@@ -967,10 +933,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateBudgetResponse"
   /UpdateBudgetAction:
     post:
       operationId: UpdateBudgetAction
@@ -1065,10 +1027,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateNotificationResponse"
   /UpdateSubscriber:
     post:
       operationId: UpdateSubscriber
@@ -1114,10 +1072,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSubscriberResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1680,9 +1634,6 @@ components:
       type: string
       minLength: 0
       maxLength: 256
-    CreateBudgetResponse:
-      description: Response of CreateBudget
-      type: object
     ActionType:
       type: string
       enum:
@@ -1855,15 +1806,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
-    CreateNotificationResponse:
-      description: Response of CreateNotification
-      type: object
-    CreateSubscriberResponse:
-      description: Response of CreateSubscriber
-      type: object
-    DeleteBudgetResponse:
-      description: Response of DeleteBudget
-      type: object
     DeleteBudgetActionResponse:
       type: object
       properties:
@@ -1932,12 +1874,6 @@ components:
         - REVERSE_FAILURE
         - RESET_IN_PROGRESS
         - RESET_FAILURE
-    DeleteNotificationResponse:
-      description: Response of DeleteNotification
-      type: object
-    DeleteSubscriberResponse:
-      description: Response of DeleteSubscriber
-      type: object
     DescribeBudgetResponse:
       description: Response of DescribeBudget
       type: object
@@ -2205,17 +2141,10 @@ components:
         ResourceTags:
           $ref: "#/components/schemas/ResourceTagList"
           description: The tags associated with the resource.
-    TagResourceResponse:
-      type: object
     ResourceTagKeyList:
       type: array
       items:
         $ref: "#/components/schemas/ResourceTagKey"
-    UntagResourceResponse:
-      type: object
-    UpdateBudgetResponse:
-      description: Response of UpdateBudget
-      type: object
     UpdateBudgetActionResponse:
       type: object
       properties:
@@ -2234,12 +2163,6 @@ components:
         - BudgetName
         - OldAction
         - NewAction
-    UpdateNotificationResponse:
-      description: Response of UpdateNotification
-      type: object
-    UpdateSubscriberResponse:
-      description: Response of UpdateSubscriber
-      type: object
   x-stackQL-resources:
     budgets:
       id: aws.budgets.budgets
@@ -2251,7 +2174,6 @@ components:
             $ref: "#/paths/~1CreateBudget/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2264,7 +2186,6 @@ components:
             $ref: "#/paths/~1CreateNotification/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2277,7 +2198,6 @@ components:
             $ref: "#/paths/~1CreateSubscriber/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2290,7 +2210,6 @@ components:
             $ref: "#/paths/~1DeleteBudget/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2303,7 +2222,6 @@ components:
             $ref: "#/paths/~1DeleteNotification/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2316,7 +2234,6 @@ components:
             $ref: "#/paths/~1DeleteSubscriber/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2377,7 +2294,6 @@ components:
             $ref: "#/paths/~1UpdateBudget/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2390,7 +2306,6 @@ components:
             $ref: "#/paths/~1UpdateNotification/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2403,7 +2318,6 @@ components:
             $ref: "#/paths/~1UpdateSubscriber/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2420,9 +2334,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/budgets/methods/create_subscriber"
           - $ref: "#/components/x-stackQL-resources/budgets/methods/create_budget"
         update:
+          - $ref: "#/components/x-stackQL-resources/budgets/methods/update_budget"
           - $ref: "#/components/x-stackQL-resources/budgets/methods/update_subscriber"
           - $ref: "#/components/x-stackQL-resources/budgets/methods/update_notification"
-          - $ref: "#/components/x-stackQL-resources/budgets/methods/update_budget"
         delete:
           - $ref: "#/components/x-stackQL-resources/budgets/methods/delete_subscriber"
           - $ref: "#/components/x-stackQL-resources/budgets/methods/delete_notification"
@@ -2471,6 +2385,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_budget_actions_for_account:
+          operation:
+            $ref: "#/paths/~1DescribeBudgetActionsForAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Actions
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        describe_budget_actions_for_budget:
+          operation:
+            $ref: "#/paths/~1DescribeBudgetActionsForBudget/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Actions
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
         update_budget_action:
           operation:
             $ref: "#/paths/~1UpdateBudgetAction/post"
@@ -2487,6 +2443,8 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/budget_actions/methods/describe_budget_action"
+          - $ref: "#/components/x-stackQL-resources/budget_actions/methods/describe_budget_actions_for_budget"
+          - $ref: "#/components/x-stackQL-resources/budget_actions/methods/describe_budget_actions_for_account"
         insert:
           - $ref: "#/components/x-stackQL-resources/budget_actions/methods/create_budget_action"
         update:
@@ -2525,74 +2483,10 @@ components:
         insert: []
         update: []
         delete: []
-    budget_actions_for_accounts:
-      id: aws.budgets.budget_actions_for_accounts
-      name: budget_actions_for_accounts
-      title: budget_actions_for_accounts
-      methods:
-        describe_budget_actions_for_account:
-          operation:
-            $ref: "#/paths/~1DescribeBudgetActionsForAccount/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Actions
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/budget_actions_for_accounts/methods/describe_budget_actions_for_account"
-        insert: []
-        update: []
-        delete: []
-    budget_actions_for_budgets:
-      id: aws.budgets.budget_actions_for_budgets
-      name: budget_actions_for_budgets
-      title: budget_actions_for_budgets
-      methods:
-        describe_budget_actions_for_budget:
-          operation:
-            $ref: "#/paths/~1DescribeBudgetActionsForBudget/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Actions
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            pagination:
-              requestToken:
-                key: NextToken
-                location: body
-              responseToken:
-                key: $.NextToken
-                location: body
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/budget_actions_for_budgets/methods/describe_budget_actions_for_budget"
-        insert: []
-        update: []
-        delete: []
-    budget_notifications_for_accounts:
-      id: aws.budgets.budget_notifications_for_accounts
-      name: budget_notifications_for_accounts
-      title: budget_notifications_for_accounts
+    budget_notifications:
+      id: aws.budgets.budget_notifications
+      name: budget_notifications
+      title: budget_notifications
       methods:
         describe_budget_notifications_for_account:
           operation:
@@ -2617,7 +2511,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/budget_notifications_for_accounts/methods/describe_budget_notifications_for_account"
+          - $ref: "#/components/x-stackQL-resources/budget_notifications/methods/describe_budget_notifications_for_account"
         insert: []
         update: []
         delete: []
@@ -2653,10 +2547,10 @@ components:
         insert: []
         update: []
         delete: []
-    notifications_for_budgets:
-      id: aws.budgets.notifications_for_budgets
-      name: notifications_for_budgets
-      title: notifications_for_budgets
+    notifications:
+      id: aws.budgets.notifications
+      name: notifications
+      title: notifications
       methods:
         describe_notifications_for_budget:
           operation:
@@ -2681,14 +2575,14 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/notifications_for_budgets/methods/describe_notifications_for_budget"
+          - $ref: "#/components/x-stackQL-resources/notifications/methods/describe_notifications_for_budget"
         insert: []
         update: []
         delete: []
-    subscribers_for_notifications:
-      id: aws.budgets.subscribers_for_notifications
-      name: subscribers_for_notifications
-      title: subscribers_for_notifications
+    subscribers:
+      id: aws.budgets.subscribers
+      name: subscribers
+      title: subscribers
       methods:
         describe_subscribers_for_notification:
           operation:
@@ -2713,7 +2607,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/subscribers_for_notifications/methods/describe_subscribers_for_notification"
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/describe_subscribers_for_notification"
         insert: []
         update: []
         delete: []
@@ -2740,7 +2634,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2753,7 +2646,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

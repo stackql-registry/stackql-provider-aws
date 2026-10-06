@@ -111,7 +111,7 @@ The following methods are available for this resource:
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted. Use either AttachmentUrl or AttachmentBody to upload your attachment. If both are specified then an exception is returned.</td>
+    <td>Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted. Use either AttachmentUrl or AttachmentBody to upload your attachment. If both are specified then an exception is returned.</td>
 </tr>
 <tr>
     <td><a href="#delete_registration_attachment"><CopyableCode code="delete_registration_attachment" /></a></td>
@@ -183,7 +183,7 @@ WHERE region = '{{ region }}' -- required
 >
 <TabItem value="create_registration_attachment">
 
-Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted. Use either AttachmentUrl or AttachmentBody to upload your attachment. If both are specified then an exception is returned.
+Create a new registration attachment to use for uploading a file or a URL to a file. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG. For example, many sender ID registrations require a signed “letter of authorization” (LOA) to be submitted. Use either AttachmentUrl or AttachmentBody to upload your attachment. If both are specified then an exception is returned.
 
 ```sql
 INSERT INTO aws.pinpoint_sms_voice_v2.registration_attachments (
@@ -219,7 +219,7 @@ tags
     - name: AttachmentBody
       value: "{{ AttachmentBody }}"
       description: |
-        The registration file to upload. The maximum file size is 500KB and valid file extensions are PDF, JPEG and PNG.
+        The registration file to upload. The maximum file size is 5MB and valid file extensions are PDF, JPEG and PNG.
     - name: AttachmentUrl
       value: "{{ AttachmentUrl }}"
       description: |

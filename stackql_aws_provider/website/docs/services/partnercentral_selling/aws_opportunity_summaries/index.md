@@ -110,6 +110,11 @@ The following fields are returned by `SELECT` queries:
     <td>Provides the unique identifier of the related partner opportunity, allowing partners to link the AWS Opportunity to their corresponding opportunity in their CRM system. (pattern: &lt;code&gt;O&#91;0-9&#93;&#123;1,19&#125;&lt;/code&gt;)</td>
 </tr>
 <tr>
+    <td><CopyableCode code="software_revenue" /></td>
+    <td><code>object</code></td>
+    <td>Seller-provided PARC deal terms: commitment value, discount, and contract dates.</td>
+</tr>
+<tr>
     <td><CopyableCode code="visibility" /></td>
     <td><code>string</code></td>
     <td>Defines the visibility level for the AWS Opportunity. Use Full visibility for most cases, while Limited visibility is reserved for special programs or sensitive opportunities. (Full, Limited)</td>
@@ -191,6 +196,7 @@ origin,
 project,
 related_entity_ids,
 related_opportunity_id,
+software_revenue,
 visibility
 FROM aws.partnercentral_selling.aws_opportunity_summaries
 WHERE region = '{{ region }}' -- required

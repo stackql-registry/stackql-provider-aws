@@ -39,7 +39,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BulkPublishResponse'
-      x-stackql-resource: bulk_publish
+      x-stackql-resource: publishes
       x-stackql-method: bulk_publish
       x-stackql-verb: EXEC
   /identitypools/{identity_pool_id}/identities/{identity_id}/datasets/{dataset_name}:
@@ -583,10 +583,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubscribeToDatasetResponse'
       x-stackql-resource: datasets
       x-stackql-method: subscribe_to_dataset
       x-stackql-verb: EXEC
@@ -623,10 +619,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UnsubscribeFromDatasetResponse'
       x-stackql-resource: datasets
       x-stackql-method: unsubscribe_from_dataset
       x-stackql-verb: EXEC
@@ -1058,12 +1050,6 @@ components:
         CognitoStreams:
           $ref: '#/components/schemas/CognitoStreams'
           description: Options to apply to this identity pool for Amazon Cognito streams.
-    SubscribeToDatasetResponse:
-      description: Response to a SubscribeToDataset request.
-      type: object
-    UnsubscribeFromDatasetResponse:
-      description: Response to an UnsubscribeFromDataset request.
-      type: object
     ClientContext:
       type: string
     RecordPatchList:

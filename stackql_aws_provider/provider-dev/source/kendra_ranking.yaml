@@ -304,10 +304,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -346,10 +342,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -732,13 +724,7 @@ components:
         Score:
           $ref: '#/components/schemas/Float'
           description: The relevancy score or rank that Amazon Kendra Intelligent Ranking gives to the result.
-    TagResourceResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      description: If the action is successful, the service sends back an HTTP 200 response with an empty HTTP body.
-      type: object

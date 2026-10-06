@@ -148,6 +148,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-filter"><code>filter</code></a>, <a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
     <td>Retrieves a paginated list of queries for a workspace.</td>
 </tr>
+<tr>
+    <td><a href="#execute_query"><CopyableCode code="execute_query" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-queryStatement"><code>queryStatement</code></a></td>
+    <td></td>
+    <td>Run SQL queries to retrieve metadata and time-series data from asset models, assets, measurements, metrics, transforms, and aggregates.</td>
+</tr>
 </tbody>
 </table>
 
@@ -241,6 +248,34 @@ AND region = '{{ region }}' -- required
 AND filter = '{{ filter }}'
 AND maxResults = '{{ maxResults }}'
 AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="execute_query"
+    values={[
+        { label: 'execute_query', value: 'execute_query' }
+    ]}
+>
+<TabItem value="execute_query">
+
+Run SQL queries to retrieve metadata and time-series data from asset models, assets, measurements, metrics, transforms, and aggregates.
+
+```sql
+EXEC aws.iotsitewise.queries.execute_query 
+@region='{{ region }}' --required 
+@@json=
+'{
+"queryStatement": "{{ queryStatement }}", 
+"nextToken": "{{ nextToken }}", 
+"maxResults": {{ maxResults }}, 
+"clientToken": "{{ clientToken }}"
+}'
 ;
 ```
 </TabItem>

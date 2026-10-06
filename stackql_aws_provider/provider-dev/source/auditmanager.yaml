@@ -42,10 +42,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AssociateAssessmentReportEvidenceFolderResponse'
       x-stackql-resource: evidence_folders
       x-stackql-method: associate_assessment_report_evidence_folder
       x-stackql-verb: UPDATE
@@ -81,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateAssessmentReportEvidenceResponse'
-      x-stackql-resource: evidence_folders
+      x-stackql-resource: evidences
       x-stackql-method: batch_associate_assessment_report_evidence
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/delegations:
@@ -113,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateDelegationByAssessmentResponse'
-      x-stackql-resource: assessments
+      x-stackql-resource: delegations
       x-stackql-method: batch_create_delegation_by_assessment
       x-stackql-verb: EXEC
     put:
@@ -144,7 +140,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDelegationByAssessmentResponse'
-      x-stackql-resource: assessments
+      x-stackql-resource: delegations
       x-stackql-method: batch_delete_delegation_by_assessment
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/batchDisassociateFromAssessmentReport:
@@ -179,7 +175,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateAssessmentReportEvidenceResponse'
-      x-stackql-resource: evidence_folders
+      x-stackql-resource: evidences
       x-stackql-method: batch_disassociate_assessment_report_evidence
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/controlSets/{control_set_id}/controls/{control_id}/evidence:
@@ -229,7 +225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchImportEvidenceToAssessmentControlResponse'
-      x-stackql-resource: assessments
+      x-stackql-resource: controls
       x-stackql-method: batch_import_evidence_to_assessment_control
       x-stackql-verb: EXEC
   /assessments:
@@ -507,10 +503,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssessmentResponse'
       x-stackql-resource: assessments
       x-stackql-method: delete_assessment
       x-stackql-verb: DELETE
@@ -587,10 +579,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssessmentFrameworkResponse'
       x-stackql-resource: assessment_frameworks
       x-stackql-method: delete_assessment_framework
       x-stackql-verb: DELETE
@@ -673,10 +661,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssessmentFrameworkShareResponse'
       x-stackql-resource: assessment_frameworks
       x-stackql-method: delete_assessment_framework_share
       x-stackql-verb: DELETE
@@ -743,10 +727,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteAssessmentReportResponse'
       x-stackql-resource: assessment_reports
       x-stackql-method: delete_assessment_report
       x-stackql-verb: DELETE
@@ -767,10 +747,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteControlResponse'
       x-stackql-resource: controls
       x-stackql-method: delete_control
       x-stackql-verb: DELETE
@@ -894,10 +870,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeregisterOrganizationAdminAccountResponse'
       x-stackql-resource: organization_admin_accounts
       x-stackql-method: deregister_organization_admin_account
       x-stackql-verb: DELETE
@@ -926,10 +898,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DisassociateAssessmentReportEvidenceFolderResponse'
       x-stackql-resource: evidence_folders
       x-stackql-method: disassociate_assessment_report_evidence_folder
       x-stackql-verb: UPDATE
@@ -945,7 +913,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetAccountStatusResponse'
-      x-stackql-resource: account_status
+      x-stackql-resource: account_statuses
       x-stackql-method: get_account_status
       x-stackql-verb: SELECT
   /assessments/{assessment_id}/reports/{assessment_report_id}/url:
@@ -1130,7 +1098,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEvidenceByEvidenceFolderResponse'
-      x-stackql-resource: evidence_by_evidence_folders
+      x-stackql-resource: evidences
       x-stackql-method: get_evidence_by_evidence_folder
       x-stackql-verb: SELECT
   /evidenceFileUploadUrl:
@@ -1223,7 +1191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEvidenceFoldersByAssessmentResponse'
-      x-stackql-resource: evidence_folders_by_assessments
+      x-stackql-resource: evidence_folders
       x-stackql-method: get_evidence_folders_by_assessment
       x-stackql-verb: SELECT
   /assessments/{assessment_id}/evidenceFolders-by-assessment-control/{control_set_id}/{control_id}:
@@ -1268,7 +1236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetEvidenceFoldersByAssessmentControlResponse'
-      x-stackql-resource: evidence_folders_by_assessment_controls
+      x-stackql-resource: evidence_folders
       x-stackql-method: get_evidence_folders_by_assessment_control
       x-stackql-verb: SELECT
   /insights:
@@ -1305,7 +1273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInsightsByAssessmentResponse'
-      x-stackql-resource: insights_by_assessments
+      x-stackql-resource: insights
       x-stackql-method: get_insights_by_assessment
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.insights
@@ -1407,7 +1375,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAssessmentControlInsightsByControlDomainResponse'
-      x-stackql-resource: assessment_control_insights_by_control_domains
+      x-stackql-resource: assessment_control_insights
       x-stackql-method: list_assessment_control_insights_by_control_domain
       x-stackql-verb: SELECT
   /assessmentFrameworkShareRequests:
@@ -1535,7 +1503,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListControlDomainInsightsByAssessmentResponse'
-      x-stackql-resource: control_domain_insights_by_assessments
+      x-stackql-resource: control_domain_insights
       x-stackql-method: list_control_domain_insights_by_assessment
       x-stackql-verb: SELECT
   /insights/controls:
@@ -1573,7 +1541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListControlInsightsByControlDomainResponse'
-      x-stackql-resource: control_insights_by_control_domains
+      x-stackql-resource: control_insights
       x-stackql-method: list_control_insights_by_control_domain
       x-stackql-verb: SELECT
   /dataSourceKeywords:
@@ -1606,7 +1574,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListKeywordsForDataSourceOutputDisplay'
-      x-stackql-resource: keywords_for_data_sources
+      x-stackql-resource: keywords
       x-stackql-method: list_keywords_for_data_source
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListKeywordsForDataSourceOutputDisplay
@@ -1686,10 +1654,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -1712,10 +1676,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -2052,8 +2012,6 @@ components:
       minLength: 36
       maxLength: 36
       pattern: ^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$
-    AssociateAssessmentReportEvidenceFolderResponse:
-      type: object
     EvidenceIds:
       type: array
       items:
@@ -3118,21 +3076,11 @@ components:
         control:
           $ref: '#/components/schemas/Control'
           description: The new control that the CreateControl API returned.
-    DeleteAssessmentResponse:
-      type: object
-    DeleteAssessmentFrameworkResponse:
-      type: object
     ShareRequestType:
       type: string
       enum:
       - SENT
       - RECEIVED
-    DeleteAssessmentFrameworkShareResponse:
-      type: object
-    DeleteAssessmentReportResponse:
-      type: object
-    DeleteControlResponse:
-      type: object
     DeregisterAccountResponse:
       type: object
       properties:
@@ -3145,10 +3093,6 @@ components:
       - ACTIVE
       - INACTIVE
       - PENDING_ACTIVATION
-    DeregisterOrganizationAdminAccountResponse:
-      type: object
-    DisassociateAssessmentReportEvidenceFolderResponse:
-      type: object
     GetAccountStatusResponse:
       type: object
       properties:
@@ -4284,8 +4228,6 @@ components:
         assessmentFrameworkShareRequest:
           $ref: '#/components/schemas/AssessmentFrameworkShareRequest'
           description: The share request that's created by the StartAssessmentFrameworkShare API.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -4295,8 +4237,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[a-zA-Z+-=._:/]+$
-    UntagResourceResponse:
-      type: object
     UpdateAssessmentResponse:
       type: object
       properties:

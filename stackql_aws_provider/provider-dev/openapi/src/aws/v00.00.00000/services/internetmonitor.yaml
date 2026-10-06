@@ -102,10 +102,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteMonitorOutput"
     get:
       operationId: GetMonitor
       description: Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name. The information returned includes the Amazon Resource Name (ARN), create time, modified time, resources included in the monitor, and status information.
@@ -419,10 +415,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceOutput"
     delete:
       operationId: UntagResource
       description: Removes a tag from a resource.
@@ -442,10 +434,6 @@ paths:
       responses:
         "204":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceOutput"
   /v20210603/Monitors/{monitor_name}/Queries:
     post:
       operationId: StartQuery
@@ -505,10 +493,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StopQueryOutput"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -672,8 +656,6 @@ components:
         - ACTIVE
         - INACTIVE
         - ERROR
-    DeleteMonitorOutput:
-      type: object
     HealthEventName:
       type: string
       minLength: 1
@@ -1300,10 +1282,6 @@ components:
           description: The internally-generated identifier of a specific query.
       required:
         - QueryId
-    StopQueryOutput:
-      type: object
-    TagResourceOutput:
-      type: object
     TagKeys:
       type: array
       items:
@@ -1312,8 +1290,6 @@ components:
       type: string
       minLength: 1
       maxLength: 128
-    UntagResourceOutput:
-      type: object
     UpdateMonitorOutput:
       type: object
       properties:
@@ -1365,7 +1341,6 @@ components:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         get_monitor:
           operation:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}/get"
@@ -1401,7 +1376,6 @@ components:
             $ref: "#/paths/~1v20210603~1Monitors~1{monitor_name}~1Queries~1{query_id}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/monitors/methods/get_monitor"
@@ -1503,10 +1477,10 @@ components:
         insert: []
         update: []
         delete: []
-    query_status:
-      id: aws.internetmonitor.query_status
-      name: query_status
-      title: query_status
+    query_statuses:
+      id: aws.internetmonitor.query_statuses
+      name: query_statuses
+      title: query_statuses
       methods:
         get_query_status:
           operation:
@@ -1516,7 +1490,7 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/query_status/methods/get_query_status"
+          - $ref: "#/components/x-stackQL-resources/query_statuses/methods/get_query_status"
         insert: []
         update: []
         delete: []
@@ -1536,7 +1510,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1547,7 +1520,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "204"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

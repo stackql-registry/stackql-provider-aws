@@ -36,8 +36,10 @@ The following fields are returned by `SELECT` queries:
     defaultValue="list_channels"
     values={[
         { label: 'list_channels', value: 'list_channels' },
+        { label: 'search_channels', value: 'search_channels' },
+        { label: 'describe_channel_moderated_by_app_instance_user', value: 'describe_channel_moderated_by_app_instance_user' },
         { label: 'describe_channel', value: 'describe_channel' },
-        { label: 'search_channels', value: 'search_channels' }
+        { label: 'list_channels_moderated_by_app_instance_user', value: 'list_channels_moderated_by_app_instance_user' }
     ]}
 >
 <TabItem value="list_channels">
@@ -60,6 +62,49 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
     <td>The token returned from previous API requests until the number of channels is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="search_channels">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="channels" /></td>
+    <td><code>array</code></td>
+    <td>A list of the channels in the request.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="next_token" /></td>
+    <td><code>string</code></td>
+    <td>The token returned from previous API responses until the number of channels is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="describe_channel_moderated_by_app_instance_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="channel_summary" /></td>
+    <td><code>object</code></td>
+    <td>Summary of the details of a Channel.</td>
 </tr>
 </tbody>
 </table>
@@ -138,7 +183,7 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_channels">
+<TabItem value="list_channels_moderated_by_app_instance_user">
 
 <table>
 <thead>
@@ -152,12 +197,12 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="channels" /></td>
     <td><code>array</code></td>
-    <td>A list of the channels in the request.</td>
+    <td>The moderated channels in the request.</td>
 </tr>
 <tr>
     <td><CopyableCode code="next_token" /></td>
     <td><code>string</code></td>
-    <td>The token returned from previous API responses until the number of channels is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
+    <td>The token returned from previous API requests until the number of channels moderated by the user is reached. (pattern: &lt;code&gt;.*&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -187,6 +232,20 @@ The following methods are available for this resource:
     <td>Lists all Channels created under a single Chime App as a paginated list. You can specify filters to narrow results. Functionality & restrictions Use privacy = PUBLIC to retrieve all public channels in the account. Only an AppInstanceAdmin can set privacy = PRIVATE to list the private channels in an account. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 <tr>
+    <td><a href="#search_channels"><CopyableCode code="search_channels" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-max-results"><code>max-results</code></a>, <a href="#parameter-next-token"><code>next-token</code></a></td>
+    <td>Allows the ChimeBearer to search channels by channel members. Users or bots can search across the channels that they belong to. Users in the AppInstanceAdmin role can search across all channels. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. This operation isn't supported for AppInstanceUsers with a large number of memberships.</td>
+</tr>
+<tr>
+    <td><a href="#describe_channel_moderated_by_app_instance_user"><CopyableCode code="describe_channel_moderated_by_app_instance_user" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-app-instance-user-arn"><code>app-instance-user-arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the full details of a channel moderated by the specified AppInstanceUser or AppInstanceBot. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
+</tr>
+<tr>
     <td><a href="#describe_channel"><CopyableCode code="describe_channel" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-channel_arn"><code>channel_arn</code></a>, <a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -194,11 +253,11 @@ The following methods are available for this resource:
     <td>Returns the full details of a channel in an Amazon Chime AppInstance. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 <tr>
-    <td><a href="#search_channels"><CopyableCode code="search_channels" /></a></td>
+    <td><a href="#list_channels_moderated_by_app_instance_user"><CopyableCode code="list_channels_moderated_by_app_instance_user" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-max-results"><code>max-results</code></a>, <a href="#parameter-next-token"><code>next-token</code></a></td>
-    <td>Allows the ChimeBearer to search channels by channel members. Users or bots can search across the channels that they belong to. Users in the AppInstanceAdmin role can search across all channels. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. This operation isn't supported for AppInstanceUsers with a large number of memberships.</td>
+    <td><a href="#parameter-x-amz-chime-bearer"><code>x-amz-chime-bearer</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-app-instance-user-arn"><code>app-instance-user-arn</code></a>, <a href="#parameter-max-results"><code>max-results</code></a>, <a href="#parameter-next-token"><code>next-token</code></a></td>
+    <td>A list of the channels moderated by an AppInstanceUser. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.</td>
 </tr>
 <tr>
     <td><a href="#create_channel"><CopyableCode code="create_channel" /></a></td>
@@ -277,6 +336,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ARN of the AppInstance.</td>
 </tr>
+<tr id="parameter-app-instance-user-arn">
+    <td><CopyableCode code="app-instance-user-arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the user or bot in the moderated channel.</td>
+</tr>
 <tr id="parameter-channel_arn">
     <td><CopyableCode code="channel_arn" /></td>
     <td><code>string</code></td>
@@ -297,15 +361,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The ARN of the AppInstanceUser or AppInstanceBot that makes the API call.</td>
 </tr>
+<tr id="parameter-app-instance-user-arn">
+    <td><CopyableCode code="app-instance-user-arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the user or bot in the moderated channel.</td>
+</tr>
 <tr id="parameter-max-results">
     <td><CopyableCode code="max-results" /></td>
     <td><code>integer</code></td>
-    <td>The maximum number of channels that you want returned.</td>
+    <td>The maximum number of channels in the request.</td>
 </tr>
 <tr id="parameter-next-token">
     <td><CopyableCode code="next-token" /></td>
     <td><code>string</code></td>
-    <td>The token returned from previous API requests until the number of channels is reached.</td>
+    <td>The token returned from previous API requests until the number of channels moderated by the user is reached.</td>
 </tr>
 <tr id="parameter-privacy">
     <td><CopyableCode code="privacy" /></td>
@@ -326,8 +395,10 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="list_channels"
     values={[
         { label: 'list_channels', value: 'list_channels' },
+        { label: 'search_channels', value: 'search_channels' },
+        { label: 'describe_channel_moderated_by_app_instance_user', value: 'describe_channel_moderated_by_app_instance_user' },
         { label: 'describe_channel', value: 'describe_channel' },
-        { label: 'search_channels', value: 'search_channels' }
+        { label: 'list_channels_moderated_by_app_instance_user', value: 'list_channels_moderated_by_app_instance_user' }
     ]}
 >
 <TabItem value="list_channels">
@@ -345,6 +416,37 @@ AND region = '{{ region }}' -- required
 AND privacy = '{{ privacy }}'
 AND `max-results` = '{{ max-results }}'
 AND `next-token` = '{{ next-token }}'
+;
+```
+</TabItem>
+<TabItem value="search_channels">
+
+Allows the ChimeBearer to search channels by channel members. Users or bots can search across the channels that they belong to. Users in the AppInstanceAdmin role can search across all channels. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. This operation isn't supported for AppInstanceUsers with a large number of memberships.
+
+```sql
+SELECT
+channels,
+next_token
+FROM aws.chime_sdk_messaging.channels
+WHERE region = '{{ region }}' -- required
+AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}'
+AND `max-results` = '{{ max-results }}'
+AND `next-token` = '{{ next-token }}'
+;
+```
+</TabItem>
+<TabItem value="describe_channel_moderated_by_app_instance_user">
+
+Returns the full details of a channel moderated by the specified AppInstanceUser or AppInstanceBot. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
+
+```sql
+SELECT
+channel_summary
+FROM aws.chime_sdk_messaging.channels
+WHERE channel_arn = '{{ channel_arn }}' -- required
+AND `app-instance-user-arn` = '{{ app-instance-user-arn }}' -- required
+AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -373,17 +475,18 @@ AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-<TabItem value="search_channels">
+<TabItem value="list_channels_moderated_by_app_instance_user">
 
-Allows the ChimeBearer to search channels by channel members. Users or bots can search across the channels that they belong to. Users in the AppInstanceAdmin role can search across all channels. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header. This operation isn't supported for AppInstanceUsers with a large number of memberships.
+A list of the channels moderated by an AppInstanceUser. The x-amz-chime-bearer request header is mandatory. Use the ARN of the AppInstanceUser or AppInstanceBot that makes the API call as the value in the header.
 
 ```sql
 SELECT
 channels,
 next_token
 FROM aws.chime_sdk_messaging.channels
-WHERE region = '{{ region }}' -- required
-AND `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}'
+WHERE `x-amz-chime-bearer` = '{{ x-amz-chime-bearer }}' -- required
+AND region = '{{ region }}' -- required
+AND `app-instance-user-arn` = '{{ app-instance-user-arn }}'
 AND `max-results` = '{{ max-results }}'
 AND `next-token` = '{{ next-token }}'
 ;

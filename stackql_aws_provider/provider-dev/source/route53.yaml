@@ -126,7 +126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChangeCidrCollectionOutputDisplay'
-      x-stackql-resource: changes
+      x-stackql-resource: cidr_collections
       x-stackql-method: change_cidr_collection
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeCidrCollectionOutputDisplay
@@ -145,15 +145,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteCidrCollectionOutputDisplay'
       x-stackql-resource: cidr_collections
       x-stackql-method: delete_cidr_collection
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteCidrCollectionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListCidrLocations
       description: Returns a paginated list of CIDR locations for the given collection (metadata only, does not include CIDR
@@ -289,15 +283,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ChangeTagsForResourceOutputDisplay'
-      x-stackql-resource: changes
+      x-stackql-resource: resources
       x-stackql-method: change_tags_for_resource
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: ChangeTagsForResourceOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: ListTagsForResource
       description: Lists tags for one health check or hosted zone. For information about using tags for cost allocation, see
@@ -1047,15 +1035,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteHealthCheckOutputDisplay'
       x-stackql-resource: health_checks
       x-stackql-method: delete_health_check
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteHealthCheckOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetHealthCheck
       description: Gets information about a specified health check.
@@ -1288,15 +1270,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteQueryLoggingConfigOutputDisplay'
       x-stackql-resource: query_logging_configs
       x-stackql-method: delete_query_logging_config
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteQueryLoggingConfigOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetQueryLoggingConfig
       description: Gets information about a specified configuration for DNS query logging. For more information about DNS
@@ -1336,15 +1312,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteReusableDelegationSetOutputDisplay'
       x-stackql-resource: reusable_delegation_sets
       x-stackql-method: delete_reusable_delegation_set
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteReusableDelegationSetOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetReusableDelegationSet
       description: Retrieves information about a specified reusable delegation set, including the four name servers that are
@@ -1392,15 +1362,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrafficPolicyOutputDisplay'
       x-stackql-resource: traffic_policies
       x-stackql-method: delete_traffic_policy
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTrafficPolicyOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetTrafficPolicy
       description: Gets information about a specific traffic policy version. For information about how of deleting a traffic
@@ -1484,15 +1448,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrafficPolicyInstanceOutputDisplay'
       x-stackql-resource: traffic_policy_instances
       x-stackql-method: delete_traffic_policy_instance
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteTrafficPolicyInstanceOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     get:
       operationId: GetTrafficPolicyInstance
       description: Gets information about a specified traffic policy instance. Use GetTrafficPolicyInstance with the id of
@@ -1596,15 +1554,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVPCAssociationAuthorizationOutputDisplay'
       x-stackql-resource: vpc_association_authorizations
       x-stackql-method: delete_vpc_association_authorization
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteVPCAssociationAuthorizationOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /2013-04-01/hostedzone/{id}/disable-dnssec:
     post:
       operationId: DisableHostedZoneDNSSEC
@@ -1624,7 +1576,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableHostedZoneDNSSECOutputDisplay'
-      x-stackql-resource: hosted_zones
+      x-stackql-resource: dnssecs
       x-stackql-method: disable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableHostedZoneDNSSECOutputDisplay
@@ -1693,7 +1645,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableHostedZoneDNSSECOutputDisplay'
-      x-stackql-resource: hosted_zones
+      x-stackql-resource: dnssecs
       x-stackql-method: enable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableHostedZoneDNSSECOutputDisplay
@@ -1913,7 +1865,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetHealthCheckStatusOutputDisplay'
-      x-stackql-resource: health_check_status
+      x-stackql-resource: health_check_statuses
       x-stackql-method: get_health_check_status
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetHealthCheckStatusOutputDisplay
@@ -2173,7 +2125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListHostedZonesByNameOutputDisplay'
-      x-stackql-resource: hosted_zones_by_names
+      x-stackql-resource: hosted_zones
       x-stackql-method: list_hosted_zones_by_name
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHostedZonesByNameOutputDisplay
@@ -2232,7 +2184,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListHostedZonesByVPCOutputDisplay'
-      x-stackql-resource: hosted_zones_by_vpcs
+      x-stackql-resource: hosted_zones
       x-stackql-method: list_hosted_zones_by_vpc
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListHostedZonesByVPCOutputDisplay
@@ -2504,7 +2456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTrafficPolicyInstancesByHostedZoneOutputDisplay'
-      x-stackql-resource: traffic_policy_instances_by_hosted_zones
+      x-stackql-resource: traffic_policy_instances
       x-stackql-method: list_traffic_policy_instances_by_hosted_zone
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyInstancesByHostedZoneOutputDisplay
@@ -2577,7 +2529,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTrafficPolicyInstancesByPolicyOutputDisplay'
-      x-stackql-resource: traffic_policy_instances_by_policies
+      x-stackql-resource: traffic_policy_instances
       x-stackql-method: list_traffic_policy_instances_by_policy
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTrafficPolicyInstancesByPolicyOutputDisplay
@@ -2685,7 +2637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestDNSAnswerOutputDisplay'
-      x-stackql-resource: dns_answer
+      x-stackql-resource: dns_answers
       x-stackql-method: test_dns_answer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestDNSAnswerOutputDisplay
@@ -2716,15 +2668,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay'
       x-stackql-resource: hosted_zones
       x-stackql-method: update_hosted_zone_features
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: UpdateHostedZoneFeaturesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3607,16 +3553,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    ChangeTagsForResourceResponseDisplay:
-      type: object
-      properties: {}
-    ChangeTagsForResourceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChangeTagsForResourceResponseDisplay'
     CollectionName:
       type: string
       minLength: 1
@@ -4313,26 +4249,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ChangeInfoDisplay'
-    DeleteCidrCollectionResponseDisplay:
-      type: object
-      properties: {}
-    DeleteCidrCollectionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteCidrCollectionResponseDisplay'
-    DeleteHealthCheckResponseDisplay:
-      type: object
-      properties: {}
-    DeleteHealthCheckOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteHealthCheckResponseDisplay'
     DeleteHostedZoneOutputDisplay:
       type: object
       properties:
@@ -4351,56 +4267,6 @@ components:
       type: string
       minLength: 1
       maxLength: 36
-    DeleteQueryLoggingConfigResponseDisplay:
-      type: object
-      properties: {}
-    DeleteQueryLoggingConfigOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteQueryLoggingConfigResponseDisplay'
-    DeleteReusableDelegationSetResponseDisplay:
-      type: object
-      properties: {}
-    DeleteReusableDelegationSetOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteReusableDelegationSetResponseDisplay'
-    DeleteTrafficPolicyResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTrafficPolicyOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteTrafficPolicyResponseDisplay'
-    DeleteTrafficPolicyInstanceResponseDisplay:
-      type: object
-      properties: {}
-    DeleteTrafficPolicyInstanceOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteTrafficPolicyInstanceResponseDisplay'
-    DeleteVPCAssociationAuthorizationResponseDisplay:
-      type: object
-      properties: {}
-    DeleteVPCAssociationAuthorizationOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteVPCAssociationAuthorizationResponseDisplay'
     DisableHostedZoneDNSSECOutputDisplay:
       type: object
       properties:
@@ -5209,16 +5075,6 @@ components:
             $ref: '#/components/schemas/HostedZoneDisplay'
     AcceleratedRecoveryEnabled:
       type: boolean
-    UpdateHostedZoneFeaturesResponseDisplay:
-      type: object
-      properties: {}
-    UpdateHostedZoneFeaturesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateHostedZoneFeaturesResponseDisplay'
     UpdateTrafficPolicyCommentOutputDisplay:
       type: object
       properties:

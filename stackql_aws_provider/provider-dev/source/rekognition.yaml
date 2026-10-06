@@ -244,7 +244,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyProjectVersionResponse'
-      x-stackql-resource: projects
+      x-stackql-resource: project_versions
       x-stackql-method: copy_project_version
       x-stackql-verb: EXEC
   /CreateCollection:
@@ -681,10 +681,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateUserResponse'
       x-stackql-resource: users
       x-stackql-method: create_user
       x-stackql-verb: INSERT
@@ -760,10 +756,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteDatasetResponse'
       x-stackql-resource: datasets
       x-stackql-method: delete_dataset
       x-stackql-verb: DELETE
@@ -887,10 +879,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProjectPolicyResponse'
       x-stackql-resource: project_policies
       x-stackql-method: delete_project_policy
       x-stackql-verb: DELETE
@@ -965,10 +953,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteStreamProcessorResponse'
       x-stackql-resource: stream_processors
       x-stackql-method: delete_stream_processor
       x-stackql-verb: DELETE
@@ -1013,10 +997,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteUserResponse'
       x-stackql-resource: users
       x-stackql-method: delete_user
       x-stackql-verb: DELETE
@@ -1471,7 +1451,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectLabelsResponse'
-      x-stackql-resource: detect_labels
+      x-stackql-resource: labels
       x-stackql-method: detect_labels
       x-stackql-verb: EXEC
   /DetectModerationLabels:
@@ -1530,7 +1510,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectModerationLabelsResponse'
-      x-stackql-resource: detect_moderation_labels
+      x-stackql-resource: moderation_labels
       x-stackql-method: detect_moderation_labels
       x-stackql-verb: EXEC
   /DetectProtectiveEquipment:
@@ -1582,7 +1562,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectProtectiveEquipmentResponse'
-      x-stackql-resource: detect_protective_equipment
+      x-stackql-resource: protective_equipment
       x-stackql-method: detect_protective_equipment
       x-stackql-verb: EXEC
   /DetectText:
@@ -1638,7 +1618,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectTextResponse'
-      x-stackql-resource: detect_text
+      x-stackql-resource: texts
       x-stackql-method: detect_text
       x-stackql-verb: EXEC
   /DisassociateFaces:
@@ -1732,10 +1712,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DistributeDatasetEntriesResponse'
       x-stackql-resource: dataset_entries
       x-stackql-method: distribute_dataset_entries
       x-stackql-verb: EXEC
@@ -1776,7 +1752,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetCelebrityInfoResponse'
-      x-stackql-resource: celebrity_infos
+      x-stackql-resource: celebrity_info
       x-stackql-method: get_celebrity_info
       x-stackql-verb: SELECT
   /GetCelebrityRecognition:
@@ -3075,7 +3051,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecognizeCelebritiesResponse'
-      x-stackql-resource: recognize_celebrities
+      x-stackql-resource: celebrities
       x-stackql-method: recognize_celebrities
       x-stackql-verb: EXEC
   /SearchFaces:
@@ -3210,7 +3186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchFacesByImageResponse'
-      x-stackql-resource: faces_by_images
+      x-stackql-resource: faces
       x-stackql-method: search_faces_by_image
       x-stackql-verb: SELECT
   /SearchUsers:
@@ -3317,7 +3293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchUsersByImageResponse'
-      x-stackql-resource: users_by_images
+      x-stackql-resource: users
       x-stackql-method: search_users_by_image
       x-stackql-verb: SELECT
   /StartCelebrityRecognition:
@@ -3376,7 +3352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCelebrityRecognitionResponse'
-      x-stackql-resource: celebrity_recognition
+      x-stackql-resource: celebrity_recognitions
       x-stackql-method: start_celebrity_recognition
       x-stackql-verb: EXEC
   /StartContentModeration:
@@ -3444,7 +3420,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContentModerationResponse'
-      x-stackql-resource: content_moderation
+      x-stackql-resource: content_moderations
       x-stackql-method: start_content_moderation
       x-stackql-verb: EXEC
   /StartFaceDetection:
@@ -3506,7 +3482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFaceDetectionResponse'
-      x-stackql-resource: faces
+      x-stackql-resource: face_detections
       x-stackql-method: start_face_detection
       x-stackql-verb: EXEC
   /StartFaceSearch:
@@ -3571,7 +3547,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFaceSearchResponse'
-      x-stackql-resource: faces
+      x-stackql-resource: face_searches
       x-stackql-method: start_face_search
       x-stackql-verb: EXEC
   /StartLabelDetection:
@@ -3649,7 +3625,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLabelDetectionResponse'
-      x-stackql-resource: label_detection
+      x-stackql-resource: label_detections
       x-stackql-method: start_label_detection
       x-stackql-verb: EXEC
   /StartMediaAnalysisJob:
@@ -3707,7 +3683,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMediaAnalysisJobResponse'
-      x-stackql-resource: media_analysis_job
+      x-stackql-resource: media_analysis_jobs
       x-stackql-method: start_media_analysis_job
       x-stackql-verb: EXEC
   /StartPersonTracking:
@@ -3766,7 +3742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPersonTrackingResponse'
-      x-stackql-resource: person_tracking
+      x-stackql-resource: person_trackings
       x-stackql-method: start_person_tracking
       x-stackql-verb: EXEC
   /StartProjectVersion:
@@ -3816,7 +3792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProjectVersionResponse'
-      x-stackql-resource: projects
+      x-stackql-resource: project_versions
       x-stackql-method: start_project_version
       x-stackql-verb: EXEC
   /StartSegmentDetection:
@@ -3883,7 +3859,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSegmentDetectionResponse'
-      x-stackql-resource: segment_detection
+      x-stackql-resource: segment_detections
       x-stackql-method: start_segment_detection
       x-stackql-verb: EXEC
   /StartStreamProcessor:
@@ -3933,7 +3909,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartStreamProcessorResponse'
-      x-stackql-resource: stream_processor
+      x-stackql-resource: stream_processors
       x-stackql-method: start_stream_processor
       x-stackql-verb: EXEC
   /StartTextDetection:
@@ -3989,7 +3965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTextDetectionResponse'
-      x-stackql-resource: text_detection
+      x-stackql-resource: text_detections
       x-stackql-method: start_text_detection
       x-stackql-verb: EXEC
   /StopProjectVersion:
@@ -4028,7 +4004,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopProjectVersionResponse'
-      x-stackql-resource: projects
+      x-stackql-resource: project_versions
       x-stackql-method: stop_project_version
       x-stackql-verb: EXEC
   /StopStreamProcessor:
@@ -4060,11 +4036,7 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopStreamProcessorResponse'
-      x-stackql-resource: stream_processor
+      x-stackql-resource: stream_processors
       x-stackql-method: stop_stream_processor
       x-stackql-verb: EXEC
   /TagResource:
@@ -4103,10 +4075,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -4145,10 +4113,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -4197,10 +4161,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateDatasetEntriesResponse'
       x-stackql-resource: dataset_entries
       x-stackql-method: update_dataset_entries
       x-stackql-verb: UPDATE
@@ -4250,10 +4210,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateStreamProcessorResponse'
       x-stackql-resource: stream_processors
       x-stackql-method: update_stream_processor
       x-stackql-verb: UPDATE
@@ -5160,16 +5116,12 @@ components:
     StreamProcessorArn:
       type: string
       pattern: (^arn:[a-z\d-]+:rekognition:[a-z\d-]+:\d{12}:streamprocessor\/.+$)
-    CreateUserResponse:
-      type: object
     DeleteCollectionResponse:
       type: object
       properties:
         StatusCode:
           $ref: '#/components/schemas/UInteger'
           description: HTTP status code that indicates the result of the operation.
-    DeleteDatasetResponse:
-      type: object
     FaceIdList:
       type: array
       items:
@@ -5230,8 +5182,6 @@ components:
       type: string
       maxLength: 64
       pattern: '[0-9A-Fa-f]+'
-    DeleteProjectPolicyResponse:
-      type: object
     DeleteProjectVersionResponse:
       type: object
       properties:
@@ -5255,10 +5205,6 @@ components:
       - COPYING_FAILED
       - DEPRECATED
       - EXPIRED
-    DeleteStreamProcessorResponse:
-      type: object
-    DeleteUserResponse:
-      type: object
     DescribeCollectionResponse:
       type: object
       properties:
@@ -6595,8 +6541,6 @@ components:
           description: The Amazon Resource Name (ARN) of the dataset that you want to use.
       required:
       - Arn
-    DistributeDatasetEntriesResponse:
-      type: object
     RekognitionUniqueId:
       type: string
       pattern: '[0-9A-Za-z]*'
@@ -8430,10 +8374,6 @@ components:
         Status:
           $ref: '#/components/schemas/ProjectVersionStatus'
           description: The current status of the stop operation.
-    StopStreamProcessorResponse:
-      type: object
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
@@ -8443,8 +8383,6 @@ components:
       minLength: 1
       maxLength: 128
       pattern: ^(?!aws:)[\p{L}\p{Z}\p{N}_.:/=+\-@]*$
-    UntagResourceResponse:
-      type: object
     DatasetChanges:
       description: Describes updates or additions to a dataset. A Single update or addition is an entry (JSON Line) that provides
         information about a single image. To update an existing entry, you match the source-ref field of the update entry
@@ -8466,8 +8404,6 @@ components:
       format: byte
       minLength: 1
       maxLength: 5242880
-    UpdateDatasetEntriesResponse:
-      type: object
     StreamProcessorSettingsForUpdate:
       description: The stream processor settings that you want to update. ConnectedHome settings can be updated to detect
         different labels with a different minimum confidence.
@@ -8497,5 +8433,3 @@ components:
       enum:
       - ConnectedHomeMinConfidence
       - RegionsOfInterest
-    UpdateStreamProcessorResponse:
-      type: object

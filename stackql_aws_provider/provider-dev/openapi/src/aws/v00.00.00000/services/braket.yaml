@@ -211,10 +211,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DeleteSpendingLimitResponse"
   /device/{device_arn}:
     get:
       operationId: GetDevice
@@ -323,10 +319,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
     delete:
       operationId: UntagResource
       description: Remove tags from a resource.
@@ -346,10 +338,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /devices:
     post:
       operationId: SearchDevices
@@ -485,10 +473,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UpdateSpendingLimitResponse"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -937,8 +921,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: arn:aws[a-z\-]*:braket:[a-z0-9\-]+:[0-9]{12}:spending-limit/.*
-    DeleteSpendingLimitResponse:
-      type: object
     GetDeviceResponse:
       type: object
       properties:
@@ -1644,20 +1626,14 @@ components:
         - totalSpend
         - createdAt
         - updatedAt
-    TagResourceResponse:
-      type: object
     TagKeys:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    UntagResourceResponse:
-      type: object
     UpdateSpendingLimitRequestSpendingLimitString:
       type: string
       minLength: 1
       pattern: \d+(\.\d{1,2})?
-    UpdateSpendingLimitResponse:
-      type: object
   x-stackQL-resources:
     jobs:
       id: aws.braket.jobs
@@ -1799,7 +1775,6 @@ components:
             $ref: "#/paths/~1spending-limit~1{spending_limit_arn}~1delete/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
         search_spending_limits:
           operation:
             $ref: "#/paths/~1spending-limits/post"
@@ -1824,7 +1799,6 @@ components:
             $ref: "#/paths/~1spending-limit~1{spending_limit_arn}~1update/patch"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1892,7 +1866,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1903,7 +1876,6 @@ components:
             $ref: "#/paths/~1tags~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
       sqlVerbs:

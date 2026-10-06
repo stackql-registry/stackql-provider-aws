@@ -120,6 +120,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the assessment run that is specified by the ARN of the assessment run.</td>
 </tr>
+<tr>
+    <td><a href="#start_assessment_run"><CopyableCode code="start_assessment_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-assessmentTemplateArn"><code>assessmentTemplateArn</code></a></td>
+    <td></td>
+    <td>Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.</td>
+</tr>
+<tr>
+    <td><a href="#stop_assessment_run"><CopyableCode code="stop_assessment_run" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-assessmentRunArn"><code>assessmentRunArn</code></a></td>
+    <td></td>
+    <td>Stops the assessment run that is specified by the ARN of the assessment run.</td>
+</tr>
 </tbody>
 </table>
 
@@ -196,6 +210,48 @@ Deletes the assessment run that is specified by the ARN of the assessment run.
 ```sql
 DELETE FROM aws.inspector.assessment_runs
 WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="start_assessment_run"
+    values={[
+        { label: 'start_assessment_run', value: 'start_assessment_run' },
+        { label: 'stop_assessment_run', value: 'stop_assessment_run' }
+    ]}
+>
+<TabItem value="start_assessment_run">
+
+Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
+
+```sql
+EXEC aws.inspector.assessment_runs.start_assessment_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"assessmentTemplateArn": "{{ assessmentTemplateArn }}", 
+"assessmentRunName": "{{ assessmentRunName }}"
+}'
+;
+```
+</TabItem>
+<TabItem value="stop_assessment_run">
+
+Stops the assessment run that is specified by the ARN of the assessment run.
+
+```sql
+EXEC aws.inspector.assessment_runs.stop_assessment_run 
+@region='{{ region }}' --required 
+@@json=
+'{
+"assessmentRunArn": "{{ assessmentRunArn }}", 
+"stopAction": "{{ stopAction }}"
+}'
 ;
 ```
 </TabItem>

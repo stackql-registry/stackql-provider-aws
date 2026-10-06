@@ -33,11 +33,36 @@ Creates, updates, deletes, gets or lists an <code>access_grants_instances</code>
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_access_grants_instance"
+    defaultValue="get_access_grants_instance_for_prefix"
     values={[
+        { label: 'get_access_grants_instance_for_prefix', value: 'get_access_grants_instance_for_prefix' },
         { label: 'get_access_grants_instance', value: 'get_access_grants_instance' }
     ]}
 >
+<TabItem value="get_access_grants_instance_for_prefix">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="access_grants_instance_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the S3 Access Grants instance.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="access_grants_instance_id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the S3 Access Grants instance. The ID is default. You can have one S3 Access Grants instance per Region per account.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="get_access_grants_instance">
 
 <table>
@@ -100,6 +125,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_access_grants_instance_for_prefix"><CopyableCode code="get_access_grants_instance_for_prefix" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-x-amz-account-id"><code>x-amz-account-id</code></a>, <a href="#parameter-s3prefix"><code>s3prefix</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieve the S3 Access Grants instance that contains a particular prefix. Permissions You must have the s3:GetAccessGrantsInstanceForPrefix permission for the caller account to use this operation. Additional Permissions The prefix owner account must grant you the following permissions to their S3 Access Grants instance: s3:GetAccessGrantsInstanceForPrefix.</td>
+</tr>
+<tr>
     <td><a href="#get_access_grants_instance"><CopyableCode code="get_access_grants_instance" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-x-amz-account-id"><code>x-amz-account-id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -148,6 +180,11 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>AWS region (default: us-east-1)</td>
 </tr>
+<tr id="parameter-s3prefix">
+    <td><CopyableCode code="s3prefix" /></td>
+    <td><code>string</code></td>
+    <td>The S3 prefix of the access grants that you would like to retrieve.</td>
+</tr>
 <tr id="parameter-x-amz-account-id">
     <td><CopyableCode code="x-amz-account-id" /></td>
     <td><code>string</code></td>
@@ -169,11 +206,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_access_grants_instance"
+    defaultValue="get_access_grants_instance_for_prefix"
     values={[
+        { label: 'get_access_grants_instance_for_prefix', value: 'get_access_grants_instance_for_prefix' },
         { label: 'get_access_grants_instance', value: 'get_access_grants_instance' }
     ]}
 >
+<TabItem value="get_access_grants_instance_for_prefix">
+
+Retrieve the S3 Access Grants instance that contains a particular prefix. Permissions You must have the s3:GetAccessGrantsInstanceForPrefix permission for the caller account to use this operation. Additional Permissions The prefix owner account must grant you the following permissions to their S3 Access Grants instance: s3:GetAccessGrantsInstanceForPrefix.
+
+```sql
+SELECT
+access_grants_instance_arn,
+access_grants_instance_id
+FROM aws.s3control.access_grants_instances
+WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
+AND s3prefix = '{{ s3prefix }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="get_access_grants_instance">
 
 Retrieves the S3 Access Grants instance for a Region in your account. Permissions You must have the s3:GetAccessGrantsInstance permission to use this operation. GetAccessGrantsInstance is not supported for cross-account access. You can only call the API from the account that owns the S3 Access Grants instance.

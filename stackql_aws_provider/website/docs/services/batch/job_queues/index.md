@@ -67,7 +67,7 @@ The following fields are returned by `SELECT` queries:
 <tr>
     <td><CopyableCode code="job_queue_type" /></td>
     <td><code>string</code></td>
-    <td>The type of job queue. For service jobs that run on SageMaker Training, this value is SAGEMAKER_TRAINING. For regular container jobs, this value is EKS, ECS, or ECS_FARGATE depending on the compute environment. (EKS, ECS, ECS_FARGATE, SAGEMAKER_TRAINING)</td>
+    <td>The type of job queue. For service jobs that run on SageMaker Training, this value is SAGEMAKER_TRAINING. For regular container jobs, this value is EKS, ECS, or ECS_FARGATE depending on the compute environment. (EKS, ECS, ECS_FARGATE, SAGEMAKER_TRAINING, ECS_MANAGED_INSTANCES)</td>
 </tr>
 <tr>
     <td><CopyableCode code="job_state_time_limit_actions" /></td>
@@ -285,7 +285,7 @@ job_queue_name
           serviceEnvironment: "{{ serviceEnvironment }}"
     - name: jobQueueType
       value: "{{ jobQueueType }}"
-      valid_values: ['EKS', 'ECS', 'ECS_FARGATE', 'SAGEMAKER_TRAINING']
+      valid_values: ['EKS', 'ECS', 'ECS_FARGATE', 'SAGEMAKER_TRAINING', 'ECS_MANAGED_INSTANCES']
     - name: tags
       value: "{{ tags }}"
     - name: jobStateTimeLimitActions

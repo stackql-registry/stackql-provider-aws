@@ -36,8 +36,7 @@ The following fields are returned by `SELECT` queries:
     defaultValue="describe_prompt"
     values={[
         { label: 'describe_prompt', value: 'describe_prompt' },
-        { label: 'list_prompts', value: 'list_prompts' },
-        { label: 'search_prompts', value: 'search_prompts' }
+        { label: 'list_prompts', value: 'list_prompts' }
     ]}
 >
 <TabItem value="describe_prompt">
@@ -128,55 +127,6 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
-<TabItem value="search_prompts">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="description" /></td>
-    <td><code>string</code></td>
-    <td>The description of the prompt.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_region" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Web Services Region where this resource was last modified. (pattern: &lt;code&gt;&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)&#123;1,2&#125;(-&#91;0-9&#93;)?&lt;/code&gt;)</td>
-</tr>
-<tr>
-    <td><CopyableCode code="last_modified_time" /></td>
-    <td><code>string (date-time)</code></td>
-    <td>The timestamp when this resource was last modified.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="name" /></td>
-    <td><code>string</code></td>
-    <td>The name of the prompt.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="prompt_arn" /></td>
-    <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the prompt.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="prompt_id" /></td>
-    <td><code>string</code></td>
-    <td>A unique identifier for the prompt.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="tags" /></td>
-    <td><code>object</code></td>
-    <td>The tags used to organize, track, or control access for this resource. For example, &#123; "Tags": &#123;"key1":"value1", "key2":"value2"&#125; &#125;.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 </Tabs>
 
 ## Methods
@@ -209,13 +159,6 @@ The following methods are available for this resource:
     <td>Provides information about the prompts for the specified Connect Customer instance.</td>
 </tr>
 <tr>
-    <td><a href="#search_prompts"><CopyableCode code="search_prompts" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Searches prompts in an Connect Customer instance, with optional filtering.</td>
-</tr>
-<tr>
     <td><a href="#create_prompt"><CopyableCode code="create_prompt" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-S3Uri"><code>S3Uri</code></a></td>
@@ -235,6 +178,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-instance_id"><code>instance_id</code></a>, <a href="#parameter-prompt_id"><code>prompt_id</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a prompt.</td>
+</tr>
+<tr>
+    <td><a href="#search_prompts"><CopyableCode code="search_prompts" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-InstanceId"><code>InstanceId</code></a></td>
+    <td></td>
+    <td>Searches prompts in an Connect Customer instance, with optional filtering.</td>
 </tr>
 </tbody>
 </table>
@@ -286,8 +236,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     defaultValue="describe_prompt"
     values={[
         { label: 'describe_prompt', value: 'describe_prompt' },
-        { label: 'list_prompts', value: 'list_prompts' },
-        { label: 'search_prompts', value: 'search_prompts' }
+        { label: 'list_prompts', value: 'list_prompts' }
     ]}
 >
 <TabItem value="describe_prompt">
@@ -326,24 +275,6 @@ WHERE instance_id = '{{ instance_id }}' -- required
 AND region = '{{ region }}' -- required
 AND nextToken = '{{ nextToken }}'
 AND maxResults = '{{ maxResults }}'
-;
-```
-</TabItem>
-<TabItem value="search_prompts">
-
-Searches prompts in an Connect Customer instance, with optional filtering.
-
-```sql
-SELECT
-description,
-last_modified_region,
-last_modified_time,
-name,
-prompt_arn,
-prompt_id,
-tags
-FROM aws.connect.prompts
-WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
@@ -457,6 +388,35 @@ DELETE FROM aws.connect.prompts
 WHERE instance_id = '{{ instance_id }}' --required
 AND prompt_id = '{{ prompt_id }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="search_prompts"
+    values={[
+        { label: 'search_prompts', value: 'search_prompts' }
+    ]}
+>
+<TabItem value="search_prompts">
+
+Searches prompts in an Connect Customer instance, with optional filtering.
+
+```sql
+EXEC aws.connect.prompts.search_prompts 
+@region='{{ region }}' --required 
+@@json=
+'{
+"InstanceId": "{{ InstanceId }}", 
+"NextToken": "{{ NextToken }}", 
+"MaxResults": {{ MaxResults }}, 
+"SearchFilter": "{{ SearchFilter }}", 
+"SearchCriteria": "{{ SearchCriteria }}"
+}'
 ;
 ```
 </TabItem>

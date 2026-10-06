@@ -112,7 +112,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAccessResponse'
-      x-stackql-resource: access
+      x-stackql-resource: accesses
       x-stackql-method: create_access
       x-stackql-verb: INSERT
   /CreateAgreement:
@@ -798,7 +798,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access
+      x-stackql-resource: accesses
       x-stackql-method: delete_access
       x-stackql-verb: DELETE
   /DeleteAgreement:
@@ -1222,7 +1222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAccessResponse'
-      x-stackql-resource: access
+      x-stackql-resource: accesses
       x-stackql-method: describe_access
       x-stackql-verb: SELECT
   /DescribeAgreement:
@@ -1771,7 +1771,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportCertificateResponse'
-      x-stackql-resource: certificate
+      x-stackql-resource: certificates
       x-stackql-method: import_certificate
       x-stackql-verb: EXEC
   /ImportHostKey:
@@ -1818,7 +1818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportHostKeyResponse'
-      x-stackql-resource: servers
+      x-stackql-resource: host_keys
       x-stackql-method: import_host_key
       x-stackql-verb: EXEC
   /ImportSshPublicKey:
@@ -2580,10 +2580,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SendWorkflowStepStateResponse'
       x-stackql-resource: workflows
       x-stackql-method: send_workflow_step_state
       x-stackql-verb: EXEC
@@ -3144,7 +3140,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAccessResponse'
-      x-stackql-resource: access
+      x-stackql-resource: accesses
       x-stackql-method: update_access
       x-stackql-verb: UPDATE
   /UpdateAgreement:
@@ -4245,6 +4241,12 @@ components:
             default value is 5. This parameter specifies the number of active connections that your connector can establish
             with the remote server at the same time. Increasing this value can enhance connector performance when transferring
             large file batches by enabling parallel operations.
+        OrderedUserSecretVersionStages:
+          $ref: '#/components/schemas/SecretVersionStageList'
+          description: An ordered list of Amazon Web Services Secrets Manager version stages (staging labels, such as AWSCURRENT
+            and AWSPREVIOUS) for the secret identified by UserSecretId. When establishing a connection, the connector attempts
+            to retrieve the SFTP user's credentials from each version stage in the order listed, and uses the first version
+            it can successfully retrieve. This lets you rotate the user secret without interrupting connector operations.
     SecretId:
       type: string
       minLength: 1
@@ -4261,6 +4263,14 @@ components:
       description: The number of concurrent connections that the connector will create to the remote server.
       type: integer
       minimum: 1
+    SecretVersionStageList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SecretVersionStage'
+    SecretVersionStage:
+      type: string
+      minLength: 1
+      maxLength: 256
     ConnectorSecurityPolicyName:
       type: string
       minLength: 0
@@ -4582,6 +4592,10 @@ components:
         As2Transports:
           $ref: '#/components/schemas/As2Transports'
           description: Indicates the transport method for the AS2 messages. Currently, only HTTP is supported.
+        ProxyConfig:
+          $ref: '#/components/schemas/ProxyConfig'
+          description: The configuration for PROXY protocol version 2 (PPv2) support on the Transfer Family server. For more
+            information, see Working with Network Load Balancers.
     PassiveIp:
       type: string
       minLength: 0
@@ -4605,6 +4619,31 @@ components:
       type: string
       enum:
       - HTTP
+    ProxyConfig:
+      description: Contains configuration for PROXY protocol version 2 (PPv2) support on an Transfer Family server. When enabled,
+        Transfer Family reads the added PPv2 header from incoming connections to extract the original client IP address. This
+        address is then available in Amazon CloudWatch Logs entries and is passed to custom identity providers during authentication,
+        enabling IP-based access policies. For more information, see Working with Network Load Balancers.
+      type: object
+      properties:
+        SftpMode:
+          $ref: '#/components/schemas/ProxyMode'
+          description: 'Specifies whether the Transfer Family server requires or ignores a PPv2 header containing the original
+            client IP address on incoming SFTP connections. If you don''t specify a value, the default is NONE NONE: the server
+            reads and ignores any PPv2 header on incoming SFTP connections. This is the default value. Use this value when
+            your SFTP server is not behind an NLB, or when you do not need to preserve client source IP addresses through
+            an NLB. PROXY_PROTOCOL_V2_ENFORCED: the server requires a valid PPv2 header on every incoming SFTP connection.
+            When a valid header is present, the server applies it and uses the client IP address from the header. If a connection
+            arrives without a PPv2 header, the server refuses the connection and logs an error to Amazon CloudWatch Logs indicating
+            that the expected PPv2 header was missing. Use this value when your SFTP server is behind an NLB with PPv2 enabled
+            on the target group. When you enable PROXY_PROTOCOL_V2_ENFORCED, the server trusts the source IP address in the
+            PPv2 header. You must configure security groups on your server''s VPC endpoint to restrict inbound traffic to
+            only the NLB''s private IP addresses. For the full requirements, see Working with Network Load Balancers.'
+    ProxyMode:
+      type: string
+      enum:
+      - NONE
+      - PROXY_PROTOCOL_V2_ENFORCED
     SecurityPolicyName:
       type: string
       minLength: 0
@@ -6929,8 +6968,6 @@ components:
       enum:
       - SUCCESS
       - FAILURE
-    SendWorkflowStepStateResponse:
-      type: object
     MaxItems:
       type: integer
       minimum: 1

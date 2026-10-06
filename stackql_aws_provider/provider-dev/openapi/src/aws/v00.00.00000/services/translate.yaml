@@ -262,7 +262,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Tags to be associated with this resource. A tag is a key-value pair that adds metadata to a resource. Each tag key for the resource must be unique. For more information, see Tagging your resources.
               required:
-                - Name
                 - MergeStrategy
                 - TerminologyData
       responses:
@@ -577,10 +576,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TagResourceResponse"
   /TranslateDocument:
     post:
       operationId: TranslateDocument
@@ -708,10 +703,6 @@ paths:
       responses:
         "200":
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UntagResourceResponse"
   /UpdateParallelData:
     post:
       operationId: UpdateParallelData
@@ -1426,8 +1417,6 @@ components:
         JobStatus:
           $ref: "#/components/schemas/JobStatus"
           description: The status of the designated job. Upon successful completion, the job's status will be STOPPED.
-    TagResourceResponse:
-      type: object
     Document:
       description: The content and content type of a document.
       type: object
@@ -1541,8 +1530,6 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/TagKey"
-    UntagResourceResponse:
-      type: object
     UpdateParallelDataResponse:
       type: object
       properties:
@@ -1559,10 +1546,10 @@ components:
           $ref: "#/components/schemas/Timestamp"
           description: The time that the most recent update was attempted.
   x-stackQL-resources:
-    parallel_datas:
-      id: aws.translate.parallel_datas
-      name: parallel_datas
-      title: parallel_datas
+    parallel_data:
+      id: aws.translate.parallel_data
+      name: parallel_data
+      title: parallel_data
       methods:
         create_parallel_data:
           operation:
@@ -1631,13 +1618,13 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/get_parallel_data"
+          - $ref: "#/components/x-stackQL-resources/parallel_data/methods/get_parallel_data"
         insert:
-          - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/create_parallel_data"
+          - $ref: "#/components/x-stackQL-resources/parallel_data/methods/create_parallel_data"
         update:
-          - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/update_parallel_data"
+          - $ref: "#/components/x-stackQL-resources/parallel_data/methods/update_parallel_data"
         delete:
-          - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/delete_parallel_data"
+          - $ref: "#/components/x-stackQL-resources/parallel_data/methods/delete_parallel_data"
     terminologies:
       id: aws.translate.terminologies
       name: terminologies
@@ -1658,6 +1645,19 @@ components:
         get_terminology:
           operation:
             $ref: "#/paths/~1GetTerminology/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_terminology:
+          operation:
+            $ref: "#/paths/~1ImportTerminology/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1728,6 +1728,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_text_translation_job:
+          operation:
+            $ref: "#/paths/~1StartTextTranslationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_text_translation_job:
+          operation:
+            $ref: "#/paths/~1StopTextTranslationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/text_translation_jobs/methods/describe_text_translation_job"
@@ -1782,7 +1808,6 @@ components:
             $ref: "#/paths/~1TagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1795,7 +1820,6 @@ components:
             $ref: "#/paths/~1UntagResource/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1810,4 +1834,50 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
           - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    documents:
+      id: aws.translate.documents
+      name: documents
+      title: documents
+      methods:
+        translate_document:
+          operation:
+            $ref: "#/paths/~1TranslateDocument/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        delete: []
+    texts:
+      id: aws.translate.texts
+      name: texts
+      title: texts
+      methods:
+        translate_text:
+          operation:
+            $ref: "#/paths/~1TranslateText/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
         delete: []

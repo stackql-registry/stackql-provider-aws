@@ -18,7 +18,7 @@ securityagent service documentation.
 
 :::info[Service Summary]
 
-total resources: __26__  
+total resources: __25__  
 
 :::
 
@@ -27,24 +27,23 @@ total resources: __26__
 <div class="providerDocColumn">
 <a href="/services/securityagent/agent_spaces/">agent_spaces</a><br />
 <a href="/services/securityagent/applications/">applications</a><br />
-<a href="/services/securityagent/artifact_metadatas/">artifact_metadatas</a><br />
+<a href="/services/securityagent/artifact_metadata/">artifact_metadata</a><br />
 <a href="/services/securityagent/artifacts/">artifacts</a><br />
 <a href="/services/securityagent/code_review_job_tasks/">code_review_job_tasks</a><br />
 <a href="/services/securityagent/code_review_jobs/">code_review_jobs</a><br />
-<a href="/services/securityagent/code_review_jobs_for_code_reviews/">code_review_jobs_for_code_reviews</a><br />
 <a href="/services/securityagent/code_reviews/">code_reviews</a><br />
 <a href="/services/securityagent/discovered_endpoints/">discovered_endpoints</a><br />
 <a href="/services/securityagent/findings/">findings</a><br />
 <a href="/services/securityagent/integrated_resources/">integrated_resources</a><br />
 <a href="/services/securityagent/integrations/">integrations</a><br />
-<a href="/services/securityagent/memberships/">memberships</a>
+<a href="/services/securityagent/memberships/">memberships</a><br />
+<a href="/services/securityagent/pentest_job_tasks/">pentest_job_tasks</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/securityagent/pentest_job_tasks/">pentest_job_tasks</a><br />
 <a href="/services/securityagent/pentest_jobs/">pentest_jobs</a><br />
-<a href="/services/securityagent/pentest_jobs_for_pentests/">pentest_jobs_for_pentests</a><br />
 <a href="/services/securityagent/pentests/">pentests</a><br />
 <a href="/services/securityagent/private_connections/">private_connections</a><br />
+<a href="/services/securityagent/provider_registrations/">provider_registrations</a><br />
 <a href="/services/securityagent/security_requirement_packs/">security_requirement_packs</a><br />
 <a href="/services/securityagent/security_requirements/">security_requirements</a><br />
 <a href="/services/securityagent/tags/">tags</a><br />

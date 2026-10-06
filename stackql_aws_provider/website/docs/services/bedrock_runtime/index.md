@@ -18,16 +18,23 @@ bedrock_runtime service documentation.
 
 :::info[Service Summary]
 
-total resources: __1__  
+total resources: __9__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/bedrock_runtime/async_invokes/">async_invokes</a>
+<a href="/services/bedrock_runtime/async_invokes/">async_invokes</a><br />
+<a href="/services/bedrock_runtime/converses/">converses</a><br />
+<a href="/services/bedrock_runtime/guardrail_checks/">guardrail_checks</a><br />
+<a href="/services/bedrock_runtime/guardrails/">guardrails</a><br />
+<a href="/services/bedrock_runtime/model_with_bidirectional_streams/">model_with_bidirectional_streams</a>
 </div>
 <div class="providerDocColumn">
-
+<a href="/services/bedrock_runtime/model_with_response_streams/">model_with_response_streams</a><br />
+<a href="/services/bedrock_runtime/models/">models</a><br />
+<a href="/services/bedrock_runtime/streams/">streams</a><br />
+<a href="/services/bedrock_runtime/tokens/">tokens</a>
 </div>
 </div>

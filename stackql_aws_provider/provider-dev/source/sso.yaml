@@ -158,7 +158,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: logout
+      x-stackql-resource: ts
       x-stackql-method: logout
       x-stackql-verb: EXEC
 components:

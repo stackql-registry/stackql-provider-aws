@@ -111,15 +111,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachLoadBalancerTargetGroupsOutputDisplay'
       x-stackql-resource: load_balancer_target_groups
       x-stackql-method: attach_load_balancer_target_groups
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachLoadBalancerTargetGroupsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_AttachLoadBalancerTargetGroups
       description: 'This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types.
@@ -136,10 +130,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachLoadBalancerTargetGroupsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -149,8 +139,6 @@ paths:
       x-stackql-resource: load_balancer_target_groups
       x-stackql-method: attach_load_balancer_target_groups
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachLoadBalancerTargetGroupsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=AttachLoadBalancers&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -187,15 +175,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachLoadBalancersOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: attach_load_balancers
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachLoadBalancersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_AttachLoadBalancers
       description: This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types.
@@ -210,10 +192,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachLoadBalancersOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -223,8 +201,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: attach_load_balancers
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachLoadBalancersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=AttachTrafficSources&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -266,15 +242,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachTrafficSourcesOutputDisplay'
       x-stackql-resource: traffic_sources
       x-stackql-method: attach_traffic_sources
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachTrafficSourcesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_AttachTrafficSources
       description: 'Attaches one or more traffic sources to the specified Auto Scaling group. You can use any of the following
@@ -286,10 +256,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/AttachTrafficSourcesOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -299,8 +265,6 @@ paths:
       x-stackql-resource: traffic_sources
       x-stackql-method: attach_traffic_sources
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: AttachTrafficSourcesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=BatchDeleteScheduledAction&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -333,7 +297,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchDeleteScheduledActionOutputDisplay'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: scheduled_actions
       x-stackql-method: batch_delete_scheduled_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDeleteScheduledActionOutputDisplay
@@ -354,7 +318,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchDeleteScheduledActionType'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: scheduled_actions
       x-stackql-method: batch_delete_scheduled_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDeleteScheduledActionOutputDisplay
@@ -455,7 +419,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CancelInstanceRefreshOutputDisplay'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: cancel_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelInstanceRefreshOutputDisplay
@@ -480,7 +444,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelInstanceRefreshType'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: cancel_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelInstanceRefreshOutputDisplay
@@ -542,15 +506,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CompleteLifecycleActionOutputDisplay'
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: complete_lifecycle_action
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: CompleteLifecycleActionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_CompleteLifecycleAction
       description: 'Completes the lifecycle action for the specified token or instance with the specified result. This step
@@ -566,10 +524,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/CompleteLifecycleActionOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -579,8 +533,6 @@ paths:
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: complete_lifecycle_action
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: CompleteLifecycleActionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=CreateAutoScalingGroup&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -631,7 +583,8 @@ paths:
         in: query
         required: false
         description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types
-          and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types,
+          see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
         schema:
           $ref: '#/components/schemas/MixedInstancesPolicy'
       - name: InstanceId
@@ -1311,15 +1264,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLifecycleHookOutputDisplay'
       x-stackql-resource: lifecycle_hooks
       x-stackql-method: delete_lifecycle_hook
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLifecycleHookOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteLifecycleHook
       description: Deletes the specified lifecycle hook. If there are any outstanding lifecycle actions, they are completed
@@ -1327,10 +1274,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteLifecycleHookOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1340,8 +1283,6 @@ paths:
       x-stackql-resource: lifecycle_hooks
       x-stackql-method: delete_lifecycle_hook
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteLifecycleHookOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DeleteNotificationConfiguration&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1555,15 +1496,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteWarmPoolOutputDisplay'
       x-stackql-resource: warm_pools
       x-stackql-method: delete_warm_pool
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteWarmPoolOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DeleteWarmPool
       description: Deletes the warm pool for the specified Auto Scaling group. For more information, see Warm pools for Amazon
@@ -1571,10 +1506,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DeleteWarmPoolOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -1584,8 +1515,6 @@ paths:
       x-stackql-resource: warm_pools
       x-stackql-method: delete_warm_pool
       x-stackql-verb: DELETE
-      x-stackql-responseEnvelope: DeleteWarmPoolOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DescribeAccountLimits&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3155,15 +3084,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachLoadBalancerTargetGroupsOutputDisplay'
       x-stackql-resource: load_balancer_target_groups
       x-stackql-method: detach_load_balancer_target_groups
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachLoadBalancerTargetGroupsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DetachLoadBalancerTargetGroups
       description: This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types.
@@ -3177,10 +3100,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachLoadBalancerTargetGroupsOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3190,8 +3109,6 @@ paths:
       x-stackql-resource: load_balancer_target_groups
       x-stackql-method: detach_load_balancer_target_groups
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachLoadBalancerTargetGroupsOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DetachLoadBalancers&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3227,15 +3144,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachLoadBalancersOutputDisplay'
       x-stackql-resource: load_balancers
       x-stackql-method: detach_load_balancers
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachLoadBalancersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DetachLoadBalancers
       description: This API operation is superseded by DetachTrafficSources, which can detach multiple traffic sources types.
@@ -3249,10 +3160,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachLoadBalancersOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3262,8 +3169,6 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: detach_load_balancers
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachLoadBalancersOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DetachTrafficSources&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3295,15 +3200,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachTrafficSourcesOutputDisplay'
       x-stackql-resource: traffic_sources
       x-stackql-method: detach_traffic_sources
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachTrafficSourcesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_DetachTrafficSources
       description: Detaches one or more traffic sources from the specified Auto Scaling group. When you detach a traffic source,
@@ -3313,10 +3212,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/DetachTrafficSourcesOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3326,8 +3221,6 @@ paths:
       x-stackql-resource: traffic_sources
       x-stackql-method: detach_traffic_sources
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: DetachTrafficSourcesOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=DisableMetricsCollection&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3924,15 +3817,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutLifecycleHookOutputDisplay'
       x-stackql-resource: lifecycle_hooks
       x-stackql-method: put_lifecycle_hook
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutLifecycleHookOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_PutLifecycleHook
       description: 'Creates or updates a lifecycle hook for the specified Auto Scaling group. Lifecycle hooks let you create
@@ -3953,10 +3840,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutLifecycleHookOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -3966,8 +3849,6 @@ paths:
       x-stackql-resource: lifecycle_hooks
       x-stackql-method: put_lifecycle_hook
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutLifecycleHookOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=PutNotificationConfiguration&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4372,15 +4253,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutWarmPoolOutputDisplay'
       x-stackql-resource: warm_pools
       x-stackql-method: put_warm_pool
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutWarmPoolOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_PutWarmPool
       description: Creates or updates a warm pool for the specified Auto Scaling group. A warm pool is a pool of pre-initialized
@@ -4392,10 +4267,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/PutWarmPoolOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4405,8 +4276,6 @@ paths:
       x-stackql-resource: warm_pools
       x-stackql-method: put_warm_pool
       x-stackql-verb: REPLACE
-      x-stackql-responseEnvelope: PutWarmPoolOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=RecordLifecycleActionHeartbeat&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4458,15 +4327,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay'
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: record_lifecycle_action_heartbeat
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: RecordLifecycleActionHeartbeatOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_RecordLifecycleActionHeartbeat
       description: 'Records a heartbeat for the lifecycle action associated with the specified token or instance. This extends
@@ -4483,10 +4346,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4496,8 +4355,6 @@ paths:
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: record_lifecycle_action_heartbeat
       x-stackql-verb: EXEC
-      x-stackql-responseEnvelope: RecordLifecycleActionHeartbeatOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=ResumeProcesses&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4583,7 +4440,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RollbackInstanceRefreshOutputDisplay'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: rollback_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RollbackInstanceRefreshOutputDisplay
@@ -4612,7 +4469,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RollbackInstanceRefreshType'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: rollback_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RollbackInstanceRefreshOutputDisplay
@@ -4771,15 +4628,9 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetInstanceProtectionOutputDisplay'
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: set_instance_protection
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetInstanceProtectionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
     post:
       operationId: POST_SetInstanceProtection
       description: Updates the instance protection settings of the specified instances. This operation cannot be called on
@@ -4788,10 +4639,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/SetInstanceProtectionOutputDisplay'
       parameters: []
       requestBody:
         content:
@@ -4801,8 +4648,6 @@ paths:
       x-stackql-resource: auto_scaling_groups
       x-stackql-method: set_instance_protection
       x-stackql-verb: UPDATE
-      x-stackql-responseEnvelope: SetInstanceProtectionOutputDisplay
-      x-stackql-responseObjectKey: $.line_items
   /?Action=StartInstanceRefresh&Version=2011-01-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4870,7 +4715,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartInstanceRefreshOutputDisplay'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: start_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartInstanceRefreshOutputDisplay
@@ -4904,7 +4749,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartInstanceRefreshType'
-      x-stackql-resource: auto_scaling_groups
+      x-stackql-resource: instance_refreshes
       x-stackql-method: start_instance_refresh
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartInstanceRefreshOutputDisplay
@@ -5107,7 +4952,9 @@ paths:
         in: query
         required: false
         description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types
-          and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          and purchase options in the Amazon EC2 Auto Scaling User Guide. You can remove the Distribution Segments configuration
+          by specifying OnDemandBaseCapacity or OnDemandPercentageAboveBaseCapacity. You can also remove it explicitly by
+          specifying an empty list for DistributionSegments.
         schema:
           $ref: '#/components/schemas/MixedInstancesPolicy'
       - name: MinSize
@@ -5433,16 +5280,6 @@ components:
       minLength: 1
       maxLength: 511
       pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
-    AttachLoadBalancerTargetGroupsResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachLoadBalancerTargetGroupsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachLoadBalancerTargetGroupsResultTypeDisplay'
     AttachLoadBalancerTargetGroupsType:
       type: object
       properties:
@@ -5460,16 +5297,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/XmlStringMaxLen255'
-    AttachLoadBalancersResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachLoadBalancersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachLoadBalancersResultTypeDisplay'
     AttachLoadBalancersType:
       type: object
       properties:
@@ -5510,16 +5337,6 @@ components:
       - Identifier
     SkipZonalShiftValidation:
       type: boolean
-    AttachTrafficSourcesResultTypeDisplay:
-      type: object
-      properties: {}
-    AttachTrafficSourcesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachTrafficSourcesResultTypeDisplay'
     AttachTrafficSourcesType:
       type: object
       properties:
@@ -5690,16 +5507,6 @@ components:
       maxLength: 36
     LifecycleActionResult:
       type: string
-    CompleteLifecycleActionAnswerDisplay:
-      type: object
-      properties: {}
-    CompleteLifecycleActionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompleteLifecycleActionAnswerDisplay'
     CompleteLifecycleActionType:
       type: object
       properties:
@@ -5753,16 +5560,18 @@ components:
       maxLength: 128
       pattern: '[a-zA-Z0-9\(\)\.\-/_]+'
     MixedInstancesPolicy:
-      description: Use this structure to launch multiple instance types and On-Demand Instances and Spot Instances within
-        a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use to
-        launch instances and help optimize your costs. For more information, see Auto Scaling groups with multiple instance
-        types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+      description: Use this structure to launch multiple instance types and configure how capacity is distributed across On-Demand,
+        Spot, and supported Capacity Reservation types within a single Auto Scaling group. A mixed instances policy contains
+        information that Amazon EC2 Auto Scaling can use to launch instances, prioritize capacity types, and help optimize
+        your costs. For more information, see Auto Scaling groups with multiple instance types and purchase options in the
+        Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types, see Use Distribution Segments
+        to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
       type: object
       properties:
         LaunchTemplate:
           $ref: '#/components/schemas/LaunchTemplate'
           description: One or more launch templates and the instance types (overrides) that are used to launch EC2 instances
-            to fulfill On-Demand and Spot capacities.
+            to fulfill the configured capacities.
         InstancesDistribution:
           $ref: '#/components/schemas/InstancesDistribution'
           description: The instances distribution.
@@ -6272,8 +6081,8 @@ components:
       maxLength: 21
       pattern: ^ami-[a-z0-9]{1,17}$
     InstancesDistribution:
-      description: Use this structure to specify the distribution of On-Demand Instances and Spot Instances and the allocation
-        strategies used to fulfill On-Demand and Spot capacities for a mixed instances policy.
+      description: Use this structure to specify how a mixed instances policy distributes capacity across On-Demand, Spot,
+        and supported Capacity Reservation types, and to specify the allocation strategies that are used to fulfill the capacity.
       type: object
       properties:
         OnDemandAllocationStrategy:
@@ -6330,6 +6139,11 @@ components:
             launch, you pay the current Spot price. To remove a maximum price that you previously set, include the property
             but specify an empty string ("") for the value. If you specify a maximum price, your instances will be interrupted
             more frequently than if you do not specify one. Valid Range: Minimum value of 0.001'
+        DistributionSegments:
+          $ref: '#/components/schemas/DistributionSegments'
+          description: The Distribution Segments configuration. Each segment contains an ordered list of capacity types to
+            prioritize. For more information, see Use Distribution Segments to target multiple capacity types in the Amazon
+            EC2 Auto Scaling User Guide.
     XmlString:
       type: string
       pattern: '[\u0020-\uD7FF\uE000-\uFFFD\uD800\uDC00-\uDBFF\uDFFF\r\n\t]*'
@@ -6343,6 +6157,34 @@ components:
       type: string
       minLength: 0
       maxLength: 255
+    DistributionSegments:
+      type: array
+      items:
+        $ref: '#/components/schemas/DistributionSegment'
+    DistributionSegment:
+      description: Use this structure to specify the capacity types that Amazon EC2 Auto Scaling prioritizes when it launches
+        instances.
+      type: object
+      properties:
+        TargetCapacityTypes:
+          $ref: '#/components/schemas/TargetCapacityTypes'
+          description: 'The capacity types to prioritize, in order. Amazon EC2 Auto Scaling attempts to launch instances in
+            the priority order of the capacity types, and within each capacity type, in the order of instance types listed
+            in your launch template Overrides. The following lists the valid values: on-demand-capacity-reservation On-Demand
+            Capacity Reservations. capacity-block Capacity Blocks. interruptible-capacity-reservation Interruptible Capacity
+            Reservations. on-demand On-Demand capacity. Include this value to allow the group to fall back to On-Demand capacity
+            when the preceding capacity types are unavailable.'
+    TargetCapacityTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/TargetCapacityType'
+    TargetCapacityType:
+      type: string
+      enum:
+      - on-demand-capacity-reservation
+      - capacity-block
+      - interruptible-capacity-reservation
+      - on-demand
     Cooldown:
       type: integer
     AvailabilityZones:
@@ -6650,7 +6492,8 @@ components:
         MixedInstancesPolicy:
           $ref: '#/components/schemas/MixedInstancesPolicy'
           description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types
-            and purchase options in the Amazon EC2 Auto Scaling User Guide.
+            and purchase options in the Amazon EC2 Auto Scaling User Guide. To learn how to prioritize multiple capacity types,
+            see Use Distribution Segments to target multiple capacity types in the Amazon EC2 Auto Scaling User Guide.
         InstanceId:
           $ref: '#/components/schemas/XmlStringMaxLen19'
           description: The ID of the instance used to base the launch configuration on. If specified, Amazon EC2 Auto Scaling
@@ -7127,16 +6970,6 @@ components:
           description: The name of the launch configuration.
       required:
       - LaunchConfigurationName
-    DeleteLifecycleHookAnswerDisplay:
-      type: object
-      properties: {}
-    DeleteLifecycleHookOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteLifecycleHookAnswerDisplay'
     DeleteLifecycleHookType:
       type: object
       properties:
@@ -7192,16 +7025,6 @@ components:
           description: One or more tags.
       required:
       - Tags
-    DeleteWarmPoolAnswerDisplay:
-      type: object
-      properties: {}
-    DeleteWarmPoolOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeleteWarmPoolAnswerDisplay'
     DeleteWarmPoolType:
       type: object
       properties:
@@ -8417,16 +8240,6 @@ components:
       required:
       - AutoScalingGroupName
       - ShouldDecrementDesiredCapacity
-    DetachLoadBalancerTargetGroupsResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachLoadBalancerTargetGroupsOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DetachLoadBalancerTargetGroupsResultTypeDisplay'
     DetachLoadBalancerTargetGroupsType:
       type: object
       properties:
@@ -8439,16 +8252,6 @@ components:
       required:
       - AutoScalingGroupName
       - TargetGroupARNs
-    DetachLoadBalancersResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachLoadBalancersOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DetachLoadBalancersResultTypeDisplay'
     DetachLoadBalancersType:
       type: object
       properties:
@@ -8461,16 +8264,6 @@ components:
       required:
       - AutoScalingGroupName
       - LoadBalancerNames
-    DetachTrafficSourcesResultTypeDisplay:
-      type: object
-      properties: {}
-    DetachTrafficSourcesOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DetachTrafficSourcesResultTypeDisplay'
     DetachTrafficSourcesType:
       type: object
       properties:
@@ -8737,16 +8530,6 @@ components:
       - AutoScalingGroupName
       - RequestedCapacity
       - ClientToken
-    PutLifecycleHookAnswerDisplay:
-      type: object
-      properties: {}
-    PutLifecycleHookOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutLifecycleHookAnswerDisplay'
     PutLifecycleHookType:
       type: object
       properties:
@@ -9546,16 +9329,6 @@ components:
           description: Specifies whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
     ReuseOnScaleIn:
       type: boolean
-    PutWarmPoolAnswerDisplay:
-      type: object
-      properties: {}
-    PutWarmPoolOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PutWarmPoolAnswerDisplay'
     PutWarmPoolType:
       type: object
       properties:
@@ -9588,16 +9361,6 @@ components:
             The default is to terminate instances in the Auto Scaling group when the group scales in.
       required:
       - AutoScalingGroupName
-    RecordLifecycleActionHeartbeatAnswerDisplay:
-      type: object
-      properties: {}
-    RecordLifecycleActionHeartbeatOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordLifecycleActionHeartbeatAnswerDisplay'
     RecordLifecycleActionHeartbeatType:
       type: object
       properties:
@@ -9696,16 +9459,6 @@ components:
       - HealthStatus
     ProtectedFromScaleIn:
       type: boolean
-    SetInstanceProtectionAnswerDisplay:
-      type: object
-      properties: {}
-    SetInstanceProtectionOutputDisplay:
-      type: object
-      properties:
-        line_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetInstanceProtectionAnswerDisplay'
     SetInstanceProtectionQuery:
       type: object
       properties:
@@ -9740,10 +9493,11 @@ components:
             EC2 Auto Scaling User Guide.
         MixedInstancesPolicy:
           $ref: '#/components/schemas/MixedInstancesPolicy'
-          description: Use this structure to launch multiple instance types and On-Demand Instances and Spot Instances within
-            a single Auto Scaling group. A mixed instances policy contains information that Amazon EC2 Auto Scaling can use
-            to launch instances and help optimize your costs. For more information, see Auto Scaling groups with multiple
-            instance types and purchase options in the Amazon EC2 Auto Scaling User Guide.
+          description: Use this structure to launch multiple instance types and configure how capacity is distributed across
+            On-Demand, Spot, and supported Capacity Reservation types within a single Auto Scaling group. A mixed instances
+            policy contains information that Amazon EC2 Auto Scaling can use to launch instances, prioritize capacity types,
+            and help optimize your costs. For more information, see Auto Scaling groups with multiple instance types and purchase
+            options in the Amazon EC2 Auto Scaling User Guide.
     RefreshPreferences:
       description: Describes the preferences for an instance refresh.
       type: object
@@ -9978,7 +9732,9 @@ components:
         MixedInstancesPolicy:
           $ref: '#/components/schemas/MixedInstancesPolicy'
           description: The mixed instances policy. For more information, see Auto Scaling groups with multiple instance types
-            and purchase options in the Amazon EC2 Auto Scaling User Guide.
+            and purchase options in the Amazon EC2 Auto Scaling User Guide. You can remove the Distribution Segments configuration
+            by specifying OnDemandBaseCapacity or OnDemandPercentageAboveBaseCapacity. You can also remove it explicitly by
+            specifying an empty list for DistributionSegments.
         MinSize:
           $ref: '#/components/schemas/AutoScalingGroupMinSize'
           description: The minimum size of the Auto Scaling group.

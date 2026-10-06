@@ -33,11 +33,56 @@ Creates, updates, deletes, gets or lists a <code>portfolios</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="describe_portfolio"
+    defaultValue="list_portfolios_for_product"
     values={[
+        { label: 'list_portfolios_for_product', value: 'list_portfolios_for_product' },
         { label: 'describe_portfolio', value: 'describe_portfolio' }
     ]}
 >
+<TabItem value="list_portfolios_for_product">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN assigned to the portfolio.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="created_time" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The UTC time stamp of the creation time.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the portfolio.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="display_name" /></td>
+    <td><code>string</code></td>
+    <td>The name to use for display purposes.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="id" /></td>
+    <td><code>string</code></td>
+    <td>The portfolio identifier. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="provider_name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the portfolio provider.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="describe_portfolio">
 
 <table>
@@ -89,6 +134,13 @@ The following methods are available for this resource:
     </tr>
 </thead>
 <tbody>
+<tr>
+    <td><a href="#list_portfolios_for_product"><CopyableCode code="list_portfolios_for_product" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists all portfolios that the specified product is associated with.</td>
+</tr>
 <tr>
     <td><a href="#describe_portfolio"><CopyableCode code="describe_portfolio" /></a></td>
     <td><CopyableCode code="select" /></td>
@@ -193,11 +245,29 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="describe_portfolio"
+    defaultValue="list_portfolios_for_product"
     values={[
+        { label: 'list_portfolios_for_product', value: 'list_portfolios_for_product' },
         { label: 'describe_portfolio', value: 'describe_portfolio' }
     ]}
 >
+<TabItem value="list_portfolios_for_product">
+
+Lists all portfolios that the specified product is associated with.
+
+```sql
+SELECT
+arn,
+created_time,
+description,
+display_name,
+id,
+provider_name
+FROM aws.servicecatalog.portfolios
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="describe_portfolio">
 
 Gets information about the specified portfolio. A delegated admin is authorized to invoke this command.

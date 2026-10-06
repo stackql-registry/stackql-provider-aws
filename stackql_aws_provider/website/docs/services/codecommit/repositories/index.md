@@ -33,42 +33,14 @@ Creates, updates, deletes, gets or lists a <code>repositories</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_repositories"
+    defaultValue="get_repository"
     values={[
-        { label: 'batch_get_repositories', value: 'batch_get_repositories' },
         { label: 'get_repository', value: 'get_repository' },
+        { label: 'batch_get_repositories', value: 'batch_get_repositories' },
+        { label: 'list_repositories_for_approval_rule_template', value: 'list_repositories_for_approval_rule_template' },
         { label: 'list_repositories', value: 'list_repositories' }
     ]}
 >
-<TabItem value="batch_get_repositories">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="errors" /></td>
-    <td><code>array</code></td>
-    <td>Returns information about any errors returned when attempting to retrieve information about the repositories.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="repositories" /></td>
-    <td><code>array</code></td>
-    <td>A list of repositories returned by the batch get repositories operation.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="repositories_not_found" /></td>
-    <td><code>array</code></td>
-    <td>Returns a list of repository names for which information could not be found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_repository">
 
 <table>
@@ -138,6 +110,54 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_repositories">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="errors" /></td>
+    <td><code>array</code></td>
+    <td>Returns information about any errors returned when attempting to retrieve information about the repositories.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="repositories" /></td>
+    <td><code>array</code></td>
+    <td>A list of repositories returned by the batch get repositories operation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="repositories_not_found" /></td>
+    <td><code>array</code></td>
+    <td>Returns a list of repository names for which information could not be found.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_repositories_for_approval_rule_template">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="repository_name" /></td>
+    <td><code>string</code></td>
+    <td>A list of repository names that are associated with the specified approval rule template.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_repositories">
 
 <table>
@@ -180,6 +200,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#get_repository"><CopyableCode code="get_repository" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns information about a repository. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.</td>
+</tr>
+<tr>
     <td><a href="#batch_get_repositories"><CopyableCode code="batch_get_repositories" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -187,11 +214,11 @@ The following methods are available for this resource:
     <td>Returns information about one or more repositories. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.</td>
 </tr>
 <tr>
-    <td><a href="#get_repository"><CopyableCode code="get_repository" /></a></td>
+    <td><a href="#list_repositories_for_approval_rule_template"><CopyableCode code="list_repositories_for_approval_rule_template" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
-    <td>Returns information about a repository. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.</td>
+    <td>Lists all repositories associated with the specified approval rule template.</td>
 </tr>
 <tr>
     <td><a href="#list_repositories"><CopyableCode code="list_repositories" /></a></td>
@@ -318,27 +345,14 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_repositories"
+    defaultValue="get_repository"
     values={[
-        { label: 'batch_get_repositories', value: 'batch_get_repositories' },
         { label: 'get_repository', value: 'get_repository' },
+        { label: 'batch_get_repositories', value: 'batch_get_repositories' },
+        { label: 'list_repositories_for_approval_rule_template', value: 'list_repositories_for_approval_rule_template' },
         { label: 'list_repositories', value: 'list_repositories' }
     ]}
 >
-<TabItem value="batch_get_repositories">
-
-Returns information about one or more repositories. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.
-
-```sql
-SELECT
-errors,
-repositories,
-repositories_not_found
-FROM aws.codecommit.repositories
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_repository">
 
 Returns information about a repository. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.
@@ -355,6 +369,32 @@ kms_key_id,
 last_modified_date,
 repository_description,
 repository_id,
+repository_name
+FROM aws.codecommit.repositories
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_repositories">
+
+Returns information about one or more repositories. The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a webpage.
+
+```sql
+SELECT
+errors,
+repositories,
+repositories_not_found
+FROM aws.codecommit.repositories
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_repositories_for_approval_rule_template">
+
+Lists all repositories associated with the specified approval rule template.
+
+```sql
+SELECT
 repository_name
 FROM aws.codecommit.repositories
 WHERE region = '{{ region }}' -- required

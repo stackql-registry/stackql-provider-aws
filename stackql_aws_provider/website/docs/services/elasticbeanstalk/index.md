@@ -18,7 +18,7 @@ elasticbeanstalk service documentation.
 
 :::info[Service Summary]
 
-total resources: __17__  
+total resources: __22__  
 
 :::
 
@@ -26,17 +26,22 @@ total resources: __17__
 <div class="row">
 <div class="providerDocColumn">
 <a href="/services/elasticbeanstalk/account_attributes/">account_attributes</a><br />
+<a href="/services/elasticbeanstalk/app_servers/">app_servers</a><br />
 <a href="/services/elasticbeanstalk/application_versions/">application_versions</a><br />
 <a href="/services/elasticbeanstalk/applications/">applications</a><br />
 <a href="/services/elasticbeanstalk/available_solution_stacks/">available_solution_stacks</a><br />
 <a href="/services/elasticbeanstalk/configuration_options/">configuration_options</a><br />
 <a href="/services/elasticbeanstalk/configuration_settings/">configuration_settings</a><br />
+<a href="/services/elasticbeanstalk/dns_availabilities/">dns_availabilities</a><br />
+<a href="/services/elasticbeanstalk/environment_cnam_es/">environment_cnam_es</a><br />
 <a href="/services/elasticbeanstalk/environment_healths/">environment_healths</a><br />
-<a href="/services/elasticbeanstalk/environment_managed_action_histories/">environment_managed_action_histories</a><br />
-<a href="/services/elasticbeanstalk/environment_managed_actions/">environment_managed_actions</a>
+<a href="/services/elasticbeanstalk/environment_info/">environment_info</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/elasticbeanstalk/environment_managed_action_histories/">environment_managed_action_histories</a><br />
+<a href="/services/elasticbeanstalk/environment_managed_actions/">environment_managed_actions</a><br />
 <a href="/services/elasticbeanstalk/environment_resources/">environment_resources</a><br />
+<a href="/services/elasticbeanstalk/environment_updates/">environment_updates</a><br />
 <a href="/services/elasticbeanstalk/environments/">environments</a><br />
 <a href="/services/elasticbeanstalk/events/">events</a><br />
 <a href="/services/elasticbeanstalk/instances_healths/">instances_healths</a><br />

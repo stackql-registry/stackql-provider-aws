@@ -104,10 +104,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AttachCustomerManagedPolicyReferenceToPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: attach_customer_managed_policy_reference_to_permission_set
       x-stackql-verb: UPDATE
@@ -152,10 +148,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AttachManagedPolicyToPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: attach_managed_policy_to_permission_set
       x-stackql-verb: UPDATE
@@ -334,10 +326,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateApplicationAssignmentResponse'
       x-stackql-resource: application_assignments
       x-stackql-method: create_application_assignment
       x-stackql-verb: INSERT
@@ -430,10 +418,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CreateInstanceAccessControlAttributeConfigurationResponse'
       x-stackql-resource: instance_access_control_attribute_configurations
       x-stackql-method: create_instance_access_control_attribute_configuration
       x-stackql-verb: INSERT
@@ -648,10 +632,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: delete_application
       x-stackql-verb: DELETE
@@ -730,10 +710,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteApplicationAssignmentResponse'
       x-stackql-resource: application_assignments
       x-stackql-method: delete_application_assignment
       x-stackql-verb: DELETE
@@ -844,10 +820,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInlinePolicyFromPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: delete_inline_policy_from_permission_set
       x-stackql-verb: DELETE
@@ -882,10 +854,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInstanceResponse'
       x-stackql-resource: instances
       x-stackql-method: delete_instance
       x-stackql-verb: DELETE
@@ -921,10 +889,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteInstanceAccessControlAttributeConfigurationResponse'
       x-stackql-resource: instance_access_control_attribute_configurations
       x-stackql-method: delete_instance_access_control_attribute_configuration
       x-stackql-verb: DELETE
@@ -963,10 +927,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: delete_permission_set
       x-stackql-verb: DELETE
@@ -1003,10 +963,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePermissionsBoundaryFromPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: delete_permissions_boundary_from_permission_set
       x-stackql-verb: DELETE
@@ -1041,10 +997,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteTrustedTokenIssuerResponse'
       x-stackql-resource: trusted_token_issuers
       x-stackql-method: delete_trusted_token_issuer
       x-stackql-verb: DELETE
@@ -1087,7 +1039,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAccountAssignmentCreationStatusResponse'
-      x-stackql-resource: account_assignment_creation_status
+      x-stackql-resource: account_assignment_creation_statuses
       x-stackql-method: describe_account_assignment_creation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentCreationStatus
@@ -1130,7 +1082,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribeAccountAssignmentDeletionStatusResponse'
-      x-stackql-resource: account_assignment_deletion_status
+      x-stackql-resource: account_assignment_deletion_statuses
       x-stackql-method: describe_account_assignment_deletion_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentDeletionStatus
@@ -1419,7 +1371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DescribePermissionSetProvisioningStatusResponse'
-      x-stackql-resource: permission_set_provisioning_status
+      x-stackql-resource: permission_set_provisioning_statuses
       x-stackql-method: describe_permission_set_provisioning_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PermissionSetProvisioningStatus
@@ -1544,10 +1496,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetachCustomerManagedPolicyReferenceFromPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: detach_customer_managed_policy_reference_from_permission_set
       x-stackql-verb: UPDATE
@@ -1590,10 +1538,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetachManagedPolicyFromPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: detach_managed_policy_from_permission_set
       x-stackql-verb: UPDATE
@@ -1834,7 +1778,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetInlinePolicyForPermissionSetResponse'
-      x-stackql-resource: inline_policy_for_permission_sets
+      x-stackql-resource: inline_policies
       x-stackql-method: get_inline_policy_for_permission_set
       x-stackql-verb: SELECT
   /GetPermissionsBoundaryForPermissionSet:
@@ -1874,7 +1818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPermissionsBoundaryForPermissionSetResponse'
-      x-stackql-resource: permissions_boundary_for_permission_sets
+      x-stackql-resource: permissions_boundaries
       x-stackql-method: get_permissions_boundary_for_permission_set
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PermissionsBoundary
@@ -1924,7 +1868,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccountAssignmentCreationStatusResponse'
-      x-stackql-resource: account_assignment_creation_status
+      x-stackql-resource: account_assignment_creation_statuses
       x-stackql-method: list_account_assignment_creation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentsCreationStatus
@@ -1977,7 +1921,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccountAssignmentDeletionStatusResponse'
-      x-stackql-resource: account_assignment_deletion_status
+      x-stackql-resource: account_assignment_deletion_statuses
       x-stackql-method: list_account_assignment_deletion_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentsDeletionStatus
@@ -2101,7 +2045,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccountAssignmentsForPrincipalResponse'
-      x-stackql-resource: account_assignments_for_principals
+      x-stackql-resource: account_assignments
       x-stackql-method: list_account_assignments_for_principal
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignments
@@ -2158,7 +2102,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAccountsForProvisionedPermissionSetOutputDisplay'
-      x-stackql-resource: accounts_for_provisioned_permission_sets
+      x-stackql-resource: accounts
       x-stackql-method: list_accounts_for_provisioned_permission_set
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccountsForProvisionedPermissionSetOutputDisplay
@@ -2337,7 +2281,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListApplicationAssignmentsForPrincipalResponse'
-      x-stackql-resource: application_assignments_for_principals
+      x-stackql-resource: application_assignments
       x-stackql-method: list_application_assignments_for_principal
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationAssignments
@@ -2735,7 +2679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListPermissionSetProvisioningStatusResponse'
-      x-stackql-resource: permission_set_provisioning_status
+      x-stackql-resource: permission_set_provisioning_statuses
       x-stackql-method: list_permission_set_provisioning_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PermissionSetsProvisioningStatus
@@ -3136,10 +3080,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutApplicationAssignmentConfigurationResponse'
       x-stackql-resource: application_assignment_configurations
       x-stackql-method: put_application_assignment_configuration
       x-stackql-verb: REPLACE
@@ -3277,10 +3217,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutApplicationSessionConfigurationResponse'
       x-stackql-resource: application_session_configurations
       x-stackql-method: put_application_session_configuration
       x-stackql-verb: REPLACE
@@ -3325,10 +3261,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutInlinePolicyToPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: put_inline_policy_to_permission_set
       x-stackql-verb: REPLACE
@@ -3370,10 +3302,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutPermissionsBoundaryToPermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: put_permissions_boundary_to_permission_set
       x-stackql-verb: REPLACE
@@ -3461,10 +3389,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
@@ -3506,10 +3430,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UntagResourceResponse'
       x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
@@ -3555,10 +3475,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateApplicationResponse'
       x-stackql-resource: applications
       x-stackql-method: update_application
       x-stackql-verb: UPDATE
@@ -3611,10 +3527,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateInstanceResponse'
       x-stackql-resource: instances
       x-stackql-method: update_instance
       x-stackql-verb: UPDATE
@@ -3656,10 +3568,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateInstanceAccessControlAttributeConfigurationResponse'
       x-stackql-resource: instance_access_control_attribute_configurations
       x-stackql-method: update_instance_access_control_attribute_configuration
       x-stackql-verb: UPDATE
@@ -3707,10 +3615,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdatePermissionSetResponse'
       x-stackql-resource: permission_sets
       x-stackql-method: update_permission_set
       x-stackql-verb: UPDATE
@@ -3752,10 +3656,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UpdateTrustedTokenIssuerResponse'
       x-stackql-resource: trusted_token_issuers
       x-stackql-method: update_trusted_token_issuer
       x-stackql-verb: UPDATE
@@ -3857,15 +3757,11 @@ components:
       minLength: 1
       maxLength: 512
       pattern: ((/[A-Za-z0-9\.,\+@=_-]+)*)/
-    AttachCustomerManagedPolicyReferenceToPermissionSetResponse:
-      type: object
     ManagedPolicyArn:
       type: string
       minLength: 20
       maxLength: 2048
       pattern: arn:aws(-[a-z]{1,5}){0,3}:iam::aws:policy((/[A-Za-z0-9\.,\+@=_-]+)*)/([A-Za-z0-9\.,\+=@_-]+)
-    AttachManagedPolicyToPermissionSetResponse:
-      type: object
     TargetId:
       type: string
       minLength: 12
@@ -4057,8 +3953,6 @@ components:
       pattern: arn:aws(-[a-z]{1,5}){0,3}:sso::\d{12}:application/(sso)?ins-[a-zA-Z0-9-.]{16}/apl-[a-zA-Z0-9]{16}
     IdentityStoreArn:
       type: string
-    CreateApplicationAssignmentResponse:
-      type: object
     NameType:
       type: string
       minLength: 0
@@ -4126,8 +4020,6 @@ components:
       minLength: 0
       maxLength: 256
       pattern: '[\p{L}\p{Z}\p{N}_.:\/=+\-@\[\]\{\}\$\\"]*'
-    CreateInstanceAccessControlAttributeConfigurationResponse:
-      type: object
     PermissionSetName:
       type: string
       minLength: 1
@@ -4259,13 +4151,9 @@ components:
         AccountAssignmentDeletionStatus:
           $ref: '#/components/schemas/AccountAssignmentOperationStatus'
           description: The status object for the account assignment deletion operation.
-    DeleteApplicationResponse:
-      type: object
     Scope:
       type: string
       pattern: ([A-Za-z0-9_]{1,50})(:[A-Za-z0-9_]{1,50}){0,1}(:[A-Za-z0-9_]{1,50}){0,1}
-    DeleteApplicationAssignmentResponse:
-      type: object
     AuthenticationMethodType:
       type: string
       enum:
@@ -4277,18 +4165,6 @@ components:
       - refresh_token
       - urn:ietf:params:oauth:grant-type:jwt-bearer
       - urn:ietf:params:oauth:grant-type:token-exchange
-    DeleteInlinePolicyFromPermissionSetResponse:
-      type: object
-    DeleteInstanceResponse:
-      type: object
-    DeleteInstanceAccessControlAttributeConfigurationResponse:
-      type: object
-    DeletePermissionSetResponse:
-      type: object
-    DeletePermissionsBoundaryFromPermissionSetResponse:
-      type: object
-    DeleteTrustedTokenIssuerResponse:
-      type: object
     DescribeAccountAssignmentCreationStatusResponse:
       type: object
       properties:
@@ -4590,10 +4466,6 @@ components:
         TrustedTokenIssuerConfiguration:
           $ref: '#/components/schemas/TrustedTokenIssuerConfiguration'
           description: A structure the describes the settings that apply of this trusted token issuer.
-    DetachCustomerManagedPolicyReferenceFromPermissionSetResponse:
-      type: object
-    DetachManagedPolicyFromPermissionSetResponse:
-      type: object
     GetApplicationAccessScopeResponse:
       type: object
       properties:
@@ -5418,14 +5290,6 @@ components:
         PermissionSetProvisioningStatus:
           $ref: '#/components/schemas/PermissionSetProvisioningStatus'
           description: The status object for the permission set provisioning operation.
-    PutApplicationAssignmentConfigurationResponse:
-      type: object
-    PutApplicationSessionConfigurationResponse:
-      type: object
-    PutInlinePolicyToPermissionSetResponse:
-      type: object
-    PutPermissionsBoundaryToPermissionSetResponse:
-      type: object
     RemoveRegionResponse:
       type: object
       properties:
@@ -5433,14 +5297,10 @@ components:
           $ref: '#/components/schemas/RegionStatus'
           description: The status of the Region after the remove operation. The status is REMOVING when the asynchronous workflow
             is in progress. The Region record is deleted when the workflow completes.
-    TagResourceResponse:
-      type: object
     TagKeyList:
       type: array
       items:
         $ref: '#/components/schemas/TagKey'
-    UntagResourceResponse:
-      type: object
     UpdateApplicationPortalOptions:
       description: A structure that describes the options for the access portal associated with an application that can be
         updated.
@@ -5448,8 +5308,6 @@ components:
       properties:
         SignInOptions:
           $ref: '#/components/schemas/SignInOptions'
-    UpdateApplicationResponse:
-      type: object
     EncryptionConfiguration:
       description: A structure that specifies the KMS key type and KMS key ARN used to encrypt data in your IAM Identity Center
         instance.
@@ -5464,12 +5322,6 @@ components:
             be specified when KeyType is AWS_OWNED_KMS_KEY.
       required:
       - KeyType
-    UpdateInstanceResponse:
-      type: object
-    UpdateInstanceAccessControlAttributeConfigurationResponse:
-      type: object
-    UpdatePermissionSetResponse:
-      type: object
     TrustedTokenIssuerUpdateConfiguration:
       description: A structure that contains details to be updated for a trusted token issuer configuration. The structure
         and settings that you can include depend on the type of the trusted token issuer being updated.
@@ -5498,5 +5350,3 @@ components:
           $ref: '#/components/schemas/JwksRetrievalOption'
           description: The method that the trusted token issuer can use to retrieve the JSON Web Key Set used to verify a
             JWT.
-    UpdateTrustedTokenIssuerResponse:
-      type: object

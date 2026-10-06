@@ -140,10 +140,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelResponse'
       x-stackql-resource: channels
       x-stackql-method: delete_channel
       x-stackql-verb: DELETE
@@ -265,10 +261,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteLiveSourceResponse'
       x-stackql-resource: live_sources
       x-stackql-method: delete_live_source
       x-stackql-verb: DELETE
@@ -405,10 +397,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePrefetchScheduleResponse'
       x-stackql-resource: prefetch_schedules
       x-stackql-method: delete_prefetch_schedule
       x-stackql-verb: DELETE
@@ -514,10 +502,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteProgramResponse'
       x-stackql-resource: programs
       x-stackql-method: delete_program
       x-stackql-verb: DELETE
@@ -644,10 +628,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteSourceLocationResponse'
       x-stackql-resource: source_locations
       x-stackql-method: delete_source_location
       x-stackql-verb: DELETE
@@ -769,10 +749,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteVodSourceResponse'
       x-stackql-resource: vod_sources
       x-stackql-method: delete_vod_source
       x-stackql-verb: DELETE
@@ -853,10 +829,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteChannelPolicyResponse'
       x-stackql-resource: channel_policies
       x-stackql-method: delete_channel_policy
       x-stackql-verb: DELETE
@@ -904,10 +876,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PutChannelPolicyResponse'
       x-stackql-resource: channel_policies
       x-stackql-method: put_channel_policy
       x-stackql-verb: REPLACE
@@ -927,10 +895,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeleteFunctionResponse'
       x-stackql-resource: functions
       x-stackql-method: delete_function
       x-stackql-verb: DELETE
@@ -980,12 +944,16 @@ paths:
                   $ref: '#/components/schemas/__string'
                 HttpRequestConfiguration:
                   $ref: '#/components/schemas/HttpRequestConfiguration'
+                AwsServiceRequestConfiguration:
+                  $ref: '#/components/schemas/AwsServiceRequestConfiguration'
                 CustomOutputConfiguration:
                   $ref: '#/components/schemas/CustomOutputConfiguration'
                 ConcurrentExecutorConfiguration:
                   $ref: '#/components/schemas/ConcurrentExecutorConfiguration'
                 SequentialExecutorConfiguration:
                   $ref: '#/components/schemas/SequentialExecutorConfiguration'
+                VastRequestConfiguration:
+                  $ref: '#/components/schemas/VastRequestConfiguration'
                 Tags:
                   $ref: '#/components/schemas/__mapOf__string'
               required:
@@ -1015,10 +983,6 @@ paths:
       responses:
         '204':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletePlaybackConfigurationResponse'
       x-stackql-resource: playback_configurations
       x-stackql-method: delete_playback_configuration
       x-stackql-verb: DELETE
@@ -1559,6 +1523,8 @@ paths:
                   $ref: '#/components/schemas/AdConditioningConfiguration'
                 AdDecisionServerConfiguration:
                   $ref: '#/components/schemas/AdDecisionServerConfiguration'
+                YieldOptimizationConfiguration:
+                  $ref: '#/components/schemas/YieldOptimizationConfiguration'
                 FunctionMapping:
                   $ref: '#/components/schemas/FunctionMapping'
                 AdsPersonalizationTimeouts:
@@ -1592,10 +1558,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StartChannelResponse'
       x-stackql-resource: channels
       x-stackql-method: start_channel
       x-stackql-verb: EXEC
@@ -1614,10 +1576,6 @@ paths:
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StopChannelResponse'
       x-stackql-resource: channels
       x-stackql-method: stop_channel
       x-stackql-verb: EXEC
@@ -1704,8 +1662,10 @@ components:
       properties:
         PublishOptInEventTypes:
           $ref: '#/components/schemas/__adsInteractionPublishOptInEventTypesList'
-          description: Indicates that MediaTailor emits RAW_ADS_RESPONSE logs for playback sessions that are initialized with
-            this configuration.
+          description: Indicates that MediaTailor will emit the selected events in the logs for playback sessions that are
+            initialized with this configuration. These events are not emitted by default and must be explicitly opted in.
+            For descriptions of each event type, see MediaTailor ADS logs description and event types in Elemental MediaTailor
+            User Guide.
         ExcludeEventTypes:
           $ref: '#/components/schemas/__adsInteractionExcludeEventTypesList'
           description: Indicates that MediaTailor won't emit the selected events in the logs for playback sessions that are
@@ -1715,17 +1675,27 @@ components:
       items:
         $ref: '#/components/schemas/AdsInteractionPublishOptInEventType'
     AdsInteractionPublishOptInEventType:
+      description: An ADS interaction log event type that MediaTailor emits only when you opt in to it. For descriptions of
+        each event type, see MediaTailor ADS logs description and event types in Elemental MediaTailor User Guide.
       type: string
       enum:
       - RAW_ADS_RESPONSE
       - RAW_ADS_REQUEST
+      - RAW_BID_REQUEST
+      - RAW_BID_RESPONSE
       - PRE_ADS_REQUEST_HOOK_SUMMARY
       - PRE_ADS_REQUEST_FUNCTION_COMPLETED
+      - POST_ADS_RESPONSE_HOOK_SUMMARY
+      - POST_ADS_RESPONSE_FUNCTION_COMPLETED
+      - PRE_MANIFEST_INSERTION_HOOK_SUMMARY
+      - PRE_MANIFEST_INSERTION_FUNCTION_COMPLETED
     __adsInteractionExcludeEventTypesList:
       type: array
       items:
         $ref: '#/components/schemas/AdsInteractionExcludeEventType'
     AdsInteractionExcludeEventType:
+      description: An ADS interaction log event type that MediaTailor emits by default and that you can suppress. For descriptions
+        of each event type, see MediaTailor ADS logs description and event types in Elemental MediaTailor User Guide.
       type: string
       enum:
       - AD_MARKER_FOUND
@@ -1771,6 +1741,10 @@ components:
       - INTERSTITIAL_VOD_FAILURE
       - PRE_ADS_REQUEST_HOOK_ERROR
       - PRE_ADS_REQUEST_FUNCTION_ERROR
+      - POST_ADS_RESPONSE_HOOK_ERROR
+      - POST_ADS_RESPONSE_FUNCTION_ERROR
+      - PRE_MANIFEST_INSERTION_HOOK_ERROR
+      - PRE_MANIFEST_INSERTION_FUNCTION_ERROR
     ManifestServiceInteractionLog:
       description: Settings for customizing what events are included in logs for interactions with the origin server. For
         more information about manifest service logs, including descriptions of the event types, see MediaTailor manifest
@@ -2761,24 +2735,6 @@ components:
         VodSourceName:
           $ref: '#/components/schemas/__string'
           description: The name to assign to the VOD source.
-    DeleteChannelResponse:
-      type: object
-    DeleteChannelPolicyResponse:
-      type: object
-    DeleteFunctionResponse:
-      type: object
-    DeleteLiveSourceResponse:
-      type: object
-    DeletePlaybackConfigurationResponse:
-      type: object
-    DeletePrefetchScheduleResponse:
-      type: object
-    DeleteProgramResponse:
-      type: object
-    DeleteSourceLocationResponse:
-      type: object
-    DeleteVodSourceResponse:
-      type: object
     DescribeChannelResponse:
       type: object
       properties:
@@ -3094,6 +3050,10 @@ components:
         HttpRequestConfiguration:
           $ref: '#/components/schemas/HttpRequestConfiguration'
           description: The configuration for an HTTP_REQUEST function.
+        AwsServiceRequestConfiguration:
+          $ref: '#/components/schemas/AwsServiceRequestConfiguration'
+          description: The configuration for an AWS_SERVICE_REQUEST function. Specifies the target service, target Region,
+            and request parameters.
         CustomOutputConfiguration:
           $ref: '#/components/schemas/CustomOutputConfiguration'
           description: The configuration for a CUSTOM_OUTPUT function.
@@ -3103,6 +3063,9 @@ components:
         SequentialExecutorConfiguration:
           $ref: '#/components/schemas/SequentialExecutorConfiguration'
           description: The configuration for a SEQUENTIAL_EXECUTOR function.
+        VastRequestConfiguration:
+          $ref: '#/components/schemas/VastRequestConfiguration'
+          description: The configuration for a VAST_REQUEST function.
         Tags:
           type: object
           properties: {}
@@ -3116,13 +3079,16 @@ components:
       - FunctionId
       - FunctionType
     FunctionType:
-      description: -- Define Enums
+      description: The type of a function, which determines what the function can do at runtime. For more information, see
+        Function types and composition in the MediaTailor User Guide.
       type: string
       enum:
       - HTTP_REQUEST
+      - AWS_SERVICE_REQUEST
       - CUSTOM_OUTPUT
       - CONCURRENT_EXECUTOR
       - SEQUENTIAL_EXECUTOR
+      - VAST_REQUEST
     HttpRequestConfiguration:
       description: The configuration for an HTTP_REQUEST function. Specifies the HTTP method, URL, headers, body, timeout,
         and output expressions for the request. For more information, see HTTP_REQUEST in the MediaTailor User Guide.
@@ -3173,6 +3139,71 @@ components:
       enum:
       - GET
       - POST
+    AwsServiceRequestConfiguration:
+      description: The configuration for an AWS_SERVICE_REQUEST function. Contains the target service, target Region, and
+        request parameters that the function uses to call an AWS service API. For more information, see AWS_SERVICE_REQUEST
+        in the MediaTailor User Guide.
+      type: object
+      properties:
+        Runtime:
+          $ref: '#/components/schemas/RuntimeType'
+          description: The expression language used to evaluate expressions in the function configuration. The only supported
+            value is JSONata.
+        Output:
+          type: object
+          properties: {}
+          description: A map of output bindings. Each key is a namespaced output path, such as player_params.device_type.
+            Each value is an expression that MediaTailor evaluates at runtime and can reference the response object from the
+            target service. For more information, see JSONata expression reference in the MediaTailor User Guide.
+        MethodType:
+          $ref: '#/components/schemas/MethodType'
+          description: 'Specifies how the function sends the request to the target service. The value must match what the
+            target service operation requires. Valid values: GET – Retrieves data from the target service. POST – Submits
+            a request body to the target service.'
+        RequestTimeoutMilliseconds:
+          $ref: '#/components/schemas/__integer'
+          description: 'The maximum time, in milliseconds, that MediaTailor waits for a response from the AWS service. If
+            the call exceeds this timeout, MediaTailor sets the response status code to null and proceeds with output expression
+            evaluation. Valid values: 100 to 2000.'
+        Url:
+          $ref: '#/components/schemas/__string'
+          description: An expression that evaluates to the endpoint URL for the target AWS service API operation. Use {%...%}
+            delimiters for dynamic expressions. The URL must correspond to a valid endpoint for the service specified in TargetService.
+            The maximum length after evaluation is 2,048 characters.
+        Body:
+          $ref: '#/components/schemas/__string'
+          description: An expression that evaluates to the request body for the AWS service API call. The body must conform
+            to the input format that the target service operation expects. Applies only when the target operation accepts
+            a request body. The maximum size after evaluation is 64 KB.
+        Headers:
+          type: object
+          properties: {}
+          description: A map of HTTP header names to expression values. MediaTailor evaluates each header value expression
+            at runtime and includes the result in the outbound request to the AWS service. Use this to pass any headers required
+            by the target service operation. You can include a maximum of 50 headers.
+        TargetService:
+          $ref: '#/components/schemas/AwsTargetService'
+          description: 'The AWS service to call. Valid value: elemental-inference (AWS Elemental Inference).'
+        TargetRegion:
+          $ref: '#/components/schemas/AwsServiceRequestConfigurationTargetRegionString'
+          description: The AWS Region for the target service. Specify a static Region code (for example, us-east-1) or a JSONata
+            expression that resolves to a Region code at runtime (for example, {%inference.region%}).
+      required:
+      - Runtime
+      - MethodType
+      - RequestTimeoutMilliseconds
+      - Url
+      - TargetService
+      - TargetRegion
+    AwsTargetService:
+      type: string
+      minLength: 1
+      maxLength: 63
+      pattern: '[a-z0-9-]+'
+    AwsServiceRequestConfigurationTargetRegionString:
+      type: string
+      minLength: 1
+      maxLength: 256
     CustomOutputConfiguration:
       description: The configuration for a CUSTOM_OUTPUT function. MediaTailor evaluates the output expressions against the
         current session state and commits the results as output bindings. CUSTOM_OUTPUT functions do not make external calls.
@@ -3275,6 +3306,54 @@ components:
       - Runtime
       - FunctionList
       - TimeoutMilliseconds
+    VastRequestConfiguration:
+      description: The configuration for a VAST_REQUEST function. Specifies the HTTP method, URL, headers, body, timeout,
+        and output expressions for a request to a VAST endpoint. MediaTailor parses the response as VAST and resolves wrapper
+        redirects, then makes the parsed ads available to the function's output expressions. For more information, see Function
+        types and composition in the MediaTailor User Guide.
+      type: object
+      properties:
+        Runtime:
+          $ref: '#/components/schemas/RuntimeType'
+          description: The expression language used to evaluate expressions in the function configuration. Set this to JSONata.
+        Output:
+          type: object
+          properties: {}
+          description: A map of output bindings. Each key is a namespaced output path (such as temp.wrappedAds), and each
+            value is an expression that MediaTailor evaluates at runtime. Output expressions in a VAST_REQUEST function can
+            reference the response object, which exposes response.parsedAds — the ads parsed from the VAST response after
+            schema validation and wrapper resolution — and response.statusCode. For more information about expression syntax,
+            see JSONata expression reference in the MediaTailor User Guide.
+        MethodType:
+          $ref: '#/components/schemas/MethodType'
+          description: 'The HTTP method for the request to the VAST endpoint. Valid values: GET and POST. Use POST to send
+            a bid request body, such as an OpenRTB payload.'
+        RequestTimeoutMilliseconds:
+          $ref: '#/components/schemas/__integer'
+          description: 'The maximum time, in milliseconds, that MediaTailor waits for a response from the VAST endpoint. The
+            timeout covers the entire response, including any wrapper redirects that MediaTailor follows. If the call exceeds
+            this timeout, MediaTailor proceeds with an empty ad list and continues output expression evaluation. Valid values:
+            100 to 2000.'
+        Url:
+          $ref: '#/components/schemas/__string'
+          description: An expression that evaluates to the VAST endpoint URL. Use {%...%} delimiters for dynamic expressions.
+            A literal value must be an https:// URL. The expression can be up to 25,000 characters, and the URL after evaluation
+            can be up to 2,048 characters.
+        Body:
+          $ref: '#/components/schemas/__string'
+          description: An expression that evaluates to the request body, for example to send an OpenRTB bid request. The expression
+            can be up to 100,000 characters, and the body after evaluation can be up to 64 KB.
+        Headers:
+          type: object
+          properties: {}
+          description: A map of HTTP header names to expression values. MediaTailor evaluates each header value expression
+            at runtime and includes the result in the outbound request. Headers beginning with X-Amz- are reserved by the
+            service, and method override headers are not allowed.
+      required:
+      - Runtime
+      - MethodType
+      - RequestTimeoutMilliseconds
+      - Url
     GetPlaybackConfigurationResponse:
       type: object
       properties:
@@ -3380,12 +3459,17 @@ components:
           $ref: '#/components/schemas/AdDecisionServerConfiguration'
           description: The configuration for customizing HTTP requests to the ad decision server (ADS). This includes settings
             for request method, headers, body content, and compression options.
+        YieldOptimizationConfiguration:
+          $ref: '#/components/schemas/YieldOptimizationConfiguration'
+          description: Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic
+            ads from Amazon Publisher Services (APS).
         FunctionMapping:
           type: object
           properties: {}
           description: A map of lifecycle hook event names to function identifiers. The function mapping specifies which function
-            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and
-            PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.
+            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION, PRE_ADS_REQUEST,
+            POST_ADS_RESPONSE, and PRE_MANIFEST_INSERTION. For more information, see Functions lifecycle hooks in the MediaTailor
+            User Guide.
         AdsPersonalizationTimeouts:
           $ref: '#/components/schemas/AdsPersonalizationTimeouts'
           description: The timeout settings for ad decision server interactions. These settings control how long MediaTailor
@@ -3679,6 +3763,59 @@ components:
       - IGNORE_AD_SEQUENCE
       - FOLLOW_AD_SEQUENCE_ONLY_LIVE
       - FOLLOW_AD_SEQUENCE_ONLY_VOD
+    YieldOptimizationConfiguration:
+      description: Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic ads
+        from Amazon Publisher Services (APS).
+      type: object
+      properties:
+        MinimumUnfilledDuration:
+          $ref: '#/components/schemas/MinimumUnfilledDurationSeconds'
+          description: The minimum unfilled duration, in seconds, that must remain in an ad break before MediaTailor requests
+            additional ads from Amazon Publisher Services (APS). For example, if set to 6 seconds, yield optimization triggers
+            only when at least 6 seconds of unfilled time remains after the primary ad server response.
+        PublisherId:
+          $ref: '#/components/schemas/ApsPublisherId'
+          description: Publisher ID for an existing Amazon Publisher Services configuration. This ID must be obtained by registering
+            with APS prior to using the Yield Optimization feature. The Publisher ID identifies your account in the APS system
+            and is required for all bid requests.
+        Region:
+          $ref: '#/components/schemas/ApsRegion'
+          description: The Amazon Publisher Services (APS) region that MediaTailor sends bid requests to. Choose the region
+            closest to your primary audience, because the selection affects both latency and the ad inventory available to
+            you. This setting applies to the entire playback configuration, not to individual viewers. If you serve traffic
+            across multiple regions, create a separate playback configuration for each APS region.
+        OpenRtbTemplate:
+          $ref: '#/components/schemas/OpenRtbTemplateString'
+          description: The OpenRTB bid request template, in JSON, that MediaTailor sends to Amazon Publisher Services (APS).
+            The template must include an imp array with one impression specifying bidfloor, an app object specifying bundle
+            and storeurl, and a device object specifying ua and ip. Use double curly braces (for example, {{player_params.user_agent}})
+            to insert session variables and player parameters.
+      required:
+      - MinimumUnfilledDuration
+      - PublisherId
+      - Region
+      - OpenRtbTemplate
+    MinimumUnfilledDurationSeconds:
+      type: integer
+      minimum: 6
+      maximum: 3600
+    ApsPublisherId:
+      type: string
+      minLength: 1
+      maxLength: 36
+      pattern: '[a-z0-9-]+'
+    ApsRegion:
+      description: Supported Amazon Publisher Services regions for yield optimization integration. The region selection affects
+        latency and ad inventory availability, so choose the region closest to your primary audience.
+      type: string
+      enum:
+      - AMERICAS
+      - EUROPE
+      - ASIA_PACIFIC
+    OpenRtbTemplateString:
+      type: string
+      minLength: 1
+      maxLength: 102400
     AdsPersonalizationTimeouts:
       description: The timeout settings for ad decision server interactions during ad personalization.
       type: object
@@ -3913,6 +4050,10 @@ components:
         HttpRequestConfiguration:
           $ref: '#/components/schemas/HttpRequestConfiguration'
           description: The configuration for an HTTP_REQUEST function.
+        AwsServiceRequestConfiguration:
+          $ref: '#/components/schemas/AwsServiceRequestConfiguration'
+          description: The configuration for an AWS_SERVICE_REQUEST function. Specifies the target service, target Region,
+            and request parameters.
         CustomOutputConfiguration:
           $ref: '#/components/schemas/CustomOutputConfiguration'
           description: The configuration for a CUSTOM_OUTPUT function.
@@ -3922,6 +4063,9 @@ components:
         SequentialExecutorConfiguration:
           $ref: '#/components/schemas/SequentialExecutorConfiguration'
           description: The configuration for a SEQUENTIAL_EXECUTOR function.
+        VastRequestConfiguration:
+          $ref: '#/components/schemas/VastRequestConfiguration'
+          description: The configuration for a VAST_REQUEST function.
         Tags:
           type: object
           properties: {}
@@ -4099,12 +4243,17 @@ components:
             (ADS) returns, and what priority MediaTailor uses when inserting ads.
         AdDecisionServerConfiguration:
           $ref: '#/components/schemas/AdDecisionServerConfiguration'
+        YieldOptimizationConfiguration:
+          $ref: '#/components/schemas/YieldOptimizationConfiguration'
+          description: Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic
+            ads from Amazon Publisher Services (APS).
         FunctionMapping:
           type: object
           properties: {}
           description: A map of lifecycle hook event names to function identifiers. The function mapping specifies which function
-            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and
-            PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.
+            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION, PRE_ADS_REQUEST,
+            POST_ADS_RESPONSE, and PRE_MANIFEST_INSERTION. For more information, see Functions lifecycle hooks in the MediaTailor
+            User Guide.
         AdsPersonalizationTimeouts:
           $ref: '#/components/schemas/AdsPersonalizationTimeouts'
           description: The timeout settings for ad decision server interactions. These settings control how long MediaTailor
@@ -4293,8 +4442,6 @@ components:
       - HttpPackageConfigurations
       - SourceLocationName
       - VodSourceName
-    PutChannelPolicyResponse:
-      type: object
     PutFunctionResponse:
       description: -- Define Mixin --
       type: object
@@ -4311,6 +4458,10 @@ components:
         HttpRequestConfiguration:
           $ref: '#/components/schemas/HttpRequestConfiguration'
           description: The configuration for an HTTP_REQUEST function.
+        AwsServiceRequestConfiguration:
+          $ref: '#/components/schemas/AwsServiceRequestConfiguration'
+          description: The configuration for an AWS_SERVICE_REQUEST function. Specifies the target service, target Region,
+            and request parameters.
         CustomOutputConfiguration:
           $ref: '#/components/schemas/CustomOutputConfiguration'
           description: The configuration for a CUSTOM_OUTPUT function.
@@ -4320,6 +4471,9 @@ components:
         SequentialExecutorConfiguration:
           $ref: '#/components/schemas/SequentialExecutorConfiguration'
           description: The configuration for a SEQUENTIAL_EXECUTOR function.
+        VastRequestConfiguration:
+          $ref: '#/components/schemas/VastRequestConfiguration'
+          description: The configuration for a VAST_REQUEST function.
         Tags:
           type: object
           properties: {}
@@ -4458,12 +4612,17 @@ components:
           $ref: '#/components/schemas/AdDecisionServerConfiguration'
           description: The configuration for customizing HTTP requests to the ad decision server (ADS). This includes settings
             for request method, headers, body content, and compression options.
+        YieldOptimizationConfiguration:
+          $ref: '#/components/schemas/YieldOptimizationConfiguration'
+          description: Configuration for Yield Optimization, which fills unsold ad inventory in ad breaks with programmatic
+            ads from Amazon Publisher Services (APS).
         FunctionMapping:
           type: object
           properties: {}
           description: A map of lifecycle hook event names to function identifiers. The function mapping specifies which function
-            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION and
-            PRE_ADS_REQUEST. For more information, see Functions lifecycle hooks in the MediaTailor User Guide.
+            MediaTailor executes at each lifecycle hook during ad insertion. Valid keys are PRE_SESSION_INITIALIZATION, PRE_ADS_REQUEST,
+            POST_ADS_RESPONSE, and PRE_MANIFEST_INSERTION. For more information, see Functions lifecycle hooks in the MediaTailor
+            User Guide.
         AdsPersonalizationTimeouts:
           $ref: '#/components/schemas/AdsPersonalizationTimeouts'
           description: The timeout settings for ad decision server interactions. These settings control how long MediaTailor
@@ -4472,10 +4631,6 @@ components:
           $ref: '#/components/schemas/AdsPersonalizationConcurrency'
           description: The concurrency settings for ad decision server interactions. These settings control how many simultaneous
             ADS requests MediaTailor makes per manifest request.
-    StartChannelResponse:
-      type: object
-    StopChannelResponse:
-      type: object
     UpdateChannelResponse:
       type: object
       properties:

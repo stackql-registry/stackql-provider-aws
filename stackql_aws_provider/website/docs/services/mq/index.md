@@ -18,7 +18,7 @@ mq service documentation.
 
 :::info[Service Summary]
 
-total resources: __8__  
+total resources: __9__  
 
 :::
 
@@ -28,10 +28,11 @@ total resources: __8__
 <a href="/services/mq/broker_engine_types/">broker_engine_types</a><br />
 <a href="/services/mq/broker_instance_options/">broker_instance_options</a><br />
 <a href="/services/mq/brokers/">brokers</a><br />
-<a href="/services/mq/configuration_revisions/">configuration_revisions</a>
+<a href="/services/mq/configuration_revisions/">configuration_revisions</a><br />
+<a href="/services/mq/configurations/">configurations</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/mq/configurations/">configurations</a><br />
+<a href="/services/mq/promotes/">promotes</a><br />
 <a href="/services/mq/shared_resources/">shared_resources</a><br />
 <a href="/services/mq/tags/">tags</a><br />
 <a href="/services/mq/users/">users</a>

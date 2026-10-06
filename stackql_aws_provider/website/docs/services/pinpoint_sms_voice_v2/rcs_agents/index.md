@@ -60,6 +60,11 @@ The following fields are returned by `SELECT` queries:
     <td>When set to true the RCS agent can't be deleted.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="messaging_limits" /></td>
+    <td><code>object</code></td>
+    <td>The messaging limits that apply to the RCS agent, including the per-capability send rates.</td>
+</tr>
+<tr>
     <td><CopyableCode code="opt_out_list_name" /></td>
     <td><code>string</code></td>
     <td>The name of the OptOutList associated with the RCS agent. (pattern: &lt;code&gt;&#91;A-Za-z0-9_-&#93;+&lt;/code&gt;)</td>
@@ -217,6 +222,7 @@ Retrieves the specified RCS agents or all RCS agents associated with your Amazon
 SELECT
 created_timestamp,
 deletion_protection_enabled,
+messaging_limits,
 opt_out_list_name,
 pool_id,
 rcs_agent_arn,

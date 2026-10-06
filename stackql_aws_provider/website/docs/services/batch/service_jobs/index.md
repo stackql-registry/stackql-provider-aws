@@ -195,6 +195,11 @@ The following fields are returned by `SELECT` queries:
     <td>The Unix timestamp (in milliseconds) for when the service job was created.</td>
 </tr>
 <tr>
+    <td><CopyableCode code="is_terminated" /></td>
+    <td><code>boolean</code></td>
+    <td>Indicates whether a termination request has been accepted for the service job. This field is only present when the value is true.</td>
+</tr>
+<tr>
     <td><CopyableCode code="job_arn" /></td>
     <td><code>string</code></td>
     <td>The Amazon Resource Name (ARN) of the service job.</td>
@@ -302,6 +307,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Terminates a service job in a job queue.</td>
 </tr>
+<tr>
+    <td><a href="#terminate_service_jobs"><CopyableCode code="terminate_service_jobs" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Terminates up to 50 service jobs in a job queue. This is a bulk version of TerminateServiceJob. Batch reports the result for each service job individually in the response. Service jobs that were processed successfully are reported in the successful list. Service jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some service jobs encountered errors, so check the errors list. Service jobs that can't be found are treated as successfully processed.</td>
+</tr>
 </tbody>
 </table>
 
@@ -378,6 +390,7 @@ Returns a list of service jobs for a specified job queue.
 SELECT
 capacity_usage,
 created_at,
+is_terminated,
 job_arn,
 job_id,
 job_name,
@@ -433,12 +446,23 @@ job_name;
 <Tabs
     defaultValue="terminate_service_job"
     values={[
-        { label: 'terminate_service_job', value: 'terminate_service_job' }
+        { label: 'terminate_service_job', value: 'terminate_service_job' },
+        { label: 'terminate_service_jobs', value: 'terminate_service_jobs' }
     ]}
 >
 <TabItem value="terminate_service_job">
 
 Terminates a service job in a job queue.
+
+```sql
+DELETE FROM aws.batch.service_jobs
+WHERE region = '{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="terminate_service_jobs">
+
+Terminates up to 50 service jobs in a job queue. This is a bulk version of TerminateServiceJob. Batch reports the result for each service job individually in the response. Service jobs that were processed successfully are reported in the successful list. Service jobs that encountered errors are reported in the errors list. The response returns an HTTP status code of 200 even when some service jobs encountered errors, so check the errors list. Service jobs that can't be found are treated as successfully processed.
 
 ```sql
 DELETE FROM aws.batch.service_jobs

@@ -305,6 +305,13 @@ The following methods are available for this resource:
     <td></td>
     <td>Creates a batch inference job to invoke a model on multiple prompts. Format your data according to Format your inference data and upload it to an Amazon S3 bucket. For more information, see Process multiple prompts with batch inference. The response returns a jobArn that you can use to stop or get details about the job.</td>
 </tr>
+<tr>
+    <td><a href="#stop_model_invocation_job"><CopyableCode code="stop_model_invocation_job" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-job_identifier"><code>job_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see Stop a batch inference job.</td>
+</tr>
 </tbody>
 </table>
 
@@ -324,7 +331,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-job_identifier">
     <td><CopyableCode code="job_identifier" /></td>
     <td><code>string</code></td>
-    <td>The Amazon Resource Name (ARN) of the batch inference job.</td>
+    <td>The Amazon Resource Name (ARN) of the batch inference job to stop.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -552,5 +559,27 @@ job_arn
       valid_values: ['InvokeModel', 'Converse']
 `}</CodeBlock>
 
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="stop_model_invocation_job"
+    values={[
+        { label: 'stop_model_invocation_job', value: 'stop_model_invocation_job' }
+    ]}
+>
+<TabItem value="stop_model_invocation_job">
+
+Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see Stop a batch inference job.
+
+```sql
+EXEC aws.bedrock.model_invocation_jobs.stop_model_invocation_job 
+@job_identifier='{{ job_identifier }}' --required, 
+@region='{{ region }}' --required
+;
+```
 </TabItem>
 </Tabs>

@@ -18,17 +18,20 @@ geo_places service documentation.
 
 :::info[Service Summary]
 
-total resources: __3__  
+total resources: __6__  
 
 :::
 
 ## Resources
 <div class="row">
 <div class="providerDocColumn">
-<a href="/services/geo_places/nearbies/">nearbies</a><br />
-<a href="/services/geo_places/places/">places</a>
+<a href="/services/geo_places/autocompletes/">autocompletes</a><br />
+<a href="/services/geo_places/geocodes/">geocodes</a><br />
+<a href="/services/geo_places/nearbies/">nearbies</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/geo_places/places/">places</a><br />
+<a href="/services/geo_places/suggests/">suggests</a><br />
 <a href="/services/geo_places/texts/">texts</a>
 </div>
 </div>

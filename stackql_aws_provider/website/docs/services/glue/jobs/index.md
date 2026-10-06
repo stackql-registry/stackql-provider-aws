@@ -33,37 +33,13 @@ Creates, updates, deletes, gets or lists a <code>jobs</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_jobs"
+    defaultValue="get_job"
     values={[
-        { label: 'batch_get_jobs', value: 'batch_get_jobs' },
         { label: 'get_job', value: 'get_job' },
+        { label: 'batch_get_jobs', value: 'batch_get_jobs' },
         { label: 'get_jobs', value: 'get_jobs' }
     ]}
 >
-<TabItem value="batch_get_jobs">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="jobs" /></td>
-    <td><code>array</code></td>
-    <td>A list of job definitions.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="jobs_not_found" /></td>
-    <td><code>array</code></td>
-    <td>A list of names of jobs not found.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="get_job">
 
 <table>
@@ -209,6 +185,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="worker_type" /></td>
     <td><code>string</code></td>
     <td>The type of predefined worker that is allocated when a job runs. Glue provides multiple worker types to accommodate different workload requirements: G Worker Types (General-purpose compute workers): G.1X: 1 DPU (4 vCPUs, 16 GB memory, 94GB disk) G.2X: 2 DPU (8 vCPUs, 32 GB memory, 138GB disk) G.4X: 4 DPU (16 vCPUs, 64 GB memory, 256GB disk) G.8X: 8 DPU (32 vCPUs, 128 GB memory, 512GB disk) G.12X: 12 DPU (48 vCPUs, 192 GB memory, 768GB disk) G.16X: 16 DPU (64 vCPUs, 256 GB memory, 1024GB disk) R Worker Types (Memory-optimized workers): R.1X: 1 M-DPU (4 vCPUs, 32 GB memory) R.2X: 2 M-DPU (8 vCPUs, 64 GB memory) R.4X: 4 M-DPU (16 vCPUs, 128 GB memory) R.8X: 8 M-DPU (32 vCPUs, 256 GB memory) (Standard, G.1X, G.2X, G.025X, G.4X, G.8X, Z.2X)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="batch_get_jobs">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="jobs" /></td>
+    <td><code>array</code></td>
+    <td>A list of job definitions.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="jobs_not_found" /></td>
+    <td><code>array</code></td>
+    <td>A list of names of jobs not found.</td>
 </tr>
 </tbody>
 </table>
@@ -380,18 +380,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_jobs"><CopyableCode code="batch_get_jobs" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns a list of resource metadata for a given list of job names. After calling the ListJobs operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.</td>
-</tr>
-<tr>
     <td><a href="#get_job"><CopyableCode code="get_job" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves an existing job definition.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_jobs"><CopyableCode code="batch_get_jobs" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of resource metadata for a given list of job names. After calling the ListJobs operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.</td>
 </tr>
 <tr>
     <td><a href="#get_jobs"><CopyableCode code="get_jobs" /></a></td>
@@ -483,26 +483,13 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_jobs"
+    defaultValue="get_job"
     values={[
-        { label: 'batch_get_jobs', value: 'batch_get_jobs' },
         { label: 'get_job', value: 'get_job' },
+        { label: 'batch_get_jobs', value: 'batch_get_jobs' },
         { label: 'get_jobs', value: 'get_jobs' }
     ]}
 >
-<TabItem value="batch_get_jobs">
-
-Returns a list of resource metadata for a given list of job names. After calling the ListJobs operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
-
-```sql
-SELECT
-jobs,
-jobs_not_found
-FROM aws.glue.jobs
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="get_job">
 
 Retrieves an existing job definition.
@@ -536,6 +523,19 @@ security_configuration,
 source_control_details,
 timeout,
 worker_type
+FROM aws.glue.jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_jobs">
+
+Returns a list of resource metadata for a given list of job names. After calling the ListJobs operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
+
+```sql
+SELECT
+jobs,
+jobs_not_found
 FROM aws.glue.jobs
 WHERE region = '{{ region }}' -- required
 ;

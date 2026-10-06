@@ -152,6 +152,20 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified receipt rule set and all of the receipt rules it contains. The currently active rule set cannot be deleted. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
 </tr>
+<tr>
+    <td><a href="#clone_receipt_rule_set"><CopyableCode code="clone_receipt_rule_set" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-RuleSetName"><code>RuleSetName</code></a>, <a href="#parameter-OriginalRuleSetName"><code>OriginalRuleSetName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set. For information about setting up rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
+</tr>
+<tr>
+    <td><a href="#reorder_receipt_rule_set"><CopyableCode code="reorder_receipt_rule_set" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-RuleSetName"><code>RuleSetName</code></a>, <a href="#parameter-RuleNames"><code>RuleNames</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Reorders the receipt rules within a receipt rule set. All of the rules in the rule set must be represented in this request. That is, it is error if the reorder request doesn't explicitly position all of the rules. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.</td>
+</tr>
 </tbody>
 </table>
 
@@ -168,10 +182,20 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
+<tr id="parameter-OriginalRuleSetName">
+    <td><CopyableCode code="OriginalRuleSetName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the rule set to clone.</td>
+</tr>
+<tr id="parameter-RuleNames">
+    <td><CopyableCode code="RuleNames" /></td>
+    <td><code>array</code></td>
+    <td>The specified receipt rule set's receipt rules, in order.</td>
+</tr>
 <tr id="parameter-RuleSetName">
     <td><CopyableCode code="RuleSetName" /></td>
     <td><code>string</code></td>
-    <td>The name of the receipt rule set to delete.</td>
+    <td>The name of the receipt rule set to reorder.</td>
 </tr>
 <tr id="parameter-region">
     <td><CopyableCode code="region" /></td>
@@ -287,6 +311,42 @@ Deletes the specified receipt rule set and all of the receipt rules it contains.
 DELETE FROM aws.ses.receipt_rule_sets
 WHERE RuleSetName = '{{ RuleSetName }}' --required
 AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="clone_receipt_rule_set"
+    values={[
+        { label: 'clone_receipt_rule_set', value: 'clone_receipt_rule_set' },
+        { label: 'reorder_receipt_rule_set', value: 'reorder_receipt_rule_set' }
+    ]}
+>
+<TabItem value="clone_receipt_rule_set">
+
+Creates a receipt rule set by cloning an existing one. All receipt rules and configurations are copied to the new receipt rule set and are completely independent of the source rule set. For information about setting up rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
+
+```sql
+EXEC aws.ses.receipt_rule_sets.clone_receipt_rule_set 
+@RuleSetName='{{ RuleSetName }}' --required, 
+@OriginalRuleSetName='{{ OriginalRuleSetName }}' --required, 
+@region='{{ region }}' --required
+;
+```
+</TabItem>
+<TabItem value="reorder_receipt_rule_set">
+
+Reorders the receipt rules within a receipt rule set. All of the rules in the rule set must be represented in this request. That is, it is error if the reorder request doesn't explicitly position all of the rules. For information about managing receipt rule sets, see the Amazon SES Developer Guide. You can execute this operation no more than once per second.
+
+```sql
+EXEC aws.ses.receipt_rule_sets.reorder_receipt_rule_set 
+@RuleSetName='{{ RuleSetName }}' --required, 
+@RuleNames='{{ RuleNames }}' --required, 
+@region='{{ region }}' --required
 ;
 ```
 </TabItem>

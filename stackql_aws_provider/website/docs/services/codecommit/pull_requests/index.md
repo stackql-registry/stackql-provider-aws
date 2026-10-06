@@ -159,18 +159,18 @@ The following methods are available for this resource:
     <td>Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.</td>
 </tr>
 <tr>
-    <td><a href="#create_pull_request_approval_rule"><CopyableCode code="create_pull_request_approval_rule" /></a></td>
-    <td><CopyableCode code="insert" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-pullRequestId"><code>pullRequestId</code></a>, <a href="#parameter-approvalRuleName"><code>approvalRuleName</code></a>, <a href="#parameter-approvalRuleContent"><code>approvalRuleContent</code></a></td>
-    <td></td>
-    <td>Creates an approval rule for a pull request.</td>
-</tr>
-<tr>
     <td><a href="#create_pull_request"><CopyableCode code="create_pull_request" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-title"><code>title</code></a>, <a href="#parameter-targets"><code>targets</code></a></td>
     <td></td>
     <td>Creates a pull request in the specified repository.</td>
+</tr>
+<tr>
+    <td><a href="#create_pull_request_approval_rule"><CopyableCode code="create_pull_request_approval_rule" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-pullRequestId"><code>pullRequestId</code></a>, <a href="#parameter-approvalRuleName"><code>approvalRuleName</code></a>, <a href="#parameter-approvalRuleContent"><code>approvalRuleContent</code></a></td>
+    <td></td>
+    <td>Creates an approval rule for a pull request.</td>
 </tr>
 <tr>
     <td><a href="#update_pull_request_approval_rule_content"><CopyableCode code="update_pull_request_approval_rule_content" /></a></td>
@@ -322,34 +322,13 @@ WHERE region = '{{ region }}' -- required
 ## `INSERT` examples
 
 <Tabs
-    defaultValue="create_pull_request_approval_rule"
+    defaultValue="create_pull_request"
     values={[
-        { label: 'create_pull_request_approval_rule', value: 'create_pull_request_approval_rule' },
         { label: 'create_pull_request', value: 'create_pull_request' },
+        { label: 'create_pull_request_approval_rule', value: 'create_pull_request_approval_rule' },
         { label: 'Manifest', value: 'manifest' }
     ]}
 >
-<TabItem value="create_pull_request_approval_rule">
-
-Creates an approval rule for a pull request.
-
-```sql
-INSERT INTO aws.codecommit.pull_requests (
-pullRequestId,
-approvalRuleName,
-approvalRuleContent,
-region
-)
-SELECT 
-'{{ pullRequestId }}' /* required */,
-'{{ approvalRuleName }}' /* required */,
-'{{ approvalRuleContent }}' /* required */,
-'{{ region }}'
-RETURNING
-approval_rule
-;
-```
-</TabItem>
 <TabItem value="create_pull_request">
 
 Creates a pull request in the specified repository.
@@ -373,6 +352,27 @@ pull_request
 ;
 ```
 </TabItem>
+<TabItem value="create_pull_request_approval_rule">
+
+Creates an approval rule for a pull request.
+
+```sql
+INSERT INTO aws.codecommit.pull_requests (
+pullRequestId,
+approvalRuleName,
+approvalRuleContent,
+region
+)
+SELECT 
+'{{ pullRequestId }}' /* required */,
+'{{ approvalRuleName }}' /* required */,
+'{{ approvalRuleContent }}' /* required */,
+'{{ region }}'
+RETURNING
+approval_rule
+;
+```
+</TabItem>
 <TabItem value="manifest">
 
 <CodeBlock language="yaml">{`# Description fields are for documentation purposes
@@ -381,18 +381,6 @@ pull_request
     - name: region
       value: "{{ region }}"
       description: Required parameter for the pull_requests resource.
-    - name: pullRequestId
-      value: "{{ pullRequestId }}"
-      description: |
-        The system-generated ID of the pull request for which you want to create the approval rule.
-    - name: approvalRuleName
-      value: "{{ approvalRuleName }}"
-      description: |
-        The name for the approval rule.
-    - name: approvalRuleContent
-      value: "{{ approvalRuleContent }}"
-      description: |
-        The content of the approval rule, including the number of approvals needed and the structure of an approval pool defined for approvals, if any. For more information about approval pools, see the CodeCommit User Guide. When you create the content of the approval rule, you can specify approvers in an approval pool in one of two ways: CodeCommitApprovers: This option only requires an Amazon Web Services account and a resource. It can be used for both IAM users and federated access users whose name matches the provided resource name. This is a very powerful option that offers a great deal of flexibility. For example, if you specify the Amazon Web Services account 123456789012 and Mary_Major, all of the following would be counted as approvals coming from that user: An IAM user in the account (arn:aws:iam::123456789012:user/Mary_Major) A federated user identified in IAM as Mary_Major (arn:aws:sts::123456789012:federated-user/Mary_Major) This option does not recognize an active session of someone assuming the role of CodeCommitReview with a role session name of Mary_Major (arn:aws:sts::123456789012:assumed-role/CodeCommitReview/Mary_Major) unless you include a wildcard (*Mary_Major). Fully qualified ARN: This option allows you to specify the fully qualified Amazon Resource Name (ARN) of the IAM user or role. For more information about IAM ARNs, wildcards, and formats, see IAM Identifiers in the IAM User Guide.
     - name: title
       value: "{{ title }}"
       description: |
@@ -412,6 +400,18 @@ pull_request
       value: "{{ clientRequestToken }}"
       description: |
         A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token. The Amazon Web ServicesSDKs prepopulate client request tokens. If you are using an Amazon Web ServicesSDK, an idempotency token is created for you.
+    - name: pullRequestId
+      value: "{{ pullRequestId }}"
+      description: |
+        The system-generated ID of the pull request for which you want to create the approval rule.
+    - name: approvalRuleName
+      value: "{{ approvalRuleName }}"
+      description: |
+        The name for the approval rule.
+    - name: approvalRuleContent
+      value: "{{ approvalRuleContent }}"
+      description: |
+        The content of the approval rule, including the number of approvals needed and the structure of an approval pool defined for approvals, if any. For more information about approval pools, see the CodeCommit User Guide. When you create the content of the approval rule, you can specify approvers in an approval pool in one of two ways: CodeCommitApprovers: This option only requires an Amazon Web Services account and a resource. It can be used for both IAM users and federated access users whose name matches the provided resource name. This is a very powerful option that offers a great deal of flexibility. For example, if you specify the Amazon Web Services account 123456789012 and Mary_Major, all of the following would be counted as approvals coming from that user: An IAM user in the account (arn:aws:iam::123456789012:user/Mary_Major) A federated user identified in IAM as Mary_Major (arn:aws:sts::123456789012:federated-user/Mary_Major) This option does not recognize an active session of someone assuming the role of CodeCommitReview with a role session name of Mary_Major (arn:aws:sts::123456789012:assumed-role/CodeCommitReview/Mary_Major) unless you include a wildcard (*Mary_Major). Fully qualified ARN: This option allows you to specify the fully qualified Amazon Resource Name (ARN) of the IAM user or role. For more information about IAM ARNs, wildcards, and formats, see IAM Identifiers in the IAM User Guide.
 `}</CodeBlock>
 
 </TabItem>

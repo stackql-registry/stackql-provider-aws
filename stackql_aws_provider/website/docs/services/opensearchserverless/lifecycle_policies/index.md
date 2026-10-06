@@ -33,36 +33,12 @@ Creates, updates, deletes, gets or lists a <code>lifecycle_policies</code> resou
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="batch_get_lifecycle_policy"
+    defaultValue="list_lifecycle_policies"
     values={[
-        { label: 'batch_get_lifecycle_policy', value: 'batch_get_lifecycle_policy' },
-        { label: 'list_lifecycle_policies', value: 'list_lifecycle_policies' }
+        { label: 'list_lifecycle_policies', value: 'list_lifecycle_policies' },
+        { label: 'batch_get_lifecycle_policy', value: 'batch_get_lifecycle_policy' }
     ]}
 >
-<TabItem value="batch_get_lifecycle_policy">
-
-<table>
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>Datatype</th>
-    <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-<tr>
-    <td><CopyableCode code="lifecycle_policy_details" /></td>
-    <td><code>array</code></td>
-    <td>A list of lifecycle policies matched to the input policy name and policy type.</td>
-</tr>
-<tr>
-    <td><CopyableCode code="lifecycle_policy_error_details" /></td>
-    <td><code>array</code></td>
-    <td>A list of lifecycle policy names and policy types for which retrieval failed.</td>
-</tr>
-</tbody>
-</table>
-</TabItem>
 <TabItem value="list_lifecycle_policies">
 
 <table>
@@ -87,6 +63,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="batch_get_lifecycle_policy">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="lifecycle_policy_details" /></td>
+    <td><code>array</code></td>
+    <td>A list of lifecycle policies matched to the input policy name and policy type.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="lifecycle_policy_error_details" /></td>
+    <td><code>array</code></td>
+    <td>A list of lifecycle policy names and policy types for which retrieval failed.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -105,18 +105,18 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
-    <td><a href="#batch_get_lifecycle_policy"><CopyableCode code="batch_get_lifecycle_policy" /></a></td>
-    <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns one or more configured OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.</td>
-</tr>
-<tr>
     <td><a href="#list_lifecycle_policies"><CopyableCode code="list_lifecycle_policies" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns a list of OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.</td>
+</tr>
+<tr>
+    <td><a href="#batch_get_lifecycle_policy"><CopyableCode code="batch_get_lifecycle_policy" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns one or more configured OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.</td>
 </tr>
 <tr>
     <td><a href="#create_lifecycle_policy"><CopyableCode code="create_lifecycle_policy" /></a></td>
@@ -166,25 +166,12 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="batch_get_lifecycle_policy"
+    defaultValue="list_lifecycle_policies"
     values={[
-        { label: 'batch_get_lifecycle_policy', value: 'batch_get_lifecycle_policy' },
-        { label: 'list_lifecycle_policies', value: 'list_lifecycle_policies' }
+        { label: 'list_lifecycle_policies', value: 'list_lifecycle_policies' },
+        { label: 'batch_get_lifecycle_policy', value: 'batch_get_lifecycle_policy' }
     ]}
 >
-<TabItem value="batch_get_lifecycle_policy">
-
-Returns one or more configured OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.
-
-```sql
-SELECT
-lifecycle_policy_details,
-lifecycle_policy_error_details
-FROM aws.opensearchserverless.lifecycle_policies
-WHERE region = '{{ region }}' -- required
-;
-```
-</TabItem>
 <TabItem value="list_lifecycle_policies">
 
 Returns a list of OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.
@@ -193,6 +180,19 @@ Returns a list of OpenSearch Serverless lifecycle policies. For more information
 SELECT
 lifecycle_policy_summaries,
 next_token
+FROM aws.opensearchserverless.lifecycle_policies
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="batch_get_lifecycle_policy">
+
+Returns one or more configured OpenSearch Serverless lifecycle policies. For more information, see Viewing data lifecycle policies.
+
+```sql
+SELECT
+lifecycle_policy_details,
+lifecycle_policy_error_details
 FROM aws.opensearchserverless.lifecycle_policies
 WHERE region = '{{ region }}' -- required
 ;
