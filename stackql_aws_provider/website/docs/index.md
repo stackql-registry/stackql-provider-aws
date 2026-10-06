@@ -28,6 +28,7 @@ For the AWS Cloud Control provider see the [__`awscc`__](https://awscc-provider.
 
 total services: __430__  
 total resources: __6852__  
+source project: __[stackql-provider-aws](https://github.com/stackql-registry/stackql-provider-aws)__  
 
 :::
 
